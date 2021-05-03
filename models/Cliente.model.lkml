@@ -39,7 +39,7 @@ explore: dm_producto_adquirido {
     relationship: many_to_one
   }
   join: dm_cuenta {
-    sql_on:${dm_producto_adquirido.cuenta_propiedad_srcid} = ${dm_cuenta.cuenta_srcid} and ${dm_cuenta.fecha_entidad_date} =  ${dm_producto_adquirido.fecha_entidad_date};;
+    sql_on:${dm_producto_adquirido.cuenta_propiedad_srcid} = ${ dm_cuenta.cuenta_srcid} and ${dm_cuenta.fecha_entidad_date} =  ${dm_producto_adquirido.fecha_entidad_date};;
     relationship: many_to_one
   }
 
