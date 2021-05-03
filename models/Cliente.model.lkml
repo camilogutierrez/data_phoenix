@@ -45,31 +45,22 @@ explore: dm_producto_adquirido {
 
 
   join: dm_medio_pago {
-    sql_on:${dm_cuenta.cuenta_medio_de_pago_id} = ${dm_medio_pago.medio_pago_srcid}
-
-            } ;;
+    sql_on:${dm_cuenta.cuenta_medio_de_pago_id} = ${dm_medio_pago.medio_pago_srcid} ;;
     relationship: many_to_one
   }
   join: dm_orden {
-    sql_on:${dm_producto_adquirido.producto_adquirido_orden_item_srcid} = ${ dm_orden.orden_item_srcid} and ${dm_cuenta.fecha_entidad_date} =  ${dm_producto_adquirido.fecha_entidad_date}
-
-            } ;;
+    sql_on:${dm_producto_adquirido.producto_adquirido_orden_item_srcid} = ${ dm_orden.orden_item_srcid} and ${dm_cuenta.fecha_entidad_date} =  ${dm_producto_adquirido.fecha_entidad_date} ;;
     relationship: many_to_one
   }
   join: dm_rango_numeracion {
     sql_where:${dm_producto_adquirido.producto_adquirido_numero_linea } >= ${dm_rango_numeracion.rango_numeracion_numero_linea_desde} AND
     ${dm_producto_adquirido.producto_adquirido_numero_linea } <=
-    ${dm_rango_numeracion.rango_numeracion_numero_linea_hasta}}
-
-
-                  } ;;
+    ${dm_rango_numeracion.rango_numeracion_numero_linea_hasta}} ;;
     relationship: many_to_one
   }
   join: dm_individuo {
     sql_on:${dm_cuenta.cuenta_srcid} = ${ dm_individuo.cuenta_srcid}
-    and ${dm_individuo.fecha_entidad_date} =  ${dm_producto_adquirido.fecha_entidad_date}
-
-                  } ;;
+    and ${dm_individuo.fecha_entidad_date} =  ${dm_producto_adquirido.fecha_entidad_date} ;;
     relationship: many_to_one
   }
 }
