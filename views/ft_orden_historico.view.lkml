@@ -1,4 +1,5 @@
 view: ft_orden_historico {
+  label: "Orden Historico"
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_Orden`
     ;;
 
@@ -23,7 +24,7 @@ view: ft_orden_historico {
     group_item_label: "Caso Estado Nombre"
   }
 
-  dimension_group: caso__caso_fecha_creacion {
+  dimension_group: fecha_caso_creacion {
     type: time
     timeframes: [
       raw,
@@ -31,12 +32,11 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.CASO.CasoFechaCreacion ;;
-    group_label: "Caso"
-    group_item_label: "Caso Fecha Creacion"
   }
 
   dimension: caso__caso_mercado_donante_portacion {
@@ -363,7 +363,7 @@ view: ft_orden_historico {
     sql: ${TABLE}.FechaEntidad ;;
   }
 
-  dimension_group: fechas__orden_item_fecha_creacion {
+  dimension_group: fecha_item_creacion {
     type: time
     timeframes: [
       raw,
@@ -371,15 +371,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.OrdenItemFechaCreacion ;;
-    group_label: "Fechas"
-    group_item_label: "Orden Item Fecha Creacion"
   }
 
-  dimension_group: fechas__orden_item_fecha_modificacion {
+  dimension_group: fecha_item_modificacion {
     type: time
     timeframes: [
       raw,
@@ -387,12 +386,11 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.OrdenItemFechaModificacion ;;
-    group_label: "Fechas"
-    group_item_label: "Orden Item Fecha Modificacion"
   }
 
   dimension: marcas__orden_es_cambio_mercado {
@@ -633,7 +631,7 @@ view: ft_orden_historico {
     group_item_label: "Orden Precio Valor Ajuste"
   }
 
-  dimension_group: orden__fechas__orden_ejecucion_cambio_fecha {
+  dimension_group: fecha_orden_ejecucion_cambio {
     type: time
     timeframes: [
       raw,
@@ -641,15 +639,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenEjecucionCambioFecha ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Ejecucion Cambio Fecha"
   }
 
-  dimension_group: orden__fechas__orden_fecha_activacion {
+  dimension_group: fecha_orden_activacion {
     type: time
     timeframes: [
       raw,
@@ -657,15 +654,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacion ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Fecha Activacion"
   }
 
-  dimension_group: orden__fechas__orden_fecha_creacion {
+  dimension_group: fecha_orden_creacion {
     type: time
     timeframes: [
       raw,
@@ -673,15 +669,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenFechaCreacion ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Fecha Creacion"
   }
 
-  dimension_group: orden__fechas__orden_fecha_entrega {
+  dimension_group: fecha_orden_entrega {
     type: time
     timeframes: [
       raw,
@@ -689,15 +684,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenFechaEntrega ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Fecha Entrega"
   }
 
-  dimension_group: orden__fechas__orden_fecha_mod {
+  dimension_group: fecha_orden_modificacion {
     type: time
     timeframes: [
       raw,
@@ -705,15 +699,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenFechaMod ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Fecha Mod"
   }
 
-  dimension_group: orden__fechas__orden_fecha_venta {
+  dimension_group: fecha_orden_venta {
     type: time
     timeframes: [
       raw,
@@ -721,15 +714,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenFechaVenta ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Fecha Venta"
   }
 
-  dimension_group: orden__fechas__orden_fin_orden {
+  dimension_group: fecha_orden_finalizacion {
     type: time
     timeframes: [
       raw,
@@ -737,15 +729,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenFinOrden ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Fin Orden"
   }
 
-  dimension_group: orden__fechas__orden_inicio_orden {
+  dimension_group: fecha_orden_inicio {
     type: time
     timeframes: [
       raw,
@@ -753,12 +744,11 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Orden.Fechas.OrdenInicioOrden ;;
-    group_label: "Orden Fechas"
-    group_item_label: "Orden Inicio Orden"
   }
 
   dimension: orden__orden_campania_id {
@@ -1441,7 +1431,7 @@ view: ft_orden_historico {
     sql: ${TABLE}.OrigenSRCId ;;
   }
 
-  dimension_group: producto__fechas__producto_fecha_creacion {
+  dimension_group: fecha_producto_creacion {
     type: time
     timeframes: [
       raw,
@@ -1449,15 +1439,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Producto.Fechas.ProductoFechaCreacion ;;
-    group_label: "Producto Fechas"
-    group_item_label: "Producto Fecha Creacion"
   }
 
-  dimension_group: producto__fechas__producto_fecha_modificacion {
+  dimension_group: fecha_producto_modificacion {
     type: time
     timeframes: [
       raw,
@@ -1465,15 +1454,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Producto.Fechas.ProductoFechaModificacion ;;
-    group_label: "Producto Fechas"
-    group_item_label: "Producto Fecha Modificacion"
   }
 
-  dimension_group: producto__fechas__producto_vigencia_desde {
+  dimension_group: fecha_producto_vigencia_desde {
     type: time
     timeframes: [
       raw,
@@ -1481,15 +1469,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Producto.Fechas.ProductoVigenciaDesde ;;
-    group_label: "Producto Fechas"
-    group_item_label: "Producto Vigencia Desde"
   }
 
-  dimension_group: producto__fechas__producto_vigencia_hasta {
+  dimension_group: fecha_producto_vigencia_hasta {
     type: time
     timeframes: [
       raw,
@@ -1497,12 +1484,11 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Producto.Fechas.ProductoVigenciaHasta ;;
-    group_label: "Producto Fechas"
-    group_item_label: "Producto Vigencia Hasta"
   }
 
   dimension: producto__marcas__producto_es_activo {
@@ -1680,7 +1666,7 @@ view: ft_orden_historico {
     group_item_label: "Producto Tipo Srcid"
   }
 
-  dimension_group: producto_adquirido__fechas__producto_adquirido_fecha_baja {
+  dimension_group: fecha_producto_adquirido_baja {
     type: time
     timeframes: [
       raw,
@@ -1688,15 +1674,14 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.ProductoAdquirido.Fechas.ProductoAdquiridoFechaBaja ;;
-    group_label: "Producto Adquirido Fechas"
-    group_item_label: "Producto Adquirido Fecha Baja"
   }
 
-  dimension_group: producto_adquirido__fechas__producto_adquirido_fecha_compra {
+  dimension_group: fecha_producto_adquirido_compra {
     type: time
     timeframes: [
       raw,
@@ -1704,12 +1689,11 @@ view: ft_orden_historico {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.ProductoAdquirido.Fechas.ProductoAdquiridoFechaCompra ;;
-    group_label: "Producto Adquirido Fechas"
-    group_item_label: "Producto Adquirido Fecha Compra"
   }
 
   dimension: producto_adquirido__producto_adquirido_caracteristica_gama_equipo {
