@@ -470,166 +470,6 @@ view: ft_orden_historico {
     group_item_label: "Medio Pago Tipo Nombre"
   }
 
-  dimension: metricas__orden_item_cantidad {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemCantidad ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Cantidad"
-  }
-
-  dimension: metricas__orden_item_cargo_recurrente {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemCargoRecurrente ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Cargo Recurrente"
-  }
-
-  dimension: metricas__orden_item_cargo_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemCargoRecurrenteSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Cargo Recurrente Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_cargo_unica_vez {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemCargoUnicaVez ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Cargo Unica Vez"
-  }
-
-  dimension: metricas__orden_item_cargo_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemCargoUnicaVezSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Cargo Unica Vez Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_precio_calculado_recurrente {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioCalculadoRecurrente ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Calculado Recurrente"
-  }
-
-  dimension: metricas__orden_item_precio_calculado_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioCalculadoRecurrenteSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Calculado Recurrente Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_precio_dcto_unica_vez {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioDctoUnicaVez ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Dcto Unica Vez"
-  }
-
-  dimension: metricas__orden_item_precio_dcto_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioDctoUnicaVezSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Dcto Unica Vez Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_precio_efectivo_unica_vez {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioEfectivoUnicaVez ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Efectivo Unica Vez"
-  }
-
-  dimension: metricas__orden_item_precio_efectivo_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioEfectivoUnicaVezSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Efectivo Unica Vez Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_precio_lista {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioLista ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Lista"
-  }
-
-  dimension: metricas__orden_item_precio_recurrente {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioRecurrente ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Recurrente"
-  }
-
-  dimension: metricas__orden_item_precio_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioRecurrenteSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Recurrente Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_precio_total_unica_vez {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioTotalUnicaVez ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Total Unica Vez"
-  }
-
-  dimension: metricas__orden_item_precio_total_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioTotalUnicaVezSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Total Unica Vez Sin Impuesto"
-  }
-
-  dimension: metricas__orden_item_precio_unitario {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemPrecioUnitario ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Precio Unitario"
-  }
-
-  dimension: metricas__orden_item_total_recurrente {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemTotalRecurrente ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Total Recurrente"
-  }
-
-  dimension: metricas__orden_item_total_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenItemTotalRecurrenteSinImpuesto ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Item Total Recurrente Sin Impuesto"
-  }
-
-  dimension: metricas__orden_precio_total {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenPrecioTotal ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Precio Total"
-  }
-
-  dimension: metricas__orden_precio_total_recurrente {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenPrecioTotalRecurrente ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Precio Total Recurrente"
-  }
-
-  dimension: metricas__orden_precio_total_una_vez {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenPrecioTotalUnaVez ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Precio Total Una Vez"
-  }
-
-  dimension: metricas__orden_precio_valor_ajuste {
-    type: number
-    sql: ${TABLE}.Metricas.OrdenPrecioValorAjuste ;;
-    group_label: "Metricas"
-    group_item_label: "Orden Precio Valor Ajuste"
-  }
 
   dimension_group: fecha_orden_ejecucion_cambio {
     type: time
@@ -1942,8 +1782,181 @@ view: ft_orden_historico {
     group_item_label: "Usuario Nombre Completo"
   }
 
+
+## METRICAS ##
+
+###########################
+#####   ORDEN ITEM  #######
+###########################
+
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: orden_item_cantidad {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemCantidad ;;
+    group_label: "Orden Item"
+    group_item_label: "Cantidad"
+    description: "Cantidad de Items"
+  }
+
+  measure: orden_item_cargo_recurrente {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemCargoRecurrente ;;
+    group_label: "Orden Item"
+    group_item_label: "Cargo Recurrente"
+  }
+
+  measure: orden_item_cargo_recurrente_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemCargoRecurrenteSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Cargo Recurrente Sin Impuesto"
+  }
+
+  measure: orden_item_cargo_unica_vez {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemCargoUnicaVez ;;
+    group_label: "Orden Item"
+    group_item_label: "Cargo Unica Vez"
+  }
+
+  measure: orden_item_cargo_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemCargoUnicaVezSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Cargo Unica Vez Sin Impuesto"
+  }
+
+  measure: orden_item_precio_calculado_recurrente {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioCalculadoRecurrente ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Calculado Recurrente"
+  }
+
+  measure: orden_item_precio_calculado_recurrente_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioCalculadoRecurrenteSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Calculado Recurrente Sin Impuesto"
+  }
+
+  measure: orden_item_precio_dcto_unica_vez {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioDctoUnicaVez ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Descuento Unica Vez"
+  }
+
+  measure: orden_item_precio_dcto_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioDctoUnicaVezSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Dcto Unica Vez Sin Impuesto"
+  }
+
+  measure: orden_item_precio_efectivo_unica_vez {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioEfectivoUnicaVez ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Efectivo Unica Vez"
+  }
+
+  measure: orden_item_precio_efectivo_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioEfectivoUnicaVezSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Efectivo Unica Vez Sin Impuesto"
+  }
+
+  measure: orden_item_precio_lista {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioLista ;;
+    group_label: "Orden Item"
+    group_item_label: "Orden Item Precio Lista"
+  }
+
+  measure: orden_item_precio_recurrente {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioRecurrente ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Recurrente"
+  }
+
+  measure: orden_item_precio_recurrente_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioRecurrenteSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Recurrente Sin Impuesto"
+  }
+
+  measure: orden_item_precio_total_unica_vez {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioTotalUnicaVez ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Total Unica Vez"
+  }
+
+  measure: orden_item_precio_total_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioTotalUnicaVezSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Total Unica Vez Sin Impuesto"
+  }
+
+  measure: orden_item_precio_unitario {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemPrecioUnitario ;;
+    group_label: "Orden Item"
+    group_item_label: "Precio Unitario"
+  }
+
+  measure: orden_item_total_recurrente {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemTotalRecurrente ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Recurrente"
+  }
+
+  measure: orden_item_total_recurrente_sin_impuesto {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenItemTotalRecurrenteSinImpuesto ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Recurrente Sin Impuesto"
+  }
+
+######################
+#####   ORDEN  #######
+######################
+
+  measure: orden_precio_total {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenPrecioTotal ;;
+    group_label: "Orden"
+    group_item_label: "Precio Total"
+  }
+
+  measure: orden_precio_total_recurrente {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenPrecioTotalRecurrente ;;
+    group_label: "Orden"
+    group_item_label: "Precio Total Recurrente"
+  }
+
+  measure: orden_precio_total_una_vez {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenPrecioTotalUnaVez ;;
+    group_label: "Orden"
+    group_item_label: "Precio Total Una Vez"
+  }
+
+  measure: orden_precio_valor_ajuste {
+    type: sum
+    sql: ${TABLE}.Metricas.OrdenPrecioValorAjuste ;;
+    group_label: "Orden"
+    group_item_label: "Precio Valor Ajuste"
   }
 }
