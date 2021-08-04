@@ -1959,4 +1959,23 @@ view: ft_orden_historico {
     group_label: "Orden"
     group_item_label: "Precio Valor Ajuste"
   }
+
+  measure: cambio_plan {
+    type: count_distinct
+    sql: ${TABLE}.Orden.OrdenNumero;;
+    filters: [orden__orden_estado_nombre: "ACTIVADA"
+            , orden__orden_tipo_gestion_srcid: "Cambio de Plan"
+            , orden_item_accion_srcid: "Add"
+            , producto__producto_tipo_nombre: "plan hibrido,plan pospago, plan prepago"]
+
+    #   (ft_orden_historico.Orden.OrdenEstadoNombre ) = 'ACTIVADA'
+    # AND (ft_orden_historico.Orden.OrdenTipoGestionSRCId ) = 'Cambio de Plan'
+    # AND (ft_orden_historico.OrdenItemAccionSRCId ) = 'Add'
+    # AND ((ft_orden_historico.Producto.ProductoTipoNombre ) = 'plan hibrido' OR (ft_orden_historico.Producto.ProductoTipoNombre ) = 'plan pospago' OR (ft_orden_historico.Producto.ProductoTipoNombre ) = 'plan prepago')
+    # type: sum
+    group_label: "Orden"
+    group_item_label: "Cambios de Plan"
+  }
+
+
 }
