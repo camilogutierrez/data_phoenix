@@ -1,6 +1,6 @@
 connection: "edw"
 
-include: "/views/ft_orden_historico.view.lkml"
+include: "/views/fth_orden_historico.view.lkml"
 
 datagroup: default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -10,7 +10,7 @@ datagroup: default_datagroup {
 persist_with: default_datagroup
 
 
-explore: ft_orden_historico {
+explore: fth_orden_historico {
   group_label: "Phoenix"
   label: "Orden Historico"
 }
