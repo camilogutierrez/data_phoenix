@@ -1,6 +1,6 @@
 connection: "edw"
 
-include: "/views/fth_orden_historico.view.lkml"
+include: "/views/fth_orden.view.lkml"
 
 # Caching settings
 datagroup: default_datagroup {
@@ -13,7 +13,7 @@ persist_with: default_datagroup
 # Case sensitive en filtros
 case_sensitive: no
 
-explore: fth_orden_historico {
+explore: fth_orden {
   group_label: "Phoenix"
   label: "Orden Historico"
 }

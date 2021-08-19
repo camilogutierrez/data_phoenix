@@ -1,4 +1,4 @@
-view: fth_orden_historico {
+view: fth_orden {
   label: "Orden Historico"
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_Orden`
     ;;
