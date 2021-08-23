@@ -1767,19 +1767,26 @@ view: fth_orden {
     group_item_label: "Precio Valor Ajuste"
   }
 
-## Metricas Filtradas
+## Metricas Calculadas
 
-  measure: cambio_plan {
+  measure: cambio_plan_count {
     type: count_distinct
-    sql: ${TABLE}.Orden.OrdenNumero;;
+    sql: ${orden_srcid};;
     group_label: "Orden"
     group_item_label: "Cambios de Plan"
     filters: [
-      orden_estado_nombre: "ACTIVADA"
+        orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_srcid: "Cambio de Plan"
       , orden_item_accion_srcid: "Add"
       , producto_tipo_nombre: "plan hibrido, plan pospago, plan prepago"
     ]
+  }
+
+  measure: orden_count {
+    type: count_distinct
+    sql: ${orden_srcid} ;;
+    group_label: "Orden"
+    group_item_label: "Cantidad de Ordenes"
   }
 
 }
