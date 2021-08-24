@@ -1767,10 +1767,10 @@ view: fth_orden {
     group_label: "Orden"
     group_item_label: "Cambios de Plan"
     filters: [
-        orden_estado_srcid: "ACTIVADA"
-      , orden_tipo_gestion_srcid: "Cambio de Plan"
-      , orden_item_accion_srcid: "Add"
-      , producto_tipo_srcid: "plan hibrido, plan pospago, plan prepago"
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
 
