@@ -1,8 +1,10 @@
 connection: "edw"
 
 include: "/views/fth_orden.view.lkml"
+include: "/views/lookups/*.view.lkml"
 
 # Caching settings
+
 datagroup: default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "24 hour"
@@ -11,20 +13,18 @@ datagroup: default_datagroup {
 persist_with: default_datagroup
 
 # Case sensitive en filtros
+
 case_sensitive: no
+
+# Explores
 
 explore: fth_orden {
   group_label: "Phoenix"
   label: "Orden Historico"
-}
 
-#   join: orders {
-#     relationship: many_to_one
-#     sql_on: ${orders.id} = ${order_items.order_id} ;;
-#   }
-#
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }
+  join: lk_orden_estado {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${fth_orden.orden_estado_nombre} = ${lk_orden_estado.orden_estado_nombre} ;;
+  }
+}

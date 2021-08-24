@@ -14,17 +14,8 @@ view: fth_orden {
     sql: CONCAT(CAST(${TABLE}.FechaEntidad AS STRING FORMAT 'YYYYMMDD'),'-',${TABLE}.OrdenItemSRCId);;
   }
 
-  dimension_group: fecha_entidad {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
+  dimension: fecha_entidad {
+    type: date
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FechaEntidad ;;
@@ -151,6 +142,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenEstadoNombre ;;
     group_label: "Orden"
     group_item_label: "Orden Estado Nombre"
+    suggest_dimension: lk_orden_estado.orden_estado_nombre
   }
   dimension: orden_estado_provisionamiento_nombre {
     type: string
@@ -1620,7 +1612,7 @@ view: fth_orden {
 
 ## Metricas Orden Item
 
-  measure: count {
+  measure: orden_item_count {
     type: count
     drill_fields: []
   }
@@ -1775,10 +1767,10 @@ view: fth_orden {
     group_label: "Orden"
     group_item_label: "Cambios de Plan"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+        orden_estado_srcid: "ACTIVADA"
       , orden_tipo_gestion_srcid: "Cambio de Plan"
       , orden_item_accion_srcid: "Add"
-      , producto_tipo_nombre: "plan hibrido, plan pospago, plan prepago"
+      , producto_tipo_srcid: "plan hibrido, plan pospago, plan prepago"
     ]
   }
 
