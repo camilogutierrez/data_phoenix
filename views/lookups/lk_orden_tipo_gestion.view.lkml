@@ -1,6 +1,6 @@
 view: lk_orden_tipo_gestion {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_OrdenTipoGestion`
-    ;;
+  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_OrdenTipoGestion`;;
+  fields_hidden_by_default: yes
 
   dimension_group: _fecha_creacion {
     type: time

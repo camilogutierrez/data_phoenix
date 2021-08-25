@@ -1,6 +1,6 @@
 view: lk_caso_estado {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_CasoEstado`
-    ;;
+  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_CasoEstado`;;
+  fields_hidden_by_default: yes
 
   dimension_group: _fecha_creacion {
     type: time

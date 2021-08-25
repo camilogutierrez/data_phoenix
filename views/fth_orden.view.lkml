@@ -1,9 +1,6 @@
 view: fth_orden {
   label: "Orden Historico"
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_Orden`
-    ;;
-
-  ##Custom Fields
+  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_Orden` ;;
 
   ## PrimaryKey
 
@@ -13,6 +10,8 @@ view: fth_orden {
     type: string
     sql: CONCAT(CAST(${TABLE}.FechaEntidad AS STRING FORMAT 'YYYYMMDD'),'-',${TABLE}.OrdenItemSRCId);;
   }
+
+  ## Custom
 
   dimension: fecha_entidad {
     type: date
@@ -485,6 +484,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenTipoGestionNombre ;;
     group_label: "Orden"
     group_item_label: "Orden Tipo Gestion Nombre"
+    suggest_dimension: lk_orden_tipo_gestion.orden_tipo_gestion_nombre
   }
   dimension: orden_tipo_gestion_srcid {
     type: string
@@ -684,6 +684,7 @@ view: fth_orden {
   dimension: orden_item_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenItemAccionNombre ;;
+    suggest_dimension: lk_orden_item_accion.orden_item_accion_nombre
   }
   dimension: orden_item_accion_srcid {
     type: string
@@ -1266,6 +1267,7 @@ view: fth_orden {
     sql: ${TABLE}.Producto.ProductoTipoNombre ;;
     group_label: "Producto"
     group_item_label: "Producto Tipo Nombre"
+    suggest_dimension: lk_producto_tipo.producto_tipo_nombre
   }
   dimension: producto_tipo_srcid {
     type: string
