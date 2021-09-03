@@ -8,7 +8,7 @@ view: aleph {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(${TABLE}.Entidad, '-', CAST(${TABLE}.ValorDestino AS STRING));;
+    sql: CONCAT(${entidad}, '-', CAST(${valor_destino} AS STRING));;
   }
 
   ## Auditoria

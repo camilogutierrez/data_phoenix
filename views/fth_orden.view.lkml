@@ -8,7 +8,7 @@ view: fth_orden {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${TABLE}.FechaEntidad AS STRING FORMAT 'YYYYMMDD'),'-',${TABLE}.OrdenItemSRCId);;
+    sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${orden_item_srcid});;
   }
 
   ## Custom
