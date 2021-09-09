@@ -1612,6 +1612,14 @@ view: fth_orden {
     group_item_label: "Usuario Nombre Completo"
   }
 
+## Custom Dimensions
+
+  dimension: es_numero_linea {
+    hidden: yes
+    type: yesno
+    sql: LENGHT(TRIM((${producto_adquirido_numero_linea})) = 10;;
+  }
+
 ## Metricas Orden Item
 
   measure: orden_item_count {
@@ -1763,11 +1771,12 @@ view: fth_orden {
 
 ## Metricas Calculadas
 
-  measure: cambio_plan_count {
+  measure: cambio_plan_efectiva_count {
     type: count_distinct
     sql: ${orden_srcid};;
     group_label: "Orden"
-    group_item_label: "Cambios de Plan"
+    group_item_label: "Cambios de Plan Efectiva"
+    description: "Ordenes de Cambios de Plan Activadas POSPAGO, HIBRIDO, PREPAGO"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
@@ -1781,6 +1790,203 @@ view: fth_orden {
     sql: ${orden_srcid} ;;
     group_label: "Orden"
     group_item_label: "Cantidad de Ordenes"
+  }
+
+  measure: venta_terminal_efectiva_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Venta de Terminal Efectiva"
+    description: "Ordenes de Ventas de dispositivos móviles activas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "VENTA"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "DISPOSITIVO"
+    ]
+  }
+
+  measure: baja_voluntaria_efectiva_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Baja Voluntaria Efectiva"
+    description: "Ordenes de Bajas Voluntarias Cumplidas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "DESCONECTAR"
+      , orden_tipo_gestion_nombre: "DESCONEXION"
+      , orden_item_sub_motivo_baja_nombre: "PEDIDO DE BAJA"
+    ]
+  }
+
+  measure: baja_fraude_efectiva_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Baja Fraude Efectiva"
+    description: "Ordenes de Bajas por Fraude Cumplidas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "DESCONECTAR"
+      , orden_tipo_sub_gestion_nombre: "FRAUDE"
+    ]
+  }
+
+  measure: baja_tiempo_efectiva_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Baja Masiva"
+    description: "Ordenes de Bajas por Tiempo Cumplidas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "DESCONECTAR"
+      , orden_tipo_sub_gestion_nombre: "DESCONEXION"
+      , orden_item_sub_motivo_baja_nombre: "POR TIEMPO"
+    ]
+  }
+
+  measure: baja_mora_efectiva_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Baja Mora Efectiva"
+    description: "Ordenes de Bajas por Mora"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "DESCONECTAR"
+      , orden_tipo_sub_gestion_nombre: "MOROSIDAD"
+    ]
+  }
+
+  measure: cambio_sim_efectiva_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cambio SIM Efectiva"
+    description: "Ordenes de Cambio de SIM Activadas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "EXISTENTE"
+      , es_numero_linea: "Yes"
+      , orden_tipo_gestion_nombre: "CAMBIO DE TARJETA SIM, CAMBIO DE TARJETA SIM POR SINIESTRO"
+    ]
+  }
+
+  measure: baja_suspension_portout_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Baja Suspension Portout Efectiva"
+    description: "Ordenes de tipo gestion suspension por PORTOUT Efectivas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_sub_accion_nombre: "SUSPENDIDO-PORTABILIDAD"
+      , orden_tipo_gestion_nombre: "SUSPENSION"
+      , orden_tipo_sub_gestion_nombre: "PORTOUT"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: demanda_retencion_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Demanda Retencion"
+    description: "Intenciones de bajas,vistas desde las ordenes registradas"
+    filters: [
+        orden_estado_nombre:"ACTIVADA , INICIADA"
+      , orden_tipo_gestion_nombre: "DESCONEXION , CAMBIO DE PLAN , BAJA / RETENCION, FIDELIZACION , VENTA"
+      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA, RETENCION, CAMBIO DE PLAN, FIDELIZACION"
+    ]
+  }
+
+  measure: upselling_plan_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Plan Upselling"
+    description: "Ordenes de Cambio de plan cuyo precio con promocion es mayor al Asset que se desconecta"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_cambio_plan_nombre: "UPGRADE"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: downselling_plan_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Plan Downselling"
+    description: "Ordenes de Cambio de plan cuyo precio con promocion es menor al Asset que se desconecta"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: cross_sell_plan_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Plan Cross Sell"
+    description: "Ordenes Cambio de plan cuyo precio con promocion es igual al Asset que se desconecta"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_cambio_plan_nombre: "CROSS SELL"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: portin_brutas_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Portin Brutas"
+    description: "Ordenes de portabilidad registradas"
+    filters:[
+      , orden_item_accion_nombre: "AGREGAR"
+      , orden_tipo_gestion_nombre: "VENTA PORTIN"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: portin_netas_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Portin Netas"
+    description: "Ordenes de portabilidad activadas/netas"
+    filters:[
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "AGREGAR"
+      , orden_tipo_gestion_srcid: "PORTIN ACTIVAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: suspen_voluntaria_movil_count {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Suspension Voluntaria Movil"
+    description: "Ordenes de suspensión voluntaria por pedido de baja"
+    filters:[
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_sub_accion_nombre: "SUSPEND-VOLUNTARIA"
+      , orden_tipo_gestion_nombre: "SUSPENSION"
+      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
   }
 
 }
