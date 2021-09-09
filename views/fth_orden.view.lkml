@@ -1775,7 +1775,7 @@ view: fth_orden {
     type: count_distinct
     sql: ${orden_srcid};;
     group_label: "Orden"
-    group_item_label: "Cambios de Plan"
+    group_item_label: "Cambios de Plan Efectiva"
     description: "Ordenes de Cambios de Plan Activadas POSPAGO, HIBRIDO, PREPAGO"
     filters: [
         orden_estado_nombre: "ACTIVADA"
