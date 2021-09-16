@@ -1,6 +1,6 @@
 connection: "edw"
 
-include: "/views/aleph/aleph.view.lkml"
+include: "/aleph/views/aleph.view.lkml"
 
 # Caching settings
 

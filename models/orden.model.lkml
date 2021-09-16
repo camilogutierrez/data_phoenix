@@ -1,7 +1,9 @@
 connection: "edw"
 
-include: "/views/fth_orden.view.lkml"
-include: "/views/lookups/*.view.lkml"
+include: "/views/fth_orden_old.view.lkml"
+include: "/aleph/views/*.view.lkml"
+
+
 
 # Caching settings
 
