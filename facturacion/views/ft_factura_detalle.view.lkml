@@ -438,11 +438,6 @@ view: ft_factura_detalle_view {
     sql: ${TABLE}.ULT_DST_STATUS_DETAIL ;;
   }
 
-  dimension: ult_dst_status_detail_des {
-    type: string
-    sql: ${TABLE}.ULT_DST_STATUS_DETAIL_DES ;;
-  }
-
   measure: count {
     type: count
     drill_fields: []
