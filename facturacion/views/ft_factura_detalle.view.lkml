@@ -1,6 +1,18 @@
 view: ft_factura_detalle_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_FacturaDetalle` ;;
+  suggestions: no
   label: "Facura Detalle"
+
+  ## Primary Key
+
+  dimension: id {
+    hidden: yes
+    primary_key: yes
+    type: number
+    sql:  ${invoice_detail_id} ;;
+  }
+
+  ## Native Dimensions
 
   dimension: acct_code {
     type: string

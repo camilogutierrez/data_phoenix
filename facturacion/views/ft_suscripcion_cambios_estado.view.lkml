@@ -1,6 +1,18 @@
 view: ft_suscripcion_cambios_estado_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_SuscripcionCambiosEstado` ;;
+  suggestions: no
   label: "Suscripcion Cambios Estado"
+
+  ## Primary Key
+
+  dimension: id {
+    hidden: yes
+    primary_key: yes
+    type: string
+    sql:  CONCAT(CAST(${change_date} AS STRING FORMAT 'YYYYMMDD'),'-',${sub_id}) ;;
+  }
+
+  ## Native Dimensions
 
   dimension: acct_code {
     type: string

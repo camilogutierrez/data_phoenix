@@ -1,6 +1,18 @@
 view: ft_suscripcion_alta_baja_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_SuscripcionAltaBaja` ;;
+  suggestions: no
   label: "Suscripcion Alta Baja"
+
+  ## Primary Key
+
+  dimension: id {
+    hidden: yes
+    primary_key: yes
+    type: number
+    sql: ${sub_id} ;;
+  }
+
+  ## Native Dimensions
 
   dimension: act_acct_code {
     type: string

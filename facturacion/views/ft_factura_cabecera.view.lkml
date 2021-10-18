@@ -1,6 +1,18 @@
 view: ft_factura_cabecera_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_FacturaCabecera` ;;
+  suggestions: no
   label: "Factura Cabecera"
+
+  ## Primary Key
+
+  dimension: id {
+    hidden: yes
+    primary_key: yes
+    type: number
+    sql: ${invoice_id} ;;
+  }
+
+  ## Native Dimensions
 
   dimension: acct_code {
     type: string

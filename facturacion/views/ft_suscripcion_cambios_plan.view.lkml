@@ -1,6 +1,18 @@
 view: ft_suscripcion_cambios_plan_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_SuscripcionCambiosPlan` ;;
+  suggestions: no
   label: "Suscripcion Cambios Plan"
+
+  ## Primary Key
+
+  dimension: id {
+    hidden: yes
+    primary_key: yes
+    type: number
+    sql: ${o_inst_id} ;;
+  }
+
+  ## Native Dimensions
 
   dimension: act_acct_code {
     type: string

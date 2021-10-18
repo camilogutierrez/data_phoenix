@@ -1,6 +1,18 @@
 view: ft_cuenta_cambios_ciclo_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_CuentaCambiosCiclo` ;;
+  suggestions: no
   label: "Cuenta Cambios Ciclo"
+
+  ## Primary Key
+
+  dimension: id {
+    hidden: yes
+    primary_key: yes
+    type: string
+    sql: CONCAT(CAST(${eff_date} AS STRING FORMAT 'YYYYMMDD'),'-',${acct_id});;
+  }
+
+  ## Native Dimensions
 
   dimension: acct_code {
     type: string
