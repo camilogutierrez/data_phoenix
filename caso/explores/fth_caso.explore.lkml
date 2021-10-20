@@ -16,9 +16,9 @@ explore: fth_caso {
     relationship: one_to_many
   }
 
-  join: fth_caso__caso_comentarios__comentarios {
-    view_label: "Fth Caso: Casocomentarios Comentarios"
-    sql: LEFT JOIN UNNEST(${fth_caso.caso_comentarios__comentarios}) as fth_caso__caso_comentarios__comentarios ;;
+  join: fth_caso__comentarios {
+    view_label: "Fth Caso: Caso Comentarios"
+    sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso__comentarios ;;
     relationship: one_to_many
   }
 }
