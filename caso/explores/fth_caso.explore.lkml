@@ -1,24 +1,24 @@
 include: "/caso/views/*"
 
-explore: fth_caso {
+explore: caso_historico {
   from: fth_caso_view
   group_label: "Phoenix"
 
   join: fth_caso__caso_hito {
     view_label: "Fth Caso: Casohito"
-    sql: LEFT JOIN UNNEST(${fth_caso.caso_hito}) as fth_caso__caso_hito ;;
+    sql: LEFT JOIN UNNEST(${caso_historico.caso_hito}) as fth_caso__caso_hito ;;
     relationship: one_to_many
   }
 
   join: fth_caso__usuario {
     view_label: "Fth Caso: Usuario"
-    sql: LEFT JOIN UNNEST(${fth_caso.usuario}) as fth_caso__usuario ;;
+    sql: LEFT JOIN UNNEST(${caso_historico.usuario}) as fth_caso__usuario ;;
     relationship: one_to_many
   }
 
   join: fth_caso__comentarios {
     view_label: "Fth Caso: Caso Comentarios"
-    sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso__comentarios ;;
+    sql: LEFT JOIN UNNEST(${caso_historico.comentarios}) as fth_caso__comentarios ;;
     relationship: one_to_many
   }
 }
