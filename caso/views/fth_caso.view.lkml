@@ -123,6 +123,7 @@ view: fth_caso_view {
   dimension: caso_canal_cierre_nombre {
     type: string
     sql: ${TABLE}.CasoCanalCierreNombre ;;
+    suggest_dimension: lk_caso_canal.caso_canal_nombre
   }
 
   dimension: caso_canal_cierre_sk {
@@ -351,6 +352,7 @@ view: fth_caso_view {
   dimension: caso_estado_nombre {
     type: string
     sql: ${TABLE}.CasoEstadoNombre ;;
+    suggest_dimension: lk_caso_estado.caso_estado_nombre
   }
 
   dimension: caso_estado_proceso_portacion {
@@ -411,6 +413,7 @@ view: fth_caso_view {
   dimension: caso_horas_negocio_nombre {
     type: string
     sql: ${TABLE}.CasoHorasNegocioNombre ;;
+    suggest_dimension: lk_caso_horas_negocio.caso_horas_negocio_nombre
   }
 
   dimension: caso_horas_negocio_sk {
@@ -576,6 +579,7 @@ view: fth_caso_view {
   dimension: caso_motivo_nombre {
     type: string
     sql: ${TABLE}.CasoMotivoNombre ;;
+    suggest_dimension: lk_caso_motivo.caso_motivo_nombre
   }
 
   dimension: caso_motivo_rechazo_portacion {
@@ -751,6 +755,7 @@ view: fth_caso_view {
   dimension: caso_prioridad_nombre {
     type: string
     sql: ${TABLE}.CasoPrioridadNombre ;;
+    suggest_dimension: lk_caso_prioridad.caso_prioridad_nombre
   }
 
   dimension: caso_prioridad_sk {
@@ -831,6 +836,7 @@ view: fth_caso_view {
   dimension: caso_sub_motivo_baja_nombre {
     type: string
     sql: ${TABLE}.CasoSubMotivoBajaNombre ;;
+    suggest_dimension: lk_caso_sub_motivo_baja.caso_sub_motivo_baja_nombre
   }
 
   dimension: caso_sub_motivo_baja_sk {
@@ -851,6 +857,7 @@ view: fth_caso_view {
   dimension: caso_sub_tipo_nombre {
     type: string
     sql: ${TABLE}.CasoSubTipoNombre ;;
+    suggest_dimension: lk_caso_sub_tipo.caso_sub_tipo_nombre
   }
 
   dimension: caso_sub_tipo_sk {
@@ -921,6 +928,7 @@ view: fth_caso_view {
   dimension: caso_tipo_item_nombre {
     type: string
     sql: ${TABLE}.CasoTipoItemNombre ;;
+    suggest_dimension: lk_caso_tipo_item.caso_tipo_item_nombre
   }
 
   dimension: caso_tipo_item_sk {
@@ -946,6 +954,7 @@ view: fth_caso_view {
   dimension: caso_tipo_nombre {
     type: string
     sql: ${TABLE}.CasoTipoNombre ;;
+    suggest_dimension: lk_caso_tipo.caso_tipo_nombre
   }
 
   dimension: caso_tipo_operacion {
@@ -1095,6 +1104,14 @@ view: fth_caso_view {
     group_label: "Cliente"
     group_item_label: "Cliente Srcid"
   }
+
+  dimension: cuenta_cliente_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
+    group_label: "Cliente"
+    group_item_label: "Cuenta Cliente Srcid"
+  }
+
 
   dimension: cuenta_tipo_nombre {
     type: string
