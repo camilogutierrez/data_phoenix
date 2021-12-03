@@ -5,7 +5,7 @@
   elements:
   - title: Top 10 casos
     name: Top 10 casos
-    model: Caso
+    model: caso
     explore: caso_historico
     type: looker_grid
     fields: [caso_historico.caso_ciudad, caso_historico.count]
