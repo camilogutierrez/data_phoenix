@@ -184,12 +184,4 @@ explore: fth_caso {
     relationship: many_to_one
     type: inner
   }
-
-
-
-
-
-
-
-
 }
