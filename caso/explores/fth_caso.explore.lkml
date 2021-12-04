@@ -6,15 +6,19 @@ explore: fth_caso {
   label: "Caso"
   group_label: "Phoenix"
 
-  join: fth_caso__caso_hito {
-    view_label: "Caso Hito"
-    sql: LEFT JOIN UNNEST(${fth_caso.caso_hito}) as fth_caso__caso_hito ;;
+  always_filter: {
+    filters: [fth_caso.fecha_entidad: "today"]
+  }
+
+  join: fth_caso_caso_hito_view {
+    view_label: "Hitos"
+    sql: LEFT JOIN UNNEST(${fth_caso.caso_hito}) as fth_caso_caso_hito_view ;;
     relationship: one_to_many
   }
 
-  join: fth_caso__comentarios {
-    view_label: "Caso Comentarios"
-    sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso__comentarios ;;
+  join: fth_caso_comentarios_view {
+    view_label: "Comentarios"
+    sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso_comentarios_view ;;
     relationship: one_to_many
   }
 
@@ -163,6 +167,23 @@ explore: fth_caso {
     type: inner
   }
 
+  join: lk_producto_adquirido_estado_provisionamiento {
+    sql_on: ${fth_caso.producto_adquirido_estado_provisionamiento_sk} = ${lk_producto_adquirido_estado_provisionamiento.producto_adquirido_estado_provisionamiento_sk};;
+    relationship: many_to_one
+    type: inner
+  }
+
+  join: lk_producto_adquirido_sub_estado {
+    sql_on: ${fth_caso.producto_adquirido_sub_estado_sk} = ${lk_producto_adquirido_sub_estado.producto_adquirido_sub_estado_sk};;
+    relationship: many_to_one
+    type: inner
+  }
+
+  join: lk_producto_adquirido_estado {
+    sql_on: ${fth_caso.producto_adquirido_estado_sk} = ${lk_producto_adquirido_estado.producto_adquirido_estado_sk};;
+    relationship: many_to_one
+    type: inner
+  }
 
 
 

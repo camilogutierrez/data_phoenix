@@ -1,6 +1,7 @@
 connection: "edw"
 
-include: "/caso/explores/*.explore.lkml"
+include: "/caso/explores/fth_caso.explore.lkml"
+
 # Caching settings
 
 datagroup: default_datagroup {

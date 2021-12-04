@@ -1,5 +1,6 @@
 view: lk_cliente_segmento2 {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_ClienteSegmento2` ;;
+  fields_hidden_by_default: yes
 
   dimension: cliente_segmento2_sk {
     primary_key: yes
