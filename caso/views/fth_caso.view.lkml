@@ -334,13 +334,20 @@ view: fth_caso_view {
     group_item_label: "Padre"
   }
 
+  dimension: caso_nuevo_numero_toip {
+    type: yesno
+    sql: ${TABLE}.CasoNuevoNumeroTOIP ;;
+    group_label: "Marcas"
+    group_item_label: "Nuevo Numero TOIP"
+  }
+
     ## Strings
 
   dimension: caso_srcid {
     type: string
     sql: ${TABLE}.CasoSRCId ;;
     value_format_name: id
-    label: "Caso Id"
+    label: "Id"
   }
 
   dimension: caso_estado_nombre {
@@ -490,13 +497,13 @@ view: fth_caso_view {
   dimension: caso_caso_externo_funcional_srcid {
     type: string
     sql: ${TABLE}.CasoCasoExternoFuncionalSRCId ;;
-    label: "Caso Externo Funcional"
+    label: "Externo Funcional"
   }
 
   dimension: caso_caso_externo_srcid {
     type: string
     sql: ${TABLE}.CasoCasoExternoSRCId ;;
-    label: "Caso Externo"
+    label: "Externo"
   }
 
   dimension: caso_categoria {
@@ -735,7 +742,7 @@ view: fth_caso_view {
   dimension: caso_medio_pago_srcid {
     type: string
     sql: ${TABLE}.CasoMedioPagoSRCId ;;
-    label: "Medio Pago"
+    label: "Medio Pago Id"
   }
 
   dimension: caso_mercado_donante_portacion {
@@ -747,7 +754,7 @@ view: fth_caso_view {
   dimension: caso_mercado_donante_portacion_srcid {
     type: string
     sql: ${TABLE}.CasoMercadoDonantePortacionSRCId ;;
-    label: "Mercado Donante Portacion"
+    label: "Mercado Donante Portacion Id"
   }
 
   dimension: caso_modalidad_recupero {
@@ -808,12 +815,6 @@ view: fth_caso_view {
     type: string
     sql: ${TABLE}.CasoNuevaDireccionFacturacion ;;
     label: "Direccion Facturacion Nueva"
-  }
-
-  dimension: caso_nuevo_numero_toip {
-    type: yesno
-    sql: ${TABLE}.CasoNuevoNumeroTOIP ;;
-    label: "Nuevo Numero TOIP"
   }
 
   dimension: caso_numero {
