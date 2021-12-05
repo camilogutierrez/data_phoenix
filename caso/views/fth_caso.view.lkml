@@ -36,7 +36,7 @@ view: fth_caso_view {
     datatype: date
     sql: ${TABLE}.FechaEntidad ;;
     label: "Fecha Entidad"
-    description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha. Es un filtro requerido"
+    description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
   dimension: caso_fecha_acuerdo_desde_src {
@@ -2108,6 +2108,6 @@ view: fth_caso_comentarios_view {
   dimension: caso_comentario_cuerpo {
     type: string
     sql: ${TABLE}.CasoComentarioCuerpo ;;
-    label: "Comentario"
+    label: "Comentario Cuerpo"
   }
 }

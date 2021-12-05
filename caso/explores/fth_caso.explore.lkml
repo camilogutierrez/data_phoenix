@@ -1,5 +1,6 @@
 include: "/caso/views/*"
 include : "/aleph/views/*.view.lkml"
+include: "/caso/others/caso_datagroups.lkml"
 
 explore: fth_caso {
   from: fth_caso_view
@@ -9,6 +10,8 @@ explore: fth_caso {
   always_filter: {
     filters: [fth_caso.fecha_entidad: "today"]
   }
+
+  persist_with: caso_default_dg
 
   join: fth_caso_caso_hito_view {
     view_label: "Hitos"
