@@ -1,5 +1,5 @@
-include: "/caso/views/*"
-include : "/aleph/views/*.view.lkml"
+include: "/caso/views/fth_caso.view.lkml"
+include: "/aleph/views/*.view.lkml"
 include: "/caso/others/caso_datagroups.lkml"
 
 explore: fth_caso {

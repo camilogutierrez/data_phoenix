@@ -1963,7 +1963,7 @@ view: fth_caso_view {
 
   ## Measures
 
-  measure: count_casos {
+  measure: count_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Cantidad de Casos"
@@ -1979,7 +1979,7 @@ view: fth_caso_caso_hito_view {
 
   ## Dimensions
 
-  ## Primary Key
+    ## Primary Key
 
   dimension: caso_hito_srcid {
     primary_key: yes
