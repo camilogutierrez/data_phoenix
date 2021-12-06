@@ -3,6 +3,7 @@ view: lk_orden_canal_origen {
   fields_hidden_by_default: yes
 
   dimension: orden_canal_origen_sk {
+    primary_key: yes
     type: number
     sql: ${TABLE}.OrdenCanalOrigenSK ;;
   }

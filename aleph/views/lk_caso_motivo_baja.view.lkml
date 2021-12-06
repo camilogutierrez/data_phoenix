@@ -12,5 +12,4 @@ view: lk_caso_motivo_baja {
     type: string
     sql: ${TABLE}.CasoMotivoBajaNombre ;;
   }
-
 }
