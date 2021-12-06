@@ -1,7 +1,7 @@
 view: fth_orden_view {
   sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FTH_Orden` ;;
   suggestions: no
-  label: "Orden"
+  label: "Orden Item"
 
   ################
   ## Orden Item ##
@@ -172,139 +172,6 @@ view: fth_orden_view {
 
     ## Numbers
 
-  dimension: orden_item_cantidad {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemCantidad ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Cantidad"
-  }
-
-  dimension: orden_item_cargo_recurrente {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemCargoRecurrente ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Cargo Recurrente"
-  }
-
-  dimension: orden_item_cargo_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemCargoRecurrenteSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Cargo Recurrente Sin Impuesto"
-  }
-
-  dimension: orden_item_cargo_unica_vez {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemCargoUnicaVez ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Cargo Unica Vez"
-  }
-
-  dimension: orden_item_cargo_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemCargoUnicaVezSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Cargo Unica Vez Sin Impuesto"
-  }
-
-  dimension: orden_item_precio_calculado_recurrente {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioCalculadoRecurrente ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Calculado Recurrente"
-  }
-
-  dimension: orden_item_precio_calculado_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioCalculadoRecurrenteSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Calculado Recurrente Sin Impuesto"
-  }
-
-  dimension: orden_item_precio_dcto_unica_vez {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioDctoUnicaVez ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Dcto Unica Vez"
-  }
-
-  dimension: orden_item_precio_dcto_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioDctoUnicaVezSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Dcto Unica Vez Sin Impuesto"
-  }
-
-  dimension: orden_item_precio_efectivo_unica_vez {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioEfectivoUnicaVez ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Efectivo Unica Vez"
-  }
-
-  dimension: orden_item_precio_efectivo_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioEfectivoUnicaVezSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Efectivo Unica Vez Sin Impuesto"
-  }
-
-  dimension: orden_item_precio_lista {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioLista ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Lista"
-  }
-
-  dimension: orden_item_precio_recurrente {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioRecurrente ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Recurrente"
-  }
-
-  dimension: orden_item_precio_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioRecurrenteSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Recurrente Sin Impuesto"
-  }
-
-  dimension: orden_item_precio_total_unica_vez {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioTotalUnicaVez ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Total Unica Vez"
-  }
-
-  dimension: orden_item_precio_total_unica_vez_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioTotalUnicaVezSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Total Unica Vez Sin Impuesto"
-  }
-
-  dimension: orden_item_precio_unitario {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemPrecioUnitario ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Precio Unitario"
-  }
-
-  dimension: orden_item_total_recurrente {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemTotalRecurrente ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Total Recurrente"
-  }
-
-  dimension: orden_item_total_recurrente_sin_impuesto {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenItemTotalRecurrenteSinImpuesto ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Item Total Recurrente Sin Impuesto"
-  }
-
   dimension: origen_srcid {
     type: number
     value_format_name: id
@@ -380,6 +247,119 @@ view: fth_orden_view {
     sql: ${TABLE}.OrdenItemSubMotivoBajaSRCId ;;
   }
 
+  dimension: orden_item_cantidad {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemCantidad ;;
+  }
+
+  dimension: orden_item_cargo_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemCargoRecurrente ;;
+  }
+
+  dimension: orden_item_cargo_recurrente_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemCargoRecurrenteSinImpuesto ;;
+  }
+
+  dimension: orden_item_cargo_unica_vez {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemCargoUnicaVez ;;
+  }
+
+  dimension: orden_item_precio_calculado_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioCalculadoRecurrente ;;
+  }
+
+  dimension: orden_item_precio_calculado_recurrente_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioCalculadoRecurrenteSinImpuesto ;;
+  }
+
+  dimension: orden_item_precio_dcto_unica_vez {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioDctoUnicaVez ;;
+  }
+
+  dimension: orden_item_precio_dcto_unica_vez_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioDctoUnicaVezSinImpuesto ;;
+  }
+
+  dimension: orden_item_precio_efectivo_unica_vez {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioEfectivoUnicaVez ;;
+  }
+
+  dimension: orden_item_precio_efectivo_unica_vez_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioEfectivoUnicaVezSinImpuesto ;;
+  }
+
+  dimension: orden_item_precio_lista {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioLista ;;
+  }
+
+  dimension: orden_item_precio_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioRecurrente ;;
+  }
+
+  dimension: orden_item_precio_recurrente_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioRecurrenteSinImpuesto ;;
+  }
+
+  dimension: orden_item_precio_total_unica_vez {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioTotalUnicaVez ;;
+  }
+  dimension: orden_item_precio_total_unica_vez_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioTotalUnicaVezSinImpuesto ;;
+  }
+
+  dimension: orden_item_precio_unitario {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemPrecioUnitario ;;
+  }
+
+  dimension: orden_item_cargo_unica_vez_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemCargoUnicaVezSinImpuesto ;;
+  }
+
+  dimension: orden_item_total_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemTotalRecurrente ;;
+  }
+
+  dimension: orden_item_total_recurrente_sin_impuesto {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenItemTotalRecurrenteSinImpuesto ;;
+  }
+
   ##########
   ## Caso ##
   ##########
@@ -417,7 +397,7 @@ view: fth_orden_view {
     sql: ${TABLE}.Caso.CasoEstadoNombre ;;
     suggest_dimension: lk_caso_estado.caso_estado_nombre
     group_label: "Caso"
-    group_item_label: "Caso Estado Nombre"
+    group_item_label: "Caso Estado"
   }
 
   dimension: caso_mercado_donante_portacion {
@@ -532,7 +512,7 @@ view: fth_orden_view {
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionHWSRC ;;
     datatype: timestamp
     group_label: "Cliente Fechas"
-    group_item_label: "Cuenta Fecha Creacion Hw"
+    group_item_label: "Cuenta Fecha Creacion HW"
   }
 
   dimension: persona_fecha_creacion_src {
@@ -626,7 +606,7 @@ view: fth_orden_view {
     type: string
     sql: ${TABLE}.Cliente.ClienteSRCId ;;
     group_label: "Cliente"
-    group_item_label: "Cliente Srcid"
+    group_item_label: "Cliente Id"
   }
 
   dimension: cuenta_ciclo_facturacion {
@@ -735,6 +715,7 @@ view: fth_orden_view {
   }
 
   dimension: persona_tipo_documento_sk {
+    hidden: yes
     type: number
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoSK ;;
   }
@@ -886,6 +867,13 @@ view: fth_orden_view {
     sql: ${TABLE}.Orden.OrdenPrefactibilidadFLOW ;;
     group_label: "Orden Marcas"
     group_item_label: "Orden Prefactibilidad Flow"
+  }
+
+  dimension: orden_prefactibilidad_toip {
+    type: yesno
+    sql: ${TABLE}.Orden.OrdenPrefactibilidadTOIP ;;
+    group_label: "Orden Marcas"
+    group_item_label: "Orden Prefactibilidad TOIP"
   }
 
     ## Strings
@@ -1229,13 +1217,6 @@ view: fth_orden_view {
     group_item_label: "Orden Prefactibilidad Tipo Deco"
   }
 
-  dimension: orden_prefactibilidad_toip {
-    type: yesno
-    sql: ${TABLE}.Orden.OrdenPrefactibilidadTOIP ;;
-    group_label: "Orden"
-    group_item_label: "Orden Prefactibilidad Toip"
-  }
-
   dimension: orden_reemplazada_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenReemplazadaSRCId ;;
@@ -1306,26 +1287,6 @@ view: fth_orden_view {
     sql: ${TABLE}.Orden.OrdenCFT ;;
     group_label: "Orden"
     group_item_label: "Orden CFT"
-  }
-  dimension: orden_precio_total {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenPrecioTotal ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Precio Total"
-  }
-
-  dimension: orden_precio_total_recurrente {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenPrecioTotalRecurrente ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Precio Total Recurrente"
-  }
-
-  dimension: orden_precio_total_una_vez {
-    type: number
-    sql: ${TABLE}.Numericos.OrdenPrecioTotalUnaVez ;;
-    group_label: "Numericos"
-    group_item_label: "Orden Precio Total Una Vez"
   }
 
   dimension: orden_prefactibilidad_down_stream {
@@ -1453,6 +1414,24 @@ view: fth_orden_view {
     hidden: yes
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoTrackeoSRCId ;;
+  }
+
+  dimension: orden_precio_total {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenPrecioTotal ;;
+  }
+
+  dimension: orden_precio_total_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenPrecioTotalRecurrente ;;
+  }
+
+  dimension: orden_precio_total_una_vez {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenPrecioTotalUnaVez ;;
   }
 
   ##############
@@ -1901,6 +1880,11 @@ view: fth_orden_view {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubEstadoSRCId ;;
   }
 
+  dimension: es_numero_linea {
+    type: yesno
+    sql: LENGHT(TRIM(${producto_adquirido_numero_linea})) = 10 ;;
+  }
+
   ###############
   ## Domicilio ##
   ###############
@@ -2115,7 +2099,7 @@ view: fth_orden_view {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSubTipoNombre ;;
     suggest_dimension: lk_producto_sub_tipo_opa.producto_sub_tipo_nombre
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Sub Tipo Nombre"
   }
 
@@ -2124,7 +2108,7 @@ view: fth_orden_view {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenEstadoNombre ;;
     suggest_dimension: lk_orden_estado_opa.orden_estado_nombre
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Orden Estado Nombre"
   }
 
@@ -2132,7 +2116,7 @@ view: fth_orden_view {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemAccionNombre ;;
     suggest_dimension: lk_orden_item_accion_opa.orden_item_accion_nombre
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Orden Item Accion Nombre"
   }
 
@@ -2140,80 +2124,64 @@ view: fth_orden_view {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo_opa.producto_tipo_nombre
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Tipo Nombre"
   }
 
   dimension: opa_orden_item_producto_padre_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemProductoPadreSRCId ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Orden Item Producto Padre Id"
   }
 
   dimension: opa_orden_item_producto_raiz_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemProductoRaizSRCId ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Orden Item Producto Raiz Id"
   }
 
   dimension: opa_orden_item_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemSRCId ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Orden Item Id"
   }
 
   dimension: opa_producto_adquirido_referente_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoAdquiridoReferenteSRCId ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Adquirido Referente Id"
   }
 
   dimension: opa_producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoAdquiridoSRCId ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Adquirido Id"
   }
 
   dimension: opa_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoCodigo ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Codigo"
   }
 
   dimension: opa_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoNombre ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Nombre"
   }
 
   dimension: opa_producto_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSRCId ;;
-    group_label: "Orden Orden Plan Anterior"
+    group_label: "Orden Plan Anterior"
     group_item_label: "Producto Id"
-  }
-
-    ## Numbers
-
-  dimension: opa_orden_item_cargo_recurrente {
-    type: number
-    sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemCargoRecurrente ;;
-    group_label: "Orden Orden Plan Anterior"
-    group_item_label: "Orden Item Cargo Recurrente"
-  }
-
-  dimension: opa_orden_item_precio_calculado_recurrente {
-    type: number
-    sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemPrecioCalculadoRecurrente ;;
-    group_label: "Orden Orden Plan Anterior"
-    group_item_label: "Orden Item Precio Calculado Recurrente"
   }
 
     ## Hidden
@@ -2266,6 +2234,18 @@ view: fth_orden_view {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoTipoSRCId ;;
   }
 
+  dimension: opa_orden_item_cargo_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemCargoRecurrente ;;
+  }
+
+  dimension: opa_orden_item_precio_calculado_recurrente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemPrecioCalculadoRecurrente ;;
+  }
+
   ####################
   ## Punto de Venta ##
   ####################
@@ -2308,7 +2288,7 @@ view: fth_orden_view {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanal3 ;;
     group_label: "Punto Venta"
-    group_item_label: "Punto Venta Canal3"
+    group_item_label: "Punto Venta Canal 3"
   }
 
   dimension: punto_venta_canal_pago {
@@ -2471,11 +2451,396 @@ view: fth_orden_view {
 ## Measures ##
 ##############
 
-  measure: count_orden_item {
+  ## Orden Item
+
+  measure: total_orden_item_cantidad {
+    type: sum
+    sql: ${orden_item_cantidad};;
+    group_label: "Orden Item"
+    group_item_label: "Total Orden Item"
+  }
+
+  measure: total_orden_item_cargo_recurrente {
+    type: sum
+    sql: ${orden_item_cargo_recurrente} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Cargo Recurrente"
+  }
+
+  measure: total_orden_item_cargo_recurrente_sin_impuesto {
+    type: sum
+    sql: ${orden_item_cargo_recurrente_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Cargo Recurrente Sin Impuesto"
+  }
+
+  measure: total_orden_item_cargo_unica_vez {
+    type: sum
+    sql: ${orden_item_cargo_unica_vez} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Cargo Unica Vez"
+  }
+
+  measure: total_orden_item_precio_calculado_recurrente {
+    type: sum
+    sql: ${orden_item_precio_calculado_recurrente} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Calculado Recurrente"
+  }
+
+  measure: total_orden_item_precio_calculado_recurrente_sin_impuesto {
+    type: sum
+    sql: ${orden_item_precio_calculado_recurrente_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Calculado Recurrente Sin Impuesto"
+  }
+
+  measure: total_orden_item_precio_dcto_unica_vez {
+    type: sum
+    sql: ${orden_item_precio_dcto_unica_vez} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Descuento Unica Vez"
+  }
+
+  measure: total_orden_item_precio_dcto_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${orden_item_precio_dcto_unica_vez_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Dcto Unica Vez Sin Impuesto"
+  }
+
+  measure: total_orden_item_precio_efectivo_unica_vez {
+    type: sum
+    sql: ${orden_item_precio_efectivo_unica_vez} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Efectivo Unica Vez"
+  }
+
+  measure: total_orden_item_precio_efectivo_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${orden_item_precio_efectivo_unica_vez_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Efectivo Unica Vez Sin Impuesto"
+  }
+
+  measure: total_orden_item_precio_lista {
+    type: sum
+    sql: ${orden_item_precio_lista} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Orden Item Precio Lista"
+  }
+
+  measure: total_orden_item_precio_recurrente {
+    type: sum
+    sql: ${orden_item_precio_recurrente} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Recurrente"
+  }
+
+  measure: total_orden_item_precio_recurrente_sin_impuesto {
+    type: sum
+    sql: ${orden_item_precio_recurrente_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Recurrente Sin Impuesto"
+  }
+
+  measure: total_orden_item_precio_total_unica_vez {
+    type: sum
+    sql: ${orden_item_precio_total_unica_vez} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Total Unica Vez"
+  }
+
+  measure: total_orden_item_precio_total_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${orden_item_precio_total_unica_vez_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Total Unica Vez Sin Impuesto"
+  }
+
+  measure: total_orden_item_precio_unitario {
+    type: sum
+    sql: ${orden_item_precio_unitario} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Precio Unitario"
+  }
+
+  measure: total_orden_item_total_recurrente_sin_impuesto {
+    type: sum
+    sql: ${orden_item_total_recurrente_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Recurrente Sin Impuesto"
+  }
+
+  measure: total_orden_item_total_recurrente {
+    type: sum
+    sql: ${orden_item_total_recurrente} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Recurrente"
+  }
+
+  measure: total_orden_item_cargo_unica_vez_sin_impuesto {
+    type: sum
+    sql: ${orden_item_cargo_unica_vez_sin_impuesto} ;;
+    group_label: "Orden Item"
+    group_item_label: "Total Cargo Unica Vez Sin Impuesto"
+  }
+
+  ## Orden
+
+  measure: total_orden_precio_total {
+    type: sum
+    sql: ${orden_precio_total} ;;
+    group_label: "Orden"
+    group_item_label: "Total Precio Total"
+  }
+
+  measure: total_orden_precio_total_recurrente {
+    type: sum
+    sql: ${orden_precio_total_recurrente} ;;
+    group_label: "Orden"
+    group_item_label: "Total Precio Total Recurrente"
+  }
+
+  measure: total_orden_precio_total_una_vez {
+    type: sum
+    sql: ${orden_precio_total_una_vez} ;;
+    group_label: "Orden"
+    group_item_label: "Total Precio Total Una Vez"
+  }
+
+  measure: orden_count {
     type: count_distinct
-    sql: ${orden_item_srcid} ;;
-    label: "Cantidad de Items"
-    drill_fields: []
+    sql: ${orden_srcid} ;;
+    group_label: "Orden"
+    group_item_label: "Cantidad de Ordenes"
+  }
+
+  measure: count_cambio_plan_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Cambios de Plan Efectiva"
+    description: "Ordenes de Cambios de Plan Activadas POSPAGO, HIBRIDO, PREPAGO"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_venta_terminal_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Venta de Terminal Efectiva"
+    description: "Ordenes de Ventas de dispositivos móviles activas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "VENTA"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "DISPOSITIVO"
+    ]
+  }
+
+  measure: count_baja_voluntaria_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Bajas Voluntaria Efectiva"
+    description: "Ordenes de Bajas Voluntarias Cumplidas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "DESCONECTAR"
+      , orden_tipo_gestion_nombre: "DESCONEXION"
+      , orden_item_sub_motivo_baja_nombre: "PEDIDO DE BAJA"
+    ]
+  }
+
+  measure: count_baja_fraude_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Baja Fraude Efectiva"
+    description: "Ordenes de Bajas por Fraude Cumplidas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "DESCONECTAR"
+      , orden_tipo_sub_gestion_nombre: "FRAUDE"
+    ]
+  }
+
+  measure: count_baja_tiempo_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Bajas Masiva"
+    description: "Ordenes de Bajas por Tiempo Cumplidas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "DESCONECTAR"
+      , orden_tipo_sub_gestion_nombre: "DESCONEXION"
+      , orden_item_sub_motivo_baja_nombre: "POR TIEMPO"
+    ]
+  }
+
+  measure: count_baja_mora_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Baja Mora Efectiva"
+    description: "Ordenes de Bajas por Mora"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "DESCONECTAR"
+      , orden_tipo_sub_gestion_nombre: "MOROSIDAD"
+    ]
+  }
+
+  measure: count_cambio_sim_efectiva {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Cambio SIM Efectiva"
+    description: "Ordenes de Cambio de SIM Activadas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "EXISTENTE"
+      , es_numero_linea: "Yes"
+      , orden_tipo_gestion_nombre: "CAMBIO DE TARJETA SIM, CAMBIO DE TARJETA SIM POR SINIESTRO"
+    ]
+  }
+
+  measure: count_baja_suspension_portout {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Baja Suspension Portout Efectiva"
+    description: "Ordenes de tipo gestion suspension por PORTOUT Efectivas"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_sub_accion_nombre: "SUSPENDIDO-PORTABILIDAD"
+      , orden_tipo_gestion_nombre: "SUSPENSION"
+      , orden_tipo_sub_gestion_nombre: "PORTOUT"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_demanda_retencion {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Demanda Retencion"
+    description: "Intenciones de bajas,vistas desde las ordenes registradas"
+    filters: [
+        orden_estado_nombre:"ACTIVADA, INICIADA"
+      , orden_tipo_gestion_nombre: "DESCONEXION, CAMBIO DE PLAN, BAJA / RETENCION, FIDELIZACION, VENTA"
+      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA, RETENCION, CAMBIO DE PLAN, FIDELIZACION"
+    ]
+  }
+
+  measure: count_upselling_plan {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Plan Upselling"
+    description: "Ordenes de Cambio de plan cuyo precio con promocion es mayor al Asset que se desconecta"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_cambio_plan_nombre: "UPGRADE"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_downselling_plan {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Plan Downselling"
+    description: "Ordenes de Cambio de plan cuyo precio con promocion es menor al Asset que se desconecta"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_cross_sell_plan {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Plan Cross Sell"
+    description: "Ordenes Cambio de plan cuyo precio con promocion es igual al Asset que se desconecta"
+    filters: [
+        orden_estado_nombre: "ACTIVADA"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_cambio_plan_nombre: "CROSS SELL"
+      , orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_portin_brutas {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Portin Brutas"
+    description: "Ordenes de portabilidad registradas"
+    filters:[
+      , orden_item_accion_nombre: "AGREGAR"
+      , orden_tipo_gestion_nombre: "VENTA PORTIN"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_portin_netas {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Portin Netas"
+    description: "Ordenes de portabilidad activadas/netas"
+    filters:[
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "AGREGAR"
+      , orden_tipo_gestion_srcid: "PORTIN ACTIVAR"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_suspen_voluntaria_movil {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    group_label: "Orden"
+    group_item_label: "Cantidad Suspension Voluntaria Movil"
+    description: "Ordenes de suspensión voluntaria por pedido de baja"
+    filters:[
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_sub_accion_nombre: "SUSPEND-VOLUNTARIA"
+      , orden_tipo_gestion_nombre: "SUSPENSION"
+      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
+
+  ## Orden Plan Anterior
+
+  measure: total_opa_orden_item_cargo_recurrente {
+    type: sum
+    sql: ${opa_orden_item_cargo_recurrente} ;;
+    group_label: "Orden Plan Anterior"
+    group_item_label: "Total Orden Item Cargo Recurrente"
+  }
+
+  measure: total_opa_orden_item_precio_calculado_recurrente {
+    type: sum
+    sql: ${opa_orden_item_precio_calculado_recurrente} ;;
+    group_label: "Orden Plan Anterior"
+    group_item_label: "Total Orden Item Precio Calculado Recurrente"
   }
 }
 
@@ -2550,6 +2915,7 @@ view: fth_orden_medio_pago_view {
   }
 
   dimension: medio_pago_srcid {
+    hidden: yes
     type: string
     sql: MedioPagoSRCId ;;
   }
