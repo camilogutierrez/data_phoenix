@@ -3,9 +3,9 @@ view: fth_caso_view {
   suggestions: no
   label: "Caso"
 
+##########
 ## Caso ##
-
-  ## Dimensions
+##########
 
     ## Primary Key
 
@@ -1159,6 +1159,93 @@ view: fth_caso_view {
     label: "Ultimo Comentario"
   }
 
+  ## Numbers
+
+  dimension: caso_cantidad_cuotas {
+    type: number
+    sql: ${TABLE}.CasoCantidadCuotas ;;
+  }
+
+  dimension: caso_porcentaje_proteccion {
+    type: number
+    sql: ${TABLE}.CasoPorcentajeProteccion ;;
+  }
+
+  dimension: caso_numero_documento_portacion {
+    type: number
+    sql: ${TABLE}.CasoNumeroDocumentoPortacion ;;
+  }
+
+  dimension: caso_cantidad_casos_afectados {
+    type: number
+    sql: ${TABLE}.Numericos.CasoCantidadCasosAfectados ;;
+  }
+
+  dimension: caso_cantidad_lineas_portacion {
+    type: number
+    sql: ${TABLE}.Numericos.CasoCantidadLineasPortacion ;;
+  }
+
+  dimension: caso_cantidad_re_llamados {
+    type: number
+    sql: ${TABLE}.Numericos.CasoCantidadReLlamados ;;
+  }
+
+  dimension: caso_cantidad_reclamos_generados {
+    type: number
+    sql: ${TABLE}.Numericos.CasoCantidadReclamosGenerados ;;
+  }
+
+  dimension: caso_importe_pago_areclamar {
+    type: number
+    sql: ${TABLE}.Numericos.CasoImportePagoAReclamar ;;
+  }
+
+  dimension: caso_limite_compra_actual {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLimiteCompraActual ;;
+  }
+
+  dimension: caso_limite_compra_aprobado {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLimiteCompraAprobado ;;
+  }
+
+  dimension: caso_limite_compra_solicitado {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLimiteCompraSolicitado ;;
+  }
+
+  dimension: caso_limite_consumo_actual {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLimiteConsumoActual ;;
+  }
+
+  dimension: caso_limite_consumo_aprobado {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLimiteConsumoAprobado ;;
+  }
+
+  dimension: caso_limite_consumo_solicitado {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLimiteConsumoSolicitado ;;
+  }
+
+  dimension: caso_llamadas_repetidas {
+    type: number
+    sql: ${TABLE}.Numericos.CasoLlamadasRepetidas ;;
+  }
+
+  dimension: caso_monto_ajuste {
+    type: number
+    sql: ${TABLE}.Numericos.CasoMontoAjuste ;;
+  }
+
+  dimension: caso_saldo_vencido {
+    type: number
+    sql: ${TABLE}.Numericos.CasoSaldoVencido ;;
+  }
+
     ## Hidden
 
   dimension: caso_estado_sk {
@@ -1305,94 +1392,9 @@ view: fth_caso_view {
     sql: ${TABLE}.CasoResultadoRetencionSRCId ;;
   }
 
-    ## Numbers
-
-  dimension: caso_cantidad_cuotas {
-    type: number
-    sql: ${TABLE}.CasoCantidadCuotas ;;
-  }
-
-  dimension: caso_porcentaje_proteccion {
-    type: number
-    sql: ${TABLE}.CasoPorcentajeProteccion ;;
-  }
-
-  dimension: caso_numero_documento_portacion {
-    type: number
-    sql: ${TABLE}.CasoNumeroDocumentoPortacion ;;
-  }
-
-  dimension: caso_cantidad_casos_afectados {
-    type: number
-    sql: ${TABLE}.Numericos.CasoCantidadCasosAfectados ;;
-  }
-
-  dimension: caso_cantidad_lineas_portacion {
-    type: number
-    sql: ${TABLE}.Numericos.CasoCantidadLineasPortacion ;;
-  }
-
-  dimension: caso_cantidad_re_llamados {
-    type: number
-    sql: ${TABLE}.Numericos.CasoCantidadReLlamados ;;
-  }
-
-  dimension: caso_cantidad_reclamos_generados {
-    type: number
-    sql: ${TABLE}.Numericos.CasoCantidadReclamosGenerados ;;
-  }
-
-  dimension: caso_importe_pago_areclamar {
-    type: number
-    sql: ${TABLE}.Numericos.CasoImportePagoAReclamar ;;
-  }
-
-  dimension: caso_limite_compra_actual {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLimiteCompraActual ;;
-  }
-
-  dimension: caso_limite_compra_aprobado {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLimiteCompraAprobado ;;
-  }
-
-  dimension: caso_limite_compra_solicitado {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLimiteCompraSolicitado ;;
-  }
-
-  dimension: caso_limite_consumo_actual {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLimiteConsumoActual ;;
-  }
-
-  dimension: caso_limite_consumo_aprobado {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLimiteConsumoAprobado ;;
-  }
-
-  dimension: caso_limite_consumo_solicitado {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLimiteConsumoSolicitado ;;
-  }
-
-  dimension: caso_llamadas_repetidas {
-    type: number
-    sql: ${TABLE}.Numericos.CasoLlamadasRepetidas ;;
-  }
-
-  dimension: caso_monto_ajuste {
-    type: number
-    sql: ${TABLE}.Numericos.CasoMontoAjuste ;;
-  }
-
-  dimension: caso_saldo_vencido {
-    type: number
-    sql: ${TABLE}.Numericos.CasoSaldoVencido ;;
-  }
-
+#############
 ## Cliente ##
+#############
 
     ## Srings
 
@@ -1507,7 +1509,9 @@ view: fth_caso_view {
     sql: ${TABLE}.Cliente.CuentaTipoSRCId ;;
   }
 
+###########
 ## Orden ##
+###########
 
     ## Dates
 
@@ -1752,7 +1756,9 @@ view: fth_caso_view {
     sql: ${TABLE}.Orden.OrdenTipoCambioPlanSRCId ;;
   }
 
+########################
 ## Producto Adquirido ##
+########################
 
     ## Dates
 
@@ -1866,7 +1872,9 @@ view: fth_caso_view {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId ;;
   }
 
+#############
 ## Usuario ##
+#############
 
     ## Strings
 
@@ -1961,7 +1969,9 @@ view: fth_caso_view {
     group_item_label: "Usuario Empresa Alta"
   }
 
-  ## Measures
+##############
+## Measures ##
+##############
 
   measure: count_caso {
     type: count_distinct
@@ -1971,13 +1981,15 @@ view: fth_caso_view {
   }
 }
 
+#################################
 ### Nested Attributes - Views ###
+#################################
 
+###############
 ## Caso Hito ##
+###############
 
 view: fth_caso_caso_hito_view {
-
-  ## Dimensions
 
     ## Primary Key
 
@@ -2019,15 +2031,7 @@ view: fth_caso_caso_hito_view {
     label: "Fecha Objetivo"
   }
 
-      ## Flags
-
-  dimension: caso_hito_marca_completado {
-    type: yesno
-    sql: ${TABLE}.CasoHitoMarcaCompletado ;;
-    label: "Es Hito Completado "
-  }
-
-      ## Strings
+    ## Strings
 
   dimension: caso_hito_tiempo_excedido_minutos {
     type: string
@@ -2041,7 +2045,15 @@ view: fth_caso_caso_hito_view {
     label: "Tiempo Restante Minutos"
   }
 
-      ## Numbers
+    ## Flags
+
+  dimension: caso_hito_marca_completado {
+    type: yesno
+    sql: ${TABLE}.CasoHitoMarcaCompletado ;;
+    label: "Es Hito Completado "
+  }
+
+    ## Numbers
 
   dimension: origen_srcid {
     type: number
@@ -2079,11 +2091,11 @@ view: fth_caso_caso_hito_view {
   }
 }
 
-### Vista Comentarios ###
+###################
+### Comentarios ###
+###################
 
 view: fth_caso_comentarios_view {
-
-  ## Dimensions
 
     ## Primary Key
 
