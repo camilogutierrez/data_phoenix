@@ -1,5 +1,5 @@
 view: ft_callin_view {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_CALLIN`;;
+  sql_table_name: @{gcp_dataset_pub}.FT_CALLIN`;;
   suggestions: no
   label: "Call In"
 

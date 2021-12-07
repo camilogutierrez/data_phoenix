@@ -1,5 +1,5 @@
 view: lk_llamada_corta {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_LlamadaCorta`;;
+  sql_table_name: @{gcp_dataset_pub}.LK_LlamadaCorta`;;
   fields_hidden_by_default: yes
 
   dimension: llamada_cortanombre {
