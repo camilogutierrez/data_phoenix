@@ -5,48 +5,43 @@ view: ft_suscripcion_cambios_estado_view {
 
   ## Primary Key
 
-  dimension: id {
+  dimension: pk {
     hidden: yes
     primary_key: yes
     type: string
-    sql:  CONCAT(CAST(${change_date} AS STRING FORMAT 'YYYYMMDD'),'-',${sub_id}) ;;
+    sql:  CONCAT(CAST(${change} AS STRING FORMAT 'YYYYMMDD'),'-',${sub_id}) ;;
   }
 
-  ## Native Dimensions
+  ## Dates
+
+  dimension: change {
+    type: date_time
+    sql: ${TABLE}.CHANGE_DATE ;;
+    datatype: timestamp
+  }
+
+  dimension: suspension {
+    type: date_time
+    sql: ${TABLE}.SUSPENSION_DATE ;;
+    datatype: timestamp
+  }
+
+  dimension: rehabilitacion {
+    type: date_time
+    sql: ${TABLE}.REHABILITACION_DATE ;;
+    datatype: timestamp
+  }
+
+  ## Strings
 
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
   }
 
-  dimension: acct_id {
-    type: number
-    sql: ${TABLE}.ACCT_ID ;;
-  }
-
   dimension: bill_cycle_type {
     type: string
     sql: ${TABLE}.BILL_CYCLE_TYPE ;;
-  }
-
-  dimension_group: change {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.CHANGE_DATE ;;
-    datatype: timestamp
-  }
-
-  dimension: cust_id {
-    type: number
-    sql: ${TABLE}.CUST_ID ;;
   }
 
   dimension: dst_status {
@@ -69,11 +64,6 @@ view: ft_suscripcion_cambios_estado_view {
     sql: ${TABLE}.DST_STATUS_DETAIL_DES ;;
   }
 
-  dimension: ind_movimiento {
-    type: number
-    sql: ${TABLE}.IND_MOVIMIENTO ;;
-  }
-
   dimension: movimiento_des {
     type: string
     sql: ${TABLE}.MOVIMIENTO_DES ;;
@@ -82,21 +72,6 @@ view: ft_suscripcion_cambios_estado_view {
   dimension: payment_mode {
     type: string
     sql: ${TABLE}.PAYMENT_MODE ;;
-  }
-
-  dimension_group: rehabilitacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.REHABILITACION_DATE ;;
-    datatype: timestamp
   }
 
   dimension: src_status {
@@ -119,30 +94,36 @@ view: ft_suscripcion_cambios_estado_view {
     sql: ${TABLE}.SRC_STATUS_DETAIL_DES ;;
   }
 
-  dimension: sub_id {
-    type: number
-    sql: ${TABLE}.SUB_ID ;;
-  }
-
   dimension: sub_identity {
     type: string
     sql: ${TABLE}.SUB_IDENTITY ;;
   }
 
-  dimension_group: suspension {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.SUSPENSION_DATE ;;
-    datatype: timestamp
+  ## Numbers
+
+  dimension: acct_id {
+    type: number
+    sql: ${TABLE}.ACCT_ID ;;
   }
+
+  dimension: cust_id {
+    type: number
+    sql: ${TABLE}.CUST_ID ;;
+  }
+
+  dimension: ind_movimiento {
+    type: number
+    sql: ${TABLE}.IND_MOVIMIENTO ;;
+  }
+
+  dimension: sub_id {
+    type: number
+    sql: ${TABLE}.SUB_ID ;;
+  }
+
+##############
+## Measures ##
+##############
 
   measure: count {
     type: count

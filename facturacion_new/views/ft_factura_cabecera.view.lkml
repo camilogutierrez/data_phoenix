@@ -5,23 +5,32 @@ view: ft_factura_cabecera_view {
 
   ## Primary Key
 
-  dimension: id {
+  dimension: pk {
     hidden: yes
     primary_key: yes
     type: number
     sql: ${invoice_id} ;;
   }
 
-  ## Native Dimensions
+  ## Fechas
+
+  dimension: invoice {
+    type: date_time
+    sql: ${TABLE}.INVOICE_DATE ;;
+    datatype: timestamp
+  }
+
+  dimension: due {
+    type: date_time
+    sql: ${TABLE}.DUE_DATE ;;
+    datatype: timestamp
+  }
+
+  ## Strings
 
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-  }
-
-  dimension: acct_id {
-    type: number
-    sql: ${TABLE}.ACCT_ID ;;
   }
 
   dimension: addr_altura_piso_depto {
@@ -32,11 +41,6 @@ view: ft_factura_cabecera_view {
   dimension: addr_calle {
     type: string
     sql: ${TABLE}.ADDR_CALLE ;;
-  }
-
-  dimension: addr_id {
-    type: number
-    sql: ${TABLE}.ADDR_ID ;;
   }
 
   dimension: addr_localidad {
@@ -52,11 +56,6 @@ view: ft_factura_cabecera_view {
   dimension: addr_provincia {
     type: string
     sql: ${TABLE}.ADDR_PROVINCIA ;;
-  }
-
-  dimension: be_id {
-    type: number
-    sql: ${TABLE}.BE_ID ;;
   }
 
   dimension: bill_cycle_id {
@@ -84,11 +83,6 @@ view: ft_factura_cabecera_view {
     sql: ${TABLE}.CHANNEL_ID ;;
   }
 
-  dimension: currency_id {
-    type: number
-    sql: ${TABLE}.CURRENCY_ID ;;
-  }
-
   dimension: currency_name {
     type: string
     sql: ${TABLE}.CURRENCY_NAME ;;
@@ -107,11 +101,6 @@ view: ft_factura_cabecera_view {
   dimension: cust_first_name {
     type: string
     sql: ${TABLE}.CUST_FIRST_NAME ;;
-  }
-
-  dimension: cust_id {
-    type: number
-    sql: ${TABLE}.CUST_ID ;;
   }
 
   dimension: cust_iibb_category {
@@ -144,26 +133,6 @@ view: ft_factura_cabecera_view {
     sql: ${TABLE}.CUST_SUBSEGMENT2 ;;
   }
 
-  dimension: discount_amt {
-    type: number
-    sql: ${TABLE}.DISCOUNT_AMT ;;
-  }
-
-  dimension_group: due {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.DUE_DATE ;;
-    datatype: timestamp
-  }
-
   dimension: ind_fact_migradas {
     type: string
     sql: ${TABLE}.IND_FACT_MIGRADAS ;;
@@ -172,37 +141,6 @@ view: ft_factura_cabecera_view {
   dimension: ind_legal_no {
     type: string
     sql: ${TABLE}.IND_LEGAL_NO ;;
-  }
-
-  dimension: invoice_amt {
-    type: number
-    sql: ${TABLE}.INVOICE_AMT ;;
-  }
-
-  dimension_group: invoice {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.INVOICE_DATE ;;
-    datatype: timestamp
-  }
-
-  dimension: invoice_id {
-    type: number
-    sql: ${TABLE}.INVOICE_ID ;;
-  }
-
-  dimension: invoice_id_asoc_ncnd {
-    type: number
-    value_format_name: id
-    sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
   }
 
   dimension: invoice_letter {
@@ -233,21 +171,6 @@ view: ft_factura_cabecera_view {
   dimension: legal_no_asoc_ncnd {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
-  }
-
-  dimension: lpf_amt {
-    type: number
-    sql: ${TABLE}.LPF_AMT ;;
-  }
-
-  dimension: open_amt {
-    type: number
-    sql: ${TABLE}.OPEN_AMT ;;
-  }
-
-  dimension: original_amt {
-    type: number
-    sql: ${TABLE}.ORIGINAL_AMT ;;
   }
 
   dimension: point_sale_description {
@@ -290,21 +213,6 @@ view: ft_factura_cabecera_view {
     sql: ${TABLE}.SALES_PROVINCE ;;
   }
 
-  dimension: sub_id {
-    type: number
-    sql: ${TABLE}.SUB_ID ;;
-  }
-
-  dimension: tax_amt {
-    type: number
-    sql: ${TABLE}.TAX_AMT ;;
-  }
-
-  dimension: trans_id {
-    type: number
-    sql: ${TABLE}.TRANS_ID ;;
-  }
-
   dimension: trans_type {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
@@ -319,6 +227,88 @@ view: ft_factura_cabecera_view {
     type: string
     sql: ${TABLE}.TRANS_TYPE_DES ;;
   }
+
+  ## Numbers
+
+  dimension: discount_amt {
+    type: number
+    sql: ${TABLE}.DISCOUNT_AMT ;;
+  }
+
+  dimension: cust_id {
+    type: number
+    sql: ${TABLE}.CUST_ID ;;
+  }
+
+  dimension: currency_id {
+    type: number
+    sql: ${TABLE}.CURRENCY_ID ;;
+  }
+
+  dimension: invoice_amt {
+    type: number
+    sql: ${TABLE}.INVOICE_AMT ;;
+  }
+
+  dimension: invoice_id {
+    type: number
+    sql: ${TABLE}.INVOICE_ID ;;
+  }
+
+  dimension: invoice_id_asoc_ncnd {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
+  }
+
+  dimension: lpf_amt {
+    type: number
+    sql: ${TABLE}.LPF_AMT ;;
+  }
+
+  dimension: open_amt {
+    type: number
+    sql: ${TABLE}.OPEN_AMT ;;
+  }
+
+  dimension: original_amt {
+    type: number
+    sql: ${TABLE}.ORIGINAL_AMT ;;
+  }
+
+  dimension: addr_id {
+    type: number
+    sql: ${TABLE}.ADDR_ID ;;
+  }
+
+  dimension: trans_id {
+    type: number
+    sql: ${TABLE}.TRANS_ID ;;
+  }
+
+  dimension: acct_id {
+    type: number
+    sql: ${TABLE}.ACCT_ID ;;
+  }
+
+  dimension: be_id {
+    type: number
+    sql: ${TABLE}.BE_ID ;;
+  }
+
+  dimension: sub_id {
+    type: number
+    sql: ${TABLE}.SUB_ID ;;
+  }
+
+  dimension: tax_amt {
+    type: number
+    sql: ${TABLE}.TAX_AMT ;;
+  }
+
+##############
+## Measures ##
+##############
 
   measure: count {
     type: count
