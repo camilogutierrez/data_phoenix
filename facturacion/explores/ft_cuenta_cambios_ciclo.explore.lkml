@@ -1,4 +1,4 @@
-include: "/facturacion_new/views/ft_cuenta_cambios_ciclo.view.lkml"
+include: "/facturacion/views/ft_cuenta_cambios_ciclo.view.lkml"
 
 explore: ft_cuenta_cambios_ciclo {
   from: ft_cuenta_cambios_ciclo_view

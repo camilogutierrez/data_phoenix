@@ -18,12 +18,14 @@ view: ft_factura_detalle_view {
     type: date_time
     sql: ${TABLE}.INVOICE_DATE ;;
     datatype: timestamp
+    label: "Fecha Emision Comprobante"
   }
 
   dimension: due {
     type: date_time
     sql: ${TABLE}.DUE_DATE ;;
     datatype: timestamp
+    label: "Fecha Vencimiento Comprobante"
   }
 
   ## Strings
@@ -31,11 +33,13 @@ view: ft_factura_detalle_view {
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
+    label: "Cuenta"
   }
 
   dimension: acct_payment_mode {
     type: string
     sql: ${TABLE}.ACCT_PAYMENT_MODE ;;
+    label: "Mercado"
   }
 
   dimension: act_dst_status {
@@ -61,11 +65,13 @@ view: ft_factura_detalle_view {
   dimension: bill_cycle_id {
     type: string
     sql: ${TABLE}.BILL_CYCLE_ID ;;
+    label: "Ciclo Facturacion Id"
   }
 
   dimension: bill_cycle_type {
     type: string
     sql: ${TABLE}.BILL_CYCLE_TYPE ;;
+    label: "Ciclo Facturacion"
   }
 
   dimension: busi_type {
@@ -76,21 +82,25 @@ view: ft_factura_detalle_view {
   dimension: charge_code {
     type: string
     sql: ${TABLE}.CHARGE_CODE ;;
+    label: "Cargo Comprobante"
   }
 
   dimension: charge_code_name {
     type: string
     sql: ${TABLE}.CHARGE_CODE_NAME ;;
+    label: "Cargo Comprobante Descripcion"
   }
 
   dimension: charge_code_type {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE ;;
+    label: "Cargo Tipo"
   }
 
   dimension: charge_code_type_des {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE_DES ;;
+    label: "Cargo Tipo Descripcion"
   }
 
   dimension: charge_code_type_des_fact {
@@ -106,6 +116,7 @@ view: ft_factura_detalle_view {
   dimension: crm_product_id {
     type: string
     sql: ${TABLE}.CRM_PRODUCT_ID ;;
+    label: "Producto Salesforce Id"
   }
 
   dimension: cust_code {
@@ -116,16 +127,19 @@ view: ft_factura_detalle_view {
   dimension: cust_segment {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
+    label: "Cliente Segmento"
   }
 
   dimension: cust_subsegment1 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
+    label: "Cliente Subsegmento 1"
   }
 
   dimension: cust_subsegment2 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT2 ;;
+    label: "Cliente Subsegmento 2"
   }
 
   dimension: cust_type {
@@ -141,51 +155,61 @@ view: ft_factura_detalle_view {
   dimension: description {
     type: string
     sql: ${TABLE}.DESCRIPTION ;;
+    label: "Terminal Nombre"
   }
 
   dimension: equip_imei {
     type: string
     sql: ${TABLE}.EQUIP_IMEI ;;
+    label: "Terminal IMEI"
   }
 
   dimension: equip_nmu {
     type: string
     sql: ${TABLE}.EQUIP_NMU ;;
+    label: "Terminal NMU"
   }
 
   dimension: imei {
     type: string
     sql: ${TABLE}.IMEI ;;
+    label: "Terminal IMEI"
   }
 
   dimension: ind_fact_migradas {
     type: string
     sql: ${TABLE}.IND_FACT_MIGRADAS ;;
+    label: "Flag Facturas Migradas"
   }
 
   dimension: ind_legal_no {
     type: string
     sql: ${TABLE}.IND_LEGAL_NO ;;
+    label: "Comprobante Numero Legal"
   }
 
   dimension: invoice_letter {
     type: string
     sql: ${TABLE}.INVOICE_LETTER ;;
+    label: "Comprobante Letter"
   }
 
   dimension: invoice_no {
     type: string
     sql: ${TABLE}.INVOICE_NO ;;
+    label: "Prefactura Id"
   }
 
   dimension: invoice_no_asoc_ncnd {
     type: string
     sql: ${TABLE}.INVOICE_NO_ASOC_NCND ;;
+    label: "Comprobante Asociado Numero"
   }
 
   dimension: invoice_status {
     type: string
     sql: ${TABLE}.INVOICE_STATUS ;;
+    label: "Comprobante Estado"
   }
 
   dimension: legal_no {
@@ -196,56 +220,67 @@ view: ft_factura_detalle_view {
   dimension: legal_no_asoc_ncnd {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
+    label: "Comprobante Asociado"
   }
 
   dimension: linea {
     type: string
     sql: ${TABLE}.LINEA ;;
+    label: "Linea"
   }
 
   dimension: nombre_terminal {
     type: string
     sql: ${TABLE}.NOMBRE_TERMINAL ;;
+    label: "Terminal Nombre"
   }
 
   dimension: offering_code {
     type: string
     sql: ${TABLE}.OFFERING_CODE ;;
+    label: "Oferta Codigo"
   }
 
   dimension: offering_id {
     type: string
     sql: ${TABLE}.OFFERING_ID ;;
+    label: "Oferta Id"
   }
 
   dimension: offering_name {
     type: string
     sql: ${TABLE}.OFFERING_NAME ;;
+    label: "Oferta Nombre"
   }
 
   dimension: offering_payment_mode {
     type: string
     sql: ${TABLE}.OFFERING_PAYMENT_MODE ;;
+    label: "Oferta Mercado"
   }
 
   dimension: offering_primary_flag {
     type: string
     sql: ${TABLE}.OFFERING_PRIMARY_FLAG ;;
+    label: "Flag Oferta Primaria"
   }
 
   dimension: offering_short_name {
     type: string
     sql: ${TABLE}.OFFERING_SHORT_NAME ;;
+    label: "Oferta Nombre Corto"
   }
 
   dimension: payment_object_type {
     type: string
     sql: ${TABLE}.PAYMENT_OBJECT_TYPE ;;
+    label: "Nivel Pago"
   }
 
   dimension: plan_id {
     type: string
     sql: ${TABLE}.PLAN_ID ;;
+    label: "Plan Facturado Id"
   }
 
   dimension: plan_payment_mode {
@@ -276,26 +311,31 @@ view: ft_factura_detalle_view {
   dimension: pri_identity {
     type: string
     sql: ${TABLE}.PRI_IDENTITY ;;
+    label: "Linea Numero"
   }
 
   dimension: region_code {
     type: string
     sql: ${TABLE}.REGION_CODE ;;
+    label: "Region Codigo"
   }
 
   dimension: sales_municipality {
     type: string
     sql: ${TABLE}.SALES_MUNICIPALITY ;;
+    label: "Venta Municipalidad"
   }
 
   dimension: sales_province {
     type: string
     sql: ${TABLE}.SALES_PROVINCE ;;
+    label: "Venta Provincia"
   }
 
   dimension: trans_type {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
+    label: "Comprobante Tipo"
   }
 
   dimension: trans_type_asoc_ncnd {
@@ -306,6 +346,7 @@ view: ft_factura_detalle_view {
   dimension: trans_type_des {
     type: string
     sql: ${TABLE}.TRANS_TYPE_DES ;;
+    label: "Comprobante Descripcion"
   }
 
   dimension: ult_dst_status {
@@ -331,79 +372,58 @@ view: ft_factura_detalle_view {
   dimension: sub_identity {
     type: string
     sql: ${TABLE}.SUB_IDENTITY ;;
+    label: "Linea Numero"
   }
 
   ## Numbers
 
-  dimension: discount_amt {
-    type: number
-    sql: ${TABLE}.DISCOUNT_AMT ;;
-  }
-
-  dimension: charge_amt {
-    type: number
-    sql: ${TABLE}.CHARGE_AMT ;;
-  }
-
   dimension: charge_code_id {
     type: number
     sql: ${TABLE}.CHARGE_CODE_ID ;;
-  }
-
-  dimension: invoice_tax_amt {
-    type: number
-    sql: ${TABLE}.INVOICE_TAX_AMT ;;
+    label: "Cargo Comprobante Id"
   }
 
   dimension: invoice_detail_id {
     type: number
     sql: ${TABLE}.INVOICE_DETAIL_ID ;;
-  }
-
-  dimension: invoice_discount_amt {
-    type: number
-    sql: ${TABLE}.INVOICE_DISCOUNT_AMT ;;
+    label: "Item Id"
   }
 
   dimension: invoice_id {
     type: number
     sql: ${TABLE}.INVOICE_ID ;;
-  }
-
-  dimension: gross_amt {
-    type: number
-    sql: ${TABLE}.GROSS_AMT ;;
+    label: "Comprobante HW Id"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    label: "Cliente HW Id"
   }
 
   dimension: invoice_id_asoc_ncnd {
     type: number
     value_format_name: id
     sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
-  }
-
-  dimension: original_amt {
-    type: number
-    sql: ${TABLE}.ORIGINAL_AMT ;;
+    label: "Comprobante Asociado Id"
   }
 
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
+    label: "Cuenta Id"
   }
 
   dimension: ind_vta_equipos {
     type: number
     sql: ${TABLE}.IND_VTA_EQUIPOS ;;
+    label: "Flag Venta Equipo"
   }
 
   dimension: addr_id {
     type: number
     sql: ${TABLE}.ADDR_ID ;;
+    label: "Cliente Domicilio Id"
   }
 
   dimension: apply_trans_id {
@@ -414,39 +434,132 @@ view: ft_factura_detalle_view {
   dimension: be_id {
     type: number
     sql: ${TABLE}.BE_ID ;;
+    label: "Entidad Negocio"
   }
 
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
-  }
-
-  dimension: tax_amt {
-    type: number
-    sql: ${TABLE}.TAX_AMT ;;
+    label: "Suscriptor Id"
   }
 
   dimension: total_cycle {
     type: number
     sql: ${TABLE}.TOTAL_CYCLE ;;
+    label: "Cuotas Cantidad"
   }
 
   dimension: trans_id {
     type: number
     sql: ${TABLE}.TRANS_ID ;;
+    label: "Transaccion Id"
+  }
+
+  ## Hidden
+
+  dimension: charge_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CHARGE_AMT ;;
+  }
+
+  dimension: discount_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DISCOUNT_AMT ;;
+  }
+
+  dimension: gross_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.GROSS_AMT ;;
   }
 
   dimension: invoice_amt {
+    hidden: yes
     type: number
     sql: ${TABLE}.INVOICE_AMT ;;
+  }
+
+  dimension: invoice_discount_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.INVOICE_DISCOUNT_AMT ;;
+  }
+
+  dimension: invoice_tax_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.INVOICE_TAX_AMT ;;
+  }
+
+  dimension: original_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.ORIGINAL_AMT ;;
+  }
+
+  dimension: tax_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.TAX_AMT ;;
   }
 
 ##############
 ## Measures ##
 ##############
 
-  measure: count {
-    type: count
-    drill_fields: []
+  measure: count_items {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    label: "Cantidad Items"
+  }
+
+  measure: total_charge_amt {
+    type: sum
+    sql: ${charge_amt} ;;
+    label: "Total Monto Comprobante"
+  }
+
+  measure: total_discount_amt {
+    type: sum
+    sql: ${discount_amt} ;;
+    label: "Total Bonificaciones Comprobante"
+  }
+
+  measure: total_gross_amt {
+    type: sum
+    sql: ${gross_amt} ;;
+    label: "Total Monto Facturado sin Impuestos"
+  }
+
+  measure: total_invoice_amt {
+    type: sum
+    sql: ${invoice_amt} ;;
+    label: "Total Monto Comprobante"
+  }
+
+  measure: total_invoice_discount_amt {
+    type: sum
+    sql: ${invoice_discount_amt} ;;
+    label: "Total Bonificaciones"
+  }
+
+  measure: total_invoice_tax_amt {
+    type: sum
+    sql: ${invoice_tax_amt} ;;
+    label: "Total Impuestos Comprobante"
+  }
+
+  measure: total_original_amt {
+    type: sum
+    sql: ${original_amt} ;;
+    label: "Total Monto Original Comprobante"
+  }
+
+  measure: total_tax_amt {
+    type: sum
+    sql: ${tax_amt} ;;
+    label: "Total Impuestos Comprobante"
   }
 }
