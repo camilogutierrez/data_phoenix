@@ -14,16 +14,40 @@ view: ft_suscripcion_alta_baja_view {
 
   ## Dates
 
-  dimension: eff {
-    type: date_time
+  dimension_group: eff {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.EFF_DATE ;;
     datatype: timestamp
+    label: "Efectiva"
+    group_label: "Fecha Efectiva"
   }
 
-  dimension: exp {
-    type: date_time
+  dimension_group: exp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.EXP_DATE ;;
     datatype: timestamp
+    label: "Expiracion"
+    group_label: "Fecha Expiracion"
   }
 
   ## Strings

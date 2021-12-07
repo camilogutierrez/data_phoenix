@@ -9,21 +9,45 @@ view: ft_cuenta_cambios_ciclo_view {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${eff} AS STRING FORMAT 'YYYYMMDD'),'-',${acct_id});;
+    sql: CONCAT(CAST(${eff_date} AS STRING FORMAT 'YYYYMMDD'),'-',${acct_id});;
   }
 
   ## Dates
 
-  dimension: eff {
-    type: date_time
+  dimension_group: eff {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.EFF_DATE ;;
     datatype: timestamp
+    label: "Efectiva"
+    group_label: "Fecha Efectiva"
   }
 
-  dimension: exp {
-    type: date_time
+  dimension_group: exp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.EXP_DATE ;;
     datatype: timestamp
+    label: "Expiracion"
+    group_label: "Fecha Expiracion"
   }
 
   ## Strings

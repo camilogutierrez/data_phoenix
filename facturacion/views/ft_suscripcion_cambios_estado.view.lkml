@@ -9,27 +9,63 @@ view: ft_suscripcion_cambios_estado_view {
     hidden: yes
     primary_key: yes
     type: string
-    sql:  CONCAT(CAST(${change} AS STRING FORMAT 'YYYYMMDD'),'-',${sub_id}) ;;
+    sql:  CONCAT(CAST(${change_date} AS STRING FORMAT 'YYYYMMDD'),'-',${sub_id}) ;;
   }
 
   ## Dates
 
-  dimension: change {
-    type: date_time
+  dimension_group: change {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.CHANGE_DATE ;;
     datatype: timestamp
+    label: "Cambio"
+    group_label: "Fecha Cambio"
   }
 
-  dimension: suspension {
-    type: date_time
+  dimension_group: suspension {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.SUSPENSION_DATE ;;
     datatype: timestamp
+    label: "Suspension"
+    group_label: "Fecha Suspension"
   }
 
-  dimension: rehabilitacion {
-    type: date_time
+  dimension_group: rehabilitacion {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.REHABILITACION_DATE ;;
     datatype: timestamp
+    label: "Rehabilitacion"
+    group_label: "Fecha Rehabilitacion"
   }
 
   ## Strings

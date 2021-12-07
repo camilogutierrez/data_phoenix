@@ -14,18 +14,40 @@ view: ft_factura_cabecera_view {
 
   ## Fechas
 
-  dimension: invoice {
-    type: date_time
+  dimension_group: creation {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.INVOICE_DATE ;;
     datatype: timestamp
-    label: "Fecha Emision Comprobante"
+    label: "Creacion"
+    group_label: "Fecha Creacion"
   }
 
-  dimension: due {
-    type: date_time
+  dimension_group: due {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.DUE_DATE ;;
     datatype: timestamp
-    label: "Fecha Vencimiento Comprobante"
+    label: "Vencimiento"
+    group_label: "Fecha Vencimiento"
   }
 
   ## Strings
