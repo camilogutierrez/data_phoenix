@@ -1,6 +1,6 @@
 connection: "edw"
 
-include: "/pic/explores/*explore.lkml"
+include: "/pic/explores/ft_callin.explore.lkml"
 # Caching settings
 
 datagroup: default_datagroup {

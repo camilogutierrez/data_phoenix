@@ -1369,8 +1369,52 @@ view: ft_callin_view {
 
   ## Measures
 
-  measure: count {
-    type: count
-    drill_fields: [place_name, switch_name, state_name]
+  measure: count_distinct_interaction_resource_id {
+    type: count_distinct
+    sql: ${interaction_resource_id} ;;
+    label: "Count Distinct Resource ID"
   }
+
+  measure: sum_distinct_estado_fin_abandonadasrcid {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${estado_fin_abandonadasrcid} ;;
+    label: "Sum Distinct Abandonadas"
+    }
+
+  measure: sum_distinct_estado_fin_atendidasrcid {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${estado_fin_atendidasrcid} ;;
+    label: "Sum Distinct Atendidas"
+  }
+
+  measure: sum_distinct_estado_fin_recibidasrcid {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${estado_fin_recibidasrcid} ;;
+    label: "Sum Distinct Recibidas"
+  }
+
+  measure: sum_distinct_estado_fin_salientesrcid {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${estado_fin_salientesrcid} ;;
+    label: "Sum Distinct Salientes"
+  }
+
+  measure: sum_distinct_duration_call {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${duration_call} ;;
+    label: "Sum Distinct Duración"
+  }
+
+  measure: sum_distinct_t_duration_ag {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${t_duration_ag} ;;
+    label: "Sum Distinct Duración AG"
+  }
+
 }
