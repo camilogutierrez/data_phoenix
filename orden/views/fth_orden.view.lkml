@@ -1,5 +1,5 @@
 view: fth_orden_view {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FTH_Orden` ;;
+  sql_table_name: @{gcp_dataset_pub}.FTH_Orden` ;;
   suggestions: no
   label: "Orden Item"
 
@@ -2854,14 +2854,6 @@ view: fth_orden_view {
 
 view: fth_orden_medio_pago_view {
 
-    ## Flags
-
-  dimension: medio_pago_marca_principal {
-    type: yesno
-    sql: MedioPagoMarcaPrincipal ;;
-    label: "Es Medio de Principal"
-  }
-
     ## Strings
 
   dimension: medio_pago_entidad_financiera_nombre {
@@ -2892,6 +2884,14 @@ view: fth_orden_medio_pago_view {
     type: string
     sql: MedioPagoTarjetaTipoNombre ;;
     label: "Tipo Tarjeta"
+  }
+
+  ## Flags
+
+  dimension: medio_pago_marca_principal {
+    type: yesno
+    sql: MedioPagoMarcaPrincipal ;;
+    label: "Es Medio de Principal"
   }
 
     ## Hidden

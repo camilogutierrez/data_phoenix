@@ -1,37 +1,65 @@
 view: ft_suscripcion_alta_baja_view {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_SuscripcionAltaBaja` ;;
+  sql_table_name: @{gcp_dataset_pub}.FT_SuscripcionAltaBaja` ;;
   suggestions: no
   label: "Suscripcion Alta Baja"
 
   ## Primary Key
 
-  dimension: id {
+  dimension: pk {
     hidden: yes
     primary_key: yes
     type: number
     sql: ${sub_id} ;;
   }
 
-  ## Native Dimensions
+  ## Dates
+
+  dimension_group: eff {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.EFF_DATE ;;
+    datatype: timestamp
+    label: "Efectiva"
+    group_label: "Fecha Efectiva"
+  }
+
+  dimension_group: exp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.EXP_DATE ;;
+    datatype: timestamp
+    label: "Expiracion"
+    group_label: "Fecha Expiracion"
+  }
+
+  ## Strings
 
   dimension: act_acct_code {
     type: string
     sql: ${TABLE}.ACT_ACCT_CODE ;;
   }
 
-  dimension: act_acct_id {
-    type: number
-    sql: ${TABLE}.ACT_ACCT_ID ;;
-  }
-
   dimension: act_bill_cycle_type {
     type: string
     sql: ${TABLE}.ACT_BILL_CYCLE_TYPE ;;
-  }
-
-  dimension: act_offering_id {
-    type: number
-    sql: ${TABLE}.ACT_OFFERING_ID ;;
   }
 
   dimension: act_offering_name {
@@ -54,59 +82,14 @@ view: ft_suscripcion_alta_baja_view {
     sql: ${TABLE}.ACT_SUB_IDENTITY ;;
   }
 
-  dimension: cust_id {
-    type: number
-    sql: ${TABLE}.CUST_ID ;;
-  }
-
-  dimension_group: eff {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.EFF_DATE ;;
-    datatype: timestamp
-  }
-
-  dimension_group: exp {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.EXP_DATE ;;
-    datatype: timestamp
-  }
-
   dimension: pri_acct_code {
     type: string
     sql: ${TABLE}.PRI_ACCT_CODE ;;
   }
 
-  dimension: pri_acct_id {
-    type: number
-    sql: ${TABLE}.PRI_ACCT_ID ;;
-  }
-
   dimension: pri_bill_cycle_type {
     type: string
     sql: ${TABLE}.PRI_BILL_CYCLE_TYPE ;;
-  }
-
-  dimension: pri_offering_id {
-    type: number
-    sql: ${TABLE}.PRI_OFFERING_ID ;;
   }
 
   dimension: pri_offering_name {
@@ -139,29 +122,14 @@ view: ft_suscripcion_alta_baja_view {
     sql: ${TABLE}.STATUS_DES ;;
   }
 
-  dimension: sub_id {
-    type: number
-    sql: ${TABLE}.SUB_ID ;;
-  }
-
   dimension: ult_acct_code {
     type: string
     sql: ${TABLE}.ULT_ACCT_CODE ;;
   }
 
-  dimension: ult_acct_id {
-    type: number
-    sql: ${TABLE}.ULT_ACCT_ID ;;
-  }
-
   dimension: ult_bill_cycle_type {
     type: string
     sql: ${TABLE}.ULT_BILL_CYCLE_TYPE ;;
-  }
-
-  dimension: ult_offering_id {
-    type: number
-    sql: ${TABLE}.ULT_OFFERING_ID ;;
   }
 
   dimension: ult_offering_name {
@@ -183,6 +151,52 @@ view: ft_suscripcion_alta_baja_view {
     type: string
     sql: ${TABLE}.ULT_SUB_IDENTITY ;;
   }
+
+  ## Numbers
+
+  dimension: cust_id {
+    type: number
+    sql: ${TABLE}.CUST_ID ;;
+  }
+
+  dimension: pri_acct_id {
+    type: number
+    sql: ${TABLE}.PRI_ACCT_ID ;;
+  }
+
+  dimension: pri_offering_id {
+    type: number
+    sql: ${TABLE}.PRI_OFFERING_ID ;;
+  }
+
+  dimension: sub_id {
+    type: number
+    sql: ${TABLE}.SUB_ID ;;
+  }
+
+  dimension: ult_acct_id {
+    type: number
+    sql: ${TABLE}.ULT_ACCT_ID ;;
+  }
+
+  dimension: act_acct_id {
+    type: number
+    sql: ${TABLE}.ACT_ACCT_ID ;;
+  }
+
+  dimension: act_offering_id {
+    type: number
+    sql: ${TABLE}.ACT_OFFERING_ID ;;
+  }
+
+  dimension: ult_offering_id {
+    type: number
+    sql: ${TABLE}.ULT_OFFERING_ID ;;
+  }
+
+##############
+## Measures ##
+##############
 
   measure: count {
     type: count

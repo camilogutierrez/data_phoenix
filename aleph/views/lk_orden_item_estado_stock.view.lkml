@@ -1,5 +1,5 @@
 view: lk_orden_item_estado_stock {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_OrdenItemEstadoStock` ;;
+  sql_table_name: @{gcp_dataset_pub}.LK_OrdenItemEstadoStock` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_item_estado_stock_sk {
