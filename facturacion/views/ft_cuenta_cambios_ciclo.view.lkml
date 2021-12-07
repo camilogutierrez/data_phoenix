@@ -1,5 +1,5 @@
 view: ft_cuenta_cambios_ciclo_view {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_CuentaCambiosCiclo` ;;
+  sql_table_name: @{gcp_dataset_pub}.FT_CuentaCambiosCiclo` ;;
   suggestions: no
   label: "Cuenta Cambios Ciclo"
 

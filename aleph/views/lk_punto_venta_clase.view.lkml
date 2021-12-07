@@ -1,5 +1,5 @@
 view: lk_punto_venta_clase {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_PuntoVentaClase` ;;
+  sql_table_name: @{gcp_dataset_pub}.LK_PuntoVentaClase` ;;
   fields_hidden_by_default: yes
 
   dimension: punto_venta_clase_sk {

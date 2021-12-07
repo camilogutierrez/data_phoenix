@@ -1,5 +1,5 @@
 view: lk_producto_mercado {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_ProductoMercado` ;;
+  sql_table_name: @{gcp_dataset_pub}.LK_ProductoMercado` ;;
   fields_hidden_by_default: yes
 
   dimension: producto_mercado_sk {

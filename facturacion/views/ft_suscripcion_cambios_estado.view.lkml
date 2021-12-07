@@ -1,5 +1,5 @@
 view: ft_suscripcion_cambios_estado_view {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_SuscripcionCambiosEstado` ;;
+  sql_table_name: @{gcp_dataset_pub}.FT_SuscripcionCambiosEstado` ;;
   suggestions: no
   label: "Suscripcion Cambios Estado"
 

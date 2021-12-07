@@ -1,5 +1,5 @@
 view: ft_factura_detalle_view {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.FT_FacturaDetalle` ;;
+  sql_table_name: @{gcp_dataset_pub}.FT_FacturaDetalle` ;;
   suggestions: no
   label: "Facura Detalle"
 

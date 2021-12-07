@@ -1,5 +1,5 @@
 view: fth_orden_view {
-  sql_table_name: `@{gcp_project}.@{gcp_dataset}.FTH_Orden` ;;
+  sql_table_name: @{gcp_dataset_pub}.FTH_Orden` ;;
   suggestions: no
   label: "Orden Item"
 
