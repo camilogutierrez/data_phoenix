@@ -1,7 +1,7 @@
 view: ft_factura_detalle_view {
   sql_table_name: @{gcp_dataset_pub}.FT_FacturaDetalle` ;;
   suggestions: no
-  label: "Facura Detalle"
+  label: "Factura Detalle"
 
   ## Primary Key
 
@@ -207,7 +207,7 @@ view: ft_factura_detalle_view {
   dimension: ind_legal_no {
     type: string
     sql: ${TABLE}.IND_LEGAL_NO ;;
-    label: "Comprobante Numero Legal"
+    label: "Flag Numero Legal"
   }
 
   dimension: invoice_letter {

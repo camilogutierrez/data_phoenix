@@ -61,19 +61,19 @@ view: ft_factura_cabecera_view {
   dimension: addr_altura_piso_depto {
     type: string
     sql: ${TABLE}.ADDR_ALTURA_PISO_DEPTO ;;
-    label: "Altura - Piso - Depto"
+    label: "Cliente Altura / Piso / Depto"
   }
 
   dimension: addr_calle {
     type: string
     sql: ${TABLE}.ADDR_CALLE ;;
-    label: "Calle"
+    label: "Cliente Calle"
   }
 
   dimension: addr_localidad {
     type: string
     sql: ${TABLE}.ADDR_LOCALIDAD ;;
-    label: "Localidad"
+    label: "Cliente Localidad"
   }
 
   dimension: addr_postal_code {
@@ -85,6 +85,7 @@ view: ft_factura_cabecera_view {
   dimension: addr_provincia {
     type: string
     sql: ${TABLE}.ADDR_PROVINCIA ;;
+    label: "Cliente Provincia"
   }
 
   dimension: bill_cycle_id {
@@ -269,7 +270,7 @@ view: ft_factura_cabecera_view {
   dimension: sales_province {
     type: string
     sql: ${TABLE}.SALES_PROVINCE ;;
-    label: "Venta Porvincia"
+    label: "Venta Provincia"
   }
 
   dimension: trans_type {
