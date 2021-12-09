@@ -1,5 +1,5 @@
 view: lk_resource_role_ag {
-  sql_table_name: `teco-dev-edw-8b23.ue4_dev_edw_pub_gcp.LK_ResourceRoleAG`;;
+  sql_table_name: @{gcp_dataset_pub}.LK_ResourceRoleAG`;;
   fields_hidden_by_default: yes
 
   dimension: resourcerole_agsrcid {
