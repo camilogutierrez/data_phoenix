@@ -2104,7 +2104,6 @@ view: fth_orden_view {
   }
 
   dimension: opa_orden_estado_nombre {
-    hidden: yes ## FALTA AGREAR A BQ
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenEstadoNombre ;;
     suggest_dimension: lk_orden_estado_opa.orden_estado_nombre
