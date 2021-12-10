@@ -1,6 +1,6 @@
 ## ALEPH DataGroups
 
-datagroup: aleph_default_dg  {
+datagroup: aleph_default_dg {
   sql_trigger:  SELECT
                   MAX(_fechaUltimaActualizacion) AS Max_fechaUltimaActualizacion
                 FROM `ue4_prod_edw_alp_gcp.ALEPH` ;;
