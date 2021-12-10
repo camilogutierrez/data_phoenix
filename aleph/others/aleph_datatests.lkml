@@ -1,10 +1,10 @@
-test: aleph_is_accurate {
+test: aleph {
   explore_source: aleph {
     column: count {
-      field: orders.count
+      field: aleph.count
     }
   }
-  assert: count_is_expected_value {
-    expression: ${orders.count} = 2704 ;;
+  assert: count_records {
+    expression: ${aleph.count} = 2704 ;;
   }
 }

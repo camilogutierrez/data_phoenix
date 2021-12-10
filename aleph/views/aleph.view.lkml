@@ -86,7 +86,7 @@ view: aleph_view {
 ##############
 
   measure: count {
-    description: "Cantidad de registros"
+    description: "Cantidad de registr"
     type: count
     drill_fields: [sistema_origen, entidad, valor_origen, nombre_destino, valor_destino]
   }
