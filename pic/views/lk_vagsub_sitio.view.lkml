@@ -3,6 +3,7 @@ view: lk_vagsub_sitio {
   fields_hidden_by_default: yes
 
   dimension: vag_sub_sitiosrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAG_SUB_SITIOSRCId ;;
   }

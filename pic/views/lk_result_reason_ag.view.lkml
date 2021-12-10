@@ -3,6 +3,7 @@ view: lk_result_reason_ag {
   fields_hidden_by_default: yes
 
   dimension: resultreason_agsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.RESULTREASON_AGSRCId ;;
   }

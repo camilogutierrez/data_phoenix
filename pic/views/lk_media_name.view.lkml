@@ -3,6 +3,7 @@ view: lk_media_name {
   fields_hidden_by_default: yes
 
   dimension: media_namesrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.MEDIA_NAMESRCId ;;
   }

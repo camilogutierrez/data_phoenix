@@ -3,6 +3,7 @@ view: lk_vagagrupador4 {
   fields_hidden_by_default: yes
 
   dimension: vag_agrupador4_srcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAG_AGRUPADOR4SRCId ;;
   }

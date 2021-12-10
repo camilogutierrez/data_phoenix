@@ -3,6 +3,7 @@ view: lk_resource_role_vq {
   fields_hidden_by_default: yes
 
   dimension: resourcerole_vqsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.RESOURCEROLE_VQSRCId ;;
   }

@@ -3,6 +3,7 @@ view: lk_res_ordinal {
   fields_hidden_by_default: yes
 
   dimension: res_ordinalsrcid {
+    primary_key: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.RES_ORDINALSRCId ;;

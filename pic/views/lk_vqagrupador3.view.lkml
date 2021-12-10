@@ -3,6 +3,7 @@ view: lk_vqagrupador3 {
   fields_hidden_by_default: yes
 
   dimension: vq_agrupador3_srcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VQ_AGRUPADOR3SRCId ;;
   }

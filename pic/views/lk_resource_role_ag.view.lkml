@@ -3,6 +3,7 @@ view: lk_resource_role_ag {
   fields_hidden_by_default: yes
 
   dimension: resourcerole_agsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.RESOURCEROLE_AGSRCId ;;
   }

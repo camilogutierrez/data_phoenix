@@ -3,6 +3,7 @@ view: lk_vqsegmento {
   fields_hidden_by_default: yes
 
   dimension: vq_segmentosrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VQ_SEGMENTOSRCId ;;
   }

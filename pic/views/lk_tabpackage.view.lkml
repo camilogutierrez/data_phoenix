@@ -3,6 +3,7 @@ view: lk_tabpackage {
   fields_hidden_by_default: yes
 
   dimension: tabpackagesrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.TABPACKAGESRCId ;;
   }
