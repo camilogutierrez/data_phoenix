@@ -6,14 +6,16 @@ explore: ft_callin {
   label: "Call In"
   group_label: "Phoenix"
 
+  persist_for: "12 hours"
 
   always_filter: {
-    filters: [ft_callin.fecha_procesosrcid_date: "today",
-              ft_callin.dim_vag_tipo: "SEGMENTO_SITIO",
-              ft_callin.vagsrcid: "%_QC1S1",
-              ft_callin.gvqsrcid: "%_QC1"]
+    filters:  [
+                ft_callin.fecha_procesosrcid_date: "today",
+                ft_callin.dim_vag_tipo: "SEGMENTO_SITIO",
+                ft_callin.vagsrcid: "%_QC1S1",
+                ft_callin.gvqsrcid: "%_QC1"
+              ]
   }
-
 
   join: lk_contexto_ivr0800 {
     type: inner
@@ -482,5 +484,4 @@ explore: ft_callin {
     sql_on: ${ft_callin.vq_tipo_contactosrcid} = ${lk_vqtipo_contacto.vq_tipo_contactosrcid};;
     relationship: many_to_one
   }
-
 }
