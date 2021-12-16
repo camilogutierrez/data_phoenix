@@ -3,6 +3,7 @@ view: lk_tab_que_tiene {
   fields_hidden_by_default: yes
 
   dimension: tab_que_tienesrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.TAB_QUE_TIENESRCId ;;
   }

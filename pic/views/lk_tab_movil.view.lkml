@@ -3,6 +3,7 @@ view: lk_tab_movil {
   fields_hidden_by_default: yes
 
   dimension: tab_movilsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.TAB_MOVILSRCId ;;
   }

@@ -3,6 +3,7 @@ view: lk_tab_motivo {
   fields_hidden_by_default: yes
 
   dimension: tab_motivosrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.TAB_MOTIVOSRCId ;;
   }

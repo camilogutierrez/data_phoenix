@@ -3,6 +3,7 @@ view: lk_tabulacion4 {
   fields_hidden_by_default: yes
 
   dimension: tabulacion4_srcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.TABULACION4SRCId ;;
   }

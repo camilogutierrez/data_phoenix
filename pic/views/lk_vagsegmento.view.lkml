@@ -3,6 +3,7 @@ view: lk_vagsegmento {
   fields_hidden_by_default: yes
 
   dimension: vag_segmentosrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAG_SEGMENTOSRCId ;;
   }

@@ -3,6 +3,7 @@ view: lk_vag {
   fields_hidden_by_default: yes
 
   dimension: vagsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAGSRCId ;;
   }

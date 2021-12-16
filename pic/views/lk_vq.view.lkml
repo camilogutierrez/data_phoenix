@@ -3,6 +3,7 @@ view: lk_vq {
   fields_hidden_by_default: yes
 
   dimension: vqsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VQSRCId ;;
   }

@@ -3,6 +3,7 @@ view: lk_vqcanalidad {
   fields_hidden_by_default: yes
 
   dimension: vq_canalidadsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VQ_CANALIDADSRCId ;;
   }

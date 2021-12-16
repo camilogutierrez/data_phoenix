@@ -3,6 +3,7 @@ view: lk_vqorigen_digital {
   fields_hidden_by_default: yes
 
   dimension: vq_origen_digitalsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VQ_ORIGEN_DIGITALSRCId ;;
   }

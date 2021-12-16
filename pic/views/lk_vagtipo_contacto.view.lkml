@@ -3,6 +3,7 @@ view: lk_vagtipo_contacto {
   fields_hidden_by_default: yes
 
   dimension: vag_tipo_contactosrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAG_TIPO_CONTACTOSRCId ;;
   }

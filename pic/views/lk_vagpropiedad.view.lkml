@@ -3,6 +3,7 @@ view: lk_vagpropiedad {
   fields_hidden_by_default: yes
 
   dimension: vag_propiedadsrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAG_PROPIEDADSRCId ;;
   }

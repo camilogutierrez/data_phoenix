@@ -3,6 +3,7 @@ view: lk_vagfan {
   fields_hidden_by_default: yes
 
   dimension: vag_fansrcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.VAG_FANSRCId ;;
   }
