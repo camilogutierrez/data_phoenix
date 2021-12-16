@@ -1,4 +1,4 @@
-view: fth_orden_view {
+view: fth_orden {
   sql_table_name: @{gcp_dataset_pub}.FTH_Orden` ;;
   suggestions: no
   label: "Orden Item"

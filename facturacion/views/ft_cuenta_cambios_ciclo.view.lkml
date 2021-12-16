@@ -1,4 +1,4 @@
-view: ft_cuenta_cambios_ciclo_view {
+view: ft_cuenta_cambios_ciclo {
   sql_table_name: @{gcp_dataset_pub}.FT_CuentaCambiosCiclo` ;;
   suggestions: no
   label: "Cuenta Cambios Ciclo"

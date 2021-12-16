@@ -1,4 +1,4 @@
-view: ft_suscripcion_cambios_plan_view {
+view: ft_suscripcion_cambios_plan {
   sql_table_name: @{gcp_dataset_pub}.FT_SuscripcionCambiosPlan` ;;
   suggestions: no
   label: "Suscripcion Cambios Plan"

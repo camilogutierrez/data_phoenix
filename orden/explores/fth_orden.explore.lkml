@@ -3,7 +3,6 @@ include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
 
 explore: fth_orden {
-  from: fth_orden_view
   label: "Orden"
   group_label: "Phoenix"
 

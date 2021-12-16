@@ -1,4 +1,4 @@
-view: fth_caso_view {
+view: fth_caso {
   sql_table_name: @{gcp_dataset_pub}.FTH_Caso` ;;
   suggestions: no
   label: "Caso"

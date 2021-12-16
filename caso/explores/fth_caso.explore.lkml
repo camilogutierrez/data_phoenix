@@ -3,7 +3,6 @@ include: "/aleph/views/*.view.lkml"
 include: "/caso/others/caso_datagroups.lkml"
 
 explore: fth_caso {
-  from: fth_caso_view
   label: "Caso"
   group_label: "Phoenix"
 

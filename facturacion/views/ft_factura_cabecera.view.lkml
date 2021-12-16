@@ -1,4 +1,4 @@
-view: ft_factura_cabecera_view {
+view: ft_factura_cabecera {
   sql_table_name: @{gcp_dataset_pub}.FT_FacturaCabecera` ;;
   suggestions: no
   label: "Factura Cabecera"

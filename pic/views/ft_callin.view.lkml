@@ -1,4 +1,4 @@
-view: ft_callin_view {
+view: ft_callin {
   sql_table_name: @{gcp_dataset_pub}.FT_CALLIN`;;
   suggestions: no
   label: "Call In"
