@@ -1,4 +1,4 @@
-view: aleph_view {
+view: aleph {
   sql_table_name: @{gcp_dataset_alp}.ALEPH` ;;
   label: "ALEPH"
 

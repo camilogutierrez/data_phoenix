@@ -3,7 +3,6 @@ include: "/aleph/views/*.view.lkml"
 include: "/caso/others/caso_datagroups.lkml"
 
 explore: fth_caso {
-  from: fth_caso_view
   label: "Caso"
   group_label: "Phoenix"
 
@@ -13,13 +12,13 @@ explore: fth_caso {
 
   persist_with: caso_default_dg
 
-  join: fth_caso_caso_hito_view {
+  join: fth_caso_caso_hito {
     view_label: "Hitos"
     sql: LEFT JOIN UNNEST(${fth_caso.caso_hito}) as fth_caso_caso_hito_view ;;
     relationship: one_to_many
   }
 
-  join: fth_caso_comentarios_view {
+  join: fth_caso_comentarios {
     view_label: "Comentarios"
     sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso_comentarios_view ;;
     relationship: one_to_many

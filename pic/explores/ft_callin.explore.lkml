@@ -2,7 +2,6 @@ include: "/pic/views/ft_callin.view.lkml"
 include: "/pic/views/lk_*.view.lkml"
 
 explore: ft_callin {
-  from: ft_callin_view
   label: "Call In"
   group_label: "Phoenix"
 

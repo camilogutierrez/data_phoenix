@@ -1,4 +1,4 @@
-view: fth_caso_view {
+view: fth_caso {
   sql_table_name: @{gcp_dataset_pub}.FTH_Caso` ;;
   suggestions: no
   label: "Caso"
@@ -1989,7 +1989,7 @@ view: fth_caso_view {
 ## Caso Hito ##
 ###############
 
-view: fth_caso_caso_hito_view {
+view: fth_caso_caso_hito {
 
     ## Primary Key
 
@@ -2095,7 +2095,7 @@ view: fth_caso_caso_hito_view {
 ### Comentarios ###
 ###################
 
-view: fth_caso_comentarios_view {
+view: fth_caso_comentarios {
 
     ## Primary Key
 

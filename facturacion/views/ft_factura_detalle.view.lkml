@@ -1,4 +1,4 @@
-view: ft_factura_detalle_view {
+view: ft_factura_detalle {
   sql_table_name: @{gcp_dataset_pub}.FT_FacturaDetalle` ;;
   suggestions: no
   label: "Factura Detalle"

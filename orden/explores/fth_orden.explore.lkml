@@ -3,7 +3,6 @@ include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
 
 explore: fth_orden {
-  from: fth_orden_view
   label: "Orden"
   group_label: "Phoenix"
 
@@ -13,12 +12,11 @@ explore: fth_orden {
 
   persist_with: orden_default_dg
 
-  join: fth_orden_medio_pago_view {
+  join: fth_orden_medio_pago {
     view_label: "Medio de Pago"
     sql: LEFT JOIN UNNEST(${fth_orden.medio_pago}) as fth_orden_medio_pago_view ;;
     relationship: one_to_many
   }
-
 
   join: lk_orden_item_estado_provisionamiento {
     relationship: many_to_one
