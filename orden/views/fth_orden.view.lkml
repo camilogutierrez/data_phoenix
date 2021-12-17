@@ -30,7 +30,8 @@ view: fth_orden {
     sql: ${TABLE}.FechaEntidad ;;
     convert_tz: no
     datatype: date
-    label: "Fecha Entidad"
+    view_label: "Orden"
+    label: "Fecha Cierre"
     description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
@@ -136,7 +137,7 @@ view: fth_orden {
   dimension: orden_item_instancia_srcid {
     type: string
     sql: ${TABLE}.OrdenItemInstanciaSRCId ;;
-    label: "Id Instancia"
+    label: "Instancia"
   }
 
   dimension: orden_item_nmu {
@@ -181,7 +182,7 @@ view: fth_orden {
     type: number
     value_format_name: id
     sql: ${TABLE}.OrigenSRCId ;;
-    label: "Id Origen"
+    label: "Origen"
   }
 
   dimension: orden_item_mrc {
@@ -416,7 +417,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoMercadoDonantePortacionSRCId ;;
     view_label: "Caso"
-    label: "Id Mercado Donante Portacion"
+    label: "Mercado Donante Id"
   }
 
   dimension: caso_numero {
@@ -430,14 +431,14 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoOperadoraReceptoraSRCId ;;
     view_label: "Caso"
-    label: "Id Operadora Receptora"
+    label: "Operadora Receptora"
   }
 
   dimension: caso_padre_srcid {
     type: string
     sql: ${TABLE}.Caso.CasoPadreSRCId ;;
     view_label: "Caso"
-    label: "Id Padre"
+    label: "Padre"
   }
 
   dimension: caso_pinportabilidad {
@@ -451,7 +452,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoRedPortacionNombre ;;
     view_label: "Caso"
-    label: "Red Portacion Nombre"
+    label: "Red Portacion"
   }
 
   dimension: caso_srcid {
@@ -540,7 +541,7 @@ view: fth_orden {
     view_label: "Cliente"
     group_label: "Fechas"
     group_item_label: "Nacimiento Persona"
-    label: "Fecha Nacimiento Persona"
+    label: "Fecha Nacimiento"
   }
 
     ## Strings
@@ -566,7 +567,7 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoNombre ;;
     suggest_dimension: lk_persona_tipo_documento.persona_tipo_documento_nombre
     view_label: "Cliente"
-    label: "Tipo Documento"
+    label: "Documento Tipo"
   }
 
   dimension: cuenta_tipo_nombre {
@@ -603,7 +604,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.ClientePersonaContactoSRCId ;;
     view_label: "Cliente"
-    label: "Id Contacto"
+    label: "Contacto"
   }
 
   dimension: cliente_razon_social {
@@ -631,28 +632,28 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
     view_label: "Cliente"
-    label: "Id Cuenta Cliente"
+    label: "Cuenta Cliente"
   }
 
   dimension: cuenta_domicilio_envio_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaDomicilioEnvioSRCId ;;
     view_label: "Cliente"
-    label: "Id Cuenta Domicilio Envio"
+    label: "Cuenta Domicilio Envio"
   }
 
   dimension: cuenta_domicilio_facturacion_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaDomicilioFacturacionSRCId ;;
     view_label: "Cliente"
-    label: "Id Cuenta Domicilio Facturacion"
+    label: "Cuenta Domicilio Facturacion"
   }
 
   dimension: cuenta_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaSRCId ;;
     view_label: "Cliente"
-    label: "Id Cuenta"
+    label: "Cuenta"
   }
 
   dimension: persona_apellido {
@@ -666,7 +667,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.PersonaDocumentoNumero ;;
     view_label: "Cliente"
-    label: "Numero Documento"
+    label: "Documento Numero"
   }
 
   dimension: persona_email {
@@ -687,7 +688,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.PersonaSRCId ;;
     view_label: "Cliente"
-    label: "Id Persona"
+    label: "Persona"
   }
 
     ## Numbers
@@ -696,7 +697,7 @@ view: fth_orden {
     type: number
     sql: ${TABLE}.Cliente.PersonaEdad ;;
     view_label: "Cliente"
-    label: "Persona Edad"
+    label: "Edad"
   }
 
     ## Hidden
@@ -972,7 +973,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenEstadoAprobacionNombre ;;
     suggest_dimension: lk_orden_estado_aprobacion.orden_estado_aprobacion_nombre
     view_label: "Orden"
-    label: "Aprobacion Estado"
+    label: "Estado Aprobacion"
   }
 
   dimension: orden_estado_provisionamiento_nombre {
@@ -980,7 +981,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenEstadoProvisionamientoNombre ;;
     suggest_dimension: lk_orden_estado_provisionamiento.orden_estado_provisionamiento_nombre
     view_label: "Orden"
-    label: "Provisionamiento Estado"
+    label: "Estado Provisionamiento"
   }
 
   dimension: orden_estado_nombre {
@@ -996,14 +997,14 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenEstadoTrackeoNombre ;;
     suggest_dimension: lk_orden_estado_trackeo.orden_estado_trackeo_nombre
     view_label: "Orden"
-    label: "Trackeo Estado"
+    label: "Estado Trackeo"
   }
 
   dimension: orden_estado_validado_cliente_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoValidadoClienteNombre ;;
     view_label: "Orden"
-    label: "Validado Cliente Estado"
+    label: "Estado Validado Cliente"
   }
 
   dimension: orden_grupo_trabajo_nombre {
@@ -1024,42 +1025,42 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenLlamadaPadreSRCId ;;
     view_label: "Orden"
-    label: "Id Llamada Padre"
+    label: "Llamada Padre Id"
   }
 
   dimension: orden_llamada_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenLlamadaSRCId ;;
     view_label: "Orden"
-    label: "Id Llamada"
+    label: "Llamada Id"
   }
 
   dimension: orden_estado_consentimiento_cliente {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoConsentimientoCliente ;;
     view_label: "Orden"
-    label: "Consentimiento Cliente Estado"
+    label: "Estado Consentimiento Cliente"
   }
 
   dimension: campania_srcid {
     type: string
     sql: ${TABLE}.Orden.CampaniaSRCId ;;
     view_label: "Orden"
-    label: "Id Campaña"
+    label: "Campaña"
   }
 
   dimension: domicilio_direccion_entrega_srcid {
     type: string
     sql: ${TABLE}.Orden.DomicilioDireccionEntregaSRCId ;;
     view_label: "Orden"
-    label: "Id Domicilio Direccion Entrega"
+    label: "Domicilio Direccion Entrega"
   }
 
   dimension: metodo_pago_srcid {
     type: string
     sql: ${TABLE}.Orden.MetodoPagoSRCId ;;
     view_label: "Orden"
-    label: "Id Metodo Pago"
+    label: "Metodo Pago"
   }
 
   dimension: orden_ciclo_facturacion {
@@ -1101,28 +1102,28 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenContactoNombre ;;
     view_label: "Orden"
-    label: "Contacto Nombre"
+    label: "Contacto"
   }
 
   dimension: orden_cuenta_facturacion_predeterminada_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenCuentaFacturacionPredeterminadaSRCId ;;
     view_label: "Orden"
-    label: "Id Cuenta Facturacion Predeterminada"
+    label: "Cuenta Facturacion Predeterminada"
   }
 
   dimension: orden_cuenta_facturacion_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenCuentaFacturacionSRCId ;;
     view_label: "Orden"
-    label: "Id Cuenta Facturacion"
+    label: "Cuenta Facturacion"
   }
 
   dimension: orden_cuenta_servicio_predeterminada_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenCuentaServicioPredeterminadaSRCId ;;
     view_label: "Orden"
-    label: "Id Cuenta Servicio Predeterminada"
+    label: "Cuenta Servicio Predeterminada"
   }
 
   dimension: orden_detalle_error_insalvable {
@@ -1136,7 +1137,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenDireccionInstalacionSRCId ;;
     view_label: "Orden"
-    label: "Id Direccion Instalacion"
+    label: "Direccion Instalacion"
   }
 
   dimension: orden_ejecucion_cambio_ciclo_descripcion {
@@ -1199,7 +1200,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenOriginalSRCId ;;
     view_label: "Orden"
-    label: "Id Original"
+    label: "Original"
   }
 
   dimension: orden_prefactibilidad_codigo_area {
@@ -1262,14 +1263,14 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenReemplazadaSRCId ;;
     view_label: "Orden"
-    label: "Id Reemplazada"
+    label: "Reemplazada"
   }
 
   dimension: orden_seguimiento_entrega_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenSeguimientoEntregaSRCId ;;
     view_label: "Orden"
-    label: "Id Seguimiento Entrega"
+    label: "Seguimiento Entrega"
   }
 
   dimension: orden_simulacion_factura {
@@ -1297,28 +1298,28 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenTransaccionEntregaSRCId ;;
     view_label: "Orden"
-    label: "Id Transaccion Entrega"
+    label: "Transaccion Entrega"
   }
 
   dimension: orden_usuario_activacion_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenUsuarioActivacionSRCId ;;
     view_label: "Orden"
-    label: "Id Usuario Activacion"
+    label: "Usuario Activacion"
   }
 
   dimension: orden_usuario_creacion_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenUsuarioCreacionSRCId ;;
     view_label: "Orden"
-    label: "Id Usuario Creacion"
+    label: "Usuario Creacion"
   }
 
   dimension: orden_usuario_mod_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenUsuarioModSRCId ;;
     view_label: "Orden"
-    label: "Id Usuario Modificacion"
+    label: "Usuario Modificacion"
   }
 
     ## Numbers
@@ -1531,7 +1532,7 @@ view: fth_orden {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaActivo ;;
     view_label: "Producto"
-    group_label: " Marcas"
+    group_label: "Marcas"
     group_item_label: "Activo"
     label: "Es Activo"
   }
@@ -1650,21 +1651,21 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenCodigo ;;
     view_label: "Producto"
-    label: "Sistema Origen Codigo"
+    label: "Codigo Sistema Origen"
   }
 
   dimension: producto_sistema_origen_descripcion {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenDescripcion ;;
     view_label: "Producto"
-    label: "Sistema Origen Descripcion"
+    label: "Sistema Origen"
   }
 
   dimension: producto_sistema_origen_intid {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenINTId ;;
     view_label: "Producto"
-    label: "Id Sistema Origen Int"
+    label: "Sistema Origen Int"
   }
 
   dimension: producto_srcid {
@@ -1678,21 +1679,21 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoObjetoDescripcion ;;
     view_label: "Producto"
-    label: "Tipo Objeto Descripcion"
+    label: "Tipo Objeto"
   }
 
   dimension: orden_item_producto_padre_srcid {
     type: string
     sql: ${TABLE}.Producto.OrdenItemProductoPadreSRCId ;;
     view_label: "Producto"
-    label: "Id Orden Item Producto Padre"
+    label: "Producto Padre"
   }
 
   dimension: orden_item_producto_raiz_srcid {
     type: string
     sql: ${TABLE}.Producto.OrdenItemProductoRaizSRCId ;;
     view_label: "Producto"
-    group_item_label: "Id Orden Item Producto Raiz"
+    group_item_label: "Producto Raiz"
   }
 
   dimension: producto_codigo {
@@ -1834,56 +1835,56 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoICCIDSRCId ;;
     view_label: "Producto Adquirido"
-    label: "Id Producto Adquirido ICCID"
+    label: "Producto Adquirido ICCID"
   }
 
   dimension: producto_adquirido_imei {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoIMEI ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "IMEI"
   }
 
   dimension: producto_adquirido_marca_producto {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMarcaProducto ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Marca"
   }
 
   dimension: producto_adquirido_modelo_producto {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoModeloProducto ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Modelo"
   }
 
   dimension: producto_adquirido_nmu {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNMU ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "NMU"
   }
 
   dimension: producto_adquirido_numero_linea {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNumeroLinea ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Numero Linea"
   }
 
   dimension: producto_adquirido_referente_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoReferenteSRCId ;;
-    view_label:: "Producto Adquirido"
-    label: "Id Referente"
+    view_label: "Producto Adquirido"
+    label: "Referente"
   }
 
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
     view_label: "Producto Adquirido"
-    label: "Id"
+    label: "Nombre"
   }
 
   dimension: rango_numeracion_departamento_nombre {
@@ -1967,6 +1968,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalEnv ;;
     view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Codigo Postal"
     label: "Codigo Postal Envio"
   }
 
@@ -1974,6 +1977,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalFact ;;
     view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Codigo Postal"
     label: "Codigo Postal Facturacion"
   }
 
@@ -1981,6 +1986,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPlantaEnv ;;
     view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Planta"
     label: "Planta Envio"
   }
 
@@ -1988,6 +1995,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPlantaFact ;;
     view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Planta"
     label: "Planta Facturacion"
   }
 
@@ -1995,6 +2004,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPuertaEnv ;;
     view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Puerta"
     label: "Puerta Envio"
   }
 
@@ -2002,6 +2013,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPuertaFact ;;
     view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Puerta"
     label: "Puerta Facturacion"
   }
 
@@ -2009,84 +2022,108 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioSRCIdEnv ;;
     view_label: "Domicilio"
-    label: "Id Envio"
+    group_label: "Envio"
+    group_item_label: "Id"
+    label: "Envio Id"
   }
 
   dimension: domicilio_srcid_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioSRCIdFact ;;
     view_label: "Domicilio"
-    label: "Id Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Id"
+    label: "Facturacion Id"
   }
 
   dimension: localidad_srcid_env {
     type: string
     sql: ${TABLE}.Domicilio.LocalidadSRCIdEnv ;;
     view_label: "Domicilio"
-    label: "Id Localidad Envio"
+    group_label: "Envio"
+    group_item_label: "Localidad Id"
+    label: "Envio Localidad Id"
   }
 
   dimension: localidad_srcid_fact {
     type: string
     sql: ${TABLE}.Domicilio.LocalidadSRCIdFact ;;
     view_label: "Domicilio"
-    label: "Id Localidad Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Localidad Id"
+    label: "Facturacion Localidad Id"
   }
 
   dimension: nombre_calle_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreCalleEnv ;;
     view_label: "Domicilio"
-    label: "Calle Envio"
+    group_label: "Envio"
+    group_item_label: "Calle"
+    label: "Envio Calle"
   }
 
   dimension: nombre_calle_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreCalleFact ;;
     view_label: "Domicilio"
-    label: "Calle Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Calle"
+    label: "Facturacion Calle"
   }
 
   dimension: nombre_localidad_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreLocalidadEnv ;;
     view_label: "Domicilio"
-    label: "Localidad Envio"
+    group_label: "Envio"
+    group_item_label: "Localidad"
+    label: "Envio Localidad"
   }
 
   dimension: nombre_localidad_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreLocalidadFact ;;
     view_label: "Domicilio"
-    label: "Localidad Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Localidad"
+    label: "Facturacion Localidad"
   }
 
   dimension: nombre_provincia_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaEnv ;;
     view_label: "Domicilio"
-    label: "Provincia Envio"
+    group_label: "Envio"
+    group_item_label: "Provincia"
+    label: "Envio Provincia"
   }
 
   dimension: nombre_provincia_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaFact ;;
     view_label: "Domicilio"
-    label: "Provincia Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Provincia"
+    label: "Facturacion Provincia"
   }
 
   dimension: provincia_srcid_env {
     type: string
     sql: ${TABLE}.Domicilio.ProvinciaSRCIdEnv ;;
     view_label: "Domicilio"
-    label: "Id Provincia Envio"
+    group_label: "Envio"
+    group_item_label: "Provincia Id"
+    label: "Envio Provincia Id"
   }
 
   dimension: provincia_srcid_fact {
     type: string
     sql: ${TABLE}.Domicilio.ProvinciaSRCIdFact ;;
     view_label: "Domicilio"
-    label: "Id Provincia Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Provincia Id"
+    label: "Facturacion Provincia Id"
   }
 
     ## Numbers
@@ -2095,14 +2132,18 @@ view: fth_orden {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroEnv ;;
     view_label: "Domicilio"
-    label: "Numero Envio"
+    group_label: "Envio"
+    group_item_label: "Numero"
+    label: "Envio Numero"
   }
 
   dimension: domicilio_numero_fact {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroFact ;;
     view_label: "Domicilio"
-    label: "Numero Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Numero"
+    label: "Facturacion Numero"
   }
 
     ## Location
@@ -2112,7 +2153,9 @@ view: fth_orden {
     sql_latitude: ${domicilio_latitud_env} ;;
     sql_longitude: ${domicilio_longitud_env} ;;
     view_label: "Domicilio"
-    label: "Envio"
+    group_label: "Envio"
+    group_item_label: "Ubicacion"
+    label: "Envio Ubicacion"
   }
 
   dimension: domicilio_fact_location {
@@ -2120,7 +2163,9 @@ view: fth_orden {
     sql_latitude: ${domicilio_latitud_fact} ;;
     sql_longitude: ${domicilio_longitud_fact} ;;
     view_label: "Domicilio"
-    label: "Facturacion"
+    group_label: "Facturacion"
+    group_item_label: "Ubicacion"
+    label: "Facturacion Ubicacion"
   }
 
     ## Hidden
@@ -2160,6 +2205,8 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSubTipoNombre ;;
     suggest_dimension: lk_producto_sub_tipo_opa.producto_sub_tipo_nombre
     view_label: "Orden Plan Anterior"
+    group_label: "Producto"
+    group_item_label: "Subtipo"
     label: "Producto Subtipo"
   }
 
@@ -2184,6 +2231,8 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo_opa.producto_tipo_nombre
     view_label: "Orden Plan Anterior"
+    group_label: "Producto"
+    group_item_label: "Tipo"
     label: "Producto Tipo"
   }
 
@@ -2191,41 +2240,45 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemProductoPadreSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Id Orden Item Producto Padre"
+    group_label: "Producto"
+    group_item_label: "Padre"
+    label: "Producto Padre Id"
   }
 
   dimension: opa_orden_item_producto_raiz_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemProductoRaizSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Id Orden Item Producto Raiz"
+    label: "Item Producto Raiz"
   }
 
   dimension: opa_orden_item_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Id Orden Item"
+    label: "Item"
   }
 
   dimension: opa_producto_adquirido_referente_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoAdquiridoReferenteSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Id Producto Adquirido Referente"
+    label: "Producto Adquirido Referente"
   }
 
   dimension: opa_producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoAdquiridoSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Id Producto Adquirido"
+    label: "Producto Adquirido"
   }
 
   dimension: opa_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoCodigo ;;
     view_label: "Orden Plan Anterior"
+    group_label: "Producto"
+    group_item_label: "Codigo"
     label: "Producto Codigo"
   }
 
@@ -2233,6 +2286,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoNombre ;;
     view_label: "Orden Plan Anterior"
+    group_label: "Producto"
     label: "Producto"
   }
 
@@ -2240,7 +2294,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Id Producto"
+    group_label: "Producto"
+    label: "Producto Id"
   }
 
     ## Hidden
@@ -2361,7 +2416,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaLocalidadSRCId ;;
     view_label: "Punto Venta"
-    label: "Id Localidad"
+    label: "Localidad"
   }
 
   dimension: punto_venta_nombre {
@@ -2596,8 +2651,8 @@ view: fth_orden {
     type: sum
     sql: ${orden_item_precio_lista} ;;
     group_label: "Total"
-    group_item_label: "Orden Item Precio Lista"
-    label: "Total Orden Item Precio Lista"
+    group_item_label: "Precio Lista"
+    label: "Total Precio Lista"
   }
 
   measure: total_orden_item_precio_recurrente {
@@ -3014,8 +3069,6 @@ view: fth_orden_medio_pago {
   dimension: medio_pago_marca_principal {
     type: yesno
     sql: MedioPagoMarcaPrincipal ;;
-    group_label: "Marcas"
-    group_item_label: "Principal"
     label: "Es Principal"
   }
 
