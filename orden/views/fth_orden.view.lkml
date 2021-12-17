@@ -30,7 +30,8 @@ view: fth_orden {
     sql: ${TABLE}.FechaEntidad ;;
     convert_tz: no
     datatype: date
-    label: "Fecha Entidad"
+    view_label: "Orden"
+    label: "Fecha Cierre"
     description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
@@ -39,7 +40,8 @@ view: fth_orden {
     sql: ${TABLE}.Fechas.OrdenItemFechaCreacionSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion"
+    group_item_label: "Creacion"
+    label: "Fecha Creacion"
   }
 
   dimension: orden_item_fecha_modificacion_src {
@@ -47,7 +49,8 @@ view: fth_orden {
     sql: ${TABLE}.Fechas.OrdenItemFechaModificacionSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Modificacion"
+    group_item_label: "Modificacion"
+    label: "Fecha Modificacion"
   }
 
   ## Flags
@@ -56,21 +59,24 @@ view: fth_orden {
     type: yesno
     sql: ${TABLE}.Marcas.OrdenItemMarcaFacturable ;;
     group_label: "Marcas"
-    group_item_label: "Marca Facturable"
+    group_item_label: "Facturable"
+    label: "Es Facturable"
   }
 
   dimension: orden_item_marca_no_provisionable {
     type: yesno
     sql: ${TABLE}.Marcas.OrdenItemMarcaNoProvisionable ;;
     group_label: "Marcas"
-    group_item_label: "Marca No Provisionable"
+    group_item_label: "No Provisionable"
+    label: "Es No Provisionable"
   }
 
   dimension: orden_item_requiere_cambio_dispositivo {
     type: yesno
     sql: ${TABLE}.Marcas.OrdenItemRequiereCambioDispositivo ;;
     group_label: "Marcas"
-    group_item_label: "Requiere Cambio Dispositivo"
+    group_item_label: "Cambio Dispositivo"
+    label: "Es Cambio Dispositivo"
   }
 
     ## Strings
@@ -131,7 +137,7 @@ view: fth_orden {
   dimension: orden_item_instancia_srcid {
     type: string
     sql: ${TABLE}.OrdenItemInstanciaSRCId ;;
-    label: "Instancia Id"
+    label: "Instancia"
   }
 
   dimension: orden_item_nmu {
@@ -158,6 +164,18 @@ view: fth_orden {
     label: "Numero Serie"
   }
 
+  dimension: orden_item_producto_padre_srcid {
+    type: string
+    sql: ${TABLE}.OrdenItemProductoPadreSRCId ;;
+    label: "Producto Padre"
+  }
+
+  dimension: orden_item_producto_raiz_srcid {
+    type: string
+    sql: ${TABLE}.OrdenItemProductoRaizSRCId ;;
+    label: "Producto Raiz"
+  }
+
   dimension: orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenItemSRCId ;;
@@ -176,7 +194,7 @@ view: fth_orden {
     type: number
     value_format_name: id
     sql: ${TABLE}.OrigenSRCId ;;
-    label: "Origen Id"
+    label: "Origen"
   }
 
   dimension: orden_item_mrc {
@@ -371,7 +389,6 @@ view: fth_orden {
     sql: ${TABLE}.Caso.Fechas.CasoFechaCreacionSRC ;;
     datatype: timestamp
     view_label: "Caso"
-    group_label: "Fechas"
     label: "Fecha Creacion"
   }
 
@@ -412,7 +429,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoMercadoDonantePortacionSRCId ;;
     view_label: "Caso"
-    label: "Mercado Donante Portacion Id"
+    label: "Mercado Donante Id"
   }
 
   dimension: caso_numero {
@@ -426,14 +443,14 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoOperadoraReceptoraSRCId ;;
     view_label: "Caso"
-    label: "Operadora Receptora Id"
+    label: "Operadora Receptora"
   }
 
   dimension: caso_padre_srcid {
     type: string
     sql: ${TABLE}.Caso.CasoPadreSRCId ;;
     view_label: "Caso"
-    label: "Padre Id"
+    label: "Padre"
   }
 
   dimension: caso_pinportabilidad {
@@ -447,7 +464,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoRedPortacionNombre ;;
     view_label: "Caso"
-    label: "Red Portacion Nombre"
+    label: "Red Portacion"
   }
 
   dimension: caso_srcid {
@@ -514,7 +531,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Cliente"
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion HW"
+    group_item_label: "Creacion HW"
+    label: "Fecha Creacion HW"
   }
 
   dimension: persona_fecha_creacion_src {
@@ -523,7 +541,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Cliente"
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion Persona"
+    group_item_label: "Creacion Persona"
+    label: "Fecha Creacion Persona"
   }
 
   dimension: persona_fecha_nacimiento {
@@ -533,7 +552,8 @@ view: fth_orden {
     convert_tz: no
     view_label: "Cliente"
     group_label: "Fechas"
-    group_item_label: "Fecha Nacimiento Persona"
+    group_item_label: "Nacimiento Persona"
+    label: "Fecha Nacimiento"
   }
 
     ## Strings
@@ -559,7 +579,7 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoNombre ;;
     suggest_dimension: lk_persona_tipo_documento.persona_tipo_documento_nombre
     view_label: "Cliente"
-    label: "Tipo Documento Nombre"
+    label: "Documento Tipo"
   }
 
   dimension: cuenta_tipo_nombre {
@@ -567,7 +587,7 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.CuentaTipoNombre ;;
     suggest_dimension: lk_cuenta_tipo.cuenta_tipo_nombre
     view_label: "Cliente"
-    label: "Cuenta Tipo Nombre"
+    label: "Cuenta Tipo"
   }
 
   dimension: cliente_tipo_nombre {
@@ -575,7 +595,7 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.ClienteTipoNombre ;;
     suggest_dimension: lk_cliente_tipo.cliente_tipo_nombre
     view_label: "Cliente"
-    label: "Tipo Nombre"
+    label: "Tipo"
   }
 
   dimension: cliente_ciclo_facturacion {
@@ -596,7 +616,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.ClientePersonaContactoSRCId ;;
     view_label: "Cliente"
-    label: "Persona Contacto Id"
+    label: "Contacto"
   }
 
   dimension: cliente_razon_social {
@@ -624,63 +644,63 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
     view_label: "Cliente"
-    label: "Cuenta Cliente Id"
+    label: "Cuenta Cliente"
   }
 
   dimension: cuenta_domicilio_envio_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaDomicilioEnvioSRCId ;;
     view_label: "Cliente"
-    label: "Cuenta Domicilio Envio Id"
+    label: "Cuenta Domicilio Envio"
   }
 
   dimension: cuenta_domicilio_facturacion_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaDomicilioFacturacionSRCId ;;
     view_label: "Cliente"
-    label: "Cuenta Domicilio Facturacion Id"
+    label: "Cuenta Domicilio Facturacion"
   }
 
   dimension: cuenta_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaSRCId ;;
     view_label: "Cliente"
-    label: "Cuenta Id"
+    label: "Cuenta"
   }
 
   dimension: persona_apellido {
     type: string
     sql: ${TABLE}.Cliente.PersonaApellido ;;
     view_label: "Cliente"
-    label: "Persona Apellido"
+    label: "Apellido"
   }
 
   dimension: persona_documento_numero {
     type: string
     sql: ${TABLE}.Cliente.PersonaDocumentoNumero ;;
     view_label: "Cliente"
-    label: "Persona Documento Numero"
+    label: "Documento Numero"
   }
 
   dimension: persona_email {
     type: string
     sql: ${TABLE}.Cliente.PersonaEmail ;;
     view_label: "Cliente"
-    label: "Persona Email"
+    label: "Email Persona"
   }
 
   dimension: persona_nombre {
     type: string
     sql: ${TABLE}.Cliente.PersonaNombre ;;
     view_label: "Cliente"
-    label: "Persona Nombre"
+    label: "Nombre"
   }
 
   dimension: persona_srcid {
     type: string
     sql: ${TABLE}.Cliente.PersonaSRCId ;;
     view_label: "Cliente"
-    label: "Persona Id"
+    label: "Persona"
   }
 
     ## Numbers
@@ -689,7 +709,7 @@ view: fth_orden {
     type: number
     sql: ${TABLE}.Cliente.PersonaEdad ;;
     view_label: "Cliente"
-    label: "Persona Edad"
+    label: "Edad"
   }
 
     ## Hidden
@@ -767,7 +787,8 @@ view: fth_orden {
     datatype: date
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Orden Ejecucion Cambio Ciclo"
+    group_item_label: "Ejecucion Cambio Ciclo"
+    label: "Fecha Ejecucion Cambio Ciclo"
   }
 
   dimension: orden_fecha_activacion_src {
@@ -776,7 +797,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Activacion"
+    group_item_label: "Activacion"
+    label: "Fecha Activacion"
   }
 
   dimension: orden_fecha_creacion_src {
@@ -785,7 +807,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion"
+    group_item_label: "Creacion"
+    label: "Fecha Creacion"
   }
 
   dimension: orden_fecha_entrega_src {
@@ -795,7 +818,8 @@ view: fth_orden {
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Entrega"
+    group_item_label: "Entrega"
+    label: "Fecha Entrega"
   }
 
   dimension: orden_fecha_fin_src {
@@ -805,7 +829,8 @@ view: fth_orden {
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Fin"
+    group_item_label: "Fin"
+    label: "Fecha Fin"
   }
 
   dimension: orden_fecha_inicio_src {
@@ -815,7 +840,8 @@ view: fth_orden {
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Inicio"
+    group_item_label: "Inicio"
+    label: "Fecha Inicio"
   }
 
   dimension: orden_fecha_mod_src {
@@ -824,7 +850,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Mod"
+    group_item_label: "Fecha"
+    label: "Fecha Modificacion"
   }
 
   dimension: orden_fecha_venta_src {
@@ -834,7 +861,8 @@ view: fth_orden {
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha Venta"
+    group_item_label: "Venta"
+    label: "Fecha Venta"
   }
 
     ## Flags
@@ -844,7 +872,8 @@ view: fth_orden {
     sql: ${TABLE}.Marcas.OrdenMarcaBatch ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Batch"
+    group_item_label: "Batch"
+    label: "Es Batch"
   }
 
   dimension: orden_marca_cambio_mercado {
@@ -852,7 +881,8 @@ view: fth_orden {
     sql: ${TABLE}.Marcas.OrdenMarcaCambioMercado ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Cambio Mercado"
+    group_item_label: "Cambio Mercado"
+    label: "Es Cambio Mercado"
   }
 
   dimension: orden_marca_cambio_producto {
@@ -860,7 +890,8 @@ view: fth_orden {
     sql: ${TABLE}.Marcas.OrdenMarcaCambioProducto ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Cambio Producto"
+    group_item_label: "Cambio Producto"
+    label: "Es Cambio Producto"
   }
 
   dimension: orden_marca_campania {
@@ -868,7 +899,8 @@ view: fth_orden {
     sql: ${TABLE}.Marcas.OrdenMarcaCampania ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Campania"
+    group_item_label: "Campania"
+    label: "Es Campania"
   }
 
   dimension: orden_marca_cierre_parcial {
@@ -876,7 +908,8 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenMarcaCierreParcial ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Cierre Parcial"
+    group_item_label: "Cierre Parcial"
+    label: "Es Cierre Parcial"
   }
 
   dimension: orden_prefactibilidad_flow {
@@ -884,7 +917,8 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPrefactibilidadFLOW ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Prefactibilidad Flow"
+    group_item_label: "Prefactibilidad Flow"
+    label: "Es Prefactibilidad Flow"
   }
 
   dimension: orden_prefactibilidad_toip {
@@ -892,7 +926,8 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPrefactibilidadTOIP ;;
     view_label: "Orden"
     group_label: "Marcas"
-    group_item_label: "Es Prefactibilidad TOIP"
+    group_item_label: "Prefactibilidad TOIP"
+    label: "Es Prefactibilidad TOIP"
   }
 
     ## Strings
@@ -910,7 +945,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenTipoSubGestionNombre ;;
     suggest_dimension: lk_orden_tipo_sub_gestion.orden_tipo_sub_gestion_nombre
     view_label: "Orden"
-    label: "Tipo Sub Gestion"
+    label: "Tipo Subgestion"
   }
 
   dimension: orden_tipo_cambio_plan_nombre {
@@ -981,14 +1016,14 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoValidadoClienteNombre ;;
     view_label: "Orden"
-    label: "Estado Validado Cliente Nombre"
+    label: "Estado Validado Cliente"
   }
 
   dimension: orden_grupo_trabajo_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenGrupoTrabajoNombre ;;
     view_label: "Orden"
-    label: "Grupo Trabajo Nombre"
+    label: "Grupo Trabajo"
   }
 
   dimension: orden_lista_productos_cuenta {
@@ -1023,21 +1058,21 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.CampaniaSRCId ;;
     view_label: "Orden"
-    label: "Campania Id"
+    label: "Campaña"
   }
 
   dimension: domicilio_direccion_entrega_srcid {
     type: string
     sql: ${TABLE}.Orden.DomicilioDireccionEntregaSRCId ;;
     view_label: "Orden"
-    label: "Domicilio Direccion Entrega Id"
+    label: "Domicilio Direccion Entrega"
   }
 
   dimension: metodo_pago_srcid {
     type: string
     sql: ${TABLE}.Orden.MetodoPagoSRCId ;;
     view_label: "Orden"
-    label: "Metodo Pago Id"
+    label: "Metodo Pago"
   }
 
   dimension: orden_ciclo_facturacion {
@@ -1079,28 +1114,28 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenContactoNombre ;;
     view_label: "Orden"
-    label: "Contacto Nombre"
+    label: "Contacto"
   }
 
   dimension: orden_cuenta_facturacion_predeterminada_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenCuentaFacturacionPredeterminadaSRCId ;;
     view_label: "Orden"
-    label: "Cuenta Facturacion Predeterminada Id"
+    label: "Cuenta Facturacion Predeterminada"
   }
 
   dimension: orden_cuenta_facturacion_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenCuentaFacturacionSRCId ;;
     view_label: "Orden"
-    label: "Cuenta Facturacion Id"
+    label: "Cuenta Facturacion"
   }
 
   dimension: orden_cuenta_servicio_predeterminada_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenCuentaServicioPredeterminadaSRCId ;;
     view_label: "Orden"
-    label: "Cuenta Servicio Predeterminada Id"
+    label: "Cuenta Servicio Predeterminada"
   }
 
   dimension: orden_detalle_error_insalvable {
@@ -1114,7 +1149,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenDireccionInstalacionSRCId ;;
     view_label: "Orden"
-    label: "Direccion Instalacion Id"
+    label: "Direccion Instalacion"
   }
 
   dimension: orden_ejecucion_cambio_ciclo_descripcion {
@@ -1135,7 +1170,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenMotivoAnulacionNombre ;;
     view_label: "Orden"
-    label: "Motivo Anulacion Nombre"
+    label: "Motivo Anulacion"
   }
 
   dimension: orden_nombre_apellido_autorizado {
@@ -1163,7 +1198,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenNumeroPreFactura ;;
     view_label: "Orden"
-    group_item_label: "Orden Numero Pre Factura"
+    label: "Numero Prefactura"
   }
 
   dimension: orden_numero_seguimiento {
@@ -1177,7 +1212,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenOriginalSRCId ;;
     view_label: "Orden"
-    label: "Original Id"
+    label: "Original"
   }
 
   dimension: orden_prefactibilidad_codigo_area {
@@ -1240,14 +1275,14 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenReemplazadaSRCId ;;
     view_label: "Orden"
-    label: "Reemplazada Id"
+    label: "Reemplazada"
   }
 
   dimension: orden_seguimiento_entrega_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenSeguimientoEntregaSRCId ;;
     view_label: "Orden"
-    label: "Seguimiento Entrega Id"
+    label: "Seguimiento Entrega"
   }
 
   dimension: orden_simulacion_factura {
@@ -1275,28 +1310,28 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenTransaccionEntregaSRCId ;;
     view_label: "Orden"
-    label: "Transaccion Entrega Id"
+    label: "Transaccion Entrega"
   }
 
   dimension: orden_usuario_activacion_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenUsuarioActivacionSRCId ;;
     view_label: "Orden"
-    label: "Usuario Activacion Id"
+    label: "Usuario Activacion"
   }
 
   dimension: orden_usuario_creacion_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenUsuarioCreacionSRCId ;;
     view_label: "Orden"
-    label: "Usuario Creacion Id"
+    label: "Usuario Creacion"
   }
 
   dimension: orden_usuario_mod_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenUsuarioModSRCId ;;
     view_label: "Orden"
-    label: "Usuario Mod Id"
+    label: "Usuario Modificacion"
   }
 
     ## Numbers
@@ -1467,7 +1502,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Producto"
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion"
+    group_item_label: "Creacion"
+    label: "Fecha Creacion"
   }
 
   dimension: producto_fecha_modificacion_src {
@@ -1476,7 +1512,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Producto"
     group_label: "Fechas"
-    group_item_label: "Fecha Modificacion"
+    group_item_label: "Modificacion"
+    label: "Fecha Modificacion"
   }
 
   dimension: producto_vigencia_desde_src {
@@ -1487,6 +1524,7 @@ view: fth_orden {
     view_label: "Producto"
     group_label: "Fechas"
     group_item_label: "Vigencia Desde"
+    label: "Fecha Vigencia Desde"
   }
 
   dimension: producto_vigencia_hasta_src {
@@ -1497,6 +1535,7 @@ view: fth_orden {
     view_label: "Producto"
     group_label: "Fechas"
     group_item_label: "Vigencia Hasta"
+    label: "Fecha Vigencia Hasta"
   }
 
     ## Flags
@@ -1505,8 +1544,9 @@ view: fth_orden {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaActivo ;;
     view_label: "Producto"
-    group_label: " Marcas"
-    group_item_label: " Es Activo"
+    group_label: "Marcas"
+    group_item_label: "Activo"
+    label: "Es Activo"
   }
 
   dimension: producto_marca_configurable {
@@ -1514,7 +1554,8 @@ view: fth_orden {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaConfigurable ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Es Configurable"
+    group_item_label: "Configurable"
+    label: "Es Configurable"
   }
 
   dimension: producto_marca_no_assetizable {
@@ -1522,7 +1563,8 @@ view: fth_orden {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaNoAssetizable ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: " Es No Assetizable"
+    group_item_label: "No Assetizable"
+    label: "Es No Assetizable"
   }
 
   dimension: producto_marca_orderable {
@@ -1530,7 +1572,8 @@ view: fth_orden {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaOrderable ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Es Marca Orderable"
+    group_item_label: "Orderable"
+    label: "Es Orderable"
   }
 
   dimension: producto_marca_pertenece_bundle {
@@ -1538,7 +1581,8 @@ view: fth_orden {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaPerteneceBundle ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: " Es Bundle"
+    group_item_label: "Bundle"
+    label: "Es Bundle"
   }
 
   dimension: producto_marca_principal {
@@ -1546,7 +1590,8 @@ view: fth_orden {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaPrincipal ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Es Principal"
+    group_item_label: "Principal"
+    label: "Es Principal"
   }
 
   dimension: producto_marca_tangible {
@@ -1554,7 +1599,8 @@ view: fth_orden {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaTangible ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Es Tangible"
+    group_item_label: "Tangible"
+    label: "Es Tangible"
   }
 
     ## Strings
@@ -1617,21 +1663,21 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenCodigo ;;
     view_label: "Producto"
-    label: "Sistema Origen Codigo"
+    label: "Codigo Sistema Origen"
   }
 
   dimension: producto_sistema_origen_descripcion {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenDescripcion ;;
     view_label: "Producto"
-    label: "Sistema Origen Descripcion"
+    label: "Sistema Origen"
   }
 
   dimension: producto_sistema_origen_intid {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenINTId ;;
     view_label: "Producto"
-    label: "Sistema Origen Int Id"
+    label: "Sistema Origen Int"
   }
 
   dimension: producto_srcid {
@@ -1645,28 +1691,14 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoObjetoDescripcion ;;
     view_label: "Producto"
-    label: "Tipo Objeto Descripcion"
-  }
-
-  dimension: orden_item_producto_padre_srcid {
-    type: string
-    sql: ${TABLE}.Producto.OrdenItemProductoPadreSRCId ;;
-    view_label: "Producto"
-    label: "Orden Item Producto Padre Id"
-  }
-
-  dimension: orden_item_producto_raiz_srcid {
-    type: string
-    sql: ${TABLE}.Producto.OrdenItemProductoRaizSRCId ;;
-    view_label: "Producto"
-    group_item_label: "Orden Item Producto Raiz Id"
+    label: "Tipo Objeto"
   }
 
   dimension: producto_codigo {
     type: string
     sql: ${TABLE}.Producto.ProductoCodigo ;;
     view_label: "Producto"
-    group_item_label: "Codigo"
+    label: "Codigo"
   }
 
   dimension: producto_descripcion {
@@ -1750,7 +1782,8 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fechas"
-    group_item_label: "Fecha Baja"
+    group_item_label: "Baja"
+    label: "Fecha Baja"
   }
 
   dimension: producto_adquirido_fecha_compra_src {
@@ -1760,7 +1793,8 @@ view: fth_orden {
     convert_tz: no
     view_label: "Producto Adquirido"
     group_label: "Fechas"
-    group_item_label: "Fecha Compra"
+    group_item_label: " Compra"
+    label: "Fecha Compra"
   }
 
     ## Strings
@@ -1799,77 +1833,77 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoICCIDSRCId ;;
     view_label: "Producto Adquirido"
-    label: "Producto Adquirido Iccidsrcid"
+    label: "Producto Adquirido ICCID"
   }
 
   dimension: producto_adquirido_imei {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoIMEI ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "IMEI"
   }
 
   dimension: producto_adquirido_marca_producto {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMarcaProducto ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Marca"
   }
 
   dimension: producto_adquirido_modelo_producto {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoModeloProducto ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Modelo"
   }
 
   dimension: producto_adquirido_nmu {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNMU ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "NMU"
   }
 
   dimension: producto_adquirido_numero_linea {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNumeroLinea ;;
-    view_label:: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Numero Linea"
   }
 
   dimension: producto_adquirido_referente_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoReferenteSRCId ;;
-    view_label:: "Producto Adquirido"
-    label: "Referente Srcid"
+    view_label: "Producto Adquirido"
+    label: "Referente"
   }
 
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
     view_label: "Producto Adquirido"
-    label: "Srcid"
+    label: "Nombre"
   }
 
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquirido.RangoNumeracionDepartamentoNombre ;;
     view_label: "Producto Adquirido"
-    label: "Rango Numeracion Departamento Nombre"
+    label: "Rango Numeracion Departamento"
   }
 
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquirido.RangoNumeracionLocalidadNombre ;;
     view_label: "Producto Adquirido"
-    label: "Rango Numeracion Localidad Nombre"
+    label: "Rango Numeracion Localidad"
   }
 
   dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquirido.RangoNumeracionProvinciaNombre ;;
     view_label: "Producto Adquirido"
-    label: "Rango Numeracion Provincia Nombre"
+    label: "Rango Numeracion Provincia"
   }
 
     ## Numbers
@@ -1877,15 +1911,17 @@ view: fth_orden {
   dimension: rango_numeracion_prefijo_interurbano {
     type: number
     sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoInterurbano ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     group_item_label: "Rango Numeracion Prefijo Interurbano"
+    label: "Rango Numeracion Prefijo Interurbano"
   }
 
   dimension: rango_numeracion_prefijo_urbano {
     type: number
     sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoUrbano ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     group_item_label: "Rango Numeracion Prefijo Urbano"
+    label: "Rango Numeracion Prefijo Urbano"
   }
 
   ## Hidden
@@ -1915,6 +1951,7 @@ view: fth_orden {
   }
 
   dimension: es_numero_linea {
+    hidden: yes
     type: yesno
     sql: LENGHT(TRIM(${producto_adquirido_numero_linea})) = 10 ;;
   }
@@ -1929,170 +1966,230 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalEnv ;;
     view_label: "Domicilio"
-    label: "Codigo Postal Env"
+    group_label: "Envio"
+    group_item_label: "Codigo Postal"
+    label: "Codigo Postal Envio"
   }
 
   dimension: domicilio_codigo_postal_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalFact ;;
     view_label: "Domicilio"
-    label: "Codigo Postal Fact"
+    group_label: "Facturacion"
+    group_item_label: "Codigo Postal"
+    label: "Codigo Postal Facturacion"
   }
 
   dimension: domicilio_planta_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPlantaEnv ;;
     view_label: "Domicilio"
-    label: "Planta Env"
+    group_label: "Envio"
+    group_item_label: "Planta"
+    label: "Planta Envio"
   }
 
   dimension: domicilio_planta_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPlantaFact ;;
     view_label: "Domicilio"
-    label: "Planta Fact"
+    group_label: "Facturacion"
+    group_item_label: "Planta"
+    label: "Planta Facturacion"
   }
 
   dimension: domicilio_puerta_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPuertaEnv ;;
     view_label: "Domicilio"
-    label: "Puerta Env"
+    group_label: "Envio"
+    group_item_label: "Puerta"
+    label: "Puerta Envio"
   }
 
   dimension: domicilio_puerta_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPuertaFact ;;
     view_label: "Domicilio"
-    label: "Puerta Fact"
+    group_label: "Facturacion"
+    group_item_label: "Puerta"
+    label: "Puerta Facturacion"
   }
 
   dimension: domicilio_srcid_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioSRCIdEnv ;;
     view_label: "Domicilio"
-    label: "Srcid Env"
+    group_label: "Envio"
+    group_item_label: "Id"
+    label: "Envio Id"
   }
 
   dimension: domicilio_srcid_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioSRCIdFact ;;
     view_label: "Domicilio"
-    label: "Srcid Fact"
+    group_label: "Facturacion"
+    group_item_label: "Id"
+    label: "Facturacion Id"
   }
 
   dimension: localidad_srcid_env {
     type: string
     sql: ${TABLE}.Domicilio.LocalidadSRCIdEnv ;;
     view_label: "Domicilio"
-    label: "Localidad Srcid Env"
+    group_label: "Envio"
+    group_item_label: "Localidad Id"
+    label: "Envio Localidad Id"
   }
 
   dimension: localidad_srcid_fact {
     type: string
     sql: ${TABLE}.Domicilio.LocalidadSRCIdFact ;;
     view_label: "Domicilio"
-    label: "Localidad Srcid Fact"
+    group_label: "Facturacion"
+    group_item_label: "Localidad Id"
+    label: "Facturacion Localidad Id"
   }
 
   dimension: nombre_calle_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreCalleEnv ;;
     view_label: "Domicilio"
-    label: "Nombre Calle Env"
+    group_label: "Envio"
+    group_item_label: "Calle"
+    label: "Envio Calle"
   }
 
   dimension: nombre_calle_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreCalleFact ;;
     view_label: "Domicilio"
-    label: "Nombre Calle Fact"
+    group_label: "Facturacion"
+    group_item_label: "Calle"
+    label: "Facturacion Calle"
   }
 
   dimension: nombre_localidad_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreLocalidadEnv ;;
     view_label: "Domicilio"
-    label: "Nombre Localidad Env"
+    group_label: "Envio"
+    group_item_label: "Localidad"
+    label: "Envio Localidad"
   }
 
   dimension: nombre_localidad_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreLocalidadFact ;;
     view_label: "Domicilio"
-    label: "Nombre Localidad Fact"
+    group_label: "Facturacion"
+    group_item_label: "Localidad"
+    label: "Facturacion Localidad"
   }
 
   dimension: nombre_provincia_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaEnv ;;
     view_label: "Domicilio"
-    label: "Nombre Provincia Env"
+    group_label: "Envio"
+    group_item_label: "Provincia"
+    label: "Envio Provincia"
   }
 
   dimension: nombre_provincia_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaFact ;;
     view_label: "Domicilio"
-    label: "Nombre Provincia Fact"
+    group_label: "Facturacion"
+    group_item_label: "Provincia"
+    label: "Facturacion Provincia"
   }
 
   dimension: provincia_srcid_env {
     type: string
     sql: ${TABLE}.Domicilio.ProvinciaSRCIdEnv ;;
     view_label: "Domicilio"
-    label: "Provincia Srcid Env"
+    group_label: "Envio"
+    group_item_label: "Provincia Id"
+    label: "Envio Provincia Id"
   }
 
   dimension: provincia_srcid_fact {
     type: string
     sql: ${TABLE}.Domicilio.ProvinciaSRCIdFact ;;
     view_label: "Domicilio"
-    label: "Provincia Srcid Fact"
+    group_label: "Facturacion"
+    group_item_label: "Provincia Id"
+    label: "Facturacion Provincia Id"
   }
 
     ## Numbers
-
-  dimension: domicilio_latitud_env {
-    type: number
-    sql: ${TABLE}.Domicilio.DomicilioLatitudEnv ;;
-    view_label: "Domicilio"
-    label: "Latitud Env"
-  }
-
-  dimension: domicilio_latitud_fact {
-    type: number
-    sql: ${TABLE}.Domicilio.DomicilioLatitudFact ;;
-    view_label: "Domicilio"
-    label: "Latitud Fact"
-  }
-
-  dimension: domicilio_longitud_env {
-    type: number
-    sql: ${TABLE}.Domicilio.DomicilioLongitudEnv ;;
-    view_label: "Domicilio"
-    label: "Longitud Env"
-  }
-
-  dimension: domicilio_longitud_fact {
-    type: number
-    sql: ${TABLE}.Domicilio.DomicilioLongitudFact ;;
-    view_label: "Domicilio"
-    label: "Longitud Fact"
-  }
 
   dimension: domicilio_numero_env {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroEnv ;;
     view_label: "Domicilio"
-    label: "Numero Env"
+    group_label: "Envio"
+    group_item_label: "Numero"
+    label: "Envio Numero"
   }
 
   dimension: domicilio_numero_fact {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroFact ;;
     view_label: "Domicilio"
-    label: "Numero Fact"
+    group_label: "Facturacion"
+    group_item_label: "Numero"
+    label: "Facturacion Numero"
+  }
+
+    ## Location
+
+  dimension: domicilio_env_location {
+    type: location
+    sql_latitude: ${domicilio_latitud_env} ;;
+    sql_longitude: ${domicilio_longitud_env} ;;
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Ubicacion"
+    label: "Envio Ubicacion"
+  }
+
+  dimension: domicilio_fact_location {
+    type: location
+    sql_latitude: ${domicilio_latitud_fact} ;;
+    sql_longitude: ${domicilio_longitud_fact} ;;
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Ubicacion"
+    label: "Facturacion Ubicacion"
+  }
+
+    ## Hidden
+
+  dimension: domicilio_latitud_env {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Domicilio.DomicilioLatitudEnv ;;
+  }
+
+  dimension: domicilio_longitud_env {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Domicilio.DomicilioLongitudEnv ;;
+  }
+
+  dimension: domicilio_latitud_fact {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Domicilio.DomicilioLatitudFact ;;
+  }
+
+  dimension: domicilio_longitud_fact {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Domicilio.DomicilioLongitudFact ;;
   }
 
   #########################
@@ -2106,7 +2203,9 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSubTipoNombre ;;
     suggest_dimension: lk_producto_sub_tipo_opa.producto_sub_tipo_nombre
     view_label: "Orden Plan Anterior"
-    label: "Producto Sub Tipo Nombre"
+    group_label: "Producto"
+    group_item_label: "Subtipo"
+    label: "Producto Subtipo"
   }
 
   dimension: opa_orden_estado_nombre {
@@ -2114,7 +2213,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenEstadoNombre ;;
     suggest_dimension: lk_orden_estado_opa.orden_estado_nombre
     view_label: "Orden Plan Anterior"
-    label: "Orden Estado Nombre"
+    label: "Estado"
   }
 
   dimension: opa_orden_item_accion_nombre {
@@ -2122,7 +2221,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemAccionNombre ;;
     suggest_dimension: lk_orden_item_accion_opa.orden_item_accion_nombre
     view_label: "Orden Plan Anterior"
-    label: "Orden Item Accion Nombre"
+    label: "Item Accion"
   }
 
   dimension: opa_producto_tipo_nombre {
@@ -2130,48 +2229,54 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo_opa.producto_tipo_nombre
     view_label: "Orden Plan Anterior"
-    label: "Producto Tipo Nombre"
+    group_label: "Producto"
+    group_item_label: "Tipo"
+    label: "Producto Tipo"
   }
 
   dimension: opa_orden_item_producto_padre_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemProductoPadreSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Orden Item Producto Padre Id"
+    group_label: "Producto"
+    group_item_label: "Padre"
+    label: "Producto Padre Id"
   }
 
   dimension: opa_orden_item_producto_raiz_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemProductoRaizSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Orden Item Producto Raiz Id"
+    label: "Item Producto Raiz"
   }
 
   dimension: opa_orden_item_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.OrdenItemSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Orden Item Id"
+    label: "Item"
   }
 
   dimension: opa_producto_adquirido_referente_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoAdquiridoReferenteSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Producto Adquirido Referente Id"
+    label: "Producto Adquirido Referente"
   }
 
   dimension: opa_producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoAdquiridoSRCId ;;
     view_label: "Orden Plan Anterior"
-    label: "Producto Adquirido Id"
+    label: "Producto Adquirido"
   }
 
   dimension: opa_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoCodigo ;;
     view_label: "Orden Plan Anterior"
+    group_label: "Producto"
+    group_item_label: "Codigo"
     label: "Producto Codigo"
   }
 
@@ -2179,13 +2284,15 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoNombre ;;
     view_label: "Orden Plan Anterior"
-    label: "Producto Nombre"
+    group_label: "Producto"
+    label: "Producto"
   }
 
   dimension: opa_producto_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSRCId ;;
     view_label: "Orden Plan Anterior"
+    group_label: "Producto"
     label: "Producto Id"
   }
 
@@ -2307,7 +2414,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaLocalidadSRCId ;;
     view_label: "Punto Venta"
-    label: "Localidad Id"
+    label: "Localidad"
   }
 
   dimension: punto_venta_nombre {
@@ -2461,134 +2568,153 @@ view: fth_orden {
   measure: total_orden_item_cantidad {
     type: sum
     sql: ${orden_item_cantidad};;
-    group_label: "Orden Item"
-    group_item_label: "Total Orden Item"
+    group_label: "Total"
+    group_item_label: "Orden Items"
+    label: "Total Orden Items"
   }
 
   measure: total_orden_item_cargo_recurrente {
     type: sum
     sql: ${orden_item_cargo_recurrente} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Cargo Recurrente"
+    group_label: "Total"
+    group_item_label: "Cargo Recurrente"
+    label: "Total Cargo Recurrente"
   }
 
   measure: total_orden_item_cargo_recurrente_sin_impuesto {
     type: sum
     sql: ${orden_item_cargo_recurrente_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Cargo Recurrente Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Cargo Recurrente Sin Impuesto"
+    label: "Total Cargo Recurrente Sin Impuesto"
   }
 
   measure: total_orden_item_cargo_unica_vez {
     type: sum
     sql: ${orden_item_cargo_unica_vez} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Cargo Unica Vez"
+    group_label: "Total"
+    group_item_label: "Cargo Unica Vez"
+    label: "Total Cargo Unica Vez"
   }
 
   measure: total_orden_item_precio_calculado_recurrente {
     type: sum
     sql: ${orden_item_precio_calculado_recurrente} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Calculado Recurrente"
+    group_label: "Total"
+    group_item_label: "Precio Calculado Recurrente"
+    label: "Total Precio Calculado Recurrente"
   }
 
   measure: total_orden_item_precio_calculado_recurrente_sin_impuesto {
     type: sum
     sql: ${orden_item_precio_calculado_recurrente_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Calculado Recurrente Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Precio Calculado Recurrente Sin Impuesto"
+    label: "Total Precio Calculado Recurrente Sin Impuesto"
   }
 
   measure: total_orden_item_precio_dcto_unica_vez {
     type: sum
     sql: ${orden_item_precio_dcto_unica_vez} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Descuento Unica Vez"
+    group_label: "Total"
+    group_item_label: "Precio Descuento Unica Vez"
+    label: "Total Precio Descuento Unica Vez"
   }
 
   measure: total_orden_item_precio_dcto_unica_vez_sin_impuesto {
     type: sum
     sql: ${orden_item_precio_dcto_unica_vez_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Dcto Unica Vez Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Precio Dcto Unica Vez Sin Impuesto"
+    label: "Total Precio Dcto Unica Vez Sin Impuesto"
   }
 
   measure: total_orden_item_precio_efectivo_unica_vez {
     type: sum
     sql: ${orden_item_precio_efectivo_unica_vez} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Efectivo Unica Vez"
+    group_label: "Total"
+    group_item_label: "Precio Efectivo Unica Vez"
+    label: "Total Precio Efectivo Unica Vez"
   }
 
   measure: total_orden_item_precio_efectivo_unica_vez_sin_impuesto {
     type: sum
     sql: ${orden_item_precio_efectivo_unica_vez_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Efectivo Unica Vez Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Precio Efectivo Unica Vez Sin Impuesto"
+    label: "Total Precio Efectivo Unica Vez Sin Impuesto"
   }
 
   measure: total_orden_item_precio_lista {
     type: sum
     sql: ${orden_item_precio_lista} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Orden Item Precio Lista"
+    group_label: "Total"
+    group_item_label: "Precio Lista"
+    label: "Total Precio Lista"
   }
 
   measure: total_orden_item_precio_recurrente {
     type: sum
     sql: ${orden_item_precio_recurrente} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Recurrente"
+    group_label: "Total"
+    group_item_label: "Precio Recurrente"
+    label: "Total Precio Recurrente"
   }
 
   measure: total_orden_item_precio_recurrente_sin_impuesto {
     type: sum
     sql: ${orden_item_precio_recurrente_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Recurrente Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Precio Recurrente Sin Impuesto"
+    label: "Total Precio Recurrente Sin Impuesto"
   }
 
   measure: total_orden_item_precio_total_unica_vez {
     type: sum
     sql: ${orden_item_precio_total_unica_vez} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Total Unica Vez"
+    group_label: "Total"
+    group_item_label: "Precio Total Unica Vez"
+    label: "Total Precio Total Unica Vez"
   }
 
   measure: total_orden_item_precio_total_unica_vez_sin_impuesto {
     type: sum
     sql: ${orden_item_precio_total_unica_vez_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Total Unica Vez Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Precio Total Unica Vez Sin Impuesto"
+    label: "Total Precio Total Unica Vez Sin Impuesto"
   }
 
   measure: total_orden_item_precio_unitario {
     type: sum
     sql: ${orden_item_precio_unitario} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Precio Unitario"
+    group_label: "Total"
+    group_item_label: "Precio Unitario"
+    label: "Total Precio Unitario"
   }
 
   measure: total_orden_item_total_recurrente_sin_impuesto {
     type: sum
     sql: ${orden_item_total_recurrente_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Recurrente Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Recurrente Sin Impuesto"
+    label: "Total Recurrente Sin Impuesto"
   }
 
   measure: total_orden_item_total_recurrente {
     type: sum
     sql: ${orden_item_total_recurrente} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Recurrente"
+    group_label: "Total"
+    group_item_label: "Recurrente"
+    label: "Total Recurrente"
   }
 
   measure: total_orden_item_cargo_unica_vez_sin_impuesto {
     type: sum
     sql: ${orden_item_cargo_unica_vez_sin_impuesto} ;;
-    group_label: "Orden Item"
-    group_item_label: "Total Cargo Unica Vez Sin Impuesto"
+    group_label: "Total"
+    group_item_label: "Cargo Unica Vez Sin Impuesto"
+    label: "Total Cargo Unica Vez Sin Impuesto"
   }
 
   ## Orden
@@ -2597,38 +2723,48 @@ view: fth_orden {
     type: sum_distinct
     sql_distinct_key: ${orden_srcid} ;;
     sql: ${orden_precio_total} ;;
-    group_label: "Orden"
-    group_item_label: "Total Precio Total"
+    view_label: "Orden"
+    group_label: "Total"
+    group_item_label: "Precio"
+    label: "Total Precio"
   }
 
   measure: total_orden_precio_total_recurrente {
     type: sum_distinct
     sql_distinct_key: ${orden_srcid} ;;
     sql: ${orden_precio_total_recurrente} ;;
-    group_label: "Orden"
-    group_item_label: "Total Precio Total Recurrente"
+    view_label: "Orden"
+    group_label: "Total"
+    group_item_label: "Precio Recurrente"
+    label: "Total Precio Recurrente"
   }
 
   measure: total_orden_precio_total_una_vez {
     type: sum_distinct
     sql_distinct_key: ${orden_srcid} ;;
     sql: ${orden_precio_total_una_vez} ;;
-    group_label: "Orden"
-    group_item_label: "Total Precio Total Una Vez"
+    view_label: "Orden"
+    group_label: "Total"
+    group_item_label: "Precio Una Vez"
+    label: "Total Precio Una Vez"
   }
 
   measure: orden_count {
     type: count_distinct
     sql: ${orden_srcid} ;;
-    group_label: "Orden"
-    group_item_label: "Cantidad de Ordenes"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Ordenes"
+    label: "Cantidad de Ordenes"
   }
 
   measure: count_cambio_plan_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Cambios de Plan Efectiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Cambios de Plan Efectiva"
+    label: "Cantidad Cambios de Plan Efectiva"
     description: "Ordenes de Cambios de Plan Activadas POSPAGO, HIBRIDO, PREPAGO"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2641,8 +2777,10 @@ view: fth_orden {
   measure: count_venta_terminal_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Venta de Terminal Efectiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Venta de Terminal Efectiva"
+    label: "Cantidad Venta de Terminal Efectiva"
     description: "Ordenes de Ventas de dispositivos móviles activas"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2655,8 +2793,10 @@ view: fth_orden {
   measure: count_baja_voluntaria_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
+    view_label: "Orden"
+    group_label: "Cantidad"
     group_item_label: "Cantidad Bajas Voluntaria Efectiva"
+    label: "Cantidad Bajas Voluntaria Efectiva"
     description: "Ordenes de Bajas Voluntarias Cumplidas"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2669,8 +2809,10 @@ view: fth_orden {
   measure: count_baja_fraude_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Baja Fraude Efectiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Baja Fraude Efectiva"
+    label: "Cantidad Baja Fraude Efectiva"
     description: "Ordenes de Bajas por Fraude Cumplidas"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2682,8 +2824,10 @@ view: fth_orden {
   measure: count_baja_tiempo_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Bajas Masiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Bajas Masiva"
+    label: "Cantidad Bajas Masiva"
     description: "Ordenes de Bajas por Tiempo Cumplidas"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2696,8 +2840,10 @@ view: fth_orden {
   measure: count_baja_mora_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Baja Mora Efectiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Baja Mora Efectiva"
+    label: "Cantidad Baja Mora Efectiva"
     description: "Ordenes de Bajas por Mora"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2709,8 +2855,10 @@ view: fth_orden {
   measure: count_cambio_sim_efectiva {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Cambio SIM Efectiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Cambio SIM Efectiva"
+    label: "Cantidad Cambio SIM Efectiva"
     description: "Ordenes de Cambio de SIM Activadas"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2723,8 +2871,10 @@ view: fth_orden {
   measure: count_baja_suspension_portout {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Baja Suspension Portout Efectiva"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Baja Suspension Portout Efectiva"
+    label: "Cantidad Baja Suspension Portout Efectiva"
     description: "Ordenes de tipo gestion suspension por PORTOUT Efectivas"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2738,8 +2888,10 @@ view: fth_orden {
   measure: count_demanda_retencion {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Demanda Retencion"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Demanda Retencion"
+    label: "Cantidad Demanda Retencion"
     description: "Intenciones de bajas,vistas desde las ordenes registradas"
     filters: [
         orden_estado_nombre:"ACTIVADA, INICIADA"
@@ -2751,8 +2903,10 @@ view: fth_orden {
   measure: count_upselling_plan {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Plan Upselling"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Plan Upselling"
+    label: "Cantidad Plan Upselling"
     description: "Ordenes de Cambio de plan cuyo precio con promocion es mayor al Asset que se desconecta"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2766,8 +2920,10 @@ view: fth_orden {
   measure: count_downselling_plan {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Plan Downselling"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Plan Downselling"
+    label: "Cantidad Plan Downselling"
     description: "Ordenes de Cambio de plan cuyo precio con promocion es menor al Asset que se desconecta"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2781,8 +2937,10 @@ view: fth_orden {
   measure: count_cross_sell_plan {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Plan Cross Sell"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Plan Cross Sell"
+    label: "Cantidad Plan Cross Sell"
     description: "Ordenes Cambio de plan cuyo precio con promocion es igual al Asset que se desconecta"
     filters: [
         orden_estado_nombre: "ACTIVADA"
@@ -2796,8 +2954,10 @@ view: fth_orden {
   measure: count_portin_brutas {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Portin Brutas"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Portin Brutas"
+    label: "Cantidad Portin Brutas"
     description: "Ordenes de portabilidad registradas"
     filters:[
       , orden_item_accion_nombre: "AGREGAR"
@@ -2809,8 +2969,10 @@ view: fth_orden {
   measure: count_portin_netas {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
-    group_item_label: "Cantidad Portin Netas"
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Portin Netas"
+    label: "Cantidad Portin Netas"
     description: "Ordenes de portabilidad activadas/netas"
     filters:[
         orden_estado_nombre: "ACTIVADA"
@@ -2823,8 +2985,10 @@ view: fth_orden {
   measure: count_suspen_voluntaria_movil {
     type: count_distinct
     sql: ${orden_srcid};;
-    group_label: "Orden"
+    view_label: "Orden"
+    group_label: "Cantidad"
     group_item_label: "Cantidad Suspension Voluntaria Movil"
+    label: "Cantidad Suspension Voluntaria Movil"
     description: "Ordenes de suspensión voluntaria por pedido de baja"
     filters:[
         orden_estado_nombre: "ACTIVADA"
@@ -2840,15 +3004,19 @@ view: fth_orden {
   measure: total_opa_orden_item_cargo_recurrente {
     type: sum
     sql: ${opa_orden_item_cargo_recurrente} ;;
-    group_label: "Orden Plan Anterior"
-    group_item_label: "Total Orden Item Cargo Recurrente"
+    view_label: "Orden Plan Anterior"
+    group_label: "Total"
+    group_item_label: "Orden Item Cargo Recurrente"
+    label: "Total Orden Item Cargo Recurrente"
   }
 
   measure: total_opa_orden_item_precio_calculado_recurrente {
     type: sum
     sql: ${opa_orden_item_precio_calculado_recurrente} ;;
-    group_label: "Orden Plan Anterior"
-    group_item_label: "Total Orden Item Precio Calculado Recurrente"
+    view_label: "Orden Plan Anterior"
+    group_label: "Total"
+    group_item_label: "Orden Item Precio Calculado Recurrente"
+    label: "Total Orden Item Precio Calculado Recurrente"
   }
 }
 
@@ -2899,8 +3067,7 @@ view: fth_orden_medio_pago {
   dimension: medio_pago_marca_principal {
     type: yesno
     sql: MedioPagoMarcaPrincipal ;;
-    group_label: "Marcas"
-    group_item_label: "Es Principal"
+    label: "Es Principal"
   }
 
     ## Hidden

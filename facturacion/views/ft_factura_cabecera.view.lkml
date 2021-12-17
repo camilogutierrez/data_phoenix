@@ -28,8 +28,8 @@ view: ft_factura_cabecera {
     ]
     sql: ${TABLE}.INVOICE_DATE ;;
     datatype: timestamp
-    label: "Creacion"
     group_label: "Fecha Creacion"
+    label: "Creacion"
   }
 
   dimension_group: due {
@@ -46,8 +46,8 @@ view: ft_factura_cabecera {
     ]
     sql: ${TABLE}.DUE_DATE ;;
     datatype: timestamp
-    label: "Vencimiento"
     group_label: "Fecha Vencimiento"
+    label: "Vencimiento"
   }
 
   ## Strings
@@ -61,31 +61,36 @@ view: ft_factura_cabecera {
   dimension: addr_altura_piso_depto {
     type: string
     sql: ${TABLE}.ADDR_ALTURA_PISO_DEPTO ;;
-    label: "Cliente Altura / Piso / Depto"
+    view_label: "Cliente"
+    label: "Altura / Piso / Depto"
   }
 
   dimension: addr_calle {
     type: string
     sql: ${TABLE}.ADDR_CALLE ;;
-    label: "Cliente Calle"
+    view_label: "Cliente"
+    label: "Calle"
   }
 
   dimension: addr_localidad {
     type: string
     sql: ${TABLE}.ADDR_LOCALIDAD ;;
-    label: "Cliente Localidad"
+    view_label: "Cliente"
+    label: "Localidad"
   }
 
   dimension: addr_postal_code {
     type: string
     sql: ${TABLE}.ADDR_POSTAL_CODE ;;
+    view_label: "Cliente"
     label: "Codigo Postal"
   }
 
   dimension: addr_provincia {
     type: string
     sql: ${TABLE}.ADDR_PROVINCIA ;;
-    label: "Cliente Provincia"
+    view_label: "Cliente"
+    label: "Provincia"
   }
 
   dimension: bill_cycle_id {
@@ -126,67 +131,80 @@ view: ft_factura_cabecera {
   dimension: cust_document_number {
     type: string
     sql: ${TABLE}.CUST_DOCUMENT_NUMBER ;;
-    label: "Cliente Numero Documento"
+    view_label: "Cliente"
+    label: "Documento Numero"
   }
 
   dimension: cust_document_type {
     type: string
     sql: ${TABLE}.CUST_DOCUMENT_TYPE ;;
-    label: "Cliente Tipo"
+    view_label: "Cliente"
+    label: "Tipo"
   }
 
   dimension: cust_first_name {
     type: string
     sql: ${TABLE}.CUST_FIRST_NAME ;;
-    label: "Cliente Nombre"
+    view_label: "Cliente"
+    label: "Nombre"
   }
 
   dimension: cust_iibb_category {
     type: string
     sql: ${TABLE}.CUST_IIBB_CATEGORY ;;
-    label: "Cliente Condicion IIBB"
+    view_label: "Cliente"
+    label: "Condicion IIBB"
   }
 
   dimension: cust_iva_category {
     type: string
     sql: ${TABLE}.CUST_IVA_CATEGORY ;;
-    label: "Cliente Condicion IVA"
+    view_label: "Cliente"
+    label: "Condicion IVA"
   }
 
   dimension: cust_last_name {
     type: string
     sql: ${TABLE}.CUST_LAST_NAME ;;
-    label: "Cliente Apellido"
+    view_label: "Cliente"
+    label: "Apellido"
   }
 
   dimension: cust_segment {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
-    label: "Cliente Segmento"
+    view_label: "Cliente"
+    label: "Segmento"
   }
 
   dimension: cust_subsegment1 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
-    label: "Cliente Subsegmento 1"
+    view_label: "Cliente"
+    label: "Subsegmento 1"
   }
 
   dimension: cust_subsegment2 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT2 ;;
-    label: "Cliente Subsegmento 2"
+    view_label: "Cliente"
+    label: "Subsegmento 2"
   }
 
   dimension: ind_fact_migradas {
     type: string
     sql: ${TABLE}.IND_FACT_MIGRADAS ;;
-    label: "Flag Facturas Migradas"
+    group_label: "Marcas"
+    group_item_label: "Facturas Migradas"
+    label: "Facturas Migradas"
   }
 
   dimension: ind_legal_no {
     type: string
     sql: ${TABLE}.IND_LEGAL_NO ;;
-    label: "Flag Numero Legal"
+    group_label: "Marcas"
+    group_item_label: "Numero Legal"
+    label: "Numero Legal"
   }
 
   dimension: invoice_letter {
@@ -325,7 +343,7 @@ view: ft_factura_cabecera {
   dimension: addr_id {
     type: number
     sql: ${TABLE}.ADDR_ID ;;
-    label: "Id Domicilio Cliente"
+    label: "Domicilio Cliente Id"
   }
 
   dimension: trans_id {
@@ -337,7 +355,7 @@ view: ft_factura_cabecera {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    label: "Id Cuenta"
+    label: "Cuenta Id"
   }
 
   dimension: be_id {
@@ -390,38 +408,48 @@ view: ft_factura_cabecera {
   measure: count_invoice {
     type: count_distinct
     sql: ${invoice_id} ;;
-    label: "Cantidad Comprobante"
+    group_label: "Cantidad"
+    group_item_label: "Comprobantes"
+    label: "Cantidad Comprobantes"
   }
 
   measure: total_discount_amt  {
     type: sum
     sql: ${discount_amt} ;;
+    group_label: "Total"
+    group_item_label: "Bonificacion"
     label: "Total Bonificacion"
   }
 
   measure: total_invoice_amt {
     type: sum
     sql: ${invoice_amt} ;;
+    group_label: "Total"
+    group_item_label: "Monto Comprobante"
     label: "Total Monto Comprobante"
   }
 
   measure: total_open_amt {
     type: sum
     sql: ${open_amt} ;;
+    group_label: "Total"
+    group_item_label: "Saldo Comprobante"
     label: "Total Saldo Comprobante"
   }
 
   measure: total_tax_amt {
     type: sum
     sql: ${tax_amt} ;;
+    group_label: "Total"
+    group_item_label: "Impuestos Comprobante"
     label: "Total Impuestos Comprobante"
   }
 
   measure: total_original_amt {
     type: sum
     sql: ${original_amt} ;;
+    group_label: "Total"
+    group_item_label: "Monto Original Comprobante"
     label: "Total Monto Original Comprobante"
   }
-
-
 }

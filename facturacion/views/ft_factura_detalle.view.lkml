@@ -149,19 +149,22 @@ view: ft_factura_detalle {
   dimension: cust_segment {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
-    label: "Cliente Segmento"
+    view_label: "Cliente"
+    label: "Segmento"
   }
 
   dimension: cust_subsegment1 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
-    label: "Cliente Subsegmento 1"
+    view_label: "Cliente"
+    label: "Subsegmento 1"
   }
 
   dimension: cust_subsegment2 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT2 ;;
-    label: "Cliente Subsegmento 2"
+    view_label: "Cliente"
+    label: "Subsegmento 2"
   }
 
   dimension: cust_type {
@@ -201,13 +204,17 @@ view: ft_factura_detalle {
   dimension: ind_fact_migradas {
     type: string
     sql: ${TABLE}.IND_FACT_MIGRADAS ;;
-    label: "Flag Facturas Migradas"
+    group_label: "Marcas"
+    group_item_label: "Facturas Migradas"
+    label: "Facturas Migradas"
   }
 
   dimension: ind_legal_no {
     type: string
     sql: ${TABLE}.IND_LEGAL_NO ;;
-    label: "Flag Numero Legal"
+    group_label: "Marcas"
+    group_item_label: "Numero Legal"
+    label: "Numero Legal"
   }
 
   dimension: invoice_letter {
@@ -284,7 +291,9 @@ view: ft_factura_detalle {
   dimension: offering_primary_flag {
     type: string
     sql: ${TABLE}.OFFERING_PRIMARY_FLAG ;;
-    label: "Flag Oferta Primaria"
+    group_label: "Marcas"
+    group_item_label: "Oferta Primaria"
+    label: "Oferta Primaria"
   }
 
   dimension: offering_short_name {
@@ -439,7 +448,9 @@ view: ft_factura_detalle {
   dimension: ind_vta_equipos {
     type: number
     sql: ${TABLE}.IND_VTA_EQUIPOS ;;
-    label: "Flag Venta Equipo"
+    group_label: "Marcas"
+    group_item_label: "Venta Equipo"
+    label: "Venta Equipo"
   }
 
   dimension: addr_id {
@@ -534,54 +545,72 @@ view: ft_factura_detalle {
   measure: count_items {
     type: count_distinct
     sql: ${invoice_detail_id} ;;
+    group_label: "Cantidad"
+    group_item_label: "Items"
     label: "Cantidad Items"
   }
 
   measure: total_charge_amt {
     type: sum
     sql: ${charge_amt} ;;
+    group_label: "Total"
+    group_item_label: "Monto Comprobante"
     label: "Total Monto Comprobante"
   }
 
   measure: total_discount_amt {
     type: sum
     sql: ${discount_amt} ;;
-    label: "Total Bonificaciones Comprobante"
+    group_label: "Total"
+    group_item_label: "Monto Bonificaciones Comprobante"
+    label: "Total Monto Bonificaciones Comprobante"
   }
 
   measure: total_gross_amt {
     type: sum
     sql: ${gross_amt} ;;
+    group_label: "Total"
+    group_item_label: "Monto Facturado sin Impuestos"
     label: "Total Monto Facturado sin Impuestos"
   }
 
   measure: total_invoice_amt {
     type: sum
     sql: ${invoice_amt} ;;
+    group_label: "Total"
+    group_item_label: "Monto Comprobante"
     label: "Total Monto Comprobante"
   }
 
   measure: total_invoice_discount_amt {
     type: sum
     sql: ${invoice_discount_amt} ;;
-    label: "Total Bonificaciones"
+    group_label: "Total"
+    group_item_label: "Monto Bonificaciones"
+    label: "Total Monto Bonificaciones"
   }
 
   measure: total_invoice_tax_amt {
     type: sum
     sql: ${invoice_tax_amt} ;;
-    label: "Total Impuestos Comprobante"
+    group_label: "Total"
+    group_item_label: "Monto Comprobante con Impuestos"
+    label: "Total Monto Facturado con Impuestos"
   }
 
   measure: total_original_amt {
     type: sum
     sql: ${original_amt} ;;
+    group_label: "Total"
+    group_item_label: "Monto Original Comprobante"
     label: "Total Monto Original Comprobante"
   }
 
   measure: total_tax_amt {
     type: sum
     sql: ${tax_amt} ;;
-    label: "Total Impuestos Comprobante"
+    group_label: "Total"
+    group_item_label: "Monto Impuestos Comprobante"
+    label: "Total Monto Impuestos Comprobante"
   }
 }
