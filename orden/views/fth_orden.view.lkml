@@ -164,6 +164,18 @@ view: fth_orden {
     label: "Numero Serie"
   }
 
+  dimension: orden_item_producto_padre_srcid {
+    type: string
+    sql: ${TABLE}.OrdenItemProductoPadreSRCId ;;
+    label: "Producto Padre"
+  }
+
+  dimension: orden_item_producto_raiz_srcid {
+    type: string
+    sql: ${TABLE}.OrdenItemProductoRaizSRCId ;;
+    label: "Producto Raiz"
+  }
+
   dimension: orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenItemSRCId ;;
@@ -1682,25 +1694,11 @@ view: fth_orden {
     label: "Tipo Objeto"
   }
 
-  dimension: orden_item_producto_padre_srcid {
-    type: string
-    sql: ${TABLE}.Producto.OrdenItemProductoPadreSRCId ;;
-    view_label: "Producto"
-    label: "Producto Padre"
-  }
-
-  dimension: orden_item_producto_raiz_srcid {
-    type: string
-    sql: ${TABLE}.Producto.OrdenItemProductoRaizSRCId ;;
-    view_label: "Producto"
-    group_item_label: "Producto Raiz"
-  }
-
   dimension: producto_codigo {
     type: string
     sql: ${TABLE}.Producto.ProductoCodigo ;;
     view_label: "Producto"
-    group_item_label: "Codigo"
+    label: "Codigo"
   }
 
   dimension: producto_descripcion {
