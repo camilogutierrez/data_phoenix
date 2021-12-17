@@ -799,94 +799,166 @@ view: ft_callin {
     sql: ${TABLE}.INTERACTION_ID ;;
   }
 
-  dimension: abandono_q_10_19 {
-    type: number
-    sql: ${TABLE}.ABANDONO_Q_10_19 ;;
-  }
-
-  dimension: abandono_q_120_mas {
-    type: number
-    sql: ${TABLE}.ABANDONO_Q_120_MAS ;;
-  }
-
   dimension: abandono_q_1_9 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_1_9 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "1- 01-09"
+    label: "Abandono Q 01-09"
+  }
+
+  dimension: abandono_q_10_19 {
+    type: number
+    sql: ${TABLE}.ABANDONO_Q_10_19 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "2- 10-19"
+    label: "Abandono Q 10-19"
   }
 
   dimension: abandono_q_20_29 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_20_29 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "3- 20-29"
+    label: "Abandono Q 20-29"
   }
 
   dimension: abandono_q_30_39 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_30_39 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "4- 30-39"
+    label: "Abandono Q 30-39"
   }
 
   dimension: abandono_q_40_49 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_40_49 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "5- 40-49"
+    label: "Abandono Q 40-49"
   }
 
   dimension: abandono_q_50_59 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_50_59 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "6- 50-59"
+    label: "Abandono Q 50-59"
   }
 
   dimension: abandono_q_60_89 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_60_89 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "7- 60-89"
+    label: "Abandono Q 60-89"
   }
 
   dimension: abandono_q_90_119 {
     type: number
     sql: ${TABLE}.ABANDONO_Q_90_119 ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "8- 90-119"
+    label: "Abandono Q 90-119"
   }
 
-  dimension: abandono_r_10_19 {
+  dimension: abandono_q_120_mas {
     type: number
-    sql: ${TABLE}.ABANDONO_R_10_19 ;;
-  }
-
-  dimension: abandono_r_120_mas {
-    type: number
-    sql: ${TABLE}.ABANDONO_R_120_MAS ;;
+    sql: ${TABLE}.ABANDONO_Q_120_MAS ;;
+    view_label: "Abandono"
+    group_label: "Q"
+    group_item_label: "9- 120-Mas"
+    label: "Abandono Q 120-Mas"
   }
 
   dimension: abandono_r_1_9 {
     type: number
     sql: ${TABLE}.ABANDONO_R_1_9 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "1- 01-09"
+    label: "Abandono R 01-09"
+  }
+
+  dimension: abandono_r_10_19 {
+    type: number
+    sql: ${TABLE}.ABANDONO_R_10_19 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "2- 10-19"
+    label: "Abandono R 10-19"
   }
 
   dimension: abandono_r_20_29 {
     type: number
     sql: ${TABLE}.ABANDONO_R_20_29 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "3- 20-29"
+    label: "Abandono R 20-29"
   }
 
   dimension: abandono_r_30_39 {
     type: number
     sql: ${TABLE}.ABANDONO_R_30_39 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "4- 30-39"
+    label: "Abandono R 30-39"
   }
 
   dimension: abandono_r_40_49 {
     type: number
     sql: ${TABLE}.ABANDONO_R_40_49 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "5- 40-49"
+    label: "Abandono R 40-49"
   }
 
   dimension: abandono_r_50_59 {
     type: number
     sql: ${TABLE}.ABANDONO_R_50_59 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "6- 50-59"
+    label: "Abandono R 50-59"
   }
 
   dimension: abandono_r_60_89 {
     type: number
     sql: ${TABLE}.ABANDONO_R_60_89 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "7- 60-89"
+    label: "Abandono Q 60-89"
   }
 
   dimension: abandono_r_90_119 {
     type: number
     sql: ${TABLE}.ABANDONO_R_90_119 ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "8- 90-119"
+    label: "Abandono R 90-119"
+  }
+
+  dimension: abandono_r_120_mas {
+    type: number
+    sql: ${TABLE}.ABANDONO_R_120_MAS ;;
+    view_label: "Abandono"
+    group_label: "R"
+    group_item_label: "9- 120-Mas"
+    label: "Abandono Q 120-Mas"
   }
 
   dimension: active_flag {
@@ -1229,11 +1301,6 @@ view: ft_callin {
     sql: ${TABLE}.INI_MSF_SEG ;;
   }
 
-  dimension: interaction_resource_id {
-    type: number
-    sql: ${TABLE}.INTERACTION_RESOURCE_ID ;;
-  }
-
   dimension: interaction_type_key {
     type: number
     sql: ${TABLE}.INTERACTION_TYPE_KEY ;;
@@ -1386,6 +1453,11 @@ view: ft_callin {
 
   ## Hidden
 
+  dimension: interaction_resource_id {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.INTERACTION_RESOURCE_ID ;;
+  }
 
 
 
@@ -1396,48 +1468,62 @@ view: ft_callin {
   measure: count_interaction_resource_id {
     type: count_distinct
     sql: ${interaction_resource_id} ;;
-    label: "Count Distinct Resource ID"
+    group_label: "Cantidad"
+    group_item_label: "Interacciones"
+    label: "Cantidad Interacciones"
   }
 
   measure: total_estado_fin_abandonadasrcid {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${estado_fin_abandonadasrcid} ;;
-    label: "Sum Distinct Abandonadas"
+    group_label: "Total"
+    group_item_label: "Abandonadas"
+    label: "Total Abandonadas"
     }
 
   measure: total_estado_fin_atendidasrcid {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${estado_fin_atendidasrcid} ;;
-    label: "Sum Distinct Atendidas"
+    group_label: "Total"
+    group_item_label: "Atendidas"
+    label: "Total Atendidas"
   }
 
   measure: total_estado_fin_recibidasrcid {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${estado_fin_recibidasrcid} ;;
-    label: "Sum Distinct Recibidas"
+    group_label: "Total"
+    group_item_label: "Recibidas"
+    label: "Total Recibidas"
   }
 
   measure: total_estado_fin_salientesrcid {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${estado_fin_salientesrcid} ;;
-    label: "Sum Distinct Salientes"
+    group_label: "Total"
+    group_item_label: "Salientes"
+    label: "Total Salientes"
   }
 
   measure: total_duration_call {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${duration_call} ;;
-    label: "Sum Distinct Duración"
+    group_label: "Total"
+    group_item_label: "Duracion"
+    label: "Total Duración"
   }
 
   measure: total_t_duration_ag {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${t_duration_ag} ;;
-    label: "Sum Distinct Duración AG"
+    group_label: "Total"
+    group_item_label: "Duración AG"
+    label: "Total Duración AG"
   }
 }
