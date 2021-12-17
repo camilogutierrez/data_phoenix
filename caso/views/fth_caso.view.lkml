@@ -35,7 +35,8 @@ view: fth_caso {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FechaEntidad ;;
-    label: "Fecha Entidad"
+    view_label: "Caso"
+    label: "Fecha Cierre"
     description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
@@ -44,7 +45,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaAcuerdoDesdeSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Acuerdo Desde"
+    group_item_label: "Acuerdo Desde"
+    label: "Fecha Acuerdo Desde"
   }
 
   dimension: caso_fecha_acuerdo_hasta_src {
@@ -52,7 +54,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaAcuerdoHastaSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Acuerdo Hasta"
+    group_item_label: "Acuerdo Hasta"
+    label: "Fecha Acuerdo Hasta"
   }
 
   dimension: caso_fecha_ajuste_desde_src {
@@ -61,7 +64,8 @@ view: fth_caso {
     datatype: date
     convert_tz: no
     group_label: "Fechas"
-    group_item_label: "Fecha Ajuste Desde"
+    group_item_label: "Ajuste Desde"
+    label: "Fecha Ajuste Desde"
   }
 
   dimension: caso_fecha_ajuste_hasta_src {
@@ -70,7 +74,8 @@ view: fth_caso {
     datatype: date
     convert_tz: no
     group_label: "Fechas"
-    group_item_label: "Fecha Ajuste Hasta"
+    group_item_label: "Ajuste Hasta"
+    label: "Fecha Ajuste Hasta"
   }
 
   dimension: caso_fecha_cierre_estimada_src {
@@ -78,7 +83,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaCierreEstimadaSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Cierre Estimada"
+    group_item_label: "Cierre Estimada"
+    label: "Fecha Cierre Estimada"
   }
 
   dimension: caso_fecha_cierre_src {
@@ -86,7 +92,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaCierreSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Cierre"
+    group_item_label: "Cierre"
+    label: "Fecha Cierre"
   }
 
   dimension: caso_fecha_creacion_src {
@@ -94,7 +101,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaCreacionSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion"
+    group_item_label: "Creacion"
+    label: "Fecha Creacion"
   }
 
   dimension: caso_fecha_fin_garantia_reparacion_src {
@@ -103,7 +111,8 @@ view: fth_caso {
     datatype: date
     convert_tz: no
     group_label: "Fechas"
-    group_item_label: "Fecha Fin Garantia Reparacion"
+    group_item_label: "Fin Garantia Reparacion"
+    label: "Fecha Fin Garantia Reparacion"
   }
 
   dimension: caso_fecha_inicio_src {
@@ -111,7 +120,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaInicioSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Inicio"
+    group_item_label: "Inicio"
+    label: "Fecha Inicio"
   }
 
   dimension: caso_fecha_mod_src {
@@ -119,7 +129,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaModSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Mod"
+    group_item_label: "Modificacion"
+    label: "Fecha Modificacion"
   }
 
   dimension: caso_fecha_modificacion_src {
@@ -127,7 +138,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaModificacionSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Modificacion"
+    group_item_label: "Modificacion"
+    label: "Fecha Modificacion"
   }
 
   dimension: caso_fecha_pago_src {
@@ -136,7 +148,8 @@ view: fth_caso {
     datatype: date
     convert_tz: no
     group_label: "Fechas"
-    group_item_label: "Fecha Pago"
+    group_item_label: "Pago"
+    label: "Fecha Pago"
   }
 
   dimension: caso_fecha_solicitud_src {
@@ -144,7 +157,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaSolicitudSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Solicitud"
+    group_item_label: "Solicitud"
+    label: "Fecha Solicitud"
   }
 
   dimension: caso_fecha_vencimiento_src {
@@ -152,7 +166,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaVencimientoSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Vencimiento"
+    group_item_label: "Fecha"
+    label: "Fecha Vencimiento"
   }
 
   dimension: caso_fecha_ventana_portacion_src {
@@ -160,7 +175,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaVentanaPortacionSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Ventana Portacion"
+    group_item_label: "Ventana Portacion"
+    label: "Fecha Ventana Portacion"
   }
 
   dimension: caso_comentario_fecha_creacion_src {
@@ -168,7 +184,8 @@ view: fth_caso {
     sql: ${TABLE}.CasoComentarios.CasoComentarioFechaCreacionSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Fecha Creacion Comentario"
+    group_item_label: "Creacion Comentario"
+    label: "Fecha Creacion Comentario"
   }
 
     ## Flags
@@ -178,6 +195,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoComprobantesAdjuntos ;;
     group_label: "Marcas"
     group_item_label: "Comprobantes Adjuntos"
+    label: "Es Comprobantes Adjuntos"
   }
 
   dimension: caso_marca_cambio_garantia {
@@ -185,6 +203,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaCambioGarantia ;;
     group_label: "Marcas"
     group_item_label: "Cambio Garantia"
+    label: "Es Cambio Garantia"
   }
 
   dimension: caso_marca_cambio_placa {
@@ -192,6 +211,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaCambioPlaca ;;
     group_label: "Marcas"
     group_item_label: "Cambio Placa"
+    label: "Es Cambio Placa"
   }
 
   dimension: caso_marca_caso_cerrado {
@@ -199,6 +219,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaCasoCerrado ;;
     group_label: "Marcas"
     group_item_label: "Cerrado"
+    label: "Es Cerrado"
   }
 
   dimension: caso_marca_derivado_reparacion {
@@ -206,6 +227,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaDerivadoReparacion ;;
     group_label: "Marcas"
     group_item_label: "Derivado Reparacion"
+    label: "Es Derivado Reparacion"
   }
 
   dimension: caso_marca_en_garantia {
@@ -213,6 +235,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaEnGarantia ;;
     group_label: "Marcas"
     group_item_label: "En Garantia"
+    label: "Es En Garantia"
   }
 
   dimension: caso_marca_equipo_reparado {
@@ -220,6 +243,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaEquipoReparado ;;
     group_label: "Marcas"
     group_item_label: "Equipo Reparado"
+    label: "Es Equipo Reparado"
   }
 
   dimension: caso_marca_escalado {
@@ -227,6 +251,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaEscalado ;;
     group_label: "Marcas"
     group_item_label: "Escalado"
+    label: "Es Escalado"
   }
 
   dimension: caso_marca_excepcion {
@@ -234,6 +259,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaExcepcion ;;
     group_label: "Marcas"
     group_item_label: "Excepcion"
+    label: "Es Excepcion"
   }
 
   dimension: caso_marca_garantia_reparacion {
@@ -241,6 +267,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaGarantiaReparacion ;;
     group_label: "Marcas"
     group_item_label: "Garantia Reparacion"
+    label: "Es Garantia Reparacion"
   }
 
   dimension: caso_marca_gestion_muleto {
@@ -248,6 +275,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaGestionMuleto ;;
     group_label: "Marcas"
     group_item_label: "Gestion Muleto"
+    label: "Es Gestion Muleto"
   }
 
   dimension: caso_marca_muleto_completo {
@@ -255,6 +283,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaMuletoCompleto ;;
     group_label: "Marcas"
     group_item_label: "Muleto Completo"
+    label: "Es Muleto Completo"
   }
 
   dimension: caso_marca_nace_cerrado {
@@ -262,6 +291,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaNaceCerrado ;;
     group_label: "Marcas"
     group_item_label: "Nace Cerrado"
+    label: "Es Nace Cerrado"
   }
 
   dimension: caso_marca_pendiente_programacion_cita {
@@ -269,6 +299,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaPendienteProgramacionCita ;;
     group_label: "Marcas"
     group_item_label: "Pendiente Programacion Cita"
+    label: "Es Pendiente Programacion Cita"
   }
 
   dimension: caso_marca_pendiente_programacion_recupero {
@@ -276,6 +307,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaPendienteProgramacionRecupero ;;
     group_label: "Marcas"
     group_item_label: "Pendiente Programacion Recupero"
+    label: "Es Pendiente Programacion Recupero"
   }
 
   dimension: caso_marca_proteccion {
@@ -283,6 +315,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaProteccion ;;
     group_label: "Marcas"
     group_item_label: "Proteccion"
+    label: "Es Proteccion"
   }
 
   dimension: caso_marca_re_llamado {
@@ -290,6 +323,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaReLlamado ;;
     group_label: "Marcas"
     group_item_label: "Re Llamado"
+    label: "Es Re Llamado"
   }
 
   dimension: caso_marca_re_trabajo {
@@ -297,6 +331,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaReTrabajo ;;
     group_label: "Marcas"
     group_item_label: "Re Trabajo"
+    label: "Es Re Trabajo"
   }
 
   dimension: caso_marca_reclamo {
@@ -304,6 +339,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaReclamo ;;
     group_label: "Marcas"
     group_item_label: "Reclamo"
+    label: "Es Reclamo"
   }
 
   dimension: caso_marca_requiere_cita {
@@ -311,6 +347,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaRequiereCita ;;
     group_label: "Marcas"
     group_item_label: "Requiere Cita"
+    label: "Es Requiere Cita"
   }
 
   dimension: caso_marca_requiere_conciliacion {
@@ -318,13 +355,15 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.CasoMarcaRequiereConciliacion ;;
     group_label: "Marcas"
     group_item_label: "Requiere Conciliacion"
+    label: "Es Requiere Conciliacion"
   }
 
   dimension: caso_marca_requiere_ticket_icd {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaRequiereTicketICD ;;
     group_label: "Marcas"
-    group_item_label: "Requiere Ticket Icd"
+    group_item_label: "Requiere Ticket ICD"
+    label: "Es Requiere Ticket ICD"
   }
 
   dimension: marca_caso_padre {
@@ -332,6 +371,7 @@ view: fth_caso {
     sql: ${TABLE}.Marcas.MarcaCasoPadre ;;
     group_label: "Marcas"
     group_item_label: "Padre"
+    label: "Es Padre"
   }
 
   dimension: caso_nuevo_numero_toip {
@@ -339,6 +379,7 @@ view: fth_caso {
     sql: ${TABLE}.CasoNuevoNumeroTOIP ;;
     group_label: "Marcas"
     group_item_label: "Nuevo Numero TOIP"
+    label: "Es Nuevo Numero TOIP"
   }
 
     ## Strings
@@ -664,7 +705,7 @@ view: fth_caso {
   dimension: caso_hito_estado {
     type: string
     sql: ${TABLE}.CasoHitoEstado ;;
-    label: "Hito Estado"
+    label: "Estado Hito"
   }
 
   dimension: caso_imeianterior {
@@ -1402,73 +1443,73 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento1Nombre ;;
     suggest_dimension: lk_cliente_segmento1.cliente_segmento1_nombre
-    group_label: "Cliente"
-    group_item_label: "Cliente Segmento 1"
+    view_label: "Cliente"
+    label: "Segmento 1"
   }
 
   dimension: cliente_segmento2_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento2Nombre ;;
     suggest_dimension: lk_cliente_segmento2.cliente_segmento2_nombre
-    group_label: "Cliente"
-    group_item_label: "Cliente Segmento 2"
+    view_label: "Cliente"
+    label: "Segmento 2"
   }
 
   dimension: cuenta_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.CuentaTipoNombre ;;
     suggest_dimension: lk_cuenta_tipo.cuenta_tipo_nombre
-    group_label: "Cliente"
-    group_item_label: "Cliente Cuenta Tipo"
+    view_label: "Cliente"
+    label: "Cuenta Tipo"
   }
 
   dimension: cliente_razon_social {
     type: string
     sql: ${TABLE}.Cliente.ClienteRazonSocial ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Razon Social"
+    view_label: "Cliente"
+    label: "Razon Social"
   }
 
   dimension: cliente_srcid {
     type: string
     sql: ${TABLE}.Cliente.ClienteSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente"
+    view_label: "Cliente"
+    label: "Id"
   }
 
   dimension: cuenta_cliente_srcid {
     type: string
     sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Cuenta"
+    view_label: "Cliente"
+    label: "Cuenta"
   }
 
   dimension: persona_apellido {
     type: string
     sql: ${TABLE}.Cliente.PersonaApellido ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Persona Apellido"
+    view_label: "Cliente"
+    label: "Apellido"
   }
 
   dimension: persona_documento_numero {
     type: string
     sql: ${TABLE}.Cliente.PersonaDocumentoNumero ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Persona Documento Numero"
+    view_label: "Cliente"
+    label: "Documento Numero"
   }
 
   dimension: persona_nombre {
     type: string
     sql: ${TABLE}.Cliente.PersonaNombre ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Persona Nombre"
+    view_label: "Cliente"
+    label: "Nombre"
   }
 
   dimension: persona_tipo_documento_srcid {
     type: string
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Persona Tipo Documento"
+    view_label: "Cliente"
+    label: "Documento Tipo"
   }
 
     ## Hidden
@@ -1519,16 +1560,16 @@ view: fth_caso {
     type: date_time
     sql: ${TABLE}.Orden.OrdenFechaActivacionSRC ;;
     datatype: timestamp
-    group_label: "Orden"
-    group_item_label: "Orden Fecha Activacion"
+    view_label: "Orden"
+    label: "Fecha Activacion"
   }
 
   dimension: orden_fecha_creacion_src {
     type: date_time
     sql: ${TABLE}.Orden.OrdenFechaCreacionSRC ;;
     datatype: timestamp
-    group_label: "Orden"
-    group_item_label: "Orden Fecha Creacion"
+    view_label: "Orden"
+    label: "Fecha Creacion"
   }
 
     ## Strings
@@ -1537,101 +1578,101 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoProvisionamientoNombre ;;
     suggest_dimension: lk_orden_estado_provisionamiento.orden_estado_provisionamiento_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Estado Provisionamiento"
+    view_label: "Orden"
+    label: "Estado Provisionamiento"
   }
 
   dimension: orden_estado_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoNombre ;;
     suggest_dimension: lk_orden_estado.orden_estado_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Estado"
+    view_label: "Orden"
+    label: "Estado"
   }
 
   dimension: orden_estado_trackeo_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoTrackeoNombre ;;
     suggest_dimension: lk_orden_estado_trackeo.orden_estado_trackeo_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Estado Trackeo"
+    view_label: "Orden"
+    label: "Estado Trackeo"
   }
 
   dimension: orden_metodo_entrega_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenMetodoEntregaNombre ;;
     suggest_dimension: lk_orden_metodo_entrega.orden_metodo_entrega_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Metodo Entrega"
+    view_label: "Orden"
+    label: "Metodo Entrega"
   }
 
   dimension: orden_servicio_entrega_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenServicioEntregaNombre ;;
     suggest_dimension: lk_orden_servicio_entrega.orden_servicio_entrega_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Servicio Entrega"
+    view_label: "Orden"
+    label: "Servicio Entrega"
   }
 
   dimension: orden_canal_origen_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenCanalOrigenNombre ;;
     suggest_dimension: lk_orden_canal_origen.orden_canal_origen_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Canal Origen"
+    view_label: "Orden"
+    label: "Canal Origen"
   }
 
   dimension: orden_estado_aprobacion_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoAprobacionNombre ;;
     suggest_dimension: lk_orden_estado_aprobacion.orden_estado_aprobacion_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Estado Aprobacion"
+    view_label: "Orden"
+    label: "Estado Aprobacion"
   }
 
   dimension: orden_tipo_sub_gestion_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenTipoSubGestionNombre ;;
     suggest_dimension: lk_orden_tipo_sub_gestion.orden_tipo_sub_gestion_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Tipo Subgestion"
+    view_label: "Orden"
+    label: "Tipo Subgestion"
   }
 
   dimension: orden_tipo_gestion_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenTipoGestionNombre ;;
     suggest_dimension: lk_orden_tipo_gestion.orden_tipo_gestion_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Tipo Gestion"
+    view_label: "Orden"
+    label: "Tipo Gestion"
   }
 
   dimension: orden_tipo_cambio_plan_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenTipoCambioPlanNombre ;;
     suggest_dimension: lk_orden_tipo_gestion.orden_tipo_gestion_nombre
-    group_label: "Orden"
-    group_item_label: "Orden Tipo Cambio Plan"
+    view_label: "Orden"
+    label: "Tipo Cambio Plan"
   }
 
   dimension: orden_numero {
     type: string
     sql: ${TABLE}.Orden.OrdenNumero ;;
-    group_label: "Orden"
-    group_item_label: "Orden Numero"
+    view_label: "Orden"
+    label: "Numero"
   }
 
   dimension: orden_numero_pre_factura {
     type: string
     sql: ${TABLE}.Orden.OrdenNumeroPreFactura ;;
-    group_label: "Orden"
-    group_item_label: "Orden Numero Prefactura"
+    view_label: "Orden"
+    label: "Numero Prefactura"
   }
 
   dimension: orden_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenSRCId ;;
-    group_label: "Orden"
-    group_item_label: "Orden"
+    view_label: "Orden"
+    label: "Id"
   }
 
     ## Hidden
@@ -1766,16 +1807,16 @@ view: fth_caso {
     type: date_time
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaActivacionSRC ;;
     datatype: timestamp
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Fecha Activacion"
+    view_label: "Producto Adquirido"
+    label: "Fecha Activacion"
   }
 
   dimension: producto_adquirido_fecha_baja_src {
     type: date_time
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaBajaSRC ;;
     datatype: timestamp
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Fecha Baja"
+    view_label: "Producto Adquirido"
+    label: "Fecha Baja"
   }
 
   dimension: producto_adquirido_fecha_compra_src {
@@ -1783,8 +1824,8 @@ view: fth_caso {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaCompraSRC ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Fecha Compra"
+    view_label: "Producto Adquirido"
+    label: "Fecha Compra"
   }
 
     ## Strings
@@ -1793,45 +1834,45 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoProvisionamientoNombre ;;
     suggest_dimension: lk_producto_adquirido_estado_provisionamiento.producto_adquirido_estado_provisionamiento_nombre
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Estado Provisionamiento"
+    view_label: "Producto Adquirido"
+    label: "Estado Provisionamiento"
   }
 
   dimension: producto_adquirido_sub_estado_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubEstadoNombre ;;
     suggest_dimension: lk_producto_adquirido_sub_estado.producto_adquirido_sub_estado_nombre
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Subestado"
+    view_label: "Producto Adquirido"
+    label: "Subestado"
   }
 
   dimension: producto_adquirido_estado_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre ;;
     suggest_dimension: lk_producto_adquirido_estado.producto_adquirido_estado_nombre
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Estado"
+    view_label: "Producto Adquirido"
+    label: "Estado"
   }
 
   dimension: producto_adquirido_codigo_suscripcion {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoCodigoSuscripcion ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Codigo Suscripcion"
+    view_label: "Producto Adquirido"
+    label: "Codigo Suscripcion"
   }
 
   dimension: producto_adquirido_numero_linea {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNumeroLinea ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Numero Linea"
+    view_label: "Producto Adquirido"
+    label: "Numero Linea"
   }
 
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
+    label: "Nombre"
   }
 
     ## Hidden
@@ -1881,92 +1922,92 @@ view: fth_caso {
   dimension: empresa_alta_modif {
     type: string
     sql: ${TABLE}.Usuario.EMPRESA_ALTA_MODIF ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Empresa Alta Modificacion"
+    view_label: "Usuario"
+    label: "Empresa Alta Modificacion"
   }
 
   dimension: empresa_asig {
     type: string
     sql: ${TABLE}.Usuario.EMPRESA_ASIG ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Empresa Asignacion"
+    view_label: "Usuario"
+    label: "Empresa Asignacion"
   }
 
   dimension: equipo_iniciador {
     type: string
     sql: ${TABLE}.Usuario.EquipoIniciador ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Equipo Iniciador"
+    view_label: "Usuario"
+    label: "Equipo Iniciador"
   }
 
   dimension: equipo_propietario {
     type: string
     sql: ${TABLE}.Usuario.EquipoPropietario ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Equipo Propietario"
+    view_label: "Usuario"
+    label: "Equipo Propietario"
   }
 
   dimension: grupo_trabajo_alta {
     type: string
     sql: ${TABLE}.Usuario.GrupoTrabajo_Alta ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Grupo de Trabajo Alta"
+    view_label: "Usuario"
+    label: "Grupo de Trabajo Alta"
   }
 
   dimension: grupo_trabajo_modif {
     type: string
     sql: ${TABLE}.Usuario.GrupoTrabajo_Modif ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Grupo de Trabajo Modificacion"
+    view_label: "Usuario"
+    label: "Grupo de Trabajo Modificacion"
   }
 
   dimension: usuario_alias_alta {
     type: string
     sql: ${TABLE}.Usuario.UsuarioAlias_ALTA ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Alias Alta"
+    view_label: "Usuario"
+    label: "Alias Alta"
   }
 
   dimension: usuario_alias_asig {
     type: string
     sql: ${TABLE}.Usuario.UsuarioAlias_ASIG ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Alias Asignacion"
+    view_label: "Usuario"
+    label: "Alias Asignacion"
   }
 
   dimension: usuario_alias_modif {
     type: string
     sql: ${TABLE}.Usuario.UsuarioAlias_MODIF ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Alias Modificacion"
+    view_label: "Usuario"
+    label: "Alias Modificacion"
   }
 
   dimension: usuario_legajo_alta {
     type: string
     sql: ${TABLE}.Usuario.UsuarioLegajo_ALTA ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Legajo Alta"
+    view_label: "Usuario"
+    label: "Legajo Alta"
   }
 
   dimension: usuario_legajo_asig {
     type: string
     sql: ${TABLE}.Usuario.UsuarioLegajo_ASIG ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Legajo Asignacion"
+    view_label: "Usuario"
+    label: "Legajo Asignacion"
   }
 
   dimension: usuario_legajo_modif {
     type: string
     sql: ${TABLE}.Usuario.UsuarioLegajo_MODIF ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Legajo Modificacion"
+    view_label: "Usuario"
+    label: "Legajo Modificacion"
   }
 
   dimension: usuarioempresa_alta {
     type: string
     sql: ${TABLE}.Usuario.USUARIOEMPRESA_ALTA ;;
-    group_label: "Usuario"
-    group_item_label: "Usuario Empresa Alta"
+    view_label: "Usuario"
+    label: "Empresa Alta"
   }
 
 ##############
@@ -1998,7 +2039,7 @@ view: fth_caso_caso_hito {
     type: string
     sql: ${TABLE}.CasoHitoSRCId ;;
     value_format_name: id
-    label: "Hito"
+    label: "Id"
   }
 
     ## Dates
