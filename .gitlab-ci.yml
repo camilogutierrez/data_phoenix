@@ -1,0 +1,71 @@
+image:
+#  name: 'jcpistell/looker_deployer:latest'
+   name: 'registry.gitlab.com/telecom-argentina/devops/docker-base-images/looker_deployer:latest'
+   entrypoint: [""]
+
+include: 
+  - project: 'telecom-argentina/DEVOPS/cicd/templates'
+    ref: master
+    file:
+      - 'GCP/Looker/spectacles-template.yml'
+
+stages:
+  - test
+  - looker-export
+  - looker-commit
+  - looker-deploy
+
+looker:export:dashboards:
+  stage: looker-export
+  environment: $CI_COMMIT_BRANCH
+  script:
+    - ldeploy content export --ini $looker_ini --env dev --folders $SOURCE_FOLDER_ID --local-target $CI_PROJECT_DIR/content-deployment
+  artifacts:
+    paths:
+      - content-deployment/
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+looker:commit:dashboards:
+  stage: looker-commit
+  environment: $CI_COMMIT_BRANCH
+  image:
+    name: 'registry.gitlab.com/telecom-argentina/devops/docker-base-images/aws_cli-helm3-kubectl-tools:latest'
+    entrypoint: [""]
+  script:
+     - git status
+     - |-
+         CHANGES=$(git status --porcelain | wc -l)
+             
+         if [ "$CHANGES" -gt "0" ]; then 
+           echo "Se detectaron cambios en el repo"         
+           git status
+           git checkout $CI_COMMIT_BRANCH
+           git branch
+           git config --global user.name "$GITLAB_USER_LOGIN"
+           git config --global user.email "$GITLAB_USER_EMAIL"
+           git add .
+           git commit -m "subo dashboards"
+           git push -o ci.skip "https://gitlab-ci-token:$DEPLOY_TOKEN@gitlab.com/$CI_PROJECT_PATH.git" 
+         else 
+           echo "no se detectaron cambios en el repo"
+         fi
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+looker:deploy:testing:
+  stage: looker-deploy
+  environment: $CI_COMMIT_BRANCH
+  script:
+    - ldeploy content import --ini $looker_ini --env uat --folders $CI_PROJECT_DIR/content-deployment/Shared/deploy-dashboards/$CI_PROJECT_NAME --recursive --target-folder Shared/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "testing"'
+
+looker:deploy:master:
+  stage: looker-deploy
+  environment: $CI_COMMIT_BRANCH
+  script:
+    - ldeploy content import --ini $looker_ini --env prod --folders $CI_PROJECT_DIR/content-deployment/Shared/deploy-dashboards/$CI_PROJECT_NAME --recursive --target-folder Shared/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
