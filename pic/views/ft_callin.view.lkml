@@ -289,7 +289,7 @@ view: ft_callin {
   dimension: contexto_ivr_0800_opcionsrcid {
     type: string
     sql: ${TABLE}.CONTEXTO_IVR_0800_OPCIONSRCId ;;
-    suggest_dimension: lk_contexto_ivr0800.contexto_ivr_0800_srcid
+    suggest_dimension: lk_contexto_ivr0800_opcion.contexto_ivr_0800_opcionsrcid
   }
 
   dimension: contexto_ivr_0800_segmentosrcid {
@@ -386,6 +386,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.VAGSRCId ;;
     suggest_dimension: lk_vag.vagsrcid
+    label: "VAG"
   }
 
   dimension: vq_agrupador2_srcid {
@@ -478,6 +479,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.GVQSRCId ;;
     suggest_dimension: lk_gvq.gvqsrcid
+    label: "GVQ"
   }
 
   dimension: interaction_typesrcid {
@@ -537,16 +539,19 @@ view: ft_callin {
   dimension: agente_rp {
     type: string
     sql: ${TABLE}.AGENTE_RP ;;
+    label: "LEGAJO"
   }
 
   dimension: agrupador1 {
     type: string
     sql: ${TABLE}.AGRUPADOR1 ;;
+    label: "CONNID"
   }
 
   dimension: agrupador2 {
     type: string
     sql: ${TABLE}.AGRUPADOR2 ;;
+    label: "IDGIA"
   }
 
   dimension: ani {
@@ -657,6 +662,7 @@ view: ft_callin {
   dimension: region_localidad {
     type: string
     sql: ${TABLE}.REGION_LOCALIDAD ;;
+    label: "ID_WATSON"
   }
 
   dimension: resource_type {
@@ -1159,21 +1165,25 @@ view: ft_callin {
   dimension: customer_acw_count {
     type: number
     sql: ${TABLE}.CUSTOMER_ACW_COUNT ;;
+    label: "ACW_COUNT"
   }
 
   dimension: customer_acw_duration {
     type: number
     sql: ${TABLE}.CUSTOMER_ACW_DURATION ;;
+    label: "ACW_TIME"
   }
 
   dimension: customer_dial_count {
     type: number
     sql: ${TABLE}.CUSTOMER_DIAL_COUNT ;;
+    label: "DIAL_COUNT"
   }
 
   dimension: customer_dial_duration {
     type: number
     sql: ${TABLE}.CUSTOMER_DIAL_DURATION ;;
+    label: "DIAL_TIME"
   }
 
   dimension: customer_handle_count {
@@ -1184,31 +1194,37 @@ view: ft_callin {
   dimension: customer_hold_count {
     type: number
     sql: ${TABLE}.CUSTOMER_HOLD_COUNT ;;
+    label: "HOLD_COUNT"
   }
 
   dimension: customer_hold_duration {
     type: number
     sql: ${TABLE}.CUSTOMER_HOLD_DURATION ;;
+    label: "HOLD_TIME"
   }
 
   dimension: customer_ring_count {
     type: number
     sql: ${TABLE}.CUSTOMER_RING_COUNT ;;
+    label: "RING_COUNT"
   }
 
   dimension: customer_ring_duration {
     type: number
     sql: ${TABLE}.CUSTOMER_RING_DURATION ;;
+    label: "RING_TIME"
   }
 
   dimension: customer_talk_count {
     type: number
     sql: ${TABLE}.CUSTOMER_TALK_COUNT ;;
+    label: "TALK_COUNT"
   }
 
   dimension: customer_talk_duration {
     type: number
     sql: ${TABLE}.CUSTOMER_TALK_DURATION ;;
+    label: "TALK_TIME"
   }
 
   dimension: dial_count {
@@ -1444,11 +1460,13 @@ view: ft_callin {
   dimension: unico24 {
     type: number
     sql: ${TABLE}.UNICO24 ;;
+    label: "CLIENTE_UNICO_DIA"
   }
 
   dimension: unico7_x24 {
     type: number
     sql: ${TABLE}.UNICO7X24 ;;
+    label: "CLIENTE_UNICO_MES"
   }
 
   ## Hidden
