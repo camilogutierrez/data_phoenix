@@ -37,6 +37,8 @@
   primary_key:
   type:
   sql:
+  *suggest_dimension:
+  *view_label:
   group_label:
   label:
   group_item_label:
@@ -46,8 +48,10 @@
   ```
   measure: measure_name_type {
   type:
+  *sql_distinct_key:
   sql:
   value_format_name:
+  *view_label:
   group_label:
   label:
   group_item_label:
@@ -58,6 +62,10 @@
 
   value_format_name: mascara para mostrar un valor
 
+  ...
+  *dimension_group: name {
+    # definir
+  }
 
 ### Explores
 
@@ -110,3 +118,13 @@
   checkea referencias para cuando se hacen cambios en vistas
   replace: reemplaza todas las ocurrencias de ese error con el nombre nuevo
   "Find and replace"
+
+
+### Jerarquía de objetos
+  Primary Key
+  Nested Fields
+  Dates
+  Flags
+  Strings
+  Numbers
+  Hidden
