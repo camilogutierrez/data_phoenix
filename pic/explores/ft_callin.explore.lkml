@@ -37,41 +37,6 @@ explore: ft_callin {
     relationship: many_to_one
   }
 
-  join: lk_estado_fin_abandonada {
-    type: inner
-    view_label: "Estado Fin Abandonada"
-    sql_on: ${ft_callin.estado_fin_abandonadasrcid} = ${lk_estado_fin_abandonada.estado_fin_abandonadasrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_estado_fin_atendida {
-    type: inner
-    view_label: "Estado Fin Atendida"
-    sql_on: ${ft_callin.estado_fin_atendidasrcid} = ${lk_estado_fin_atendida.estado_fin_atendidasrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_estado_fin_recibida {
-    type: inner
-    view_label: "Estado Fin Recibida"
-    sql_on: ${ft_callin.estado_fin_recibidasrcid}= ${lk_estado_fin_recibida.estado_fin_recibidasrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_estado_fin_saliente {
-    type: inner
-    view_label: "Estado Fin Saliente"
-    sql_on: ${ft_callin.estado_fin_salientesrcid} = ${lk_estado_fin_saliente.estado_fin_salientesrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_fcr {
-    type: inner
-    view_label: "FCR"
-    sql_on: ${ft_callin.fcrsrcid} = ${lk_fcr.fcrsrcid};;
-    relationship: many_to_one
-  }
-
   join: lk_gvq {
     type: inner
     view_label: "GVQ"
@@ -86,24 +51,10 @@ explore: ft_callin {
     relationship: many_to_one
   }
 
-  join: lk_llamada_corta {
-    type: inner
-    view_label: "Llamada Corta"
-    sql_on: ${ft_callin.llamada_cortasrcid} = ${lk_llamada_corta.llamada_cortasrcid};;
-    relationship: many_to_one
-  }
-
   join: lk_media_name {
     type: inner
     view_label: "Media Name"
     sql_on: ${ft_callin.media_namesrcid} = ${lk_media_name.media_namesrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_res_ordinal {
-    type: inner
-    view_label: "Res Ordinal"
-    sql_on: ${ft_callin.res_ordinalsrcid}srcid} = ${lk_res_ordinal.res_ordinalsrcid};;
     relationship: many_to_one
   }
 
@@ -139,20 +90,6 @@ explore: ft_callin {
     type: inner
     view_label: "Result Reason VQ"
     sql_on: ${ft_callin.resultreason_vqsrcid} = ${lk_result_reason_vq.resultreason_vqsrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_stop_action {
-    type: inner
-    view_label: "Stop Action"
-    sql_on: ${ft_callin.stop_actionsrcid} = ${lk_stop_action.stop_actionsrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_sub_estado_fin {
-    type: inner
-    view_label: "SubEstado Fin"
-    sql_on: ${ft_callin.sub_estado_finsrcid} = ${lk_sub_estado_fin.sub_estado_finsrcid};;
     relationship: many_to_one
   }
 

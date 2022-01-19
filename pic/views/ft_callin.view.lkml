@@ -7,8 +7,8 @@ view: ft_callin {
 
   dimension: pk {
     primary_key: yes
-    type: number
-    sql: ${interaction_id} ;;
+    type: string
+    sql: ${ft_callinsrcid} ;;
   }
 
   ###########
@@ -39,53 +39,23 @@ view: ft_callin {
     sql: ${TABLE}.FECHA_FIN_LLAMADASRCId ;;
     datatype: timestamp
     group_label: "Fecha"
-    label: "FECHA _FIN _LLAMADA"
+    label: "FECHA_FIN_LLAMADA"
   }
 
   dimension_group: fecha_ingreso_agsrcid {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      quarter,
-      quarter_of_year,
-      year
-    ]
     sql: ${TABLE}.FECHA_INGRESO_AGSRCId ;;
     datatype: timestamp
     group_label: "Fecha"
+    label: "FECHA_INGRESO_AG"
   }
 
   dimension_group: fecha_ingreso_vqsrcid {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      quarter,
-      quarter_of_year,
-      year
-    ]
     sql: ${TABLE}.FECHA_INGRESO_VQSRCId ;;
     datatype: timestamp
     group_label: "Fecha"
+    label: "FECHA_INGRESO_VQ"
   }
 
   dimension_group: fecha_ini_llamadasrcid {
@@ -108,8 +78,8 @@ view: ft_callin {
     ]
     sql: ${TABLE}.FECHA_INI_LLAMADASRCId ;;
     datatype: timestamp
-    label: "FECHA_INI_LLAMADA"
     group_label: "Fecha"
+    label: "FECHA_INI_LLAMADA"
   }
 
   dimension_group: fecha_procesosrcid {
@@ -133,79 +103,33 @@ view: ft_callin {
     convert_tz: no
     sql: ${TABLE}.FECHA_PROCESOSRCId ;;
     datatype: date
-    label: "FECHA_PROCESO"
     group_label: "Fecha"
+    label: "FECHA_PROCESO"
   }
 
   dimension_group: fecha_salida_agsrcid {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      quarter,
-      quarter_of_year,
-      year
-    ]
     sql: ${TABLE}.FECHA_SALIDA_AGSRCId ;;
     datatype: timestamp
     group_label: "Fecha"
+    label: "FECHA_SALIDA_AG"
   }
 
   dimension_group: fecha_salida_vqsrcid {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      quarter,
-      quarter_of_year,
-      year
-    ]
     sql: ${TABLE}.FECHA_SALIDA_VQSRCId ;;
     datatype: timestamp
     group_label: "Fecha"
+    label: "FECHA_SALIDA_VQ"
   }
 
   dimension_group: _fechaCreacion {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      quarter,
-      quarter_of_year,
-      year
-    ]
     sql: ${TABLE}._fechaCreacion ;;
     datatype: timestamp
     group_label: "Fecha"
+    label: "FECHA_CREACION"
   }
-
 
 
 ## Flags ##
@@ -214,7 +138,6 @@ view: ft_callin {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.STOP_ACTIONSRCId ;;
-    suggest_dimension: lk_stop_action.stop_actionsrcid
     label: "STOP_ACTION"
   }
 
@@ -222,15 +145,14 @@ view: ft_callin {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.LLAMADA_CORTASRCId ;;
-    suggest_dimension: lk_llamada_corta.llamada_cortasrcid
     group_label: "Llamada Corta"
+    label: "LLAMADA_CORTA"
   }
 
   dimension: estado_fin_abandonadasrcid {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.ESTADO_FIN_ABANDONADASRCId ;;
-    suggest_dimension: lk_estado_fin_abandonada.estado_fin_abandonadasrcid
     group_label: "Estado"
     label: "ABANDONADA"
   }
@@ -239,7 +161,6 @@ view: ft_callin {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.ESTADO_FIN_ATENDIDASRCId ;;
-    suggest_dimension: lk_estado_fin_atendida.estado_fin_atendidasrcid
     group_label: "Estado"
     label: "ATENDIDA"
   }
@@ -248,7 +169,6 @@ view: ft_callin {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.ESTADO_FIN_RECIBIDASRCId ;;
-    suggest_dimension: lk_estado_fin_recibida.estado_fin_recibidasrcid
     group_label: "Estado"
     label: "RECIBIDA"
   }
@@ -257,7 +177,6 @@ view: ft_callin {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.ESTADO_FIN_SALIENTESRCId ;;
-    suggest_dimension: lk_estado_fin_saliente.estado_fin_salientesrcid
     group_label: "Estado"
     label: "SALIENTE"
   }
@@ -266,7 +185,6 @@ view: ft_callin {
     type: yesno
     value_format_name: id
     sql: ${TABLE}.FCRSRCId ;;
-    suggest_dimension: lk_fcr.fcrsrcid
     group_label: "FCR"
     label: "FCR"
   }
@@ -462,84 +380,96 @@ view: ft_callin {
     type: yesno
     sql: ${TABLE}.CONTESTADA_1_9 ;;
     view_label: "Contestada"
+    group_item_label: "1- 01-09"
   }
 
   dimension: contestada_10_19 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_10_19 ;;
     view_label: "Contestada"
+    group_item_label: "2- 10-19"
   }
 
   dimension: contestada_20_29 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_20_29 ;;
     view_label: "Contestada"
+    group_item_label: "3- 20-29"
   }
 
   dimension: contestada_30_39 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_30_39 ;;
     view_label: "Contestada"
+    group_item_label: "4- 30-39"
   }
 
   dimension: contestada_40_49 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_40_49 ;;
     view_label: "Contestada"
+    group_item_label: "5- 40-49"
   }
 
   dimension: contestada_50_59 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_50_59 ;;
     view_label: "Contestada"
+    group_item_label: "6- 50-59"
   }
 
   dimension: contestada_60_89 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_60_89 ;;
     view_label: "Contestada"
+    group_item_label: "7- 60-89"
   }
 
   dimension: contestada_90_119 {
     type: yesno
     sql: ${TABLE}.CONTESTADA_90_119 ;;
     view_label: "Contestada"
+    group_item_label: "8- 90-119"
   }
 
   dimension: contestada_120_mas {
     type: yesno
     sql: ${TABLE}.CONTESTADA_120_MAS ;;
     view_label: "Contestada"
+    group_item_label: "9- 120-Mas"
   }
 
   dimension: llamada_corta_1_9 {
     type: yesno
     sql: ${TABLE}.LLAMADA_CORTA_1_9 ;;
     group_label: "Llamada Corta"
+    group_item_label: "1- 01-09"
   }
 
   dimension: llamada_corta_10_19 {
     type: yesno
     sql: ${TABLE}.LLAMADA_CORTA_10_19 ;;
     group_label: "Llamada Corta"
+    group_item_label: "2- 10-19"
   }
 
   dimension: llamadacorta_20_29 {
     type: yesno
     sql: ${TABLE}.LLAMADACORTA_20_29 ;;
     group_label: "Llamada Corta"
+    group_item_label: "3- 20-29"
   }
 
   dimension: unico24 {
     type: yesno
     sql: ${TABLE}.UNICO24 ;;
-    label: "CLIENTE_UNICO_DIA"
+    label: "CLIENTE_UNICO_24H"
   }
 
   dimension: unico7_x24 {
     type: yesno
     sql: ${TABLE}.UNICO7X24 ;;
-    label: "CLIENTE_UNICO_MES"
+    label: "CLIENTE_UNICO_7D"
   }
 
 
@@ -676,12 +606,14 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TECHNICALRESULT_AGSRCId ;;
     suggest_dimension: lk_technical_result_ag.technicalresult_agsrcid
+    label: "TECHNICAL_RESULT_AG"
   }
 
   dimension: technicalresult_vqsrcid {
     type: string
     sql: ${TABLE}.TECHNICALRESULT_VQSRCId ;;
     suggest_dimension: lk_technical_result_vq.technicalresult_vqsrcid
+    label: "TECHNICAL_RESULT_VQ"
   }
 
   dimension: contexto_ivr_0800_srcid {
@@ -689,6 +621,7 @@ view: ft_callin {
     sql: ${TABLE}.CONTEXTO_IVR_0800SRCId ;;
     suggest_dimension: lk_contexto_ivr0800_opcion.contexto_ivr_0800_opcionsrcid
     group_label: "Contexto IVR"
+    label: "CONTEXTO_IVR_0800"
   }
 
   dimension: contexto_ivr_0800_opcionsrcid {
@@ -696,6 +629,7 @@ view: ft_callin {
     sql: ${TABLE}.CONTEXTO_IVR_0800_OPCIONSRCId ;;
     suggest_dimension: lk_contexto_ivr0800_opcion.contexto_ivr_0800_opcionsrcid
     group_label: "Contexto IVR"
+    label: "CONTEXTO_IVR_0800_OPCION"
   }
 
   dimension: contexto_ivr_0800_segmentosrcid {
@@ -703,6 +637,7 @@ view: ft_callin {
     sql: ${TABLE}.CONTEXTO_IVR_0800_SEGMENTOSRCId ;;
     suggest_dimension: lk_contexto_ivr0800_segmento.contexto_ivr_0800_segmentosrcid
     group_label: "Contexto IVR"
+    label: "CONTEXTO_IVR_0800_SEGMENTO"
   }
 
   dimension: vagsrcid {
@@ -948,51 +883,28 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.INTERACTION_TYPESRCId ;;
     suggest_dimension: lk_interaction_type.interaction_typesrcid
+    label: "INTERACTION_TYPE"
   }
 
   dimension: media_namesrcid {
     type: string
     sql: ${TABLE}.MEDIA_NAMESRCId ;;
     suggest_dimension: lk_media_name.media_namesrcid
-  }
-
-  dimension: resourcerole_agsrcid {
-    type: string
-    sql: ${TABLE}.RESOURCEROLE_AGSRCId ;;
-    suggest_dimension: lk_resource_role_ag.resourcerole_agsrcid
-    group_label: "Resource"
-  }
-
-  dimension: resourcerole_vqsrcid {
-    type: string
-    sql: ${TABLE}.RESOURCEROLE_VQSRCId ;;
-    suggest_dimension: lk_resource_role_vq.resourcerole_vqsrcid
-    group_label: "Resource"
-  }
-
-  dimension: resource_subtypesrcid {
-    type: string
-    sql: ${TABLE}.RESOURCE_SUBTYPESRCId ;;
-    suggest_dimension: lk_resource_sub_type.resource_subtypesrcid
-    group_label: "Resource"
-  }
-
-  dimension: resource_type {
-    type: string
-    sql: ${TABLE}.RESOURCE_TYPE ;;
-    group_label: "Resource"
+    label: "MEDIA_NAME"
   }
 
   dimension: resultreason_agsrcid {
     type: string
     sql: ${TABLE}.RESULTREASON_AGSRCId ;;
     suggest_dimension: lk_result_reason_ag.resultreason_agsrcid
+    label: "RESULT_REASON_AG"
   }
 
   dimension: resultreason_vqsrcid {
     type: string
     sql: ${TABLE}.RESULTREASON_VQSRCId ;;
     suggest_dimension: lk_result_reason_vq.resultreason_vqsrcid
+    label: "RESULT_REASON_VQ"
   }
 
   dimension: agrupador1 {
@@ -1015,92 +927,108 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.ANI ;;
     group_label: "ANI"
+    label: "ANI"
   }
 
   dimension: anis_ani_descripcion {
     type: string
     sql: ${TABLE}.ANIS_ANI_DESCRIPCION ;;
     group_label: "ANI"
+    label: "ANI_DESCRIPCION"
   }
 
   dimension: anis_postdiscado_descripcion {
     type: string
     sql: ${TABLE}.ANIS_POSTDISCADO_DESCRIPCION ;;
     group_label: "ANI"
+    label: "ANI_POSTDISCADO_DESCRIPCION"
   }
 
   dimension: apellido {
     type: string
     sql: ${TABLE}.APELLIDO ;;
-    label: "Apellido"
+    label: "APELLIDO"
   }
 
   dimension: dim_vag_tipo {
     type: string
     sql: ${TABLE}.DIM_VAG_TIPO ;;
+    label: "DIM_VAG_TIPO"
   }
 
   dimension: dnis {
     type: string
     sql: ${TABLE}.DNIS ;;
+    label: "DNIS"
   }
 
   dimension: documento {
     type: string
     sql: ${TABLE}.DOCUMENTO ;;
+    label: "DOCUMENTO"
   }
 
   dimension: encuesta {
     type: string
     sql: ${TABLE}.ENCUESTA ;;
+    label: "ENCUESTA"
   }
 
   dimension: id_ivr {
     type: string
     sql: ${TABLE}.ID_IVR ;;
+    label: "ID_IVR"
   }
 
   dimension: id_nice {
     type: string
     sql: ${TABLE}.ID_NICE ;;
+    label: "ID_NICE"
   }
 
   dimension: email_cliente {
     type: string
     sql: ${TABLE}.EMAIL_CLIENTE ;;
+    label: "EMAIL_CLIENTE"
   }
 
   dimension: customer_id {
     type: string
     sql: ${TABLE}.CUSTOMER_ID ;;
     group_label: "Customer Time"
+    label: "CUSTOMER_ID"
   }
 
   dimension: nombre {
     type: string
     sql: ${TABLE}.NOMBRE ;;
+    label: "NOMBRE"
   }
 
   dimension: nombre_cliente {
     type: string
     sql: ${TABLE}.NOMBRE_CLIENTE ;;
+    label: "NOMBRE_CLIENTE"
   }
 
   dimension: place_name {
     type: string
     sql: ${TABLE}.PLACE_NAME ;;
+    label: "PLACE_NAME"
     description: "Es el sitio de logueo del representante"
   }
 
   dimension: postdiscado {
     type: string
     sql: ${TABLE}.POSTDISCADO ;;
+    label: "POSTDISCADO"
   }
 
   dimension: pregunta_1 {
     type: string
     sql: ${TABLE}.PREGUNTA_1 ;;
     group_label: "Pregunta"
+    label: "PREGUNTA_1"
     description: "Pregunta Encuesta 1"
   }
 
@@ -1108,6 +1036,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.PREGUNTA_2 ;;
     group_label: "Pregunta"
+    label: "PREGUNTA_2"
     description: "Pregunta Encuesta 2"
   }
 
@@ -1115,6 +1044,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.PREGUNTA_3 ;;
     group_label: "Pregunta"
+    label: "PREGUNTA_3"
     description: "Pregunta Encuesta 3"
   }
 
@@ -1122,6 +1052,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.PREGUNTA_4 ;;
     group_label: "Pregunta"
+    label: "PREGUNTA_4"
     description: "Pregunta Encuesta 4"
   }
 
@@ -1129,6 +1060,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.PREGUNTA_5 ;;
     group_label: "Pregunta"
+    label: "PREGUNTA_5"
     description: "Pregunta Encuesta 5"
   }
 
@@ -1139,10 +1071,42 @@ view: ft_callin {
     description: "Indentificador de Cognitivo."
   }
 
+  dimension: resourcerole_agsrcid {
+    type: string
+    sql: ${TABLE}.RESOURCEROLE_AGSRCId ;;
+    group_label: "Resource"
+    label: "RESOURCE_ROLE_AG"
+    suggest_dimension: lk_resource_role_ag.resourcerole_agsrcid
+  }
+
+  dimension: resourcerole_vqsrcid {
+    type: string
+    sql: ${TABLE}.RESOURCEROLE_VQSRCId ;;
+    group_label: "Resource"
+    label: "RESOURCE_ROLE_VQ"
+    suggest_dimension: lk_resource_role_vq.resourcerole_vqsrcid
+  }
+
+  dimension: resource_subtypesrcid {
+    type: string
+    sql: ${TABLE}.RESOURCE_SUBTYPESRCId ;;
+    group_label: "Resource"
+    label: "RESOURCE_SUBTYPE"
+    suggest_dimension: lk_resource_sub_type.resource_subtypesrcid
+  }
+
+  dimension: resource_type {
+    type: string
+    sql: ${TABLE}.RESOURCE_TYPE ;;
+    group_label: "Resource"
+    label: "RESOURCE_TYPE"
+  }
+
   dimension: respuesta_1 {
     type: string
     sql: ${TABLE}.RESPUESTA_1 ;;
     group_label: "Respuesta"
+    label: "RESPUESTA_1"
     description: "Respuesta Encuesta 1"
   }
 
@@ -1150,6 +1114,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.RESPUESTA_2 ;;
     group_label: "Respuesta"
+    label: "RESPUESTA_2"
     description: "Respuesta Encuesta 2"
   }
 
@@ -1157,6 +1122,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.RESPUESTA_3 ;;
     group_label: "Respuesta"
+    label: "RESPUESTA_3"
     description: "Respuesta Encuesta 3"
   }
 
@@ -1164,6 +1130,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.RESPUESTA_4 ;;
     group_label: "Respuesta"
+    label: "RESPUESTA_4"
     description: "Respuesta Encuesta 4"
   }
 
@@ -1171,37 +1138,44 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.RESPUESTA_5 ;;
     group_label: "Respuesta"
+    label: "RESPUESTA_5"
     description: "Respuesta Encuesta 5"
   }
 
   dimension: rp_ingreso_call {
     type: string
     sql: ${TABLE}.RP_INGRESO_CALL ;;
+    label: "RP_INGRESO_CALL"
   }
 
   dimension: state_name {
     type: string
     sql: ${TABLE}.STATE_NAME ;;
+    label: "STATE_NAME"
   }
 
   dimension: switch_name {
     type: string
     sql: ${TABLE}.SWITCH_NAME ;;
+    label: "SWITCH_NAME"
   }
 
   dimension: target_object_selected {
     type: string
     sql: ${TABLE}.TARGET_OBJECT_SELECTED ;;
+    label: "TARGET_OBJECT_SELECTED"
   }
 
   dimension: telefono {
     type: string
     sql: ${TABLE}.TELEFONO ;;
+    label: "TELEFONO"
   }
 
   dimension: tipo_target {
     type: string
     sql: ${TABLE}.TIPO_TARGET ;;
+    label: "TIPO_TARGET"
   }
 
   dimension: agente_rp {
@@ -1215,12 +1189,14 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.ROUTING_TARGET_TYPE ;;
     group_label: "Routing"
+    label: "ROUTING_TARGET_TYPE"
   }
 
   dimension: routing_target_type_code {
     type: string
     sql: ${TABLE}.ROUTING_TARGET_TYPE_CODE ;;
     group_label: "Routing"
+    label: "ROUTING_TARGET_TYPE_CODE"
   }
 
 
@@ -1230,7 +1206,6 @@ view: ft_callin {
     type: number
     value_format_name: id
     sql: ${TABLE}.RES_ORDINALSRCId ;;
-    suggest_dimension: lk_res_ordinal.res_ordinalsrcid
     label: "RES_ORDINAL"
   }
 
@@ -1238,479 +1213,385 @@ view: ft_callin {
     type: number
     value_format_name: id
     sql: ${TABLE}.SUB_ESTADO_FINSRCId ;;
-    suggest_dimension: lk_sub_estado_fin.sub_estado_finsrcid
     label: "SUB_ESTADO_FIN"
   }
 
   dimension: interaction_id {
     type: number
     sql: ${TABLE}.INTERACTION_ID ;;
+    label: "INTERACTION_ID"
   }
 
   dimension: agent_to_agent_cons_count {
     type: number
     sql: ${TABLE}.AGENT_TO_AGENT_CONS_COUNT ;;
     group_label: "Agente"
+    label: "AGENT_TO_AGENT_CONS_COUNT"
   }
 
   dimension: agent_to_agent_cons_duration {
     type: number
     sql: ${TABLE}.AGENT_TO_AGENT_CONS_DURATION ;;
     group_label: "Agente"
+    label: "AGENT_TO_AGENT_CONS_DURATION"
   }
 
   dimension: conference_initiated_count {
     type: number
     sql: ${TABLE}.CONFERENCE_INITIATED_COUNT ;;
     group_label: "Conference"
+    label: "CONFERENCE_INITIATED_COUNT"
   }
 
   dimension: conf_init_hold_count {
     type: number
     sql: ${TABLE}.CONF_INIT_HOLD_COUNT ;;
     group_label: "Conference"
+    label: "CONF_INIT_HOLD_COUNT"
   }
 
   dimension: conf_init_hold_duration {
     type: number
     sql: ${TABLE}.CONF_INIT_HOLD_DURATION ;;
     group_label: "Conference"
+    label: "CONF_INIT_HOLD_DURATION"
   }
 
   dimension: conf_init_talk_count {
     type: number
     sql: ${TABLE}.CONF_INIT_TALK_COUNT ;;
     group_label: "Conference"
+    label: "CONF_INIT_TALK_COUNT"
   }
 
   dimension: conf_init_talk_duration {
     type: number
     sql: ${TABLE}.CONF_INIT_TALK_DURATION ;;
     group_label: "Conference"
+    label: "CONF_INIT_TALK_DURATION"
   }
 
   dimension: conf_join_hold_count {
     type: number
     sql: ${TABLE}.CONF_JOIN_HOLD_COUNT ;;
     group_label: "Conference"
+    label: "CONF_JOIN_HOLD_COUNT"
   }
 
   dimension: conf_join_hold_duration {
     type: number
     sql: ${TABLE}.CONF_JOIN_HOLD_DURATION ;;
     group_label: "Conference"
+    label: "CONF_JOIN_HOLD_DURATION"
   }
 
   dimension: conf_join_ring_count {
     type: number
     sql: ${TABLE}.CONF_JOIN_RING_COUNT ;;
     group_label: "Conference"
+    label: "CONF_JOIN_RING_COUNT"
   }
 
   dimension: conf_join_ring_duration {
     type: number
     sql: ${TABLE}.CONF_JOIN_RING_DURATION ;;
     group_label: "Conference"
+    label: "CONF_JOIN_RING_DURATION"
   }
 
   dimension: conf_join_talk_count {
     type: number
     sql: ${TABLE}.CONF_JOIN_TALK_COUNT ;;
     group_label: "Conference"
+    label: "CONF_JOIN_TALK_COUNT"
   }
 
   dimension: conf_join_talk_duration {
     type: number
     sql: ${TABLE}.CONF_JOIN_TALK_DURATION ;;
     group_label: "Conference"
+    label: "CONF_JOIN_TALK_DURATION"
   }
 
   dimension: cons_init_dial_count {
     type: number
     sql: ${TABLE}.CONS_INIT_DIAL_COUNT ;;
     group_label: "Cons"
+    label: "CONS_INIT_DIAL_COUNT"
   }
 
   dimension: cons_init_dial_duration {
     type: number
     sql: ${TABLE}.CONS_INIT_DIAL_DURATION ;;
     group_label: "Cons"
+    label: "CONS_INIT_DIAL_DURATION"
   }
 
   dimension: cons_init_hold_count {
     type: number
     sql: ${TABLE}.CONS_INIT_HOLD_COUNT ;;
     group_label: "Cons"
+    label: "CONS_INIT_HOLD_COUNT"
   }
 
   dimension: cons_init_hold_duration {
     type: number
     sql: ${TABLE}.CONS_INIT_HOLD_DURATION ;;
     group_label: "Cons"
+    label: "CONS_INIT_HOLD_DURATION"
   }
 
   dimension: cons_init_talk_count {
     type: number
     sql: ${TABLE}.CONS_INIT_TALK_COUNT ;;
     group_label: "Cons"
+    label: "CONS_INIT_TALK_COUNT"
   }
 
   dimension: cons_init_talk_duration {
     type: number
     sql: ${TABLE}.CONS_INIT_TALK_DURATION ;;
     group_label: "Cons"
+    label: "CONS_INIT_TALK_DURATION"
   }
 
   dimension: cons_rcv_acw_count {
     type: number
     sql: ${TABLE}.CONS_RCV_ACW_COUNT ;;
     group_label: "Cons"
+    label: "CONS_RCV_ACW_COUNT"
   }
 
   dimension: cons_rcv_acw_duration {
     type: number
     sql: ${TABLE}.CONS_RCV_ACW_DURATION ;;
     group_label: "Cons"
+    label: "CONS_RCV_ACW_DURATION"
   }
 
   dimension: cons_rcv_hold_count {
     type: number
     sql: ${TABLE}.CONS_RCV_HOLD_COUNT ;;
     group_label: "Cons"
+    label: "CONS_RCV_HOLD_COUNT"
   }
 
   dimension: cons_rcv_hold_duration {
     type: number
     sql: ${TABLE}.CONS_RCV_HOLD_DURATION ;;
     group_label: "Cons"
+    label: "CONS_RCV_HOLD_DURATION"
   }
 
   dimension: cons_rcv_ring_count {
     type: number
     sql: ${TABLE}.CONS_RCV_RING_COUNT ;;
     group_label: "Cons"
+    label: "CONS_RCV_RING_COUNT"
   }
 
   dimension: cons_rcv_ring_duration {
     type: number
     sql: ${TABLE}.CONS_RCV_RING_DURATION ;;
     group_label: "Cons"
+    label: "CONS_RCV_RING_DURATION"
   }
 
   dimension: cons_rcv_talk_count {
     type: number
     sql: ${TABLE}.CONS_RCV_TALK_COUNT ;;
     group_label: "Cons"
+    label: "CONS_RCV_TALK_COUNT"
   }
 
   dimension: cons_rcv_talk_duration {
     type: number
     sql: ${TABLE}.CONS_RCV_TALK_DURATION ;;
     group_label: "Cons"
-  }
-
-  dimension: customer_acw_count {
-    type: number
-    sql: ${TABLE}.CUSTOMER_ACW_COUNT ;;
-    group_label: "Customer Time"
-    label: "ACW_COUNT"
-  }
-
-  dimension: customer_acw_duration {
-    type: number
-    sql: ${TABLE}.CUSTOMER_ACW_DURATION ;;
-    group_label: "Customer Time"
-    label: "ACW_TIME"
-  }
-
-  dimension: customer_dial_count {
-    type: number
-    sql: ${TABLE}.CUSTOMER_DIAL_COUNT ;;
-    group_label: "Customer Time"
-    label: "DIAL_COUNT"
-  }
-
-  dimension: customer_dial_duration {
-    type: number
-    sql: ${TABLE}.CUSTOMER_DIAL_DURATION ;;
-    group_label: "Customer Time"
-    label: "DIAL_TIME"
-  }
-
-  dimension: customer_handle_count {
-    type: number
-    sql: ${TABLE}.CUSTOMER_HANDLE_COUNT ;;
-    group_label: "Customer Time"
-    description: "Marca la interacción tomada por un representante."
-  }
-
-  dimension: customer_hold_count {
-    type: number
-    sql: ${TABLE}.CUSTOMER_HOLD_COUNT ;;
-    group_label: "Customer Time"
-    label: "HOLD_COUNT"
-  }
-
-  dimension: customer_hold_duration {
-    type: number
-    sql: ${TABLE}.CUSTOMER_HOLD_DURATION ;;
-    group_label: "Customer Time"
-    label: "HOLD_TIME"
-  }
-
-  dimension: customer_ring_count {
-    type: number
-    sql: ${TABLE}.CUSTOMER_RING_COUNT ;;
-    group_label: "Customer Time"
-    label: "RING_COUNT"
-  }
-
-  dimension: customer_ring_duration {
-    type: number
-    sql: ${TABLE}.CUSTOMER_RING_DURATION ;;
-    group_label: "Customer Time"
-    label: "RING_TIME"
-  }
-
-  dimension: customer_talk_count {
-    type: number
-    sql: ${TABLE}.CUSTOMER_TALK_COUNT ;;
-    group_label: "Customer Time"
-    label: "TALK_COUNT"
-  }
-
-  dimension: customer_talk_duration {
-    type: number
-    sql: ${TABLE}.CUSTOMER_TALK_DURATION ;;
-    group_label: "Customer Time"
-    label: "TALK_TIME"
-  }
-
-  dimension: dial_duration {
-    type: number
-    sql: ${TABLE}.DIAL_DURATION ;;
-  }
-
-  dimension: fecha_fin_llamada_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_FIN_LLAMADA_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fecha_ingreso_ag_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_INGRESO_AG_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fecha_ingreso_vq_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_INGRESO_VQ_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fecha_ini_llamada_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_INI_LLAMADA_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fecha_proceso_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_PROCESO_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fecha_salida_ag_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_SALIDA_AG_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fecha_salida_vq_epoch {
-    type: number
-    sql: ${TABLE}.FECHA_SALIDA_VQ_EPOCH ;;
-    group_label: "Fecha"
-  }
-
-  dimension: fin_ifa_seg {
-    type: number
-    sql: ${TABLE}.FIN_IFA_SEG ;;
-  }
-
-  dimension: fin_irf_seg {
-    type: number
-    sql: ${TABLE}.FIN_IRF_SEG ;;
-  }
-
-  dimension: fin_msf_seg {
-    type: number
-    sql: ${TABLE}.FIN_MSF_SEG ;;
-  }
-
-  dimension: hold_count {
-    type: number
-    sql: ${TABLE}.HOLD_COUNT ;;
-  }
-
-  dimension: hold_duration {
-    type: number
-    sql: ${TABLE}.HOLD_DURATION ;;
-  }
-
-  dimension: ini_ifa_seg {
-    type: number
-    sql: ${TABLE}.INI_IFA_SEG ;;
-  }
-
-  dimension: ini_irf_seg {
-    type: number
-    sql: ${TABLE}.INI_IRF_SEG ;;
-  }
-
-  dimension: ini_msf_seg {
-    type: number
-    sql: ${TABLE}.INI_MSF_SEG ;;
+    label: "CONS_RCV_TALK_DURATION"
   }
 
   dimension: interaction_type_key {
     type: number
     sql: ${TABLE}.INTERACTION_TYPE_KEY ;;
+    label: "INTERACTION_TYPE_KEY"
   }
 
   dimension: last_rp_resource_key {
     type: number
     sql: ${TABLE}.LAST_RP_RESOURCE_KEY ;;
+    label: "LAST_RP_RESOURCE_KEY"
   }
 
   dimension: last_vqueue_resource_key {
     type: number
     sql: ${TABLE}.LAST_VQUEUE_RESOURCE_KEY ;;
+    label: "LAST_VQ_RESOURCE_KEY"
   }
 
-  dimension: media_type_key {
+  dimension: fin_ifa_seg {
     type: number
-    sql: ${TABLE}.MEDIA_TYPE_KEY ;;
+    sql: ${TABLE}.FIN_IFA_SEG ;;
+    label: "FIN_IFA_SEG"
+  }
+
+  dimension: fin_irf_seg {
+    type: number
+    sql: ${TABLE}.FIN_IRF_SEG ;;
+    label: "FIN_IRF_SEG"
+  }
+
+  dimension: fin_msf_seg {
+    type: number
+    sql: ${TABLE}.FIN_MSF_SEG ;;
+    label: "FIN_MSF_SEG"
+  }
+
+  dimension: ini_ifa_seg {
+    type: number
+    sql: ${TABLE}.INI_IFA_SEG ;;
+    label: "INI_IFA_SEG"
+  }
+
+  dimension: ini_irf_seg {
+    type: number
+    sql: ${TABLE}.INI_IRF_SEG ;;
+    label: "INI_IRF_SEG"
+  }
+
+  dimension: ini_msf_seg {
+    type: number
+    sql: ${TABLE}.INI_MSF_SEG ;;
+    label: "INI_MSF_SEG"
   }
 
   dimension: mediation_count {
     type: number
     sql: ${TABLE}.MEDIATION_COUNT ;;
+    label: "MEDIATION_COUNT"
   }
 
   dimension: mediation_segment_id {
     type: number
     sql: ${TABLE}.MEDIATION_SEGMENT_ID ;;
+    label: "MEDIATION_SEGMENT_ID"
+  }
+
+  dimension: media_type_key {
+    type: number
+    sql: ${TABLE}.MEDIA_TYPE_KEY ;;
+    label: "MEDIA_TYPE_KEY"
   }
 
   dimension: place_key {
     type: number
     sql: ${TABLE}.PLACE_KEY ;;
-    description: "Es el cod del sitio de logueo del representante"
+    label: "PLACE_KEY"
+    description: "Es el código del sitio de logueo del representante"
   }
 
   dimension: post_cons_xfer_hold_count {
     type: number
     sql: ${TABLE}.POST_CONS_XFER_HOLD_COUNT ;;
     group_label: "Post Cons"
+    label: "POST_CONS_XFER_HOLD_COUNT"
   }
 
   dimension: post_cons_xfer_hold_duration {
     type: number
     sql: ${TABLE}.POST_CONS_XFER_HOLD_DURATION ;;
     group_label: "Post Cons"
+    label: "POST_CONS_XFER_HOLD_DURATION"
   }
 
   dimension: post_cons_xfer_ring_count {
     type: number
     sql: ${TABLE}.POST_CONS_XFER_RING_COUNT ;;
     group_label: "Post Cons"
+    label: "POST_CONS_XFER_RING_COUNT"
   }
 
   dimension: post_cons_xfer_ring_duration {
     type: number
     sql: ${TABLE}.POST_CONS_XFER_RING_DURATION ;;
     group_label: "Post Cons"
+    label: "POST_CONS_XFER_RING_DURATION"
   }
 
   dimension: post_cons_xfer_talk_count {
     type: number
     sql: ${TABLE}.POST_CONS_XFER_TALK_COUNT ;;
     group_label: "Post Cons"
+    label: "POST_CONS_XFER_TALK_COUNT"
   }
 
   dimension: post_cons_xfer_talk_duration {
     type: number
     sql: ${TABLE}.POST_CONS_XFER_TALK_DURATION ;;
     group_label: "Post Cons"
-  }
-
-  dimension: res_previous_sm_state_key {
-    type: number
-    sql: ${TABLE}.RES_PREVIOUS_SM_STATE_KEY ;;
-  }
-
-  dimension: ring_count {
-    type: number
-    sql: ${TABLE}.RING_COUNT ;;
-  }
-
-  dimension: ring_duration {
-    type: number
-    sql: ${TABLE}.RING_DURATION ;;
-  }
-
-  dimension: routing_point_duration {
-    type: number
-    sql: ${TABLE}.ROUTING_POINT_DURATION ;;
-    group_label: "Routing"
-  }
-
-  dimension: routing_target_key {
-    type: number
-    sql: ${TABLE}.ROUTING_TARGET_KEY ;;
-    group_label: "Routing"
-  }
-
-  dimension: t_duration_ag {
-    type: number
-    sql: ${TABLE}.T_DURATION_AG ;;
-  }
-
-  dimension: t_duration_vq {
-    type: number
-    sql: ${TABLE}.T_DURATION_VQ ;;
-  }
-
-  dimension: talk_count {
-    type: number
-    sql: ${TABLE}.TALK_COUNT ;;
-  }
-
-  dimension: talk_duration {
-    type: number
-    sql: ${TABLE}.TALK_DURATION ;;
-  }
-
-  dimension: technical_descriptor_key {
-    type: number
-    sql: ${TABLE}.TECHNICAL_DESCRIPTOR_KEY ;;
+    label: "POST_CONS_XFER_TALK_DURATION"
   }
 
   dimension: resource_group_combination_key {
     type: number
     sql: ${TABLE}.RESOURCE_GROUP_COMBINATION_KEY ;;
     group_label: "Resource"
+    label: "RESOURCE_GROUP_COMBINATION_KEY"
   }
 
   dimension: resource_key {
     type: number
     sql: ${TABLE}.RESOURCE_KEY ;;
     group_label: "Resource"
+    label: "RESOURCE_KEY"
+  }
+
+  dimension: res_previous_sm_state_key {
+    type: number
+    sql: ${TABLE}.RES_PREVIOUS_SM_STATE_KEY ;;
+    label: "RES_PREVIOUS_SM_STATE_KEY"
+  }
+
+  dimension: routing_point_duration {
+    type: number
+    sql: ${TABLE}.ROUTING_POINT_DURATION ;;
+    group_label: "Routing"
+    label: "ROUTING_POINT_DURATION"
+  }
+
+  dimension: routing_target_key {
+    type: number
+    sql: ${TABLE}.ROUTING_TARGET_KEY ;;
+    group_label: "Routing"
+    label: "ROUTING_TARGET_KEY"
+  }
+
+  dimension: t_duration_ag {
+    type: number
+    sql: ${TABLE}.T_DURATION_AG ;;
+    label: "T_DURATION_AG"
+  }
+
+  dimension: t_duration_vq {
+    type: number
+    sql: ${TABLE}.T_DURATION_VQ ;;
+    label: "T_DURATION_VQ"
+  }
+
+  dimension: technical_descriptor_key {
+    type: number
+    sql: ${TABLE}.TECHNICAL_DESCRIPTOR_KEY ;;
+    label: "TECHNICAL_DESCRIPTOR_KEY"
   }
 
 
   ## Hidden ##
+
+  dimension: ft_callinsrcid {
+    hidden: yes
+    type:  string
+    sql: ${TABLE}.FT_CALLINSRCId ;;
+  }
 
   dimension: interaction_resource_id {
     hidden: yes
@@ -1730,10 +1611,81 @@ view: ft_callin {
     sql: ${TABLE}.AFTER_CALL_WORK_DURATION ;;
   }
 
+  dimension: customer_acw_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_ACW_COUNT ;;
+  }
+
+  dimension: customer_acw_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_ACW_DURATION ;;
+  }
+
+  dimension: customer_dial_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_DIAL_COUNT ;;
+  }
+
+  dimension: customer_dial_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_DIAL_DURATION ;;
+  }
+
+  dimension: customer_handle_count {
+    hidden: yes
+    type: number
+  }
+
+  dimension: customer_hold_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_HOLD_COUNT ;;
+  }
+
+  dimension: customer_hold_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_HOLD_DURATION ;;
+  }
+
+  dimension: customer_ring_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_RING_COUNT ;;
+  }
+
+  dimension: customer_ring_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_RING_DURATION ;;
+  }
+
+  dimension: customer_talk_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_TALK_COUNT ;;
+  }
+
+  dimension: customer_talk_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUSTOMER_TALK_DURATION ;;
+  }
+
   dimension: dial_count {
     hidden: yes
     type: number
     sql: ${TABLE}.DIAL_COUNT ;;
+  }
+
+  dimension: dial_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DIAL_DURATION ;;
   }
 
   dimension: duration_call {
@@ -1742,6 +1694,83 @@ view: ft_callin {
     sql: ${TABLE}.DURATION_CALL ;;
   }
 
+  dimension: fecha_fin_llamada_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_FIN_LLAMADA_EPOCH ;;
+  }
+
+  dimension: fecha_ingreso_ag_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_INGRESO_AG_EPOCH ;;
+  }
+
+  dimension: fecha_ingreso_vq_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_INGRESO_VQ_EPOCH ;;
+  }
+
+  dimension: fecha_ini_llamada_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_INI_LLAMADA_EPOCH ;;
+  }
+
+  dimension: fecha_proceso_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_PROCESO_EPOCH ;;
+  }
+
+  dimension: fecha_salida_ag_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_SALIDA_AG_EPOCH ;;
+  }
+
+  dimension: fecha_salida_vq_epoch {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.FECHA_SALIDA_VQ_EPOCH ;;
+  }
+
+  dimension: hold_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.HOLD_COUNT ;;
+  }
+
+  dimension: hold_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.HOLD_DURATION ;;
+  }
+
+  dimension: ring_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.RING_COUNT ;;
+  }
+
+  dimension: ring_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.RING_DURATION ;;
+  }
+
+  dimension: talk_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.TALK_COUNT ;;
+  }
+
+  dimension: talk_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.TALK_DURATION ;;
+  }
 
 ##############
 ## Measures ##
@@ -1753,7 +1782,7 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Interacciones"
-    label: "Cantidad Interacciones"
+    label: "CANTIDAD_INTERACIONES"
   }
 
   measure: count_estado_fin_abandonadasrcid {
@@ -1761,9 +1790,36 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Abandonadas"
-    label: "Cantidad Abandonadas"
+    label: "CANTIDAD_ABANDONADAS"
     filters: [estado_fin_abandonadasrcid: "yes"]
     }
+
+  measure: count_estado_fin_atendidasrcid {
+    type: count_distinct
+    sql: ${interaction_resource_id} ;;
+    group_label: "Cantidad"
+    group_item_label: "Atendidas"
+    label: "CANTIDAD_ATENDIDAS"
+    filters: [estado_fin_atendidasrcid: "yes"]
+  }
+
+  measure: count_estado_fin_recibidasrcid {
+    type: count_distinct
+    sql: ${interaction_resource_id} ;;
+    group_label: "Cantidad"
+    group_item_label: "Recibidas"
+    label: "CANTIDAD_RECIBIDAS"
+    filters: [estado_fin_recibidasrcid: "yes"]
+  }
+
+  measure: count_estado_fin_salientesrcid {
+    type: count_distinct
+    sql: ${interaction_resource_id} ;;
+    group_label: "Cantidad"
+    group_item_label: "Salientes"
+    label: "CANTIDAD_SALIENTES"
+    filters: [estado_fin_salientesrcid: "yes"]
+  }
 
   measure: count_abandono_q_1_9 {
     type: count_distinct
@@ -1785,7 +1841,6 @@ view: ft_callin {
     group_item_label: "2- 10-19"
     description: "Abandonada en cola _q_10_19"
     filters: [abandono_q_10_19: "yes"]
-
   }
 
   measure: count_abandono_q_20_29 {
@@ -1969,20 +2024,14 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     label: "VALIDO"
     description: "Tomar valor 1 para actividades de productividad"
-    filters: [active_flag: "1"]
-  }
-
-  measure: count_after_call_work_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    label: "after_call_work_count"
-    filters: [after_call_work_count: "1"]
+    filters: [active_flag: "yes"]
   }
 
   measure: count_contestada_1_9 {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "1- 01-09"
     filters: [contestada_1_9: "yes"]
   }
 
@@ -1990,6 +2039,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "2- 10-09"
     filters: [contestada_10_19: "yes"]
   }
 
@@ -1997,6 +2047,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "3- 20-29"
     filters: [contestada_20_29: "yes"]
   }
 
@@ -2004,6 +2055,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "4- 30-39"
     filters: [contestada_30_39: "yes"]
   }
 
@@ -2011,6 +2063,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "5- 40-49"
     filters: [contestada_40_49: "yes"]
   }
 
@@ -2018,6 +2071,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "6- 50-59"
     filters: [contestada_50_59: "yes"]
   }
 
@@ -2025,6 +2079,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "7- 60-89"
     filters: [contestada_60_89: "yes"]
   }
 
@@ -2032,6 +2087,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "8- 60-119"
     filters: [contestada_90_119: "yes"]
   }
 
@@ -2039,68 +2095,15 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     view_label: "Contestada"
+    group_item_label: "9- 120-Mas"
     filters: [contestada_120_mas: "yes"]
-  }
-
-  measure: count_customer_acw_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    group_label: "Customer Time"
-    label: "ACW_COUNT"
-    filters: [customer_acw_count: "1"]
-  }
-
-  measure: count_customer_dial_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    group_label: "Customer Time"
-    label: "DIAL_COUNT"
-    filters: [customer_dial_count: "1"]
-  }
-
-  measure: count_customer_handle_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    group_label: "Customer Time"
-    description: "Marca la interacción tomada por un representante."
-    filters: [customer_handle_count: "1"]
-  }
-
-  measure: count_customer_hold_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    group_label: "Customer Time"
-    label: "HOLD_COUNT"
-    filters: [customer_hold_count: "1"]
-  }
-
-  measure: count_customer_ring_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    group_label: "Customer Time"
-    label: "RING_COUNT"
-    filters: [customer_ring_count: "1"]
-  }
-
-  measure: count_customer_talk_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    group_label: "Customer Time"
-    label: "TALK_COUNT"
-    filters: [customer_talk_count: "1"]
-  }
-
-  measure: count_dial_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    label: "dial_count"
-    filters: [dial_count: "1"]
   }
 
   measure: count_llamada_corta_1_9 {
     type: count_distinct
     sql: ${interaction_resource_id};;
     group_label: "Llamada Corta"
+    group_item_label: "1- 01-09"
     filters: [llamada_corta_1_9: "yes"]
   }
 
@@ -2108,6 +2111,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     group_label: "Llamada Corta"
+    group_item_label: "2- 10-19"
     filters: [llamada_corta_10_19: "yes"]
   }
 
@@ -2115,6 +2119,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     group_label: "Llamada Corta"
+    group_item_label: "3- 20-29"
     filters: [llamadacorta_20_29: "yes"]
   }
 
@@ -2123,60 +2128,86 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     value_format_name: id
     group_label: "Llamada Corta"
+    group_item_label: "COUNT_LLAMADA_CORTA"
     filters: [llamada_cortasrcid: "yes"]
-  }
-
-  measure: count_hold_count {
-    type: count_distinct
-    sql: ${interaction_resource_id};;
-    label: "hold_count"
-    filters: [hold_count: "1"]
   }
 
   measure: count_unico24 {
     type: count_distinct
     sql: ${interaction_resource_id};;
-    label: "CLIENTE_UNICO_DIA"
+    label: "CLIENTE_UNICO_24H"
     filters: [unico24: "yes"]
   }
 
   measure: count_unico7_x24 {
     type: count_distinct
     sql: ${interaction_resource_id} ;;
-    label: "CLIENTE_UNICO_MES"
+    label: "CLIENTE_UNICO_7D"
     filters: [unico7_x24: "yes"]
   }
 
 
   ## Sum Distinct ##
 
-  measure: total_estado_fin_atendidasrcid {
+  measure: total_after_call_work_count {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
-    sql: ${estado_fin_atendidasrcid} ;;
-    group_label: "Total"
-    label: "Total Atendidas"
-    group_item_label: "Atendidas"
+    sql: ${after_call_work_count} ;;
+    label: "TOTAL_AFTER_CALL_WORK_COUNT"
   }
 
-  measure: total_estado_fin_recibidasrcid {
+  measure: total_after_call_work_duration {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
-    sql: ${estado_fin_recibidasrcid} ;;
-    group_label: "Total"
-    label: "Total Recibidas"
-    group_item_label: "Recibidas"
-
+    sql: ${after_call_work_duration} ;;
+    label: "TOTAL_AFTER_CALL_WORK_DURATION"
   }
 
-  measure: total_estado_fin_salientesrcid {
+  measure: total_customer_acw_count {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id} ;;
-    sql: ${estado_fin_salientesrcid} ;;
-    group_label: "Total"
-    label: "Total Salientes"
-    group_item_label: "Salientes"
+    sql: ${customer_acw_count} ;;
+    group_label: "Customer Time"
+    label: "ACW_COUNT"
+  }
 
+  measure: total_customer_dial_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${customer_dial_count}  ;;
+    label: "DIAL_COUNT"
+  }
+
+  measure: total_customer_handle_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${customer_handle_count} ;;
+    group_label: "Customer Time"
+    label: "HANDLE_COUNT"
+  }
+
+  measure: total_customer_hold_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${customer_hold_count} ;;
+    group_label: "Customer Time"
+    label: "HOLD_COUNT"
+  }
+
+  measure: total_customer_ring_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${customer_ring_count} ;;
+    group_label: "Customer Time"
+    label: "RING_COUNT"
+  }
+
+  measure: total_customer_talk_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${customer_talk_count} ;;
+    group_label: "Customer Time"
+    label: "TALK_COUNT"
   }
 
   measure: total_duration_call {
@@ -2184,7 +2215,7 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${duration_call} ;;
     group_label: "Total"
-    label: "Total Duración"
+    label: "TOTAL_DURATION_CALL"
     group_item_label: "Duracion"
   }
 
@@ -2193,15 +2224,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${t_duration_ag} ;;
     group_label: "Total"
-    label: "Total Duración AG"
+    label: "TOTAL_T_DURATION_AG"
     group_item_label: "Duración AG"
-  }
-
-  measure: total_after_call_work_duration {
-    type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
-    sql: ${after_call_work_duration} ;;
-    label: "after_call_work_duration"
   }
 
   measure: total_customer_acw_duration {
@@ -2210,13 +2234,6 @@ view: ft_callin {
     sql: ${customer_acw_duration};;
     group_label: "Customer Time"
     label: "ACW_TIME"
-  }
-
-  measure: total_hold_duration {
-    type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
-    sql: ${hold_duration};;
-    label: "hold_duration"
   }
 
   measure: total_customer_talk_duration {
@@ -2251,4 +2268,10 @@ view: ft_callin {
     label: "DIAL_TIME"
   }
 
+  measure: total_mediation_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${mediation_count} ;;
+    label: "TOTAL_MEDIATION_COUNT"
+  }
 }
