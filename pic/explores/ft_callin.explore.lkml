@@ -9,7 +9,7 @@ explore: ft_callin {
 
   always_filter: {
     filters:  [
-                ft_callin.fecha_procesosrcid_date: "today",
+                ft_callin.fecha_procesosrcid: "today",
                 ft_callin.dim_vag_tipo: "SEGMENTO_SITIO",
                 ft_callin.vagsrcid: "%_QC1S1",
                 ft_callin.gvqsrcid: "%_QC1"
@@ -55,41 +55,6 @@ explore: ft_callin {
     type: inner
     view_label: "Media Name"
     sql_on: ${ft_callin.media_namesrcid} = ${lk_media_name.media_namesrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_resource_role_ag {
-    type: inner
-    view_label: "Resource Role AG"
-    sql_on: ${ft_callin.resourcerole_agsrcid} = ${lk_resource_role_ag.resourcerole_agsrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_resource_role_vq {
-    type: inner
-    view_label: "Resource Role VQ"
-    sql_on: ${ft_callin.resourcerole_vqsrcid} = ${lk_resource_role_vq.resourcerole_vqsrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_resource_sub_type {
-    type: inner
-    view_label: "Resource Subtype"
-    sql_on: ${ft_callin.resource_subtypesrcid} = ${lk_resource_sub_type.resource_subtypesrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_result_reason_ag {
-    type: inner
-    view_label: "Result Reason AG"
-    sql_on: ${ft_callin.resultreason_agsrcid} = ${lk_result_reason_ag.resultreason_agsrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_result_reason_vq {
-    type: inner
-    view_label: "Result Reason VQ"
-    sql_on: ${ft_callin.resultreason_vqsrcid} = ${lk_result_reason_vq.resultreason_vqsrcid};;
     relationship: many_to_one
   }
 
@@ -202,20 +167,6 @@ explore: ft_callin {
     type: inner
     view_label: "Tabulación 4"
     sql_on: ${ft_callin.tabulacion4_srcid} = ${lk_tabulacion4.tabulacion4_srcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_technical_result_ag {
-    type: inner
-    view_label: "Technical Result AG"
-    sql_on: ${ft_callin.technicalresult_agsrcid} = ${lk_technical_result_ag.technicalresult_agsrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_technical_result_vq {
-    type: inner
-    view_label: "Technical Result VQ"
-    sql_on: ${ft_callin.technicalresult_vqsrcid} = ${lk_technical_result_vq.technicalresult_vqsrcid};;
     relationship: many_to_one
   }
 
