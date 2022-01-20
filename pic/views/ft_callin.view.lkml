@@ -431,7 +431,8 @@ view: ft_callin {
     sql: ${TABLE}.TABULACION1SRCId ;;
     suggest_dimension: lk_tabulacion1.tabulacion1_srcid
     group_label: "Tabulación"
-    label: "TABULACION1"
+    group_item_label: "Tabulacion 1"
+    label: "TAB 1"
   }
 
   dimension: tabulacion2_srcid {
@@ -439,7 +440,8 @@ view: ft_callin {
     sql: ${TABLE}.TABULACION2SRCId ;;
     suggest_dimension: lk_tabulacion2.tabulacion2_srcid
     group_label: "Tabulación"
-    label: "TABULACION2"
+    group_item_label: "Tabulacion 2"
+    label: "TAB 2"
   }
 
   dimension: tabulacion3_srcid {
@@ -447,7 +449,8 @@ view: ft_callin {
     sql: ${TABLE}.TABULACION3SRCId ;;
     suggest_dimension: lk_tabulacion3.tabulacion3_srcid
     group_label: "Tabulación"
-    label: "TABULACION3"
+    group_item_label: "Tabulacion 3"
+    label: "TAB 3"
   }
 
   dimension: tabulacion4_srcid {
@@ -455,7 +458,8 @@ view: ft_callin {
     sql: ${TABLE}.TABULACION4SRCId ;;
     suggest_dimension: lk_tabulacion4.tabulacion4_srcid
     group_label: "Tabulación"
-    label: "TABULACION4"
+    group_item_label: "Tabulacion 4"
+    label: "TAB 4"
   }
 
   dimension: tab_agrupador_reportingsrcid {
@@ -463,7 +467,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_AGRUPADOR_REPORTINGSRCId ;;
     suggest_dimension: lk_tab_agrupador_reporting.tab_agrupador_reportingsrcid
     group_label: "Tabulación"
-    label: "TAB_AGRUPADOR_REPORTING"
+    group_item_label: "Agrupador Reporting"
+    label: "TAB Agrupador Reporting"
   }
 
   dimension: tab_consulta_porsrcid {
@@ -471,7 +476,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_CONSULTA_PORSRCId ;;
     suggest_dimension: lk_tab_consulta_por.tab_consulta_porsrcid
     group_label: "Tabulación"
-    label: "TAB_CONSULTA_POR"
+    group_item_label: "Consulta Por"
+    label: "TAB Consulta Por"
   }
 
   dimension: tab_contactosrcid {
@@ -479,7 +485,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_CONTACTOSRCId ;;
     suggest_dimension: lk_tab_contacto.tab_contactosrcid
     group_label: "Tabulación"
-    label: "TAB_CONTACTOS"
+    group_item_label: "Contactos"
+    label: "TAB Contactos"
   }
 
   dimension: tab_motivosrcid {
@@ -487,7 +494,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_MOTIVOSRCId ;;
     suggest_dimension: lk_tab_motivo.tab_motivosrcid
     group_label: "Tabulación"
-    label: "TAB_MOTIVOS"
+    group_item_label: "Motivos"
+    label: "TAB Motivos"
   }
 
   dimension: tab_movilsrcid {
@@ -495,7 +503,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_MOVILSRCId ;;
     suggest_dimension: lk_tab_movil.tab_movilsrcid
     group_label: "Tabulación"
-    label: "TAB_MOVIL"
+    group_item_label: "Movil"
+    label: "TAB Movil"
   }
 
   dimension: tab_negociosrcid {
@@ -503,7 +512,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_NEGOCIOSRCId ;;
     suggest_dimension: lk_tab_negocio.tab_negociosrcid
     group_label: "Tabulación"
-    label: "TAB_NEGOCIOS"
+    group_item_label: "Negocios"
+    label: "TAB Negocios"
   }
 
   dimension: tab_pcrcsrcid {
@@ -511,7 +521,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_PCRCSRCId ;;
     suggest_dimension: lk_tab_pcrc.tab_pcrcsrcid
     group_label: "Tabulación"
-    label: "TAB_PCRC"
+    group_item_label: "PCRC"
+    label: "TAB PCRC"
   }
 
   dimension: tab_que_tienesrcid {
@@ -519,7 +530,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_QUE_TIENESRCId ;;
     suggest_dimension: lk_tab_que_tiene.tab_que_tienesrcid
     group_label: "Tabulación"
-    label: "TAB_QUE_TIENE"
+    group_item_label: "Que Tiene"
+    label: "TAB Que tiene"
   }
 
   dimension: tab_ref_arbolsrcid {
@@ -527,7 +539,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_REF_ARBOLSRCId ;;
     suggest_dimension: lk_tab_ref_arbol.tab_ref_arbolsrcid
     group_label: "Tabulación"
-    label: "TAB_REF_ARBOL"
+    group_item_label: "Referencia Arbol"
+    label: "TAB Referencia Arbol"
   }
 
   dimension: tab_resultadosrcid {
@@ -535,7 +548,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_RESULTADOSRCId ;;
     suggest_dimension: lk_tab_resultado.tab_resultadosrcid
     group_label: "Tabulación"
-    label: "TAB_RESULTADOS"
+    group_item_label: "Resultados"
+    label: "TAB Resultados"
   }
 
   dimension: tab_tipo_de_llamadosrcid {
@@ -543,7 +557,8 @@ view: ft_callin {
     sql: ${TABLE}.TAB_TIPO_DE_LLAMADOSRCId ;;
     suggest_dimension: lk_tab_tipo_de_llamado.tab_tipo_de_llamadosrcid
     group_label: "Tabulación"
-    label: "TAB_TIPO_DE_LLAMADOS"
+    group_item_label: "Tipo de Llamados"
+    label: "TAB Tipo de Llamados"
   }
 
   dimension: contexto_ivr_0800_srcid {
@@ -575,7 +590,8 @@ view: ft_callin {
     sql: ${TABLE}.VAGSRCId ;;
     suggest_dimension: lk_vag.vagsrcid
     group_label: "VAG"
-    label: "VAG"
+    group_item_label: "Nombre"
+    label: "VAG Nombre"
   }
 
   dimension: vag_agrupador4_srcid {
@@ -583,7 +599,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_AGRUPADOR4SRCId ;;
     suggest_dimension: lk_vagagrupador4.vag_agrupador4_srcid
     group_label: "VAG"
-    label: "VAG_AGRUPADOR4"
+    group_item_label: "Agrupador 4"
+    label: "VAG Agrupador 4"
   }
 
   dimension: vag_canalidadsrcid {
@@ -591,7 +608,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_CANALIDADSRCId ;;
     suggest_dimension: lk_vagcanalidad.vag_canalidadsrcid
     group_label: "VAG"
-    label: "VAG_CANALIDADS"
+    group_item_label: "Canalidad"
+    label: "VAG Canalidad"
   }
 
   dimension: vag_fansrcid {
@@ -599,7 +617,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_FANSRCId ;;
     suggest_dimension: lk_vagfan.vag_fansrcid
     group_label: "VAG"
-    label: "VAG_FANS"
+    group_item_label: "Fan"
+    label: "VAG Fan"
   }
 
   dimension: vag_negociosrcid {
@@ -607,7 +626,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_NEGOCIOSRCId ;;
     suggest_dimension: lk_vagnegocio.vag_negociosrcid
     group_label: "VAG"
-    label: "VAG_NEGOCIOS"
+    group_item_label: "Negocios"
+    label: "VAG Negocios"
   }
 
   dimension: vag_pcrc1_srcid {
@@ -615,7 +635,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_PCRC1SRCId ;;
     suggest_dimension: lk_vagpcrc1.vag_pcrc1_srcid
     group_label: "VAG"
-    label: "VAG_PCRC1"
+    group_item_label: "PCRC 1"
+    label: "VAG PCRC 1"
   }
 
   dimension: vag_pcrc2_srcid {
@@ -623,7 +644,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_PCRC2SRCId ;;
     suggest_dimension: lk_vagpcrc2.vag_pcrc2_srcid
     group_label: "VAG"
-    label: "VAG_PCRC2"
+    group_item_label: "PCRC 2"
+    label: "VAG PCRC 2"
   }
 
   dimension: vag_pcrc3_srcid {
@@ -631,7 +653,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_PCRC3SRCId ;;
     suggest_dimension: lk_vagpcrc3.vag_pcrc3_srcid
     group_label: "VAG"
-    label: "VAG_PCRC3"
+    group_item_label: "PCRC 3"
+    label: "VAG PCRC 3"
   }
 
   dimension: vag_programasrcid {
@@ -639,7 +662,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_PROGRAMASRCId ;;
     suggest_dimension: lk_vagprograma.vag_programasrcid
     group_label: "VAG"
-    label: "VAG_PROGRAMA"
+    group_item_label: "Programa"
+    label: "VAG Programa"
   }
 
   dimension: vag_propiedadsrcid {
@@ -647,7 +671,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_PROPIEDADSRCId ;;
     suggest_dimension: lk_vagpropiedad.vag_propiedadsrcid
     group_label: "VAG"
-    label: "VAG_PROPIEDAD"
+    group_item_label: "Propiedad"
+    label: "VAG Propiedad"
   }
 
   dimension: vag_segmentosrcid {
@@ -655,7 +680,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_SEGMENTOSRCId ;;
     suggest_dimension: lk_vagsegmento.vag_segmentosrcid
     group_label: "VAG"
-    label: "VAG_PROPIEDAD"
+    group_item_label: "Segmento"
+    label: "VAG Segmento"
   }
 
   dimension: vag_sitiosrcid {
@@ -663,7 +689,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_SITIOSRCId ;;
     suggest_dimension: lk_vagsitio.vag_sitiosrcid
     group_label: "VAG"
-    label: "VAG_SITIO"
+    group_item_label: "Sitio"
+    label: "VAG Sitio"
   }
 
   dimension: vag_sub_sitiosrcid {
@@ -671,7 +698,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_SUB_SITIOSRCId ;;
     suggest_dimension: lk_vagsub_sitio.vag_sub_sitiosrcid
     group_label: "VAG"
-    label: "VAG_SUB_SITIO"
+    group_item_label: "Subsitio"
+    label: "VAG Subsitio"
   }
 
   dimension: vag_tipo_contactosrcid {
@@ -679,7 +707,8 @@ view: ft_callin {
     sql: ${TABLE}.VAG_TIPO_CONTACTOSRCId ;;
     suggest_dimension: lk_vagtipo_contacto.vag_tipo_contactosrcid
     group_label: "VAG"
-    label: "VAG_TIPO_CONTACTO"
+    group_item_label: "Tipo Contacto"
+    label: "VAG Tipo Contacto"
   }
 
   dimension: vqsrcid {
@@ -687,7 +716,8 @@ view: ft_callin {
     sql: ${TABLE}.VQSRCId ;;
     suggest_dimension: lk_vq.vqsrcid
     group_label: "VQ"
-    label: "VQ"
+    group_item_label: "Nombre"
+    label: "VQ Nombre"
   }
 
   dimension: vq_agrupador2_srcid {
@@ -695,7 +725,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_AGRUPADOR2SRCId ;;
     suggest_dimension: lk_vqagrupador2.vq_agrupador2_srcid
     group_label: "VQ"
-    label: "VQ_AGRUPADOR2"
+    group_item_label: "Agrupador 2"
+    label: "VQ Agrupador 2"
   }
 
   dimension: vq_agrupador3_srcid {
@@ -703,7 +734,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_AGRUPADOR3SRCId ;;
     suggest_dimension: lk_vqagrupador3.vq_agrupador3_srcid
     group_label: "VQ"
-    label: "VQ_AGRUPADOR3"
+    group_item_label: "Agrupador 3"
+    label: "VQ Agrupador 3"
   }
 
   dimension: vq_canalidadsrcid {
@@ -711,7 +743,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_CANALIDADSRCId ;;
     suggest_dimension: lk_vqcanalidad.vq_canalidadsrcid
     group_label: "VQ"
-    label: "VQ_CANALIDAD"
+    group_item_label: "Canalidad"
+    label: "VQ Canalidad"
   }
 
   dimension: vq_estadosrcid {
@@ -719,7 +752,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_ESTADOSRCId ;;
     suggest_dimension: lk_vqestado.vq_estadosrcid
     group_label: "VQ"
-    label: "VQ_ESTADO"
+    group_item_label: "Estado"
+    label: "VQ Estado"
   }
 
   dimension: vq_fansrcid {
@@ -727,7 +761,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_FANSRCId ;;
     suggest_dimension: lk_vqfan.vq_fansrcid
     group_label: "VQ"
-    label: "VQ_FAN"
+    group_item_label: "Fan"
+    label: "VQ Fan"
   }
 
   dimension: vq_fcrsrcid {
@@ -735,7 +770,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_FCRSRCId ;;
     suggest_dimension: lk_vqfcr.vq_fcrsrcid
     group_label: "VQ"
-    label: "VQ_FCR"
+    group_item_label: "FCR"
+    label: "VQ FCR"
   }
 
   dimension: vq_negociosrcid {
@@ -743,7 +779,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_NEGOCIOSRCId ;;
     suggest_dimension: lk_vqnegocio.vq_negociosrcid
     group_label: "VQ"
-    label: "VQ_NEGOCIO"
+    group_item_label: "Negocio"
+    label: "VQ Negocio"
   }
 
   dimension: vq_origen_digitalsrcid {
@@ -751,7 +788,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_ORIGEN_DIGITALSRCId ;;
     suggest_dimension: lk_vqorigen_digital.vq_origen_digitalsrcid
     group_label: "VQ"
-    label: "VQ_ORIGEN_DIGITAL"
+    group_item_label: "Origen Digital"
+    label: "VQ Origen Digital"
   }
 
   dimension: vq_pcrc1_srcid {
@@ -759,7 +797,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_PCRC1SRCId ;;
     suggest_dimension: lk_vqpcrc1.vq_pcrc1_srcid
     group_label: "VQ"
-    label: "VQ_PCRC1"
+    group_item_label: "PCRC 1"
+    label: "VQ PCRC 1"
   }
 
   dimension: vq_pcrc2_srcid {
@@ -767,7 +806,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_PCRC2SRCId ;;
     suggest_dimension: lk_vqpcrc2.vq_pcrc2_srcid
     group_label: "VQ"
-    label: "VQ_PCRC2"
+    group_item_label: "PCRC 2"
+    label: "VQ PCRC 2"
   }
 
   dimension: vq_pcrc3_srcid {
@@ -775,7 +815,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_PCRC3SRCId ;;
     suggest_dimension: lk_vqpcrc3.vq_pcrc3_srcid
     group_label: "VQ"
-    label: "VQ_PCRC3"
+    group_item_label: "PCRC 3"
+    label: "VQ PCRC 3"
   }
 
   dimension: vq_programasrcid {
@@ -783,7 +824,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_PROGRAMASRCId ;;
     suggest_dimension: lk_vqprograma.vq_programasrcid
     group_label: "VQ"
-    label: "VQ_PROGRAMA"
+    group_item_label: "Programa"
+    label: "VQ Programa"
   }
 
   dimension: vq_segmentosrcid {
@@ -791,7 +833,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_SEGMENTOSRCId ;;
     suggest_dimension: lk_vqsegmento.vq_segmentosrcid
     group_label: "VQ"
-    label: "VQ_SEGMENTO"
+    group_item_label: "Segmento"
+    label: "VQ Segmento"
   }
 
   dimension: vq_tipo_contactosrcid {
@@ -799,7 +842,8 @@ view: ft_callin {
     sql: ${TABLE}.VQ_TIPO_CONTACTOSRCId ;;
     suggest_dimension: lk_vqtipo_contacto.vq_tipo_contactosrcid
     group_label: "VQ"
-    label: "VQ_TIPO_CONTACTO"
+    group_item_label: "Tipo Contacto"
+    label: "VQ Tipo Contacto"
   }
 
   dimension: gvqsrcid {
@@ -813,7 +857,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.INTERACTION_TYPESRCId ;;
     suggest_dimension: lk_interaction_type.interaction_typesrcid
-    label: "INTERACTION_TYPE"
+    label: "Tipo Interaccion"
   }
 
   dimension: media_namesrcid {
@@ -843,21 +887,24 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.ANI ;;
     group_label: "ANI"
-    label: "ANI"
+    group_item_label: "Nombre"
+    label: "ANI Nombre"
   }
 
   dimension: anis_ani_descripcion {
     type: string
     sql: ${TABLE}.ANIS_ANI_DESCRIPCION ;;
     group_label: "ANI"
-    label: "ANI_DESCRIPCION"
+    group_item_label: "Descripcion"
+    label: "ANI Descripcion"
   }
 
   dimension: anis_postdiscado_descripcion {
     type: string
     sql: ${TABLE}.ANIS_POSTDISCADO_DESCRIPCION ;;
     group_label: "ANI"
-    label: "ANI_POSTDISCADO_DESCRIPCION"
+    group_item_label: "Postdiscado Descripcion"
+    label: "ANI Postdiscado Descripcion"
   }
 
   dimension: apellido {
@@ -871,7 +918,9 @@ view: ft_callin {
   dimension: dim_vag_tipo {
     type: string
     sql: ${TABLE}.DIM_VAG_TIPO ;;
-    label: "DIM_VAG_TIPO"
+    group_label: "VAG"
+    group_item_label: "Tipo"
+    label: "VAG Tipo"
   }
 
   dimension: dnis {
@@ -1096,7 +1145,7 @@ view: ft_callin {
   dimension: interaction_id {
     type: number
     sql: ${TABLE}.INTERACTION_ID ;;
-    label: "INTERACTION_ID"
+    label: "Interaction Id"
   }
 
   dimension: agent_to_agent_cons_count {
@@ -1304,7 +1353,7 @@ view: ft_callin {
     type: number
     sql: ${TABLE}.PLACE_KEY ;;
     label: "PLACE_KEY"
-    description: "Es el código del sitio de logueo del representante"
+    description: "Código del sitio de logueo del representante"
   }
 
   dimension: t_duration_ag {
