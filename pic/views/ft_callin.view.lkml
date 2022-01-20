@@ -130,7 +130,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_1_9;;
     group_label: "Abandono Cola"
     group_item_label: "1- 01-09"
-    label: "Q_ABN_QUEUE_1_9"
+    label: "Abandono Q-1-9"
     description: "Es una llamada abandonada en cola entre 1 y 9 segundos"
   }
 
@@ -139,7 +139,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_10_19 ;;
     group_label: "Abandono Cola"
     group_item_label: "2- 10-19"
-    label: "Q_ABN_QUEUE_10_19"
+    label: "Abandono Q-10-19"
     description: "Es una llamada abandonada en cola entre 10 y 19 segundos"
   }
 
@@ -148,7 +148,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_20_29 ;;
     group_label: "Abandono Cola"
     group_item_label: "3- 20-29"
-    label: "Q_ABN_QUEUE_20_29"
+    label: "Abandono Q-20-29"
     description: "Es una llamada abandonada en cola entre 20 y 29 segundos"
   }
 
@@ -156,7 +156,7 @@ view: ft_callin {
     type: yesno
     sql: ${TABLE}.ABANDONO_Q_30_39 ;;
     group_label: "Abandono Cola"
-    label: "Q_ABN_QUEUE_20-39"
+    label: "Abandono Q-20-39"
     group_item_label: "4- 30-39"
     description: "Es una llamada abandonada en cola entre 30 y 39 segundos"
   }
@@ -166,7 +166,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_40_49 ;;
     group_label: "Abandono Cola"
     group_item_label: "5- 40-49"
-    label: "Q_ABN_QUEUE_40-49"
+    label: "Abandono Q-40-49"
     description: "Es una llamada abandonada en cola entre 40 y 49 segundos"
   }
 
@@ -175,7 +175,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_50_59 ;;
     group_label: "Abandono Cola"
     group_item_label: "6- 50-59"
-    label: "Q_ABN_QUEUE_50-59"
+    label: "Abandono Q-50-59"
     description: "Es una llamada abandonada en cola entre 50 y 59 segundos"
   }
 
@@ -183,7 +183,7 @@ view: ft_callin {
     type: yesno
     sql: ${TABLE}.ABANDONO_Q_60_89 ;;
     group_label: "Abandono Cola"
-    label: "Q_ABN_QUEUE_60-89"
+    label: "Abandono Q-60-89"
     group_item_label: "7- 60-89"
     description: "Es una llamada abandonada en cola entre 60 y 89 segundos"
   }
@@ -193,7 +193,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_90_119 ;;
     group_label: "Abandono Cola"
     group_item_label: "8- 90-119"
-    label: "Q_ABN_QUEUE_90-119"
+    label: "Abandono Q-90-119"
     description: "Es una llamada abandonada en cola entre 90 y 119 segundos"
   }
 
@@ -202,7 +202,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_Q_120_MAS ;;
     group_label: "Abandono Cola"
     group_item_label: "9- 120-Mas"
-    label: "Q_ABN_QUEUE_120-Mas"
+    label: "Abandono Q-120-Mas"
     description: "Es una llamada abandonada en cola mayor o igual a 120 segundos"
   }
 
@@ -211,7 +211,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_1_9 ;;
     group_label: "Abandono Ring"
     group_item_label: "1- 01-09"
-    label: "R_ABN RING_1-9"
+    label: "Abandono R-1-9"
     description: "Es una llamada abandonada en ring entre 1 y 9 segundos"
   }
 
@@ -219,7 +219,7 @@ view: ft_callin {
     type: yesno
     sql: ${TABLE}.ABANDONO_R_10_19 ;;
     group_label: "Abandono Ring"
-    label: "R_ABN RING_10-19"
+    label: "Abandono R-10-19"
     group_item_label: "2- 10-19"
     description: "Es una llamada abandonada en ring entre 10 y 19 segundos"
   }
@@ -229,7 +229,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_20_29 ;;
     group_label: "Abandono Ring"
     group_item_label: "3- 20-29"
-    label: "R_ABN RING_20-29"
+    label: "Abandono R-20-29"
     description: "Es una llamada abandonada en ring entre 20 y 29 segundos"
   }
 
@@ -238,7 +238,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_30_39 ;;
     group_label: "Abandono Ring"
     group_item_label: "4- 30-39"
-    label: "R_ABN RING_30-39"
+    label: "Abandono R-30-39"
     description: "Es una llamada abandonada en ring entre 30 y 39 segundos"
   }
 
@@ -247,7 +247,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_40_49 ;;
     group_label: "Abandono Ring"
     group_item_label: "5- 40-49"
-    label: "R_ABN RING_40-49"
+    label: "Abandono R-40-49"
     description: "Es una llamada abandonada en ring entre 40 y 49 segundos"
   }
 
@@ -256,7 +256,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_50_59 ;;
     group_label: "Abandono Ring"
     group_item_label: "6- 50-59"
-    label: "R_ABN RING_50-59"
+    label: "Abandono R-50-59"
     description: "Es una llamada abandonada en ring entre 50 y 59 segundos"
   }
 
@@ -265,7 +265,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_60_89 ;;
     group_label: "Abandono Ring"
     group_item_label: "7- 60-89"
-    label: "R_ABN RING_60-89"
+    label: "Abandono R-60-89"
     description: "Es una llamada abandonada en ring entre 60 y 89 segundos"
   }
 
@@ -274,7 +274,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_90_119 ;;
     group_label: "Abandono Ring"
     group_item_label: "8- 90-119"
-    label: "R_ABN RING_90-119"
+    label: "Abandono R-90-119"
     description: "Es una llamada abandonada en ring entre 90 y 119 segundos"
   }
 
@@ -283,7 +283,7 @@ view: ft_callin {
     sql: ${TABLE}.ABANDONO_R_120_MAS ;;
     group_label: "Abandono Ring"
     group_item_label: "9- 120-Mas"
-    label: "R_ABN RING_120_MAS"
+    label: "Abandono R-120-Mas"
     description: "Es una llamada abandonada en ring mayor o igual a 120 segundos"
   }
 
@@ -423,7 +423,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TABPACKAGESRCId ;;
     suggest_dimension: lk_tabpackage.tabpackagesrcid
-    label: "TABPACKAGE"
+    label: "TAB Package"
   }
 
   dimension: tabulacion1_srcid {
@@ -566,7 +566,8 @@ view: ft_callin {
     sql: ${TABLE}.CONTEXTO_IVR_0800SRCId ;;
     suggest_dimension: lk_contexto_ivr0800_opcion.contexto_ivr_0800_opcionsrcid
     group_label: "Contexto IVR"
-    label: "CONTEXTO_IVR_0800"
+    group_item_label: "Contexto"
+    label: "Contexto IVR"
   }
 
   dimension: contexto_ivr_0800_opcionsrcid {
@@ -574,7 +575,8 @@ view: ft_callin {
     sql: ${TABLE}.CONTEXTO_IVR_0800_OPCIONSRCId ;;
     suggest_dimension: lk_contexto_ivr0800_opcion.contexto_ivr_0800_opcionsrcid
     group_label: "Contexto IVR"
-    label: "CONTEXTO_IVR_0800_OPCION"
+    group_item_label: "Opcion"
+    label: "Contexto IVR Opcion"
   }
 
   dimension: contexto_ivr_0800_segmentosrcid {
@@ -582,7 +584,8 @@ view: ft_callin {
     sql: ${TABLE}.CONTEXTO_IVR_0800_SEGMENTOSRCId ;;
     suggest_dimension: lk_contexto_ivr0800_segmento.contexto_ivr_0800_segmentosrcid
     group_label: "Contexto IVR"
-    label: "CONTEXTO_IVR_0800_SEGMENTO"
+    group_item_label: "Segmento"
+    label: "Contexto IVR Segemento"
   }
 
   dimension: vagsrcid {
@@ -864,7 +867,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.MEDIA_NAMESRCId ;;
     suggest_dimension: lk_media_name.media_namesrcid
-    label: "MEDIA_NAME"
+    label: "Media Name"
   }
 
   dimension: agrupador1 {
@@ -879,7 +882,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.AGRUPADOR2 ;;
     group_label: "Agrupador"
-    label: "PLACE"
+    label: "Place"
     description: "Indentificador de Sitio de atención dentro de la integración"
   }
 
@@ -947,13 +950,13 @@ view: ft_callin {
   dimension: id_ivr {
     type: string
     sql: ${TABLE}.ID_IVR ;;
-    label: "ID_IVR"
+    label: "IVR Id"
   }
 
   dimension: id_nice {
     type: string
     sql: ${TABLE}.ID_NICE ;;
-    label: "ID_NICE"
+    label: "Nice Id"
   }
 
   dimension: email_cliente {
@@ -991,14 +994,14 @@ view: ft_callin {
   dimension: place_name {
     type: string
     sql: ${TABLE}.PLACE_NAME ;;
-    label: "PLACE_NAME"
+    label: "Place Name"
     description: "Es el sitio de logueo del representante"
   }
 
   dimension: postdiscado {
     type: string
     sql: ${TABLE}.POSTDISCADO ;;
-    label: "POSTDISCADO"
+    label: "Postdiscado"
   }
 
   dimension: pregunta_1 {
@@ -1139,7 +1142,7 @@ view: ft_callin {
     type: number
     value_format_name: id
     sql: ${TABLE}.SUB_ESTADO_FINSRCId ;;
-    label: "SUB_ESTADO_FIN"
+    label: "Subestado Fin"
   }
 
   dimension: interaction_id {
@@ -1148,224 +1151,23 @@ view: ft_callin {
     label: "Interaction Id"
   }
 
-  dimension: agent_to_agent_cons_count {
-    type: number
-    sql: ${TABLE}.AGENT_TO_AGENT_CONS_COUNT ;;
-    group_label: "Agente"
-    label: "AGENT_TO_AGENT_CONS_COUNT"
-  }
-
-  dimension: agent_to_agent_cons_duration {
-    type: number
-    sql: ${TABLE}.AGENT_TO_AGENT_CONS_DURATION ;;
-    group_label: "Agente"
-    label: "AGENT_TO_AGENT_CONS_DURATION"
-  }
-
-  dimension: conference_initiated_count {
-    type: number
-    sql: ${TABLE}.CONFERENCE_INITIATED_COUNT ;;
-    group_label: "Conference"
-    label: "CONFERENCE_INITIATED_COUNT"
-  }
-
-  dimension: conf_init_hold_count {
-    type: number
-    sql: ${TABLE}.CONF_INIT_HOLD_COUNT ;;
-    group_label: "Conference"
-    label: "CONF_INIT_HOLD_COUNT"
-  }
-
-  dimension: conf_init_hold_duration {
-    type: number
-    sql: ${TABLE}.CONF_INIT_HOLD_DURATION ;;
-    group_label: "Conference"
-    label: "CONF_INIT_HOLD_DURATION"
-  }
-
-  dimension: conf_init_talk_count {
-    type: number
-    sql: ${TABLE}.CONF_INIT_TALK_COUNT ;;
-    group_label: "Conference"
-    label: "CONF_INIT_TALK_COUNT"
-  }
-
-  dimension: conf_init_talk_duration {
-    type: number
-    sql: ${TABLE}.CONF_INIT_TALK_DURATION ;;
-    group_label: "Conference"
-    label: "CONF_INIT_TALK_DURATION"
-  }
-
-  dimension: conf_join_hold_count {
-    type: number
-    sql: ${TABLE}.CONF_JOIN_HOLD_COUNT ;;
-    group_label: "Conference"
-    label: "CONF_JOIN_HOLD_COUNT"
-  }
-
-  dimension: conf_join_hold_duration {
-    type: number
-    sql: ${TABLE}.CONF_JOIN_HOLD_DURATION ;;
-    group_label: "Conference"
-    label: "CONF_JOIN_HOLD_DURATION"
-  }
-
-  dimension: conf_join_ring_count {
-    type: number
-    sql: ${TABLE}.CONF_JOIN_RING_COUNT ;;
-    group_label: "Conference"
-    label: "CONF_JOIN_RING_COUNT"
-  }
-
-  dimension: conf_join_ring_duration {
-    type: number
-    sql: ${TABLE}.CONF_JOIN_RING_DURATION ;;
-    group_label: "Conference"
-    label: "CONF_JOIN_RING_DURATION"
-  }
-
-  dimension: conf_join_talk_count {
-    type: number
-    sql: ${TABLE}.CONF_JOIN_TALK_COUNT ;;
-    group_label: "Conference"
-    label: "CONF_JOIN_TALK_COUNT"
-  }
-
-  dimension: conf_join_talk_duration {
-    type: number
-    sql: ${TABLE}.CONF_JOIN_TALK_DURATION ;;
-    group_label: "Conference"
-    label: "CONF_JOIN_TALK_DURATION"
-  }
-
-  dimension: cons_init_dial_count {
-    type: number
-    sql: ${TABLE}.CONS_INIT_DIAL_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_INIT_DIAL_COUNT"
-  }
-
-  dimension: cons_init_dial_duration {
-    type: number
-    sql: ${TABLE}.CONS_INIT_DIAL_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_INIT_DIAL_DURATION"
-  }
-
-  dimension: cons_init_hold_count {
-    type: number
-    sql: ${TABLE}.CONS_INIT_HOLD_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_INIT_HOLD_COUNT"
-  }
-
-  dimension: cons_init_hold_duration {
-    type: number
-    sql: ${TABLE}.CONS_INIT_HOLD_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_INIT_HOLD_DURATION"
-  }
-
-  dimension: cons_init_talk_count {
-    type: number
-    sql: ${TABLE}.CONS_INIT_TALK_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_INIT_TALK_COUNT"
-  }
-
-  dimension: cons_init_talk_duration {
-    type: number
-    sql: ${TABLE}.CONS_INIT_TALK_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_INIT_TALK_DURATION"
-  }
-
-  dimension: cons_rcv_acw_count {
-    type: number
-    sql: ${TABLE}.CONS_RCV_ACW_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_RCV_ACW_COUNT"
-  }
-
-  dimension: cons_rcv_acw_duration {
-    type: number
-    sql: ${TABLE}.CONS_RCV_ACW_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_RCV_ACW_DURATION"
-  }
-
-  dimension: cons_rcv_hold_count {
-    type: number
-    sql: ${TABLE}.CONS_RCV_HOLD_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_RCV_HOLD_COUNT"
-  }
-
-  dimension: cons_rcv_hold_duration {
-    type: number
-    sql: ${TABLE}.CONS_RCV_HOLD_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_RCV_HOLD_DURATION"
-  }
-
-  dimension: cons_rcv_ring_count {
-    type: number
-    sql: ${TABLE}.CONS_RCV_RING_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_RCV_RING_COUNT"
-  }
-
-  dimension: cons_rcv_ring_duration {
-    type: number
-    sql: ${TABLE}.CONS_RCV_RING_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_RCV_RING_DURATION"
-  }
-
-  dimension: cons_rcv_talk_count {
-    type: number
-    sql: ${TABLE}.CONS_RCV_TALK_COUNT ;;
-    group_label: "Cons"
-    label: "CONS_RCV_TALK_COUNT"
-  }
-
-  dimension: cons_rcv_talk_duration {
-    type: number
-    sql: ${TABLE}.CONS_RCV_TALK_DURATION ;;
-    group_label: "Cons"
-    label: "CONS_RCV_TALK_DURATION"
-  }
-
   dimension: interaction_type_key {
     type: number
     sql: ${TABLE}.INTERACTION_TYPE_KEY ;;
-    label: "INTERACTION_TYPE_KEY"
+    label: "Iteraction Type Key"
   }
 
   dimension: media_type_key {
     type: number
     sql: ${TABLE}.MEDIA_TYPE_KEY ;;
-    label: "MEDIA_TYPE_KEY"
+    label: "Media Type Key"
   }
 
   dimension: place_key {
     type: number
     sql: ${TABLE}.PLACE_KEY ;;
-    label: "PLACE_KEY"
+    label: "Place Key"
     description: "Código del sitio de logueo del representante"
-  }
-
-  dimension: t_duration_ag {
-    type: number
-    sql: ${TABLE}.T_DURATION_AG ;;
-    label: "T_DURATION_AG"
-  }
-
-  dimension: t_duration_vq {
-    type: number
-    sql: ${TABLE}.T_DURATION_VQ ;;
-    label: "T_DURATION_VQ"
   }
 
   ## Hidden ##
@@ -1454,6 +1256,180 @@ view: ft_callin {
     sql: ${TABLE}.DURATION_CALL ;;
   }
 
+  dimension: agent_to_agent_cons_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.AGENT_TO_AGENT_CONS_COUNT ;;
+  }
+
+  dimension: agent_to_agent_cons_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.AGENT_TO_AGENT_CONS_DURATION ;;
+  }
+
+  dimension: conference_initiated_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONFERENCE_INITIATED_COUNT ;;
+  }
+
+  dimension: conf_init_hold_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_INIT_HOLD_COUNT ;;
+  }
+
+  dimension: conf_init_hold_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_INIT_HOLD_DURATION ;;
+  }
+
+  dimension: conf_init_talk_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_INIT_TALK_COUNT ;;
+  }
+
+  dimension: conf_init_talk_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_INIT_TALK_DURATION ;;
+  }
+
+  dimension: conf_join_hold_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_JOIN_HOLD_COUNT ;;
+  }
+
+  dimension: conf_join_hold_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_JOIN_HOLD_DURATION ;;
+  }
+
+  dimension: conf_join_ring_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_JOIN_RING_COUNT ;;
+  }
+
+  dimension: conf_join_ring_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_JOIN_RING_DURATION ;;
+  }
+
+  dimension: conf_join_talk_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_JOIN_TALK_COUNT ;;
+  }
+
+  dimension: conf_join_talk_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONF_JOIN_TALK_DURATION ;;
+  }
+
+  dimension: cons_init_dial_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_INIT_DIAL_COUNT ;;
+  }
+
+  dimension: cons_init_dial_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_INIT_DIAL_DURATION ;;
+  }
+
+  dimension: cons_init_hold_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_INIT_HOLD_COUNT ;;
+  }
+
+  dimension: cons_init_hold_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_INIT_HOLD_DURATION ;;
+  }
+
+  dimension: cons_init_talk_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_INIT_TALK_COUNT ;;
+  }
+
+  dimension: cons_init_talk_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_INIT_TALK_DURATION ;;
+  }
+
+  dimension: cons_rcv_acw_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_ACW_COUNT ;;
+  }
+
+  dimension: cons_rcv_acw_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_ACW_DURATION ;;
+  }
+
+  dimension: cons_rcv_hold_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_HOLD_COUNT ;;
+  }
+
+  dimension: cons_rcv_hold_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_HOLD_DURATION ;;
+  }
+
+  dimension: cons_rcv_ring_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_RING_COUNT ;;
+  }
+
+  dimension: cons_rcv_ring_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_RING_DURATION ;;
+  }
+
+  dimension: cons_rcv_talk_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_TALK_COUNT ;;
+  }
+
+  dimension: cons_rcv_talk_duration {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CONS_RCV_TALK_DURATION ;;
+  }
+
+  dimension: t_duration_ag {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.T_DURATION_AG ;;
+  }
+
+  dimension: t_duration_vq {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.T_DURATION_VQ ;;
+  }
+
 ##############
 ## Measures ##
 ##############
@@ -1463,7 +1439,7 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Interacciones"
-    label: "CANTIDAD_INTERACIONES"
+    label: "Cantidad Iteracciones"
   }
 
   measure: count_estado_fin_abandonadasrcid {
@@ -1471,7 +1447,7 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Abandonadas"
-    label: "CANTIDAD_ABANDONADAS"
+    label: "Cantidad Abandonadas"
     filters: [estado_fin_abandonadasrcid: "Yes"]
     }
 
@@ -1480,7 +1456,7 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Atendidas"
-    label: "CANTIDAD_ATENDIDAS"
+    label: "Cantidad Atendidas"
     filters: [estado_fin_atendidasrcid: "Yes"]
   }
 
@@ -1489,7 +1465,7 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Recibidas"
-    label: "CANTIDAD_RECIBIDAS"
+    label: "Cantidad Recibidas"
     filters: [estado_fin_recibidasrcid: "Yes"]
   }
 
@@ -1498,7 +1474,7 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Salientes"
-    label: "CANTIDAD_SALIENTES"
+    label: "Cantidad Salientes"
     filters: [estado_fin_salientesrcid: "Yes"]
   }
 
@@ -1507,7 +1483,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "1- 01-09"
-    label: "Q_ABN_QUEUE_1_9"
+    label: "Cantidad Abandono Q-1-9"
     description: "Cantidad de llamadas abandonadas en cola entre 1 y 9 segundos"
     filters: [abandono_q_1_9: "Yes"]
   }
@@ -1517,7 +1493,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "2- 10-19"
-    label: "Q_ABN_QUEUE_10_19"
+    label: "Cantidad Abandono Q-10-19"
     description: "Cantidad de llamadas abandonadas en cola entre 10 y 19 segundos"
     filters: [abandono_q_10_19: "Yes"]
   }
@@ -1527,7 +1503,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "3- 20-29"
-    label: "Q_ABN_QUEUE_20_29"
+    label: "Cantidad Abandono Q-20-29"
     description: "Cantidad de llamadas abandonadas en cola entre 20 y 29 segundos"
     filters: [abandono_q_20_29: "Yes"]
   }
@@ -1537,7 +1513,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "4- 30-39"
-    label: "Q_ABN_QUEUE_20-39"
+    label: "Cantidad Abandono Q-20-39"
     description: "Cantidad de llamadas abandonadas en cola entre 30 y 39 segundos"
     filters: [abandono_q_30_39: "Yes"]
   }
@@ -1547,7 +1523,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "5- 40-49"
-    label: "Q_ABN_QUEUE_40-49"
+    label: "Cantidad Abandono Q-40-49"
     description: "Cantidad de llamadas abandonadas en cola entre 40 y 49 segundos"
     filters: [abandono_q_40_49: "Yes"]
   }
@@ -1557,7 +1533,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "6- 50-59"
-    label: "Q_ABN_QUEUE_50-59"
+    label: "Cantidad Abandono Q-50-59"
     description: "Cantidad de llamadas abandonadas en cola entre 50 y 59 segundos"
     filters: [abandono_q_40_49: "Yes"]
   }
@@ -1566,7 +1542,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
-    label: "Q_ABN_QUEUE_60-89"
+    label: "Cantidad Abandono Q-60-89"
     group_item_label: "7- 60-89"
     description: "Cantidad de llamadas abandonadas en cola entre 60 y 89 segundos"
     filters: [abandono_q_60_89: "Yes"]
@@ -1577,7 +1553,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "8- 90-119"
-    label: "Q_ABN_QUEUE_90-119"
+    label: "Cantidad Abandono Q-90-119"
     description: "Cantidad de llamadas abandonadas en cola entre 90 y 119 segundos"
     filters: [abandono_q_90_119: "Yes"]
   }
@@ -1587,7 +1563,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "9- 120-Mas"
-    label: "Q_ABN_QUEUE_120-Mas"
+    label: "Cantidad Abandono Q-120-Mas"
     description: "Cantidad de llamadas abandonadas en cola mayor o igual a 120 segundos"
     filters: [abandono_q_120_mas: "Yes"]
   }
@@ -1597,7 +1573,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "1- 01-09"
-    label: "R_ABN RING_1-9"
+    label: "Cantidad Abandono R-1-9"
     description: "Cantidad de llamadas abandonadas en ring entre 1 y 9 segundos"
     filters: [abandono_r_1_9: "Yes"]
   }
@@ -1607,7 +1583,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "2- 10-19"
-    label: "R_ABN RING_10-19"
+    label: "Cantidad Abandono R-10-19"
     description: "Cantidad de llamadas abandonadas en ring entre 10 y 19 segundos"
     filters: [abandono_r_10_19: "Yes"]
   }
@@ -1617,7 +1593,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "3- 20-29"
-    label: "R_ABN RING_20-29"
+    label: "Cantidad Abandono R-20-29"
     description: "Cantidad de llamadas abandonadas en ring entre 20 y 29 segundos"
     filters: [abandono_r_20_29: "Yes"]
   }
@@ -1626,7 +1602,7 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
-    label: "R_ABN RING_30-39"
+    label: "Cantidad Abandono R-30-39"
     group_item_label: "4- 30-39"
     description: "Cantidad de llamadas abandonadas en ring entre 30 y 39 segundos"
     filters: [abandono_r_30_39: "Yes"]
@@ -1637,7 +1613,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "5- 40-49"
-    label: "R_ABN RING_40-49"
+    label: "Cantidad Abandono R-40-49"
     description: "Cantidad de llamadas abandonadas en ring entre 40 y 49 segundos"
     filters: [abandono_r_40_49: "Yes"]
   }
@@ -1647,7 +1623,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "6- 50-59"
-    label: "R_ABN RING_50-59"
+    label: "Cantidad Abandono R-50-59"
     description: "Cantidad de llamadas abandonadas en ring entre 50 y 59 segundos"
     filters: [abandono_r_50_59: "Yes"]
   }
@@ -1657,7 +1633,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "7- 60-89"
-    label: "R_ABN RING_60-89"
+    label: "Cantidad Abandono R-60-89"
     description: "Cantidad de llamadas abandonadas en ring entre 60 y 89 segundos"
     filters: [abandono_r_60_89: "Yes"]
   }
@@ -1667,7 +1643,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "8- 90-119"
-    label: "R_ABN RING_90-119"
+    label: "Canridad Abandono R_90-119"
     description: "Cantidad de llamadas abandonadas en ring entre 90 y 119 segundos"
     filters: [abandono_r_90_119: "Yes"]
   }
@@ -1677,7 +1653,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Ring"
     group_item_label: "9- 120-Mas"
-    label: "R_ABN RING_120_MAS"
+    label: "Canrtidad Abandono R-120-Mas"
     description: "Cantidad de llamadas abandonadas en ring mayor o igual a 120 segundos"
     filters: [abandono_r_120_mas: "Yes"]
   }
@@ -1849,8 +1825,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${duration_call} ;;
     group_label: "Total"
+    group_item_label: "Duracion Llamada"
     label: "Total Duracion Llamada"
-    group_item_label: "Duracion"
   }
 
   measure: total_t_duration_ag {
@@ -1858,8 +1834,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${t_duration_ag} ;;
     group_label: "Total"
-    label: "TOTAL_T_DURATION_AG"
     group_item_label: "Duración AG"
+    label: "TOTAL_T_DURATION_AG"
   }
 
   measure: total_customer_acw_duration {
@@ -1867,7 +1843,7 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_acw_duration};;
     group_label: "Customer Time"
-    label: "ACW_TIME"
+    label: "Total ACW_TIME"
   }
 
   measure: total_customer_talk_duration {
@@ -1875,7 +1851,7 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_talk_duration};;
     group_label: "Customer Time"
-    label: "TALK_TIME"
+    label: "Total TALK_TIME"
   }
 
   measure: total_customer_hold_duration {
@@ -1883,7 +1859,7 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_hold_duration};;
     group_label: "Customer Time"
-    label: "HOLD_TIME"
+    label: "Total HOLD_TIME"
   }
 
   measure: total_customer_ring_duration {
@@ -1891,7 +1867,7 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_ring_duration};;
     group_label: "Customer Time"
-    label: "RING_TIME"
+    label: "Total RING_TIME"
   }
 
   measure: total_customer_dial_duration {
@@ -1899,6 +1875,229 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_dial_duration};;
     group_label: "Customer Time"
-    label: "DIAL_TIME"
+    label: "Total DIAL_TIME"
+  }
+
+  measure: total_agent_to_agent_cons_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${agent_to_agent_cons_count};;
+    group_label: "Agente"
+    label: "Total AGENT_TO_AGENT_CONS_COUNT"
+  }
+
+  measure: total_agent_to_agent_cons_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${agent_to_agent_cons_duration};;
+    group_label: "Agente"
+    label: "Total AGENT_TO_AGENT_CONS_DURATION"
+  }
+
+  measure: total_conference_initiated_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conference_initiated_count};;
+    group_label: "Conference"
+    label: "Total CONFERENCE_INITIATED_COUNT"
+  }
+
+  measure: total_conf_init_hold_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_init_hold_count};;
+    group_label: "Conference"
+    label: "Total CONF_INIT_HOLD_COUNT"
+  }
+
+  measure: total_conf_init_hold_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_init_hold_duration};;
+    group_label: "Conference"
+    label: "Total CONF_INIT_HOLD_DURATION"
+  }
+
+  measure: total_conf_init_talk_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_init_talk_count};;
+    group_label: "Conference"
+    label: "Total CONF_INIT_TALK_COUNT"
+  }
+
+  measure: total_conf_init_talk_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_init_talk_duration};;
+    group_label: "Conference"
+    label: "Total CONF_INIT_TALK_DURATION"
+  }
+
+  measure: total_conf_join_hold_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_join_hold_count};;
+    group_label: "Conference"
+    label: "Total CONF_JOIN_HOLD_COUNT"
+  }
+
+  measure: total_conf_join_hold_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_join_hold_duration};;
+    group_label: "Conference"
+    label: "Total CONF_JOIN_HOLD_DURATION"
+  }
+
+  measure: total_conf_join_ring_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_join_ring_count};;
+    group_label: "Conference"
+    label: "Total CONF_JOIN_RING_COUNT"
+  }
+
+  measure: total_conf_join_ring_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_join_ring_duration};;
+    group_label: "Conference"
+    label: "Total CONF_JOIN_RING_DURATION"
+  }
+
+  measure: total_conf_join_talk_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_join_talk_count};;
+    group_label: "Conference"
+    label: "Total CONF_JOIN_TALK_COUNT"
+  }
+
+  measure: total_conf_join_talk_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${conf_join_talk_duration};;
+    group_label: "Conference"
+    label: "Total CONF_JOIN_TALK_DURATION"
+  }
+
+  measure: total_cons_init_dial_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_init_dial_count};;
+    group_label: "Cons"
+    label: "Total CONS_INIT_DIAL_COUNT"
+  }
+
+  measure: total_cons_init_dial_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_init_dial_duration};;
+    group_label: "Cons"
+    label: "Total CONS_INIT_DIAL_DURATION"
+  }
+
+  measure: total_cons_init_hold_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_init_hold_count};;
+    group_label: "Cons"
+    label: "Total CONS_INIT_HOLD_COUNT"
+  }
+
+  measure: total_cons_init_hold_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_init_hold_duration};;
+    group_label: "Cons"
+    label: "Total CONS_INIT_HOLD_DURATION"
+  }
+
+  measure: total_cons_init_talk_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_init_talk_count};;
+    group_label: "Cons"
+    label: "Total CONS_INIT_TALK_COUNT"
+  }
+
+  measure: total_cons_init_talk_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_init_talk_duration};;
+    group_label: "Cons"
+    label: "Total CONS_INIT_TALK_DURATION"
+  }
+
+  measure: total_cons_rcv_acw_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_acw_count};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_ACW_COUNT"
+  }
+
+  measure: total_cons_rcv_acw_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_acw_duration};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_ACW_DURATION"
+  }
+
+  measure: total_cons_rcv_hold_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_hold_count};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_HOLD_COUNT"
+  }
+
+  measure: total_cons_rcv_hold_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_hold_duration};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_HOLD_DURATION"
+  }
+
+  measure: total_cons_rcv_ring_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_ring_count};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_RING_COUNT"
+  }
+
+  measure: total_cons_rcv_ring_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_ring_duration};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_RING_DURATION"
+  }
+
+  measure: total_cons_rcv_talk_count {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_talk_count};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_TALK_COUNT"
+  }
+
+  measure: total_cons_rcv_talk_duration {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${cons_rcv_talk_duration};;
+    group_label: "Cons"
+    label: "Total CONS_RCV_TALK_DURATION"
+  }
+
+  measure: total_t_duration_vq {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${t_duration_vq};;
+    label: "Total Duracion VQ"
   }
 }
