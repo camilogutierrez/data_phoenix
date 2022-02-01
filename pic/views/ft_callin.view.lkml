@@ -1843,7 +1843,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_acw_duration};;
     group_label: "Customer Time"
-    label: "Total ACW_TIME"
+    label: "Total Tiempo Trabajo"
+    description: "Es el tiempo total de trabajo después que finaliza la llamada."
   }
 
   measure: total_customer_talk_duration {
@@ -1851,7 +1852,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_talk_duration};;
     group_label: "Customer Time"
-    label: "Total TALK_TIME"
+    label: "Total Tiempo Llamada"
+    description: "Es el tiempo total que dura la llamada una vez que es atendida."
   }
 
   measure: total_customer_hold_duration {
@@ -1859,7 +1861,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${customer_hold_duration};;
     group_label: "Customer Time"
-    label: "Total HOLD_TIME"
+    label: "Total Tiempo Espera"
+    description: "Es el tiempo total de espera hasta que la llamada es atendida."
   }
 
   measure: total_customer_ring_duration {
@@ -2099,5 +2102,15 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${t_duration_vq};;
     label: "Total Duracion VQ"
+  }
+
+  measure: total_tiempo_llamada {
+    type: sum_distinct
+    sql_distinct_key: ${interaction_resource_id};;
+    sql: ${customer_hold_duration} + ${customer_talk_duration} + ${customer_acw_duration} ;;
+    group_label: "Total"
+    group_item_label: "Tiempo Llamada"
+    label: "Total Tiempo Llamada"
+    description: "Es la suma total de los componentes de una llamada, se calcula mediante la suma de HOLD, TALK y ACW"
   }
 }
