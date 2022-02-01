@@ -9,7 +9,7 @@ explore: ft_callin {
 
   always_filter: {
     filters:  [
-                ft_callin.fecha_procesosrcid: "today",
+                ft_callin.fecha_ini_llamada_argsrcid: "today",
                 ft_callin.dim_vag_tipo: "SEGMENTO_SITIO",
                 ft_callin.vagsrcid: "%_QC1S1",
                 ft_callin.gvqsrcid: "%_QC1"

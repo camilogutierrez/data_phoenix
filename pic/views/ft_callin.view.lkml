@@ -66,12 +66,12 @@ view: ft_callin {
     label: "Inicio Llamada"
   }
 
-  dimension: fecha_procesosrcid {
+  dimension: fecha_ini_llamada_argsrcid {
     type: date
     convert_tz: no
-    sql: ${TABLE}.FECHA_PROCESOSRCId ;;
+    sql: ${TABLE}.FECHA_INI_LLAMADA_ARGSRCId ;;
     datatype: date
-    label: "Fecha Proceso"
+    label: "Fecha Proceso Llamada"
   }
 
     ## Flags
