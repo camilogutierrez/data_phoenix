@@ -873,7 +873,7 @@ view: ft_callin {
   dimension: agrupador1 {
     type: string
     sql: ${TABLE}.AGRUPADOR1 ;;
-    group_label: "Agrupador"
+    group_label: "Integración CRM"
     label: "CONNID"
     description: "Es el campo de Interacción entre CRM/PIC"
   }
@@ -881,7 +881,7 @@ view: ft_callin {
   dimension: agrupador2 {
     type: string
     sql: ${TABLE}.AGRUPADOR2 ;;
-    group_label: "Agrupador"
+    group_label: "Integración CRM"
     label: "Place"
     description: "Indentificador de Sitio de atención dentro de la integración"
   }
