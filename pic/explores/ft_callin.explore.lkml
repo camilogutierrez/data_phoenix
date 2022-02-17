@@ -3,7 +3,7 @@ include: "/pic/views/lk_*.view.lkml"
 
 explore: ft_callin {
   label: "Call In"
-  group_label: "Phoenix"
+  group_label: "PIC"
 
   persist_for: "12 hours"
 
