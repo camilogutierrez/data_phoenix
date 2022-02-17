@@ -4,7 +4,7 @@ include: "/orden/others/orden_datagroups.lkml"
 
 explore: fth_orden {
   label: "Orden"
-  group_label: "Phoenix"
+  group_label: "Orden"
 
   always_filter: {
     filters: [fth_orden.fecha_entidad: "today"]

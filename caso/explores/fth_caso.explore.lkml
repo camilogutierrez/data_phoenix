@@ -4,7 +4,7 @@ include: "/caso/others/caso_datagroups.lkml"
 
 explore: fth_caso {
   label: "Caso"
-  group_label: "Phoenix"
+  group_label: "Caso"
 
   always_filter: {
     filters: [fth_caso.fecha_entidad: "today"]
