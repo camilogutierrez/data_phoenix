@@ -8,7 +8,7 @@ view: ft_caja {
     primary_key: yes
     hidden: yes
     type:  string
-    sql:${TABLE}.BATCH_NO || ${TABLE}.CURRENCY_ID || ${TABLE}.CASH_REG_DETAIL_ID
+    sql:concat(${TABLE}.BATCH_NO, ${TABLE}.CURRENCY_ID, ${TABLE}.CASH_REG_DETAIL_ID)
   }
 
 
