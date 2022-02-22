@@ -93,13 +93,6 @@ explore: ft_callin {
     relationship: many_to_one
   }
 
-  join: lk_tab_negocio {
-    type: inner
-    view_label: "Tab Negocio"
-    sql_on: ${ft_callin.tab_negociosrcid} = ${lk_tab_negocio.tab_negociosrcid};;
-    relationship: many_to_one
-  }
-
   join: lk_tabpackage {
     type: inner
     view_label: "Tab Package"
@@ -107,24 +100,10 @@ explore: ft_callin {
     relationship: many_to_one
   }
 
-  join: lk_tab_pcrc {
-    type: inner
-    view_label: "Tab PCRC"
-    sql_on: ${ft_callin.tab_pcrcsrcid} = ${lk_tab_pcrc.tab_pcrcsrcid};;
-    relationship: many_to_one
-  }
-
   join: lk_tab_que_tiene {
     type: inner
     view_label: "Tab Que Tiene"
     sql_on: ${ft_callin.tab_que_tienesrcid} = ${lk_tab_que_tiene.tab_que_tienesrcid};;
-    relationship: many_to_one
-  }
-
-  join: lk_tab_ref_arbol {
-    type: inner
-    view_label: "Tab Ref Arbol"
-    sql_on: ${ft_callin.tab_ref_arbolsrcid} = ${lk_tab_ref_arbol.tab_ref_arbolsrcid};;
     relationship: many_to_one
   }
 
