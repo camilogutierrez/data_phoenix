@@ -1844,7 +1844,7 @@ view: ft_callin {
     sql: ${customer_acw_duration};;
     group_label: "Customer Time"
     label: "Total Tiempo Trabajo"
-    description: "Es el tiempo total de trabajo después que finaliza la llamada."
+    description: "Es el tiempo total de trabajo después que finaliza la llamada. (ACW_TIME)"
   }
 
   measure: total_customer_talk_duration {
@@ -1853,7 +1853,7 @@ view: ft_callin {
     sql: ${customer_talk_duration};;
     group_label: "Customer Time"
     label: "Total Tiempo Llamada"
-    description: "Es el tiempo total que dura la llamada una vez que es atendida."
+    description: "Es el tiempo total que dura la llamada una vez que es atendida. (TALK_TIME)"
   }
 
   measure: total_customer_hold_duration {
@@ -1862,7 +1862,7 @@ view: ft_callin {
     sql: ${customer_hold_duration};;
     group_label: "Customer Time"
     label: "Total Tiempo Espera"
-    description: "Es el tiempo total de espera hasta que la llamada es atendida."
+    description: "Es el tiempo total de espera hasta que la llamada es atendida. (HOLD_TIME)"
   }
 
   measure: total_customer_ring_duration {
