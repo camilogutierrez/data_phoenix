@@ -240,7 +240,10 @@ view: ft_factura_cabecera {
   dimension: legal_no_asoc_ncnd {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
-    label: "Comprobante Asociado Legal"
+    group_label: "Comprobante"
+    group_item_label: "Numero Legal Asociado"
+    label: "Nro Comprobante Legal Asociado"
+    description: "Numero de comprobante legal asociado a la factura"
   }
 
   dimension: point_sale_description {
@@ -294,18 +297,28 @@ view: ft_factura_cabecera {
   dimension: trans_type {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
-    label: "Comprobante Tipo"
+    group_label: "Comprobante"
+    group_item_label: "Tipo"
+    label: "Tipo Comprobante"
+    description: "Indica el tipo de comprobante de la operación (BLL, CNT, DNT, SLI)"
   }
 
   dimension: trans_type_asoc_ncnd {
     type: string
     sql: ${TABLE}.TRANS_TYPE_ASOC_NCND ;;
+    group_label: "Comprobante"
+    group_item_label: "Descripcion Tipo Asociado"
+    label: "Descripcion Tipo Comprobante Asociado"
+    description: "Indica la descripción del tipo de comprobante asociado en la operación BLL = Bill run, CNT = Credit Notes, DNT = Debit Notes, SLI = Sales Invoice"
   }
 
   dimension: trans_type_des {
     type: string
     sql: ${TABLE}.TRANS_TYPE_DES ;;
-    label: "Comprobante Tipo Descripcion"
+    group_label: "Comprobante"
+    group_item_label: "Descripcion Tipo"
+    label: "Descripcion Tipo Comprobante"
+    description: "Indica la descripción del tipo de comprobante de la operación BLL = Bill run, CNT = Credit Notes, DNT = Debit Notes, SLI = Sales Invoice"
   }
 
   ## Numbers
@@ -313,7 +326,10 @@ view: ft_factura_cabecera {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    label: "Cliente HW Id"
+    value_format_name: id
+    group_label: "Cliente"
+    group_item_label: "Id HW"
+    label: "Id Cliente HW"
   }
 
   dimension: currency_id {
@@ -325,14 +341,19 @@ view: ft_factura_cabecera {
   dimension: invoice_id {
     type: number
     sql: ${TABLE}.INVOICE_ID ;;
-    label: "Comprobante Id"
+    value_format_name: "id"
+    group_label: "Comprobante"
+    group_item_label: "Id Huawei"
+    label: "Id Comprobante HW"
   }
 
   dimension: invoice_id_asoc_ncnd {
     type: number
     value_format_name: id
     sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
-    label: "Comprobante Asociado Id"
+    group_label: "Comprobante"
+    group_item_label: "Id Asociado"
+    label: "Id Comprobante Asociado"
   }
 
   dimension: lpf_amt {
@@ -409,16 +430,24 @@ view: ft_factura_cabecera {
     type: count_distinct
     sql: ${invoice_id} ;;
     group_label: "Cantidad"
-    group_item_label: "Comprobantes"
-    label: "Cantidad Comprobantes"
+    group_item_label: "Comprobantes HW"
+    label: "Cantidad Comprobantes HW"
+  }
+
+  measure: count_legal_no {
+    type: count_distinct
+    sql: ${legal_no} ;;
+    group_label: "Cantidad"
+    group_item_label: "Comprobantes Legal"
+    label: "Cantidad Comprobantes Legal"
   }
 
   measure: total_discount_amt  {
     type: sum
     sql: ${discount_amt} ;;
     group_label: "Total"
-    group_item_label: "Bonificacion"
-    label: "Total Bonificacion"
+    group_item_label: "Bonificacion Sin Impuestos "
+    label: "Total Bonificacion Sin Impuestos"
   }
 
   measure: total_invoice_amt {
@@ -427,6 +456,7 @@ view: ft_factura_cabecera {
     group_label: "Total"
     group_item_label: "Monto Comprobante"
     label: "Total Monto Comprobante"
+    description: "La suma de los cargos mas los impuestos menos las bonificaciones."
   }
 
   measure: total_open_amt {
@@ -451,5 +481,6 @@ view: ft_factura_cabecera {
     group_label: "Total"
     group_item_label: "Monto Original Comprobante"
     label: "Total Monto Original Comprobante"
+    description: "Monto original del comprobante antes de la conversión, para cuando la moneda es distinta a pesos."
   }
 }

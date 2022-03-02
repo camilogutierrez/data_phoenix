@@ -123,6 +123,7 @@ view: ft_callin {
     sql: ${TABLE}.FCRSRCId ;;
     group_label: "Marcas"
     label: "Es FCR"
+    description: "Es la marca de resolucion del primer llamado (First Call Resolution)."
   }
 
   dimension: abandono_q_1_9 {
@@ -131,7 +132,7 @@ view: ft_callin {
     group_label: "Abandono Cola"
     group_item_label: "1- 01-09"
     label: "Abandono Q-1-9"
-    description: "Es una llamada abandonada en cola entre 1 y 9 segundos"
+    description: "Es una llamada abandonada en cola entre 1 y 9 segundos."
   }
 
   dimension: abandono_q_10_19 {
@@ -140,7 +141,7 @@ view: ft_callin {
     group_label: "Abandono Cola"
     group_item_label: "2- 10-19"
     label: "Abandono Q-10-19"
-    description: "Es una llamada abandonada en cola entre 10 y 19 segundos"
+    description: "Es una llamada abandonada en cola entre 10 y 19 segundos."
   }
 
   dimension: abandono_q_20_29 {
@@ -391,7 +392,7 @@ view: ft_callin {
     group_label: "Llamada Corta"
     group_item_label: "2- 10-19"
     label: "Llamada Corta 10-19"
-    description: "Es una llamada corta entre 10 y 19 segundos"
+    description: "Es una llamada corta entre 10 y 19 segundos."
   }
 
   dimension: llamadacorta_20_29 {
@@ -400,7 +401,7 @@ view: ft_callin {
     group_label: "Llamada Corta"
     group_item_label: "3- 20-29"
     label: "Llamada Corta 20-29"
-    description: "Es una llamada corta entre 20 y 29 segundos"
+    description: "Es una llamada corta entre 20 y 29 segundos."
   }
 
   dimension: unico24 {
@@ -408,6 +409,7 @@ view: ft_callin {
     sql: ${TABLE}.UNICO24 ;;
     group_label: "Marcas"
     label: "Es Cliente Unico 24H"
+    description: "Cliente unico que se contacto dentro de las 24hs."
   }
 
   dimension: unico7_x24 {
@@ -415,6 +417,7 @@ view: ft_callin {
     sql: ${TABLE}.UNICO7X24 ;;
     group_label: "Marcas"
     label: "Es Cliente Unico 7D"
+    description: "Cliente unico que se contacto dentro de los 7 días."
   }
 
     ## Strings
@@ -469,6 +472,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Agrupador Reporting"
     label: "TAB Agrupador Reporting"
+    description: "Es el agrupador 1 reporting"
   }
 
   dimension: tab_consulta_porsrcid {
@@ -478,6 +482,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Consulta Por"
     label: "TAB Consulta Por"
+    description: "Agrupador consulta por."
   }
 
   dimension: tab_contactosrcid {
@@ -487,6 +492,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Contactos"
     label: "TAB Contactos"
+    description: "Agrupador contactos."
   }
 
   dimension: tab_motivosrcid {
@@ -496,6 +502,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Motivos"
     label: "TAB Motivos"
+    description: "Agrupador 3 - Motivos."
   }
 
   dimension: tab_movilsrcid {
@@ -505,24 +512,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Movil"
     label: "TAB Movil"
-  }
-
-  dimension: tab_negociosrcid {
-    type: string
-    sql: ${TABLE}.TAB_NEGOCIOSRCId ;;
-    suggest_dimension: lk_tab_negocio.tab_negociosrcid
-    group_label: "Tabulación"
-    group_item_label: "Negocios"
-    label: "TAB Negocios"
-  }
-
-  dimension: tab_pcrcsrcid {
-    type: string
-    sql: ${TABLE}.TAB_PCRCSRCId ;;
-    suggest_dimension: lk_tab_pcrc.tab_pcrcsrcid
-    group_label: "Tabulación"
-    group_item_label: "PCRC"
-    label: "TAB PCRC"
+    description: "Agrupador movil."
   }
 
   dimension: tab_que_tienesrcid {
@@ -532,15 +522,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Que Tiene"
     label: "TAB Que tiene"
-  }
-
-  dimension: tab_ref_arbolsrcid {
-    type: string
-    sql: ${TABLE}.TAB_REF_ARBOLSRCId ;;
-    suggest_dimension: lk_tab_ref_arbol.tab_ref_arbolsrcid
-    group_label: "Tabulación"
-    group_item_label: "Referencia Arbol"
-    label: "TAB Referencia Arbol"
+    description: "Agrupador que tiene (arbol ventas)."
   }
 
   dimension: tab_resultadosrcid {
@@ -550,6 +532,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Resultados"
     label: "TAB Resultados"
+    description: "Agrupador 4 - Resultado."
   }
 
   dimension: tab_tipo_de_llamadosrcid {
@@ -559,6 +542,7 @@ view: ft_callin {
     group_label: "Tabulación"
     group_item_label: "Tipo de Llamados"
     label: "TAB Tipo de Llamados"
+    description: "Agrupador 2 - Tipo de llamado."
   }
 
   dimension: contexto_ivr_0800_srcid {
@@ -854,6 +838,7 @@ view: ft_callin {
     sql: ${TABLE}.GVQSRCId ;;
     suggest_dimension: lk_gvq.gvqsrcid
     label: "GVQ"
+    description: "Grupo al que perternece la VQ."
   }
 
   dimension: interaction_typesrcid {
@@ -900,6 +885,7 @@ view: ft_callin {
     group_label: "ANI"
     group_item_label: "Descripcion"
     label: "ANI Descripcion"
+    description: "Es el numero de linea de ingreso al call."
   }
 
   dimension: anis_postdiscado_descripcion {
@@ -908,6 +894,7 @@ view: ft_callin {
     group_label: "ANI"
     group_item_label: "Postdiscado Descripcion"
     label: "ANI Postdiscado Descripcion"
+    description: "Corresponde al numero validado con el cliente diferente del numero del llamado original."
   }
 
   dimension: apellido {
@@ -916,6 +903,7 @@ view: ft_callin {
     group_label: "Agente"
     group_item_label: "Apellido"
     label: "Agente Apellido"
+    description: "Es el apellido del agente que atiende la llamada."
   }
 
   dimension: dim_vag_tipo {
@@ -930,6 +918,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.DNIS ;;
     label: "DNIS"
+    description: "Es el numero de linea de la llamada saliente contactada."
   }
 
   dimension: documento {
@@ -938,6 +927,7 @@ view: ft_callin {
     group_label: "Cliente"
     group_item_label: "Documento"
     label: "Cliente Documento"
+    description: "Es el DNI del cliente"
   }
 
   dimension: encuesta {
@@ -951,12 +941,14 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.ID_IVR ;;
     label: "IVR Id"
+    description: "Identificador de la llamada en el IVR."
   }
 
   dimension: id_nice {
     type: string
     sql: ${TABLE}.ID_NICE ;;
     label: "Nice Id"
+    description: "Identificador de la grabacion de la llamada para acciones de calidad."
   }
 
   dimension: email_cliente {
@@ -973,6 +965,7 @@ view: ft_callin {
     group_label: "Cliente"
     group_item_label: "Id"
     label: "Cliente Id"
+    description: "Identificador del cliente unico."
   }
 
   dimension: nombre {
@@ -981,6 +974,7 @@ view: ft_callin {
     group_label: "Agente"
     group_item_label: "Nombre"
     label: "Agente Nombre"
+    description: "Es el nombre del agente que atiende la llamada."
   }
 
   dimension: nombre_cliente {
@@ -1002,6 +996,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.POSTDISCADO ;;
     label: "Postdiscado"
+    description: "Corresponde al numero validado con el cliente diferente del numero del llamado original."
   }
 
   dimension: pregunta_1 {
@@ -1127,6 +1122,7 @@ view: ft_callin {
     group_label: "Agente"
     group_item_label: "Legajo"
     label: "Agente Legajo"
+    description: "Es el legajo del agente que atiende la llamada."
   }
 
     ## Numbers
@@ -1136,6 +1132,7 @@ view: ft_callin {
     value_format_name: id
     sql: ${TABLE}.RES_ORDINALSRCId ;;
     label: "RES_ORDINAL"
+    description: "Marca la cantidad de transferencias de la llamada original en distintas colas de atencion."
   }
 
   dimension: sub_estado_finsrcid {
@@ -1143,12 +1140,14 @@ view: ft_callin {
     value_format_name: id
     sql: ${TABLE}.SUB_ESTADO_FINSRCId ;;
     label: "Subestado Fin"
+    description: "Estado con el que cierre la llamada."
   }
 
   dimension: interaction_id {
     type: number
     sql: ${TABLE}.INTERACTION_ID ;;
     label: "Interaction Id"
+    description: "Es el numero identificador de la llamada en PIC (no es unico)."
   }
 
   dimension: interaction_type_key {
@@ -1439,7 +1438,8 @@ view: ft_callin {
     sql: ${interaction_resource_id} ;;
     group_label: "Cantidad"
     group_item_label: "Interacciones"
-    label: "Cantidad Iteracciones"
+    label: "Cantidad Interacciones"
+    description: "Cuenta el total de interacciones distintas sobre el campo Interaction Resource Id."
   }
 
   measure: count_estado_fin_abandonadasrcid {
@@ -1449,6 +1449,7 @@ view: ft_callin {
     group_item_label: "Abandonadas"
     label: "Cantidad Abandonadas"
     filters: [estado_fin_abandonadasrcid: "Yes"]
+    description: "Es la cantidad total de llamadas donde el estado fin es igual a Abandonada."
     }
 
   measure: count_estado_fin_atendidasrcid {
@@ -1476,6 +1477,7 @@ view: ft_callin {
     group_item_label: "Salientes"
     label: "Cantidad Salientes"
     filters: [estado_fin_salientesrcid: "Yes"]
+    description: "Es la cantidad total de llamadas donde el estado fin es igual a Saliente."
   }
 
   measure: count_abandono_q_1_9 {
@@ -1788,14 +1790,6 @@ view: ft_callin {
     filters: [llamada_cortasrcid: "Yes"]
   }
 
-  measure: total_customer_acw_count {
-    type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
-    sql: ${customer_acw_count} ;;
-    group_label: "Customer Time"
-    label: "Total ACW_COUNT"
-  }
-
   measure: total_customer_dial_count {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id};;
@@ -1902,7 +1896,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${conference_initiated_count};;
     group_label: "Conference"
-    label: "Total CONFERENCE_INITIATED_COUNT"
+    label: "Total Tiempo Inicio Conferencia"
+    description: "Cuenta el tiempo de iniciada la llamada en conferencia"
   }
 
   measure: total_conf_init_hold_count {
@@ -1942,7 +1937,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${conf_join_hold_count};;
     group_label: "Conference"
-    label: "Total CONF_JOIN_HOLD_COUNT"
+    label: "Total Tiempo Espera Conferencia"
+    description: "Cuenta el tiempo en espera unido a la conferencia"
   }
 
   measure: total_conf_join_hold_duration {
