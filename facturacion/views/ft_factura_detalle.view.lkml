@@ -29,7 +29,7 @@ view: ft_factura_detalle {
     ]
     sql: ${TABLE}.INVOICE_DATE ;;
     view_label: "Comprobante"
-    label: "Comprobante Fecha emisión"
+    label: "Fecha emisión"
 
   }
 
@@ -494,6 +494,7 @@ view: ft_factura_detalle {
   dimension: charge_code_id {
     type: number
     sql: ${TABLE}.CHARGE_CODE_ID ;;
+    value_format: "0"
     view_label: "Comprobante"
     label: "Cargo Id"
     description: "ID de Cargos de las terminales de venta, e intereses y otros conceptos."
@@ -502,6 +503,7 @@ view: ft_factura_detalle {
   dimension: invoice_detail_id {
     type: number
     sql: ${TABLE}.INVOICE_DETAIL_ID ;;
+    value_format: "0"
     view_label: "Comprobante"
     label: "Ítem Facturado ID"
   }
@@ -509,6 +511,7 @@ view: ft_factura_detalle {
   dimension: invoice_id {
     type: number
     sql: ${TABLE}.INVOICE_ID ;;
+    value_format: "0"
     view_label: "Comprobante"
     label: "Comprobante Cabecera HW ID"
     description: "Identificador de la operación, número interno de HW"
@@ -517,14 +520,15 @@ view: ft_factura_detalle {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    value_format: "0"
     view_label: "Cliente"
     label: "Cliente HW Id"
   }
 
   dimension: invoice_id_asoc_ncnd {
     type: number
-    value_format_name: id
     sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
+    value_format: "0"
     view_label: "Comprobante"
     label: "Comprobante Asociado Id"
   }
@@ -532,6 +536,7 @@ view: ft_factura_detalle {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
+    value_format: "0"
     view_label: "Cliente"
     label: "Cuenta Cliente  ID"
   }
@@ -549,6 +554,7 @@ view: ft_factura_detalle {
   dimension: addr_id {
     type: number
     sql: ${TABLE}.ADDR_ID ;;
+    value_format: "0"
     view_label: "Cliente"
     label: "Domicilio Id"
   }
@@ -561,6 +567,7 @@ view: ft_factura_detalle {
   dimension: be_id {
     type: number
     sql: ${TABLE}.BE_ID ;;
+    value_format: "0"
     view_label: "Comprobante"
     label: "Entidad de Negocio"
     description: "ID de Personal, Telecom"
@@ -576,6 +583,7 @@ view: ft_factura_detalle {
   dimension: total_cycle {
     type: number
     sql: ${TABLE}.TOTAL_CYCLE ;;
+    value_format: "0"
     view_label: "Comprobante"
     label: "Cuotas Cantidad"
   }
