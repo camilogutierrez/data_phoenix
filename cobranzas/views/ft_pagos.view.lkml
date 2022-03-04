@@ -8,9 +8,8 @@ view: ft_pagos {
     primary_key: yes
     hidden: yes
     type:  string
-    sql:concat(${TABLE}.PAYMENT_ID, ${TABLE}.TRANS_ID)
+    sql:${TABLE}.PAGOSPK;;
   }
-
 
   ##############
   ##  Pagos   ##
@@ -30,7 +29,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.CHECK_DATE ;;
-    label: "Check Date"
+    label: "Check"
   }
 
   dimension_group: entry {
@@ -45,7 +44,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.ENTRY_DATE ;;
-    label: "Entry Date"
+    label: "Entry"
   }
 
   dimension_group: fecha_contable {
@@ -90,7 +89,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.PAYMENT_DATE ;;
-    label: "Payment Date"
+    label: "Payment"
   }
 
   dimension_group: reversal {
@@ -105,7 +104,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.REVERSAL_DATE ;;
-    label: "Reversal Date"
+    label: "Reversal"
   }
 
   dimension_group: trx_trans {
@@ -120,7 +119,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "TRX Transaction Date"
+    label: "TRX Transaction"
   }
 
 
@@ -186,12 +185,6 @@ view: ft_pagos {
     label: "Bill Cycle Type"
   }
 
-  dimension: c_payment_date {
-    type: string
-    sql: ${TABLE}.C_PAYMENT_DATE ;;
-    label: "Payment Date"
-  }
-
   dimension: channel_id {
     type: string
     sql: ${TABLE}.CHANNEL_ID ;;
@@ -252,6 +245,12 @@ view: ft_pagos {
     label: "Customer Segment"
   }
 
+  dimension: c_payment_date {
+    type: string
+    sql: ${TABLE}.C_PAYMENT_DATE ;;
+    label: "Payment Date"
+  }
+
   dimension: header_bank_code {
     type: string
     sql: ${TABLE}.HEADER_BANK_CODE ;;
@@ -306,22 +305,22 @@ view: ft_pagos {
     label: "Number of Installment"
   }
 
-  dimension: oper_id {
-    type: string
-    sql: ${TABLE}.OPER_ID ;;
-    label: "Operation ID"
-  }
-
   dimension: operation_type {
     type: string
     sql: ${TABLE}.OPERATION_TYPE ;;
-    label: "Operatio Type"
+    label: "Operation Type"
   }
 
   dimension: operation_type_inf {
     type: string
     sql: ${TABLE}.OPERATION_TYPE_INF ;;
     label: "Operation Type INF"
+  }
+
+  dimension: oper_id {
+    type: string
+    sql: ${TABLE}.OPER_ID ;;
+    label: "Operation ID"
   }
 
   dimension: paid_flag {
@@ -366,18 +365,6 @@ view: ft_pagos {
     label: "Payment Serial ID"
   }
 
-  dimension: pr_status {
-    type: string
-    sql: ${TABLE}.PR_STATUS ;;
-    label: "PR Status"
-  }
-
-  dimension: pr_status_des {
-    type: string
-    sql: ${TABLE}.PR_STATUS_DES ;;
-    label: "PR Status Description"
-  }
-
   dimension: pri_identity {
     type: string
     sql: ${TABLE}.PRI_IDENTITY ;;
@@ -394,6 +381,18 @@ view: ft_pagos {
     type: string
     sql: ${TABLE}.PRODUCT_LINE ;;
     label: "Product Line"
+  }
+
+  dimension: pr_status {
+    type: string
+    sql: ${TABLE}.PR_STATUS ;;
+    label: "PR Status"
+  }
+
+  dimension: pr_status_des {
+    type: string
+    sql: ${TABLE}.PR_STATUS_DES ;;
+    label: "PR Status Description"
   }
 
   dimension: reversal_reason_code {
@@ -450,72 +449,76 @@ view: ft_pagos {
   dimension: batch_no {
     type: number
     sql: ${TABLE}.BATCH_NO ;;
+    value_format: "0"
     label: "Batch Number"
   }
 
   dimension: credit_card_type_id {
     type: number
     sql: ${TABLE}.CREDIT_CARD_TYPE_ID ;;
+    value_format: "0"
     label: "Credit Card Type ID"
   }
 
   dimension: currency_id {
     type: number
     sql: ${TABLE}.CURRENCY_ID ;;
+    value_format: "0"
     label: "Currency ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    value_format: "0"
     label: "Customer ID"
   }
 
   dimension: ind_pagos_migrados {
     type: number
     sql: ${TABLE}.IND_PAGOS_MIGRADOS ;;
+    value_format: "0"
     label: "IND Pagos Migrados"
   }
 
   dimension: ind_reversal_payment {
     type: number
     sql: ${TABLE}.IND_REVERSAL_PAYMENT ;;
-    label: "IND Reversal Payment"
+    label: "Indicador de Pago"
   }
 
   dimension: mov_origen_hw {
     type: number
     sql: ${TABLE}.MOV_ORIGEN_HW ;;
+    value_format: "0"
     label: "MOV Origen HW"
-  }
-
-  dimension: payment_id {
-    type: number
-    sql: ${TABLE}.PAYMENT_ID ;;
-    label: "Payment ID"
   }
 
   dimension: reversal_trans_id {
     type: number
     sql: ${TABLE}.REVERSAL_TRANS_ID ;;
+    value_format: "0"
     label: "Reversal Transaction ID"
   }
 
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
+    value_format: "0"
     label: "SUB ID"
   }
 
   dimension: trans_id {
     type: number
     sql: ${TABLE}.TRANS_ID ;;
+    value_format: "0"
     label: "Transaction ID"
   }
 
   dimension: wondersoft_id {
     type: number
     sql: ${TABLE}.WONDERSOFT_ID ;;
+    value_format: "0"
     label: "Wondersoft ID"
   }
 
@@ -526,6 +529,12 @@ view: ft_pagos {
     hidden: yes
     type: number
     sql: ${TABLE}.ORIGINAL_AMT ;;
+  }
+
+  dimension: payment_id {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.PAYMENT_ID ;;
   }
 
   dimension: payment_amt {
@@ -545,21 +554,38 @@ view: ft_pagos {
 ## Measures ##
 ##############
 
+  measure: count_ind_reversal_payment {
+    type: count_distinct
+    sql: ${TABLE}.IND_REVERSAL_PAYMENT ;;
+    group_label: "Cantidad"
+    label: "Indicador de Pago"
+  }
+
+  measure: count_payment_id {
+    type: count_distinct
+    sql: ${TABLE}.PAYMENT_ID ;;
+    group_label: "Cantidad"
+    label: "Payment ID"
+  }
+
   measure: total_original_amt {
     type: sum
     sql: ${TABLE}.ORIGINAL_AMT ;;
-    label: "Total Original Amount"
+    group_label: "Total"
+    label: "Original Amount"
   }
 
   measure: total_payment_amt {
     type: sum
     sql: ${TABLE}.PAYMENT_AMT ;;
-    label: "Total Payment Amount"
+    group_label: "Total"
+    label: "Payment Amount"
   }
 
   measure: total_trx_amt {
     type: sum
     sql: ${TABLE}.TRX_AMT ;;
-    label: "Total TRX Amount"
+    group_label: "Total"
+    label: "TRX Amount"
   }
 }
