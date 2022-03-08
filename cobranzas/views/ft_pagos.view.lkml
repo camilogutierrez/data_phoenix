@@ -515,6 +515,20 @@ view: ft_pagos {
     label: "Transaction ID"
   }
 
+  dimension: invoice_id {
+    type: number
+    sql: ${TABLE}.INVOICE_ID ;;
+    value_format: "0"
+    label: "Invoice ID"
+  }
+
+  dimension: invoice_detail_id {
+    type: number
+    sql: ${TABLE}.INVOICE_DETAIL_ID ;;
+    value_format: "0"
+    label: "Invoice Detail ID"
+  }
+
   dimension: wondersoft_id {
     type: number
     sql: ${TABLE}.WONDERSOFT_ID ;;

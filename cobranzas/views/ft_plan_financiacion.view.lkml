@@ -63,21 +63,6 @@ view: ft_plan_financiacion {
     label: "Create"
   }
 
-  dimension_group: estimated_billing {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.ESTIMATED_BILLING_DATE ;;
-    label: "Estimated Billing"
-  }
-
   dimension_group: exp_date {
     type: time
     timeframes: [
@@ -225,6 +210,12 @@ view: ft_plan_financiacion {
     type: string
     sql: ${TABLE}.CYCLE_TYPE ;;
     label: "Cycle Type"
+  }
+
+  dimension: estimated_billing {
+    type: string
+    sql: ${TABLE}.ESTIMATED_BILLING_DATE ;;
+    label: "Estimated Billing date"
   }
 
   dimension: payment_delay_flag {
