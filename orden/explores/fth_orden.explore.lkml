@@ -1,6 +1,7 @@
 include: "/orden/views/fth_orden.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
+include: "/orden/views/dm_cuenta_cliente.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
@@ -248,6 +249,11 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.punto_venta_canalidad2_sk} = ${lk_punto_venta_canalidad2.punto_venta_canalidad2_sk} ;;
     type: inner
+  }
+  join: dm_cuenta_cliente {
+    relationship: many_to_one
+    sql_on: ${fth_orden.cliente_srcid} = ${dm_cuenta_cliente.cliente_srcid} ;;
+    type: left_outer
   }
 
 

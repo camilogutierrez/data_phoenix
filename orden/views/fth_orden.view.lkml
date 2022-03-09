@@ -850,7 +850,7 @@ view: fth_orden {
     datatype: timestamp
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Fecha"
+    group_item_label: "Modificación"
     label: "Fecha Modificacion"
   }
 
