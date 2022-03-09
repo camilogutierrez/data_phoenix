@@ -8,9 +8,8 @@ view: ft_caja {
     primary_key: yes
     hidden: yes
     type:  string
-    sql:concat(${TABLE}.BATCH_NO, ${TABLE}.CURRENCY_ID, ${TABLE}.CASH_REG_DETAIL_ID)
+    sql:${TABLE}.CAJAPK;;
   }
-
 
   #############
   ##  Caja   ##
@@ -30,7 +29,7 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.CR_CLOSE_DATE ;;
-    label: "Close date"
+    label: "Close"
   }
 
   dimension_group: cr_open {
@@ -45,7 +44,7 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.CR_OPEN_DATE ;;
-    label: "Open Date"
+    label: "Open"
   }
 
   dimension_group: trx_trans {
@@ -60,7 +59,7 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "Transaction Date"
+    label: "Transaction"
   }
 
   ## Strings
@@ -221,42 +220,45 @@ view: ft_caja {
   dimension: batch_no {
     type: number
     sql: ${TABLE}.BATCH_NO ;;
+    value_format: "0"
     label: "Batch Number"
-  }
-
-  dimension: cash_reg_detail_id {
-    type: number
-    sql: ${TABLE}.CASH_REG_DETAIL_ID ;;
-    label: "Cash Reg Detail"
   }
 
   dimension: cr_emission_point_id {
     type: number
     sql: ${TABLE}.CR_EMISSION_POINT_ID ;;
+    value_format: "0"
     label: "Emission Point ID"
   }
-
-
 
   dimension: crd_credit_card_type_id {
     type: number
     sql: ${TABLE}.CRD_CREDIT_CARD_TYPE_ID ;;
+    value_format: "0"
     label: "CRD Credit Card Type ID"
   }
 
   dimension: crd_trans_id {
     type: number
     sql: ${TABLE}.CRD_TRANS_ID ;;
+    value_format: "0"
     label: "CRD Transaction ID"
   }
 
   dimension: currency_id {
     type: number
     sql: ${TABLE}.CURRENCY_ID ;;
+    value_format: "0"
     label: "Currency ID"
   }
 
   ## Hidden ##
+
+  dimension: cash_reg_detail_id {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CASH_REG_DETAIL_ID ;;
+  }
 
   dimension: cr_actual_amt {
     hidden: yes
@@ -304,45 +306,59 @@ view: ft_caja {
 ## Measures ##
 ##############
 
-  measure: total_cr_actual_amt {
+  measure: count_cash_reg_detail_id {
+    type: count_distinct
+    sql: ${TABLE}.CASH_REG_DETAIL_ID ;;
+    group_label: "Cantidad"
+    label: "Cash Reg Detail"
+  }
+
+ measure: total_cr_actual_amt {
     type: sum
     sql: ${TABLE}.CR_ACTUAL_AMT ;;
-    label: "Total CR Actual Amount"
+    group_label: "Total"
+    label: "CR Actual Amount"
   }
 
   measure: total_cr_adj_amt {
     type: sum
     sql: ${TABLE}.CR_ADJ_AMT ;;
-    label: "Total CR ADJ Amount"
+    group_label: "Total"
+    label: "CR ADJ Amount"
   }
 
   measure: total_cr_init_amt {
     type: sum
     sql: ${TABLE}.CR_INIT_AMT ;;
-    label: "Total CR Init Amount"
+    group_label: "Total"
+    label: "CR Init Amount"
   }
 
   measure: total_cr_safe_amt {
     type: sum
     sql: ${TABLE}.CR_SAFE_AMT ;;
-    label: "Total CR Safe Amount"
+    group_label: "Total"
+    label: "CR Safe Amount"
   }
 
   measure: total_cr_trans_amt {
     type: sum
     sql: ${TABLE}.CR_TRANS_AMT ;;
-    label: "Total CR Transaction Amount"
+    group_label: "Total"
+    label: "CR Transaction Amount"
   }
 
   measure: total_trans_detail_amt {
     type: sum
     sql: ${TABLE}.TRANS_DETAIL_AMT ;;
-    label: "Total Transaction Detail Amount"
+    group_label: "Total"
+    label: "Transaction Detail Amount"
   }
 
   measure: total_trx_amt {
     type: sum
     sql: ${TABLE}.TRX_AMT ;;
-    label: "Total Trx Amount"
+    group_label: "Total"
+    label: "Trx Amount"
   }
 }

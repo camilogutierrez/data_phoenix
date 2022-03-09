@@ -9,7 +9,7 @@ view: ft_plan_financiacion {
     primary_key: yes
     hidden: yes
     type:  string
-    sql:concat(${TABLE}.INSTALLMENT_INST_ID, ${TABLE}.CYCLE_SEQ)
+    sql:${TABLE}.PLANFINANCIACIONPK;;
   }
 
   ##########################
@@ -30,7 +30,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.AR_PAYMENT_DATE ;;
-    label: "AR Payment Date"
+    label: "AR Payment"
   }
 
   dimension_group: billed {
@@ -45,7 +45,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.BILLED_DATE ;;
-    label: "Billed Date"
+    label: "Billed"
   }
 
   dimension_group: create_date {
@@ -60,22 +60,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.CREATE_DATE ;;
-    label: "Create Date"
-  }
-
-  dimension_group: estimated_billing {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.ESTIMATED_BILLING_DATE ;;
-    label: "Estimated Billing Date"
+    label: "Create"
   }
 
   dimension_group: exp_date {
@@ -90,7 +75,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.EXP_DATE ;;
-    label: "EXP Date"
+    label: "EXP"
   }
 
   dimension_group: due_date {
@@ -105,7 +90,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.DUE_DATE ;;
-    label: "Due Date"
+    label: "Due"
   }
 
   dimension_group: inst_create {
@@ -120,7 +105,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.INST_CREATE_DATE ;;
-    label: "INST Create Date"
+    label: "INST Create"
   }
 
   dimension_group: inst_exp {
@@ -135,7 +120,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.INST_EXP_DATE ;;
-    label: "INST EXP Date"
+    label: "INST EXP"
   }
 
   dimension_group: modify {
@@ -150,7 +135,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.MODIFY_TIME ;;
-    label: "Modify Date"
+    label: "Modify"
   }
 
   dimension_group: payment_date {
@@ -165,7 +150,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.PAYMENT_DATE ;;
-    label: "Payment Date"
+    label: "Payment"
   }
 
   dimension_group: repay_due {
@@ -180,7 +165,7 @@ view: ft_plan_financiacion {
       year
     ]
     sql: ${TABLE}.REPAY_DUE_DATE ;;
-    label: "Repay Due Date"
+    label: "Repay Due"
   }
 
   ## Strings
@@ -227,6 +212,12 @@ view: ft_plan_financiacion {
     label: "Cycle Type"
   }
 
+  dimension: estimated_billing {
+    type: string
+    sql: ${TABLE}.ESTIMATED_BILLING_DATE ;;
+    label: "Estimated Billing date"
+  }
+
   dimension: payment_delay_flag {
     type: string
     sql: ${TABLE}.PAYMENT_DELAY_FLAG ;;
@@ -257,36 +248,42 @@ view: ft_plan_financiacion {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
+    value_format: "0"
     label: "Account ID"
   }
 
   dimension: charge_code_id {
     type: number
     sql: ${TABLE}.CHARGE_CODE_ID ;;
+    value_format: "0"
     label: "Charge Code ID"
   }
 
   dimension: currency_id {
     type: number
     sql: ${TABLE}.CURRENCY_ID ;;
+    value_format: "0"
     label: "Currency ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    value_format: "0"
     label: "Customer ID"
   }
 
   dimension: cycle_seq {
     type: number
     sql: ${TABLE}.CYCLE_SEQ ;;
+    value_format: "0"
     label: "Cycle SEQ"
   }
 
   dimension: installment_inst_id {
     type: number
     sql: ${TABLE}.INSTALLMENT_INST_ID ;;
+    value_format: "0"
     label: "Installment INST ID"
   }
 
@@ -366,54 +363,63 @@ view: ft_plan_financiacion {
   measure: total_amount {
     type: sum
     sql: ${TABLE}.AMOUNT ;;
-    label: "Total Amount"
+    group_label: "Total"
+    label: "Amount"
   }
 
   measure: total_billing_discount_amt {
     type: sum
     sql: ${TABLE}.BILLING_DISCOUNT_AMT ;;
-    label: "Total Billing Discount"
+    group_label: "Total"
+    label: "Billing Discount"
   }
 
   measure: total_initial_amt {
     type: sum
     sql: ${TABLE}.INITIAL_AMT ;;
-    label: "Total Initial Amount"
+    group_label: "Total"
+    label: "Initial Amount"
   }
 
   measure: total_total_amt {
     type: sum
     sql: ${TABLE}.TOTAL_AMT ;;
+    group_label: "Total"
     label: "Total Amount"
   }
 
   measure: total_traf_invoice_amt {
     type: sum
     sql: ${TABLE}.TRAF_INVOICE_AMT ;;
-    label: "Total TRAF Invoice Amount"
+    group_label: "Total"
+    label: "TRAF Invoice Amount"
   }
 
   measure: total_traf_open_amt {
     type: sum
     sql: ${TABLE}.TRAF_OPEN_AMT ;;
-    label: "Total TRAF Open Amount"
+    group_label: "Total"
+    label: "TRAF Open Amount"
   }
 
   measure: total_unpaid_amt {
     type: sum
     sql: ${TABLE}.UNPAID_AMT ;;
-    label: "Total Unpaid Amount"
+    group_label: "Total"
+    label: "Unpaid Amount"
   }
 
   measure: total_vta_invoice_amt {
     type: sum
     sql: ${TABLE}.VTA_INVOICE_AMT ;;
-    label: "Total VTA Invoice Amount"
+    group_label: "Total"
+    label: "VTA Invoice Amount"
   }
 
   measure: total_vta_tax_amt {
     type: sum
     sql: ${TABLE}.VTA_TAX_AMT ;;
-    label: "Total VTA Tax Amount"
+    group_label: "Total"
+    label: "VTA Tax Amount"
   }
 }
