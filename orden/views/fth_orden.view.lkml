@@ -36,18 +36,18 @@ view: fth_orden {
   }
 
   dimension: orden_item_fecha_creacion_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.OrdenItemFechaCreacionSRC ;;
+    type: date
     datatype: timestamp
+    sql: ${TABLE}.Fechas.OrdenItemFechaCreacionSRC ;;
     group_label: "Fechas"
     group_item_label: "Creacion"
     label: "Fecha Creacion"
   }
 
   dimension: orden_item_fecha_modificacion_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.OrdenItemFechaModificacionSRC ;;
+    type: date
     datatype: timestamp
+    sql: ${TABLE}.Fechas.OrdenItemFechaModificacionSRC ;;
     group_label: "Fechas"
     group_item_label: "Modificacion"
     label: "Fecha Modificacion"
@@ -135,6 +135,7 @@ view: fth_orden {
   }
 
   dimension: orden_item_instancia_srcid {
+    hidden: yes
     type: string
     sql: ${TABLE}.OrdenItemInstanciaSRCId ;;
     label: "Instancia"
@@ -165,12 +166,14 @@ view: fth_orden {
   }
 
   dimension: orden_item_producto_padre_srcid {
+    hidden: yes
     type: string
     sql: ${TABLE}.OrdenItemProductoPadreSRCId ;;
     label: "Producto Padre"
   }
 
   dimension: orden_item_producto_raiz_srcid {
+    hidden: yes
     type: string
     sql: ${TABLE}.OrdenItemProductoRaizSRCId ;;
     label: "Producto Raiz"
@@ -195,12 +198,6 @@ view: fth_orden {
     value_format_name: id
     sql: ${TABLE}.OrigenSRCId ;;
     label: "Origen"
-  }
-
-  dimension: orden_item_mrc {
-    type: number
-    sql: ${TABLE}.OrdenItemMRC ;;
-    label: "MRC"
   }
 
   ## Hidden
@@ -782,9 +779,9 @@ view: fth_orden {
 
   dimension: orden_ejecucion_cambio_ciclo_fecha_src {
     type: date
+    datatype: timestamp
     sql: ${TABLE}.Orden.Fechas.OrdenEjecucionCambioCicloFechaSRC ;;
     convert_tz: no
-    datatype: date
     view_label: "Orden"
     group_label: "Fechas"
     group_item_label: "Ejecucion Cambio Ciclo"
@@ -792,9 +789,9 @@ view: fth_orden {
   }
 
   dimension: orden_fecha_activacion_src {
-    type: date_time
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacionSRC ;;
+    type: date
     datatype: timestamp
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacionSRC ;;
     view_label: "Orden"
     group_label: "Fechas"
     group_item_label: "Activacion"
@@ -802,9 +799,9 @@ view: fth_orden {
   }
 
   dimension: orden_fecha_creacion_src {
-    type: date_time
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaCreacionSRC ;;
+    type: date
     datatype: timestamp
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaCreacionSRC ;;
     view_label: "Orden"
     group_label: "Fechas"
     group_item_label: "Creacion"
@@ -813,8 +810,8 @@ view: fth_orden {
 
   dimension: orden_fecha_entrega_src {
     type: date
+    datatype: timestamp
     sql: ${TABLE}.Orden.Fechas.OrdenFechaEntregaSRC ;;
-    datatype: date
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
@@ -824,8 +821,8 @@ view: fth_orden {
 
   dimension: orden_fecha_fin_src {
     type: date
+    datatype: timestamp
     sql: ${TABLE}.Orden.Fechas.OrdenFechaFinSRC ;;
-    datatype: date
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
@@ -835,8 +832,8 @@ view: fth_orden {
 
   dimension: orden_fecha_inicio_src {
     type: date
+    datatype: timestamp
     sql: ${TABLE}.Orden.Fechas.OrdenFechaInicioSRC ;;
-    datatype: date
     convert_tz: no
     view_label: "Orden"
     group_label: "Fechas"
@@ -856,13 +853,12 @@ view: fth_orden {
 
   dimension: orden_fecha_venta_src {
     type: date
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaVentaSRC ;;
-    datatype: date
-    convert_tz: no
+    datatype: timestamp
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaModSRC ;;
     view_label: "Orden"
     group_label: "Fechas"
-    group_item_label: "Venta"
-    label: "Fecha Venta"
+    group_item_label: "Modificación"
+    label: "Fecha Modificación"
   }
 
     ## Flags
@@ -1336,13 +1332,6 @@ view: fth_orden {
 
     ## Numbers
 
-  dimension: orden_cft {
-    type: number
-    sql: ${TABLE}.Orden.OrdenCFT ;;
-    view_label: "Orden"
-    label: "CFT"
-  }
-
   dimension: orden_prefactibilidad_down_stream {
     type: number
     sql: ${TABLE}.Orden.OrdenPrefactibilidadDownStream ;;
@@ -1507,9 +1496,9 @@ view: fth_orden {
   }
 
   dimension: producto_fecha_modificacion_src {
-    type: date_time
-    sql: ${TABLE}.Producto.Fechas.ProductoFechaModificacionSRC ;;
+    type: date
     datatype: timestamp
+    sql: ${TABLE}.Producto.Fechas.ProductoFechaModificacionSRC ;;
     view_label: "Producto"
     group_label: "Fechas"
     group_item_label: "Modificacion"
