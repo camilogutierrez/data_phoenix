@@ -250,13 +250,12 @@ explore: fth_orden {
     sql_on: ${fth_orden.punto_venta_canalidad2_sk} = ${lk_punto_venta_canalidad2.punto_venta_canalidad2_sk} ;;
     type: inner
   }
+
   join: dm_cuenta_cliente {
     relationship: many_to_one
-    sql_on: ${fth_orden.cliente_srcid} = ${dm_cuenta_cliente.cliente_srcid} ;;
+    sql_on: (${fth_orden.cuenta_srcid} = ${dm_cuenta_cliente.cuenta_srcid}) AND (${fth_orden.cliente_srcid} = ${dm_cuenta_cliente.cliente_srcid}) ;;
     type: left_outer
   }
-
-
 
 
 
