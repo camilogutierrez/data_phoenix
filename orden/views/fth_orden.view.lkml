@@ -851,16 +851,6 @@ view: fth_orden {
     label: "Fecha Modificacion"
   }
 
-  dimension: orden_fecha_venta_src {
-    type: date
-    datatype: timestamp
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaModSRC ;;
-    view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Modificación"
-    label: "Fecha Modificación"
-  }
-
     ## Flags
 
   dimension: orden_marca_batch {
