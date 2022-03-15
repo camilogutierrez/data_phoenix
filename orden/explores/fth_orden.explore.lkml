@@ -1,7 +1,8 @@
 include: "/orden/views/fth_orden.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
-include: "/orden/views/dm_cuenta_cliente.view.lkml"
+include: "/global/views/dm_cuenta_cliente.view.lkml"
+
 
 explore: fth_orden {
   label: "Orden"
