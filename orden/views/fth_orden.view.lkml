@@ -2170,7 +2170,7 @@ view: fth_orden {
 
   dimension: domicilio_latitud_env {
     hidden: yes
-    type: string
+    type: number
     sql: ${TABLE}.Domicilio.DomicilioLatitudEnv ;;
   }
 
