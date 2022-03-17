@@ -28,29 +28,56 @@ view: fth_orden {
   dimension: fecha_entidad {
     type: date
     sql: ${TABLE}.FechaEntidad ;;
-    convert_tz: no
     datatype: date
-    view_label: "Orden"
+
     label: "Fecha Cierre"
     description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
-  dimension: orden_item_fecha_creacion_src {
-    type: date
+  dimension_group: orden_item_fecha_creacion_src {
+    type: time
     datatype: timestamp
     sql: ${TABLE}.Fechas.OrdenItemFechaCreacionSRC ;;
-    group_label: "Fechas"
-    group_item_label: "Creacion"
-    label: "Fecha Creacion"
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
+    label: "Fecha Creación"
   }
 
-  dimension: orden_item_fecha_modificacion_src {
-    type: date
+  dimension_group: orden_item_fecha_modificacion_src {
+    type: time
     datatype: timestamp
     sql: ${TABLE}.Fechas.OrdenItemFechaModificacionSRC ;;
-    group_label: "Fechas"
-    group_item_label: "Modificacion"
-    label: "Fecha Modificacion"
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
+    label: "Fecha Modificación"
   }
 
   ## Flags
@@ -777,78 +804,170 @@ view: fth_orden {
 
     ## Dates
 
-  dimension: orden_ejecucion_cambio_ciclo_fecha_src {
-    type: date
-    datatype: timestamp
+  dimension_group: orden_ejecucion_cambio_ciclo_fecha_src {
+    type: time
+    datatype: date
     sql: ${TABLE}.Orden.Fechas.OrdenEjecucionCambioCicloFechaSRC ;;
-    convert_tz: no
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Ejecucion Cambio Ciclo"
     label: "Fecha Ejecucion Cambio Ciclo"
   }
 
-  dimension: orden_fecha_activacion_src {
-    type: date
+  dimension_group: orden_fecha_activacion_src {
+    type: time
     datatype: timestamp
     sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacionSRC ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Activacion"
     label: "Fecha Activacion"
   }
 
-  dimension: orden_fecha_creacion_src {
-    type: date
+  dimension_group: orden_fecha_creacion_src {
+    type: time
     datatype: timestamp
     sql: ${TABLE}.Orden.Fechas.OrdenFechaCreacionSRC ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Creacion"
-    label: "Fecha Creacion"
+    label: "Fecha Creación"
   }
 
-  dimension: orden_fecha_entrega_src {
-    type: date
-    datatype: timestamp
+  dimension_group: orden_fecha_entrega_src {
+    type: time #ver
+    datatype: date
     sql: ${TABLE}.Orden.Fechas.OrdenFechaEntregaSRC ;;
-    convert_tz: no
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Entrega"
     label: "Fecha Entrega"
   }
 
-  dimension: orden_fecha_fin_src {
-    type: date
-    datatype: timestamp
+  dimension_group: orden_fecha_fin_src {
+    type: time
+    datatype: date
     sql: ${TABLE}.Orden.Fechas.OrdenFechaFinSRC ;;
-    convert_tz: no
+    timeframes: [
+      raw,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Fin"
     label: "Fecha Fin"
   }
 
-  dimension: orden_fecha_inicio_src {
-    type: date
-    datatype: timestamp
+  dimension_group: orden_fecha_inicio_src {
+    type: time
+    datatype: date
     sql: ${TABLE}.Orden.Fechas.OrdenFechaInicioSRC ;;
-    convert_tz: no
+    timeframes: [
+      raw,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Inicio"
     label: "Fecha Inicio"
   }
 
-  dimension: orden_fecha_mod_src {
-    type: date_time
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaModSRC ;;
+  dimension_group: orden_fecha_mod_src {
+    type: time
     datatype: timestamp
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaModSRC ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      quarter,
+      quarter_of_year,
+      year
+    ]
     view_label: "Orden"
-    group_label: "Fechas"
-    group_item_label: "Modificación"
-    label: "Fecha Modificacion"
+    label: "Fecha Modificación"
   }
 
     ## Flags
