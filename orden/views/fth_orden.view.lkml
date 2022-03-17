@@ -1932,7 +1932,7 @@ view: fth_orden {
   dimension: es_numero_linea {
     hidden: yes
     type: yesno
-    sql: LENGHT(TRIM(${producto_adquirido_numero_linea})) = 10 ;;
+    sql: LENGTH(TRIM(${producto_adquirido_numero_linea})) = 10 ;;
   }
 
   ###############
