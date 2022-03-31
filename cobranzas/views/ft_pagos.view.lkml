@@ -6,9 +6,9 @@ view: ft_pagos {
   ## Primary Key
   dimension: pk {
     primary_key: yes
-    hidden: yes
     type:  string
     sql:${TABLE}.PAGOSPK;;
+    label: "PK"
   }
 
   ##############
@@ -128,121 +128,147 @@ view: ft_pagos {
   dimension: access_method {
     type: string
     sql: ${TABLE}.ACCESS_METHOD ;;
-    label: "Access Method"
+    label: "Método de Acceso"
+    description: "Método de acceso de la recarga"
   }
 
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-    label: "Account"
+    group_label: "Cliente"
+    label: "Cuenta Cliente"
+    description: "Responsable de pago/Cuenta Code"
   }
 
   dimension: acct_payment_mode {
     type: string
     sql: ${TABLE}.ACCT_PAYMENT_MODE ;;
-    label: "Account Payment Mode"
+    group_label: "Cliente"
+    label: "Mercado ID"
+    description: "Mercado de la cuenta en el momento de la facturación: 0 = Prepago, 1 = Pospago, 2 = Híbrido, x =  No Determinado"
   }
 
   dimension: acct_payment_mode_des {
     type: string
     sql: ${TABLE}.ACCT_PAYMENT_MODE_DES ;;
-    label: "Account Payment Mode Description"
+    group_label: "Cliente"
+    label: "Mercado Descripción"
+    description: "Mercado de la cuenta en el momento de la facturación: Prepago, pospago, híbrido, no Determinado"
   }
 
   dimension: bank_acct_name {
     type: string
     sql: ${TABLE}.BANK_ACCT_NAME ;;
-    label: "Bank Account Name"
+    group_label: "Pago"
+    label: "Entidad Nombre Cuenta Bancaria"
+    description: "Nombre de la cuenta bancaria, que se ingresa en la GUI o se transfiere a través de una interfaz."
   }
 
   dimension: bank_branch_code {
     type: string
     sql: ${TABLE}.BANK_BRANCH_CODE ;;
-    label: "Bank Branch Code"
+    group_label: "Pago"
+    label: "Entidad Código Sucursal"
+    description: "Código de sucursal, que se ingresa en la GUI o se transfiere a través de una interfaz."
   }
 
   dimension: bank_code {
     type: string
     sql: ${TABLE}.BANK_CODE ;;
-    label: "Bank Code"
+    group_label: "Pago"
+    label: "Entidad Código"
   }
 
   dimension: bank_name {
     type: string
     sql: ${TABLE}.BANK_NAME ;;
-    label: "Bank Name"
+    group_label: "Pago"
+    label: "Entidad Nombre"
   }
 
   dimension: bank_promotion_code {
     type: string
     sql: ${TABLE}.BANK_PROMOTION_CODE ;;
-    label: "Bank Promotion Code"
+    group_label: "Pago"
+    label: "Entidad Código de Promoción"
   }
 
   dimension: bill_cycle_type {
     type: string
     sql: ${TABLE}.BILL_CYCLE_TYPE ;;
-    label: "Bill Cycle Type"
+    group_label: "Comprobante"
+    label: "Ciclo Facturación"
+    description: "Contiene el ciclo de facturación en formato fecha DD(SUBSTR(AllData.BILL_CYCLE_ID, 7,2))"
   }
 
   dimension: channel_id {
     type: string
     sql: ${TABLE}.CHANNEL_ID ;;
-    label: "Channel ID"
+    label: "Canal ID"
   }
 
   dimension: check_no {
     type: string
     sql: ${TABLE}.CHECK_NO ;;
-    label: "Check Number"
+    label: "Cheque Número"
+    description: "Número de cheque, que se ingresa en la GUI o se transfiere a través de una interfaz."
   }
 
   dimension: credit_card_des {
     type: string
     sql: ${TABLE}.CREDIT_CARD_DES ;;
-    label: "Credit Card Description"
+    group_label: "Pago"
+    label: "Tarjeta Tipo Descripción"
   }
 
   dimension: credit_card_no {
     type: string
     sql: ${TABLE}.CREDIT_CARD_NO ;;
-    label: "Credit Card Number"
+    group_label: "Pago"
+    label: "Tarjeta Número"
+    description: "Encriptado"
   }
 
   dimension: currency_name {
     type: string
     sql: ${TABLE}.CURRENCY_NAME ;;
-    label: "Currency Name"
+    group_label: "Pago"
+    label: "Moneda"
   }
 
   dimension: currency_symbol {
     type: string
     sql: ${TABLE}.CURRENCY_SYMBOL ;;
-    label: "Currency Symbol"
+    group_label: "Pago"
+    label: "Moneda Símbolo"
   }
 
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-    label: "Customer Code"
+    group_label: "Cliente"
+    label: "Cliente"
   }
 
   dimension: cust_first_name {
     type: string
     sql: ${TABLE}.CUST_FIRST_NAME ;;
-    label: "Customer First Name"
+    group_label: "Cliente"
+    label: "Nombre"
   }
 
   dimension: cust_last_name {
     type: string
     sql: ${TABLE}.CUST_LAST_NAME ;;
-    label: "Customer Last Name"
+    group_label: "Cliente"
+    label: "Apellido"
   }
 
   dimension: cust_segment {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
-    label: "Customer Segment"
+    group_label: "Cliente"
+    label: "Segmento"
   }
 
   dimension: c_payment_date {
@@ -254,103 +280,131 @@ view: ft_pagos {
   dimension: header_bank_code {
     type: string
     sql: ${TABLE}.HEADER_BANK_CODE ;;
-    label: "Header Bank Code"
+    group_label: "Pago"
+    label: "Entidad Código de Cabecera"
+    description: "Código del banco de cabecera proveniente de una entidad externa."
   }
 
   dimension: ice_channel_code {
     type: string
     sql: ${TABLE}.ICE_CHANNEL_CODE ;;
-    label: "Ice Channel Code"
+    label: "Canal Código ICE"
+    description: "Canal 1002 - Entidades externas"
   }
 
   dimension: ind_unallocated {
     type: string
     sql: ${TABLE}.IND_UNALLOCATED ;;
-    label: "IND Unallocated"
+    group_label: "Pago"
+    label: "Indicador no alocado"
+    description: "Indicador de pago no alocado"
   }
 
   dimension: ind_wondersoft {
     type: string
     sql: ${TABLE}.IND_WONDERSOFT ;;
-    label: "IND Wondersoft"
+    group_label: "Pago"
+    label: "Indicador Wondersoft"
+    description: "Indicador de pago proveniente de Wondersoft."
   }
 
   dimension: invoice_no {
     type: string
     sql: ${TABLE}.INVOICE_NO ;;
-    label: "Invoice Number"
+    group_label: "Comprobante"
+    label: "Prefactura ID"
+    description: "Número de comprobante interno HW"
   }
 
   dimension: invoice_type_inf {
     type: string
     sql: ${TABLE}.INVOICE_TYPE_INF ;;
-    label: "Invoice Type INF"
+    group_label: "Comprobante"
+    label: "Comprobante Tipo Inferido"
+    description: "Tipo de factura a la cuál termino impactando el pago, este dato no existe como tal, por este motivo se infiere. Nació en RO para el 744."
   }
 
   dimension: is_invoice_payment {
     type: string
     sql: ${TABLE}.IS_INVOICE_PAYMENT ;;
-    label: "IS Invoice Payment"
+    group_label: "Pago"
+    label: "Comprobante Pago Flag"
+    description: "Flag que indica si el pago culminó en una factura."
   }
 
   dimension: nro_cupon_tarjeta {
     type: string
     sql: ${TABLE}.NRO_CUPON_TARJETA ;;
-    label: "Numero Cupon Tarjeta"
+    group_label: "Pago"
+    label: "Número Cupón Tarjeta"
   }
 
   dimension: number_of_installment {
     type: string
     sql: ${TABLE}.NUMBER_OF_INSTALLMENT ;;
-    label: "Number of Installment"
+    group_label: "Pago"
+    label: "Cuotas DPF"
+    description: "Cantidad de cuotas para DPF."
   }
 
   dimension: operation_type {
     type: string
     sql: ${TABLE}.OPERATION_TYPE ;;
-    label: "Operation Type"
+    group_label: "Pago"
+    label: "Operación Tipo"
+    description: "Tipo de operación de pago"
   }
 
   dimension: operation_type_inf {
     type: string
     sql: ${TABLE}.OPERATION_TYPE_INF ;;
-    label: "Operation Type INF"
+    group_label: "Pago"
+    label: "Operación Tipo Inferido"
+    description: "Tipo de operación de factura, se infiere por distintos campos, como el Canal, el canal de ICE, el método de pago. Nació en RO para el 744. CyclicInvoice, RechargeInvoice, SalesInvoice, NO DETERMINADO"
   }
 
   dimension: oper_id {
     type: string
     sql: ${TABLE}.OPER_ID ;;
-    label: "Operation ID"
+    group_label: "Pago"
+    label: "Operador"
   }
 
   dimension: paid_flag {
     type: string
     sql: ${TABLE}.PAID_FLAG ;;
-    label: "Paid Flag"
+    group_label: "Pago"
+    label: "Pago Flag"
+    description: "Indica si el modo de pago es prepago o pospago. Las opciones son las siguientes: 0: prepago, 1: pospago"
   }
 
   dimension: payment_channel_name {
     type: string
     sql: ${TABLE}.PAYMENT_CHANNEL_NAME ;;
-    label: "Payment Channel"
+    group_label: "Pago"
+    label: "Pago Canal"
   }
 
   dimension: payment_method_des {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_DES ;;
-    label: "Payment Method Description"
+    group_label: "Pago"
+    label: "Medio de Pago"
   }
 
   dimension: payment_method_id {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_ID ;;
-    label: "Payment Method ID"
+    group_label: "Pago"
+    label: "Medio de Pago ID"
   }
 
   dimension: payment_operation_type {
     type: string
     sql: ${TABLE}.PAYMENT_OPERATION_TYPE ;;
-    label: "Payment Operation Type"
+    group_label: "Pago"
+    label: "Pago Tipo Operación"
+    description: "Tipo de operación de pago, proviene de una entidad externa. ∅, CyclicInvoice, RechargeInvoice, SalesInvoice"
   }
 
   dimension: payment_plan {
