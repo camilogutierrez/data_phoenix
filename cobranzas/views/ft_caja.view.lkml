@@ -74,7 +74,7 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "Transacción Fecha"
+    label: "Fecha Transacción"
   }
 
   ## Strings
