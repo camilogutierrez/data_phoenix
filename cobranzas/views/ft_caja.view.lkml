@@ -6,9 +6,9 @@ view: ft_caja {
   ## Primary Key
   dimension: pk {
     primary_key: yes
-    hidden: yes
     type:  string
     sql:${TABLE}.CAJAPK;;
+    label: "PK"
   }
 
   #############
@@ -23,13 +23,18 @@ view: ft_caja {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CR_CLOSE_DATE ;;
-    label: "Close"
+    label: "Fecha Cierre"
   }
 
   dimension_group: cr_open {
@@ -38,13 +43,18 @@ view: ft_caja {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CR_OPEN_DATE ;;
-    label: "Open"
+    label: "Fecha Apertura"
   }
 
   dimension_group: trx_trans {
@@ -53,13 +63,18 @@ view: ft_caja {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "Transaction"
+    label: "Transacción Fecha"
   }
 
   ## Strings
@@ -67,121 +82,111 @@ view: ft_caja {
   dimension: canal2_point_sale_des {
     type: string
     sql: ${TABLE}.CANAL2_POINT_SALE_DES ;;
-    label: "Canal2 Point Sale"
+    label: "Punto Venta Canal"
+    description: "Indica el Canal del punto de venta (caja): Agentes / Oficina Comercial Telecom / Ventas"
   }
 
   dimension: cr_mismatch_reason {
     type: string
     sql: ${TABLE}.CR_MISMATCH_REASON ;;
-    label: "Mismatch Reason"
+    label: "Motivo No Coincidencia"
   }
 
   dimension: cr_oper_id {
     type: string
     sql: ${TABLE}.CR_OPER_ID ;;
-    label: "CR Operation ID"
+    label: "Operador"
   }
 
   dimension: cr_point_sale_id {
     type: string
     sql: ${TABLE}.CR_POINT_SALE_ID ;;
-    label: "CR Point Sale ID"
+    label: "Punto Venta ID"
   }
 
   dimension: cr_prov_point_sale_id {
     type: string
     sql: ${TABLE}.CR_PROV_POINT_SALE_ID ;;
-    label: "CR Province Point Sale ID"
+    label: "Punto Venta Provincia ID"
   }
 
   dimension: cr_staff_name {
     type: string
     sql: ${TABLE}.CR_STAFF_NAME ;;
-    label: "CR Staff Name"
+    label: "Usuario"
   }
 
   dimension: cr_status {
     type: string
     sql: ${TABLE}.CR_STATUS ;;
-    label: "CR Status"
+    label: "Estado"
+    description: "C: close, O: Open"
   }
 
   dimension: cr_status_des {
     type: string
     sql: ${TABLE}.CR_STATUS_DES ;;
-    label: "CR Status Description"
+    label: "Estado Descripción"
+    description: "Close, Open"
   }
 
   dimension: crd_bank_acct_code {
     type: string
     sql: ${TABLE}.CRD_BANK_ACCT_CODE ;;
-    label: "CR Bank Account"
-  }
-
-  dimension: crd_oper_id {
-    type: string
-    sql: ${TABLE}.CRD_OPER_ID ;;
-    label: "CRD Operation ID"
-  }
-
-  dimension: crd_staff_name {
-    type: string
-    sql: ${TABLE}.CRD_STAFF_NAME ;;
-    label: "CRD Staff Name"
+    label: "Entidad Número de Cuenta"
   }
 
   dimension: crd_tipo_operacion {
     type: string
     sql: ${TABLE}.CRD_TIPO_OPERACION ;;
-    label: "CRD Operation Type"
-  }
-
-  dimension: crd_trans_method {
-    type: string
-    sql: ${TABLE}.CRD_TRANS_METHOD ;;
-    label: "CRD Transaction Method"
+    label: "Operación Tipo"
+    description: "1 Ajuste de Caja, 2 Apertura Caja, 3 Cash to Safe, 4  Cierre Caja, 5  Pago, 6 Reversión"
   }
 
   dimension: credit_card_type_des {
     type: string
     sql: ${TABLE}.CREDIT_CARD_TYPE_DES ;;
-    label: "Credit Card Type"
+    label: "Tarjeta Descripción"
+    description: "Informa el tipo de tarjeta: Débito, Crédito, Maestro,  Electron, etc."
   }
 
   dimension: currency_name {
     type: string
     sql: ${TABLE}.CURRENCY_NAME ;;
-    label: "Currency"
+    label: "Moneda"
   }
 
   dimension: currency_symbol {
     type: string
     sql: ${TABLE}.CURRENCY_SYMBOL ;;
-    label: "Currency Symbol"
+    label: "Moneda Símbolo"
   }
 
   dimension: entity_des {
     type: string
     sql: ${TABLE}.ENTITY_DES ;;
-    label: "Entity Description"
+    label: "Tarjeta Tipo"
+    description: "Informa el tipo de tarjeta: Débito, Crédito, Maestro,  Electron, etc."
   }
 
   dimension: entity_id {
     type: string
     sql: ${TABLE}.ENTITY_ID ;;
-    label: "Entity ID"
+    label: "Tarjeta Tipo ID"
   }
 
   dimension: ind_cash_register_close {
     type: string
     sql: ${TABLE}.IND_CASH_REGISTER_CLOSE ;;
-    label: "IND Cash Register Close"
+    label: "Indicador Cierre"
+    description: "0: Abierta, 1:Cerrada"
   }
 
   dimension: ind_wondersoft {
     type: string
     sql: ${TABLE}.IND_WONDERSOFT ;;
-    label: "IND Wondersoft"
+    label: "Indicador Wondersoft"
+    description: "Indicador de pago proveniente de Wondersoft."
   }
 
   dimension: num_boleta {
@@ -193,25 +198,26 @@ view: ft_caja {
   dimension: payment_method_des {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_DES ;;
-    label: "Payment Method"
+    label: "Medio de Pago"
+    description: "1 Sin informar, 2 Compensación intereses no regulados, 3 Débito a Próxima Factura, 4  Débito automático, 5 Efectivo, 6  Tarjeta de Crédito, 7 Tarjeta de Débito"
   }
 
   dimension: payment_method_id {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_ID ;;
-    label: "Payment Method ID"
+    label: "Medio de Pago ID"
   }
 
   dimension: point_sale_des {
     type: string
     sql: ${TABLE}.POINT_SALE_DES ;;
-    label: "Point Sale"
+    label: "Punto de Venta"
   }
 
   dimension: province_name {
     type: string
     sql: ${TABLE}.PROVINCE_NAME ;;
-    label: "Province Name"
+    label: "Provincia"
   }
 
 
@@ -221,35 +227,29 @@ view: ft_caja {
     type: number
     sql: ${TABLE}.BATCH_NO ;;
     value_format: "0"
-    label: "Batch Number"
+    label: "Lote"
   }
 
   dimension: cr_emission_point_id {
     type: number
     sql: ${TABLE}.CR_EMISSION_POINT_ID ;;
     value_format: "0"
-    label: "Emission Point ID"
-  }
-
-  dimension: crd_credit_card_type_id {
-    type: number
-    sql: ${TABLE}.CRD_CREDIT_CARD_TYPE_ID ;;
-    value_format: "0"
-    label: "CRD Credit Card Type ID"
+    label: "Punto Emisión ID"
   }
 
   dimension: crd_trans_id {
     type: number
     sql: ${TABLE}.CRD_TRANS_ID ;;
     value_format: "0"
-    label: "CRD Transaction ID"
+    label: "Transacción ID"
+    description: "Identificador de la operación, número interno de HW"
   }
 
   dimension: currency_id {
     type: number
     sql: ${TABLE}.CURRENCY_ID ;;
     value_format: "0"
-    label: "Currency ID"
+    label: "Modeda ID"
   }
 
   ## Hidden ##
@@ -258,6 +258,7 @@ view: ft_caja {
     hidden: yes
     type: number
     sql: ${TABLE}.CASH_REG_DETAIL_ID ;;
+    label: "Caja Detalle ID"
   }
 
   dimension: cr_actual_amt {
@@ -302,6 +303,35 @@ view: ft_caja {
     sql: ${TABLE}.TRX_AMT ;;
   }
 
+  dimension: crd_credit_card_type_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.CRD_CREDIT_CARD_TYPE_ID ;;
+    value_format: "0"
+    label: "Tarjeta Tipo ID"
+  }
+
+  dimension: crd_oper_id {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.CRD_OPER_ID ;;
+    label: "Operador"
+  }
+  dimension: crd_staff_name {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.CRD_STAFF_NAME ;;
+    label: "Usuario"
+    description: "Es el código de usuario (U o G)"
+  }
+
+  dimension: crd_trans_method {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.CRD_TRANS_METHOD ;;
+    label: "Medio de Pago ID"
+  }
+
 ##############
 ## Measures ##
 ##############
@@ -310,55 +340,62 @@ view: ft_caja {
     type: count_distinct
     sql: ${TABLE}.CASH_REG_DETAIL_ID ;;
     group_label: "Cantidad"
-    label: "Cash Reg Detail"
+    label: "Caja Detalle ID"
   }
 
  measure: total_cr_actual_amt {
     type: sum
     sql: ${TABLE}.CR_ACTUAL_AMT ;;
     group_label: "Total"
-    label: "CR Actual Amount"
+    label: "Importe Actual"
+    description: "Monto actual del día corriente."
   }
 
   measure: total_cr_adj_amt {
     type: sum
     sql: ${TABLE}.CR_ADJ_AMT ;;
     group_label: "Total"
-    label: "CR ADJ Amount"
+    label: "Importe Ajuste"
+    description: "Monto de ajuste del día corriente."
   }
 
   measure: total_cr_init_amt {
     type: sum
     sql: ${TABLE}.CR_INIT_AMT ;;
     group_label: "Total"
-    label: "CR Init Amount"
+    label: "Importe Inicial"
+    description: "Monto inicial de la caja registradora."
   }
 
   measure: total_cr_safe_amt {
     type: sum
     sql: ${TABLE}.CR_SAFE_AMT ;;
     group_label: "Total"
-    label: "CR Safe Amount"
+    label: "Importe Reservado"
+    description: "Importe reservado de la caja registradora."
   }
 
   measure: total_cr_trans_amt {
     type: sum
     sql: ${TABLE}.CR_TRANS_AMT ;;
     group_label: "Total"
-    label: "CR Transaction Amount"
+    label: "Transacción Importe"
+    description: "Importe de la transacción de la caja registradora."
   }
 
   measure: total_trans_detail_amt {
     type: sum
     sql: ${TABLE}.TRANS_DETAIL_AMT ;;
     group_label: "Total"
-    label: "Transaction Detail Amount"
+    label: "Transacción Importe Detalle"
+    description: "Importe del detalle de la transacción."
   }
 
   measure: total_trx_amt {
     type: sum
     sql: ${TABLE}.TRX_AMT ;;
     group_label: "Total"
-    label: "Trx Amount"
+    label: "Transacción Importe Origen"
+    description: "Importe de la transacción, proviene de las tablas de transacciones."
   }
 }
