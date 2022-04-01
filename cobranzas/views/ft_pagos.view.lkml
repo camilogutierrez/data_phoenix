@@ -23,13 +23,19 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CHECK_DATE ;;
-    label: "Check"
+    label: "Cheque Fecha"
+    description: "Fecha del cheque bancario, que se ingresa en la GUI o se transfiere a través de una interfaz."
   }
 
   dimension_group: entry {
@@ -38,8 +44,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -53,8 +64,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -68,8 +84,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -83,8 +104,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -98,8 +124,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -113,8 +144,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -410,67 +446,84 @@ view: ft_pagos {
   dimension: payment_plan {
     type: string
     sql: ${TABLE}.PAYMENT_PLAN ;;
-    label: "Payment Plan"
+    group_label: "Pago"
+    label: "Pago Plan"
+    description: "Plan de pago, proviene de una entidad externa. En documentación, no existe mayor información."
   }
 
   dimension: payment_serial_id {
     type: string
     sql: ${TABLE}.PAYMENT_SERIAL_ID ;;
-    label: "Payment Serial ID"
+    group_label: "Pago"
+    label: "Pago Serial ID"
+    description: "Proviene de una entidad externa, se utiliza como relación entre la tabla de pagos y wondersoft."
   }
 
   dimension: pri_identity {
     type: string
     sql: ${TABLE}.PRI_IDENTITY ;;
-    label: "PRI Identity"
+    group_label: "Cliente"
+    label: "Línea"
   }
 
   dimension: process_date {
-    type: string
+    type: string # En revisión- A Timestamo YYYYMMDD
     sql: ${TABLE}.PROCESS_DATE ;;
-    label: "Process Date"
+    group_label: "Pago"
+    label: "Proceso Fecha"
+    description: "Fecha de proceso, proviene de una entidad externa."
   }
 
   dimension: product_line {
     type: string
     sql: ${TABLE}.PRODUCT_LINE ;;
-    label: "Product Line"
+    group_label: "Cliente"
+    label: "Línea Producto"
+    description: "Fecha de proceso, proviene de una entidad externa."
   }
 
   dimension: pr_status {
     type: string
     sql: ${TABLE}.PR_STATUS ;;
-    label: "PR Status"
+    group_label: "Pago"
+    label: "Pago Estado"
+    description: "Estado del Pago"
   }
 
   dimension: pr_status_des {
     type: string
     sql: ${TABLE}.PR_STATUS_DES ;;
-    label: "PR Status Description"
+    group_label: "Pago"
+    label: "Pago Descripción Estado"
   }
 
   dimension: reversal_reason_code {
     type: string
     sql: ${TABLE}.REVERSAL_REASON_CODE ;;
-    label: "Reversal Reason Code"
+    group_label: "Pago"
+    label: "Reversión Motivo Código"
   }
 
   dimension: reversal_reason_des {
     type: string
     sql: ${TABLE}.REVERSAL_REASON_DES ;;
-    label: "Reversal Reason Description"
+    group_label: "Pago"
+    label: "Reversión Motivo Descripción"
   }
 
   dimension: staff_name {
     type: string
     sql: ${TABLE}.STAFF_NAME ;;
-    label: "Staff Name"
+    group_label: "Pago"
+    label: "Operador Nombre"
   }
 
   dimension: trade_number {
     type: string
     sql: ${TABLE}.TRADE_NUMBER ;;
-    label: "Trade Number"
+    group_label: "Pago"
+    label: "Comercio Número"
+    description: "Número de comercio, proviene de Wondersoft."
   }
 
   dimension: trans_date {
@@ -482,13 +535,17 @@ view: ft_pagos {
   dimension: trx_trans_type {
     type: string
     sql: ${TABLE}.TRX_TRANS_TYPE ;;
-    label: "TRX Transaction Type"
+    group_label: "Comprobante"
+    label: "Comprobante Tipo"
+    description: "Indica el tipo de comprobante de la operación es: BLL, SLI, NODET"
   }
 
   dimension: trx_trans_type_des {
     type: string
-    sql: ${TABLE}.TRX_TRANS_TYPE_DES ;;
-    label: "TRX Transaction Type Description"
+    sql: ${TABLE}.TRX_TRANS_TYPE_DES ;; # En revisión
+    group_label: "Comprobante"
+    label: "Comprobante Tipo Descripción"
+    description: "Indica la descripción del tipo de comprobante de la operación Bill run (BLL), Sales Invoice  (SLI), No Determinado (NODET)"
   }
 
 
@@ -497,97 +554,114 @@ view: ft_pagos {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    label: "Account ID"
+    group_label: "Cliente"
+    label: "Lote"
   }
 
   dimension: batch_no {
     type: number
     sql: ${TABLE}.BATCH_NO ;;
     value_format: "0"
-    label: "Batch Number"
+    group_label: "Comprobante"
+    label: "Lote"
   }
 
   dimension: credit_card_type_id {
     type: number
     sql: ${TABLE}.CREDIT_CARD_TYPE_ID ;;
     value_format: "0"
-    label: "Credit Card Type ID"
+    group_label: "Pago"
+    label: "Tarjeta Tipo"
   }
 
   dimension: currency_id {
     type: number
     sql: ${TABLE}.CURRENCY_ID ;;
     value_format: "0"
-    label: "Currency ID"
+    group_label: "Pago"
+    label: "Moneda ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
     value_format: "0"
-    label: "Customer ID"
+    group_label: "Cliente"
+    label: "Cliente ID HW"
   }
 
   dimension: ind_pagos_migrados {
     type: number
     sql: ${TABLE}.IND_PAGOS_MIGRADOS ;;
     value_format: "0"
-    label: "IND Pagos Migrados"
+    group_label: "Pago"
+    label: "Pagos Migrados Indicador"
   }
 
   dimension: ind_reversal_payment {
     type: number
     sql: ${TABLE}.IND_REVERSAL_PAYMENT ;;
-    label: "Indicador de Pago"
+    group_label: "Pago"
+    label: "Reversión Indicador"
   }
 
   dimension: mov_origen_hw {
     type: number
     sql: ${TABLE}.MOV_ORIGEN_HW ;;
     value_format: "0"
-    label: "MOV Origen HW"
+    group_label: "Comprobante"
+    label: "Movimiento Origen HW"
+    description: "Flag que indica cuál es el movimiento de origen, 1 para pagos, 0 para reversiones. Nació en RO para el 744."
   }
 
   dimension: reversal_trans_id {
     type: number
     sql: ${TABLE}.REVERSAL_TRANS_ID ;;
     value_format: "0"
-    label: "Reversal Transaction ID"
+    group_label: "Pago"
+    label: "Reversión Número"
   }
 
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
     value_format: "0"
-    label: "SUB ID"
+    group_label: "Cliente"
+    label: "Susbcripción ID"
   }
 
   dimension: trans_id {
     type: number
     sql: ${TABLE}.TRANS_ID ;;
     value_format: "0"
-    label: "Transaction ID"
+    group_label: "Pago"
+    label: "Transacción Número"
   }
 
   dimension: invoice_id {
     type: number
     sql: ${TABLE}.INVOICE_ID ;;
     value_format: "0"
-    label: "Invoice ID"
+    group_label: "Comprobante"
+    label: "Comprobante Cabecera HW ID"
+    description: "Identificador de la operación, número interno de HW"
   }
 
   dimension: invoice_detail_id {
     type: number
     sql: ${TABLE}.INVOICE_DETAIL_ID ;;
     value_format: "0"
-    label: "Invoice Detail ID"
+    group_label: "Comprobante"
+    label: "Ítem Facturado ID"
   }
 
   dimension: wondersoft_id {
     type: number
     sql: ${TABLE}.WONDERSOFT_ID ;;
     value_format: "0"
+    group_label: "Pago"
     label: "Wondersoft ID"
+    description: "ID de Wondersoft, es el ID único de la tabla."
   }
 
 
@@ -633,27 +707,29 @@ view: ft_pagos {
     type: count_distinct
     sql: ${TABLE}.PAYMENT_ID ;;
     group_label: "Cantidad"
-    label: "Payment ID"
+    label: "Pago Número"
   }
 
   measure: total_original_amt {
     type: sum
     sql: ${TABLE}.ORIGINAL_AMT ;;
     group_label: "Total"
-    label: "Original Amount"
+    label: "Comprobante Importe Original"
+    description: "Monto original del comprobante antes de la conversión, para cuando la moneda es <> pesos."
   }
 
   measure: total_payment_amt {
     type: sum
     sql: ${TABLE}.PAYMENT_AMT ;;
     group_label: "Total"
-    label: "Payment Amount"
+    label: "Importe Cobro"
   }
 
   measure: total_trx_amt {
     type: sum
     sql: ${TABLE}.TRX_AMT ;;
     group_label: "Total"
-    label: "TRX Amount"
+    label: "Transacción Importe"
+    description: "Monto de la Transacción"
   }
 }
