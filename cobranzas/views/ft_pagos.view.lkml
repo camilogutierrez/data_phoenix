@@ -182,7 +182,7 @@ view: ft_pagos {
       quarter,
       year
     ]
-    group_label: "Fecha Pago"
+    group_label: "Fecha Pago EXT"
     label: "Pago"
     description: "Fecha de pago proveniente de una entidad externa."
   }
