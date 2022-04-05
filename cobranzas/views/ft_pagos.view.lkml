@@ -34,7 +34,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.CHECK_DATE ;;
-    label: "Fecha Cheque"
+    group_label: "Fecha Cheque"
+    label: "Cheque"
     description: "Fecha del cheque bancario, que se ingresa en la GUI o se transfiere a través de una interfaz."
   }
 
@@ -55,7 +56,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.ENTRY_DATE ;;
-    label: "Fecha Creación"
+    group_label: "Fecha Creación"
+    label: "Creación"
   }
 
   dimension_group: fecha_contable {
@@ -75,7 +77,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.FECHA_CONTABLE ;;
-    label: "Fecha Contable"
+    group_label: "Fecha Contable"
+    label: "Contable"
   }
 
   dimension_group: last_update {
@@ -95,7 +98,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.LAST_UPDATE_DATE ;;
-    label: "Fecha Última Actualización"
+    group_label: "Fecha Última Actualización"
+    label: "Última Actualización"
   }
 
   dimension_group: payment_date {
@@ -115,7 +119,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.PAYMENT_DATE ;;
-    label: "Fecha Pago"
+    group_label: "Fecha Pago"
+    label: "Pago"
   }
 
   dimension_group: reversal {
@@ -135,7 +140,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.REVERSAL_DATE ;;
-    label: "Fecha Reversión"
+    group_label: "Fecha Reversión"
+    label: "Reversión"
   }
 
   dimension_group: trx_trans {
@@ -155,7 +161,8 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "Fecha Operación TRX"
+    group_label: "Fecha Operación TRX"
+    label: "Operación TRX"
   }
 
   dimension_group: c_payment_date {
@@ -175,7 +182,8 @@ view: ft_pagos {
       quarter,
       year
     ]
-    label: "Fecha Pago"
+    group_label: "Fecha Pago"
+    label: "Pago"
     description: "Fecha de pago proveniente de una entidad externa."
   }
 
@@ -196,7 +204,8 @@ view: ft_pagos {
       quarter,
       year
     ]
-    label: "Fecha Proceso"
+    group_label: "Fecha Proceso"
+    label: "Proceso"
     description: "Fecha de proceso, proviene de una entidad externa."
   }
 
@@ -217,7 +226,8 @@ view: ft_pagos {
       quarter,
       year
     ]
-    label: "Fecha Operación"
+    group_label: "Fecha Operación"
+    label: "Operación"
   }
 
   ## Strings

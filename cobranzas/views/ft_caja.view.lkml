@@ -34,7 +34,8 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.CR_CLOSE_DATE ;;
-    label: "Fecha Cierre"
+    group_label: "Fecha Cierre"
+    label: "Cierre"
   }
 
   dimension_group: cr_open {
@@ -54,7 +55,8 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.CR_OPEN_DATE ;;
-    label: "Fecha Apertura"
+    group_label: "Fecha Apertura"
+    label: "Apertura"
   }
 
   dimension_group: trx_trans {
@@ -74,7 +76,8 @@ view: ft_caja {
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "Fecha Transacción"
+    group_label: "Fecha Transacción"
+    label: "Transacción"
   }
 
   ## Strings
