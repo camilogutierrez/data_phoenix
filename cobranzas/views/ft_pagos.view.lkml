@@ -34,7 +34,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.CHECK_DATE ;;
-    label: "Cheque Fecha"
+    label: "Fecha Cheque"
     description: "Fecha del cheque bancario, que se ingresa en la GUI o se transfiere a través de una interfaz."
   }
 
@@ -55,7 +55,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.ENTRY_DATE ;;
-    label: "Entry"
+    label: "Fecha Creación"
   }
 
   dimension_group: fecha_contable {
@@ -95,7 +95,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.LAST_UPDATE_DATE ;;
-    label: "Last Update"
+    label: "Fecha Última Actualización"
   }
 
   dimension_group: payment_date {
@@ -115,7 +115,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.PAYMENT_DATE ;;
-    label: "Payment"
+    label: "Fecha Pago"
   }
 
   dimension_group: reversal {
@@ -135,7 +135,7 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.REVERSAL_DATE ;;
-    label: "Reversal"
+    label: "Fecha Reversión"
   }
 
   dimension_group: trx_trans {
@@ -155,9 +155,70 @@ view: ft_pagos {
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    label: "TRX Transaction"
+    label: "Fecha Operación TRX"
   }
 
+  dimension_group: c_payment_date {
+    type: time
+    sql: ${TABLE}.C_PAYMENT_DATE ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
+      week,
+      month,
+      month_name,
+      month_num,
+      quarter,
+      year
+    ]
+    label: "Fecha Pago"
+    description: "Fecha de pago proveniente de una entidad externa."
+  }
+
+  dimension_group: process_date {
+    type: time
+    sql: ${TABLE}.PROCESS_DATE ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
+      week,
+      month,
+      month_name,
+      month_num,
+      quarter,
+      year
+    ]
+    label: "Fecha Proceso"
+    description: "Fecha de proceso, proviene de una entidad externa."
+  }
+
+  dimension_group: trans_date {
+    type: time
+    sql: ${TABLE}.TRANS_DATE ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
+      week,
+      month,
+      month_name,
+      month_num,
+      quarter,
+      year
+    ]
+    label: "Fecha Operación"
+  }
 
   ## Strings
 
@@ -307,12 +368,6 @@ view: ft_pagos {
     label: "Segmento"
   }
 
-  dimension: c_payment_date {
-    type: string
-    sql: ${TABLE}.C_PAYMENT_DATE ;;
-    label: "Payment Date"
-  }
-
   dimension: header_bank_code {
     type: string
     sql: ${TABLE}.HEADER_BANK_CODE ;;
@@ -358,14 +413,6 @@ view: ft_pagos {
     group_label: "Comprobante"
     label: "Comprobante Tipo Inferido"
     description: "Tipo de factura a la cuál termino impactando el pago, este dato no existe como tal, por este motivo se infiere. Nació en RO para el 744."
-  }
-
-  dimension: is_invoice_payment {
-    type: string
-    sql: ${TABLE}.IS_INVOICE_PAYMENT ;;
-    group_label: "Pago"
-    label: "Comprobante Pago Flag"
-    description: "Flag que indica si el pago culminó en una factura."
   }
 
   dimension: nro_cupon_tarjeta {
@@ -466,14 +513,6 @@ view: ft_pagos {
     label: "Línea"
   }
 
-  dimension: process_date {
-    type: string # En revisión- A Timestamo YYYYMMDD
-    sql: ${TABLE}.PROCESS_DATE ;;
-    group_label: "Pago"
-    label: "Proceso Fecha"
-    description: "Fecha de proceso, proviene de una entidad externa."
-  }
-
   dimension: product_line {
     type: string
     sql: ${TABLE}.PRODUCT_LINE ;;
@@ -524,12 +563,6 @@ view: ft_pagos {
     group_label: "Pago"
     label: "Comercio Número"
     description: "Número de comercio, proviene de Wondersoft."
-  }
-
-  dimension: trans_date {
-    type: string
-    sql: ${TABLE}.TRANS_DATE ;;
-    label: "Transaction Date"
   }
 
   dimension: trx_trans_type {
@@ -662,6 +695,16 @@ view: ft_pagos {
     group_label: "Pago"
     label: "Wondersoft ID"
     description: "ID de Wondersoft, es el ID único de la tabla."
+  }
+
+## YesNo ##
+
+  dimension: is_invoice_payment {
+    type: yesno
+    sql: ${TABLE}.IS_INVOICE_PAYMENT ;;
+    group_label: "Pago"
+    label: "Comprobante Pago Flag"
+    description: "Flag que indica si el pago culminó en una factura."
   }
 
 
