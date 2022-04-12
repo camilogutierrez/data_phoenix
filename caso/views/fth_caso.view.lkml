@@ -32,96 +32,267 @@ view: fth_caso {
 
   dimension: fecha_entidad {
     type: date
-    convert_tz: no
     datatype: date
     sql: ${TABLE}.FechaEntidad ;;
-    view_label: "Caso"
-    label: "Fecha Cierre"
+    convert_tz: no
+    label: "Fecha Foto"
     description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
-  dimension: caso_fecha_acuerdo_desde_src {
-    type: date_time
+  dimension_group: caso_fecha_acuerdo_desde_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaAcuerdoDesdeSRC ;;
     datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Acuerdo Desde"
-    label: "Fecha Acuerdo Desde"
+    label: "Acuerdo Desde"
   }
 
-  dimension: caso_fecha_acuerdo_hasta_src {
-    type: date_time
+  dimension_group: caso_fecha_acuerdo_hasta_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaAcuerdoHastaSRC ;;
     datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Acuerdo Hasta"
-    label: "Fecha Acuerdo Hasta"
+    label: "Acuerdo Hasta"
   }
 
-  dimension: caso_fecha_ajuste_desde_src {
-    type: date
+  dimension_group: caso_fecha_ajuste_desde_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaAjusteDesdeSRC ;;
     datatype: date
     convert_tz: no
-    group_label: "Fechas"
-    group_item_label: "Ajuste Desde"
-    label: "Fecha Ajuste Desde"
+    label: "Ajuste Desde"
   }
 
-  dimension: caso_fecha_ajuste_hasta_src {
-    type: date
+  dimension_group: caso_fecha_ajuste_hasta_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaAjusteHastaSRC ;;
     datatype: date
     convert_tz: no
-    group_label: "Fechas"
-    group_item_label: "Ajuste Hasta"
-    label: "Fecha Ajuste Hasta"
+    label: "Ajuste Hasta"
   }
 
-  dimension: caso_fecha_cierre_estimada_src {
-    type: date_time
+  dimension_group: caso_fecha_cierre_estimada_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaCierreEstimadaSRC ;;
     datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Cierre Estimada"
-    label: "Fecha Cierre Estimada"
+    label: "Cierre Estimado"
   }
 
-  dimension: caso_fecha_cierre_src {
-    type: date_time
+  dimension_group: caso_fecha_cierre_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaCierreSRC ;;
     datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Cierre"
-    label: "Fecha Cierre"
+    label: "Cierre"
   }
 
-  dimension: caso_fecha_creacion_src {
-    type: date_time
+  dimension_group: caso_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaCreacionSRC ;;
     datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Creacion"
-    label: "Fecha Creacion"
+    label: "Creacion"
   }
 
-  dimension: caso_fecha_fin_garantia_reparacion_src {
-    type: date
+  dimension_group: caso_fecha_fin_garantia_reparacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaFinGarantiaReparacionSRC ;;
     datatype: date
     convert_tz: no
-    group_label: "Fechas"
-    group_item_label: "Fin Garantia Reparacion"
-    label: "Fecha Fin Garantia Reparacion"
+    label: "Fin Garantia Reparacion"
   }
 
-  dimension: caso_fecha_inicio_src {
-    type: date_time
+  dimension_group: caso_fecha_inicio_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.Fechas.CasoFechaInicioSRC ;;
     datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Inicio"
-    label: "Fecha Inicio"
+    label: "Inicio"
+  }
+
+  dimension_group: caso_fecha_modificacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.CasoFechaModificacionSRC ;;
+    datatype: timestamp
+    label: "Modificacion"
+  }
+
+  dimension_group: caso_fecha_pago_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.CasoFechaPagoSRC ;;
+    datatype: date
+    convert_tz: no
+    label: "Pago"
+  }
+
+  dimension_group: caso_fecha_solicitud_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.CasoFechaSolicitudSRC ;;
+    datatype: timestamp
+    label: "Solicitud"
+  }
+
+  dimension_group: caso_fecha_vencimiento_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.CasoFechaVencimientoSRC ;;
+    datatype: timestamp
+    label: "Vencimiento"
+  }
+
+  dimension_group: caso_fecha_ventana_portacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.CasoFechaVentanaPortacionSRC ;;
+    datatype: timestamp
+    label: "Ventana Portacion"
+  }
+
+  dimension_group: caso_comentario_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CasoComentarios.CasoComentarioFechaCreacionSRC ;;
+    datatype: timestamp
+    label: "Creacion Comentario"
   }
 
   dimension: caso_fecha_mod_src {
@@ -129,63 +300,8 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaModSRC ;;
     datatype: timestamp
     group_label: "Fechas"
-    group_item_label: "Modificacion"
-    label: "Fecha Modificacion"
-  }
-
-  dimension: caso_fecha_modificacion_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.CasoFechaModificacionSRC ;;
-    datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Modificacion"
-    label: "Fecha Modificacion"
-  }
-
-  dimension: caso_fecha_pago_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.CasoFechaPagoSRC ;;
-    datatype: date
-    convert_tz: no
-    group_label: "Fechas"
-    group_item_label: "Pago"
-    label: "Fecha Pago"
-  }
-
-  dimension: caso_fecha_solicitud_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.CasoFechaSolicitudSRC ;;
-    datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Solicitud"
-    label: "Fecha Solicitud"
-  }
-
-  dimension: caso_fecha_vencimiento_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.CasoFechaVencimientoSRC ;;
-    datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Fecha"
-    label: "Fecha Vencimiento"
-  }
-
-  dimension: caso_fecha_ventana_portacion_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.CasoFechaVentanaPortacionSRC ;;
-    datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Ventana Portacion"
-    label: "Fecha Ventana Portacion"
-  }
-
-  dimension: caso_comentario_fecha_creacion_src {
-    type: date_time
-    sql: ${TABLE}.CasoComentarios.CasoComentarioFechaCreacionSRC ;;
-    datatype: timestamp
-    group_label: "Fechas"
-    group_item_label: "Creacion Comentario"
-    label: "Fecha Creacion Comentario"
+    group_item_label: "Mod"
+    label: "Fecha Mod"
   }
 
     ## Flags
@@ -2017,9 +2133,117 @@ view: fth_caso {
   measure: count_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
-    label: "Cantidad de Casos"
-    drill_fields: []
+    label: "Casos"
   }
+
+  measure: count_acuerdo_pago {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Acuerdo Pago"
+    description: "Acuerdo de compromiso de pago."
+    filters: [
+        caso_tipo_nombre: "ACUERDO DE PAGO"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+      , caso_sub_tipo_nombre: "-CANCELACION"
+    ]
+  }
+
+  measure: count_acuerdo_pago_cancelado {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Acuerdo Pago Cancelado"
+    description: "Acuerdo de compromiso de pago cancelado"
+    filters: [
+        caso_tipo_nombre: "ACUERDO DE PAGO"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+      , caso_sub_tipo_nombre: "CANCELACION"
+    ]
+  }
+
+  measure: count_asistencia_delivery {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Asistencia Delivery"
+    description: "Pedido de asistencia delivery."
+    filters: [
+        caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+      , caso_sub_tipo_nombre: "VENTA PORTIN, VENTA, CAMBIO DE TARJETA SIM"
+    ]
+  }
+
+  measure: count_asistencia_delivery_anulado {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Asistencia Delivery Anulado"
+    description: "Pedido de asistencia delivery anulado."
+    filters: [
+        caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+      , caso_sub_tipo_nombre: "ANULACION"
+    ]
+  }
+
+  measure: count_asistencia_tecnica {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Asistencia Tecnica"
+    description: "Pedido de asistencia tecnica con visita de tecnico."
+    filters: [
+        caso_tipo_nombre: "ASISTENCIA TECNICA"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+    ]
+  }
+
+  measure: count_alta_debito_autom{
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Alta DA"
+    description: "Casos de adhesión al debito autómatico."
+    filters: [
+        caso_tipo_nombre: "DEBITO AUTOMATICO"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+      , caso_sub_tipo_nombre: "ADHESION"
+    ]
+  }
+
+  measure: count_baja_debito_autom{
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "bAJA DA"
+    description: "Casos de adhesión al debito autómatico."
+    filters: [
+      caso_tipo_nombre: "DEBITO AUTOMATICO"
+      , caso_estado_nombre: "RESUELTA EXITOSA"
+      , caso_sub_tipo_nombre: "BAJA"
+    ]
+  }
+
+  measure: count_clientes_no_fidelizados{
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "No Fidelizados"
+    description: "Clientes no fidelizados."
+    filters: [
+        caso_tipo_nombre: "FIDELIZACION"
+      , caso_estado_nombre: "ANULADA"
+    ]
+  }
+
+  measure: count_fidelizacion {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Bajas Posdateadas"
+    description: "Clientes retenidos sin oferta."
+    filters: [
+        caso_tipo_nombre: "PEDIDO DE BAJA"
+      , caso_estado_nombre: "EN ESPERA DE EJECUCION "
+    ]
+  }
+
+
+
+
 }
 
 #################################
