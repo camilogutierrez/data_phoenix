@@ -16,6 +16,33 @@ view: ft_pagos {
 
   ## Dates
 
+  dimension: payment_date {
+    type: date
+    sql: ${TABLE}.PAYMENT_DATE ;;
+    group_label: "Fecha Pago"
+    label: "Pago"
+  }
+
+  dimension_group: tf_payment_date {
+    type: time
+    datatype: date
+    sql: ${TABLE}.PAYMENT_DATE ;;
+    timeframes: [
+      raw,
+      date,
+      day_of_month,
+      day_of_week,
+      week,
+      month,
+      month_name,
+      month_num,
+      quarter,
+      year
+    ]
+    group_label: "Fecha Pago"
+    label: "Pago"
+  }
+
   dimension_group: check {
     type: time
     timeframes: [
@@ -101,27 +128,6 @@ view: ft_pagos {
     label: "Última Actualización"
   }
 
-  dimension_group: payment_date {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
-      week,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PAYMENT_DATE ;;
-    group_label: "Fecha Pago"
-    label: "Pago"
-  }
-
   dimension_group: reversal {
     type: time
     timeframes: [
@@ -164,12 +170,11 @@ view: ft_pagos {
 
   dimension_group: c_payment_date {
     type: time
+    datatype: date
     sql: ${TABLE}.C_PAYMENT_DATE ;;
     timeframes: [
       raw,
-      time,
       date,
-      time_of_day,
       day_of_month,
       day_of_week,
       week,
@@ -180,18 +185,17 @@ view: ft_pagos {
       year
     ]
     group_label: "Fecha Pago EXT"
-    label: "Pago"
+    label: "C Pago"
     description: "Fecha de pago proveniente de una entidad externa."
   }
 
-  dimension_group: process_date_date {
+  dimension_group: process_date {
     type: time
+    datatype: date
     sql: ${TABLE}.PROCESS_DATE ;;
     timeframes: [
       raw,
-      time,
       date,
-      time_of_day,
       day_of_month,
       day_of_week,
       week,
@@ -206,15 +210,13 @@ view: ft_pagos {
     description: "Fecha de proceso, proviene de una entidad externa."
   }
 
-  dimension_group: trans_date_date {
+  dimension_group: trans_date {
     type: time
-    datatype: timestamp
+    datatype: date
     sql: ${TABLE}.TRANS_DATE ;;
     timeframes: [
       raw,
-      time,
       date,
-      time_of_day,
       day_of_month,
       day_of_week,
       week,

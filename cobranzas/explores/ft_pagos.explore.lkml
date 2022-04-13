@@ -8,7 +8,7 @@ explore: ft_pagos {
 
   always_filter: {
     filters: [
-                ft_pagos.payment_date_date: "today"
+                ft_pagos.payment_date: "today"
     ]
   }
 }
