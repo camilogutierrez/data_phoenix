@@ -11,7 +11,6 @@ view: ft_pagos {
     label: "PK"
   }
 
-  ##############
   ##  Pagos   ##
   ##############
 
@@ -148,9 +147,7 @@ view: ft_pagos {
     type: time
     timeframes: [
       raw,
-      time,
       date,
-      time_of_day,
       day_of_month,
       day_of_week,
       week,
@@ -187,7 +184,7 @@ view: ft_pagos {
     description: "Fecha de pago proveniente de una entidad externa."
   }
 
-  dimension_group: process_date {
+  dimension_group: process_date_date {
     type: time
     sql: ${TABLE}.PROCESS_DATE ;;
     timeframes: [
@@ -209,8 +206,9 @@ view: ft_pagos {
     description: "Fecha de proceso, proviene de una entidad externa."
   }
 
-  dimension_group: trans_date {
+  dimension_group: trans_date_date {
     type: time
+    datatype: timestamp
     sql: ${TABLE}.TRANS_DATE ;;
     timeframes: [
       raw,
