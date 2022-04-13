@@ -28,8 +28,6 @@ view: ft_pagos {
     datatype: date
     sql: ${TABLE}.PAYMENT_DATE ;;
     timeframes: [
-      raw,
-      date,
       day_of_month,
       day_of_week,
       week,
