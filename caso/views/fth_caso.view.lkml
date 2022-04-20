@@ -1553,6 +1553,7 @@ view: fth_caso {
 
   dimension: es_demanda_retencion {
     hidden: yes
+    type: yesno
     sql: (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "FIDELIZACION")
           OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "VENTA" AND ${caso_sub_tipo_nombre} = "FIDELIZACION")
           OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "CAMBIO DE PLAN" AND ${caso_sub_tipo_nombre} = "FIDELIZACION") ;;
