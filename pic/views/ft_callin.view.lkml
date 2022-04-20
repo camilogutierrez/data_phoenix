@@ -548,7 +548,7 @@ view: ft_callin {
   dimension: contexto_ivr_0800_srcid {
     type: string
     sql: ${TABLE}.CONTEXTO_IVR_0800SRCId ;;
-    suggest_dimension: lk_contexto_ivr0800_opcion.contexto_ivr_0800_opcionsrcid
+    suggest_dimension: lk_contexto_ivr0800.contexto_ivr_0800_srcid
     group_label: "Contexto IVR"
     group_item_label: "Contexto"
     label: "Contexto IVR"
@@ -1125,6 +1125,36 @@ view: ft_callin {
     description: "Es el legajo del agente que atiende la llamada."
   }
 
+  dimension: resource_role_vq_srcid {
+    type: string
+    sql: ${TABLE}.RESOURCEROLE_VQSRCId ;;
+  }
+
+  dimension: technical_result_vq_srcid {
+    type: string
+    sql: ${TABLE}.TECHNICALRESULT_VQSRCId ;;
+  }
+
+  dimension: result_reason_vq_srcid {
+    type: string
+    sql: ${TABLE}.RESULTREASON_VQSRCId ;;
+  }
+
+  dimension: resource_role_ag_srcid {
+    type: string
+    sql: ${TABLE}.RESOURCEROLE_AGSRCId ;;
+  }
+
+  dimension: technical_result_ag_srcid {
+    type: string
+    sql: ${TABLE}.TECHNICALRESULT_AGSRCId ;;
+  }
+
+  dimension: result_reason_ag_srcid {
+    type: string
+    sql: ${TABLE}.RESULTREASON_AGSRCId ;;
+  }
+
     ## Numbers
 
   dimension: res_ordinalsrcid {
@@ -1169,13 +1199,17 @@ view: ft_callin {
     description: "Código del sitio de logueo del representante"
   }
 
-  ## Hidden ##
-
   dimension: interaction_resource_id {
-    hidden: yes
     type: number
     sql: ${TABLE}.INTERACTION_RESOURCE_ID ;;
   }
+
+  dimension: routing_point_duration {
+    type: number
+    sql: ${TABLE}.ROUTING_POINT_DURATION ;;
+  }
+
+  ## Hidden ##
 
   dimension: customer_acw_count {
     hidden: yes
@@ -1515,7 +1549,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Abandono Cola"
     group_item_label: "4- 30-39"
-    label: "Cantidad Abandono Q-20-39"
+    label: "Cantidad Abandono Q-30-39"
     description: "Cantidad de llamadas abandonadas en cola entre 30 y 39 segundos"
     filters: [abandono_q_30_39: "Yes"]
   }
@@ -1537,7 +1571,7 @@ view: ft_callin {
     group_item_label: "6- 50-59"
     label: "Cantidad Abandono Q-50-59"
     description: "Cantidad de llamadas abandonadas en cola entre 50 y 59 segundos"
-    filters: [abandono_q_40_49: "Yes"]
+    filters: [abandono_q_50_59: "Yes"]
   }
 
   measure: count_abandono_q_60_89 {
@@ -1685,7 +1719,7 @@ view: ft_callin {
     sql: ${interaction_resource_id};;
     group_label: "Contestada"
     group_item_label: "3- 20-29"
-    label: "Cantidad Contestadas 10-19"
+    label: "Cantidad Contestadas 20-29"
     description: "Cantidad de llamadas contestadas entre 20 y 29 segundos"
     filters: [contestada_20_29: "Yes"]
   }
@@ -1734,9 +1768,9 @@ view: ft_callin {
     type: count_distinct
     sql: ${interaction_resource_id};;
     group_label: "Contestada"
-    group_item_label: "8- 60-119"
-    label: "Cantidad Contestadas 60-119"
-    description: "Cantidad de llamadas contestadas entre 60 y 119 segundos"
+    group_item_label: "8- 90-119"
+    label: "Cantidad Contestadas 90-119"
+    description: "Cantidad de llamadas contestadas entre 90 y 119 segundos"
     filters: [contestada_90_119: "Yes"]
   }
 
@@ -1896,8 +1930,8 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${conference_initiated_count};;
     group_label: "Conference"
-    label: "Total Tiempo Inicio Conferencia"
-    description: "Cuenta el tiempo de iniciada la llamada en conferencia"
+    label: "Cantidad Inicios Conferencia"
+    description: "Cuenta la cantidad de veces que se inicia una llamada en conferencia"
   }
 
   measure: total_conf_init_hold_count {

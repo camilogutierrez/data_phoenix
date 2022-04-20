@@ -1549,6 +1549,22 @@ view: fth_caso {
     sql: ${TABLE}.CasoResultadoRetencionSRCId ;;
   }
 
+    ## Auxiliares
+
+  dimension: es_demanda_retencion {
+    hidden: yes
+    type: yesno
+    sql: (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "FIDELIZACION")
+          OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "VENTA" AND ${caso_sub_tipo_nombre} = "FIDELIZACION")
+          OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "CAMBIO DE PLAN" AND ${caso_sub_tipo_nombre} = "FIDELIZACION") ;;
+  }
+
+  dimension: es_fidelizacion  {
+    hidden: yes
+    type: yesno
+    sql: ${caso_estado_nombre} != "ANULADA" AND (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
+  }
+
 #############
 ## Cliente ##
 #############
@@ -2210,7 +2226,7 @@ view: fth_caso {
   measure: count_baja_debito_autom{
     type: count_distinct
     sql: ${caso_srcid} ;;
-    label: "bAJA DA"
+    label: "Baja DA"
     description: "Casos de adhesión al debito autómatico."
     filters: [
       caso_tipo_nombre: "DEBITO AUTOMATICO"
@@ -2230,20 +2246,32 @@ view: fth_caso {
     ]
   }
 
-  measure: count_fidelizacion {
+  measure: count_bajas_postdateadas {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Bajas Posdateadas"
-    description: "Clientes retenidos sin oferta."
+    description: "Cantidad de bajas pendientes de ejecución ."
     filters: [
         caso_tipo_nombre: "PEDIDO DE BAJA"
       , caso_estado_nombre: "EN ESPERA DE EJECUCION "
     ]
   }
 
+  measure: count_demanda_retencion {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Demanda Retencion"
+    description: "Corresponde al ingreso de pedido de retención / fidelización."
+    filters: [es_demanda_retencion: "Yes"]
+  }
 
-
-
+  measure: count_fidelizacion {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Fidelizacion"
+    description: "Clientes retenidos sin oferta."
+    filters: [es_fidelizacion: "Yes"]
+  }
 }
 
 #################################
