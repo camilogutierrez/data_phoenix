@@ -526,7 +526,6 @@ view: ft_pagos {
     sql: ${TABLE}.PRODUCT_LINE ;;
     group_label: "Cliente"
     label: "Línea Producto"
-    description: "Fecha de proceso, proviene de una entidad externa."
   }
 
   dimension: pr_status {
