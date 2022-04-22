@@ -2187,6 +2187,7 @@ view: fth_orden {
   }
 
   dimension: nombre_provincia_env {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaEnv ;;
     view_label: "Domicilio"
@@ -2196,6 +2197,7 @@ view: fth_orden {
   }
 
   dimension: nombre_provincia_fact {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaFact ;;
     view_label: "Domicilio"
@@ -3003,8 +3005,6 @@ view: fth_orden {
     ]
   }
 
-  ## NEW
-
   measure: count_venta_terminal_neta {
     type: count_distinct
     sql: ${orden_srcid};;
@@ -3475,7 +3475,6 @@ view: fth_orden {
     ]
   }
 
-
   ## Orden Plan Anterior
 
   measure: total_opa_orden_item_cargo_recurrente {
@@ -3539,7 +3538,7 @@ view: fth_orden_medio_pago {
     label: "Tipo Tarjeta"
   }
 
-  ## Flags
+    ## Flags
 
   dimension: medio_pago_marca_principal {
     type: yesno

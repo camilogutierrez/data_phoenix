@@ -5,7 +5,6 @@ include: "/global/views/dm_cuenta_cliente.view.lkml"
 include: "/global/views/dm_nomina_d.view.lkml"
 include: "/global/views/dm_nomina_m.view.lkml"
 
-
 explore: fth_orden {
   label: "Orden"
   group_label: "Orden"
@@ -274,29 +273,4 @@ explore: fth_orden {
     sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_m.nomina_m_usuario_teco} ;;
     type: left_outer
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
