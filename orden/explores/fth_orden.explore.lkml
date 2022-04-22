@@ -2,6 +2,8 @@ include: "/orden/views/fth_orden.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
 include: "/global/views/dm_cuenta_cliente.view.lkml"
+include: "/global/views/dm_nomina_d.view.lkml"
+include: "/global/views/dm_nomina_m.view.lkml"
 
 
 explore: fth_orden {
@@ -253,8 +255,23 @@ explore: fth_orden {
   }
 
   join: dm_cuenta_cliente {
+    view_label: "Cuenta Cliente"
     relationship: many_to_one
-    sql_on: (${fth_orden.cuenta_srcid} = ${dm_cuenta_cliente.cuenta_srcid}) AND (${fth_orden.cliente_srcid} = ${dm_cuenta_cliente.cliente_srcid}) ;;
+    sql_on: ${fth_orden.cuenta_srcid} = ${dm_cuenta_cliente.cuenta_srcid} AND ${fth_orden.cliente_srcid} = ${dm_cuenta_cliente.cliente_srcid} ;;
+    type: left_outer
+  }
+
+  join: dm_nomina_d {
+    view_label: "Nomina"
+    relationship: many_to_one
+    sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_d.nomina_d_usuario_teco} ;;
+    type: left_outer
+  }
+
+  join: dm_nomina_m {
+    view_label: "Nomina Cierre"
+    relationship: many_to_one
+    sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_m.nomina_m_usuario_teco} ;;
     type: left_outer
   }
 
