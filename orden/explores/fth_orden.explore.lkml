@@ -253,13 +253,6 @@ explore: fth_orden {
     type: inner
   }
 
-  join: dm_cuenta_cliente {
-    view_label: "Cuenta Cliente"
-    relationship: many_to_one
-    sql_on: ${fth_orden.cuenta_srcid} = ${dm_cuenta_cliente.cuenta_srcid} AND ${fth_orden.cliente_srcid} = ${dm_cuenta_cliente.cliente_srcid} ;;
-    type: left_outer
-  }
-
   join: dm_nomina_d {
     view_label: "Nomina"
     relationship: many_to_one

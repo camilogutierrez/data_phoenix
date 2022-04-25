@@ -2,7 +2,6 @@ view: dm_cuenta_cliente {
   sql_table_name: @{gcp_dataset_pub}.DM_CuentaCliente` ;;
   suggestions: no
   label: "Cuenta Cliente"
-  fields_hidden_by_default: yes
 
   ## Dimensions
 
