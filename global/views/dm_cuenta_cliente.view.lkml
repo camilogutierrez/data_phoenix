@@ -2,18 +2,17 @@ view: dm_cuenta_cliente {
   sql_table_name: @{gcp_dataset_pub}.DM_CuentaCliente` ;;
   suggestions: no
   label: "Cuenta Cliente"
+  fields_hidden_by_default: yes
 
   ## Dimensions
 
     ## Primary Key
 
   dimension: cuenta_srcid {
+    hidden: yes
     primary_key: yes
     type: string
     sql: ${TABLE}.CuentaSRCId ;;
-    group_label: "Cuenta"
-    group_item_label: "Id"
-    label: "Cuenta Id"
   }
 
     ## Dates
