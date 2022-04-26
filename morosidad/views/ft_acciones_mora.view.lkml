@@ -2,60 +2,20 @@ view: ft_acciones_mora {
   sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_AccionesMora`
     ;;
 
-  dimension_group: _fecha_creacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: datetime
-    sql: ${TABLE}._fechaCreacion ;;
-  }
+###############
+# Primary Key #
+###############
 
-  dimension_group: _fecha_ultima_actualizacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: datetime
-    sql: ${TABLE}._fechaUltimaActualizacion ;;
-  }
-
-  dimension: _sesion_id {
+  dimension: pk {
+    hidden: yes
+    primary_key: yes
     type: string
-    sql: ${TABLE}._sesionId ;;
+    sql: CONCAT(CAST(${fecha_saldo_date} AS STRING FORMAT 'YYYYMMDD'),'|',${object_id});;
   }
 
-  dimension: _usuario_creacion {
-    type: string
-    sql: ${TABLE}._usuarioCreacion ;;
-  }
-
-  dimension: _usuario_ultima_actualizacion {
-    type: string
-    sql: ${TABLE}._usuarioUltimaActualizacion ;;
-  }
-
-  dimension: acct_code {
-    type: string
-    sql: ${TABLE}.ACCT_CODE ;;
-  }
-
-  dimension: acct_id {
-    type: number
-    sql: ${TABLE}.ACCT_ID ;;
-  }
+#########
+# Dates #
+#########
 
   dimension_group: close_collect {
     type: time
@@ -69,16 +29,86 @@ view: ft_acciones_mora {
       year
     ]
     sql: ${TABLE}.CLOSE_COLLECT_DATE ;;
+    group_label: "Fecha Close Collect"
+    label: "Close Collect"
+  }
+
+  dimension_group: fecha_saldo {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.FECHA_SALDO ;;
+    group_label: "Fecha Saldo"
+    label: "Saldo"
+  }
+
+  dimension_group: prox_accion_fecha {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.PROX_ACCION_FECHA ;;
+    group_label: "Fecha Proxima Accion"
+    label: "Proxima Accion"
+  }
+
+  dimension_group: start_collect {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.START_COLLECT_DATE ;;
+    group_label: "Fecha Start Collect"
+    label: "Start Collect"
+  }
+
+  dimension_group: ult_accion_fecha_exe {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
+    group_label: "Fecha Ult Accion Exe"
+    label: "Ult Accion Exe"
+  }
+
+##########
+# String #
+##########
+
+  dimension: acct_code {
+    type: string
+    sql: ${TABLE}.ACCT_CODE ;;
   }
 
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-  }
-
-  dimension: cust_id {
-    type: number
-    sql: ${TABLE}.CUST_ID ;;
   }
 
   dimension: document_number {
@@ -96,20 +126,6 @@ view: ft_acciones_mora {
     sql: ${TABLE}.EXEC_STATUS ;;
   }
 
-  dimension_group: fecha_saldo {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.FECHA_SALDO ;;
-  }
-
   dimension: first_name {
     type: string
     sql: ${TABLE}.FIRST_NAME ;;
@@ -118,11 +134,6 @@ view: ft_acciones_mora {
   dimension: group_code {
     type: string
     sql: ${TABLE}.GROUP_CODE ;;
-  }
-
-  dimension: group_id {
-    type: number
-    sql: ${TABLE}.GROUP_ID ;;
   }
 
   dimension: group_version {
@@ -155,16 +166,6 @@ view: ft_acciones_mora {
     sql: ${TABLE}.MSISDN ;;
   }
 
-  dimension: object_id {
-    type: number
-    sql: ${TABLE}.OBJECT_ID ;;
-  }
-
-  dimension: os_amount {
-    type: number
-    sql: ${TABLE}.OS_AMOUNT ;;
-  }
-
   dimension: pa_status {
     type: string
     sql: ${TABLE}.PA_STATUS ;;
@@ -178,20 +179,6 @@ view: ft_acciones_mora {
   dimension: plan_version {
     type: string
     sql: ${TABLE}.PLAN_VERSION ;;
-  }
-
-  dimension_group: prox_accion_fecha {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PROX_ACCION_FECHA ;;
   }
 
   dimension: razonsocial {
@@ -214,48 +201,9 @@ view: ft_acciones_mora {
     sql: ${TABLE}.RESUME_ACTION_CODE ;;
   }
 
-  dimension: resume_action_id {
-    type: number
-    sql: ${TABLE}.RESUME_ACTION_ID ;;
-  }
-
   dimension: resume_actual_date {
     type: string
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-  }
-
-  dimension: saldo_vencido {
-    type: number
-    sql: ${TABLE}.SALDO_VENCIDO ;;
-  }
-
-  dimension: saldo_x_vencer {
-    type: number
-    sql: ${TABLE}.SALDO_X_VENCER ;;
-  }
-
-  dimension_group: start_collect {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.START_COLLECT_DATE ;;
-  }
-
-  dimension: sub_id {
-    type: number
-    sql: ${TABLE}.SUB_ID ;;
-  }
-
-  dimension: task_order_id {
-    type: number
-    sql: ${TABLE}.TASK_ORDER_ID ;;
   }
 
   dimension: ult_accion_cancel_status {
@@ -268,26 +216,6 @@ view: ft_acciones_mora {
     sql: ${TABLE}.ULT_ACCION_CODE_EXE ;;
   }
 
-  dimension_group: ult_accion_fecha_exe {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
-  }
-
-  dimension: ult_accion_id_exe {
-    type: number
-    value_format_name: id
-    sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
-  }
-
   dimension: ult_accion_status {
     type: string
     sql: ${TABLE}.ULT_ACCION_STATUS ;;
@@ -297,6 +225,71 @@ view: ft_acciones_mora {
     type: string
     sql: ${TABLE}.ULT_ACTION_NAME ;;
   }
+
+
+##########
+# Number #
+##########
+
+  dimension: acct_id {
+    type: number
+    sql: ${TABLE}.ACCT_ID ;;
+  }
+
+  dimension: cust_id {
+    type: number
+    sql: ${TABLE}.CUST_ID ;;
+  }
+
+  dimension: group_id {
+    type: number
+    sql: ${TABLE}.GROUP_ID ;;
+  }
+
+  dimension: object_id {
+    type: number
+    sql: ${TABLE}.OBJECT_ID ;;
+  }
+
+  dimension: os_amount {
+    type: number
+    sql: ${TABLE}.OS_AMOUNT ;;
+  }
+
+  dimension: resume_action_id {
+    type: number
+    sql: ${TABLE}.RESUME_ACTION_ID ;;
+  }
+
+  dimension: saldo_vencido {
+    type: number
+    sql: ${TABLE}.SALDO_VENCIDO ;;
+  }
+
+  dimension: saldo_x_vencer {
+    type: number
+    sql: ${TABLE}.SALDO_X_VENCER ;;
+  }
+
+  dimension: sub_id {
+    type: number
+    sql: ${TABLE}.SUB_ID ;;
+  }
+
+  dimension: task_order_id {
+    type: number
+    sql: ${TABLE}.TASK_ORDER_ID ;;
+  }
+
+  dimension: ult_accion_id_exe {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
+  }
+
+############
+# Measures #
+############
 
   measure: count {
     type: count
