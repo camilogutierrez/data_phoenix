@@ -2,66 +2,21 @@ view: ft_degradacion_suscripcion {
   sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DegradacionSuscripcion`
     ;;
 
-  dimension_group: _fecha_creacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: datetime
-    sql: ${TABLE}._fechaCreacion ;;
-  }
 
-  dimension_group: _fecha_ultima_actualizacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: datetime
-    sql: ${TABLE}._fechaUltimaActualizacion ;;
-  }
+###############
+# Primary Key #
+###############
 
-  dimension: _sesion_id {
+  dimension: pk {
+    hidden: yes
+    primary_key: yes
     type: string
-    sql: ${TABLE}._sesionId ;;
+    sql: CONCAT(CAST(${sub_id} AS STRING),'|',CAST(${cust_id} AS STRING));;
   }
 
-  dimension: _usuario_creacion {
-    type: string
-    sql: ${TABLE}._usuarioCreacion ;;
-  }
-
-  dimension: _usuario_ultima_actualizacion {
-    type: string
-    sql: ${TABLE}._usuarioUltimaActualizacion ;;
-  }
-
-  dimension: act_acct_id {
-    type: number
-    sql: ${TABLE}.ACT_ACCT_ID ;;
-  }
-
-  dimension: cust_id {
-    type: number
-    sql: ${TABLE}.CUST_ID ;;
-  }
-
-  dimension: degra_status {
-    type: string
-    sql: ${TABLE}.DEGRA_STATUS ;;
-  }
-
+########
+# Date #
+########
   dimension_group: fin_degra {
     type: time
     timeframes: [
@@ -92,6 +47,29 @@ view: ft_degradacion_suscripcion {
     sql: ${TABLE}.INICIO_DEGRA ;;
   }
 
+##########
+# String #
+##########
+
+  dimension: degra_status {
+    type: string
+    sql: ${TABLE}.DEGRA_STATUS ;;
+  }
+
+##########
+# Number #
+##########
+
+  dimension: act_acct_id {
+    type: number
+    sql: ${TABLE}.ACT_ACCT_ID ;;
+  }
+
+  dimension: cust_id {
+    type: number
+    sql: ${TABLE}.CUST_ID ;;
+  }
+
   dimension: pri_acct_id {
     type: number
     sql: ${TABLE}.PRI_ACCT_ID ;;
@@ -107,6 +85,9 @@ view: ft_degradacion_suscripcion {
     sql: ${TABLE}.ULT_ACCT_ID ;;
   }
 
+##########
+# String #
+##########
   measure: count {
     type: count
     drill_fields: []
