@@ -1,70 +1,27 @@
 view: ft_dc_pa_plan {
   sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DC_PA_PLAN`
     ;;
+  view_label: "Morosidad"
+  label: "Plan Financiacion Deuda"
 
-  dimension_group: _fecha_creacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: datetime
-    sql: ${TABLE}._fechaCreacion ;;
-  }
+###############
+# Primary Key #
+###############
 
-  dimension_group: _fecha_ultima_actualizacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: datetime
-    sql: ${TABLE}._fechaUltimaActualizacion ;;
-  }
-
-  dimension: _sesion_id {
+  dimension: pk {
+    hidden: yes
+    primary_key: yes
     type: string
-    sql: ${TABLE}._sesionId ;;
+    sql: CONCAT(CAST(${pa_plan_id} AS STRING),'|',CAST(${pa_plan_detail_id} AS STRING));;
   }
 
-  dimension: _usuario_creacion {
-    type: string
-    sql: ${TABLE}._usuarioCreacion ;;
-  }
-
-  dimension: _usuario_ultima_actualizacion {
-    type: string
-    sql: ${TABLE}._usuarioUltimaActualizacion ;;
-  }
+##########
+# String #
+##########
 
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-  }
-
-  dimension: acct_id {
-    type: number
-    sql: ${TABLE}.ACCT_ID ;;
-  }
-
-  dimension: actual_paid_amount {
-    type: number
-    sql: ${TABLE}.ACTUAL_PAID_AMOUNT ;;
-  }
-
-  dimension: agreed_amount {
-    type: number
-    sql: ${TABLE}.AGREED_AMOUNT ;;
   }
 
   dimension: auth_dept_id {
@@ -75,11 +32,6 @@ view: ft_dc_pa_plan {
   dimension: auth_oper_id {
     type: string
     sql: ${TABLE}.AUTH_OPER_ID ;;
-  }
-
-  dimension: be_id {
-    type: number
-    sql: ${TABLE}.BE_ID ;;
   }
 
   dimension: break_dept_id {
@@ -107,14 +59,38 @@ view: ft_dc_pa_plan {
     sql: ${TABLE}.CREATE_OPER_ID ;;
   }
 
-  dimension: currency_id {
-    type: number
-    sql: ${TABLE}.CURRENCY_ID ;;
-  }
-
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
+  }
+
+##########
+# Number #
+##########
+
+  dimension: acct_id {
+    type: number
+    sql: ${TABLE}.ACCT_ID ;;
+  }
+
+  dimension: actual_paid_amount {
+    type: number
+    sql: ${TABLE}.ACTUAL_PAID_AMOUNT ;;
+  }
+
+  dimension: agreed_amount {
+    type: number
+    sql: ${TABLE}.AGREED_AMOUNT ;;
+  }
+
+  dimension: be_id {
+    type: number
+    sql: ${TABLE}.BE_ID ;;
+  }
+
+  dimension: currency_id {
+    type: number
+    sql: ${TABLE}.CURRENCY_ID ;;
   }
 
   dimension: cust_id {
@@ -231,6 +207,11 @@ view: ft_dc_pa_plan {
     type: number
     sql: ${TABLE}.SUB_ID ;;
   }
+
+
+############
+# Measures #
+############
 
   measure: count {
     type: count
