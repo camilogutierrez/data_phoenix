@@ -11,11 +11,11 @@ project_name: "Data_Phoenix_Reporting"
   constant: gcp_dataset_pub {
     value: "
       {% if _user_attributes['project_id'] == 'teco-prod-edw-5e1b' %}
-        {% assign this_gcp_dataset_pub = '`ue4_prod_edw_pub_gcp' %}
+        {% assign this_gcp_dataset_pub = '`teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp' %}
       {% elsif _user_attributes['project_id'] == 'teco-test-edw-d589' %}
-        {% assign this_gcp_dataset_pub = '`ue4_test_edw_pub_gcp' %}
+        {% assign this_gcp_dataset_pub = '`ue4_test_edw_pub_gcp.ue4_test_edw_pub_gcp' %}
       {% else %}
-        {% assign this_gcp_dataset_pub = '`ue4_dev_edw_pub_gcp' %}
+        {% assign this_gcp_dataset_pub = '`ue4_dev_edw_pub_gcp.ue4_dev_edw_pub_gcp' %}
       {% endif %}
       {{this_gcp_dataset_pub}}"
     export: none
