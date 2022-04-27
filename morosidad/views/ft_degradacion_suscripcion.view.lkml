@@ -1,22 +1,19 @@
 view: ft_degradacion_suscripcion {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DegradacionSuscripcion`
-    ;;
+  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DegradacionSuscripcion` ;;
 
+  ## Dimensions
 
-###############
-# Primary Key #
-###############
+    ## Primary Key
 
   dimension: pk {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${sub_id} AS STRING),'|',CAST(${cust_id} AS STRING));;
+    sql: CONCAT(CAST(${sub_id} AS STRING),'-',CAST(${cust_id} AS STRING));;
   }
 
-########
-# Date #
-########
+    ## Dates
+
   dimension_group: fin_degra {
     type: time
     timeframes: [
@@ -47,18 +44,14 @@ view: ft_degradacion_suscripcion {
     sql: ${TABLE}.INICIO_DEGRA ;;
   }
 
-##########
-# String #
-##########
+    ## Strings
 
   dimension: degra_status {
     type: string
     sql: ${TABLE}.DEGRA_STATUS ;;
   }
 
-##########
-# Number #
-##########
+    ## Numbers
 
   dimension: act_acct_id {
     type: number
@@ -85,9 +78,8 @@ view: ft_degradacion_suscripcion {
     sql: ${TABLE}.ULT_ACCT_ID ;;
   }
 
-##########
-# String #
-##########
+    ## Measures
+
   measure: count {
     type: count
     drill_fields: []

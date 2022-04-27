@@ -1,23 +1,20 @@
 view: ft_dc_pa_plan {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DC_PA_PLAN`
-    ;;
+  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DC_PA_PLAN` ;;
   view_label: "Morosidad"
   label: "Plan Financiacion Deuda"
 
-###############
-# Primary Key #
-###############
+  ## Dimensions
+
+    ## Primary Key
 
   dimension: pk {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${pa_plan_id} AS STRING),'|',CAST(${pa_plan_detail_id} AS STRING));;
+    sql: CONCAT(CAST(${pa_plan_id} AS STRING),'-',CAST(${pa_plan_detail_id} AS STRING));;
   }
 
-##########
-# String #
-##########
+    ## Strings
 
   dimension: acct_code {
     type: string
@@ -64,9 +61,7 @@ view: ft_dc_pa_plan {
     sql: ${TABLE}.CUST_CODE ;;
   }
 
-##########
-# Number #
-##########
+    ## Numbers
 
   dimension: acct_id {
     type: number
@@ -208,10 +203,7 @@ view: ft_dc_pa_plan {
     sql: ${TABLE}.SUB_ID ;;
   }
 
-
-############
-# Measures #
-############
+  ## Measures
 
   measure: count {
     type: count

@@ -1,21 +1,18 @@
 view: ft_acciones_mora {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_AccionesMora`
-    ;;
+  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_AccionesMora` ;;
 
-###############
-# Primary Key #
-###############
+  ## Dimensions
+
+    ## Primary Key
 
   dimension: pk {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_saldo_date} AS STRING FORMAT 'YYYYMMDD'),'|',${object_id});;
+    sql: CONCAT(CAST(${fecha_saldo_date} AS STRING FORMAT 'YYYYMMDD'),'-',${object_id});;
   }
 
-#########
-# Dates #
-#########
+    ## Dates
 
   dimension_group: close_collect {
     type: time
@@ -97,9 +94,7 @@ view: ft_acciones_mora {
     label: "Ult Accion Exe"
   }
 
-##########
-# String #
-##########
+    ## Strings
 
   dimension: acct_code {
     type: string
@@ -226,10 +221,7 @@ view: ft_acciones_mora {
     sql: ${TABLE}.ULT_ACTION_NAME ;;
   }
 
-
-##########
-# Number #
-##########
+    ## Numbers
 
   dimension: acct_id {
     type: number
@@ -283,16 +275,13 @@ view: ft_acciones_mora {
 
   dimension: ult_accion_id_exe {
     type: number
-    value_format_name: id
     sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
   }
 
-############
-# Measures #
-############
+  ## Measures
 
   measure: count {
     type: count
-    drill_fields: [ult_action_name, last_name, first_name]
+    drill_fields: []
   }
 }
