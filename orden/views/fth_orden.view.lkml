@@ -2988,23 +2988,6 @@ view: fth_orden {
     ]
   }
 
-  measure: count_suspen_voluntaria_movil {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Voluntaria Movil"
-    label: "Suspension Voluntaria Movil"
-    description: "Ordenes de suspensión voluntaria por pedido de baja"
-    filters:[
-        orden_estado_nombre: "ACTIVADA"
-      , orden_item_sub_accion_nombre: "SUSPEND-VOLUNTARIA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-    ]
-  }
-
   measure: count_venta_terminal_neta {
     type: count_distinct
     sql: ${orden_srcid};;
@@ -3270,8 +3253,8 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Suspension Mora Total"
-    label: "Suspension Mora Total"
+    group_item_label: "Suspension Mora Total Fija"
+    label: "Suspension Mora Total Fija"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
@@ -3319,13 +3302,13 @@ view: fth_orden {
     ]
   }
 
-  measure: count_suspension_fraude_dispositivo {
+  measure: count_suspension_fraude_abono {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Suspension Fraude Dispositivo"
-    label: "Suspension Fraude Dispositivo"
+    group_item_label: "Suspension Fraude Abono"
+    label: "Suspension Fraude Abono"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
@@ -3337,13 +3320,13 @@ view: fth_orden {
     ]
   }
 
-  measure: count_suspension_fraude_abono {
+  measure: count_suspension_fraude_dispositivo {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Suspension Fraude Abono"
-    label: "Suspension Fraude Abono"
+    group_item_label: "Suspension Fraude Dispositivo"
+    label: "Suspension Fraude Dispositivo"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
@@ -3378,8 +3361,8 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Suspension Fraude Abono"
-    label: "Suspension Fraude Abono"
+    group_item_label: "Baja Mora Efectiva Fija"
+    label: "Baja Mora Efectiva Fija"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
@@ -3407,13 +3390,13 @@ view: fth_orden {
     ]
   }
 
-  measure: count_baja_anulacion_venta_abono {
+  measure: count_baja_anulacion_venta_dispositivo {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Baja Anulacion Venta Abono"
-    label: "Baja Anulacion Venta Abono"
+    group_item_label: "Baja Anulacion Venta Dispositivo"
+    label: "Baja Anulacion Venta Dispositivo"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
@@ -3424,13 +3407,13 @@ view: fth_orden {
     ]
   }
 
-  measure: count_baja_anulacion_venta_dispositivo {
+  measure: count_baja_anulacion_venta_abono {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Baja Anulacion Venta Dispositivo"
-    label: "Baja Anulacion Venta Dispositivo"
+    group_item_label: "Baja Anulacion Venta Abono"
+    label: "Baja Anulacion Venta Abono"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"

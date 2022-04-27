@@ -1562,7 +1562,7 @@ view: fth_caso {
   dimension: es_fidelizacion  {
     hidden: yes
     type: yesno
-    sql: ${caso_estado_nombre} != "ANULADA" AND (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
+    sql: ${caso_tipo_nombre} = "FIDELIZACION" OR (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
   }
 
 #############
@@ -2215,7 +2215,7 @@ view: fth_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Alta DA"
-    description: "Casos de adhesión al debito autómatico."
+    description: "Casos de adhesion al debito automatico."
     filters: [
         caso_tipo_nombre: "DEBITO AUTOMATICO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
@@ -2227,7 +2227,7 @@ view: fth_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Baja DA"
-    description: "Casos de adhesión al debito autómatico."
+    description: "Casos de baja al debito automatico."
     filters: [
       caso_tipo_nombre: "DEBITO AUTOMATICO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
@@ -2250,7 +2250,7 @@ view: fth_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Bajas Posdateadas"
-    description: "Cantidad de bajas pendientes de ejecución ."
+    description: "Cantidad de bajas pendientes de ejecucion ."
     filters: [
         caso_tipo_nombre: "PEDIDO DE BAJA"
       , caso_estado_nombre: "EN ESPERA DE EJECUCION "
@@ -2261,7 +2261,7 @@ view: fth_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Demanda Retencion"
-    description: "Corresponde al ingreso de pedido de retención / fidelización."
+    description: "Corresponde al ingreso de pedido de retencion / fidelizacion."
     filters: [es_demanda_retencion: "Yes"]
   }
 
