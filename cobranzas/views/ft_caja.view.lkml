@@ -6,6 +6,7 @@ view: ft_caja {
   ## Primary Key
   dimension: pk {
     primary_key: yes
+    hidden: yes
     type:  string
     sql:${TABLE}.CAJAPK;;
     label: "PK"
