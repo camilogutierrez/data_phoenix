@@ -1,5 +1,5 @@
 view: fth_caso {
-  sql_table_name: @{gcp_dataset_pub}.FTH_Caso` ;;
+  sql_table_name: @{gcp_ambiente}.FTH_Caso` ;;
   suggestions: no
   label: "Caso"
 

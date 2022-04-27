@@ -1,5 +1,5 @@
 view: lk_orden_item_motivo_baja {
-  sql_table_name: @{gcp_dataset_pub}.LK_OrdenItemMotivoBaja` ;;
+  sql_table_name: @{gcp_ambiente}.LK_OrdenItemMotivoBaja` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_item_motivo_baja_sk {

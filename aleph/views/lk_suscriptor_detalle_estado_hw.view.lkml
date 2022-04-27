@@ -1,5 +1,5 @@
 view: lk_suscriptor_detalle_estado_hw {
-  sql_table_name: @{gcp_dataset_pub}.LK_SuscriptorDetalleEstadoHW` ;;
+  sql_table_name: @{gcp_ambiente}.LK_SuscriptorDetalleEstadoHW` ;;
   fields_hidden_by_default: yes
 
   dimension: suscriptor_detalle_estado_hwsk {

@@ -1,5 +1,5 @@
 view: lk_individuo_estado {
-  sql_table_name: @{gcp_dataset_pub}.LK_IndividuoEstado` ;;
+  sql_table_name: @{gcp_ambiente}.LK_IndividuoEstado` ;;
   fields_hidden_by_default: yes
 
   dimension: individuo_estado_sk {

@@ -1,5 +1,5 @@
 view: lk_orden_item_sub_accion {
-  sql_table_name: @{gcp_dataset_pub}.LK_OrdenItemSubAccion` ;;
+  sql_table_name: @{gcp_ambiente}.LK_OrdenItemSubAccion` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_item_sub_accion_sk {

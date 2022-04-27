@@ -1,5 +1,5 @@
 view: dm_nomina_m {
-  sql_table_name: @{gcp_dataset_pub}.DM_NominaM` ;;
+  sql_table_name: @{gcp_ambiente}.DM_NominaM` ;;
   suggestions: no
   label: "Nomina Cierre"
 

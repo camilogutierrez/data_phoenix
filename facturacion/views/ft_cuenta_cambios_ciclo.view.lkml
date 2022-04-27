@@ -1,5 +1,5 @@
 view: ft_cuenta_cambios_ciclo {
-  sql_table_name: @{gcp_dataset_pub}.FT_CuentaCambiosCiclo` ;;
+  sql_table_name: @{gcp_ambiente}.FT_CuentaCambiosCiclo` ;;
   suggestions: no
   label: "Cuenta Cambios Ciclo"
 

@@ -1,5 +1,5 @@
 view: ft_suscripcion_alta_baja {
-  sql_table_name: @{gcp_dataset_pub}.FT_SuscripcionAltaBaja` ;;
+  sql_table_name: @{gcp_ambiente}.FT_SuscripcionAltaBaja` ;;
   suggestions: no
   label: "Suscripcion Alta Baja"
 

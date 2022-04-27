@@ -1,5 +1,5 @@
 view: lk_producto_adquirido_estado_red {
-  sql_table_name: @{gcp_dataset_pub}.LK_ProductoAdquiridoEstadoRed` ;;
+  sql_table_name: @{gcp_ambiente}.LK_ProductoAdquiridoEstadoRed` ;;
   fields_hidden_by_default: yes
 
   dimension: producto_adquirido_estado_red_sk {

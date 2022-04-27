@@ -1,5 +1,5 @@
 view: ft_factura_cabecera {
-  sql_table_name: @{gcp_dataset_pub}.FT_FacturaCabecera` ;;
+  sql_table_name: @{gcp_ambiente}.FT_FacturaCabecera` ;;
   suggestions: no
   label: "Factura Cabecera"
 

@@ -1,5 +1,5 @@
 view: lk_caso_subtipo_movimiento_portacion {
-  sql_table_name: @{gcp_dataset_pub}.LK_CasoSubTipoMovimientoPortacion` ;;
+  sql_table_name: @{gcp_ambiente}.LK_CasoSubTipoMovimientoPortacion` ;;
   fields_hidden_by_default: yes
 
   dimension: caso_subtipo_movimiento_portacion_sk {

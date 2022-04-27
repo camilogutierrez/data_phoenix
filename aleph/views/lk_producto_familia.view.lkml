@@ -1,5 +1,5 @@
 view: lk_producto_familia {
-  sql_table_name: @{gcp_dataset_pub}.LK_ProductoFamilia` ;;
+  sql_table_name: @{gcp_ambiente}.LK_ProductoFamilia` ;;
   fields_hidden_by_default: yes
 
   dimension: producto_familia_sk {

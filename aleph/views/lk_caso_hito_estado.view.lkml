@@ -1,5 +1,5 @@
 view: lk_caso_hito_estado {
-  sql_table_name: @{gcp_dataset_pub}.LK_CasoHitoEstado` ;;
+  sql_table_name: @{gcp_ambiente}.LK_CasoHitoEstado` ;;
   fields_hidden_by_default: yes
 
   dimension: caso_hito_estado_sk {

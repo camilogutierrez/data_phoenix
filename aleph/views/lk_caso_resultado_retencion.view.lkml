@@ -1,5 +1,5 @@
 view: lk_caso_resultado_retencion {
-  sql_table_name: @{gcp_dataset_pub}.LK_CasoResultadoRetencion` ;;
+  sql_table_name: @{gcp_ambiente}.LK_CasoResultadoRetencion` ;;
   fields_hidden_by_default: yes
 
   dimension: caso_resultado_retencion_sk {

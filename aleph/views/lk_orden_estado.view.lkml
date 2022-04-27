@@ -1,5 +1,5 @@
 view: lk_orden_estado {
-  sql_table_name: @{gcp_dataset_pub}.LK_OrdenEstado` ;;
+  sql_table_name: @{gcp_ambiente}.LK_OrdenEstado` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_estado_sk {

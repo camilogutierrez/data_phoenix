@@ -1,5 +1,5 @@
 view: dm_cuenta_cliente {
-  sql_table_name: @{gcp_dataset_pub}.DM_CuentaCliente` ;;
+  sql_table_name: @{gcp_ambiente}.DM_CuentaCliente` ;;
   suggestions: no
   label: "Cuenta Cliente"
 

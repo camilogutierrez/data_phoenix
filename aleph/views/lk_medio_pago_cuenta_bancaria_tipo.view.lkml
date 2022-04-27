@@ -1,5 +1,5 @@
 view: lk_medio_pago_cuenta_bancaria_tipo {
-  sql_table_name: @{gcp_dataset_pub}.LK_MedioPagoCuentaBancariaTipo` ;;
+  sql_table_name: @{gcp_ambiente}.LK_MedioPagoCuentaBancariaTipo` ;;
   fields_hidden_by_default: yes
 
   dimension: medio_pago_cuenta_bancaria_tipo_sk {

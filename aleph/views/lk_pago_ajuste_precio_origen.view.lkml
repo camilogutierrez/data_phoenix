@@ -1,5 +1,5 @@
 view: lk_pago_ajuste_precio_origen {
-  sql_table_name: @{gcp_dataset_pub}.LK_PagoAjustePrecioOrigen` ;;
+  sql_table_name: @{gcp_ambiente}.LK_PagoAjustePrecioOrigen` ;;
   fields_hidden_by_default: yes
 
   dimension: pago_ajuste_precio_origen_sk {

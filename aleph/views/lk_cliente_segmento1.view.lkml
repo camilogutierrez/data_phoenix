@@ -1,5 +1,5 @@
 view: lk_cliente_segmento1 {
-  sql_table_name: @{gcp_dataset_pub}.LK_ClienteSegmento1` ;;
+  sql_table_name: @{gcp_ambiente}.LK_ClienteSegmento1` ;;
   fields_hidden_by_default: yes
 
   dimension: cliente_segmento1_sk {

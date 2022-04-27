@@ -1,5 +1,5 @@
 view: lk_punto_venta_bodega {
-  sql_table_name: @{gcp_dataset_pub}.LK_PuntoVentaBodega` ;;
+  sql_table_name: @{gcp_ambiente}.LK_PuntoVentaBodega` ;;
   fields_hidden_by_default: yes
 
   dimension: punto_venta_bodega_sk {

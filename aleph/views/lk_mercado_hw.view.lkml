@@ -1,5 +1,5 @@
 view: lk_mercado_hw {
-  sql_table_name: @{gcp_dataset_pub}.LK_MercadoHW` ;;
+  sql_table_name: @{gcp_ambiente}.LK_MercadoHW` ;;
   fields_hidden_by_default: yes
 
   dimension: mercado_hwsk {

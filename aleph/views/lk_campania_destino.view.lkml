@@ -1,5 +1,5 @@
 view: lk_campania_destino {
-  sql_table_name: @{gcp_dataset_pub}.LK_CampaniaDestino` ;;
+  sql_table_name: @{gcp_ambiente}.LK_CampaniaDestino` ;;
   fields_hidden_by_default: yes
 
   dimension: campania_destino_sk {

@@ -1,5 +1,5 @@
 view: lk_punto_venta_estructura {
-  sql_table_name: @{gcp_dataset_pub}.LK_PuntoVentaEstructura` ;;
+  sql_table_name: @{gcp_ambiente}.LK_PuntoVentaEstructura` ;;
   fields_hidden_by_default: yes
 
   dimension: punto_venta_estructura_sk {

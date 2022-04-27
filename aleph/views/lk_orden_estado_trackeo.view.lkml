@@ -1,5 +1,5 @@
 view: lk_orden_estado_trackeo {
-  sql_table_name: @{gcp_dataset_pub}.LK_OrdenEstadoTrackeo` ;;
+  sql_table_name: @{gcp_ambiente}.LK_OrdenEstadoTrackeo` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_estado_trackeo_sk {
