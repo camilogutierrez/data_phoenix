@@ -1,5 +1,5 @@
 view: ft_dc_pa_plan {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DC_PA_PLAN` ;;
+  sql_table_name: @{gcp_ambiente}.FT_DC_PA_PLAN` ;;
   label: "Plan Financiacion Deuda"
 
   ## Dimensions

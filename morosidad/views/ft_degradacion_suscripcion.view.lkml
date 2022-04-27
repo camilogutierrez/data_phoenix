@@ -1,5 +1,5 @@
 view: ft_degradacion_suscripcion {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DegradacionSuscripcion` ;;
+  sql_table_name: @{gcp_ambiente}.FT_DegradacionSuscripcion` ;;
   label: "Degradacion Suscripcion"
 
   ## Dimensions

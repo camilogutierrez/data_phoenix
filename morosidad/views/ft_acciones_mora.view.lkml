@@ -1,5 +1,5 @@
 view: ft_acciones_mora {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_AccionesMora` ;;
+  sql_table_name: @{gcp_ambiente}.FT_AccionesMora` ;;
   label: "Acciones Mora"
 
   ## Dimensions
