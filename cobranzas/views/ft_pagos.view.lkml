@@ -11,6 +11,7 @@ view: ft_pagos {
     label: "PK"
   }
 
+  ##############
   ##  Pagos   ##
   ##############
 
@@ -227,6 +228,28 @@ view: ft_pagos {
     group_label: "Fecha Operación"
     label: "Operación"
   }
+
+  dimension_group: recon_date {
+    type: time
+    datatype: date
+    sql: ${TABLE}.RECON_DATE ;;
+    timeframes: [
+      raw,
+      date,
+      day_of_month,
+      day_of_week,
+      week,
+      month,
+      month_name,
+      month_num,
+      quarter,
+      year
+    ]
+    group_label: "Fecha Recon"
+    label: "Recon"
+    description: "Fecha Recon"
+  }
+
 
   ## Strings
 
@@ -586,6 +609,48 @@ view: ft_pagos {
     group_label: "Comprobante"
     label: "Comprobante Tipo Descripción"
     description: "Indica la descripción del tipo de comprobante de la operación Bill run (BLL), Sales Invoice  (SLI), No Determinado (NODET)"
+  }
+
+  dimension: collection_entity {
+    type: string
+    sql: ${TABLE}.COLLECTION_ENTITY ;;
+    label: "Entidad de Recaudación"
+    description: "Entidad de Recaudación"
+  }
+
+  dimension: gestor_batch {
+    type: string
+    sql: ${TABLE}.GESTOR_BATCH ;;
+    label: "Gestor Batch"
+    description: "Gestor Batch"
+  }
+
+  dimension: status_batch {
+    type: string
+    sql: ${TABLE}.STATUS_BATCH ;;
+    label: "Status Batch"
+    description: "Status Batch"
+  }
+
+  dimension: cobro_migrado_batch {
+    type: string
+    sql: ${TABLE}.COBRO_MIGRADO_BATCH ;;
+    label: "Cobro Migrado Batch"
+    description: "Cobro Migrado Batch"
+  }
+
+  dimension: file_name {
+    type: string
+    sql: ${TABLE}.FILE_NAME ;;
+    label: "Nombre de Archivo"
+    description: "Nombre de Archivo"
+  }
+
+  dimension: canal_cobro_batch {
+    type: string
+    sql: ${TABLE}.CANAL_COBRO_BATCH ;;
+    label: "Canal Cobro Batch"
+    description: "Canal Cobro Batch"
   }
 
 
