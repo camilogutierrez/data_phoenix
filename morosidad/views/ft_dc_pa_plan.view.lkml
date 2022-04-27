@@ -1,7 +1,6 @@
 view: ft_dc_pa_plan {
   sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DC_PA_PLAN` ;;
-  view_label: "Morosidad"
-  label: "Plan Financiacion Deuda"
+  label: "Dc Pa Plan"
 
   ## Dimensions
 
@@ -205,8 +204,5 @@ view: ft_dc_pa_plan {
 
   ## Measures
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+
 }

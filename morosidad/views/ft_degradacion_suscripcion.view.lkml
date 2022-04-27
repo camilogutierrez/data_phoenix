@@ -1,5 +1,6 @@
 view: ft_degradacion_suscripcion {
   sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_DegradacionSuscripcion` ;;
+  label: "Degradacion Suscripcion"
 
   ## Dimensions
 
@@ -27,6 +28,7 @@ view: ft_degradacion_suscripcion {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FIN_DEGRA ;;
+    label: "Fin Degradacion"
   }
 
   dimension_group: inicio_degra {
@@ -42,6 +44,7 @@ view: ft_degradacion_suscripcion {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.INICIO_DEGRA ;;
+    label: "Inicio Degradacion"
   }
 
     ## Strings
@@ -80,8 +83,4 @@ view: ft_degradacion_suscripcion {
 
     ## Measures
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

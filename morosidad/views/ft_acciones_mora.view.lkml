@@ -1,5 +1,6 @@
 view: ft_acciones_mora {
   sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FT_AccionesMora` ;;
+  label: "Acciones Mora"
 
   ## Dimensions
 
@@ -26,7 +27,6 @@ view: ft_acciones_mora {
       year
     ]
     sql: ${TABLE}.CLOSE_COLLECT_DATE ;;
-    group_label: "Fecha Close Collect"
     label: "Close Collect"
   }
 
@@ -42,7 +42,6 @@ view: ft_acciones_mora {
       year
     ]
     sql: ${TABLE}.FECHA_SALDO ;;
-    group_label: "Fecha Saldo"
     label: "Saldo"
   }
 
@@ -58,7 +57,6 @@ view: ft_acciones_mora {
       year
     ]
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
-    group_label: "Fecha Proxima Accion"
     label: "Proxima Accion"
   }
 
@@ -74,7 +72,6 @@ view: ft_acciones_mora {
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    group_label: "Fecha Start Collect"
     label: "Start Collect"
   }
 
@@ -90,7 +87,6 @@ view: ft_acciones_mora {
       year
     ]
     sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
-    group_label: "Fecha Ult Accion Exe"
     label: "Ult Accion Exe"
   }
 
@@ -280,8 +276,5 @@ view: ft_acciones_mora {
 
   ## Measures
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+
 }
