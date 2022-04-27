@@ -6,6 +6,7 @@ view: ft_pagos {
   ## Primary Key
   dimension: pk {
     primary_key: yes
+    hidden: yes
     type:  string
     sql:${TABLE}.PAGOSPK;;
     label: "PK"
