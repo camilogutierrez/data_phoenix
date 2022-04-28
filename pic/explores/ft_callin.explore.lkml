@@ -308,14 +308,16 @@ explore: ft_callin {
   join: dm_nomina_d {
     view_label: "Nomina"
     type: left_outer
-    sql_on: ${ft_callin.agente_rp} = ${dm_nomina_d.nomina_d_usuario_teco} ;;
+    sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_d.nomina_d_usuario_teco} ;;
     relationship: many_to_one
+    sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
   }
 
   join: dm_nomina_m {
     view_label: "Nomina Cierre"
     type: left_outer
-    sql_on: ${ft_callin.agente_rp} = ${dm_nomina_m.nomina_m_usuario_teco} ;;
+    sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_m.nomina_m_usuario_teco} ;;
     relationship: many_to_one
+    sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
   }
 }

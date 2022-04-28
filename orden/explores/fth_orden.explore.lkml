@@ -258,6 +258,7 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_d.nomina_d_usuario_teco} ;;
     type: left_outer
+    sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
   }
 
   join: dm_nomina_m {
@@ -265,5 +266,6 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_m.nomina_m_usuario_teco} ;;
     type: left_outer
+    sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
   }
 }

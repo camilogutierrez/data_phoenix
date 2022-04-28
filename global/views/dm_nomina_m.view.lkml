@@ -7,7 +7,12 @@ view: dm_nomina_m {
 
     ## Primary Key
 
-      ## PENDIENTE DEFINICON
+  dimension: pk {
+    hidden: yes
+    primary_key: yes
+    type: string
+    sql: ${nomina_m_usuario_teco} ;;
+  }
 
     ## Dates
 
@@ -558,8 +563,4 @@ view: dm_nomina_m {
 
   ## Measures
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }
