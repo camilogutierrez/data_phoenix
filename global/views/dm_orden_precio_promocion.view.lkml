@@ -1,7 +1,6 @@
 view: dm_orden_precio_promocion {
   sql_table_name: @{gcp_ambiente}.DM_OrdenPrecioPromocion` ;;
   suggestions: no
-  label: "Precio Promocion"
 
 
 ## Dimensions
@@ -12,22 +11,14 @@ view: dm_orden_precio_promocion {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_entidad_date} AS STRING FORMAT 'YYYYMMDD'), '-', ${orden_item_srcid}  ;;
+    sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${orden_item_srcid});;
   }
 
-  ## Dates
-  dimension_group: fecha_entidad {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    datatype: date
+  ## Date
+  dimension: fecha_entidad {
+    type: date
     sql: ${TABLE}.FechaEntidad ;;
+    datatype: date
     label: "Fecha Entidad"
   }
 
@@ -305,25 +296,26 @@ view: dm_orden_precio_promocion {
   dimension: lista_precio_srcid {
     type: string
     sql: ${TABLE}.ListaPrecioSRCId ;;
-    label: "Lista Precio SRCID"
+    label: "Lista Precio Id"
   }
 
   dimension: orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenItemSRCId ;;
-    label: "Orden Item SRCID"
+    label: "Orden Item Id"
   }
 
   dimension: orden_precio_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioAccionNombre ;;
+    suggest_dimension: lk_orden_precio_accion.orden_precio_accion_nombre
     label: "Accion Nombre"
   }
 
   dimension: orden_precio_accion_srcid {
     type: string
     sql: ${TABLE}.OrdenPrecioAccionSRCId ;;
-    label: "Accion SRCID"
+    label: "Accion Id"
   }
 
   dimension: orden_precio_aplicado_a {
@@ -335,12 +327,13 @@ view: dm_orden_precio_promocion {
   dimension: orden_precio_elemento_srcid {
     type: string
     sql: ${TABLE}.OrdenPrecioElementoSRCId ;;
-    label: "Elemento SRCID"
+    label: "Elemento Id"
   }
 
   dimension: orden_precio_estado_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioEstadoNombre ;;
+    suggest_dimension: lk_orden_precio_estado.orden_precio_estado_nombre
     label: "Estado Nombre"
   }
 
@@ -348,25 +341,26 @@ view: dm_orden_precio_promocion {
   dimension: orden_precio_estado_srcid {
     type: string
     sql: ${TABLE}.OrdenPrecioEstadoSRCId ;;
-    label: "Estado SRCID"
+    label: "Estado Id"
   }
 
   dimension: orden_precio_fuente_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioFuenteNombre ;;
+    suggest_dimension: lk_orden_precio_fuente.orden_precio_fuente_nombre
     label: "Fuente Nombre"
   }
 
   dimension: orden_precio_fuente_srcid {
     type: string
     sql: ${TABLE}.OrdenPrecioFuenteSRCId ;;
-    label: "Fuente SRCID"
+    label: "Fuente Id"
   }
 
   dimension: orden_precio_srcid {
     type: string
     sql: ${TABLE}.OrdenPrecioSRCId ;;
-    label: "SRCID"
+    label: "Id"
   }
 
   dimension: orden_precio_sub_accion {
@@ -396,29 +390,10 @@ view: dm_orden_precio_promocion {
   dimension: promocion_srcid {
     type: string
     sql: ${TABLE}.PromocionSRCId ;;
-    label: "Promocion SRCID"
+    label: "Promocion Id"
   }
 
   ## Number
-  dimension: orden_precio_accion_sk {
-    type: number
-    sql: ${TABLE}.OrdenPrecioAccionSK ;;
-    label: "Accion SK"
-  }
-
-  dimension: orden_precio_estado_sk {
-    type: number
-    sql: ${TABLE}.OrdenPrecioEstadoSK ;;
-    label: "Estado SK"
-  }
-
-
-  dimension: orden_precio_fuente_sk {
-    type: number
-    sql: ${TABLE}.OrdenPrecioFuenteSK ;;
-    label: "Fuente SK"
-  }
-
   dimension: orden_precio_monto {
     type: number
     sql: ${TABLE}.OrdenPrecioMonto ;;
@@ -437,6 +412,26 @@ view: dm_orden_precio_promocion {
     sql: ${TABLE}.PromocionMarcaActiva ;;
     label: "Promocion Marca Activa"
   }
+
+  ## hidden
+  dimension: orden_precio_accion_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OrdenPrecioAccionSK ;;
+  }
+
+  dimension: orden_precio_estado_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OrdenPrecioEstadoSK ;;
+  }
+
+  dimension: orden_precio_fuente_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OrdenPrecioFuenteSK ;;
+  }
+
 
 ## Measures
 }
