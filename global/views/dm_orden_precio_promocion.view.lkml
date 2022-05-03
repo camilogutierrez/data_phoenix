@@ -312,12 +312,6 @@ view: dm_orden_precio_promocion {
     label: "Accion Nombre"
   }
 
-  dimension: orden_precio_accion_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPrecioAccionSRCId ;;
-    label: "Accion Id"
-  }
-
   dimension: orden_precio_aplicado_a {
     type: string
     sql: ${TABLE}.OrdenPrecioAplicadoA ;;
@@ -337,24 +331,11 @@ view: dm_orden_precio_promocion {
     label: "Estado Nombre"
   }
 
-
-  dimension: orden_precio_estado_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPrecioEstadoSRCId ;;
-    label: "Estado Id"
-  }
-
   dimension: orden_precio_fuente_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioFuenteNombre ;;
     suggest_dimension: lk_orden_precio_fuente.orden_precio_fuente_nombre
     label: "Fuente Nombre"
-  }
-
-  dimension: orden_precio_fuente_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPrecioFuenteSRCId ;;
-    label: "Fuente Id"
   }
 
   dimension: orden_precio_srcid {
@@ -387,12 +368,6 @@ view: dm_orden_precio_promocion {
     label: "Promocion Nombre"
   }
 
-  dimension: promocion_srcid {
-    type: string
-    sql: ${TABLE}.PromocionSRCId ;;
-    label: "Promocion Id"
-  }
-
   ## Number
   dimension: orden_precio_monto {
     type: number
@@ -420,16 +395,46 @@ view: dm_orden_precio_promocion {
     sql: ${TABLE}.OrdenPrecioAccionSK ;;
   }
 
+  dimension: orden_precio_accion_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenPrecioAccionSRCId ;;
+  }
+
   dimension: orden_precio_estado_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenPrecioEstadoSK ;;
   }
 
+  dimension: orden_precio_estado_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenPrecioEstadoSRCId ;;
+  }
+
   dimension: orden_precio_fuente_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenPrecioFuenteSK ;;
+  }
+
+  dimension: orden_precio_fuente_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenPrecioFuenteSRCId ;;
+  }
+
+  dimension: promocion_sk {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.PromocionSK ;;
+  }
+
+  dimension: promocion_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.PromocionSRCId ;;
   }
 
 
