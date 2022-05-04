@@ -1,7 +1,7 @@
 view: dm_orden_precio_promocion {
   sql_table_name: @{gcp_ambiente}.DM_OrdenPrecioPromocion` ;;
   suggestions: no
-
+  label: "Orden Item Precio Promocion"
 
 ## Dimensions
 
@@ -14,27 +14,13 @@ view: dm_orden_precio_promocion {
     sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${orden_item_srcid});;
   }
 
-  ## Date
+  ## Dates
+
   dimension: fecha_entidad {
     type: date
     sql: ${TABLE}.FechaEntidad ;;
     datatype: date
     label: "Fecha Entidad"
-  }
-
-  dimension_group: orden_precio_fecha_creacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.OrdenPrecioFechaCreacion ;;
-    label: "Fecha Creacion"
   }
 
   dimension_group: orden_precio_fecha_creacion_src {
@@ -49,22 +35,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.OrdenPrecioFechaCreacionSRC ;;
-    label: "Fecha Creacion SRC"
-  }
-
-  dimension_group: orden_precio_fecha_desde {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.OrdenPrecioFechaDesde ;;
-    label: "Fecha Desde"
+    label: "Creacion"
   }
 
   dimension_group: orden_precio_fecha_desde_src {
@@ -79,22 +50,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.OrdenPrecioFechaDesdeSRC ;;
-    label: "Fecha Desde SRC"
-  }
-
-  dimension_group: orden_precio_fecha_estimada {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.OrdenPrecioFechaEstimada ;;
-    label: "Fecha Estimada"
+    label: "Desde"
   }
 
   dimension_group: orden_precio_fecha_estimada_src {
@@ -109,37 +65,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.OrdenPrecioFechaEstimadaSRC ;;
-    label: "Fecha Estimada SRC"
-  }
-
-  dimension_group: orden_precio_fecha_modificacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.OrdenPrecioFechaModificacion ;;
-    label: "Fecha Modificacion"
-  }
-
-  dimension_group: orden_precio_fecha_modificacion_sistema {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.OrdenPrecioFechaModificacionSistema ;;
-    label: "Fecha Modificacion Sistema"
+    label: "Estimada"
   }
 
   dimension_group: orden_precio_fecha_modificacion_sistema_src {
@@ -154,7 +80,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.OrdenPrecioFechaModificacionSistemaSRC ;;
-    label: "Fecha Modificacion Sistema SRC"
+    label: "Modificacion Sistema"
   }
 
   dimension_group: orden_precio_fecha_modificacion_src {
@@ -169,22 +95,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.OrdenPrecioFechaModificacionSRC ;;
-    label: "Fecha Modificacion SRC"
-  }
-
-  dimension_group: promocion_fecha_creacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PromocionFechaCreacion ;;
-    label: "Promocion Fecha Creacion"
+    label: "Modificacion"
   }
 
   dimension_group: promocion_fecha_creacion_src {
@@ -199,22 +110,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.PromocionFechaCreacionSRC ;;
-    label: "Promocion Fecha Creacion SRC"
-  }
-
-  dimension_group: promocion_fecha_efectiva_fin {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PromocionFechaEfectivaFin ;;
-    label: "Promocion Fecha Efectiva Fin"
+    label: "Promocion Creacion"
   }
 
   dimension_group: promocion_fecha_efectiva_fin_src {
@@ -229,22 +125,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.PromocionFechaEfectivaFinSRC ;;
-    label: "Promocion Fecha Efectiva Fin SRC"
-  }
-
-  dimension_group: promocion_fecha_efectiva_inicio {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PromocionFechaEfectivaInicio ;;
-    label: "Promocion Fecha Efectiva Inicio"
+    label: "Promocion Efectiva Fin"
   }
 
   dimension_group: promocion_fecha_efectiva_inicio_src {
@@ -259,22 +140,7 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.PromocionFechaEfectivaInicioSRC ;;
-    label: "Promocion Fecha Efectiva Inicio SRC"
-  }
-
-  dimension_group: promocion_fecha_modificacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PromocionFechaModificacion ;;
-    label: "Promocion Fecha Modificacion"
+    label: "Promocion Efectiva Inicio"
   }
 
   dimension_group: promocion_fecha_modificacion_src {
@@ -289,10 +155,11 @@ view: dm_orden_precio_promocion {
       year
     ]
     sql: ${TABLE}.PromocionFechaModificacionSRC ;;
-    label: "Promocion Fecha Modificación SRC"
+    label: "Promocion Modificacion"
   }
 
   ## Strings
+
   dimension: lista_precio_srcid {
     type: string
     sql: ${TABLE}.ListaPrecioSRCId ;;
@@ -368,7 +235,14 @@ view: dm_orden_precio_promocion {
     label: "Promocion Nombre"
   }
 
+  dimension: promocion_srcid {
+    type: string
+    sql: ${TABLE}.PromocionSRCId ;;
+    label: "Promocion Id"
+  }
+
   ## Number
+
   dimension: orden_precio_monto {
     type: number
     sql: ${TABLE}.OrdenPrecioMonto ;;
@@ -381,14 +255,16 @@ view: dm_orden_precio_promocion {
     label: "Valor Ajuste"
   }
 
-  ## Yesno
+  ## Flags
+
   dimension: promocion_marca_activa {
     type: yesno
     sql: ${TABLE}.PromocionMarcaActiva ;;
     label: "Promocion Marca Activa"
   }
 
-  ## hidden
+  ## Hidden
+
   dimension: orden_precio_accion_sk {
     hidden: yes
     type: number
@@ -425,18 +301,6 @@ view: dm_orden_precio_promocion {
     sql: ${TABLE}.OrdenPrecioFuenteSRCId ;;
   }
 
-  dimension: promocion_sk {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.PromocionSK ;;
-  }
-
-  dimension: promocion_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.PromocionSRCId ;;
-  }
-
-
 ## Measures
+
 }
