@@ -1816,6 +1816,62 @@ view: fth_caso {
     label: "Usuario Modificacion"
   }
 
+  ## Hidden
+  dimension: acuerdo_servicio_cant_casos {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioCantCasos ;;
+  }
+
+  dimension: acuerdo_servicio_total_usos_destruccion {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosDestruccion ;;
+  }
+
+  dimension: acuerdo_servicio_total_usos_servicio_tecnico {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosServicioTecnico ;;
+  }
+
+  dimension: acuerdo_servicio_total_usos_siniestro {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosSiniestro ;;
+  }
+
+
+  ## Measures
+
+  measure: total_acuerdo_servicio_cant_casos {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioCantCasos ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Casos"
+  }
+
+  measure: total_acuerdo_servicio_total_usos_destruccion {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosDestruccion ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Usos Destruccion"
+  }
+
+  measure: total_acuerdo_servicio_total_usos_servicio_tecnico {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosServicioTecnico ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Usos Servicio Tecnico"
+  }
+
+  measure: total_acuerdo_servicio_total_usos_siniestro {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosSiniestro ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Usos Siniestro"
+  }
+
 
 #############
 ## Cliente ##
