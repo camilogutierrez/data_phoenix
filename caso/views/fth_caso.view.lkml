@@ -53,6 +53,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaAcuerdoDesdeSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Acuerdo Desde"
   }
 
@@ -70,6 +71,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaAcuerdoHastaSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Acuerdo Hasta"
   }
 
@@ -87,6 +89,7 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaAjusteDesdeSRC ;;
     datatype: date
     convert_tz: no
+    view_label: "Otros"
     label: "Ajuste Desde"
   }
 
@@ -104,6 +107,7 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaAjusteHastaSRC ;;
     datatype: date
     convert_tz: no
+    view_label: "Otros"
     label: "Ajuste Hasta"
   }
 
@@ -121,6 +125,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaCierreEstimadaSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Cierre Estimado"
   }
 
@@ -138,6 +143,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaCierreSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Cierre"
   }
 
@@ -155,6 +161,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaCreacionSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Creacion"
   }
 
@@ -173,6 +180,7 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaFinGarantiaReparacionSRC ;;
     datatype: date
     convert_tz: no
+    view_label: "Otros"
     label: "Fin Garantia Reparacion"
   }
 
@@ -190,6 +198,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaInicioSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Inicio"
   }
 
@@ -207,6 +216,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaModificacionSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Modificacion"
   }
 
@@ -224,6 +234,7 @@ view: fth_caso {
     sql: ${TABLE}.Fechas.CasoFechaPagoSRC ;;
     datatype: date
     convert_tz: no
+    view_label: "Otros"
     label: "Pago"
   }
 
@@ -241,6 +252,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaSolicitudSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Solicitud"
   }
 
@@ -258,6 +270,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaVencimientoSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Vencimiento"
   }
 
@@ -275,6 +288,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaVentanaPortacionSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Ventana Portacion"
   }
 
@@ -292,6 +306,7 @@ view: fth_caso {
     ]
     sql: ${TABLE}.CasoComentarios.CasoComentarioFechaCreacionSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     label: "Creacion Comentario"
   }
 
@@ -299,9 +314,100 @@ view: fth_caso {
     type: date_time
     sql: ${TABLE}.Fechas.CasoFechaModSRC ;;
     datatype: timestamp
+    view_label: "Otros"
     group_label: "Fechas"
     group_item_label: "Mod"
     label: "Fecha Mod"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaCreacionSRC ;;
+    datatype: timestamp
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Creacion"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_desde_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaDesdeSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Desde"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_hasta_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaHastaSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Hasta"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_reinicio_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaReinicioSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Reinicio"
+  }
+
+  dimension_group: acuerdo_servicio_ult_mod_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioUltModSRC ;;
+    datatype: timestamp
+    view_label: "Acuerdo Servicio"
+    label: "Ultima Modificacion"
   }
 
     ## Flags
@@ -309,6 +415,7 @@ view: fth_caso {
   dimension: caso_comprobantes_adjuntos {
     type: yesno
     sql: ${TABLE}.Marcas.CasoComprobantesAdjuntos ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Comprobantes Adjuntos"
     label: "Es Comprobantes Adjuntos"
@@ -317,6 +424,7 @@ view: fth_caso {
   dimension: caso_marca_cambio_garantia {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaCambioGarantia ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Cambio Garantia"
     label: "Es Cambio Garantia"
@@ -325,6 +433,7 @@ view: fth_caso {
   dimension: caso_marca_cambio_placa {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaCambioPlaca ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Cambio Placa"
     label: "Es Cambio Placa"
@@ -341,6 +450,7 @@ view: fth_caso {
   dimension: caso_marca_derivado_reparacion {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaDerivadoReparacion ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Derivado Reparacion"
     label: "Es Derivado Reparacion"
@@ -349,6 +459,7 @@ view: fth_caso {
   dimension: caso_marca_en_garantia {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaEnGarantia ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "En Garantia"
     label: "Es En Garantia"
@@ -357,6 +468,7 @@ view: fth_caso {
   dimension: caso_marca_equipo_reparado {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaEquipoReparado ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Equipo Reparado"
     label: "Es Equipo Reparado"
@@ -365,6 +477,7 @@ view: fth_caso {
   dimension: caso_marca_escalado {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaEscalado ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Escalado"
     label: "Es Escalado"
@@ -373,6 +486,7 @@ view: fth_caso {
   dimension: caso_marca_excepcion {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaExcepcion ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Excepcion"
     label: "Es Excepcion"
@@ -381,6 +495,7 @@ view: fth_caso {
   dimension: caso_marca_garantia_reparacion {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaGarantiaReparacion ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Garantia Reparacion"
     label: "Es Garantia Reparacion"
@@ -389,6 +504,7 @@ view: fth_caso {
   dimension: caso_marca_gestion_muleto {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaGestionMuleto ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Gestion Muleto"
     label: "Es Gestion Muleto"
@@ -397,6 +513,7 @@ view: fth_caso {
   dimension: caso_marca_muleto_completo {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaMuletoCompleto ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Muleto Completo"
     label: "Es Muleto Completo"
@@ -405,6 +522,7 @@ view: fth_caso {
   dimension: caso_marca_nace_cerrado {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaNaceCerrado ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Nace Cerrado"
     label: "Es Nace Cerrado"
@@ -437,6 +555,7 @@ view: fth_caso {
   dimension: caso_marca_re_llamado {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaReLlamado ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Re Llamado"
     label: "Es Re Llamado"
@@ -477,6 +596,7 @@ view: fth_caso {
   dimension: caso_marca_requiere_ticket_icd {
     type: yesno
     sql: ${TABLE}.Marcas.CasoMarcaRequiereTicketICD ;;
+    view_label: "Otros"
     group_label: "Marcas"
     group_item_label: "Requiere Ticket ICD"
     label: "Es Requiere Ticket ICD"
@@ -498,13 +618,21 @@ view: fth_caso {
     label: "Es Nuevo Numero TOIP"
   }
 
+  dimension: acuerdo_servicio_marca_incidente {
+    type: yesno
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioMarcaIncidente ;;
+    view_label: "Acuerdo Servicio"
+    label: "Es Incidente"
+  }
+
     ## Strings
 
   dimension: caso_srcid {
     type: string
     sql: ${TABLE}.CasoSRCId ;;
     value_format_name: id
-    label: "Id"
+    view_label: "Otros"
+    label: "Caso"
   }
 
   dimension: caso_estado_nombre {
@@ -518,6 +646,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.CasoHorasNegocioNombre ;;
     suggest_dimension: lk_caso_horas_negocio.caso_horas_negocio_nombre
+    view_label: "Otros"
     label: "Horas Negocio"
   }
 
@@ -594,13 +723,8 @@ view: fth_caso {
   dimension: caso_motivo_contacto_srcid {
     type: string
     sql: ${TABLE}.CasoMotivoContactoSRCId ;;
+    view_label: "Otros"
     label: "Motivo Contacto"
-  }
-
-  dimension: caso_acuerdo_servicio_srcid {
-    type: string
-    sql: ${TABLE}.CasoAcuerdoServicioSRCId ;;
-    label: "Acuerdo Servicio"
   }
 
   dimension: caso_antigua_direccion_facturacion {
@@ -624,12 +748,14 @@ view: fth_caso {
   dimension: caso_asignacion_atributo_srcid {
     type: string
     sql: ${TABLE}.CasoAsignacionAtributoSRCId ;;
+    view_label: "Otros"
     label: "Asignacion Atributo"
   }
 
-  dimension: caso_asistencia_tecnica_ya_tien {
+  dimension: caso_asistencia_tecnica_ya_tiene {
     type: string
-    sql: ${TABLE}.CasoAsistenciaTecnicaYaTien ;;
+    sql: ${TABLE}.CasoAsistenciaTecnicaYaTiene ;;
+    view_label: "Otros"
     label: "Tiene Asistencia Tecnica"
   }
 
@@ -642,24 +768,28 @@ view: fth_caso {
   dimension: caso_cambio_aplicado {
     type: string
     sql: ${TABLE}.CasoCambioAplicado ;;
+    view_label: "Otros"
     label: "Cambio Aplicado"
   }
 
   dimension: caso_cargos_operacion {
     type: string
     sql: ${TABLE}.CasoCargosOperacion ;;
+    view_label: "Otros"
     label: "Cargos Operacion"
   }
 
   dimension: caso_caso_externo_funcional_srcid {
     type: string
     sql: ${TABLE}.CasoCasoExternoFuncionalSRCId ;;
+    view_label: "Otros"
     label: "Externo Funcional"
   }
 
   dimension: caso_caso_externo_srcid {
     type: string
     sql: ${TABLE}.CasoCasoExternoSRCId ;;
+    view_label: "Otros"
     label: "Externo"
   }
 
@@ -678,6 +808,7 @@ view: fth_caso {
   dimension: caso_cbualias {
     type: string
     sql: ${TABLE}.CasoCBUAlias ;;
+    view_label: "Otros"
     label: "CBU Alias"
   }
 
@@ -685,12 +816,6 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.CasoCiudad ;;
     label: "Ciudad"
-  }
-
-  dimension: caso_cliente_srcid {
-    type: string
-    sql: ${TABLE}.CasoClienteSRCId ;;
-    label: "Cliente"
   }
 
   dimension: caso_cod_servicio {
@@ -702,29 +827,34 @@ view: fth_caso {
   dimension: caso_codigo_error {
     type: string
     sql: ${TABLE}.CasoCodigoError ;;
+    view_label: "Otros"
     label: "Codigo Error"
   }
   dimension: caso_cuenta_destino_srcid {
     type: string
     sql: ${TABLE}.CasoCuentaDestinoSRCId ;;
+    view_label: "Otros"
     label: "Cuenta Destino"
   }
 
   dimension: caso_cuenta_facturacion_srcid {
     type: string
     sql: ${TABLE}.CasoCuentaFacturacionSRCId ;;
+    view_label: "Otros"
     label: "Cuenta Facturacion"
   }
 
   dimension: caso_cuenta_servicio_srcid {
     type: string
     sql: ${TABLE}.CasoCuentaServicioSRCId ;;
+    view_label: "Otros"
     label: "Cuenta Servicio"
   }
 
   dimension: caso_cupon_tarjeta {
     type: string
     sql: ${TABLE}.CasoCuponTarjeta ;;
+    view_label: "Otros"
     label: "Cupon Tarjeta"
   }
 
@@ -737,12 +867,14 @@ view: fth_caso {
   dimension: caso_detalle_problema_muleto {
     type: string
     sql: ${TABLE}.CasoDetalleProblemaMuleto ;;
+    view_label: "Otros"
     label: "Problema Multeo Detalle"
   }
 
   dimension: caso_diagnostico_tecnico {
     type: string
     sql: ${TABLE}.CasoDiagnosticoTecnico ;;
+    view_label: "Otros"
     label: "Diagnostico Tecnico"
   }
 
@@ -755,6 +887,7 @@ view: fth_caso {
   dimension: caso_direccion_siniestro_srcid {
     type: string
     sql: ${TABLE}.CasoDireccionSiniestroSRCId ;;
+    view_label: "Otros"
     label: "Siniestro Direccion"
   }
 
@@ -773,12 +906,14 @@ view: fth_caso {
   dimension: caso_equipo_iniciador {
     type: string
     sql: ${TABLE}.CasoEquipoIniciador ;;
+    view_label: "Otros"
     label: "Equipo Iniciador"
   }
 
   dimension: caso_equipo_propietario_srcid {
     type: string
     sql: ${TABLE}.CasoEquipoPropietarioSRCId ;;
+    view_label: "Otros"
     label: "Equipo Propietario"
   }
 
@@ -797,6 +932,7 @@ view: fth_caso {
   dimension: caso_gama_servicio_tecnico {
     type: string
     sql: ${TABLE}.CasoGamaServicioTecnico ;;
+    view_label: "Otros"
     label: "Gama Servicio Tecnico"
   }
 
@@ -809,12 +945,14 @@ view: fth_caso {
   dimension: caso_gestion_muleto_srcid {
     type: string
     sql: ${TABLE}.CasoGestionMuletoSRCId ;;
+    view_label: "Otros"
     label: "Gestion Muleto"
   }
 
   dimension: caso_gravedad {
     type: string
     sql: ${TABLE}.CasoGravedad ;;
+    view_label: "Otros"
     label: "Gravedad"
   }
 
@@ -827,18 +965,21 @@ view: fth_caso {
   dimension: caso_imeianterior {
     type: string
     sql: ${TABLE}.CasoIMEIAnterior ;;
+    view_label: "Otros"
     label: "IMEI Anterior"
   }
 
   dimension: caso_imeiservicio_tecnico {
     type: string
     sql: ${TABLE}.CasoIMEIServicioTecnico ;;
+    view_label: "Otros"
     label: "IMEI Sericio Tecnico"
   }
 
   dimension: caso_impacto {
     type: string
     sql: ${TABLE}.CasoImpacto ;;
+    view_label: "Otros"
     label: "Impacto"
   }
 
@@ -851,42 +992,35 @@ view: fth_caso {
   dimension: caso_informacion_inventario {
     type: string
     sql: ${TABLE}.CasoInformacionInventario ;;
+    view_label: "Otros"
     label: "Informacion Inventario"
   }
 
   dimension: caso_lista_plazos {
     type: string
     sql: ${TABLE}.CasoListaPlazos ;;
+    view_label: "Otros"
     label: "Lista Plazos"
-  }
-
-  dimension: caso_llamada_padre_picsrcid {
-    type: string
-    sql: ${TABLE}.CasoLlamadaPadrePICSRCId ;;
-    label: "Llamada Padre PIC"
   }
 
   dimension: caso_llamada_padre_srcid {
     type: string
     sql: ${TABLE}.CasoLlamadaPadreSRCId ;;
+    view_label: "Otros"
     label: "Llamada Padre"
-  }
-
-  dimension: caso_llamada_picsrcid {
-    type: string
-    sql: ${TABLE}.CasoLlamadaPICSRCId ;;
-    label: "Llamada PIC"
   }
 
   dimension: caso_llamada_srcid {
     type: string
     sql: ${TABLE}.CasoLlamadaSRCId ;;
+    view_label: "Otros"
     label: "Llamada"
   }
 
   dimension: caso_marca_servicio_tecnico {
     type: string
     sql: ${TABLE}.CasoMarcaServicioTecnico ;;
+    view_label: "Otros"
     label: "Marca Servicio Tecnico"
   }
 
@@ -899,6 +1033,7 @@ view: fth_caso {
   dimension: caso_medio_pago_srcid {
     type: string
     sql: ${TABLE}.CasoMedioPagoSRCId ;;
+    view_label: "Otros"
     label: "Medio Pago Id"
   }
 
@@ -911,18 +1046,21 @@ view: fth_caso {
   dimension: caso_mercado_donante_portacion_srcid {
     type: string
     sql: ${TABLE}.CasoMercadoDonantePortacionSRCId ;;
+    view_label: "Otros"
     label: "Mercado Donante Portacion Id"
   }
 
   dimension: caso_modalidad_recupero {
     type: string
     sql: ${TABLE}.CasoModalidadRecupero ;;
+    view_label: "Otros"
     label: "Modalidad Recupero"
   }
 
   dimension: caso_modelo_servicio_tecnico {
     type: string
     sql: ${TABLE}.CasoModeloServicioTecnico ;;
+    view_label: "Otros"
     label: "Modelo Servicio Tecnico"
   }
 
@@ -953,18 +1091,21 @@ view: fth_caso {
   dimension: caso_nivel_servicio_srcid {
     type: string
     sql: ${TABLE}.CasoNivelServicioSRCId ;;
+    view_label: "Otros"
     label: "Nivel Servicio"
   }
 
   dimension: caso_nrnportacion_srcid {
     type: string
     sql: ${TABLE}.CasoNRNPortacionSRCId ;;
+    view_label: "Otros"
     label: "Numero Portacion"
   }
 
   dimension: caso_nro_tarjeta {
     type: string
     sql: ${TABLE}.CasoNroTarjeta ;;
+    view_label: "Otros"
     label: "Numero Tarjeta"
   }
 
@@ -983,6 +1124,7 @@ view: fth_caso {
   dimension: caso_numero_comprobante {
     type: string
     sql: ${TABLE}.CasoNumeroComprobante ;;
+    view_label: "Otros"
     label: "Numero Comprobante"
   }
 
@@ -995,6 +1137,7 @@ view: fth_caso {
   dimension: caso_numero_factura {
     type: string
     sql: ${TABLE}.CasoNumeroFactura ;;
+    view_label: "Otros"
     label: "Numero Factura"
   }
 
@@ -1007,12 +1150,14 @@ view: fth_caso {
   dimension: caso_numero_lote {
     type: string
     sql: ${TABLE}.CasoNumeroLote ;;
+    view_label: "Otros"
     label: "Numero Lote"
   }
 
   dimension: caso_numero_referente_pago {
     type: string
     sql: ${TABLE}.CasoNumeroReferentePago ;;
+    view_label: "Otros"
     label: "Numero Referente Pago"
   }
 
@@ -1037,6 +1182,7 @@ view: fth_caso {
   dimension: caso_operadora_receptora_srcid {
     type: string
     sql: ${TABLE}.CasoOperadoraReceptoraSRCId ;;
+    view_label: "Otros"
     label: "Operadora Receptora"
   }
 
@@ -1061,12 +1207,14 @@ view: fth_caso {
   dimension: caso_pintarjeta_prepago {
     type: string
     sql: ${TABLE}.CasoPINTarjetaPrepago ;;
+    view_label: "Otros"
     label: "Pin Tarjeta Prepago"
   }
 
   dimension: caso_plazo_vencido_recepcion_factura {
     type: string
     sql: ${TABLE}.CasoPlazoVencidoRecepcionFactura ;;
+    view_label: "Otros"
     label: "Plazo Vencido Recepcion Factura"
   }
 
@@ -1085,12 +1233,14 @@ view: fth_caso {
   dimension: caso_procedimiento {
     type: string
     sql: ${TABLE}.CasoProcedimiento ;;
+    view_label: "Otros"
     label: "Procededimiento"
   }
 
   dimension: caso_producto_adquirido_proteccion_srcid {
     type: string
     sql: ${TABLE}.CasoProductoAdquiridoProteccionSRCId ;;
+    view_label: "Otros"
     label: "Producto Adquierido Proteccion"
   }
 
@@ -1103,6 +1253,7 @@ view: fth_caso {
   dimension: caso_punto_venta_usuario_nombre {
     type: string
     sql: ${TABLE}.CasoPuntoVentaUsuarioNombre ;;
+    view_label: "Otros"
     label: "Punto Venta Usuario"
   }
 
@@ -1115,24 +1266,28 @@ view: fth_caso {
   dimension: caso_resolucion_incidente {
     type: string
     sql: ${TABLE}.CasoResolucionIncidente ;;
+    view_label: "Otros"
     label: "Resolucion Incidente"
   }
 
   dimension: caso_seriales_recupero {
     type: string
     sql: ${TABLE}.CasoSerialesRecupero ;;
+    view_label: "Otros"
     label: "Seriales Recupero"
   }
 
   dimension: caso_servicio_tecnico_sintoma {
     type: string
     sql: ${TABLE}.CasoServicioTecnicoSintoma ;;
+    view_label: "Otros"
     label: "Servicio Tecnico Sintoma"
   }
 
   dimension: caso_sub_area_atencion_nombre {
     type: string
     sql: ${TABLE}.CasoSubAreaAtencionNombre ;;
+    view_label: "Otros"
     label: "Subarea Atencion"
   }
 
@@ -1196,9 +1351,10 @@ view: fth_caso {
     label: "Tipo Documento Portacion"
   }
 
-  dimension: caso_tipo_motivo_contacto_nombre {
+  dimension: caso_tipo_registro {
     type: string
-    sql: ${TABLE}.CasoTipoMotivoContactoNombre ;;
+    sql: ${TABLE}.CasoTipoRegistro ;;
+    view_label: "Otros"
     label: "Tipo Motivo Contacto"
   }
 
@@ -1223,90 +1379,104 @@ view: fth_caso {
   dimension: caso_tipo_proceso {
     type: string
     sql: ${TABLE}.CasoTipoProceso ;;
+    view_label: "Otros"
     label: "Tipo Proceso"
   }
 
   dimension: caso_tipo_recurrencia_srcid {
     type: string
     sql: ${TABLE}.CasoTipoRecurrenciaSRCId ;;
+    view_label: "Otros"
     label: "Tipo Recurrencia"
   }
 
   dimension: caso_tipo_registro_nombre {
     type: string
     sql: ${TABLE}.CasoTipoRegistroNombre ;;
+    view_label: "Otros"
     label: "Tipo Registro"
   }
 
   dimension: caso_tipo_seleccion {
     type: string
     sql: ${TABLE}.CasoTipoSeleccion ;;
+    view_label: "Otros"
     label: "Tipo Seleccion"
   }
 
   dimension: caso_tipo_vencimiento {
     type: string
     sql: ${TABLE}.CasoTipoVencimiento ;;
+    view_label: "Otros"
     label: "Tipo Vencimiento"
   }
 
   dimension: caso_unidad_medida_nombre {
     type: string
     sql: ${TABLE}.CasoUnidadMedidaNombre ;;
+    view_label: "Otros"
     label: "Unidad de Medida"
   }
 
-  dimension: caso_usuario_asignado_srcid {
+  dimension: caso_propietario_srcid {
     type: string
-    sql: ${TABLE}.CasoUsuarioAsignadoSRCId ;;
+    sql: ${TABLE}.CasoPropietarioSRCId ;;
+    view_label: "Otros"
     label: "Usuario Asignado"
   }
 
   dimension: caso_usuario_modificacion_srcid {
     type: string
     sql: ${TABLE}.CasoUsuarioModificacionSRCId ;;
+    view_label: "Otros"
     label: "Usuario Modificacion"
   }
 
   dimension: caso_valores_pago {
     type: string
     sql: ${TABLE}.CasoValoresPago ;;
+    view_label: "Otros"
     label: "Valores Pago"
   }
 
   dimension: grupo_trabajo_srcid {
     type: string
     sql: ${TABLE}.GrupoTrabajoSRCId ;;
+    view_label: "Otros"
     label: "Grupo Trabajo"
   }
 
   dimension: caso_cantidad_ajuste {
     type: string
-    sql: ${TABLE}.Numericos.CasoCantidadAjuste ;;
+    sql: ${TABLE}.CasoCantidadAjuste ;;
     label: "Ajuste Cantidad"
   }
 
   dimension: persona_srcid {
     type: string
     sql: ${TABLE}.PersonaSRCId ;;
+    view_label: "Otros"
     label: "Persona"
   }
 
   dimension: producto_srcid {
     type: string
     sql: ${TABLE}.ProductoSRCId ;;
+    view_label: "Otros"
     label: "Producto"
   }
 
   dimension: usuario_srcid {
     type: string
     sql: ${TABLE}.UsuarioSRCId ;;
+    view_label: "Otros"
     label: "Usuario"
   }
 
   dimension: caso_comentario_srcid {
     type: string
     sql: ${TABLE}.CasoComentarios.CasoComentarioSRCId ;;
+    view_label: "Otros"
     label: "Comentario"
   }
 
@@ -1316,16 +1486,81 @@ view: fth_caso {
     label: "Ultimo Comentario"
   }
 
+  dimension: caso_acuerdo_servicio_srcid {
+    type: string
+    sql: ${TABLE}.CasoAcuerdoServicioSRCId ;;
+    view_label: "Otros"
+    label: "Acuerdo Servicio"
+  }
+
+  dimension: acuerdo_servicio_estado_acuerdo {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioEstadoAcuerdo ;;
+    view_label: "Acuerdo Servicio"
+    label: "Estado"
+  }
+
+  dimension: acuerdo_servicio_nombre {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioNombre ;;
+    view_label: "Acuerdo Servicio"
+    label: "Nombre"
+  }
+
+  dimension: acuerdo_servicio_tipo_acuerdo {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTipoAcuerdo ;;
+    view_label: "Acuerdo Servicio"
+    label: "Tipo"
+  }
+
+  dimension: as_caso_acuerdo_servicio_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.CasoAcuerdoServicioSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Id"
+  }
+
+  dimension: cuenta_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.CuentaSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cuenta"
+  }
+
+  dimension: acuerdo_producto_adquirido_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.ProductoAdquiridoSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Producto Adquirido"
+  }
+
+  dimension: usuario_creacion_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.UsuarioCreacionSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Usuario Creacion"
+  }
+
+  dimension: usuario_modificacion_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.UsuarioModificacionSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Usuario Modificacion"
+  }
+
   ## Numbers
 
   dimension: caso_cantidad_cuotas {
     type: number
     sql: ${TABLE}.CasoCantidadCuotas ;;
+    view_label: "Otros"
   }
 
   dimension: caso_porcentaje_proteccion {
     type: number
     sql: ${TABLE}.CasoPorcentajeProteccion ;;
+    view_label: "Otros"
   }
 
   dimension: caso_numero_documento_portacion {
@@ -1336,6 +1571,7 @@ view: fth_caso {
   dimension: caso_cantidad_casos_afectados {
     type: number
     sql: ${TABLE}.Numericos.CasoCantidadCasosAfectados ;;
+    view_label: "Otros"
   }
 
   dimension: caso_cantidad_lineas_portacion {
@@ -1348,49 +1584,52 @@ view: fth_caso {
     sql: ${TABLE}.Numericos.CasoCantidadReLlamados ;;
   }
 
-  dimension: caso_cantidad_reclamos_generados {
-    type: number
-    sql: ${TABLE}.Numericos.CasoCantidadReclamosGenerados ;;
-  }
-
   dimension: caso_importe_pago_areclamar {
     type: number
     sql: ${TABLE}.Numericos.CasoImportePagoAReclamar ;;
+    view_label: "Otros"
   }
 
   dimension: caso_limite_compra_actual {
     type: number
     sql: ${TABLE}.Numericos.CasoLimiteCompraActual ;;
+    view_label: "Otros"
   }
 
   dimension: caso_limite_compra_aprobado {
     type: number
     sql: ${TABLE}.Numericos.CasoLimiteCompraAprobado ;;
+    view_label: "Otros"
   }
 
   dimension: caso_limite_compra_solicitado {
     type: number
     sql: ${TABLE}.Numericos.CasoLimiteCompraSolicitado ;;
+    view_label: "Otros"
   }
 
   dimension: caso_limite_consumo_actual {
     type: number
     sql: ${TABLE}.Numericos.CasoLimiteConsumoActual ;;
+    view_label: "Otros"
   }
 
   dimension: caso_limite_consumo_aprobado {
     type: number
     sql: ${TABLE}.Numericos.CasoLimiteConsumoAprobado ;;
+    view_label: "Otros"
   }
 
   dimension: caso_limite_consumo_solicitado {
     type: number
     sql: ${TABLE}.Numericos.CasoLimiteConsumoSolicitado ;;
+    view_label: "Otros"
   }
 
   dimension: caso_llamadas_repetidas {
     type: number
     sql: ${TABLE}.Numericos.CasoLlamadasRepetidas ;;
+    view_label: "Otros"
   }
 
   dimension: caso_monto_ajuste {
@@ -1401,6 +1640,7 @@ view: fth_caso {
   dimension: caso_saldo_vencido {
     type: number
     sql: ${TABLE}.Numericos.CasoSaldoVencido ;;
+    view_label: "Otros"
   }
 
     ## Hidden
@@ -1605,8 +1845,8 @@ view: fth_caso {
   dimension: cliente_srcid {
     type: string
     sql: ${TABLE}.Cliente.ClienteSRCId ;;
-    view_label: "Cliente"
-    label: "Id"
+    view_label: "Otros"
+    label: "Cliente"
   }
 
   dimension: cuenta_cliente_srcid {
@@ -1640,8 +1880,8 @@ view: fth_caso {
   dimension: persona_tipo_documento_srcid {
     type: string
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoSRCId ;;
-    view_label: "Cliente"
-    label: "Documento Tipo"
+    view_label: "Otros"
+    label: "Cliente Documento Tipo"
   }
 
     ## Hidden
@@ -1692,16 +1932,16 @@ view: fth_caso {
     type: date_time
     sql: ${TABLE}.Orden.OrdenFechaActivacionSRC ;;
     datatype: timestamp
-    view_label: "Orden"
-    label: "Fecha Activacion"
+    view_label: "Otros"
+    label: "Orden Fecha Activacion"
   }
 
   dimension: orden_fecha_creacion_src {
     type: date_time
     sql: ${TABLE}.Orden.OrdenFechaCreacionSRC ;;
     datatype: timestamp
-    view_label: "Orden"
-    label: "Fecha Creacion"
+    view_label: "Otros"
+    label: "Orden Fecha Creacion"
   }
 
     ## Strings
@@ -1742,8 +1982,8 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Orden.OrdenServicioEntregaNombre ;;
     suggest_dimension: lk_orden_servicio_entrega.orden_servicio_entrega_nombre
-    view_label: "Orden"
-    label: "Servicio Entrega"
+    view_label: "Otros"
+    label: "Orden Servicio Entrega"
   }
 
   dimension: orden_canal_origen_nombre {
@@ -1796,15 +2036,15 @@ view: fth_caso {
   dimension: orden_numero_pre_factura {
     type: string
     sql: ${TABLE}.Orden.OrdenNumeroPreFactura ;;
-    view_label: "Orden"
-    label: "Numero Prefactura"
+    view_label: "Otros"
+    label: "Orden Numero Prefactura"
   }
 
   dimension: orden_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenSRCId ;;
-    view_label: "Orden"
-    label: "Id"
+    view_label: "Otros"
+    label: "Orden Id"
   }
 
     ## Hidden
@@ -1939,16 +2179,16 @@ view: fth_caso {
     type: date_time
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaActivacionSRC ;;
     datatype: timestamp
-    view_label: "Producto Adquirido"
-    label: "Fecha Activacion"
+    view_label: "Otros"
+    label: "Producto Adquirido Fecha Activacion"
   }
 
   dimension: producto_adquirido_fecha_baja_src {
     type: date_time
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaBajaSRC ;;
     datatype: timestamp
-    view_label: "Producto Adquirido"
-    label: "Fecha Baja"
+    view_label: "Otros"
+    label: "Producto Adquirido Fecha Baja"
   }
 
   dimension: producto_adquirido_fecha_compra_src {
@@ -1956,8 +2196,8 @@ view: fth_caso {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaCompraSRC ;;
-    view_label: "Producto Adquirido"
-    label: "Fecha Compra"
+    view_label: "Otros"
+    label: "Producto Adquirido Fecha Compra"
   }
 
     ## Strings
@@ -2003,8 +2243,8 @@ view: fth_caso {
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
-    view_label: "Producto Adquirido"
-    label: "Nombre"
+    view_label: "Otros"
+    label: "Producto Adquirido"
   }
 
     ## Hidden
@@ -2051,95 +2291,89 @@ view: fth_caso {
 
     ## Strings
 
-  dimension: empresa_alta_modif {
+  dimension: usuario_empresa_modificacion {
     type: string
-    sql: ${TABLE}.Usuario.EMPRESA_ALTA_MODIF ;;
-    view_label: "Usuario"
-    label: "Empresa Alta Modificacion"
+    sql: ${TABLE}.Usuario.UsuarioEmpresaModificacion ;;
+    view_label: "Otros"
+    label: "Usuario Empresa Alta Modificacion"
   }
 
-  dimension: empresa_asig {
+  dimension: usuario_empresa_propietario {
     type: string
-    sql: ${TABLE}.Usuario.EMPRESA_ASIG ;;
-    view_label: "Usuario"
-    label: "Empresa Asignacion"
+    sql: ${TABLE}.Usuario.UsuarioEmpresaPropietario ;;
+    view_label: "Otros"
+    label: "Usuario Empresa Asignacion"
   }
 
-  dimension: equipo_iniciador {
+  dimension: usuario_equipo_iniciador {
     type: string
-    sql: ${TABLE}.Usuario.EquipoIniciador ;;
-    view_label: "Usuario"
-    label: "Equipo Iniciador"
+    sql: ${TABLE}.Usuario.UsuarioEquipoIniciador ;;
+    view_label: "Otros"
+    label: "Usuario Equipo Iniciador"
   }
 
-  dimension: equipo_propietario {
+  dimension: usuario_equipo_propietario {
     type: string
-    sql: ${TABLE}.Usuario.EquipoPropietario ;;
+    sql: ${TABLE}.Usuario.UsuarioEquipoPropietario ;;
     view_label: "Usuario"
     label: "Equipo Propietario"
   }
 
-  dimension: grupo_trabajo_alta {
+  dimension: usuario_grupo_trabajo_modificacion {
     type: string
-    sql: ${TABLE}.Usuario.GrupoTrabajo_Alta ;;
-    view_label: "Usuario"
-    label: "Grupo de Trabajo Alta"
-  }
-
-  dimension: grupo_trabajo_modif {
-    type: string
-    sql: ${TABLE}.Usuario.GrupoTrabajo_Modif ;;
-    view_label: "Usuario"
+    sql: ${TABLE}.Usuario.UsuarioGrupoTrabajoModificacion ;;
+    view_label: "Otros"
+    group_item_label: "Usuario Grupo de Trabajo Modificacion"
     label: "Grupo de Trabajo Modificacion"
   }
 
   dimension: usuario_alias_alta {
     type: string
-    sql: ${TABLE}.Usuario.UsuarioAlias_ALTA ;;
-    view_label: "Usuario"
-    label: "Alias Alta"
+    sql: ${TABLE}.Usuario.UsuarioAliasAlta ;;
+    view_label: "Otros"
+    label: "Usuario Alias Alta"
   }
 
-  dimension: usuario_alias_asig {
+  dimension: usuario_alias_propietario {
     type: string
-    sql: ${TABLE}.Usuario.UsuarioAlias_ASIG ;;
-    view_label: "Usuario"
-    label: "Alias Asignacion"
+    sql: ${TABLE}.Usuario.UsuarioAliasPropietario ;;
+    view_label: "Otros"
+    label: "Usuario Alias Asignacion"
   }
 
-  dimension: usuario_alias_modif {
+  dimension: usuario_alias_modificacion {
     type: string
-    sql: ${TABLE}.Usuario.UsuarioAlias_MODIF ;;
-    view_label: "Usuario"
-    label: "Alias Modificacion"
+    sql: ${TABLE}.Usuario.UsuarioAliasModificacion ;;
+    view_label: "Otros"
+    label: "Usuario Alias Modificacion"
   }
 
   dimension: usuario_legajo_alta {
     type: string
-    sql: ${TABLE}.Usuario.UsuarioLegajo_ALTA ;;
-    view_label: "Usuario"
-    label: "Legajo Alta"
+    sql: ${TABLE}.Usuario.UsuarioLegajoAlta ;;
+    view_label: "Otros"
+    label: "Usuario Legajo Alta"
   }
 
-  dimension: usuario_legajo_asig {
+  dimension: usuario_legajo_propietario {
     type: string
-    sql: ${TABLE}.Usuario.UsuarioLegajo_ASIG ;;
+    sql: ${TABLE}.Usuario.UsuarioLegajoPropietario ;;
     view_label: "Usuario"
     label: "Legajo Asignacion"
   }
 
-  dimension: usuario_legajo_modif {
+  dimension: usuario_legajo_modificacion {
     type: string
-    sql: ${TABLE}.Usuario.UsuarioLegajo_MODIF ;;
-    view_label: "Usuario"
-    label: "Legajo Modificacion"
+    sql: ${TABLE}.Usuario.UsuarioLegajoModificacion ;;
+    view_label: "Otros"
+    label: "Usuario Legajo Modificacion"
   }
 
-  dimension: usuarioempresa_alta {
+  dimension: usuario_empresa_alta {
     type: string
-    sql: ${TABLE}.Usuario.USUARIOEMPRESA_ALTA ;;
-    view_label: "Usuario"
-    label: "Empresa Alta"
+    sql: ${TABLE}.Usuario.UsuarioEmpresaAlta ;;
+    view_label: "Otros"
+    label: "Usuario Empresa Alta"
   }
 
 ##############
@@ -2272,6 +2506,9 @@ view: fth_caso {
     description: "Clientes retenidos sin oferta."
     filters: [es_fidelizacion: "Yes"]
   }
+
+
+
 }
 
 #################################
@@ -2291,7 +2528,8 @@ view: fth_caso_caso_hito {
     type: string
     sql: ${TABLE}.CasoHitoSRCId ;;
     value_format_name: id
-    label: "Id"
+    view_label: "Otros"
+    label: "Caso Hito Id"
   }
 
     ## Dates
@@ -2300,28 +2538,32 @@ view: fth_caso_caso_hito {
     type: date_time
     sql: ${TABLE}.CasoHitoFechaCreacionSRC ;;
     datatype: timestamp
-    label: "Fecha Creacion"
+    view_label: "Otros"
+    label: "Caso Hito Fecha Creacion"
   }
 
   dimension: caso_hito_fecha_cumplido_src {
     type: date_time
     sql: ${TABLE}.CasoHitoFechaCumplidoSRC ;;
     datatype: timestamp
-    label: "Fecha Cumplido"
+    view_label: "Otros"
+    label: "Caso Hito Fecha Cumplido"
   }
 
   dimension: caso_hito_fecha_mod_src {
     type: date_time
     sql: ${TABLE}.CasoHitoFechaModSRC ;;
     datatype: timestamp
-    label: "Fecha Modificacion"
+    view_label: "Otros"
+    label: "Caso Hito Fecha Modificacion"
   }
 
   dimension: caso_hito_fecha_objetivo_src {
     type: date_time
     sql: ${TABLE}.CasoHitoFechaObjetivoSRC ;;
     datatype: timestamp
-    label: "Fecha Objetivo"
+    view_label: "Otros"
+    label: "Caso Hito Fecha Objetivo"
   }
 
     ## Strings
@@ -2329,13 +2571,15 @@ view: fth_caso_caso_hito {
   dimension: caso_hito_tiempo_excedido_minutos {
     type: string
     sql: ${TABLE}.CasoHitoTiempoExcedidoMinutos ;;
-    label: "Tiempo Exedido Minutos"
+    view_label: "Otros"
+    label: "Caso Hito Tiempo Exedido Minutos"
   }
 
   dimension: caso_hito_tiempo_restante_minutos {
     type: string
     sql: ${TABLE}.CasoHitoTiempoRestanteMinutos ;;
-    label: "Tiempo Restante Minutos"
+    view_label: "Otros"
+    label: "Caso Hito Tiempo Restante Minutos"
   }
 
     ## Flags
@@ -2351,36 +2595,43 @@ view: fth_caso_caso_hito {
   dimension: origen_srcid {
     type: number
     sql: ${TABLE}.OrigenSRCId ;;
+    view_label: "Otros"
   }
 
   dimension: caso_hito_tiempo_objetivo_dias {
     type: number
     sql: ${TABLE}.CasoHitoTiempoObjetivoDias ;;
+    view_label: "Otros"
   }
 
   dimension: caso_hito_tiempo_objetivo_horas {
     type: number
     sql: ${TABLE}.CasoHitoTiempoObjetivoHoras ;;
+    view_label: "Otros"
   }
 
   dimension: caso_hito_tiempo_objetivo_minutos {
     type: number
     sql: ${TABLE}.CasoHitoTiempoObjetivoMinutos ;;
+    view_label: "Otros"
   }
 
   dimension: caso_hito_tiempo_transcurrido_dias {
     type: number
     sql: ${TABLE}.CasoHitoTiempoTranscurridoDias ;;
+    view_label: "Otros"
   }
 
   dimension: caso_hito_tiempo_transcurrido_horas {
     type: number
     sql: ${TABLE}.CasoHitoTiempoTranscurridoHoras ;;
+    view_label: "Otros"
   }
 
   dimension: caso_hito_tiempo_transcurrido_minutos {
     type: number
     sql: ${TABLE}.CasoHitoTiempoTranscurridoMinutos ;;
+    view_label: "Otros"
   }
 }
 

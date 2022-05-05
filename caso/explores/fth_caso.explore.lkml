@@ -14,13 +14,13 @@ explore: fth_caso {
 
   join: fth_caso_caso_hito {
     view_label: "Hitos"
-    sql: LEFT JOIN UNNEST(${fth_caso.caso_hito}) as fth_caso_caso_hito_view ;;
+    sql: LEFT JOIN UNNEST(${fth_caso.caso_hito});;
     relationship: one_to_many
   }
 
   join: fth_caso_comentarios {
     view_label: "Comentarios"
-    sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso_comentarios_view ;;
+    sql: LEFT JOIN UNNEST(${fth_caso.comentarios});;
     relationship: one_to_many
   }
 
