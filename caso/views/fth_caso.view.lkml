@@ -320,96 +320,6 @@ view: fth_caso {
     label: "Fecha Mod"
   }
 
-  dimension_group: acuerdo_servicio_fecha_creacion_src {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaCreacionSRC ;;
-    datatype: timestamp
-    view_label: "Acuerdo Servicio"
-    label: "Fecha Creacion"
-  }
-
-  dimension_group: acuerdo_servicio_fecha_desde_src {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaDesdeSRC ;;
-    datatype: date
-    convert_tz: no
-    view_label: "Acuerdo Servicio"
-    label: "Fecha Desde"
-  }
-
-  dimension_group: acuerdo_servicio_fecha_hasta_src {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaHastaSRC ;;
-    datatype: date
-    convert_tz: no
-    view_label: "Acuerdo Servicio"
-    label: "Fecha Hasta"
-  }
-
-  dimension_group: acuerdo_servicio_fecha_reinicio_src {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaReinicioSRC ;;
-    datatype: date
-    convert_tz: no
-    view_label: "Acuerdo Servicio"
-    label: "Fecha Reinicio"
-  }
-
-  dimension_group: acuerdo_servicio_ult_mod_src {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioUltModSRC ;;
-    datatype: timestamp
-    view_label: "Acuerdo Servicio"
-    label: "Ultima Modificacion"
-  }
-
     ## Flags
 
   dimension: caso_comprobantes_adjuntos {
@@ -618,12 +528,6 @@ view: fth_caso {
     label: "Es Nuevo Numero TOIP"
   }
 
-  dimension: acuerdo_servicio_marca_incidente {
-    type: yesno
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioMarcaIncidente ;;
-    view_label: "Acuerdo Servicio"
-    label: "Es Incidente"
-  }
 
     ## Strings
 
@@ -1493,62 +1397,6 @@ view: fth_caso {
     label: "Acuerdo Servicio"
   }
 
-  dimension: acuerdo_servicio_estado_acuerdo {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioEstadoAcuerdo ;;
-    view_label: "Acuerdo Servicio"
-    label: "Estado"
-  }
-
-  dimension: acuerdo_servicio_nombre {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioNombre ;;
-    view_label: "Acuerdo Servicio"
-    label: "Nombre"
-  }
-
-  dimension: acuerdo_servicio_tipo_acuerdo {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTipoAcuerdo ;;
-    view_label: "Acuerdo Servicio"
-    label: "Tipo"
-  }
-
-  dimension: as_caso_acuerdo_servicio_srcid {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.CasoAcuerdoServicioSRCId ;;
-    view_label: "Acuerdo Servicio"
-    label: "Id"
-  }
-
-  dimension: cuenta_srcid {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.CuentaSRCId ;;
-    view_label: "Acuerdo Servicio"
-    label: "Cuenta"
-  }
-
-  dimension: acuerdo_producto_adquirido_srcid {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.ProductoAdquiridoSRCId ;;
-    view_label: "Acuerdo Servicio"
-    label: "Producto Adquirido"
-  }
-
-  dimension: usuario_creacion_srcid {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.UsuarioCreacionSRCId ;;
-    view_label: "Acuerdo Servicio"
-    label: "Usuario Creacion"
-  }
-
-  dimension: usuario_modificacion_srcid {
-    type: string
-    sql: ${TABLE}.AcuerdoServicio.UsuarioModificacionSRCId ;;
-    view_label: "Acuerdo Servicio"
-    label: "Usuario Modificacion"
-  }
-
   ## Numbers
 
   dimension: caso_cantidad_cuotas {
@@ -1804,6 +1652,170 @@ view: fth_caso {
     type: yesno
     sql: ${caso_tipo_nombre} = "FIDELIZACION" OR (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
   }
+
+#########################
+## Acuerdo de Servicio ##
+#########################
+
+    ## Dates
+
+  dimension_group: acuerdo_servicio_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaCreacionSRC ;;
+    datatype: timestamp
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Creacion"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_desde_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaDesdeSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Desde"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_hasta_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaHastaSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Hasta"
+  }
+
+  dimension_group: acuerdo_servicio_fecha_reinicio_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioFechaReinicioSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Acuerdo Servicio"
+    label: "Fecha Reinicio"
+  }
+
+  dimension_group: acuerdo_servicio_ult_mod_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioUltModSRC ;;
+    datatype: timestamp
+    view_label: "Acuerdo Servicio"
+    label: "Ultima Modificacion"
+  }
+
+    ## Flags
+
+  dimension: acuerdo_servicio_marca_incidente {
+    type: yesno
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioMarcaIncidente ;;
+    view_label: "Acuerdo Servicio"
+    label: "Es Incidente"
+  }
+
+    ## Srings
+
+  dimension: acuerdo_servicio_estado_acuerdo {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioEstadoAcuerdo ;;
+    view_label: "Acuerdo Servicio"
+    label: "Estado"
+  }
+
+  dimension: acuerdo_servicio_nombre {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioNombre ;;
+    view_label: "Acuerdo Servicio"
+    label: "Nombre"
+  }
+
+  dimension: acuerdo_servicio_tipo_acuerdo {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTipoAcuerdo ;;
+    view_label: "Acuerdo Servicio"
+    label: "Tipo"
+  }
+
+  dimension: as_caso_acuerdo_servicio_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.CasoAcuerdoServicioSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Id"
+  }
+
+  dimension: cuenta_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.CuentaSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cuenta"
+  }
+
+  dimension: acuerdo_producto_adquirido_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.ProductoAdquiridoSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Producto Adquirido"
+  }
+
+  dimension: usuario_creacion_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.UsuarioCreacionSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Usuario Creacion"
+  }
+
+  dimension: usuario_modificacion_srcid {
+    type: string
+    sql: ${TABLE}.AcuerdoServicio.UsuarioModificacionSRCId ;;
+    view_label: "Acuerdo Servicio"
+    label: "Usuario Modificacion"
+  }
+
 
 #############
 ## Cliente ##
@@ -2168,6 +2180,336 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Orden.OrdenTipoCambioPlanSRCId ;;
   }
+
+
+##############
+## Producto ##
+##############
+
+  ## Dates
+
+  dimension_group: producto_vigencia_desde_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Producto.ProductoVigenciaDesdeSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Producto"
+    label: "Vigencia Desde"
+  }
+
+  dimension_group: producto_vigencia_hasta_src {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Producto.ProductoVigenciaHastaSRC ;;
+    datatype: date
+    convert_tz: no
+    view_label: "Producto"
+    label: "Vigencia Hasta"
+  }
+
+  dimension_group: producto_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Producto.ProductoFechaCreacionSRC ;;
+    datatype: timestamp
+    view_label: "Producto"
+    label: "Fecha Creacion"
+  }
+
+  dimension_group: producto_fecha_modificacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Producto.ProductoFechaModificacionSRC ;;
+    datatype: timestamp
+    view_label: "Producto"
+    label: "Fecha Modificacion"
+  }
+
+  ## Flags
+
+  dimension: producto_marca_activo {
+    type: yesno
+    sql: ${TABLE}.Producto.ProductoMarcaActivo ;;
+    view_label: "Producto"
+    group_label: "Marca"
+    group_item_label: "Activo"
+    label: "Es Activo"
+  }
+
+  dimension: producto_marca_orderable {
+    type: yesno
+    sql: ${TABLE}.Producto.ProductoMarcaOrderable ;;
+    view_label: "Producto"
+    group_label: "Marca"
+    group_item_label: "Ordenable"
+    label: "Es Ordenable"
+  }
+
+  dimension: producto_marca_no_assetizable {
+    type: yesno
+    sql: ${TABLE}.Producto.ProductoMarcaNoAssetizable ;;
+    view_label: "Producto"
+    group_label: "Marca"
+    group_item_label: "No Assetizable"
+    label: "No es Assetizable"
+  }
+
+  dimension: producto_marca_configurable {
+    type: yesno
+    sql: ${TABLE}.Producto.ProductoMarcaConfigurable ;;
+    view_label: "Producto"
+    group_label: "Marca"
+    group_item_label: "Configurable"
+    label: "Es Configurable"
+  }
+
+  dimension: producto_marca_tangible {
+    type: yesno
+    sql: ${TABLE}.Producto.ProductoMarcaTangible ;;
+    view_label: "Producto"
+    group_label: "Marca"
+    group_item_label: "Tangible"
+    label: "Es Tangible"
+  }
+
+  dimension: producto_marca_principal {
+    type: yesno
+    sql: ${TABLE}.Producto.ProductoMarcaPrincipal ;;
+    view_label: "Producto"
+    group_label: "Marca"
+    group_item_label: "Principal"
+    label: "Es Principal"
+  }
+
+  ## Srings
+
+  dimension: producto_familia_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoFamiliaSRCId ;;
+    view_label: "Producto"
+    label: "Familia Id"
+  }
+
+  dimension: producto_familia_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoFamiliaNombre ;;
+    view_label: "Producto"
+    label: "Familia"
+  }
+
+  dimension: producto_estado_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoEstadoSRCId ;;
+    view_label: "Producto"
+    label: "Estado Id"
+  }
+
+  dimension: producto_estado_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoEstadoNombre ;;
+    view_label: "Producto"
+    label: "Estado"
+  }
+
+  dimension: producto_tipo_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoTipoSRCId ;;
+    view_label: "Producto"
+    label: "Tipo Id"
+  }
+
+  dimension: producto_tipo_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoTipoNombre ;;
+    view_label: "Producto"
+    label: "Tipo"
+  }
+
+  dimension: producto_subtipo_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSubTipoSRCId ;;
+    view_label: "Producto"
+    label: "Subtipo Id"
+  }
+
+  dimension: producto_subtipo_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSubTipoNombre ;;
+    view_label: "Producto"
+    label: "Subtipo"
+  }
+
+  dimension: producto_mercado_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoMercadoSRCId ;;
+    view_label: "Producto"
+    label: "Mercado Id"
+  }
+
+  dimension: producto_mercado_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoMercadoNombre ;;
+    view_label: "Producto"
+    label: "Mercado"
+  }
+
+  dimension: producto_codigo {
+    type: string
+    sql: ${TABLE}.Producto.ProductoCodigo ;;
+    view_label: "Producto"
+    label: "Codigo"
+  }
+
+  dimension: producto_sistema_origen_codigo {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSistemaOrigenCodigo ;;
+    view_label: "Producto"
+    label: "Sistema Origen Codigo"
+  }
+
+  dimension: producto_descripcion {
+    type: string
+    sql: ${TABLE}.Producto.ProductoDescripcion ;;
+    view_label: "Producto"
+    label: "Descripcion"
+  }
+
+  dimension: producto_nmu {
+    type: string
+    sql: ${TABLE}.Producto.ProductoNmu ;;
+    view_label: "Producto"
+    label: "Nmu"
+  }
+
+  dimension: producto_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoNombre ;;
+    view_label: "Producto"
+    label: "Nombre"
+  }
+
+  dimension: producto_sistema_origen_intid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSistemaOrigenINTId ;;
+    view_label: "Producto"
+    label: "Sistema Origen Id"
+  }
+
+  dimension: producto_sistema_origen_descripcion {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSistemaOrigenDescripcion ;;
+    view_label: "Producto"
+    label: "Sistema Origen Descripcion"
+  }
+
+  dimension: producto_segmento_nombre {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSegmentoNombre ;;
+    view_label: "Producto"
+    label: "Segmento"
+  }
+
+  dimension: producto_tipo_especificacion {
+    type: string
+    sql: ${TABLE}.Producto.ProductoTipoEspecificacion ;;
+    view_label: "Producto"
+    label: "Tipo Especificacion"
+  }
+
+  dimension: p_producto_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSRCId ;;
+    view_label: "Producto"
+    label: "Id"
+  }
+
+  dimension: producto_tipo_objeto_descripcion {
+    type: string
+    sql: ${TABLE}.Producto.ProductoTipoObjetoDescripcion ;;
+    view_label: "Producto"
+    label: "Tipo Objeto"
+  }
+
+  dimension: producto_segmento_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSegmentoSRCId ;;
+    view_label: "Producto"
+    label: "Segmento Id"
+  }
+
+  ## Hidden
+
+  dimension: producto_familia_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Producto.ProductoFamiliaSK ;;
+  }
+
+  dimension: producto_estado_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Producto.ProductoEstadoSK ;;
+  }
+
+  dimension: producto_tipo_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Producto.ProductoTipoSK ;;
+  }
+
+  dimension: producto_subtipo_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Producto.ProductoSubTipoSK ;;
+  }
+
+  dimension: producto_mercado_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Producto.ProductoMercadoSK ;;
+  }
+
+  dimension: producto_segmento_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Producto.ProductoSegmentoSK ;;
+  }
+
 
 ########################
 ## Producto Adquirido ##
