@@ -1,5 +1,5 @@
 view: aleph {
-  sql_table_name: @{gcp_dataset_alp}.ALEPH` ;;
+  sql_table_name: @{gcp_ambiente_alp}.ALEPH` ;;
   label: "ALEPH"
 
   ## PrimaryKey

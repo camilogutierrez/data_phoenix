@@ -1,5 +1,5 @@
 view: lk_persona_tipo_documento {
-  sql_table_name: @{gcp_dataset_pub}.LK_PersonaTipoDocumento` ;;
+  sql_table_name: @{gcp_ambiente}.LK_PersonaTipoDocumento` ;;
   fields_hidden_by_default: yes
 
   dimension: persona_tipo_documento_sk {

@@ -1,5 +1,5 @@
 view: lk_nomina_estado {
-  sql_table_name: @{gcp_dataset_pub}.LK_NominaEstado` ;;
+  sql_table_name: @{gcp_ambiente}.LK_NominaEstado` ;;
   fields_hidden_by_default: yes
 
   dimension: nomina_estado_sk {

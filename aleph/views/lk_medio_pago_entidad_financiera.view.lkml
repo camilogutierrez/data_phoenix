@@ -1,5 +1,5 @@
 view: lk_medio_pago_entidad_financiera {
-  sql_table_name: @{gcp_dataset_pub}.LK_MedioPagoEntidadFinanciera` ;;
+  sql_table_name: @{gcp_ambiente}.LK_MedioPagoEntidadFinanciera` ;;
   fields_hidden_by_default: yes
 
   dimension: medio_pago_entidad_financiera_sk {

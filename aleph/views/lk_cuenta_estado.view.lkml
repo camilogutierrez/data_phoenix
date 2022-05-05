@@ -1,5 +1,5 @@
 view: lk_cuenta_estado {
-  sql_table_name: @{gcp_dataset_pub}.LK_CuentaEstado` ;;
+  sql_table_name: @{gcp_ambiente}.LK_CuentaEstado` ;;
   fields_hidden_by_default: yes
 
   dimension: cuenta_estado_sk {

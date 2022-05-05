@@ -1,5 +1,5 @@
 view: lk_caso_prioridad {
-  sql_table_name: @{gcp_dataset_pub}.LK_CasoPrioridad` ;;
+  sql_table_name: @{gcp_ambiente}.LK_CasoPrioridad` ;;
   fields_hidden_by_default: yes
 
   dimension: caso_prioridad_sk {

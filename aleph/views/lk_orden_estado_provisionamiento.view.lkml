@@ -1,5 +1,5 @@
 view: lk_orden_estado_provisionamiento {
-  sql_table_name: @{gcp_dataset_pub}.LK_OrdenEstadoProvisionamiento` ;;
+  sql_table_name: @{gcp_ambiente}.LK_OrdenEstadoProvisionamiento` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_estado_provisionamiento_sk {

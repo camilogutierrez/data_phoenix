@@ -1,9 +1,10 @@
 include: "/orden/views/fth_orden.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
-include: "/global/views/dm_cuenta_cliente.view.lkml"
 include: "/global/views/dm_nomina_d.view.lkml"
 include: "/global/views/dm_nomina_m.view.lkml"
+
+#include: "/orden/views/dm_orden_precio_promocion.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
@@ -258,6 +259,7 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_d.nomina_d_usuario_teco} ;;
     type: left_outer
+    sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
   }
 
   join: dm_nomina_m {
@@ -265,5 +267,31 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_m.nomina_m_usuario_teco} ;;
     type: left_outer
+    sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
   }
+
+  # join: dm_orden_precio_promocion {
+  #   view_label: "Precio Promocion"
+  #   relationship: one_to_many
+  #   sql_on: ${dm_orden_precio_promocion.pk} = ${fth_orden.pk}  ;;
+  #   type: left_outer
+  # }
+
+  # join: lk_orden_precio_accion {
+  #   relationship: many_to_one
+  #   sql_on: ${dm_orden_precio_promocion.orden_precio_accion_sk} = ${lk_orden_precio_accion.orden_precio_accion_sk} ;;
+  #   type: inner
+  # }
+
+  # join: lk_orden_precio_fuente {
+  #   relationship: many_to_one
+  #   sql_on: ${dm_orden_precio_promocion.orden_precio_fuente_sk} = ${lk_orden_precio_fuente.orden_precio_fuente_sk} ;;
+  #   type: inner
+  # }
+
+  # join: lk_orden_precio_estado {
+  #   relationship: many_to_one
+  #   sql_on: ${dm_orden_precio_promocion.orden_precio_estado_sk} = ${lk_orden_precio_estado.orden_precio_estado_sk} ;;
+  #   type: inner
+  # }
 }

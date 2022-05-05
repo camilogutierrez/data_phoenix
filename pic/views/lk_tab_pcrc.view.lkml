@@ -1,5 +1,5 @@
 view: lk_tab_pcrc {
-  sql_table_name: @{gcp_dataset_pub}.LK_TabPCRC`;;
+  sql_table_name: @{gcp_ambiente}.LK_TabPCRC`;;
   fields_hidden_by_default: yes
 
   dimension: tab_pcrcsrcid {

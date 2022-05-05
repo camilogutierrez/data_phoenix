@@ -1,5 +1,5 @@
 view: ft_factura_detalle {
-  sql_table_name: @{gcp_dataset_pub}.FT_FacturaDetalle` ;;
+  sql_table_name: @{gcp_ambiente}.FT_FacturaDetalle` ;;
   suggestions: no
   label: "Factura Detalle"
 

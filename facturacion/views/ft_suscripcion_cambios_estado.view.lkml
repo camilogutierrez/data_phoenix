@@ -1,5 +1,5 @@
 view: ft_suscripcion_cambios_estado {
-  sql_table_name: @{gcp_dataset_pub}.FT_SuscripcionCambiosEstado` ;;
+  sql_table_name: @{gcp_ambiente}.FT_SuscripcionCambiosEstado` ;;
   suggestions: no
   label: "Suscripcion Cambios Estado"
 

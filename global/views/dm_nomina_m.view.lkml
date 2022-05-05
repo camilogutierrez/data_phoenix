@@ -1,5 +1,5 @@
 view: dm_nomina_m {
-  sql_table_name: @{gcp_dataset_pub}.DM_NominaM` ;;
+  sql_table_name: @{gcp_ambiente}.DM_NominaM` ;;
   suggestions: no
   label: "Nomina Cierre"
 
@@ -7,7 +7,12 @@ view: dm_nomina_m {
 
     ## Primary Key
 
-      ## PENDIENTE DEFINICON
+  dimension: pk {
+    hidden: yes
+    primary_key: yes
+    type: string
+    sql: ${nomina_m_usuario_teco} ;;
+  }
 
     ## Dates
 
@@ -558,8 +563,4 @@ view: dm_nomina_m {
 
   ## Measures
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

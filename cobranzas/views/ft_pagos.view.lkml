@@ -1,5 +1,5 @@
 view: ft_pagos {
-  sql_table_name:  @{gcp_dataset_pub}.FT_Pagos`;;
+  sql_table_name: @{gcp_ambiente}.FT_Pagos`;;
   suggestions: no
   label: "Pagos"
 

@@ -1,5 +1,5 @@
 view: ft_plan_financiacion {
-  sql_table_name: @{gcp_dataset_pub}.FT_PlanFinanciacion`;;
+  sql_table_name: @{gcp_ambiente}.FT_PlanFinanciacion`;;
   suggestions: no
   label: "Plan Financiación"
 

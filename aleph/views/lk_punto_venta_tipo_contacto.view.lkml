@@ -1,5 +1,5 @@
 view: lk_punto_venta_tipo_contacto {
-  sql_table_name: @{gcp_dataset_pub}.LK_PuntoVentaTipoContacto`  ;;
+  sql_table_name: @{gcp_ambiente}.LK_PuntoVentaTipoContacto`  ;;
   fields_hidden_by_default: yes
 
   dimension: punto_venta_tipo_contacto_sk {

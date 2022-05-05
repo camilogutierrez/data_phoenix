@@ -1,5 +1,5 @@
 view: lk_punto_venta_clasificacion {
-  sql_table_name: @{gcp_dataset_pub}.LK_PuntoVentaClasificacion` ;;
+  sql_table_name: @{gcp_ambiente}.LK_PuntoVentaClasificacion` ;;
   fields_hidden_by_default: yes
 
   dimension: punto_venta_clasificacion_sk {

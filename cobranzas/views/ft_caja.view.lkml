@@ -1,5 +1,5 @@
 view: ft_caja {
-  sql_table_name: @{gcp_dataset_pub}.FT_Caja`;;
+  sql_table_name: @{gcp_ambiente}.FT_Caja`;;
   suggestions: no
   label: "Caja"
 

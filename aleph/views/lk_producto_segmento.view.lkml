@@ -1,5 +1,5 @@
 view: lk_producto_segmento {
-  sql_table_name: @{gcp_dataset_pub}.LK_ProductoSegmento` ;;
+  sql_table_name: @{gcp_ambiente}.LK_ProductoSegmento` ;;
   fields_hidden_by_default: yes
 
   dimension: producto_segmento_sk {

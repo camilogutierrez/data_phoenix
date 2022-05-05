@@ -1,5 +1,5 @@
 view: lk_orden_precio_fuente {
-  sql_table_name: @{gcp_dataset_pub}.LK_OrdenPrecioFuente` ;;
+  sql_table_name: @{gcp_ambiente}.LK_OrdenPrecioFuente` ;;
   fields_hidden_by_default: yes
 
   dimension: orden_precio_fuente_sk {
