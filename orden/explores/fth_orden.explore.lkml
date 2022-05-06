@@ -18,7 +18,7 @@ explore: fth_orden {
 
   join: fth_orden_medio_pago {
     view_label: "Medio de Pago"
-    sql: LEFT JOIN UNNEST(${fth_orden.medio_pago}) as fth_orden_medio_pago_view ;;
+    sql: LEFT JOIN UNNEST(${fth_orden.medio_pago}) as fth_orden_medio_pago ;;
     relationship: one_to_many
   }
 
