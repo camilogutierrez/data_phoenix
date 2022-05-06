@@ -272,7 +272,7 @@ explore: fth_orden {
   join: dm_orden_precio_promocion {
     view_label: "Precio Promocion"
     relationship: one_to_many
-    sql_on: ${dm_orden_precio_promocion.pk} = ${fth_orden.pk}  ;;
+    sql_on: ${dm_orden_precio_promocion.fk} = ${fth_orden.pk}  ;;
     type: left_outer
   }
 

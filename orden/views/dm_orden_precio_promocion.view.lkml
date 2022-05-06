@@ -7,11 +7,12 @@ view: dm_orden_precio_promocion {
 
   ## Primary Key
 
-  dimension: pk {
-    hidden: yes
+  dimension: orden_precio_srcid {
     primary_key: yes
+    hidden: yes
     type: string
-    sql: ${TABLE}.OrdenItemFK ;;
+    sql: ${TABLE}.OrdenPrecioSRCId ;;
+    label: "Id"
   }
 
   ## Dates
@@ -160,6 +161,11 @@ view: dm_orden_precio_promocion {
 
   ## Strings
 
+  dimension: fk {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.OrdenItemFK ;;
+  }
   dimension: lista_precio_srcid {
     type: string
     sql: ${TABLE}.ListaPrecioSRCId ;;
@@ -200,12 +206,6 @@ view: dm_orden_precio_promocion {
     type: string
     sql: ${TABLE}.OrdenPrecioFuenteNombre ;;
     label: "Fuente Nombre"
-  }
-
-  dimension: orden_precio_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPrecioSRCId ;;
-    label: "Id"
   }
 
   dimension: orden_precio_sub_accion {
