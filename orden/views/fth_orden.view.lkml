@@ -14,7 +14,6 @@ view: fth_orden {
     primary_key: yes
     type: string
     sql: ${TABLE}.OrdenItemPK ;;
-    #sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${orden_item_srcid});;
   }
 
     ## Nested Fields

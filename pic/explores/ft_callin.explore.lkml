@@ -1,7 +1,5 @@
 include: "/pic/views/ft_callin.view.lkml"
 include: "/pic/views/lk_*.view.lkml"
-include: "/global/views/dm_nomina_d.view.lkml"
-include: "/global/views/dm_nomina_m.view.lkml"
 
 explore: ft_callin {
   label: "Call In"
@@ -305,19 +303,19 @@ explore: ft_callin {
     relationship: many_to_one
   }
 
-  join: dm_nomina_d {
-    view_label: "Nomina"
-    type: left_outer
-    sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_d.nomina_d_usuario_teco} ;;
-    relationship: many_to_one
-    sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
-  }
+  # join: dm_nomina_d {
+  #   view_label: "Nomina"
+  #   type: left_outer
+  #   sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_d.nomina_d_usuario_teco} ;;
+  #   relationship: many_to_one
+  #   sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
+  # }
 
-  join: dm_nomina_m {
-    view_label: "Nomina Cierre"
-    type: left_outer
-    sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_m.nomina_m_usuario_teco} ;;
-    relationship: many_to_one
-    sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
-  }
+  # join: dm_nomina_m {
+  #   view_label: "Nomina Cierre"
+  #   type: left_outer
+  #   sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_m.nomina_m_usuario_teco} ;;
+  #   relationship: many_to_one
+  #   sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
+  # }
 }
