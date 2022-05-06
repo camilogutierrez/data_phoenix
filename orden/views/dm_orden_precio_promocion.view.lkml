@@ -25,10 +25,10 @@ view: dm_orden_precio_promocion {
   ## Dates
 
   dimension: fecha_entidad {
+    hidden: yes
     type: date
     sql: ${TABLE}.FechaEntidad ;;
     datatype: date
-    label: "Fecha Entidad"
   }
 
   dimension_group: orden_precio_fecha_creacion_src {
