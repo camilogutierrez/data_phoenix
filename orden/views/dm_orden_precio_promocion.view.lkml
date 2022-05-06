@@ -11,7 +11,7 @@ view: dm_orden_precio_promocion {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${orden_item_srcid});;
+    sql: ${TABLE}.OrdenItemFK ;;
   }
 
   ## Dates
@@ -175,7 +175,6 @@ view: dm_orden_precio_promocion {
   dimension: orden_precio_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioAccionNombre ;;
-    suggest_dimension: lk_orden_precio_accion.orden_precio_accion_nombre
     label: "Accion Nombre"
   }
 
@@ -194,14 +193,12 @@ view: dm_orden_precio_promocion {
   dimension: orden_precio_estado_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioEstadoNombre ;;
-    suggest_dimension: lk_orden_precio_estado.orden_precio_estado_nombre
     label: "Estado Nombre"
   }
 
   dimension: orden_precio_fuente_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioFuenteNombre ;;
-    suggest_dimension: lk_orden_precio_fuente.orden_precio_fuente_nombre
     label: "Fuente Nombre"
   }
 
