@@ -2990,36 +2990,51 @@ view: fth_orden {
 
   measure: count_venta_terminal_neta {
     type: count_distinct
-    sql: ${orden_srcid};;
+    sql: ${orden_srcid} ;;
     view_label: "Orden"
     group_label: "Cantidad"
     group_item_label: "Venta Terminal Neta"
     label: "Venta Terminal Efectiva"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
-      , orden_tipo_sub_gestion_nombre: "USO PROTECCION PERSONAL"
-      , orden_item_accion_nombre: "AGREGAR"
-      , producto_tipo_nombre: "DISPOSITIVO"
-      , producto_familia_nombre: "MOVIL"
-      , orden_estado_trackeo_nombre: "ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA, ENTREGADA"
-      , orden_reemplazada_srcid: "-1"
+      orden_item_accion_nombre: "AGREGAR",
+      producto_tipo_nombre: "DISPOSITIVO",
+      orden_estado_trackeo_nombre:
+        "ENTREGADA,
+        FACTURA EMITIDA,
+        DESPACHADA,
+        INICIADA,
+        PENDIENTE DE ENTREGA",
+      orden_reemplazada_srcid: "-1",
+      caso_srcid: "-1",
+      orden_tipo_gestion_nombre:
+        "VENTA,
+        SERVICIOS Y OFERTAS ADICIONALES",
+      orden_tipo_sub_gestion_nombre:
+        "
+        ALTA PROTECCION PERSONAL,
+        VENTA,
+        USO PROTECCION PERSONAL"
     ]
   }
 
   measure: count_venta_terminal_bruta {
     type: count_distinct
-    sql: ${orden_srcid};;
+    sql: ${orden_srcid} ;;
     view_label: "Orden"
     group_label: "Cantidad"
     group_item_label: "Venta Terminal Bruta"
     label: "Venta Terminal Bruta"
     filters: [
-        orden_estado_nombre: "ACTIVADA, CANCELADA"
-      , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
-      , orden_tipo_sub_gestion_nombre: "USO PROTECCION PERSONAL"
-      , producto_tipo_nombre: "DISPOSITIVO"
-      , producto_familia_nombre: "MOVIL"
+      producto_tipo_nombre: "DISPOSITIVO",
+      orden_reemplazada_srcid: "-1",
+      caso_srcid: "-1",
+      orden_tipo_gestion_nombre:
+      "VENTA,
+      SERVICIOS Y OFERTAS ADICIONALES",
+      orden_tipo_sub_gestion_nombre:
+      "ALTA PROTECCION PERSONAL,
+      VENTA,
+      USO PROTECCION PERSONAL"
     ]
   }
 
