@@ -3005,12 +3005,11 @@ view: fth_orden {
         INICIADA,
         PENDIENTE DE ENTREGA",
       orden_reemplazada_srcid: "-1",
-      caso_srcid: "-1",
       orden_tipo_gestion_nombre:
         "VENTA,
         SERVICIOS Y OFERTAS ADICIONALES",
       orden_tipo_sub_gestion_nombre:
-        "
+        "(no informado),
         ALTA PROTECCION PERSONAL,
         VENTA,
         USO PROTECCION PERSONAL"
@@ -3027,12 +3026,12 @@ view: fth_orden {
     filters: [
       producto_tipo_nombre: "DISPOSITIVO",
       orden_reemplazada_srcid: "-1",
-      caso_srcid: "-1",
       orden_tipo_gestion_nombre:
       "VENTA,
       SERVICIOS Y OFERTAS ADICIONALES",
       orden_tipo_sub_gestion_nombre:
-      "ALTA PROTECCION PERSONAL,
+      "(no informado),
+      ALTA PROTECCION PERSONAL,
       VENTA,
       USO PROTECCION PERSONAL"
     ]
