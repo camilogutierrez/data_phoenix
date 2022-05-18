@@ -1,5 +1,5 @@
 view: dm_nomina {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.DM_Nomina` ;;
+  sql_table_name: @{gcp_ambiente}.DM_Nomina` ;;
   label: "Nomina"
 
 ## Dimensions

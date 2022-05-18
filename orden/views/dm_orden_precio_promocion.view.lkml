@@ -190,6 +190,7 @@ view: dm_orden_precio_promocion {
     type: string
     sql: ${TABLE}.OrdenPrecioAccionNombre ;;
     suggest_dimension: lk_orden_precio_accion.orden_precio_accion_nombre
+    suggestable: yes
     label: "Accion Nombre"
   }
 
@@ -209,6 +210,7 @@ view: dm_orden_precio_promocion {
     type: string
     sql: ${TABLE}.OrdenPrecioEstadoNombre ;;
     suggest_dimension: lk_orden_precio_estado.orden_precio_estado_nombre
+    suggestable: yes
     label: "Estado Nombre"
   }
 
@@ -216,6 +218,7 @@ view: dm_orden_precio_promocion {
     type: string
     sql: ${TABLE}.OrdenPrecioFuenteNombre ;;
     suggest_dimension: lk_orden_precio_fuente.orden_precio_fuente_nombre
+    suggestable: yes
     label: "Fuente Nombre"
   }
 
