@@ -2,6 +2,7 @@ include: "/orden/views/fth_orden.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
 include: "/orden/views/dm_orden_precio_promocion.view.lkml"
+include: "/global/views/dm_nomina.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
@@ -18,6 +19,23 @@ explore: fth_orden {
     sql: LEFT JOIN UNNEST(${fth_orden.medio_pago}) as fth_orden_medio_pago ;;
     relationship: one_to_many
   }
+
+  join: dm_orden_precio_promocion {
+    view_label: "Precio Promocion"
+    relationship: one_to_many
+    sql_on: ${dm_orden_precio_promocion.orden_item_fk} = ${fth_orden.pk}  ;;
+    type: left_outer
+  }
+
+  join: dm_nomina {
+    view_label: "Nomina"
+    relationship: many_to_one
+    sql_on: ${fth_orden.nomina_usr_creacion_fk} = ${dm_nomina.pk} ;;
+    type: left_outer
+    sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
+  }
+
+  ## For Filter Suggestions
 
   join: lk_orden_item_estado_provisionamiento {
     relationship: many_to_one
@@ -268,27 +286,4 @@ explore: fth_orden {
     sql_on: ${dm_orden_precio_promocion.orden_precio_estado_sk} = ${lk_orden_precio_estado.orden_precio_estado_sk} ;;
     type: inner
   }
-
-  join: dm_orden_precio_promocion {
-    view_label: "Precio Promocion"
-    relationship: one_to_many
-    sql_on: ${dm_orden_precio_promocion.orden_item_fk} = ${fth_orden.pk}  ;;
-    type: left_outer
-  }
-
-  # join: dm_nomina_d {
-  #   view_label: "Nomina"
-  #   relationship: many_to_one
-  #   sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_d.nomina_d_usuario_teco} ;;
-  #   type: left_outer
-  #   sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
-  # }
-
-  # join: dm_nomina_m {
-  #   view_label: "Nomina Cierre"
-  #   relationship: many_to_one
-  #   sql_on: ${fth_orden.usuario_legajo} = ${dm_nomina_m.nomina_m_usuario_teco} ;;
-  #   type: left_outer
-  #   sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
-  # }
 }

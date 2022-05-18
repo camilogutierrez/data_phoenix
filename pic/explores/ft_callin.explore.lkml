@@ -1,5 +1,6 @@
 include: "/pic/views/ft_callin.view.lkml"
 include: "/pic/views/lk_*.view.lkml"
+include: "/global/views/dm_nomina.view.lkml"
 
 explore: ft_callin {
   label: "Call In"
@@ -15,6 +16,16 @@ explore: ft_callin {
                 ft_callin.gvqsrcid: "%_QC1"
               ]
   }
+
+  join: dm_nomina {
+    view_label: "Nomina"
+    relationship: many_to_one
+    sql_on: ${ft_callin.nomina_usr_creacion_fk} = ${dm_nomina.pk} ;;
+    type: left_outer
+    sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
+  }
+
+  ## For Filter Suggestions
 
   join: lk_contexto_ivr0800 {
     type: inner
@@ -302,20 +313,4 @@ explore: ft_callin {
     sql_on: ${ft_callin.vq_tipo_contactosrcid} = ${lk_vqtipo_contacto.vq_tipo_contactosrcid};;
     relationship: many_to_one
   }
-
-  # join: dm_nomina_d {
-  #   view_label: "Nomina"
-  #   type: left_outer
-  #   sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_d.nomina_d_usuario_teco} ;;
-  #   relationship: many_to_one
-  #   sql_where: ${dm_nomina_d.nomina_d_usuario_teco} != '' ;;
-  # }
-
-  # join: dm_nomina_m {
-  #   view_label: "Nomina Cierre"
-  #   type: left_outer
-  #   sql_on: UPPER(${ft_callin.agente_rp}) = ${dm_nomina_m.nomina_m_usuario_teco} ;;
-  #   relationship: many_to_one
-  #   sql_where: ${dm_nomina_m.nomina_m_usuario_teco} != '' ;;
-  # }
 }

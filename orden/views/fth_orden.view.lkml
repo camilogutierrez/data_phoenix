@@ -798,6 +798,12 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.ClienteTipoSRCId ;;
   }
 
+  dimension: nomina_usr_creacion_fk {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenNominaPeriodoCreacionUsuarioFK ;;
+  }
+
   ###########
   ## Orden ##
   ###########
