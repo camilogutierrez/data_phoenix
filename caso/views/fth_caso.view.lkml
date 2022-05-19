@@ -528,6 +528,21 @@ view: fth_caso {
     label: "Es Nuevo Numero TOIP"
   }
 
+  dimension: es_demanda_retencion {
+    type: yesno
+    sql: ${TABLE}.CasoMarcaEsDemandaRetencion ;;
+    group_label: "Marcas"
+    group_item_label: "Demanda Retencion"
+    label: "Es Demanda Retencion"
+  }
+
+  dimension: es_fidelizacion  {
+    type: yesno
+    sql: ${TABLE}.CasoMarcaEsFidelizacion ;;
+    group_label: "Marcas"
+    group_item_label: "Fidelizacion"
+    label: "Es Fidelizacion"
+  }
 
     ## Strings
 
@@ -1645,7 +1660,7 @@ view: fth_caso {
 
     ## Auxiliares
 
-  dimension: es_demanda_retencion {
+  dimension: es_demanda_retencion_tmp {
     hidden: yes
     type: yesno
     sql: (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} IN("PEDIDO DE BAJA", "FIDELIZACION"))
@@ -1653,7 +1668,7 @@ view: fth_caso {
           OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "CAMBIO DE PLAN" AND ${caso_sub_tipo_nombre} = "FIDELIZACION") ;;
   }
 
-  dimension: es_fidelizacion  {
+  dimension: es_fidelizacion_tmp  {
     hidden: yes
     type: yesno
     sql: ${caso_tipo_nombre} = "FIDELIZACION" OR (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
