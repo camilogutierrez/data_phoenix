@@ -1637,6 +1637,12 @@ view: fth_caso {
     sql: ${TABLE}.CasoResultadoRetencionSRCId ;;
   }
 
+  dimension: nomina_usr_creacion_fk {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.CasoNominaPeriodoCreacionUsuarioFK ;;
+  }
+
     ## Auxiliares
 
   dimension: es_demanda_retencion {

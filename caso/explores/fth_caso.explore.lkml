@@ -1,5 +1,6 @@
 include: "/caso/views/fth_caso.view.lkml"
 include: "/aleph/views/*.view.lkml"
+include: "/global/views/dm_nomina.view.lkml"
 include: "/caso/others/caso_datagroups.lkml"
 
 explore: fth_caso {
@@ -22,6 +23,14 @@ explore: fth_caso {
     view_label: "Comentarios"
     sql: LEFT JOIN UNNEST(${fth_caso.comentarios}) as fth_caso_comentarios;;
     relationship: one_to_many
+  }
+
+  join: dm_nomina {
+    view_label: "Nomina"
+    relationship: many_to_one
+    sql_on: ${fth_caso.nomina_usr_creacion_fk} = ${dm_nomina.pk} ;;
+    type: left_outer
+    sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
   }
 
   ## For Filter Suggestions

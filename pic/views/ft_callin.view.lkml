@@ -3,6 +3,8 @@ view: ft_callin {
   suggestions: no
   label: "Call In"
 
+## Dimensions
+
   ## Primary Key
 
   dimension: ft_callinsrcid {
@@ -12,11 +14,7 @@ view: ft_callin {
     sql: ${TABLE}.FT_CALLINSRCId ;;
   }
 
-  #############
-  ## Call In ##
-  #############
-
-    ## Dates
+  ## Dates
 
   dimension_group: fecha_fin_llamadasrcid {
     type: time
@@ -74,7 +72,7 @@ view: ft_callin {
     label: "Fecha Proceso Llamada"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: stop_actionsrcid {
     type: yesno
@@ -420,7 +418,7 @@ view: ft_callin {
     description: "Cliente unico que se contacto dentro de los 7 días."
   }
 
-    ## Strings
+  ## Strings
 
   dimension: tabpackagesrcid {
     type: string
@@ -1155,7 +1153,7 @@ view: ft_callin {
     sql: ${TABLE}.RESULTREASON_AGSRCId ;;
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: res_ordinalsrcid {
     type: number
@@ -1209,7 +1207,7 @@ view: ft_callin {
     sql: ${TABLE}.ROUTING_POINT_DURATION ;;
   }
 
-  ## Hidden ##
+  ## Hidden
 
   dimension: customer_acw_count {
     hidden: yes
@@ -1463,9 +1461,13 @@ view: ft_callin {
     sql: ${TABLE}.T_DURATION_VQ ;;
   }
 
-##############
-## Measures ##
-##############
+  dimension: nomina_usr_creacion_fk {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.NOMINA_PERIODO_INI_LLAMADA_USUARIO_FK ;;
+  }
+
+## Measures
 
   measure: count_interaction_resource_id {
     type: count_distinct

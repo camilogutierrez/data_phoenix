@@ -798,6 +798,12 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.ClienteTipoSRCId ;;
   }
 
+  dimension: nomina_usr_creacion_fk {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenNominaPeriodoCreacionUsuarioFK ;;
+  }
+
   ###########
   ## Orden ##
   ###########
@@ -2996,23 +3002,12 @@ view: fth_orden {
     group_item_label: "Venta Terminal Neta"
     label: "Venta Terminal Efectiva"
     filters: [
-      orden_item_accion_nombre: "AGREGAR",
-      producto_tipo_nombre: "DISPOSITIVO",
-      orden_estado_trackeo_nombre:
-        "ENTREGADA,
-        FACTURA EMITIDA,
-        DESPACHADA,
-        INICIADA,
-        PENDIENTE DE ENTREGA",
-      orden_reemplazada_srcid: "-1",
-      orden_tipo_gestion_nombre:
-        "VENTA,
-        SERVICIOS Y OFERTAS ADICIONALES",
-      orden_tipo_sub_gestion_nombre:
-        "(no informado),
-        ALTA PROTECCION PERSONAL,
-        VENTA,
-        USO PROTECCION PERSONAL"
+        orden_item_accion_nombre: "AGREGAR"
+      , producto_tipo_nombre: "DISPOSITIVO"
+      , orden_estado_trackeo_nombre: "ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA"
+      , orden_reemplazada_srcid: "-1"
+      , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
+      , orden_tipo_sub_gestion_nombre: "(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL"
     ]
   }
 
@@ -3024,16 +3019,10 @@ view: fth_orden {
     group_item_label: "Venta Terminal Bruta"
     label: "Venta Terminal Bruta"
     filters: [
-      producto_tipo_nombre: "DISPOSITIVO",
-      orden_reemplazada_srcid: "-1",
-      orden_tipo_gestion_nombre:
-      "VENTA,
-      SERVICIOS Y OFERTAS ADICIONALES",
-      orden_tipo_sub_gestion_nombre:
-      "(no informado),
-      ALTA PROTECCION PERSONAL,
-      VENTA,
-      USO PROTECCION PERSONAL"
+        producto_tipo_nombre: "DISPOSITIVO"
+      , orden_reemplazada_srcid: "-1"
+      , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
+      , orden_tipo_sub_gestion_nombre: "(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL"
     ]
   }
 
