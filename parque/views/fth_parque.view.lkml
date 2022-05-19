@@ -731,6 +731,7 @@ view: fth_parque {
   dimension: cuenta_propiedad_srcid {
     type: string
     sql: ${TABLE}.CuentaPropiedadSRCId ;;
+    label: "Cuenta Propiedad SRCId"
   }
 
   dimension: domicilio__domicilio_codigo_postal_env {
@@ -901,39 +902,11 @@ view: fth_parque {
     group_item_label: "Rango Numeracion Departamento Nombre"
   }
 
-  dimension: geografia__rango_numeracion_departamento_sk {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSK ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Departamento Sk"
-  }
-
-  dimension: geografia__rango_numeracion_departamento_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Departamento Srcid"
-  }
-
   dimension: geografia__rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
     group_label: "Geografia"
     group_item_label: "Rango Numeracion Localidad Nombre"
-  }
-
-  dimension: geografia__rango_numeracion_localidad_sk {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSK ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Localidad Sk"
-  }
-
-  dimension: geografia__rango_numeracion_localidad_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Localidad Srcid"
   }
 
   dimension: geografia__rango_numeracion_pi_pu {
@@ -950,23 +923,10 @@ view: fth_parque {
     group_item_label: "Rango Numeracion Provincia Nombre"
   }
 
-  dimension: geografia__rango_numeracion_provincia_sk {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSK ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Sk"
-  }
-
-  dimension: geografia__rango_numeracion_provincia_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Srcid"
-  }
-
   dimension: oferta_hwsrcid {
     type: string
     sql: ${TABLE}.OfertaHWSRCId ;;
+    label: "Oferta HW SRCId"
   }
 
   dimension: orden_alta__caso_numero {
@@ -1386,6 +1346,7 @@ view: fth_parque {
   dimension: producto_accesorio_srcid {
     type: string
     sql: ${TABLE}.ProductoAccesorioSRCId ;;
+    label: "Producto Accesorio SRCId"
   }
 
   dimension: producto_adquirido_bundle_nombre {
@@ -1658,18 +1619,11 @@ view: fth_parque {
     group_item_label: "Punto Venta Tipo Contacto Nombre"
   }
 
-  dimension: suspensiones__totales__activas {
-    #hidden: yes
-    sql: ${TABLE}.Suspensiones.Totales.Activas ;;
-    group_label: "Suspensiones Totales"
-    group_item_label: "Activas"
-  }
-
   dimension: suspensiones__totales__suspensiones_producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.Suspensiones.Totales.SuspensionesProductoAdquiridoSRCId ;;
-    group_label: "Suspensiones Totales"
-    group_item_label: "Suspensiones Producto Adquirido Srcid"
+    view_label: "Parque Suspensiones Totales Activas"
+    label: "Suspensiones Producto Adquirido SRCId"
   }
 
   ## Numbers
@@ -2079,6 +2033,16 @@ view: fth_parque {
   }
 
   ## Hidden
+  dimension: promocion {
+    hidden: yes
+    sql: ${TABLE}.Promocion ;;
+  }
+
+  dimension: suspensiones__totales__activas {
+    hidden: yes
+    sql: ${TABLE}.Suspensiones.Totales.Activas ;;
+  }
+
   dimension: cliente__cliente_segmento1_sk {
     hidden: yes
     type: number

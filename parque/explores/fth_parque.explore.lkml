@@ -1,4 +1,6 @@
 include: "/parque/views/fth_parque.view.lkml"
+include: "/parque/views/fth_parque__promocion.view.lkml"
+include: "/parque/views/fth_parque__suspensiones__totales__activas.view.lkml"
 include: "/aleph/views/*.view.lkml"
 
 explore: fth_parque {
@@ -7,6 +9,18 @@ explore: fth_parque {
 
   always_filter: {
     filters: [fth_parque.fecha_entidad_date: "today"]
+  }
+
+  join: fth_parque__promocion {
+    view_label: "Parque Promocion"
+    sql: LEFT JOIN UNNEST(${fth_parque.promocion}) as fth_parque__promocion ;;
+    relationship: one_to_many
+  }
+
+  join: fth_parque__suspensiones__totales__activas {
+    view_label: "Parque Suspensiones Totales Activas"
+    sql: LEFT JOIN UNNEST(${fth_parque.suspensiones__totales__activas}) as fth_parque__suspensiones__totales__activas ;;
+    relationship: one_to_many
   }
 
   ## For Filter Suggestions
