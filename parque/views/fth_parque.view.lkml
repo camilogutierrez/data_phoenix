@@ -90,7 +90,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionSRC ;;
-    label: "Producto Adquirido Activacion Historica"
+    label: "Producto Adquirido Activacion"
   }
 
   dimension_group: fechas__producto_adquirido_fecha_baja_src {
@@ -1787,14 +1787,14 @@ view: fth_parque {
     type: number
     sql: ${TABLE}.Recarga.RecargaRECHARGE_AMT_Pri_Rec ;;
     group_label: "Recarga"
-    group_item_label: "Recarga Recharge Amt Pri Rec"
+    group_item_label: "Recharge Amt Pri Rec"
   }
 
   dimension: recarga__recarga_recharge_amt_ult_rec {
     type: number
     sql: ${TABLE}.Recarga.RecargaRECHARGE_AMT_Ult_Rec ;;
     group_label: "Recarga"
-    group_item_label: "Recarga Recharge Amt Ult Rec"
+    group_item_label: "Recharge Amt Ult Rec"
   }
 
   dimension: recarga__recarga_recharge_log_id_pri_rec {
@@ -1802,7 +1802,7 @@ view: fth_parque {
     value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Pri_Rec ;;
     group_label: "Recarga"
-    group_item_label: "Recarga Recharge Log ID Pri Rec"
+    group_item_label: "Recharge Log ID Pri Rec"
   }
 
   dimension: recarga__recarga_recharge_log_id_ult_rec {
@@ -1810,7 +1810,7 @@ view: fth_parque {
     value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Ult_Rec ;;
     group_label: "Recarga"
-    group_item_label: "Recarga Recharge Log ID Ult Rec"
+    group_item_label: "Recharge Log ID Ult Rec"
   }
 
   dimension: cliente__cuenta_monto_desc_convergente {
@@ -2013,7 +2013,7 @@ view: fth_parque {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPerteneceBundle ;;
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Marca Pertenece Bundle"
+    group_item_label: "Producto Adquirido Pertenece Bundle"
     label: "Es Producto Adquirido Pertenece Bundle"
   }
 
@@ -2021,7 +2021,7 @@ view: fth_parque {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPortOut ;;
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Marca Port Out"
+    group_item_label: "Producto Adquirido Port Out"
     label: "Es Producto Adquirido Port Out"
   }
 
@@ -2044,7 +2044,7 @@ view: fth_parque {
     type: yesno
     sql: ${TABLE}.OrdenAlta.OrdenMarcaCambioMercado ;;
     group_label: "Orden Alta"
-    group_item_label: "Orden Marca Cambio Mercado"
+    group_item_label: "Marca Cambio Mercado"
     label: "Es Orden Cambio Mercado"
   }
 
@@ -2052,7 +2052,7 @@ view: fth_parque {
     type: yesno
     sql: ${TABLE}.OrdenAlta.OrdenMarcaCambioProducto ;;
     group_label: "Orden Alta"
-    group_item_label: "Orden Marca Cambio Producto"
+    group_item_label: "Marca Cambio Producto"
     label: "Es Orden Cambio Producto"
   }
 
