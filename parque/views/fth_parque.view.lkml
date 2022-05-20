@@ -14,7 +14,7 @@ view: fth_parque {
     hidden: yes
     primary_key: yes
     type: string
-    sql: ${TABLE}.ProductoAdquiridoSRCId ;;
+    sql: CONCAT(CAST(${fecha_entidad_date} AS STRING FORMAT 'YYYYMMDD'),'-',${producto_adquirido_srcid});;
   }
 
   ## Dates
@@ -2538,18 +2538,6 @@ view: fth_parque {
     hidden: yes
     type: string
     sql: ${TABLE}.ProductoAdquiridoSubEstadoSRCId ;;
-  }
-
-  dimension: punto_venta__punto_venta_canal_sk {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.PuntoVenta.PuntoVentaCanalSK ;;
-  }
-
-  dimension: punto_venta__punto_venta_canal_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.PuntoVenta.PuntoVentaCanalSRCId ;;
   }
 
   dimension: punto_venta__punto_venta_canalidad2_sk {
