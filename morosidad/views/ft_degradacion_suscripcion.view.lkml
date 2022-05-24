@@ -10,7 +10,7 @@ view: ft_degradacion_suscripcion {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${sub_id} AS STRING),'-',CAST(${cust_id} AS STRING));;
+    sql: CONCAT(CAST(${sub_id} AS STRING),'|',CAST(${cust_id} AS STRING));;
   }
 
     ## Dates
@@ -52,6 +52,7 @@ view: ft_degradacion_suscripcion {
   dimension: degra_status {
     type: string
     sql: ${TABLE}.DEGRA_STATUS ;;
+    label: "Degradacion Status"
   }
 
     ## Numbers
@@ -59,26 +60,31 @@ view: ft_degradacion_suscripcion {
   dimension: act_acct_id {
     type: number
     sql: ${TABLE}.ACT_ACCT_ID ;;
+    label: "ACT Account ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    label: "Customer ID"
   }
 
   dimension: pri_acct_id {
     type: number
     sql: ${TABLE}.PRI_ACCT_ID ;;
+    label: "PRI Account ID"
   }
 
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
+    label: "Sub ID"
   }
 
   dimension: ult_acct_id {
     type: number
     sql: ${TABLE}.ULT_ACCT_ID ;;
+    label: "ULT Account ID"
   }
 
     ## Measures
