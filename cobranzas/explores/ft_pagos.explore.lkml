@@ -5,8 +5,6 @@ explore: ft_pagos {
   group_label: "Cobranzas"
 
   always_filter: {
-    filters: [
-                ft_pagos.payment_date: "today"
-    ]
+    filters: [ft_pagos.payment_date_date: "today"]
   }
 }
