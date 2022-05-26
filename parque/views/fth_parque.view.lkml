@@ -28,8 +28,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    datatype: date
     sql: ${TABLE}.FechaEntidad ;;
+    datatype: date
     label: "Fecha Entidad"
   }
 
@@ -45,6 +45,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.FechaActivacionPlanSRC ;;
+    datatype: timestamp
     label: "Activacion Plan"
   }
 
@@ -75,6 +76,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionHistoricaSRC ;;
+    datatype: timestamp
     label: "Producto Adquirido Activacion Historica"
   }
 
@@ -90,6 +92,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionSRC ;;
+    datatype: timestamp
     label: "Producto Adquirido Activacion"
   }
 
@@ -105,6 +108,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaBajaSRC ;;
+    datatype: timestamp
     label: "Producto Adquirido Baja"
   }
 
@@ -118,8 +122,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    datatype: date
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaCompraSRC ;;
+    datatype: date
     label: "Producto Adquirido Compra"
   }
 
@@ -135,6 +139,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaCreacionSRC ;;
+    datatype: timestamp
     label: "Producto Adquirido Creacion"
   }
 
@@ -148,9 +153,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaFinLeasingSRC ;;
+    datatype: date
     label: "Producto Adquirido Fin Leasing"
   }
 
@@ -164,9 +168,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaInicioLeasingSRC ;;
+    datatype: date
     label: "Producto Adquirido Inicio Leasing"
   }
 
@@ -180,9 +183,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaInstalacionSRC ;;
+    datatype: date
     label: "Producto Adquirido Instalacion"
   }
 
@@ -198,6 +200,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaModificacionSRC ;;
+    datatype: timestamp
     label: "Producto Adquirido Modificacion"
   }
 
@@ -211,9 +214,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.Cliente.CuentaFecUltimaSuspensionVoluntariaSRC ;;
+    datatype: date
     label: "Cliente Cuenta Ult. Susp. Voluntaria"
   }
 
@@ -229,6 +231,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionHWSRC ;;
+    datatype: timestamp
     label: "Cliente Cuenta Creacion HW"
   }
 
@@ -244,6 +247,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionSRC ;;
+    datatype: timestamp
     label: "Cliente Cuenta Creacion"
   }
 
@@ -259,6 +263,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaModificacionSRC ;;
+    datatype: timestamp
     label: "Cliente Cuenta Modificacion"
   }
 
@@ -274,6 +279,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaCreacionSRC ;;
+    datatype: timestamp
     label: "Cliente Persona Creacion"
   }
 
@@ -289,6 +295,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaModificacionSRC ;;
+    datatype: timestamp
     label: "Cliente Persona Modificacion"
   }
 
@@ -304,6 +311,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     label: "Orden Alta Activacion"
   }
 
@@ -317,9 +325,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.OrdenAlta.OrdenFechaEntregaSRC ;;
+    datatype: date
     label: "Orden Alta Entrega"
   }
 
@@ -333,9 +340,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.OrdenAlta.OrdenFechaFinSRC ;;
+    datatype: date
     label: "Orden Alta Fin"
   }
 
@@ -349,9 +355,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.OrdenAlta.OrdenFechaInicioSRC ;;
+    datatype: date
     label: "Orden Alta Inicio"
   }
 
@@ -367,6 +372,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaModSRC ;;
+    datatype: timestamp
     label: "Orden Alta Modificacion"
   }
 
@@ -382,6 +388,7 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     label: "Orden Baja Activacion"
   }
 
@@ -395,9 +402,8 @@ view: fth_parque {
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.OrdenBaja.OrdenFechaFinSRC ;;
+    datatype: date
     label: "Orden Baja Fin"
   }
 
@@ -413,7 +419,200 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Preactivaciones.PreactFechaCargaSRC ;;
+    datatype: datetime
     label: "Preactivaciones Carga"
+  }
+
+  dimension_group: suspensiones__fecha_suspension1_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspension1SRC ;;
+    datatype: timestamp
+    label: "Suspension 1°"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_administrativa_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionAdministrativaSRC ;;
+    datatype: timestamp
+    label: "Suspension Administrativa"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_degradacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionDegradacionSRC ;;
+    datatype: timestamp
+    label: "Suspension Degradacion"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_leasing_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionLeasingSRC ;;
+    datatype: timestamp
+    label: "Suspension Leasing"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_otros_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionOtrosSRC ;;
+    datatype: timestamp
+    label: "Suspension Otros"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_parcial_mora_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionParcialMoraSRC ;;
+    datatype: timestamp
+    label: "Suspension Parcial Mora"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_port_out_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionPortOutSRC ;;
+    datatype: timestamp
+    label: "Suspension PortOut"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_reversion_port_insrc {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionReversionPortINSRC ;;
+    datatype: timestamp
+    label: "Suspension PortIn"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_siniestro_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionSiniestroSRC ;;
+    datatype: timestamp
+    label: "Suspension Siniestro"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_total_mora_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionTotalMoraSRC ;;
+    datatype: timestamp
+    label: "Suspension Total Mora"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_ultima_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionUltimaSRC ;;
+    datatype: timestamp
+    label: "Suspension Ultima"
+  }
+
+  dimension_group: suspensiones__fecha_suspension_voluntaria_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Suspensiones.FechaSuspensionVoluntariaSRC ;;
+    datatype: timestamp
+    label: "Suspension Voluntaria"
   }
 
   ## Strings
@@ -1651,11 +1850,25 @@ view: fth_parque {
     label: "Tipo Contacto Nombre"
   }
 
-  dimension: suspensiones__totales__suspensiones_producto_adquirido_srcid {
+  dimension: suspensiones__motivo_suspension1 {
     type: string
-    sql: ${TABLE}.Suspensiones.Totales.SuspensionesProductoAdquiridoSRCId ;;
-    view_label: "Parque Suspensiones Totales Activas"
-    label: "Suspensiones Producto Adquirido SRCId"
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1 ;;
+    group_label: "Suspensiones"
+    group_item_label: "Motivo Suspension 1°"
+  }
+
+  dimension: suspensiones__motivo_suspension_ultima {
+    type: string
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltima ;;
+    group_label: "Suspensiones"
+    group_item_label: "Motivo Suspension Ultima"
+  }
+
+  dimension: suspensiones__suspensiones_producto_adquirido_srcid {
+    type: string
+    sql: ${TABLE}.Suspensiones.SuspensionesProductoAdquiridoSRCId ;;
+    group_label: "Suspensiones"
+    group_item_label: "Suspensiones Producto Adquirido SRCId"
   }
 
   ## Numbers
@@ -1670,14 +1883,14 @@ view: fth_parque {
     type: number
     sql: ${TABLE}.Cliente.CuentaHWAcct_Id ;;
     group_label: "Cliente"
-    group_item_label: "Cuenta Hwacct ID"
+    group_item_label: "Cuenta HW Acct ID"
   }
 
   dimension: cliente__cuenta_hwcust_id {
     type: number
     sql: ${TABLE}.Cliente.CuentaHWCUST_ID ;;
     group_label: "Cliente"
-    group_item_label: "Cuenta Hwcust ID"
+    group_item_label: "Cuenta HW Cust ID"
   }
 
   dimension: cliente__persona_codigo_integracion {
@@ -1839,6 +2052,13 @@ view: fth_parque {
     sql: ${TABLE}.OrdenAlta.OrdenItemCargoRecurrente ;;
     group_label: "Orden Alta"
     group_item_label: "Orden Item Cargo Recurrente"
+  }
+
+  dimension: suspensiones__cantidad_suspensiones_activas {
+    type: number
+    sql: ${TABLE}.Suspensiones.CantidadSuspensionesActivas ;;
+    group_label: "Suspensiones"
+    group_item_label: "Cantidad Suspensiones Activas"
   }
 
   ## Yesno
