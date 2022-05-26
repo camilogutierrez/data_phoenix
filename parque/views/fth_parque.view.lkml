@@ -96,6 +96,22 @@ view: fth_parque {
     label: "Producto Adquirido Activacion"
   }
 
+  dimension_group: fechas__producto_adquirido_fecha_activacion_calculada {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionCalculada ;;
+    datatype: timestamp
+    label: "Producto Adquirido Activacion Calculada"
+  }
+
   dimension_group: fechas__producto_adquirido_fecha_baja_src {
     type: time
     timeframes: [
@@ -281,6 +297,21 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.PersonaFechaCreacionSRC ;;
     datatype: timestamp
     label: "Cliente Persona Creacion"
+  }
+
+  dimension_group: cliente__persona_fecha_nacimiento {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Cliente.PersonaFechaNacimiento ;;
+    datatype: date
+    label: "Persona Nacimiento"
   }
 
   dimension_group: cliente__persona_fecha_modificacion_src {
