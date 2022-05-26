@@ -41,8 +41,8 @@ view: ft_acciones_mora {
       quarter,
       year
     ]
-    convert_tz: no
     datatype: date
+    convert_tz: no
     sql: ${TABLE}.FECHA_SALDO ;;
     label: "Saldo"
   }
