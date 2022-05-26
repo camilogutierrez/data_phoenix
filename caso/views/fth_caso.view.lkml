@@ -530,7 +530,7 @@ view: fth_caso {
 
   dimension: es_demanda_retencion {
     type: yesno
-    sql: ${TABLE}.CasoMarcaEsDemandaRetencion ;;
+    sql: ${TABLE}.Marcas.CasoMarcaEsDemandaRetencion ;;
     group_label: "Marcas"
     group_item_label: "Demanda Retencion"
     label: "Es Demanda Retencion"
@@ -538,7 +538,7 @@ view: fth_caso {
 
   dimension: es_fidelizacion  {
     type: yesno
-    sql: ${TABLE}.CasoMarcaEsFidelizacion ;;
+    sql: ${TABLE}.Marcas.CasoMarcaEsFidelizacion ;;
     group_label: "Marcas"
     group_item_label: "Fidelizacion"
     label: "Es Fidelizacion"
