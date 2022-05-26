@@ -145,7 +145,7 @@ explore: fth_parque {
 
   join: lk_caso_motivo {
     relationship: many_to_one
-    sql_on: ${fth_parque.orden_baja__caso_motivo_sk} = ${lk_caso_motivo_baja.caso_motivo_baja_sk} ;;
+    sql_on: ${fth_parque.orden_baja__caso_motivo_sk} = ${lk_caso_motivo.caso_motivo_sk} ;;
     type: inner
   }
 
