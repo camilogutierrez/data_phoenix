@@ -3,37 +3,34 @@ view: fth_parque {
   suggestions: no
   label: "Parque"
 
-############
-## PARQUE ##
-############
-
 ## Dimensions
 
   ## Primary Key
+
   dimension: pk {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_entidad_date} AS STRING FORMAT 'YYYYMMDD'),'-',${producto_adquirido_srcid});;
+    sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${producto_adquirido_srcid});;
+  }
+
+  ## Nested Fields
+
+  dimension: promocion {
+    hidden: yes
+    sql: ${TABLE}.Promocion ;;
   }
 
   ## Dates
-  dimension_group: fecha_entidad {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+
+  dimension: fecha_entidad {
+    type: date
     sql: ${TABLE}.FechaEntidad ;;
     datatype: date
-    label: "Fecha Entidad"
+    label: "Fecha Cierre"
   }
 
-  dimension_group: fechas__fecha_activacion_plan_src {
+  dimension_group: fecha_activacion_plan_src {
     type: time
     timeframes: [
       raw,
@@ -45,11 +42,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.FechaActivacionPlanSRC ;;
-    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Activacion Plan"
     label: "Activacion Plan"
   }
 
-  dimension_group: fechas__fecha_desconexion_plan_src {
+  dimension_group: fecha_desconexion_plan_src {
     type: time
     timeframes: [
       raw,
@@ -61,10 +59,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.FechaDesconexionPlanSRC ;;
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Desconexion Plan"
     label: "Desconexion Plan"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_activacion_historica_src {
+  dimension_group: producto_adquirido_fecha_activacion_historica_src {
     type: time
     timeframes: [
       raw,
@@ -76,11 +76,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionHistoricaSRC ;;
-    datatype: timestamp
-    label: "Producto Adquirido Activacion Historica"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Activacion Historica"
+    label: "Activacion Historica"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_activacion_src {
+  dimension_group: producto_adquirido_fecha_activacion_src {
     type: time
     timeframes: [
       raw,
@@ -92,11 +93,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionSRC ;;
-    datatype: timestamp
-    label: "Producto Adquirido Activacion"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Activacion"
+    label: "Activacion"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_activacion_calculada {
+  dimension_group: producto_adquirido_fecha_activacion_calculada {
     type: time
     timeframes: [
       raw,
@@ -108,11 +110,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionCalculada ;;
-    datatype: timestamp
-    label: "Producto Adquirido Activacion Calculada"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Activacion Calculada"
+    label: "Activacion Calculada"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_baja_src {
+  dimension_group: producto_adquirido_fecha_baja_src {
     type: time
     timeframes: [
       raw,
@@ -124,11 +127,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaBajaSRC ;;
-    datatype: timestamp
-    label: "Producto Adquirido Baja"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Baja"
+    label: "Baja"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_compra_src {
+  dimension_group: producto_adquirido_fecha_compra_src {
     type: time
     timeframes: [
       raw,
@@ -140,10 +144,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaCompraSRC ;;
     datatype: date
-    label: "Producto Adquirido Compra"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Compra"
+    label: "Compra"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_creacion_src {
+  dimension_group: producto_adquirido_fecha_creacion_src {
     type: time
     timeframes: [
       raw,
@@ -155,11 +161,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaCreacionSRC ;;
-    datatype: timestamp
-    label: "Producto Adquirido Creacion"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Creacion"
+    label: "Creacion"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_fin_leasing_src {
+  dimension_group: producto_adquirido_fecha_fin_leasing_src {
     type: time
     timeframes: [
       raw,
@@ -171,10 +178,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaFinLeasingSRC ;;
     datatype: date
-    label: "Producto Adquirido Fin Leasing"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Fin Leasing"
+    label: "Fin Leasing"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_inicio_leasing_src {
+  dimension_group: producto_adquirido_fecha_inicio_leasing_src {
     type: time
     timeframes: [
       raw,
@@ -186,10 +195,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaInicioLeasingSRC ;;
     datatype: date
-    label: "Producto Adquirido Inicio Leasing"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Inicio Leasing"
+    label: "Inicio Leasing"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_instalacion_src {
+  dimension_group: producto_adquirido_fecha_instalacion_src {
     type: time
     timeframes: [
       raw,
@@ -201,10 +212,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaInstalacionSRC ;;
     datatype: date
-    label: "Producto Adquirido Instalacion"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Instalacion"
+    label: "Instalacion"
   }
 
-  dimension_group: fechas__producto_adquirido_fecha_modificacion_src {
+  dimension_group: producto_adquirido_fecha_modificacion_src {
     type: time
     timeframes: [
       raw,
@@ -216,11 +229,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaModificacionSRC ;;
-    datatype: timestamp
-    label: "Producto Adquirido Modificacion"
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Modificacion"
+    label: "Modificacion"
   }
 
-  dimension_group: cliente__cuenta_fec_ultima_suspension_voluntaria_src {
+  dimension_group: cuenta_fec_ultima_suspension_voluntaria_src {
     type: time
     timeframes: [
       raw,
@@ -232,10 +246,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Cliente.CuentaFecUltimaSuspensionVoluntariaSRC ;;
     datatype: date
-    label: "Cliente Cuenta Ult. Susp. Voluntaria"
+    view_label: "Cliente"
+    group_label: "Fecha Ultima Suspension Voluntaria"
+    label: "Ult. Susp. Voluntaria"
   }
 
-  dimension_group: cliente__fechas__cuenta_fecha_creacion_hwsrc {
+  dimension_group: cuenta_fecha_creacion_hwsrc {
     type: time
     timeframes: [
       raw,
@@ -247,11 +263,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionHWSRC ;;
-    datatype: timestamp
-    label: "Cliente Cuenta Creacion HW"
+    view_label: "Cliente"
+    group_label: "Fecha Creacion Cuenta HW"
+    label: "Creacion Cuenta HW"
   }
 
-  dimension_group: cliente__fechas__cuenta_fecha_creacion_src {
+  dimension_group: cuenta_fecha_creacion_src {
     type: time
     timeframes: [
       raw,
@@ -263,11 +280,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionSRC ;;
-    datatype: timestamp
-    label: "Cliente Cuenta Creacion"
+    view_label: "Cliente"
+    group_label: "Fecha Creacion Cuenta"
+    label: "Creacion Cuenta"
   }
 
-  dimension_group: cliente__fechas__cuenta_fecha_modificacion_src {
+  dimension_group: cuenta_fecha_modificacion_src {
     type: time
     timeframes: [
       raw,
@@ -279,11 +297,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaModificacionSRC ;;
-    datatype: timestamp
-    label: "Cliente Cuenta Modificacion"
+    view_label: "Cliente"
+    group_label: "Fecha Modificacion Cuenta"
+    label: "Modificacion Cuenta"
   }
 
-  dimension_group: cliente__persona_fecha_creacion_src {
+  dimension_group: persona_fecha_creacion_src {
     type: time
     timeframes: [
       raw,
@@ -295,11 +314,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaCreacionSRC ;;
-    datatype: timestamp
-    label: "Cliente Persona Creacion"
+    view_label: "Cliente"
+    group_label: "Fecha Creacion Persona"
+    label: "Creacion Persona"
   }
 
-  dimension_group: cliente__persona_fecha_nacimiento {
+  dimension_group: persona_fecha_nacimiento {
     type: time
     timeframes: [
       raw,
@@ -310,11 +330,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaNacimiento ;;
-    datatype: date
+    view_label: "Cliente"
+    group_label: "Fecha Nacimiento Persona"
     label: "Persona Nacimiento"
   }
 
-  dimension_group: cliente__persona_fecha_modificacion_src {
+  dimension_group: persona_fecha_modificacion_src {
     type: time
     timeframes: [
       raw,
@@ -326,11 +347,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaModificacionSRC ;;
-    datatype: timestamp
-    label: "Cliente Persona Modificacion"
+    view_label: "Cliente"
+    group_label: "Fecha Modificacion Persona"
+    label: "Persona Modificacion"
   }
 
-  dimension_group: orden_alta__orden_fecha_activacion_src {
+  dimension_group: oa_orden_fecha_activacion_src {
     type: time
     timeframes: [
       raw,
@@ -342,11 +364,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaActivacionSRC ;;
-    datatype: timestamp
-    label: "Orden Alta Activacion"
+    view_label: "Orden Alta"
+    group_label: "Fecha Activacion"
+    label: "Activacion"
   }
 
-  dimension_group: orden_alta__orden_fecha_entrega_src {
+  dimension_group: oa_orden_fecha_entrega_src {
     type: time
     timeframes: [
       raw,
@@ -358,10 +381,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaEntregaSRC ;;
     datatype: date
-    label: "Orden Alta Entrega"
+    view_label: "Orden Alta"
+    group_label: "Fecha Entrega"
+    label: "Entrega"
   }
 
-  dimension_group: orden_alta__orden_fecha_fin_src {
+  dimension_group: oa_orden_fecha_fin_src {
     type: time
     timeframes: [
       raw,
@@ -373,10 +398,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaFinSRC ;;
     datatype: date
-    label: "Orden Alta Fin"
+    view_label: "Orden Alta"
+    group_label: "Fecha Fin"
+    label: "Fin"
   }
 
-  dimension_group: orden_alta__orden_fecha_inicio_src {
+  dimension_group: oa_orden_fecha_inicio_src {
     type: time
     timeframes: [
       raw,
@@ -388,10 +415,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaInicioSRC ;;
     datatype: date
-    label: "Orden Alta Inicio"
+    view_label: "Orden Alta"
+    group_label: "Fecha Inicio"
+    label: "Inicio"
   }
 
-  dimension_group: orden_alta__orden_fecha_mod_src {
+  dimension_group: oa_orden_fecha_mod_src {
     type: time
     timeframes: [
       raw,
@@ -403,11 +432,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaModSRC ;;
-    datatype: timestamp
-    label: "Orden Alta Modificacion"
+    view_label: "Orden Alta"
+    group_label: "Fecha Modificacion"
+    label: "Modificacion"
   }
 
-  dimension_group: orden_baja__orden_fecha_activacion_src {
+  dimension_group: ob_orden_fecha_activacion_src {
     type: time
     timeframes: [
       raw,
@@ -419,11 +449,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaActivacionSRC ;;
-    datatype: timestamp
-    label: "Orden Baja Activacion"
+    view_label: "Orden Baja"
+    group_label: "Fecha Activacion"
+    label: "Activacion"
   }
 
-  dimension_group: orden_baja__orden_fecha_fin_src {
+  dimension_group: ob_orden_fecha_fin_src {
     type: time
     timeframes: [
       raw,
@@ -435,10 +466,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaFinSRC ;;
     datatype: date
-    label: "Orden Baja Fin"
+    view_label: "Orden Baja"
+    group_label: "Fecha Fin"
+    label: "Fin"
   }
 
-  dimension_group: preactivaciones__preact_fecha_carga_src {
+  dimension_group: preact_fecha_carga_src {
     type: time
     timeframes: [
       raw,
@@ -451,10 +484,12 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Preactivaciones.PreactFechaCargaSRC ;;
     datatype: datetime
-    label: "Preactivaciones Carga"
+    view_label: "Preactivaciones"
+    group_label: "Fecha Carga"
+    label: "Carga"
   }
 
-  dimension_group: suspensiones__fecha_suspension1_src {
+  dimension_group: fecha_suspension1_src {
     type: time
     timeframes: [
       raw,
@@ -466,11 +501,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspension1SRC ;;
-    datatype: timestamp
-    label: "Suspension 1°"
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension 1"
+    label: "Suspension 1"
   }
 
-  dimension_group: suspensiones__fecha_suspension_administrativa_src {
+  dimension_group: fecha_suspension_administrativa_src {
     type: time
     timeframes: [
       raw,
@@ -482,11 +518,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionAdministrativaSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Administrativa"
     label: "Suspension Administrativa"
   }
 
-  dimension_group: suspensiones__fecha_suspension_degradacion_src {
+  dimension_group: fecha_suspension_degradacion_src {
     type: time
     timeframes: [
       raw,
@@ -498,11 +535,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionDegradacionSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Degradacion"
     label: "Suspension Degradacion"
   }
 
-  dimension_group: suspensiones__fecha_suspension_leasing_src {
+  dimension_group: fecha_suspension_leasing_src {
     type: time
     timeframes: [
       raw,
@@ -514,11 +552,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionLeasingSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Leasing"
     label: "Suspension Leasing"
   }
 
-  dimension_group: suspensiones__fecha_suspension_otros_src {
+  dimension_group: fecha_suspension_otros_src {
     type: time
     timeframes: [
       raw,
@@ -530,11 +569,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionOtrosSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Otros"
     label: "Suspension Otros"
   }
 
-  dimension_group: suspensiones__fecha_suspension_parcial_mora_src {
+  dimension_group: fecha_suspension_parcial_mora_src {
     type: time
     timeframes: [
       raw,
@@ -546,11 +586,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionParcialMoraSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Parcial Mora"
     label: "Suspension Parcial Mora"
   }
 
-  dimension_group: suspensiones__fecha_suspension_port_out_src {
+  dimension_group: fecha_suspension_port_out_src {
     type: time
     timeframes: [
       raw,
@@ -562,11 +603,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionPortOutSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension PortOut"
     label: "Suspension PortOut"
   }
 
-  dimension_group: suspensiones__fecha_suspension_reversion_port_insrc {
+  dimension_group: fecha_suspension_reversion_port_insrc {
     type: time
     timeframes: [
       raw,
@@ -578,11 +620,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionReversionPortINSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Reversion PortIn"
     label: "Suspension PortIn"
   }
 
-  dimension_group: suspensiones__fecha_suspension_siniestro_src {
+  dimension_group: fecha_suspension_siniestro_src {
     type: time
     timeframes: [
       raw,
@@ -594,11 +637,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionSiniestroSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Siniestro"
     label: "Suspension Siniestro"
   }
 
-  dimension_group: suspensiones__fecha_suspension_total_mora_src {
+  dimension_group: fecha_suspension_total_mora_src {
     type: time
     timeframes: [
       raw,
@@ -610,11 +654,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionTotalMoraSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Total Mora"
     label: "Suspension Total Mora"
   }
 
-  dimension_group: suspensiones__fecha_suspension_ultima_src {
+  dimension_group: fecha_suspension_ultima_src {
     type: time
     timeframes: [
       raw,
@@ -626,11 +671,12 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionUltimaSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Ultima"
     label: "Suspension Ultima"
   }
 
-  dimension_group: suspensiones__fecha_suspension_voluntaria_src {
+  dimension_group: fecha_suspension_voluntaria_src {
     type: time
     timeframes: [
       raw,
@@ -642,976 +688,1030 @@ view: fth_parque {
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionVoluntariaSRC ;;
-    datatype: timestamp
+    view_label: "Suspensiones"
+    group_label: "Fecha Suspension Voluntaria"
     label: "Suspension Voluntaria"
   }
 
   ## Strings
-  dimension: caracteristicas__producto_adquirido_gama_equipo {
+
+  dimension: producto_adquirido_gama_equipo {
     type: string
     sql: ${TABLE}.Caracteristicas.ProductoAdquiridoGamaEquipo ;;
+    view_label: "Producto Adquirido"
     group_label: "Caracteristicas"
-    group_item_label: "Producto Adquirido Gama Equipo"
+    label: "Gama Equipo"
   }
 
-  dimension: caracteristicas__producto_adquirido_imsi {
+  dimension: producto_adquirido_imsi {
     type: string
     sql: ${TABLE}.Caracteristicas.ProductoAdquiridoIMSI ;;
+    view_label: "Producto Adquirido"
     group_label: "Caracteristicas"
-    group_item_label: "Producto Adquirido IMSI"
+    label: "IMSI"
   }
 
-  dimension: caracteristicas__producto_adquirido_marca_producto {
+  dimension: producto_adquirido_marca_producto {
     type: string
     sql: ${TABLE}.Caracteristicas.ProductoAdquiridoMarcaProducto ;;
+    view_label: "Producto Adquirido"
     group_label: "Caracteristicas"
-    group_item_label: "Producto Adquirido Marca"
+    label: "Marca"
   }
 
-  dimension: caracteristicas__producto_adquirido_modelo_producto {
+  dimension: producto_adquirido_modelo_producto {
     type: string
     sql: ${TABLE}.Caracteristicas.ProductoAdquiridoModeloProducto ;;
+    view_label: "Producto Adquirido"
     group_label: "Caracteristicas"
-    group_item_label: "Producto Adquirido Modelo"
+    label: "Modelo"
   }
 
-  dimension: caracteristicas__producto_adquirido_nmu {
+  dimension: producto_adquirido_nmu {
     type: string
     sql: ${TABLE}.Caracteristicas.ProductoAdquiridoNMU ;;
+    view_label: "Producto Adquirido"
     group_label: "Caracteristicas"
-    group_item_label: "Producto Adquirido NMU"
+    label: "NMU"
   }
 
-  dimension: caracteristicas__producto_adquirido_tipo_dispositivo {
+  dimension: producto_adquirido_tipo_dispositivo {
     type: string
     sql: ${TABLE}.Caracteristicas.ProductoAdquiridoTipoDispositivo ;;
+    view_label: "Producto Adquirido"
     group_label: "Caracteristicas"
-    group_item_label: "Producto Adquirido Tipo Dispositivo"
+    group_item_label: "Tipo Dispositivo"
   }
 
-  dimension: cliente__cliente_ciclo_facturacion {
+  dimension: cliente_ciclo_facturacion {
     type: string
     sql: ${TABLE}.Cliente.ClienteCicloFacturacion ;;
-    group_label: "Cliente"
-    group_item_label: "Ciclo Facturacion"
+    view_label: "Cliente"
+    label: "Ciclo Facturacion"
   }
 
-  dimension: cliente__cliente_codigo_integracion {
+  dimension: cliente_codigo_integracion {
     type: string
     sql: ${TABLE}.Cliente.ClienteCodigoIntegracion ;;
-    group_label: "Cliente"
-    group_item_label: "Codigo Integracion"
+    view_label: "Cliente"
+    label: "Codigo Integracion"
   }
 
-  dimension: cliente__cliente_codigo_integracion_texto {
+  dimension: cliente_codigo_integracion_texto {
     type: string
     sql: ${TABLE}.Cliente.ClienteCodigoIntegracionTexto ;;
-    group_label: "Cliente"
-    group_item_label: "Codigo Integracion Texto"
+    view_label: "Cliente"
+    label: "Codigo Integracion Texto"
   }
 
-  dimension: cliente__cliente_cuit {
+  dimension: cliente_cuit {
     type: string
     sql: ${TABLE}.Cliente.ClienteCUIT ;;
-    group_label: "Cliente"
-    group_item_label: "Cuit"
+    view_label: "Cliente"
+    label: "Cuit"
   }
 
-  dimension: cliente__cliente_email {
+  dimension: cliente_email {
     type: string
     sql: ${TABLE}.Cliente.ClienteEmail ;;
-    group_label: "Cliente"
-    group_item_label: "Email"
+    view_label: "Cliente"
+    label: "Email"
   }
 
-  dimension: cliente__cliente_razon_social {
+  dimension: cliente_razon_social {
     type: string
     sql: ${TABLE}.Cliente.ClienteRazonSocial ;;
-    group_label: "Cliente"
-    group_item_label: "Razon Social"
+    view_label: "Cliente"
+    label: "Razon Social"
   }
 
-  dimension: cliente__cliente_segmento1_nombre {
+  dimension: cliente_segmento1_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento1Nombre ;;
     suggest_dimension: lk_cliente_segmento1.cliente_segmento1_nombre
-    group_label: "Cliente"
-    group_item_label: "Segmento1 Nombre"
+    view_label: "Cliente"
+    label: "Segmento 1 Nombre"
   }
 
-  dimension: cliente__cliente_segmento2_nombre {
+  dimension: cliente_segmento2_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento2Nombre ;;
     suggest_dimension: lk_cliente_segmento2.cliente_segmento2_nombre
-    group_label: "Cliente"
-    group_item_label: "Segmento2 Nombre"
+    view_label: "Cliente"
+    label: "Segmento 2 Nombre"
   }
 
-  dimension: cliente__cliente_tipo_nombre {
+  dimension: cliente_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteTipoNombre ;;
     suggest_dimension: lk_cliente_tipo.cliente_tipo_nombre
-    group_label: "Cliente"
-    group_item_label: "Tipo Nombre"
+    view_label: "Cliente"
+    label: "Tipo Nombre"
   }
 
-  dimension: cliente__cliente_tipo_pago {
+  dimension: cliente_tipo_pago {
     type: string
     sql: ${TABLE}.Cliente.ClienteTipoPago ;;
-    group_label: "Cliente"
-    group_item_label: "Tipo Pago"
+    view_label: "Cliente"
+    label: "Tipo Pago"
   }
 
-  dimension: cliente__cuenta_beneficio_prod_adquirido {
+  dimension: cuenta_beneficio_prod_adquirido {
     type: string
     sql: ${TABLE}.Cliente.CuentaBeneficioProdAdquirido ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Beneficio Prod Adquirido"
+    view_label: "Cliente"
+    label: "Cuenta Beneficio Prod Adquirido"
   }
 
-  dimension: cliente__cuenta_ciclo_facturacion {
+  dimension: cuenta_ciclo_facturacion {
     type: string
     sql: ${TABLE}.Cliente.CuentaCicloFacturacion ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Ciclo Facturacion"
+    view_label: "Cliente"
+    label: "Cuenta Ciclo Facturacion"
   }
 
-  dimension: cliente__cuenta_cod_promocion_be {
+  dimension: cuenta_cod_promocion_be {
     type: string
     sql: ${TABLE}.Cliente.CuentaCodPromocionBE ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Cod Promocion Be"
+    view_label: "Cliente"
+    label: "Cuenta Cod Promocion Be"
   }
 
-  dimension: cliente__cuenta_cod_promocion_dc {
+  dimension: cuenta_cod_promocion_dc {
     type: string
     sql: ${TABLE}.Cliente.CuentaCodPromocionDC ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Cod Promocion Dc"
+    view_label: "Cliente"
+    label: "Cuenta Cod Promocion Dc"
   }
 
-  dimension: cliente__cuenta_codigo {
+  dimension: cuenta_codigo {
     type: string
     sql: ${TABLE}.Cliente.CuentaCodigo ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Codigo"
+    view_label: "Cliente"
+    label: "Cuenta Codigo"
   }
 
-  dimension: cliente__cuenta_codigo_origen {
+  dimension: cuenta_codigo_origen {
     type: string
     sql: ${TABLE}.Cliente.CuentaCodigoOrigen ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Codigo Origen"
+    view_label: "Cliente"
+    label: "Cuenta Codigo Origen"
   }
 
-  dimension: cliente__cuenta_estado_nombre {
+  dimension: cuenta_estado_nombre {
     type: string
     sql: ${TABLE}.Cliente.CuentaEstadoNombre ;;
     suggest_dimension: lk_cuenta_estado.cuenta_estado_nombre
-    group_label: "Cliente"
-    group_item_label: "Cuenta Estado Nombre"
+    view_label: "Cliente"
+    label: "Cuenta Estado Nombre"
   }
 
-  dimension: cliente__cuenta_hwacct_code {
+  dimension: cuenta_hwacct_code {
     type: string
     sql: ${TABLE}.Cliente.CuentaHWACCT_CODE ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta HW Acct Code"
+    view_label: "Cliente"
+    label: "Cuenta HW Acct Code"
   }
 
-  dimension: cliente__cuenta_marca_migracion {
+  dimension: cuenta_marca_migracion {
     type: string
     sql: ${TABLE}.Cliente.CuentaMarcaMigracion ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Marca Migracion"
+    view_label: "Cliente"
+    label: "Cuenta Marca Migracion"
   }
 
-  dimension: cliente__cuenta_metodo_entrega {
+  dimension: cuenta_metodo_entrega {
     type: string
     sql: ${TABLE}.Cliente.CuentaMetodoEntrega ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Metodo Entrega"
+    view_label: "Cliente"
+    label: "Cuenta Metodo Entrega"
   }
 
-  dimension: cliente__cuenta_riesgo_crediticio {
+  dimension: cuenta_riesgo_crediticio {
     type: string
     sql: ${TABLE}.Cliente.CuentaRiesgoCrediticio ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Riesgo Crediticio"
+    view_label: "Cliente"
+    label: "Cuenta Riesgo Crediticio"
   }
 
-  dimension: cliente__cuenta_sla {
+  dimension: cuenta_sla {
     type: string
     sql: ${TABLE}.Cliente.CuentaSLA ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta SLA"
+    view_label: "Cliente"
+    label: "Cuenta SLA"
   }
 
-  dimension: cliente__cuenta_suscripcion_bd {
+  dimension: cuenta_suscripcion_bd {
     type: string
     sql: ${TABLE}.Cliente.CuentaSuscripcionBD ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Suscripcion BD"
+    view_label: "Cliente"
+    label: "Cuenta Suscripcion BD"
   }
 
-  dimension: cliente__cuenta_susp_voluntarias_utilizadas {
+  dimension: cuenta_susp_voluntarias_utilizadas {
     type: string
     sql: ${TABLE}.Cliente.CuentaSuspVoluntariasUtilizadas ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Susp Voluntarias Utilizadas"
+    view_label: "Cliente"
+    label: "Cuenta Susp Voluntarias Utilizadas"
   }
 
-  dimension: cliente__cuenta_tipo_nombre {
+  dimension: cuenta_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.CuentaTipoNombre ;;
     suggest_dimension: lk_cuenta_tipo.cuenta_tipo_nombre
-    group_label: "Cliente"
-    group_item_label: "Cuenta Tipo Nombre"
+    view_label: "Cliente"
+    label: "Cuenta Tipo Nombre"
   }
 
-  dimension: cliente__medio_pago_cuenta_bancaria_tipo_nombre {
+  dimension: medio_pago_cuenta_bancaria_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.MedioPagoCuentaBancariaTipoNombre ;;
     suggest_dimension: lk_medio_pago_cuenta_bancaria_tipo.medio_pago_cuenta_bancaria_tipo_nombre
-    group_label: "Cliente"
-    group_item_label: "Medio Pago Cuenta Bancaria Tipo Nombre"
+    view_label: "Cliente"
+    label: "Medio Pago Cuenta Bancaria Tipo Nombre"
   }
 
-  dimension: cliente__medio_pago_entidad_financiera_nombre {
+  dimension: medio_pago_entidad_financiera_nombre {
     type: string
     sql: ${TABLE}.Cliente.MedioPagoEntidadFinancieraNombre ;;
     suggest_dimension: lk_medio_pago_entidad_financiera.medio_pago_entidad_financiera_nombre
-    group_label: "Cliente"
-    group_item_label: "Medio Pago Entidad Financiera Nombre"
+    view_label: "Cliente"
+    label: "Medio Pago Entidad Financiera Nombre"
   }
 
-  dimension: cliente__medio_pago_nombre {
+  dimension: medio_pago_nombre {
     type: string
     sql: ${TABLE}.Cliente.MedioPagoNombre ;;
-    group_label: "Cliente"
-    group_item_label: "Medio Pago Nombre"
+    view_label: "Cliente"
+    label: "Medio Pago Nombre"
   }
 
-  dimension: cliente__medio_pago_tarjeta_tipo_nombre {
+  dimension: medio_pago_tarjeta_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.MedioPagoTarjetaTipoNombre ;;
     suggest_dimension: lk_medio_pago_tarjeta_tipo.medio_pago_tarjeta_tipo_nombre
-    group_label: "Cliente"
-    group_item_label: "Medio Pago Tarjeta Tipo Nombre"
+    view_label: "Cliente"
+    label: "Medio Pago Tarjeta Tipo Nombre"
   }
 
-  dimension: cliente__medio_pago_tipo_nombre {
+  dimension: medio_pago_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.MedioPagoTipoNombre ;;
     suggest_dimension: lk_medio_pago_tipo.medio_pago_tipo_nombre
-    group_label: "Cliente"
-    group_item_label: "Medio Pago Tipo Nombre"
+    view_label: "Cliente"
+    label: "Medio Pago Tipo Nombre"
   }
 
-  dimension: cliente__persona_apellido {
+  dimension: persona_apellido {
     type: string
     sql: ${TABLE}.Cliente.PersonaApellido ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Apellido"
+    view_label: "Cliente"
+    label: "Persona Apellido"
   }
 
-  dimension: cliente__persona_cuilnumero {
+  dimension: persona_cuilnumero {
     type: string
     sql: ${TABLE}.Cliente.PersonaCUILNumero ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Cuil Numero"
+    view_label: "Cliente"
+    label: "Persona Cuil Numero"
   }
 
-  dimension: cliente__persona_documento_numero {
+  dimension: persona_documento_numero {
     type: string
     sql: ${TABLE}.Cliente.PersonaDocumentoNumero ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Documento Numero"
+    view_label: "Cliente"
+    label: "Persona Documento Numero"
   }
 
-  dimension: cliente__persona_email {
+  dimension: persona_email {
     type: string
     sql: ${TABLE}.Cliente.PersonaEmail ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Email"
+    view_label: "Cliente"
+    label: "Persona Email"
   }
 
-  dimension: cliente__persona_genero {
+  dimension: persona_genero {
     type: string
     sql: ${TABLE}.Cliente.PersonaGenero ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Genero"
+    view_label: "Cliente"
+    label: "Persona Genero"
   }
 
-  dimension: cliente__persona_nombre {
+  dimension: persona_nombre {
     type: string
     sql: ${TABLE}.Cliente.PersonaNombre ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Nombre"
+    view_label: "Cliente"
+    label: "Persona Nombre"
   }
 
-  dimension: cliente__persona_tipo_documento_nombre {
+  dimension: persona_tipo_documento_nombre {
     type: string
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoNombre ;;
     suggest_dimension: lk_persona_tipo_documento.persona_tipo_documento_nombre
-    group_label: "Cliente"
-    group_item_label: "Persona Tipo Documento Nombre"
+    view_label: "Cliente"
+    label: "Persona Tipo Documento Nombre"
   }
 
   dimension: cuenta_propiedad_srcid {
     type: string
     sql: ${TABLE}.CuentaPropiedadSRCId ;;
-    label: "Cuenta Propiedad SRCId"
+    view_label: "Cliente"
+    label: "Cuenta Propiedad Id"
   }
 
-  dimension: domicilio__domicilio_codigo_postal_env {
+  dimension: domicilio_codigo_postal_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Codigo Postal Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Codigo Postal"
+    label: "Codigo Postal Envio"
   }
 
-  dimension: domicilio__domicilio_codigo_postal_fact {
+  dimension: domicilio_codigo_postal_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Codigo Postal Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Codigo Postal"
+    label: "Codigo Postal Facturacion"
   }
 
-  dimension: domicilio__domicilio_nombre_env {
+  dimension: domicilio_nombre_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioNombreEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Nombre"
+    label: "Nombre Envio"
   }
 
-  dimension: domicilio__domicilio_nombre_fact {
+  dimension: domicilio_nombre_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioNombreFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Nombre"
+    label: "Nombre Facturacion"
   }
 
-  dimension: domicilio__domicilio_piso_env {
+  dimension: domicilio_piso_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPisoEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Piso Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Piso"
+    label: "Piso Envio"
   }
 
   dimension: domicilio__domicilio_piso_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPisoFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Piso Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Piso"
+    label: "Piso Facturacion"
   }
 
-  dimension: domicilio__domicilio_planta_env {
+  dimension: domicilio_planta_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPlantaEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Planta Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Planta"
+    label: "Planta Envio"
   }
 
-  dimension: domicilio__domicilio_planta_fact {
+  dimension: domicilio_planta_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPlantaFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Planta Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Planta"
+    label: "Planta Facturacion"
   }
 
-  dimension: domicilio__domicilio_puerta_env {
+  dimension: domicilio_puerta_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPuertaEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Puerta Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Puerta"
+    label: "Puerta Envio"
   }
 
-  dimension: domicilio__domicilio_puerta_fact {
+  dimension: domicilio_puerta_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPuertaFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Puerta Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Puerta"
+    label: "Puerta Facturacion"
   }
 
-  dimension: domicilio__domicilio_unidad_habitacional_env {
+  dimension: domicilio_unidad_habitacional_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioUnidadHabitacionalEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Unidad Habitacional Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Unidad Habitacional"
+    label: "Unidad Habitacional Envio"
   }
 
-  dimension: domicilio__domicilio_unidad_habitacional_fact {
+  dimension: domicilio_unidad_habitacional_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioUnidadHabitacionalFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Unidad Habitacional Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Unidad Habitacional"
+    label: "Unidad Habitacional Facturacion"
   }
 
-  dimension: domicilio__geo_corp_localidad_fact {
+  dimension: geo_corp_localidad_fact {
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpLocalidadFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Geo Corp Localidad Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Geo Corp Localidad"
+    label: "Geo Corp Localidad Facturacion"
   }
 
   dimension: domicilio__geo_corp_pais_fact {
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpPaisFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Geo Corp Pais Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Geo Corp Pais"
+    label: "Geo Corp Pais Facturacion"
   }
 
-  dimension: domicilio__geo_corp_provincia_fact {
+  dimension: geo_corp_provincia_fact {
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpProvinciaFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Geo Corp Provincia Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Geo Corp Provincia"
+    label: "Geo Corp Provincia Facturacion"
   }
 
-  dimension: domicilio__geo_corp_region_fact {
+  dimension: geo_corp_region_fact {
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpRegionFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Geo Corp Region Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Geo Corp Region"
+    label: "Geo Corp Region"
   }
 
-  dimension: domicilio__geo_corp_subregion_fact {
+  dimension: geo_corp_subregion_fact {
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpSubregionFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Geo Corp Subregion Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Geo Corp Subregion"
+    label: "Geo Corp Subregion"
   }
 
-  dimension: domicilio__nombre_calle_env {
+  dimension: nombre_calle_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreCalleEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Calle Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Calle"
+    label: "Calle Envio"
   }
 
-  dimension: domicilio__nombre_calle_fact {
+  dimension: nombre_calle_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreCalleFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Calle Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Calle"
+    label: "Calle Facturacion"
   }
 
-  dimension: domicilio__nombre_localidad_env {
+  dimension: nombre_localidad_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreLocalidadEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Localidad Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Localidad"
+    label: "Localidad Envio"
   }
 
-  dimension: domicilio__nombre_localidad_fact {
+  dimension: nombre_localidad_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreLocalidadFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Localidad Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Localidad"
+    label: "Localidad Facturacion"
   }
 
-  dimension: domicilio__nombre_provincia_env {
+  dimension: nombre_provincia_env {
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Provincia Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Provincia"
+    label: "Provincia Envio"
   }
 
-  dimension: domicilio__nombre_provincia_fact {
+  dimension: nombre_provincia_fact {
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Nombre Provincia Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Provincia"
+    label: "Provincia Facturacion"
   }
 
-  dimension: geografia__rango_numeracion_departamento_nombre {
+  dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Departamento Nombre"
+    view_label: "Geografia"
+    label: "Rango Numeracion Departamento Nombre"
   }
 
-  dimension: geografia__rango_numeracion_localidad_nombre {
+  dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Localidad Nombre"
+    view_label: "Geografia"
+    label: "Rango Numeracion Localidad Nombre"
   }
 
-  dimension: geografia__rango_numeracion_pi_pu {
+  dimension: rango_numeracion_pi_pu {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionPiPu ;;
-    group_label: "Geografia"
+    view_label: "Geografia"
     group_item_label: "Rango Numeracion Pi Pu"
   }
 
-  dimension: geografia__rango_numeracion_provincia_nombre {
+  dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
-    group_label: "Geografia"
+    view_label: "Geografia"
     group_item_label: "Rango Numeracion Provincia Nombre"
   }
 
   dimension: oferta_hwsrcid {
     type: string
     sql: ${TABLE}.OfertaHWSRCId ;;
-    label: "Oferta HW SRCId"
+    view_label: "Producto Adquirido"
+    label: "Oferta HW Id"
   }
 
-  dimension: orden_alta__caso_numero {
+  dimension: oa_caso_numero {
     type: string
     sql: ${TABLE}.OrdenAlta.CasoNumero ;;
-    group_label: "Orden Alta"
-    group_item_label: "Caso Numero"
+    view_label: "Orden Alta"
+    label: "Caso Numero"
   }
 
-  dimension: orden_alta__caso_sub_tipo_nombre {
+  dimension: oa_caso_sub_tipo_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.CasoSubTipoNombre ;;
     suggest_dimension: lk_caso_sub_tipo.caso_sub_tipo_nombre
-    group_label: "Orden Alta"
-    group_item_label: "Caso Sub Tipo Nombre"
+    view_label: "Orden Alta"
+    label: "Caso Subtipo Nombre"
   }
 
-  dimension: orden_alta__caso_tipo_nombre {
+  dimension: oa_caso_tipo_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.CasoTipoNombre ;;
     suggest_dimension: lk_caso_tipo.caso_tipo_nombre
-    group_label: "Orden Alta"
-    group_item_label: "Caso Tipo Nombre"
+    view_label: "Orden Alta"
+    label: "Caso Tipo Nombre"
   }
 
-  dimension: orden_alta__orden_canal_origen_nombre {
+  dimension: oa_orden_canal_origen_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenCanalOrigenNombre ;;
     suggest_dimension: lk_orden_canal_origen.orden_canal_origen_nombre
-    group_label: "Orden Alta"
-    group_item_label: "Canal Origen Nombre"
+    view_label: "Orden Alta"
+    label: "Canal Origen Nombre"
   }
 
-  dimension: orden_alta__orden_caso_srcid {
+  dimension: oa_orden_caso_srcid {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenCasoSRCId ;;
-    group_label: "Orden Alta"
-    group_item_label: "Caso SRCId"
+    view_label: "Orden Alta"
+    label: "Caso Id"
   }
 
-
-  dimension: orden_alta__orden_grupo_trabajo_nombre {
+  dimension: oa_orden_grupo_trabajo_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenGrupoTrabajoNombre ;;
-    group_label: "Orden Alta"
-    group_item_label: "Grupo Trabajo Nombre"
+    view_label: "Orden Alta"
+    label: "Grupo Trabajo Nombre"
   }
 
-  dimension: orden_alta__orden_item_accion_nombre {
+  dimension: oa_orden_item_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemAccionNombre ;;
-    group_label: "Orden Alta"
-    group_item_label: "Item Accion Nombre"
+    view_label: "Orden Alta"
+    label: "Item Accion Nombre"
   }
 
-  dimension: orden_alta__orden_item_estado_provisionamiento_nombre {
+  dimension: oa_orden_item_estado_provisionamiento_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemEstadoProvisionamientoNombre ;;
-    group_label: "Orden Alta"
-    group_item_label: "Item Estado Provisionamiento Nombre"
+    view_label: "Orden Alta"
+    label: "Item Estado Provisionamiento Nombre"
   }
 
-  dimension: orden_alta__orden_item_numero {
+  dimension: oa_orden_item_numero {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemNumero ;;
-    group_label: "Orden Alta"
-    group_item_label: "Item Numero"
+    view_label: "Orden Alta"
+    label: "Item Numero"
   }
 
-  dimension: orden_alta__orden_item_srcid {
+  dimension: oa_orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemSRCId ;;
-    group_label: "Orden Alta"
-    group_item_label: "Item Srcid"
+    view_label: "Orden Alta"
+    label: "Item Id"
   }
 
-  dimension: orden_alta__orden_item_sub_accion_nombre {
+  dimension: oa_orden_item_sub_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemSubAccionNombre ;;
-    group_label: "Orden Alta"
-    group_item_label: "Item Sub Accion Nombre"
+    view_label: "Orden Alta"
+    label: "Item Subaccion Nombre"
   }
 
-  dimension: orden_alta__orden_metodo_entrega_nombre {
+  dimension: oa_orden_metodo_entrega_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenMetodoEntregaNombre ;;
-    group_label: "Orden Alta"
-    group_item_label: "Metodo Entrega Nombre"
+    view_label: "Orden Alta"
+    label: "Metodo Entrega Nombre"
   }
 
-  dimension: orden_alta__orden_numero {
+  dimension: oa_orden_numero {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenNumero ;;
-    group_label: "Orden Alta"
-    group_item_label: "Numero"
+    view_label: "Orden Alta"
+    label: "Numero"
   }
 
-  dimension: orden_alta__orden_srcid {
+  dimension: oa_orden_srcid {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenSRCId ;;
-    group_label: "Orden Alta"
-    group_item_label: "Srcid"
+    view_label: "Orden Alta"
+    label: "Orden id"
   }
 
-  dimension: orden_alta__orden_tipo_cambio_plan_nombre {
+  dimension: oa_orden_tipo_cambio_plan_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenTipoCambioPlanNombre ;;
     suggest_dimension: lk_orden_tipo_cambio_plan.orden_tipo_cambio_plan_nombre
-    group_label: "Orden Alta"
-    group_item_label: "Tipo Cambio Plan Nombre"
+    view_label: "Orden Alta"
+    label: "Tipo Cambio Plan Nombre"
   }
 
-  dimension: orden_alta__orden_tipo_gestion_nombre {
+  dimension: oa_orden_tipo_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenTipoGestionNombre ;;
     suggest_dimension: lk_orden_tipo_gestion.orden_tipo_gestion_nombre
-    group_label: "Orden Alta"
-    group_item_label: "Tipo Gestion Nombre"
+    view_label: "Orden Alta"
+    label: "Tipo Gestion Nombre"
   }
 
-  dimension: orden_alta__orden_tipo_sub_gestion_nombre {
+  dimension: oa_orden_alta__orden_tipo_sub_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenTipoSubGestionNombre ;;
     suggest_dimension: lk_orden_tipo_sub_gestion.orden_tipo_sub_gestion_nombre
-    group_label: "Orden Alta"
-    group_item_label: "Tipo Sub Gestion Nombre"
+    view_label: "Orden Alta"
+    label: "Tipo Subgestion Nombre"
   }
 
-  dimension: orden_alta__orden_usuario_creacion_srcid {
+  dimension: oa_orden_usuario_creacion_srcid {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenUsuarioCreacionSRCId ;;
-    group_label: "Orden Alta"
-    group_item_label: "Usuario Creacion Srcid"
+    view_label: "Orden Alta"
+    label: "Usuario Creacion Id"
   }
 
-  dimension: orden_alta__usuario_creacion_legajo {
+  dimension: oa_usuario_creacion_legajo {
     type: string
     sql: ${TABLE}.OrdenAlta.UsuarioCreacionLegajo ;;
-    group_label: "Orden Alta"
-    group_item_label: "Usuario Creacion Legajo"
+    view_label: "Orden Alta"
+    label: "Usuario Creacion Legajo"
   }
 
-  dimension: orden_alta__usuario_creacion_nombre {
+  dimension: oa_usuario_creacion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.UsuarioCreacionNombre ;;
-    group_label: "Orden Alta"
-    group_item_label: "Usuario Creacion Nombre"
+    view_label: "Orden Alta"
+    label: "Usuario Creacion Nombre"
   }
 
-  dimension: orden_baja__caso_estado_nombre {
+  dimension: ob_caso_estado_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoEstadoNombre ;;
     suggest_dimension: lk_caso_estado.caso_estado_nombre
-    group_label: "Orden Baja"
+    view_label: "Orden Baja"
     group_item_label: "Caso Estado Nombre"
   }
 
-  dimension: orden_baja__caso_motivo_baja_nombre {
+  dimension: ob_caso_motivo_baja_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoMotivoBajaNombre ;;
     suggest_dimension: lk_caso_motivo_baja.caso_motivo_baja_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Caso Motivo Baja Nombre"
+    view_label: "Orden Baja"
+    label: "Caso Motivo Baja Nombre"
   }
 
-  dimension: orden_baja__caso_motivo_nombre {
+  dimension: ob_caso_motivo_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoMotivoNombre ;;
     suggest_dimension: lk_caso_motivo.caso_motivo_nombre
-    group_label: "Orden Baja"
+    view_label: "Orden Baja"
     group_item_label: "Caso Motivo Nombre"
   }
 
-  dimension: orden_baja__caso_numero {
+  dimension: ob_caso_numero {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoNumero ;;
-    group_label: "Orden Baja"
-    group_item_label: "Caso Numero"
+    view_label: "Orden Baja"
+    label: "Caso Numero"
   }
 
-  dimension: orden_baja__caso_operadora_receptora_srcid {
+  dimension: ob_caso_operadora_receptora_srcid {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoOperadoraReceptoraSRCId ;;
-    group_label: "Orden Baja"
-    group_item_label: "Caso Operadora Receptora SRCId"
+    view_label: "Orden Baja"
+    label: "Caso Operadora Receptora Id"
   }
 
-  dimension: orden_baja__caso_sub_motivo_baja_nombre {
+  dimension: ob_caso_sub_motivo_baja_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoSubMotivoBajaNombre ;;
     suggest_dimension: lk_caso_sub_motivo_baja.caso_sub_motivo_baja_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Caso Sub Motivo Baja Nombre"
+    view_label: "Orden Baja"
+    label: "Caso Submotivo Baja Nombre"
   }
 
-  dimension: orden_baja__caso_sub_tipo_nombre {
+  dimension: ob_caso_sub_tipo_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.CasoSubTipoNombre ;;
     suggest_dimension: lk_caso_sub_tipo.caso_sub_tipo_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Caso Sub Tipo Nombre"
+    view_label: "Orden Baja"
+    label: "Caso Sub Tipo Nombre"
   }
 
-  dimension: orden_baja__orden_caso_srcid {
+  dimension: ob_orden_caso_srcid {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenCasoSRCId ;;
-    group_label: "Orden Baja"
-    group_item_label: "Caso Srcid"
+    view_label: "Orden Baja"
+    label: "Caso Id"
   }
 
-  dimension: orden_baja__orden_item_accion_nombre {
+  dimension: ob_orden_item_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenItemAccionNombre ;;
     suggest_dimension: lk_orden_item_accion.orden_item_accion_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Item Accion Nombre"
+    view_label: "Orden Baja"
+    label: "Item Accion Nombre"
   }
 
-  dimension: orden_baja__orden_item_numero {
+  dimension: ob_orden_item_numero {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenItemNumero ;;
-    group_label: "Orden Baja"
-    group_item_label: "Item Numero"
+    view_label: "Orden Baja"
+    label: "Item Numero"
   }
 
-  dimension: orden_baja__orden_item_srcid {
+  dimension: ob_orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenItemSRCId ;;
-    group_label: "Orden Baja"
-    group_item_label: "Item SRCId"
+    view_label: "Orden Baja"
+    label: "Item Id"
   }
 
-  dimension: orden_baja__orden_item_sub_accion_nombre {
+  dimension: ob_orden_item_sub_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenItemSubAccionNombre ;;
     suggest_dimension: lk_orden_item_sub_accion.orden_item_sub_accion_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Item Sub Accion Nombre"
+    view_label: "Orden Baja"
+    label: "Item Subaccion Nombre"
   }
 
-  dimension: orden_baja__orden_numero {
+  dimension: ob_orden_numero {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenNumero ;;
-    group_label: "Orden Baja"
-    group_item_label: "Numero"
+    view_label: "Orden Baja"
+    label: "Orden Numero"
   }
 
-  dimension: orden_baja__orden_srcid {
+  dimension: ob_orden_srcid {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenSRCId ;;
-    group_label: "Orden Baja"
-    group_item_label: "SRCId"
+    view_label: "Orden Baja"
+    label: "Orden Id"
   }
 
-  dimension: orden_baja__orden_tipo_gestion_nombre {
+  dimension: ob_orden_tipo_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenTipoGestionNombre ;;
     suggest_dimension: lk_orden_tipo_gestion.orden_tipo_gestion_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Tipo Gestion Nombre"
+    view_label: "Orden Baja"
+    label: "Tipo Gestion Nombre"
   }
 
-  dimension: orden_baja__orden_tipo_sub_gestion_nombre {
+  dimension: ob_orden_tipo_sub_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenTipoSubGestionNombre ;;
     suggest_dimension: lk_orden_tipo_sub_gestion.orden_tipo_sub_gestion_nombre
-    group_label: "Orden Baja"
-    group_item_label: "Tipo Sub Gestion Nombre"
+    view_label: "Orden Baja"
+    label: "Tipo Subgestion Nombre"
   }
 
-  dimension: plan_anterior__producto_codigo {
+  dimension: pa_producto_codigo {
     type: string
     sql: ${TABLE}.PlanAnterior.ProductoCodigo ;;
-    group_label: "Plan Anterior"
-    group_item_label: "Producto Codigo"
+    view_label: "Plan Anterior"
+    label: "Producto Codigo"
   }
 
-  dimension: plan_anterior__producto_nombre {
+  dimension: pa_producto_nombre {
     type: string
     sql: ${TABLE}.PlanAnterior.ProductoNombre ;;
-    group_label: "Plan Anterior"
+    view_label: "Plan Anterior"
     group_item_label: "Producto Nombre"
   }
 
-  dimension: plan_anterior__producto_srcid {
+  dimension: pa_producto_srcid {
     type: string
     sql: ${TABLE}.PlanAnterior.ProductoSRCId ;;
-    group_label: "Plan Anterior"
-    group_item_label: "Producto SRCId"
+    view_label: "Plan Anterior"
+    label: "Producto Id"
   }
 
-  dimension: plan_anterior__producto_tipo_nombre {
+  dimension: pa_producto_tipo_nombre {
     type: string
     sql: ${TABLE}.PlanAnterior.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo.producto_tipo_nombre
-    group_label: "Plan Anterior"
-    group_item_label: "Producto Tipo Nombre"
+    view_label: "Plan Anterior"
+    label: "Producto Tipo Nombre"
   }
 
-  dimension: preactivaciones__preact_iccsrcid {
+  dimension: preact_iccsrcid {
     type: string
     sql: ${TABLE}.Preactivaciones.PreactICCSRCId ;;
-    group_label: "Preactivaciones"
-    group_item_label: "ICC SRCId"
+    view_label: "Preactivaciones"
+    label: "ICC Id"
   }
 
-  dimension: preactivaciones__preact_localidad_nombre {
+  dimension: preact_localidad_nombre {
     type: string
     sql: ${TABLE}.Preactivaciones.PreactLocalidadNombre ;;
-    group_label: "Preactivaciones"
-    group_item_label: "Localidad Nombre"
+    view_label: "Preactivaciones"
+    label: "Localidad"
   }
 
-  dimension: preactivaciones__preact_provincia_nombre {
+  dimension: preact_provincia_nombre {
     type: string
     sql: ${TABLE}.Preactivaciones.PreactProvinciaNombre ;;
-    group_label: "Preactivaciones"
-    group_item_label: "Provincia Nombre"
+    view_label: "Preactivaciones"
+    label: "Provincia"
   }
 
-  dimension: preactivaciones__preact_punto_venta_descripcion {
+  dimension: preact_punto_venta_descripcion {
     type: string
     sql: ${TABLE}.Preactivaciones.PreactPuntoVentaDescripcion ;;
-    group_label: "Preactivaciones"
-    group_item_label: "Punto Venta Descripcion"
+    view_label: "Preactivaciones"
+    label: "Punto Venta Descripcion"
   }
 
-  dimension: preactivaciones__preact_punto_venta_srcid {
+  dimension: preact_punto_venta_srcid {
     type: string
     sql: ${TABLE}.Preactivaciones.PreactPuntoVentaSRCId ;;
-    group_label: "Preactivaciones"
-    group_item_label: "Punto Venta SRCId"
+    view_label: "Preactivaciones"
+    label: "Punto Venta Id"
   }
 
-  dimension: preactivaciones__preact_razon_social {
+  dimension: preact_razon_social {
     type: string
     sql: ${TABLE}.Preactivaciones.PreactRazonSocial ;;
-    group_label: "Preactivaciones"
-    group_item_label: "Razon Social"
+    view_label: "Preactivaciones"
+    label: "Razon Social"
   }
 
-
-  dimension: producto__producto_codigo {
+  dimension: producto_codigo {
     type: string
     sql: ${TABLE}.Producto.ProductoCodigo ;;
-    group_label: "Producto"
-    group_item_label: "Codigo"
+    view_label: "Producto"
+    label: "Codigo"
   }
 
-  dimension: producto__producto_familia_nombre {
+  dimension: producto_familia_nombre {
     type: string
     sql: ${TABLE}.Producto.ProductoFamiliaNombre ;;
     suggest_dimension: lk_producto_familia.producto_familia_nombre
-    group_label: "Producto"
-    group_item_label: "Familia Nombre"
+    view_label: "Producto"
+    label: "Familia Nombre"
   }
 
-  dimension: producto__producto_mercado_nombre {
+  dimension: producto_mercado_nombre {
     type: string
     sql: ${TABLE}.Producto.ProductoMercadoNombre ;;
     suggest_dimension: lk_producto_mercado.producto_mercado_nombre
-    group_label: "Producto"
-    group_item_label: "Mercado Nombre"
+    view_label: "Producto"
+    label: "Mercado Nombre"
   }
 
-  dimension: producto__producto_nmu {
+  dimension: producto_nmu {
     type: string
     sql: ${TABLE}.Producto.ProductoNmu ;;
-    group_label: "Producto"
+    view_label: "Producto"
     group_item_label: "NMU"
   }
 
-  dimension: producto__producto_nombre {
+  dimension: producto_nombre {
     type: string
     sql: ${TABLE}.Producto.ProductoNombre ;;
-    group_label: "Producto"
-    group_item_label: "Nombre"
+    view_label: "Producto"
+    label: "Nombre"
   }
 
-  dimension: producto__producto_sistema_origen_codigo {
+  dimension: producto_sistema_origen_codigo {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenCodigo ;;
-    group_label: "Producto"
-    group_item_label: "Sistema Origen Codigo"
+    view_label: "Producto"
+    label: "Sistema Origen Codigo"
   }
 
-  dimension: producto__producto_sistema_origen_descripcion {
+  dimension: producto_sistema_origen_descripcion {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenDescripcion ;;
-    group_label: "Producto"
-    group_item_label: "Sistema Origen Descripcion"
+    view_label: "Producto"
+    label: "Sistema Origen Descripcion"
   }
 
-  dimension: producto__producto_sistema_origen_intid {
+  dimension: producto_sistema_origen_intid {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenINTId ;;
-    group_label: "Producto"
-    group_item_label: "Sistema Origen Intid"
+    view_label: "Producto"
+    label: "Sistema Origen Int Id"
   }
 
-  dimension: producto__producto_sub_tipo_nombre {
+  dimension: producto_sub_tipo_nombre {
     type: string
     sql: ${TABLE}.Producto.ProductoSubTipoNombre ;;
     suggest_dimension: lk_producto_sub_tipo.producto_sub_tipo_nombre
-    group_label: "Producto"
-    group_item_label: "Sub Tipo Nombre"
+    view_label: "Producto"
+    group_item_label: "Subtipo Nombre"
   }
 
-  dimension: producto__producto_tipo_nombre {
+  dimension: p_producto_tipo_nombre {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo.producto_tipo_nombre
-    group_label: "Producto"
+    view_label: "Producto"
     group_item_label: "Tipo Nombre"
   }
 
   dimension: producto_accesorio_srcid {
     type: string
     sql: ${TABLE}.ProductoAccesorioSRCId ;;
-    group_label: "Producto"
-    label: "Accesorio SRCId"
+    view_label: "Producto Adquirido"
+    label: "Accesorio Id"
   }
 
   dimension: producto_adquirido_bundle_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquiridoBundleNombre ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Bundle Nombre"
   }
 
   dimension: producto_adquirido_bundle_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoBundleSRCId ;;
-    group_label: "Producto Adquirido"
-    label: "Bundle SRCId"
+    view_label: "Producto Adquirido"
+    label: "Bundle Id"
   }
 
   dimension: producto_adquirido_codigo_raiz {
     type: string
     sql: ${TABLE}.ProductoAdquiridoCodigoRaiz ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Codigo Raiz"
   }
 
   dimension: producto_adquirido_codigo_suscripcion {
     type: string
     sql: ${TABLE}.ProductoAdquiridoCodigoSuscripcion ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Codigo Suscripcion"
   }
 
   dimension: producto_adquirido_estado_leasing_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquiridoEstadoLeasingNombre ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Estado Leasing Nombre"
   }
 
@@ -1619,7 +1719,7 @@ view: fth_parque {
     type: string
     sql: ${TABLE}.ProductoAdquiridoEstadoNombre ;;
     suggest_dimension: lk_producto_adquirido_estado.producto_adquirido_estado_nombre
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Estado Nombre"
   }
 
@@ -1627,7 +1727,7 @@ view: fth_parque {
     type: string
     sql: ${TABLE}.ProductoAdquiridoEstadoProvisionamientoNombre ;;
     suggest_dimension: lk_orden_item_estado_provisionamiento.orden_item_estado_provisionamiento_nombre
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Estado Provisionamiento Nombre"
   }
 
@@ -1635,682 +1735,731 @@ view: fth_parque {
     type: string
     sql: ${TABLE}.ProductoAdquiridoEstadoRedNombre ;;
     suggest_dimension: lk_producto_adquirido_estado_red.producto_adquirido_estado_red_nombre
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Estado Red Nombre"
   }
 
   dimension: producto_adquirido_familia_producto {
     type: string
     sql: ${TABLE}.ProductoAdquiridoFamiliaProducto ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Familia Producto"
   }
 
   dimension: producto_adquirido_garantia_invalida {
     type: string
     sql: ${TABLE}.ProductoAdquiridoGarantiaInvalida ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Garantia Invalida"
   }
 
   dimension: producto_adquirido_iccid_plan {
     type: string
     sql: ${TABLE}.ProductoAdquiridoICCID_Plan ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "ICCID Plan"
   }
 
   dimension: producto_adquirido_iccidsrcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoICCIDSRCId ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "ICCID SRCId"
   }
 
   dimension: producto_adquirido_imei {
     type: string
     sql: ${TABLE}.ProductoAdquiridoIMEI ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "IMEI"
   }
 
   dimension: producto_adquirido_instancia_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoInstanciaSRCId ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Instancia SRCId"
   }
 
   dimension: producto_adquirido_marca_migrado {
     type: string
     sql: ${TABLE}.ProductoAdquiridoMarcaMigrado ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Marca Migrado"
   }
 
   dimension: producto_adquirido_motivo_alta {
     type: string
     sql: ${TABLE}.ProductoAdquiridoMotivoAlta ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Motivo Alta"
   }
 
   dimension: producto_adquirido_motivo_baja {
     type: string
     sql: ${TABLE}.ProductoAdquiridoMotivoBaja ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Motivo Baja"
   }
 
   dimension: producto_adquirido_nivel_jerarquia {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNivelJerarquia ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Nivel Jerarquia"
   }
 
   dimension: producto_adquirido_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNombre ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Nombre"
   }
 
   dimension: producto_adquirido_numero_linea {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNumeroLinea ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Numero Linea"
   }
 
   dimension: producto_adquirido_numero_linea_toip {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNumeroLineaTOIP ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Numero Linea TOIP"
   }
 
   dimension: producto_adquirido_numero_serie {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNumeroSerie ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Numero Serie"
   }
 
   dimension: producto_adquirido_producto_codigo {
     type: string
     sql: ${TABLE}.ProductoAdquiridoProductoCodigo ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Producto Codigo"
   }
 
   dimension: producto_adquirido_recurso_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoRecursoSRCId ;;
-    group_label: "Producto Adquirido"
-    label: "Recurso SRCId"
+    view_label: "Producto Adquirido"
+    label: "Recurso Id"
   }
 
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoSRCId ;;
-    group_label: "Producto Adquirido"
-    label: "SRCId"
+    view_label: "Producto Adquirido"
+    label: "Id"
   }
 
   dimension: producto_adquirido_sub_estado_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquiridoSubEstadoNombre ;;
     suggest_dimension: lk_producto_adquirido_sub_estado.producto_adquirido_sub_estado_nombre
-    group_label: "Producto Adquirido"
-    label: "Sub Estado Nombre"
+    view_label: "Producto Adquirido"
+    label: "Subestado Nombre"
   }
 
   dimension: producto_adquirido_sub_motivo_alta {
     type: string
     sql: ${TABLE}.ProductoAdquiridoSubMotivoAlta ;;
-    group_label: "Producto Adquirido"
-    label: "Sub Motivo Alta"
+    view_label: "Producto Adquirido"
+    label: "Submotivo Alta"
   }
 
   dimension: producto_adquirido_sub_motivo_baja {
     type: string
     sql: ${TABLE}.ProductoAdquiridoSubMotivoBaja ;;
-    group_label: "Producto Adquirido"
-    label: "Sub Motivo Baja"
+    view_label: "Producto Adquirido"
+    label: "Submotivo Baja"
   }
 
   dimension: producto_adquirido_tipo {
     type: string
     sql: ${TABLE}.ProductoAdquiridoTipo ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
     label: "Tipo"
   }
 
   dimension: producto_adquirido_usuario_creacion_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoUsuarioCreacionSRCId ;;
-    group_label: "Producto Adquirido"
-    label: "Creacion SRCId"
+    view_label: "Producto Adquirido"
+    group_label: "Usuario"
+    group_item_label: "Creacion Id"
+    label: "Usuario Creacion Id"
   }
 
   dimension: producto_adquirido_usuario_modificacion_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoUsuarioModificacionSRCId ;;
-    group_label: "Producto Adquirido"
-    label: "Usuario Modificacion SRCId"
+    view_label: "Producto Adquirido"
+    group_label: "Usuario"
+    group_item_label: "Modificacion Id"
+    label: "Usuario Modificacion Id"
   }
 
   dimension: producto_srcid {
     type: string
     sql: ${TABLE}.ProductoSRCId ;;
-    group_label: "Producto"
-    label: "SRCId"
+    view_label: "Producto Adquirido"
+    label: "Producto Id"
   }
 
-  dimension: punto_venta__punto_venta_canal3 {
+  dimension: punto_venta_canal3 {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanal3 ;;
-    group_label: "Punto Venta"
-    group_item_label: "Canal 3"
+    view_label: "Punto Venta"
+    label: "Canal 3"
   }
 
-  dimension: punto_venta__punto_venta_canal_nombre {
+  dimension: punto_venta_canal_nombre {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanalNombre ;;
-    group_label: "Punto Venta"
-    group_item_label: "Canal Nombre"
+    view_label: "Punto Venta"
+    label: "Canal Nombre"
   }
 
-  dimension: punto_venta__punto_venta_canalidad2_nombre {
+  dimension: punto_venta_canalidad2_nombre {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanalidad2Nombre ;;
     suggest_dimension: lk_punto_venta_canalidad2.punto_venta_canalidad2_nombre
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Canalidad 2 Nombre"
   }
 
-  dimension: punto_venta__punto_venta_descripcion {
+  dimension: punto_venta_descripcion {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaDescripcion ;;
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Descripcion"
   }
 
-  dimension: punto_venta__punto_venta_nombre {
+  dimension: punto_venta_nombre {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaNombre ;;
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Nombre"
   }
 
-  dimension: punto_venta__punto_venta_provincia {
+  dimension: punto_venta_provincia {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaProvincia ;;
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Provincia"
   }
 
-  dimension: punto_venta__punto_venta_region {
+  dimension: punto_venta_region {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaRegion ;;
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Region"
   }
 
-  dimension: punto_venta__punto_venta_subregion {
+  dimension: punto_venta_subregion {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaSubregion ;;
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Subregion"
   }
 
-  dimension: punto_venta__punto_venta_tipo_canal_nombre {
+  dimension: punto_venta_tipo_canal_nombre {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaTipoCanalNombre ;;
     suggest_dimension: lk_punto_venta_tipo_canal.punto_venta_tipo_canal_nombre
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Tipo Canal Nombre"
   }
 
-  dimension: punto_venta__punto_venta_tipo_contacto_nombre {
+  dimension: punto_venta_tipo_contacto_nombre {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaTipoContactoNombre ;;
     suggest_dimension: lk_punto_venta_tipo_contacto.punto_venta_tipo_contacto_nombre
-    group_label: "Punto Venta"
+    view_label: "Punto Venta"
     label: "Tipo Contacto Nombre"
   }
 
-  dimension: suspensiones__motivo_suspension1 {
+  dimension: motivo_suspension1 {
     type: string
     sql: ${TABLE}.Suspensiones.MotivoSuspension1 ;;
-    group_label: "Suspensiones"
-    group_item_label: "Motivo Suspension 1°"
+    view_label: "Suspensiones"
+    label: "Motivo Suspension 1"
   }
 
-  dimension: suspensiones__motivo_suspension_ultima {
+  dimension: motivo_suspension_ultima {
     type: string
     sql: ${TABLE}.Suspensiones.MotivoSuspensionUltima ;;
-    group_label: "Suspensiones"
-    group_item_label: "Motivo Suspension Ultima"
+    view_label: "Suspensiones"
+    label: "Motivo Suspension Ultima"
   }
 
-  dimension: suspensiones__suspensiones_producto_adquirido_srcid {
+  dimension: suspensiones_producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.Suspensiones.SuspensionesProductoAdquiridoSRCId ;;
-    group_label: "Suspensiones"
-    group_item_label: "Suspensiones Producto Adquirido SRCId"
+    view_label: "Suspensiones"
+    label: "Producto Adquirido Id"
   }
 
   ## Numbers
-  dimension: cliente__cuenta_codigo_facturacion {
+
+  dimension: cuenta_codigo_facturacion {
     type: number
     sql: ${TABLE}.Cliente.CuentaCodigoFacturacion ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Codigo Facturacion"
+    view_label: "Cliente"
+    label: "Cuenta Codigo Facturacion"
   }
 
-  dimension: cliente__cuenta_hwacct_id {
+  dimension: cuenta_hwacct_id {
     type: number
     sql: ${TABLE}.Cliente.CuentaHWAcct_Id ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta HW Acct ID"
+    view_label: "Cliente"
+    label: "Cuenta HW Acct Id"
   }
 
-  dimension: cliente__cuenta_hwcust_id {
+  dimension: cuenta_hwcust_id {
     type: number
     sql: ${TABLE}.Cliente.CuentaHWCUST_ID ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta HW Cust ID"
+    view_label: "Cliente"
+    label: "Cuenta HW Cust Id"
   }
 
-  dimension: cliente__persona_codigo_integracion {
+  dimension: persona_codigo_integracion {
     type: number
     sql: ${TABLE}.Cliente.PersonaCodigoIntegracion ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Codigo Integracion"
+    view_label: "Cliente"
+    label: "Persona Codigo Integracion"
   }
 
-  dimension: cliente__persona_edad {
+  dimension: persona_edad {
     type: number
     sql: ${TABLE}.Cliente.PersonaEdad ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Edad"
+    view_label: "Cliente"
+    label: "Persona Edad"
   }
 
-  dimension: domicilio__domicilio_codigo_postal_comercial_fact {
+  dimension: domicilio_codigo_postal_comercial_fact {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalComercialFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Codigo Postal Comercial Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Codigo Postal Comercial"
+    label: "Codigo Postal Comercial Facturacion"
   }
 
-  dimension: domicilio__domicilio_latitud_env {
+  dimension: domicilio_latitud_env {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioLatitudEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Latitud Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    label: "Latitud Envio"
   }
 
-  dimension: domicilio__domicilio_latitud_fact {
+  dimension: domicilio_latitud_fact {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioLatitudFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Latitud Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Latitud"
+    label: "Latitud Facturacion"
   }
 
-  dimension: domicilio__domicilio_longitud_env {
+  dimension: domicilio_longitud_env {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioLongitudEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Longitud Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Longitud"
+    label: "Longitud Envio"
   }
 
-  dimension: domicilio__domicilio_longitud_fact {
+  dimension: domicilio_longitud_fact {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioLongitudFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Longitud Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    label: "Domicilio Longitud Facturacion"
   }
 
-  dimension: domicilio__geo_corp_codigo_postal_fact {
+  dimension: geo_corp_codigo_postal_fact {
     type: number
     sql: ${TABLE}.Domicilio.GeoCorpCodigoPostalFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Geo Corp Codigo Postal Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Geo Corp Codigo Postal"
+    label: "Geo Corp Codigo Postal Facturacion"
   }
 
-  dimension: geografia__rango_numeracion_prefijo_interurbano {
+  dimension: rango_numeracion_prefijo_interurbano {
     type: number
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Prefijo Interurbano"
+    view_label: "Geografia"
+    label: "Rango Numeracion Prefijo Interurbano"
   }
 
-  dimension: geografia__rango_numeracion_prefijo_urbano {
+  dimension: rango_numeracion_prefijo_urbano {
     type: number
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoUrbano ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Prefijo Urbano"
+    view_label: "Geografia"
+    label: "Rango Numeracion Prefijo Urbano"
   }
 
-  dimension: orden_alta__orden_item_precio_calculado_recurrente {
+  dimension: oa_orden_item_precio_calculado_recurrente {
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenItemPrecioCalculadoRecurrente ;;
-    group_label: "Orden Alta"
-    group_item_label: "Orden Item Precio Calculado Recurrente"
+    view_label: "Orden Alta"
+    label: "Orden Item Precio Calculado Recurrente"
   }
 
-  dimension: plan_anterior__orden_item_cargo_recurrente {
+  dimension: pa_orden_item_cargo_recurrente {
     type: number
     sql: ${TABLE}.PlanAnterior.OrdenItemCargoRecurrente ;;
-    group_label: "Plan Anterior"
-    group_item_label: "Orden Item Cargo Recurrente"
+    view_label: "Plan Anterior"
+    label: "Orden Item Cargo Recurrente"
   }
 
-  dimension: plan_anterior__orden_item_precio_calculado_recurrente {
+  dimension: pa_orden_item_precio_calculado_recurrente {
     type: number
     sql: ${TABLE}.PlanAnterior.OrdenItemPrecioCalculadoRecurrente ;;
-    group_label: "Plan Anterior"
+    view_label: "Plan Anterior"
     group_item_label: "Orden Item Precio Calculado Recurrente"
   }
 
   dimension: producto_adquirido_cant_unidades {
     type: number
     sql: ${TABLE}.ProductoAdquiridoCantUnidades ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
+    label: "Cantidad de Unidades"
   }
 
   dimension: producto_adquirido_precio {
     type: number
     sql: ${TABLE}.ProductoAdquiridoPrecio ;;
-    group_label: "Producto Adquirido"
+    view_label: "Producto Adquirido"
+    label: "Precio"
   }
 
-  dimension: recarga__recarga_recharge_amt_pri_rec {
+  dimension: recarga_recharge_amt_pri_rec {
     type: number
     sql: ${TABLE}.Recarga.RecargaRECHARGE_AMT_Pri_Rec ;;
-    group_label: "Recarga"
-    group_item_label: "Recharge Amt Pri Rec"
+    view_label: "Recarga"
+    label: "Monto Primera Recarga"
   }
 
-  dimension: recarga__recarga_recharge_amt_ult_rec {
+  dimension: recarga_recharge_amt_ult_rec {
     type: number
     sql: ${TABLE}.Recarga.RecargaRECHARGE_AMT_Ult_Rec ;;
-    group_label: "Recarga"
-    group_item_label: "Recharge Amt Ult Rec"
+    view_label: "Recarga"
+    label: "Monto Ultima Recarga"
   }
 
-  dimension: recarga__recarga_recharge_log_id_pri_rec {
+  dimension: recarga_recharge_log_id_pri_rec {
     type: number
     value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Pri_Rec ;;
-    group_label: "Recarga"
-    group_item_label: "Recharge Log ID Pri Rec"
+    view_label: "Recarga"
+    label: "Log Id Primera Recarga"
   }
 
-  dimension: recarga__recarga_recharge_log_id_ult_rec {
+  dimension: recarga_recharge_log_id_ult_rec {
     type: number
     value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Ult_Rec ;;
-    group_label: "Recarga"
-    group_item_label: "Recharge Log ID Ult Rec"
+    view_label: "Recarga"
+    label: "Log Id Ultima Recarga"
   }
 
-  dimension: cliente__cuenta_monto_desc_convergente {
+  dimension: cuenta_monto_desc_convergente {
     type: number
     sql: ${TABLE}.Cliente.CuentaMontoDescConvergente ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Monto Desc Convergente"
+    view_label: "Cliente"
+    label: "Cuenta Monto Desc Convergente"
   }
 
-  dimension: domicilio__domicilio_numero_env {
+  dimension: domicilio_numero_env {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroEnv ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Numero Env"
+    view_label: "Domicilio"
+    group_label: "Envio"
+    label: "Numero Envio"
   }
 
-  dimension: domicilio__domicilio_numero_fact {
+  dimension: domicilio_numero_fact {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Numero Fact"
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Numero"
+    label: "Numero Facturacion"
   }
 
-  dimension: orden_alta__orden_item_cargo_recurrente {
+  dimension: oa_orden_item_cargo_recurrente {
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenItemCargoRecurrente ;;
-    group_label: "Orden Alta"
-    group_item_label: "Orden Item Cargo Recurrente"
+    view_label: "Orden Alta"
+    label: "Orden Item Cargo Recurrente"
   }
 
-  dimension: suspensiones__cantidad_suspensiones_activas {
+  dimension: cantidad_suspensiones_activas {
     type: number
     sql: ${TABLE}.Suspensiones.CantidadSuspensionesActivas ;;
-    group_label: "Suspensiones"
-    group_item_label: "Cantidad Suspensiones Activas"
+    view_label: "Suspensiones"
+    label: "Cantidad Suspensiones Activas"
   }
 
-  ## Yesno
-  dimension: cliente__cuenta_domicilio_envio_validado {
+  ## Flags
+
+  dimension: cuenta_domicilio_envio_validado {
     type: yesno
     sql: ${TABLE}.Cliente.CuentaDomicilioEnvioValidado ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Domicilio Envio Validado"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Envio Validado"
     label: "Es Envio Validado"
   }
 
-  dimension: cliente__cuenta_domicilio_facturacion_validado {
+  dimension: cuenta_domicilio_facturacion_validado {
     type: yesno
     sql: ${TABLE}.Cliente.CuentaDomicilioFacturacionValidado ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Domicilio Facturacion Validado"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Domicilio Facturacion Validado"
     label: "Es Domicilio Facturacion Validado"
   }
 
-  dimension: cliente__marcas__cliente_marca_activo {
+  dimension: cliente_marca_activo {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaActivo ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cliente Activo"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Activo"
     label: "Es Cliente Activo"
   }
 
-  dimension: cliente__marcas__cliente_marca_fraude {
+  dimension: cliente_marca_fraude {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaFraude ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Marca Fraude"
-    label: "Es Fraude"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Fraude"
+    label: "Es Cliente Fraude"
   }
 
-  dimension: cliente__marcas__cliente_marca_jubilado {
+  dimension: cliente_marca_jubilado {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaJubilado ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Marca Jubilado"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Jubilado"
     label: "Es Jubilado"
   }
 
-  dimension: cliente__marcas__cliente_marca_partner {
+  dimension: cliente_marca_partner {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPartner ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Marca Partner"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Partner"
     label: "Es Partner"
   }
 
-  dimension: cliente__marcas__cliente_marca_prensa {
+  dimension: cliente_marca_prensa {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPrensa ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Marca Prensa"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Prensa"
     label: "Es Prensa"
   }
 
-  dimension: cliente__marcas__cliente_marca_vip {
+  dimension: cliente_marca_vip {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaVIP ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cliente Vip"
-    label: "Es Cliente Vip"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Vip"
+    label: "Es Vip"
   }
 
-  dimension: cliente__marcas__cuenta_marca_compra_financiada {
+  dimension: cuenta_marca_compra_financiada {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaCompraFinanciada ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cuenta Compra Financiada"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Compra Financiada"
     label: "Es Compra Financiada"
   }
 
-  dimension: cliente__marcas__cuenta_marca_debito {
+  dimension: cuenta_marca_debito {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDebito ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cuenta Debito"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Debito"
     label: "Es Debito"
   }
 
-  dimension: cliente__marcas__cuenta_marca_deuda_financiada {
+  dimension: cuenta_marca_deuda_financiada {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDeudaFinanciada ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cuenta Deuda Financiada"
-    label: "Es Cuenta Deuda Financiada"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Deuda Financiada"
+    label: "Es Deuda Financiada"
   }
 
-  dimension: cliente__marcas__cuenta_marca_morosidad {
+  dimension: cuenta_marca_morosidad {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaMorosidad ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cuenta Morosidad"
-    label: "Es Cuenta Morosidad"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Morosidad"
+    label: "Es Morosidad"
   }
 
-  dimension: cliente__marcas__cuenta_marca_no_nominado {
+  dimension: cuenta_marca_no_nominado {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaNoNominado ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cuenta No Nominado"
-    label: "Es Cuenta No Nominado"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "No Nominado"
+    label: "Es No Nominado"
   }
 
-  dimension: cliente__marcas__cuenta_marca_socio {
+  dimension: cuenta_marca_socio {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaSocio ;;
-    group_label: "Cliente Marcas"
-    group_item_label: "Cuenta Socio"
-    label: "Es Cuenta Socio"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Socio"
+    label: "Es Socio"
   }
-  dimension: cliente__persona_marca_enviar_mail {
+  dimension: persona_marca_enviar_mail {
     type: yesno
     sql: ${TABLE}.Cliente.PersonaMarcaEnviarMail ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Marca Enviar Mail"
-    label: "Es Persona Enviar Mail"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Enviar Mail"
+    label: "Es Enviar Mail"
   }
 
-  dimension: cliente__persona_marca_fraude {
+  dimension: persona_marca_fraude {
     type: yesno
     sql: ${TABLE}.Cliente.PersonaMarcaFraude ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Marca Fraude"
-    label: "Es Persona Marca Fraude"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "Fraude"
+    label: "Es Persona Fraude"
   }
 
-  dimension: cliente__persona_marca_no_llamar {
+  dimension: persona_marca_no_llamar {
     type: yesno
     sql: ${TABLE}.Cliente.PersonaMarcaNoLlamar ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Marca No Llamar"
-    label: "Es Persona No Llamar"
+    view_label: "Cliente"
+    group_label: "Marcas"
+    group_item_label: "No Llamar"
+    label: "Es No Llamar"
   }
 
-  dimension: marcas__marca_cuenta_servicio_actualizada {
+  dimension: marca_cuenta_servicio_actualizada {
     type: yesno
     sql: ${TABLE}.Marcas.MarcaCuentaServicioActualizada ;;
+    view_label: "Cliente"
     group_label: "Marcas"
     group_item_label: "Cuenta Servicio Actualizada"
     label: "Es Cuenta Servicio Actualizada"
   }
 
-  dimension: marcas__producto_adquirido_marca_destruccion_total {
+  dimension: producto_adquirido_marca_destruccion_total {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaDestruccionTotal ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Destruccion Total"
-    label: "Es Producto Adquirido Destruccion Total"
+    group_item_label: "Destruccion Total"
+    label: "Es Destruccion Total"
   }
 
-  dimension: marcas__producto_adquirido_marca_leasing {
+  dimension: producto_adquirido_marca_leasing {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaLeasing ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Leasing"
-    label: "Es Producto Adquirido Marca Leasing"
+    group_item_label: "Leasing"
+    label: "Es Leasing"
   }
 
-  dimension: marcas__producto_adquirido_marca_parque_activo {
+  dimension: producto_adquirido_marca_parque_activo {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaParqueActivo ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Parque Activo"
-    label: "Es Producto Adquirido Parque Activo"
+    group_item_label: "Parque Activo"
+    label: "Es Parque Activo"
   }
 
-  dimension: marcas__producto_adquirido_marca_pertenece_bundle {
+  dimension: producto_adquirido_marca_pertenece_bundle {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPerteneceBundle ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Pertenece Bundle"
-    label: "Es Producto Adquirido Pertenece Bundle"
+    group_item_label: "Pertenece Bundle"
+    label: "Es Pertenece Bundle"
   }
 
-  dimension: marcas__producto_adquirido_marca_port_out {
+  dimension: producto_adquirido_marca_port_out {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPortOut ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Port Out"
-    label: "Es Producto Adquirido Port Out"
+    group_item_label: "Port Out"
+    label: "Es Port Out"
   }
 
-  dimension: marcas__producto_adquirido_marca_principal {
+  dimension: producto_adquirido_marca_principal {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPrincipal ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Principal"
-    label: "Es Producto Adquirido Principal"
+    group_item_label: "Principal"
+    label: "Es Principal"
   }
 
-  dimension: marcas__producto_adquirido_marca_producto_competencia {
+  dimension: producto_adquirido_marca_producto_competencia {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaProductoCompetencia ;;
+    view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Adquirido Producto Competencia"
-    label: "Es Producto Adquirido Producto Competencia"
+    group_item_label: "Producto Competencia"
+    label: "Es Producto Competencia"
   }
-  dimension: orden_alta__orden_marca_cambio_mercado {
+  dimension: oa_orden_marca_cambio_mercado {
     type: yesno
     sql: ${TABLE}.OrdenAlta.OrdenMarcaCambioMercado ;;
-    group_label: "Orden Alta"
-    group_item_label: "Marca Cambio Mercado"
-    label: "Es Orden Cambio Mercado"
+    view_label: "Orden Alta"
+    group_label: "Marcas"
+    group_item_label: "Cambio Mercado"
+    label: "Es Cambio Mercado"
   }
 
-  dimension: orden_alta__orden_marca_cambio_producto {
+  dimension: oa_orden_marca_cambio_producto {
     type: yesno
     sql: ${TABLE}.OrdenAlta.OrdenMarcaCambioProducto ;;
-    group_label: "Orden Alta"
-    group_item_label: "Marca Cambio Producto"
-    label: "Es Orden Cambio Producto"
+    view_label: "Orden Alta"
+    group_label: "Marcas"
+    group_item_label: "Cambio Producto"
+    label: "Es Cambio Producto"
   }
 
-  dimension: producto__marcas__producto_marca_activo {
+  dimension: producto_marca_activo {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaActivo ;;
-    group_label: "Producto Marcas"
+    view_label: "Producto"
+    group_label: "Marcas"
     group_item_label: "Activo"
     label: "Es Producto Activo"
   }
@@ -2318,7 +2467,8 @@ view: fth_parque {
   dimension: producto__marcas__producto_marca_no_assetizable {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaNoAssetizable ;;
-    group_label: "Producto Marcas"
+    view_label: "Producto"
+    group_label: "Marcas"
     group_item_label: "No Assetizable"
     label: "Es No Assetizable"
   }
@@ -2326,418 +2476,411 @@ view: fth_parque {
   dimension: producto__marcas__producto_marca_orderable {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaOrderable ;;
-    group_label: "Producto Marcas"
+    view_label: "Producto"
+    group_label: "Marcas"
     group_item_label: "Orderable"
-    label: "Es Producto Orderable"
+    label: "Es Orderable"
   }
 
-  dimension: producto__marcas__producto_marca_principal {
+  dimension: producto_marca_principal {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaPrincipal ;;
-    group_label: "Producto Marcas"
+    view_label: "Producto"
+    group_label: "Marcas"
     group_item_label: "Principal"
-    label: "Es Producto Principal"
+    label: "Es Principal"
   }
 
-  dimension: producto__marcas__producto_marca_tangible {
+  dimension: producto_marca_tangible {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaTangible ;;
-    group_label: "Producto Marcas"
+    view_label: "Producto"
+    group_label: "Marcas"
     group_item_label: "Tangible"
-    label: "Es Producto Tangible"
+    label: "Es Tangible"
   }
 
   ## Hidden
-  dimension: promocion {
-    hidden: yes
-    sql: ${TABLE}.Promocion ;;
-  }
 
-  dimension: suspensiones__totales__activas {
-    hidden: yes
-    sql: ${TABLE}.Suspensiones.Totales.Activas ;;
-  }
-
-  dimension: cliente__cliente_segmento1_sk {
+  dimension: cliente_segmento1_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.ClienteSegmento1SK ;;
   }
 
-  dimension: cliente__cliente_segmento1_srcid {
+  dimension: cliente_segmento1_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento1SRCId ;;
   }
 
-  dimension: cliente__cliente_segmento2_sk {
+  dimension: cliente_segmento2_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.ClienteSegmento2SK ;;
   }
 
-  dimension: cliente__cliente_segmento2_srcid {
+  dimension: cliente_segmento2_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento2SRCId ;;
   }
 
-  dimension: cliente__cliente_tipo_sk {
+  dimension: cliente_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.ClienteTipoSK ;;
   }
 
-  dimension: cliente__cliente_tipo_srcid {
+  dimension: cliente_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.ClienteTipoSRCId ;;
   }
 
-  dimension: cliente__cuenta_estado_sk {
+  dimension: cuenta_estado_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.CuentaEstadoSK ;;
   }
 
-  dimension: cliente__cuenta_estado_srcid {
+  dimension: cuenta_estado_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.CuentaEstadoSRCId ;;
   }
 
-  dimension: cliente__medio_pago_cuenta_bancaria_tipo_sk {
+  dimension: medio_pago_cuenta_bancaria_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.MedioPagoCuentaBancariaTipoSK ;;
   }
 
-  dimension: cliente__medio_pago_cuenta_bancaria_tipo_srcid {
+  dimension: medio_pago_cuenta_bancaria_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.MedioPagoCuentaBancariaTipoSRCId ;;
   }
 
-  dimension: cliente__medio_pago_entidad_financiera_sk {
+  dimension: medio_pago_entidad_financiera_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.MedioPagoEntidadFinancieraSK ;;
   }
 
-  dimension: cliente__medio_pago_entidad_financiera_srcid {
+  dimension: medio_pago_entidad_financiera_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.MedioPagoEntidadFinancieraSRCId ;;
   }
 
-  dimension: cliente__medio_pago_tarjeta_tipo_sk {
+  dimension: medio_pago_tarjeta_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.MedioPagoTarjetaTipoSK ;;
   }
 
-  dimension: cliente__medio_pago_tarjeta_tipo_srcid {
+  dimension: medio_pago_tarjeta_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.MedioPagoTarjetaTipoSRCId ;;
   }
 
-  dimension: cliente__medio_pago_tipo_sk {
+  dimension: medio_pago_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.MedioPagoTipoSK ;;
   }
 
-  dimension: cliente__medio_pago_tipo_srcid {
+  dimension: medio_pago_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.MedioPagoTipoSRCId ;;
   }
 
-  dimension: cliente__persona_tipo_documento_sk {
+  dimension: persona_tipo_documento_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoSK ;;
   }
 
-  dimension: cliente__persona_tipo_documento_srcid {
+  dimension: persona_tipo_documento_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoSRCId ;;
   }
 
-  dimension: orden_alta__caso_sub_tipo_sk {
+  dimension: oa_caso_sub_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.CasoSubTipoSK ;;
   }
 
-  dimension: orden_alta__caso_sub_tipo_srcid {
+  dimension: oa_caso_sub_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.CasoSubTipoSRCId ;;
   }
 
-  dimension: orden_alta__caso_tipo_sk {
+  dimension: oa_caso_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.CasoTipoSK ;;
   }
 
-  dimension: orden_alta__caso_tipo_srcid {
+  dimension: oa_caso_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.CasoTipoSRCId ;;
   }
 
-  dimension: orden_alta__orden_canal_origen_sk {
+  dimension: oa_orden_canal_origen_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenCanalOrigenSK ;;
   }
 
-  dimension: orden_alta__orden_canal_origen_srcid {
+  dimension: oa__orden_canal_origen_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenCanalOrigenSRCId ;;
   }
 
-  dimension: orden_alta__orden_item_accion_sk {
+  dimension: oa_orden_item_accion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenItemAccionSK ;;
   }
 
-  dimension: orden_alta__orden_item_accion_srcid {
+  dimension: oa_orden_item_accion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemAccionSRCId ;;
   }
 
-  dimension: orden_alta__orden_item_estado_provisionamiento_sk {
+  dimension: oa_orden_item_estado_provisionamiento_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenItemEstadoProvisionamientoSK ;;
   }
 
-  dimension: orden_alta__orden_item_estado_provisionamiento_srcid {
+  dimension: oa_orden_item_estado_provisionamiento_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemEstadoProvisionamientoSRCId ;;
   }
 
-  dimension: orden_alta__orden_item_sub_accion_sk {
+  dimension: oa_orden_item_sub_accion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenItemSubAccionSK ;;
-    suggest_dimension: lk_orden_item_sub_accion.orden_item_sub_accion_nombre
   }
 
-  dimension: orden_alta__orden_item_sub_accion_srcid {
+  dimension: oa_orden_item_sub_accion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemSubAccionSRCId ;;
   }
 
-  dimension: orden_alta__orden_tipo_cambio_plan_sk {
+  dimension: oa_orden_tipo_cambio_plan_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenTipoCambioPlanSK ;;
   }
 
-  dimension: orden_alta__orden_tipo_cambio_plan_srcid {
+  dimension: oa_orden_tipo_cambio_plan_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenTipoCambioPlanSRCId ;;
   }
 
-  dimension: orden_alta__orden_tipo_gestion_sk {
+  dimension: oa_orden_tipo_gestion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenTipoGestionSK ;;
   }
 
-  dimension: orden_alta__orden_tipo_gestion_srcid {
+  dimension: oa_orden_tipo_gestion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenTipoGestionSRCId ;;
   }
 
-  dimension: orden_alta__orden_tipo_sub_gestion_sk {
+  dimension: oa_orden_tipo_sub_gestion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenTipoSubGestionSK ;;
   }
 
-  dimension: orden_alta__orden_tipo_sub_gestion_srcid {
+  dimension: oa_orden_tipo_sub_gestion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenTipoSubGestionSRCId ;;
   }
 
-  dimension: orden_baja__caso_estado_sk {
+  dimension: ob_caso_estado_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.CasoEstadoSK ;;
   }
 
-  dimension: orden_baja__caso_estado_srcid {
+  dimension: ob_caso_estado_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.CasoEstadoSRCId ;;
   }
 
-  dimension: orden_baja__caso_motivo_baja_sk {
+  dimension: ob_caso_motivo_baja_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.CasoMotivoBajaSK ;;
   }
 
-  dimension: orden_baja__caso_motivo_baja_srcid {
+  dimension: ob_caso_motivo_baja_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.CasoMotivoBajaSRCId ;;
   }
 
-  dimension: orden_baja__caso_motivo_sk {
+  dimension: ob_caso_motivo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.CasoMotivoSK ;;
   }
 
-  dimension: orden_baja__caso_motivo_srcid {
+  dimension: ob__caso_motivo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.CasoMotivoSRCId ;;
   }
 
-  dimension: orden_baja__caso_sub_motivo_baja_sk {
+  dimension: ob_caso_sub_motivo_baja_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.CasoSubMotivoBajaSK ;;
   }
 
-  dimension: orden_baja__caso_sub_motivo_baja_srcid {
+  dimension: ob_caso_sub_motivo_baja_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.CasoSubMotivoBajaSRCId ;;
   }
 
-  dimension: orden_baja__caso_sub_tipo_sk {
+  dimension: ob_caso_sub_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.CasoSubTipoSK ;;
   }
 
-  dimension: orden_baja__caso_sub_tipo_srcid {
+  dimension: ob_caso_sub_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.CasoSubTipoSRCId ;;
   }
 
-  dimension: orden_baja__orden_item_accion_sk {
+  dimension: ob_orden_item_accion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.OrdenItemAccionSK ;;
   }
 
-  dimension: orden_baja__orden_item_accion_srcid {
+  dimension: ob_orden_item_accion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenItemAccionSRCId ;;
   }
 
-  dimension: orden_baja__orden_item_sub_accion_sk_ {
+  dimension: ob_orden_item_sub_accion_sk_ {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.OrdenItemSubAccionSK ;;
   }
 
-  dimension: orden_baja__orden_item_sub_accion_srcid {
+  dimension: ob_orden_item_sub_accion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenItemSubAccionSRCId ;;
   }
 
-  dimension: orden_baja__orden_tipo_gestion_sk {
+  dimension: ob__orden_tipo_gestion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.OrdenTipoGestionSK ;;
   }
 
-  dimension: orden_baja__orden_tipo_gestion_srcid {
+  dimension: ob_orden_tipo_gestion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenTipoGestionSRCId ;;
   }
 
-  dimension: orden_baja__orden_tipo_sub_gestion_sk {
+  dimension: ob_orden_tipo_sub_gestion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.OrdenBaja.OrdenTipoSubGestionSK ;;
   }
 
-  dimension: orden_baja__orden_tipo_sub_gestion_srcid {
+  dimension: ob_orden_tipo_sub_gestion_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.OrdenBaja.OrdenTipoSubGestionSRCId ;;
   }
 
-  dimension: plan_anterior__producto_tipo_sk {
+  dimension: pa_producto_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.PlanAnterior.ProductoTipoSK ;;
   }
 
-  dimension: plan_anterior__producto_tipo_srcid {
+  dimension: pa_producto_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.PlanAnterior.ProductoTipoSRCId ;;
   }
 
-  dimension: producto__producto_familia_sk {
+  dimension: producto_familia_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Producto.ProductoFamiliaSK ;;
   }
 
-  dimension: producto__producto_familia_srcid {
+  dimension: producto_familia_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Producto.ProductoFamiliaSRCId ;;
   }
 
-  dimension: producto__producto_mercado_sk {
+  dimension: producto_mercado_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Producto.ProductoMercadoSK ;;
   }
 
-  dimension: producto__producto_mercado_srcid {
+  dimension: producto_mercado_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Producto.ProductoMercadoSRCId ;;
   }
 
-  dimension: producto__producto_sub_tipo_sk {
+  dimension: producto_sub_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Producto.ProductoSubTipoSK ;;
   }
 
-  dimension: producto__producto_sub_tipo_srcid {
+  dimension: producto_sub_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Producto.ProductoSubTipoSRCId ;;
   }
 
-  dimension: producto__producto_tipo_sk {
+  dimension: producto_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Producto.ProductoTipoSK ;;
   }
 
-  dimension: producto__producto_tipo_srcid {
+  dimension: producto_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Producto.ProductoTipoSRCId ;;
@@ -2791,54 +2934,101 @@ view: fth_parque {
     sql: ${TABLE}.ProductoAdquiridoSubEstadoSRCId ;;
   }
 
-  dimension: punto_venta__punto_venta_canalidad2_sk {
+  dimension: punto_venta_canalidad2_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanalidad2SK ;;
   }
 
-  dimension: punto_venta__punto_venta_canalidad2_srcid {
+  dimension: punto_venta_canalidad2_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanalidad2SRCId ;;
   }
 
-  dimension: punto_venta__punto_venta_tipo_canal_sk {
+  dimension: punto_venta_tipo_canal_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.PuntoVenta.PuntoVentaTipoCanalSK ;;
   }
 
-  dimension: punto_venta__punto_venta_tipo_canal_srcid {
+  dimension: punto_venta_tipo_canal_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaTipoCanalSRCId ;;
   }
 
-  dimension: punto_venta__punto_venta_tipo_contacto_sk {
+  dimension: punto_venta_tipo_contacto_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.PuntoVenta.PuntoVentaTipoContactoSK ;;
   }
 
-  dimension: punto_venta__punto_venta_tipo_contacto_srcid {
+  dimension: punto_venta_tipo_contacto_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaTipoContactoSRCId ;;
   }
 
-  dimension: cliente__cuenta_tipo_sk {
+  dimension: cuenta_tipo_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.CuentaTIpoSK ;;
   }
 
-  dimension: cliente__cuenta_tipo_srcid {
+  dimension: cuenta_tipo_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Cliente.CuentaTipoSRCId ;;
   }
 
+## Measures
 
-  ## Measures
+}
+
+### Nested Attributes - Views ###
+
+view: fth_parque_promocion {
+
+## Dimensions
+
+  # Dates
+
+  dimension_group: promocion_fecha_fin {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaFin ;;
+    group_label: "Fecha Promocion Fin"
+    label: "Promocion Fin"
+  }
+
+  # Strings
+
+  dimension: pago_ajuste_precio_srcid {
+    type: string
+    sql: PagoAjustePrecioSRCId ;;
+    label: "Pago Ajuste Precio Id"
+  }
+
+  dimension: promocion_nombre {
+    type: string
+    sql: PromocionNombre ;;
+    label: "Promocion Nombre"
+  }
+
+  # Flags
+
+  dimension: marca_promocion {
+    type: yesno
+    sql: MarcaPromocion ;;
+    label: "Es Promocion"
+  }
 }
