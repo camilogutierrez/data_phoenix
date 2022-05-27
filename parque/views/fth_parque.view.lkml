@@ -502,8 +502,8 @@ view: fth_parque {
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspension1SRC ;;
     view_label: "Suspensiones"
-    group_label: "Fecha Suspension 1"
-    label: "Suspension 1"
+    group_label: "Fecha Primera Suspension"
+    label: "Primera Suspension"
   }
 
   dimension_group: fecha_suspension_administrativa_src {
@@ -1064,7 +1064,7 @@ view: fth_parque {
     label: "Piso Envio"
   }
 
-  dimension: domicilio__domicilio_piso_fact {
+  dimension: domicilio_piso_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPisoFact ;;
     view_label: "Domicilio"
@@ -1136,7 +1136,7 @@ view: fth_parque {
     label: "Geo Corp Localidad Facturacion"
   }
 
-  dimension: domicilio__geo_corp_pais_fact {
+  dimension: geo_corp_pais_fact {
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpPaisFact ;;
     view_label: "Domicilio"
@@ -1146,6 +1146,7 @@ view: fth_parque {
   }
 
   dimension: geo_corp_provincia_fact {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Domicilio.GeoCorpProvinciaFact ;;
     view_label: "Domicilio"
@@ -1209,6 +1210,7 @@ view: fth_parque {
   }
 
   dimension: nombre_provincia_env {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaEnv ;;
     view_label: "Domicilio"
@@ -1218,6 +1220,7 @@ view: fth_parque {
   }
 
   dimension: nombre_provincia_fact {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Domicilio.NombreProvinciaFact ;;
     view_label: "Domicilio"
@@ -1248,6 +1251,7 @@ view: fth_parque {
   }
 
   dimension: rango_numeracion_provincia_nombre {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
     view_label: "Geografia"
@@ -2083,7 +2087,7 @@ view: fth_parque {
     sql: ${TABLE}.Domicilio.DomicilioLongitudFact ;;
     view_label: "Domicilio"
     group_label: "Facturacion"
-    label: "Domicilio Longitud Facturacion"
+    label: "Longitud Facturacion"
   }
 
   dimension: geo_corp_codigo_postal_fact {
@@ -2219,7 +2223,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.CuentaDomicilioEnvioValidado ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Envio Validado"
     label: "Es Envio Validado"
   }
 
@@ -2228,7 +2231,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.CuentaDomicilioFacturacionValidado ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Domicilio Facturacion Validado"
     label: "Es Domicilio Facturacion Validado"
   }
 
@@ -2237,7 +2239,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaActivo ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Activo"
     label: "Es Cliente Activo"
   }
 
@@ -2246,7 +2247,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaFraude ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Fraude"
     label: "Es Cliente Fraude"
   }
 
@@ -2255,7 +2255,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaJubilado ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Jubilado"
     label: "Es Jubilado"
   }
 
@@ -2264,7 +2263,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPartner ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Partner"
     label: "Es Partner"
   }
 
@@ -2273,7 +2271,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPrensa ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Prensa"
     label: "Es Prensa"
   }
 
@@ -2282,7 +2279,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaVIP ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Vip"
     label: "Es Vip"
   }
 
@@ -2291,7 +2287,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaCompraFinanciada ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Compra Financiada"
     label: "Es Compra Financiada"
   }
 
@@ -2300,7 +2295,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDebito ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Debito"
     label: "Es Debito"
   }
 
@@ -2309,7 +2303,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDeudaFinanciada ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Deuda Financiada"
     label: "Es Deuda Financiada"
   }
 
@@ -2318,7 +2311,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaMorosidad ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Morosidad"
     label: "Es Morosidad"
   }
 
@@ -2327,7 +2319,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaNoNominado ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "No Nominado"
     label: "Es No Nominado"
   }
 
@@ -2336,7 +2327,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.Marcas.CuentaMarcaSocio ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Socio"
     label: "Es Socio"
   }
   dimension: persona_marca_enviar_mail {
@@ -2344,7 +2334,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.PersonaMarcaEnviarMail ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Enviar Mail"
     label: "Es Enviar Mail"
   }
 
@@ -2353,7 +2342,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.PersonaMarcaFraude ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Fraude"
     label: "Es Persona Fraude"
   }
 
@@ -2362,7 +2350,6 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.PersonaMarcaNoLlamar ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "No Llamar"
     label: "Es No Llamar"
   }
 
@@ -2371,7 +2358,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.MarcaCuentaServicioActualizada ;;
     view_label: "Cliente"
     group_label: "Marcas"
-    group_item_label: "Cuenta Servicio Actualizada"
     label: "Es Cuenta Servicio Actualizada"
   }
 
@@ -2380,7 +2366,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaDestruccionTotal ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Destruccion Total"
     label: "Es Destruccion Total"
   }
 
@@ -2389,7 +2374,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaLeasing ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Leasing"
     label: "Es Leasing"
   }
 
@@ -2398,7 +2382,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaParqueActivo ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Parque Activo"
     label: "Es Parque Activo"
   }
 
@@ -2407,7 +2390,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPerteneceBundle ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Pertenece Bundle"
     label: "Es Pertenece Bundle"
   }
 
@@ -2416,7 +2398,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPortOut ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Port Out"
     label: "Es Port Out"
   }
 
@@ -2425,7 +2406,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPrincipal ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Principal"
     label: "Es Principal"
   }
 
@@ -2434,7 +2414,6 @@ view: fth_parque {
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaProductoCompetencia ;;
     view_label: "Producto Adquirido"
     group_label: "Marcas"
-    group_item_label: "Producto Competencia"
     label: "Es Producto Competencia"
   }
   dimension: oa_orden_marca_cambio_mercado {
@@ -2442,7 +2421,6 @@ view: fth_parque {
     sql: ${TABLE}.OrdenAlta.OrdenMarcaCambioMercado ;;
     view_label: "Orden Alta"
     group_label: "Marcas"
-    group_item_label: "Cambio Mercado"
     label: "Es Cambio Mercado"
   }
 
@@ -2451,7 +2429,6 @@ view: fth_parque {
     sql: ${TABLE}.OrdenAlta.OrdenMarcaCambioProducto ;;
     view_label: "Orden Alta"
     group_label: "Marcas"
-    group_item_label: "Cambio Producto"
     label: "Es Cambio Producto"
   }
 
@@ -2460,25 +2437,22 @@ view: fth_parque {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaActivo ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Activo"
     label: "Es Producto Activo"
   }
 
-  dimension: producto__marcas__producto_marca_no_assetizable {
+  dimension: producto_marca_no_assetizable {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaNoAssetizable ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "No Assetizable"
     label: "Es No Assetizable"
   }
 
-  dimension: producto__marcas__producto_marca_orderable {
+  dimension: producto_marca_orderable {
     type: yesno
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaOrderable ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Orderable"
     label: "Es Orderable"
   }
 
@@ -2487,7 +2461,6 @@ view: fth_parque {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaPrincipal ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Principal"
     label: "Es Principal"
   }
 
@@ -2496,8 +2469,29 @@ view: fth_parque {
     sql: ${TABLE}.Producto.Marcas.ProductoMarcaTangible ;;
     view_label: "Producto"
     group_label: "Marcas"
-    group_item_label: "Tangible"
     label: "Es Tangible"
+  }
+
+  ## Location
+
+  dimension: domicilio_env_location {
+    type: location
+    sql_latitude: ${domicilio_latitud_env} ;;
+    sql_longitude: ${domicilio_longitud_env} ;;
+    view_label: "Domicilio"
+    group_label: "Envio"
+    group_item_label: "Ubicacion"
+    label: "Ubicacion Envio"
+  }
+
+  dimension: domicilio_fact_location {
+    type: location
+    sql_latitude: ${domicilio_latitud_fact} ;;
+    sql_longitude: ${domicilio_longitud_fact} ;;
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Ubicacion"
+    label: "Ubicacion Facturacion"
   }
 
   ## Hidden
