@@ -2978,11 +2978,15 @@ view: fth_parque {
 
 ## Measures
 
+  measure: count_parque {
+    type: count
+    label: "Cantidad"
+  }
 }
 
 ### Nested Attributes - Views ###
 
-view: fth_parque_promocion {
+view: parque_promocion {
 
 ## Dimensions
 

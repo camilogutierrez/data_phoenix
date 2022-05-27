@@ -12,9 +12,9 @@ explore: fth_parque {
 
   persist_with: parque_default_dg
 
-  join: fth_parque_promocion {
-    view_label: "Parque Promocion"
-    sql: LEFT JOIN UNNEST(${fth_parque.promocion}) as fth_parque_promocion ;;
+  join: parque_promocion {
+    view_label: "Promocion Actual"
+    sql: LEFT JOIN UNNEST(${fth_parque.promocion}) as parque_promocion ;;
     relationship: one_to_many
   }
 
