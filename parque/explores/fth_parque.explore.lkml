@@ -1,5 +1,6 @@
 include: "/parque/views/fth_parque.view.lkml"
 include: "/aleph/views/*.view.lkml"
+include: "/parque/others/parque_datagroups.lkml"
 
 explore: fth_parque {
   label: "Parque"
@@ -8,6 +9,8 @@ explore: fth_parque {
   always_filter: {
     filters: [fth_parque.fecha_entidad: "today"]
   }
+
+  persist_with: parque_default_dg
 
   join: fth_parque_promocion {
     view_label: "Parque Promocion"

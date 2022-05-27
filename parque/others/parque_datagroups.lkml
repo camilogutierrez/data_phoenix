@@ -1,11 +1,11 @@
-## Caso DataGroups
+## Parque DataGroups
 
-datagroup: caso_default_dg {
+datagroup: parque_default_dg {
   sql_trigger:  SELECT
                   MAX(_auditoria._fechaUltimaActualizacion) AS Max_fechaUltimaActualizacion
-                FROM @{gcp_ambiente}.FTH_Caso`
-                WHERE FechaEntidad = (SELECT MAX(FechaEntidad) AS MaxFechaEntidad FROM @{gcp_ambiente}.FTH_Caso`) ;;
+                FROM @{gcp_ambiente}.FTH_Parque`
+                WHERE FechaEntidad = (SELECT MAX(FechaEntidad) AS MaxFechaEntidad FROM @{gcp_ambiente}.FTH_Parque`) ;;
   max_cache_age: "12 hours"
-  label: "Caso Default"
+  label: "Parque Default"
   description: "Monitorea la actualizacion del campo _fechaUltimaActualizacion sobre la ultima particion existente"
 }
