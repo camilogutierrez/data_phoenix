@@ -1313,6 +1313,7 @@ view: fth_parque {
   dimension: oa_orden_item_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemAccionNombre ;;
+    suggest_dimension: lk_orden_item_accion.orden_item_accion_nombre
     view_label: "Orden Alta"
     label: "Item Accion Nombre"
   }
@@ -1320,6 +1321,7 @@ view: fth_parque {
   dimension: oa_orden_item_estado_provisionamiento_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemEstadoProvisionamientoNombre ;;
+    suggest_dimension: lk_orden_item_estado_provisionamiento.orden_item_estado_provisionamiento_nombre
     view_label: "Orden Alta"
     label: "Item Estado Provisionamiento Nombre"
   }
@@ -1341,6 +1343,7 @@ view: fth_parque {
   dimension: oa_orden_item_sub_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenAlta.OrdenItemSubAccionNombre ;;
+    suggest_dimension: lk_orden_item_sub_accion.orden_item_sub_accion_nombre
     view_label: "Orden Alta"
     label: "Item Subaccion Nombre"
   }
