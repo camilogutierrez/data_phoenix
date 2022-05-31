@@ -10,7 +10,7 @@ view: ft_dc_pa_plan {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${pa_plan_id} AS STRING),'|',CAST(${pa_plan_detail_id} AS STRING));;
+    sql: ${TABLE}.PLANPK;;
   }
 
     ## Strings

@@ -8,7 +8,7 @@ view: ft_cargos_rehabilitacion {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(${invoice_detail_id},'|',${task_order_id});;
+    sql: ${TABLE}.CARGOSPK;;
   }
 
   ##############################

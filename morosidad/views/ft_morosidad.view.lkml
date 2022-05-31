@@ -4,11 +4,11 @@ view: ft_morosidad {
   label: "Morsidad"
 
  ## Primary Key
-  dimension: object_id {
+  dimension: pk {
     primary_key: yes
     hidden: yes
-    type: number
-    sql: ${TABLE}.OBJECT_ID ;;
+    type: string
+    sql: ${TABLE}.MOROSIDADPK ;;
   }
 
   ##################
@@ -143,6 +143,12 @@ view: ft_morosidad {
 
 
   ## Numbers
+
+  dimension: object_id {
+    type: number
+    sql: ${TABLE}.OBJECT_ID ;;
+    label: "Object ID"
+  }
 
   dimension: acct_id {
     type: number

@@ -10,7 +10,7 @@ view: ft_acciones_mora {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_saldo_date} AS STRING FORMAT 'YYYYMMDD'),'|',${object_id});;
+    sql: ${TABLE}.ACCIONESPK;;
   }
 
     ## Dates

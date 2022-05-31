@@ -10,7 +10,7 @@ view: ft_degradacion_suscripcion {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${sub_id} AS STRING),'|',CAST(${cust_id} AS STRING));;
+    sql: ${TABLE}.DEGRADACIONPK;;
   }
 
     ## Dates
