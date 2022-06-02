@@ -1826,6 +1826,32 @@ view: ft_callin {
     filters: [llamada_cortasrcid: "Yes"]
   }
 
+  measure: count_llamadas_transferidas {
+    type: count_distinct
+    sql: ${interaction_resource_id} ;;
+    group_label: "Cantidad"
+    group_item_label: "Transferidas"
+    label: "Transferidas"
+    description: "Cantidad de veces que una llamada atendida es posteriormente transferida"
+    filters: [
+        estado_fin_atendidasrcid: "Yes"
+      , technical_result_ag_srcid: "Transferred"
+    ]
+  }
+
+  measure: count_llamadas_abandonadas_hold {
+    type: count_distinct
+    sql: ${interaction_resource_id} ;;
+    group_label: "Cantidad"
+    group_item_label: "Abandonadas Hold"
+    label: "Abandonadas Hold"
+    description: "Cantidad de veces que una llamada atendida es abandonada en hold"
+    filters: [
+        estado_fin_atendidasrcid: "Yes"
+      , technical_result_ag_srcid: "AbandonedFromHold"
+    ]
+  }
+
   measure: total_customer_dial_count {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id};;
@@ -2067,7 +2093,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_acw_count {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_acw_count};;
     group_label: "Cons"
     label: "Total CONS_RCV_ACW_COUNT"
@@ -2075,7 +2101,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_acw_duration {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_acw_duration};;
     group_label: "Cons"
     label: "Total CONS_RCV_ACW_DURATION"
@@ -2083,7 +2109,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_hold_count {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_hold_count};;
     group_label: "Cons"
     label: "Total CONS_RCV_HOLD_COUNT"
@@ -2091,7 +2117,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_hold_duration {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_hold_duration};;
     group_label: "Cons"
     label: "Total CONS_RCV_HOLD_DURATION"
@@ -2099,7 +2125,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_ring_count {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_ring_count};;
     group_label: "Cons"
     label: "Total CONS_RCV_RING_COUNT"
@@ -2107,7 +2133,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_ring_duration {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_ring_duration};;
     group_label: "Cons"
     label: "Total CONS_RCV_RING_DURATION"
@@ -2115,7 +2141,7 @@ view: ft_callin {
 
   measure: total_cons_rcv_talk_count {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
+    sql_distinct_key: ${interaction_resource_id} ;;
     sql: ${cons_rcv_talk_count};;
     group_label: "Cons"
     label: "Total CONS_RCV_TALK_COUNT"
@@ -2124,15 +2150,17 @@ view: ft_callin {
   measure: total_cons_rcv_talk_duration {
     type: sum_distinct
     sql_distinct_key: ${interaction_resource_id};;
-    sql: ${cons_rcv_talk_duration};;
+    sql: ${cons_rcv_talk_duration} ;;
     group_label: "Cons"
     label: "Total CONS_RCV_TALK_DURATION"
   }
 
   measure: total_t_duration_vq {
     type: sum_distinct
-    sql_distinct_key: ${interaction_resource_id};;
-    sql: ${t_duration_vq};;
+    sql_distinct_key: ${interaction_resource_id} ;;
+    sql: ${t_duration_vq} ;;
+    group_label: "Total"
+    group_item_label: "Duracion VQ"
     label: "Total Duracion VQ"
   }
 
@@ -2144,5 +2172,101 @@ view: ft_callin {
     group_item_label: "Tiempo Llamada"
     label: "Total Tiempo Llamada"
     description: "Es la suma total de los componentes de una llamada, se calcula mediante la suma de HOLD, TALK y ACW"
+  }
+
+  measure: num_tiempo_promedio_atencion {
+    type: number
+    sql:  ROUND((${total_t_duration_vq} / NULLIF(${count_estado_fin_atendidasrcid}, 0)), 2) ;;
+    group_label: "KPI"
+    label: "ASA"
+    description: "Promedio de espera en segundos de una llamada para ser atendida."
+  }
+
+  measure: num_tiempo_medio_operativo_seg {
+    type: number
+    sql:  ROUND((${total_tiempo_llamada} / NULLIF(${count_estado_fin_atendidasrcid}, 0)), 2) ;;
+    group_label: "KPI"
+    label: "TMO seg"
+    description: "Tiempo promedio operativo de una llamada en segundos. Incluye TALK+HOLD+ACW"
+  }
+
+  measure: num_tiempo_medio_operativo_min {
+    type: number
+    sql: ROUND(((${total_tiempo_llamada} / NULLIF(${count_estado_fin_atendidasrcid}, 0)) / 60), 2) ;;
+    group_label: "KPI"
+    label: "TMO min"
+    description: "Tiempo promedio operativo de una llamada en minutos. Incluye TALK+HOLD+ACW"
+  }
+
+  measure: num_nivel_atencion {
+    type: number
+    sql:  ROUND(1.0*${count_estado_fin_atendidasrcid} / NULLIF(${count_estado_fin_recibidasrcid}, 0), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% Nivel Atencion"
+    description: "Porcentaje de llamadas atendidas sobre total recibidas"
+  }
+
+  measure: num_nivel_abandono {
+    type: number
+    sql:  ROUND(1.0*${count_estado_fin_abandonadasrcid} / NULLIF(${count_estado_fin_recibidasrcid}, 0), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% Abandono"
+    description: "Porcentaje de llamadas abandonadas sobre total recibidas"
+  }
+
+  measure: num_nivel_transferidas {
+    type: number
+    sql:  ROUND(1.0*${count_llamadas_transferidas} / NULLIF(${count_estado_fin_atendidasrcid}, 0), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% Transferidas"
+    description: "Porcentaje de llamadas Transferidas sobre total de atendidas"
+  }
+
+  measure: num_nivel_servicio_0_30 {
+    type: number
+    sql:  ROUND(1.0*((${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29}) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% SL<30"
+    description: "Porcentaje de llamadas atendidas antes de 30 segundos sobre total recibidas"
+  }
+
+  measure: num_nivel_servicio_0_60 {
+    type: number
+    sql:  ROUND(1.0*((${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29} + ${count_contestada_30_39} + ${count_contestada_40_49} + ${count_contestada_50_59}) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% SL<60"
+    description: "Porcentaje de llamadas atendidas antes de 60 segundos sobre total recibidas"
+  }
+
+  measure: num_nivel_servicio_60_mas {
+    type: number
+    sql:  ROUND(1.0*((${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29} + ${count_contestada_30_39} + ${count_contestada_40_49} + ${count_contestada_50_59}) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% SL>60"
+    description: "Porcentaje de llamadas atendidas despues de 60 segundos sobre total recibidas"
+  }
+
+  measure: num_nivel_servicio_0_90 {
+    type: number
+    sql:  ROUND(1.0*((${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29} + ${count_contestada_30_39} + ${count_contestada_40_49} + ${count_contestada_50_59} + ${count_contestada_60_89}) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% SL<90"
+    description: "Porcentaje de llamadas atendidas antes de 90 segundos sobre total recibidas"
+  }
+
+  measure: num_nivel_servicio_90_mas {
+    type: number
+    sql:  ROUND(1.0*((${count_estado_fin_atendidasrcid} - (${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29} + ${count_contestada_30_39} + ${count_contestada_40_49} + ${count_contestada_50_59} + ${count_contestada_60_89})) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
+    value_format_name: percent_2
+    group_label: "KPI"
+    label: "% SL>90"
+    description: "Porcentaje de llamadas atendidas despues de 90 segundos sobre total recibidas"
   }
 }
