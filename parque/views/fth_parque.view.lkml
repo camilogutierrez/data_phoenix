@@ -1299,11 +1299,25 @@ view: fth_parque {
     label: "Rango Numeracion Departamento Nombre"
   }
 
+  dimension: rango_numeracion_departamento_srcid {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+    view_label: "Geografia"
+    label: "Rango Numeracion Departamento SRCId"
+  }
+
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
     view_label: "Geografia"
     label: "Rango Numeracion Localidad Nombre"
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
+    view_label: "Geografia"
+    label: "Rango Numeracion Localidad SRCId"
   }
 
   dimension: rango_numeracion_pi_pu {
@@ -1319,6 +1333,13 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
     view_label: "Geografia"
     group_item_label: "Rango Numeracion Provincia Nombre"
+  }
+
+  dimension: rango_numeracion_provincia_srcid {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+    view_label: "Geografia"
+    label: "Rango Numeracion Provincia SRCId"
   }
 
   dimension: oferta_hwsrcid {
@@ -2275,27 +2296,6 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoUrbano ;;
     view_label: "Geografia"
     label: "Rango Numeracion Prefijo Urbano"
-  }
-
-  dimension: rango_numeracion_localidad_srcid {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Localidad SRCId"
-  }
-
-  dimension: rango_numeracion_provincia_srcid {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Provincia SRCId"
-  }
-
-  dimension: rango_numeracion_departamento_srcid {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Departamento SRCId"
   }
 
   dimension: oa_orden_item_precio_calculado_recurrente {
