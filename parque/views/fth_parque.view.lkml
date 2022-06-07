@@ -1019,6 +1019,69 @@ view: fth_parque {
     label: "Cuenta Propiedad Id"
   }
 
+  dimension: cuenta_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaSRCId ;;
+    view_label: "Cliente"
+    label: "Cuenta SRCId"
+  }
+
+  dimension: cuenta_cliente_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
+    view_label: "Cliente"
+    label: "Cuenta Cliente SRCId"
+  }
+
+  dimension: cuenta_medio_pago_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaMedioPagoSRCId ;;
+    view_label: "Cliente"
+    label: "Cuenta Medio Pago SRCId"
+  }
+
+  dimension: cuenta_padre_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaPadreSRCId ;;
+    view_label: "Cliente"
+    label: "Cuenta Padre SRCId"
+  }
+
+  dimension: cliente_contacto_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.ClientePersonaContactoSRCId ;;
+    view_label: "Cliente"
+    label: "Persona Contacto SRCId"
+  }
+
+  dimension: cliente_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.ClienteSRCId ;;
+    view_label: "Cliente"
+    label: "Cliente SRCId"
+  }
+
+  dimension: cliente_persona_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.PersonaSRCId ;;
+    view_label: "Cliente"
+    label: "Persona SRCId"
+  }
+
+  dimension: cuenta_domicilio_facturacion_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaDomicilioFacturacionSRCId ;;
+    view_label: "Cliente"
+    label: "Cuenta Domicilio Facturacion SRCId"
+  }
+
+  dimension: cuenta_domicilio_envio_srcid {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaDomicilioEnvioSRCId ;;
+    view_label: "Cliente"
+    label: "Cuenta Domicilio Envios SRCId"
+  }
+
   dimension: domicilio_codigo_postal_env {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostalEnv ;;
@@ -1331,6 +1394,13 @@ view: fth_parque {
     sql: ${TABLE}.OrdenAlta.OrdenItemNumero ;;
     view_label: "Orden Alta"
     label: "Item Numero"
+  }
+
+  dimension: oa_punto_venta_SRCId {
+    type: string
+    sql: ${TABLE}.OrdenAlta.PuntoVentaSRCId ;;
+    view_label: "Orden Alta"
+    label: "Punto Venta SCRId"
   }
 
   dimension: oa_orden_item_srcid {
@@ -1680,6 +1750,34 @@ view: fth_parque {
     group_item_label: "Tipo Nombre"
   }
 
+  dimension: p_producto_familia_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoFamiliaSRCId ;;
+    view_label: "Producto"
+    group_item_label: "Familia SRCId"
+  }
+
+  dimension: p_producto_sub_tipo_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoSubTipoSRCId ;;
+    view_label: "Producto"
+    group_item_label: "Producto Sub Tipo SRCId"
+  }
+
+  dimension: p_producto_tipo_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoTipoSRCId ;;
+    view_label: "Producto"
+    group_item_label: "Producto Tipo SRCId"
+  }
+
+  dimension: p_producto_mercado_srcid {
+    type: string
+    sql: ${TABLE}.Producto.ProductoMercadoSRCId ;;
+    view_label: "Producto"
+    group_item_label: "Producto Mercado SRCId"
+  }
+
   dimension: producto_accesorio_srcid {
     type: string
     sql: ${TABLE}.ProductoAccesorioSRCId ;;
@@ -1894,6 +1992,62 @@ view: fth_parque {
     label: "Tipo"
   }
 
+  dimension: cuenta_facturacion_srcid {
+    type: string
+    sql: ${TABLE}.CuentaFacturacionSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Cuenta Facturacion SRCID"
+  }
+
+  dimension: producto_adquirido_estado_leasing_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoEstadoLeasingSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Estado Leasing SRCId"
+  }
+
+  dimension: producto_adquirido_padre_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoPadreSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Padre SRCId"
+  }
+
+  dimension: producto_adquirido_codigo_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoCodigoSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Codigo SRCId"
+  }
+
+  dimension: producto_adquirido_cuenta_servicio_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoCuentaServicioSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Cuenta Servicio SRCId"
+  }
+
+  dimension: producto_adquirido_referente_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoReferenteSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Referente SRCId"
+  }
+
+  dimension: producto_adquirido_leasing_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoLeasingSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Leasing SRCId"
+  }
+
+  dimension: producto_adquirido_orden_item_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoOrdenItemSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Orden Item"
+  }
+
   dimension: producto_adquirido_usuario_creacion_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoUsuarioCreacionSRCId ;;
@@ -1924,6 +2078,13 @@ view: fth_parque {
     sql: ${TABLE}.PuntoVenta.PuntoVentaCanal3 ;;
     view_label: "Punto Venta"
     label: "Canal 3"
+  }
+
+  dimension: punto_venta_canal_srcid {
+    type: string
+    sql: ${TABLE}.PuntoVenta.PuntoVentaCanalSRCId ;;
+    view_label: "Punto Venta"
+    label: "Canal SRCId"
   }
 
   dimension: punto_venta_canal_nombre {
@@ -2114,6 +2275,27 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoUrbano ;;
     view_label: "Geografia"
     label: "Rango Numeracion Prefijo Urbano"
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
+    view_label: "Geografia"
+    label: "Rango Numeracion Localidad SRCId"
+  }
+
+  dimension: rango_numeracion_provincia_srcid {
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+    view_label: "Geografia"
+    label: "Rango Numeracion Provincia SRCId"
+  }
+
+  dimension: rango_numeracion_departamento_srcid {
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+    view_label: "Geografia"
+    label: "Rango Numeracion Departamento SRCId"
   }
 
   dimension: oa_orden_item_precio_calculado_recurrente {
