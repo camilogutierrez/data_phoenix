@@ -1848,7 +1848,7 @@ view: ft_callin {
     description: "Cantidad de veces que una llamada atendida es abandonada en hold"
     filters: [
         estado_fin_atendidasrcid: "Yes"
-      , technical_result_ag_srcid: "AbandonedFromHold"
+      , result_reason_ag_srcid: "AbandonedFromHold"
     ]
   }
 
