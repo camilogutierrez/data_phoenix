@@ -2245,7 +2245,7 @@ view: ft_callin {
 
   measure: num_nivel_servicio_60_mas {
     type: number
-    sql:  ROUND(1.0*((${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29} + ${count_contestada_30_39} + ${count_contestada_40_49} + ${count_contestada_50_59}) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
+    sql:  ROUND(1.0*((${count_estado_fin_atendidasrcid} - ${count_contestada_1_9} + ${count_contestada_10_19} + ${count_contestada_20_29} + ${count_contestada_30_39} + ${count_contestada_40_49} + ${count_contestada_50_59}) / NULLIF(${count_estado_fin_recibidasrcid}, 0)), 2) ;;
     value_format_name: percent_2
     group_label: "KPI"
     label: "% SL>60"
