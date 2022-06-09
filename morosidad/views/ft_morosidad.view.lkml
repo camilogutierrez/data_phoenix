@@ -231,7 +231,7 @@ view: ft_morosidad {
     type: number
     value_format_name: id
     sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
-    label: "Mora Hito ID"
+    label: "Hito Ultimo ID"
   }
 
 
