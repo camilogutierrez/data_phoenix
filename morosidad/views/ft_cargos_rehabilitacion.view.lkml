@@ -24,13 +24,19 @@ view: ft_cargos_rehabilitacion {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.INVOICE_DATE ;;
-    label: "Invoice"
+    group_label: "Comprobante Fecha Emision"
+    label: "Comprobante Emision"
   }
 
   dimension_group: resume {
@@ -39,13 +45,19 @@ view: ft_cargos_rehabilitacion {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_DATE ;;
-    label: "Resume"
+    group_label: "Rehabilitación Fecha"
+    label: "Rehabilitacion"
   }
 
   ## Strings
@@ -53,25 +65,28 @@ view: ft_cargos_rehabilitacion {
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-    label: "Account Code"
+    group_label: "Cliente"
+    label: "Cuenta Codigo"
   }
 
   dimension: bill_cycle_id {
     type: string
     sql: ${TABLE}.BILL_CYCLE_ID ;;
-    label: "Bill Cycle ID"
+    label: "Ciclo Facturacion ID"
+    description: "Contiene el ciclo de facturacion en formato fecha completo YYYYMMDD"
   }
 
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-    label: "Customer Code"
+    label: "Cliente Codigo"
   }
 
   dimension: invoice_no {
     type: string
     sql: ${TABLE}.INVOICE_NO ;;
-    label: "Invoice Number"
+    label: "Prefactura ID"
+    description: "Numero interno de comprobante HW"
   }
 
   ## Numbers
@@ -79,37 +94,39 @@ view: ft_cargos_rehabilitacion {
   dimension: accion_id {
     type: number
     sql: ${TABLE}.ACCION_ID ;;
-    label: "Action ID"
+    label: "Accion ID"
   }
 
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    label: "Account ID"
+    group_label: "Cliente"
+    label: "Cuenta ID"
   }
 
   dimension: charge_code_id {
     type: number
     sql: ${TABLE}.CHARGE_CODE_ID ;;
-    label: "Charge Code ID"
+    label: "Cargo ID"
+    description: "ID de Cargos de las terminales de venta, e intereses y otros conceptos."
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    label: "Customer ID"
+    label: "Cliente ID"
   }
 
   dimension: invoice_detail_id {
     type: number
     sql: ${TABLE}.INVOICE_DETAIL_ID ;;
-    label: "Invoice Detail ID"
+    label: "Item Facturado ID"
   }
 
   dimension: task_order_id {
     type: number
     sql: ${TABLE}.TASK_ORDER_ID ;;
-    label: "Task Order ID"
+    label: "Orden de Trabajo ID"
   }
 
   ## Hidden ##
@@ -127,6 +144,6 @@ view: ft_cargos_rehabilitacion {
   measure: total_charge_amt {
     type: sum
     sql: ${TABLE}.CHARGE_AMT ;;
-    label: "Charge Amount"
+    label: "Cargo Total"
   }
 }

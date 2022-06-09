@@ -23,8 +23,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -38,8 +43,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -55,8 +65,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -71,8 +86,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -87,8 +107,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -103,8 +128,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -119,8 +149,13 @@ view: ft_pagos {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
