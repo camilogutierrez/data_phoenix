@@ -23,14 +23,18 @@ view: ft_suspension_mora {
     timeframes: [
       raw,
       date,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
-    ]
+      ]
     datatype: date
-    convert_tz: no
     sql: ${TABLE}.FECHA_SALDO ;;
+    group_label: "Fecha Saldo"
     label: "Saldo"
   }
 
@@ -40,13 +44,19 @@ view: ft_suspension_mora {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-    label: "Resume Actual"
+    group_label: "Rehabilitacion Actual Fecha"
+    label: "Rehabilitacion Actual"
   }
 
   dimension_group: start_collect {
@@ -55,13 +65,19 @@ view: ft_suspension_mora {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    label: "Strat Collect"
+    group_label: "Fecha Gestion Mora"
+    label: "Gestion Mora"
   }
 
   ## Strings
@@ -69,61 +85,68 @@ view: ft_suspension_mora {
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-    label: "Account Code"
+    group_label: "Cliente"
+    label: "Cuenta Codigo"
   }
 
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-    label: "Customer Code"
+    group_label: "Cliente"
+    label: "Cliente Codigo"
   }
 
   dimension: document_number {
     type: string
     sql: ${TABLE}.DOCUMENT_NUMBER ;;
-    label: "Document Number"
+    group_label: "Cliente"
+    label: "Documento Numbero"
   }
 
   dimension: document_type {
     type: string
     sql: ${TABLE}.DOCUMENT_TYPE ;;
-    label: "Document Type"
+    group_label: "Cliente"
+    label: "Documento Tipo"
   }
 
   dimension: first_name {
     type: string
     sql: ${TABLE}.FIRST_NAME ;;
-    label: "First Name"
+    group_label: "Cliente"
+    label: "Nombre"
   }
 
   dimension: group_code {
     type: string
     sql: ${TABLE}.GROUP_CODE ;;
-    label: "Group Code"
+    label: "Collection Group"
   }
 
   dimension: last_name {
     type: string
     sql: ${TABLE}.LAST_NAME ;;
-    label: "Last Name"
+    group_label: "Cliente"
+    label: "Apellido"
   }
 
   dimension: msisdn {
     type: string
     sql: ${TABLE}.MSISDN ;;
-    label: "MSISDN"
+    label: "Linea"
   }
 
   dimension: razonsocial {
     type: string
     sql: ${TABLE}.RAZONSOCIAL ;;
+    group_label: "Cliente"
     label: "Razon Social"
   }
 
   dimension: ult_bill_cycle_type {
     type: string
     sql: ${TABLE}.ULT_BILL_CYCLE_TYPE ;;
-    label: "ULT Bill Cycle Type"
+    label: "Ultimo Ciclo Facturacion Tipo"
   }
 
   dimension: ult_dst_status {
@@ -137,13 +160,15 @@ view: ft_suspension_mora {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    label: "Account ID"
+    group_label: "Cliente"
+    label: "Cuenta ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    label: "Customer ID"
+    group_label: "Cliente"
+    label: "Cliente ID"
   }
 
   dimension: object_id {
@@ -155,14 +180,15 @@ view: ft_suspension_mora {
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
-    label: "Sub ID"
+    label: "Suscripcion Numero"
   }
 
   dimension: ult_accion_id_exe {
     type: number
     value_format_name: id
     sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
-    label: "ULT Action ID Exe"
+    group_label: "Ultima Accion"
+    label: "Mora Hito ID"
   }
 
   ## Hidden ##
@@ -199,25 +225,36 @@ view: ft_suspension_mora {
   measure: total_os_amount {
     type: sum
     sql: ${TABLE}.OS_AMOUNT ;;
-    label: "OS Amount"
+    group_label: "Total"
+    label: "Saldo Hito Vencido"
   }
 
   measure: total_saldo_total {
     type: sum
     sql: ${TABLE}.SALDO_TOTAL ;;
+    group_label: "Total"
     label: "Saldo Total"
   }
 
   measure: total_saldo_vencido {
     type: sum
     sql: ${TABLE}.SALDO_VENCIDO ;;
+    group_label: "Total"
     label: "Saldo Vencido"
   }
 
   measure: total_saldo_x_vencer {
     type: sum
     sql: ${TABLE}.SALDO_X_VENCER ;;
+    group_label: "Total"
     label: "Saldo por Vencer"
+  }
+
+  measure: count_object_id {
+    type: count_distinct
+    sql: ${TABLE}.OBJECT_ID ;;
+    group_label: "Count"
+    label: "Object ID"
   }
 
 }

@@ -79,6 +79,7 @@ view: ft_cargos_rehabilitacion {
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
+    group_label: "Cliente"
     label: "Cliente Codigo"
   }
 
@@ -114,6 +115,7 @@ view: ft_cargos_rehabilitacion {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    group_label: "Cliente"
     label: "Cliente ID"
   }
 
