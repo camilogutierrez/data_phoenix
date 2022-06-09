@@ -1,7 +1,7 @@
 view: ft_morosidad {
   sql_table_name: @{gcp_ambiente}.FT_Morosidad` ;;
   suggestions: no
-  label: "Morsidad"
+  label: "Morosidad"
 
  ## Primary Key
   dimension: pk {
@@ -24,13 +24,19 @@ view: ft_morosidad {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.DUE_DATE ;;
-    label: "Due"
+    group_label: "Fecha Vto Guia"
+    label: "Vto Guia"
   }
 
   dimension_group: prox_accion {
@@ -39,13 +45,19 @@ view: ft_morosidad {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
-    label: "Next Action"
+    group_label: "Proxima Accion Fecha"
+    label: "Proxima Accion"
   }
 
   dimension_group: resume_actual {
@@ -54,13 +66,19 @@ view: ft_morosidad {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-    label: "Resume Actual"
+    group_label: "Rehabilitacion Actual Fecha"
+    label: "Rehabilitacion Actual"
   }
 
   dimension_group: start_collect {
@@ -69,13 +87,19 @@ view: ft_morosidad {
       raw,
       time,
       date,
+      time_of_day,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    label: "Start Collect"
+    group_label: "Fecha Gestion Mora"
+    label: "Gestion Mora"
   }
 
 
@@ -84,61 +108,70 @@ view: ft_morosidad {
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-    label: "Account Code"
+    group_label: "Cliente"
+    label: "Cuenta Codigo"
+    description: "Responsable de pago / Cuenta Code"
   }
 
   dimension: bill_cycle_id {
     type: string
     sql: ${TABLE}.BILL_CYCLE_ID ;;
-    label: "Bill Cycle ID"
+    label: "Ciclo Facturacion ID"
+    description: "Contiene el ciclo de facturación en formato fecha completo YYYYMMDD"
   }
 
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-    label: "Customer Code"
+    group_label: "Cliente"
+    label: "Codigo"
   }
 
   dimension: document_number {
     type: string
     sql: ${TABLE}.DOCUMENT_NUMBER ;;
-    label: "Document Number"
+    group_label: "Cliente"
+    label: "Documento Numero"
   }
 
   dimension: document_type {
     type: string
     sql: ${TABLE}.DOCUMENT_TYPE ;;
-    label: "Document Type"
+    group_label: "Cliente"
+    label: "Documento Tipo"
   }
 
   dimension: first_name {
     type: string
     sql: ${TABLE}.FIRST_NAME ;;
-    label: "First Name"
+    group_label: "Cliente"
+    label: "Nombre"
   }
 
   dimension: group_code {
     type: string
     sql: ${TABLE}.GROUP_CODE ;;
-    label: "Group Code"
+    label: "Collection Group"
   }
 
   dimension: last_name {
     type: string
     sql: ${TABLE}.LAST_NAME ;;
-    label: "Last Name"
+    group_label: "Cliente"
+    label: "Apellido"
   }
 
   dimension: razonsocial {
     type: string
     sql: ${TABLE}.RAZONSOCIAL ;;
+    group_label: "Cliente"
     label: "Razon Social"
   }
 
   dimension: version_no {
     type: string
     sql: ${TABLE}.VERSION_NO ;;
-    label: "Version Number"
+    label: "Version Linea"
   }
 
 
@@ -153,13 +186,14 @@ view: ft_morosidad {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    label: "Account ID"
+    group_label: "Cliente"
+    label: "Cuenta ID"
   }
 
   dimension: action_id {
     type: number
     sql: ${TABLE}.ACTION_ID ;;
-    label: "Action ID"
+    label: "Accion ID"
   }
 
   dimension: collect_debt_id {
@@ -171,13 +205,14 @@ view: ft_morosidad {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    label: "Customer ID"
+    group_label: "Cliente"
+    label: "Cliente ID"
   }
 
   dimension: group_id {
     type: number
     sql: ${TABLE}.GROUP_ID ;;
-    label: "Group ID"
+    label: "Collection Group ID"
   }
 
   dimension: payment_plan_id {
@@ -189,14 +224,14 @@ view: ft_morosidad {
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
-    label: "Sub ID"
+    label: "Suscripcion Numero"
   }
 
   dimension: ult_accion_id_exe {
     type: number
     value_format_name: id
     sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
-    label: "Last Action ID Exe"
+    label: "Mora Hito ID"
   }
 
 
@@ -257,48 +292,63 @@ view: ft_morosidad {
   measure: total_adv_apply_amount {
     type: sum
     sql: ${TABLE}.ADV_APPLY_AMOUNT ;;
-    label: "Adv Apply Amount"
+    group_label: "Total"
+    label: "Monto Factura Aplicado"
   }
 
   measure: total_dispute_amount {
     type: sum
     sql: ${TABLE}.DISPUTE_AMOUNT ;;
-    label: "Distpute Amount"
+    group_label: "Total"
+    label: "Moonto Reclamado"
   }
 
   measure: total_invoice_amount {
     type: sum
     sql: ${TABLE}.INVOICE_AMOUNT ;;
-    label: "Invoice Amount"
+    group_label: "Total"
+    label: "Monto del Comprobante"
   }
 
   measure: total_late_payment_fee {
     type: sum
     sql: ${TABLE}.LATE_PAYMENT_FEE ;;
-    label: "Late Payement Fee"
+    group_label: "Total"
+    label: "Monto Interes por Mora"
   }
 
   measure: total_open_amount {
     type: sum
     sql: ${TABLE}.OPEN_AMOUNT ;;
-    label: "Open Amount"
+    group_label: "Total"
+    label: "Saldo Vencido"
   }
 
   measure: total_os_amount {
     type: sum
     sql: ${TABLE}.OS_AMOUNT ;;
-    label: "OS Amount"
+    group_label: "Total"
+    label: "Saldo Vencido Hito"
   }
 
   measure: total_pending_amount {
     type: sum
     sql: ${TABLE}.PENDING_AMOUNT ;;
+    group_label: "Total"
     label: "Pending Amount"
   }
 
   measure: total_writeoff_amount {
     type: sum
     sql: ${TABLE}.WRITEOFF_AMOUNT ;;
-    label: "Writeoff Amount"
+    group_label: "Total"
+    label: "Monto Cancelado"
+  }
+
+  measure: count_object_id {
+    type: count_distinct
+    sql: ${TABLE}.object_id ;;
+    group_label: "Count"
+    label: "Object Id"
   }
 }

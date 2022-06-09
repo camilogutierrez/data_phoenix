@@ -74,6 +74,7 @@ view: ft_degradacion_suscripcion {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
+    group_label: "Cliente"
     label: "Cliente ID"
   }
 

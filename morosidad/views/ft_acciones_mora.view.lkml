@@ -97,25 +97,27 @@ view: ft_acciones_mora {
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-    label: "Account Code"
+    group_label: "Cliente"
+    label: "Cuenta Codigo"
+    description: "Responsable de pago / Cuenta Code"
   }
 
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-    label: "Customer Code"
+    label: "Cliente Codigo"
   }
 
   dimension: document_number {
     type: string
     sql: ${TABLE}.DOCUMENT_NUMBER ;;
-    label: "Document Number"
+    label: "Documento Numero"
   }
 
   dimension: document_type {
     type: string
     sql: ${TABLE}.DOCUMENT_TYPE ;;
-    label: "Document Type"
+    label: "Documento Tipo"
   }
 
   dimension: exec_status {
@@ -127,19 +129,19 @@ view: ft_acciones_mora {
   dimension: first_name {
     type: string
     sql: ${TABLE}.FIRST_NAME ;;
-    label: "First Name"
+    label: "Nombre"
   }
 
   dimension: group_code {
     type: string
     sql: ${TABLE}.GROUP_CODE ;;
-    label: "Group Code"
+    label: "Grupo Colleccion"
   }
 
   dimension: group_version {
     type: string
     sql: ${TABLE}.GROUP_VERSION ;;
-    label: "Group Version"
+    label: "Grupo Version"
   }
 
   dimension: ult_accion_hold_status {
@@ -152,7 +154,7 @@ view: ft_acciones_mora {
   dimension: last_name {
     type: string
     sql: ${TABLE}.LAST_NAME ;;
-    label: "Last Name"
+    label: "Apellido"
   }
 
   dimension: mgr_status {
@@ -215,7 +217,7 @@ view: ft_acciones_mora {
     type: string
     sql: ${TABLE}.RESUME_ACTION_CODE ;;
     group_label: "Resume Action"
-    group_item_label: "Code"
+    group_item_label: "Rehabilitacion Codigo"
 
   }
 
@@ -258,19 +260,20 @@ view: ft_acciones_mora {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    label: "Account ID"
+    group_label: "Cliente"
+    label: "Cuenta ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    label: "Customer ID"
+    label: "Cliente ID"
   }
 
   dimension: group_id {
     type: number
     sql: ${TABLE}.GROUP_ID ;;
-    label: "Group ID"
+    label: "Grupo Colleccion ID"
   }
 
   dimension: object_id {
@@ -283,13 +286,13 @@ view: ft_acciones_mora {
     type: number
     sql: ${TABLE}.RESUME_ACTION_ID ;;
     group_label: "Resume Action"
-    group_item_label: "ID"
+    group_item_label: "Rehabilitacion ID"
   }
 
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
-    label: "Sub ID"
+    label: "Subscripcion Numero"
   }
 
   dimension: ult_accion_task_order_id {
@@ -332,7 +335,7 @@ view: ft_acciones_mora {
   measure: total_os_amount {
     type: sum
     sql: ${TABLE}.OS_AMOUNT ;;
-    label: "OS Amount"
+    label: "Saldo Vencido Hito"
   }
 
   measure: total_saldo_vencido {

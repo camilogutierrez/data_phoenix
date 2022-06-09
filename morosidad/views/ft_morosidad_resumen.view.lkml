@@ -1,7 +1,7 @@
 view: ft_morosidad_resumen {
   sql_table_name: @{gcp_ambiente}.FT_MorosidadResumen` ;;
   suggestions: no
-  label: "Morsidad Resumen"
+  label: "Morosidad Resumen"
 
   ## Primary Key
 
