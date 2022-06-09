@@ -20,15 +20,19 @@ view: ft_degradacion_suscripcion {
     timeframes: [
       raw,
       date,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.FIN_DEGRA ;;
-    label: "Fin Degradacion"
+    datatype: date
+    group_label: "Degradacion Fecha Fin"
+    label: "Degradacion Fin"
   }
 
   dimension_group: inicio_degra {
@@ -36,15 +40,19 @@ view: ft_degradacion_suscripcion {
     timeframes: [
       raw,
       date,
+      day_of_month,
+      day_of_week,
       week,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.INICIO_DEGRA ;;
-    label: "Inicio Degradacion"
+    datatype: date
+    group_label: "Degradacion Fecha Inicio"
+    label: "Degradacion Inicio"
   }
 
     ## Strings
@@ -52,7 +60,7 @@ view: ft_degradacion_suscripcion {
   dimension: degra_status {
     type: string
     sql: ${TABLE}.DEGRA_STATUS ;;
-    label: "Degradacion Status"
+    label: "Degradacion Estado"
   }
 
     ## Numbers
@@ -66,7 +74,7 @@ view: ft_degradacion_suscripcion {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    label: "Customer ID"
+    label: "Cliente ID"
   }
 
   dimension: pri_acct_id {
@@ -78,7 +86,7 @@ view: ft_degradacion_suscripcion {
   dimension: sub_id {
     type: number
     sql: ${TABLE}.SUB_ID ;;
-    label: "Sub ID"
+    label: "Subscripcion Numero"
   }
 
   dimension: ult_acct_id {
