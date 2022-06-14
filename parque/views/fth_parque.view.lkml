@@ -3164,7 +3164,6 @@ view: fth_parque {
 ## Measures
 
 ## PHOEN-3257 BEGIN
-  #OK
   measure: count_productos_activos_hibridos {
     type: count_distinct
     sql: ${producto_adquirido_srcid} ;;
@@ -3180,7 +3179,7 @@ view: fth_parque {
       , p_producto_tipo_nombre: "PLAN HIBRIDO"
     ]
   }
-  #OK
+
   measure: count_productos_activos_pospagos {
     type: count_distinct
     sql: ${producto_adquirido_srcid} ;;
@@ -3196,7 +3195,7 @@ view: fth_parque {
       , p_producto_tipo_nombre: "PLAN POSPAGO"
     ]
   }
-  #OK
+
   measure: count_productos_activos_prepagos {
     type: count_distinct
     sql: ${producto_adquirido_srcid} ;;
@@ -3395,14 +3394,30 @@ view: fth_parque {
     ]
   }
 
-  measure: count_antiguedad_cuenta{
-    type: number
-    sql: diff_days(${cuenta_fecha_creacion_src_date},${fecha_entidad}) ;;
+  ##### AUXILIAR O REUBICAR ####
+  dimension_group: antiguedad_cuenta {
+    type: duration
+    intervals: [day]
+    sql_start: ${cuenta_fecha_creacion_src_date} ;;
+    sql_end: ${fecha_entidad} ;;
     view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Antiguedad Cuenta (dias)"
-    label: "Antiguedad Cuenta (dias)"
-    description: "Antiguedad de la cuenta en dias."
+    group_label: "Antiguedad Cuenta"
+    label: "Antiguedad Cuenta"
+  }
+  ##### AUXILIAR O REUBICAR ####
+
+  measure: total_antiguedad_cuenta {
+    type: sum
+    sql: ${days_antiguedad_cuenta} ;;
+    view_label: "Parque"
+    group_label: "Total"
+    group_item_label: "Antiguedad Cuenta"
+    label: "Antiguedad Cuenta"
+    description: "Antiguedad de la cuenta."
+    filters: [
+      producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+    ]
   }
 
   measure: count_parque_terminales{

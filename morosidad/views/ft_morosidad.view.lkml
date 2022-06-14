@@ -348,7 +348,7 @@ view: ft_morosidad {
   measure: count_object_id {
     type: count_distinct
     sql: ${TABLE}.object_id ;;
-    group_label: "Count"
+    group_label: "Cantidad"
     label: "Object Id"
   }
 }

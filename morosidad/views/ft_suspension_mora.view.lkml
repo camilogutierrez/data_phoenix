@@ -253,7 +253,7 @@ view: ft_suspension_mora {
   measure: count_object_id {
     type: count_distinct
     sql: ${TABLE}.OBJECT_ID ;;
-    group_label: "Count"
+    group_label: "Cantidad"
     label: "Object ID"
   }
 
