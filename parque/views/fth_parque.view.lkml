@@ -11,7 +11,7 @@ view: fth_parque {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${producto_adquirido_srcid});;
+    sql: ${TABLE}.ProductoAdquiridoPK ;;
   }
 
   ## Nested Fields
@@ -2477,7 +2477,7 @@ view: fth_parque {
 
   dimension: cuenta_marca_debito {
     type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDebito ;;
+    sql: ${cuenta_medio_pago_srcid} != "-1" ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es Debito"
@@ -3163,17 +3163,19 @@ view: fth_parque {
 
 ## Measures
 
-## PHOEN-3257 BEGIN
+  measure: count_parque {
+    type: count
+    label: "Cantidad Productos"
+  }
+
   measure: count_productos_activos_hibridos {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Activos Hibridos"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Activos Hibridos"
     label: "Productos Activos Hibridos"
-    description: "Negocio Movil - Producto Hibrido"
+    description: "Negocio movil producto hibrido"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "MOVIL"
       , p_producto_tipo_nombre: "PLAN HIBRIDO"
@@ -3181,15 +3183,13 @@ view: fth_parque {
   }
 
   measure: count_productos_activos_pospagos {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Activos Pospagos"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Activos Pospagos"
     label: "Productos Activos Pospagos"
-    description: "Negocio Movil - Productos Pospagos"
+    description: "Negocio movil productos pospagos"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "MOVIL"
       , p_producto_tipo_nombre: "PLAN POSPAGO"
@@ -3197,15 +3197,13 @@ view: fth_parque {
   }
 
   measure: count_productos_activos_prepagos {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Activos Prepagos"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Activos Prepagos"
     label: "Productos Activos Prepagos"
-    description: "Negocio Movil - Productos Prepagos"
+    description: "Negocio movil productos prepagos"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "MOVIL"
       , p_producto_tipo_nombre: "PLAN PREPAGO"
@@ -3213,15 +3211,13 @@ view: fth_parque {
   }
 
   measure: count_productos_bundle {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Bundle"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Bundle"
     label: "Productos Bundle"
-    description: "Negocio Fija  - Detalle de Clientes Combo"
+    description: "Negocio fija detalle de clientes combo"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "BUNDLE"
@@ -3229,15 +3225,13 @@ view: fth_parque {
   }
 
   measure: count_productos_flow_flex {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Flow Flex"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Flow Flex"
     label: "Productos Flow Flex"
-    description: "Producto Prepago - Flow Flex"
+    description: "Producto prepago Flow Flex"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TV"
@@ -3246,15 +3240,13 @@ view: fth_parque {
   }
 
   measure: count_productos_tv_flow_box {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos TV Flow Box"
+    type: count
+    group_label: "Productos"
+    group_item_label: "TV Flow Box"
     label: "Productos TV FLow Box"
-    description: "Negocio Fijo - Producto Flow Box"
+    description: "Negocio fijo producto Flow Box"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TV"
@@ -3263,15 +3255,13 @@ view: fth_parque {
   }
 
   measure: count_productos_tv {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos TV"
+    type: count
+    group_label: "Productos"
+    group_item_label: "TV"
     label: "Productos TV"
-    description: "Negocio Fijo - Producto TV Clasico"
+    description: "Negocio fijo producto TV clasico"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TV"
@@ -3280,15 +3270,13 @@ view: fth_parque {
   }
 
   measure: count_productos_internet {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Internet"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Internet"
     label: "Productos Internet"
-    description: "Clientes Producto Internet Fija"
+    description: "Clientes producto internet fija"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "INTERNET"
@@ -3296,15 +3284,13 @@ view: fth_parque {
   }
 
   measure: count_productos_telefonia {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Telefonia"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Telefonia"
     label: "Productos Telefonia"
-    description: "Negocio Fija - Telefonia"
+    description: "Negocio fija telefonia"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TELEFONIA"
@@ -3312,15 +3298,13 @@ view: fth_parque {
   }
 
   measure: count_productos_telefonia_toip {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Telefonia TOIP"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Telefonia TOIP"
     label: "Productos Telefonia TOIP"
     description: "Clientes Telefonia TOIP"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TELEFONIA"
@@ -3329,49 +3313,57 @@ view: fth_parque {
   }
 
   measure: count_productos_total_fija {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
+    type: count
+    group_label: "Productos"
     group_item_label: "Productos Total Fija"
     label: "Productos Total Fija"
-    description: "Clientes Fija"
+    description: "Clientes fija"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "-BUNDLE"
-
     ]
   }
 
   measure: count_productos_total_movil {
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Productos Total Movil"
+    type: count
+    group_label: "Productos"
+    group_item_label: "Total Movil"
     label: "Productos Total Movil"
-    description: "Productos Negocio Movil Pospagos, Hibridos y Prepagos."
+    description: "Productos negocio movil pospagos, hibridos y prepagos."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+    ]
+  }
 
+  measure: count_parque_terminales{
+    type: count
+    group_label: "Productos"
+    group_item_label: "Terminales"
+    label: "Terminales"
+    description: "Dispositivos moviles activos."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , producto_adquirido_familia_producto: "MOVIL"
+      , p_producto_tipo_nombre: "DISPOSITIVO"
+      , producto_sub_tipo_nombre: "-ACCESORIOS MULTIMEDIA"
     ]
   }
 
   measure: count_clientes_unicos{
     type: count_distinct
     sql: ${persona_documento_numero} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Clientes Unicos"
+    group_label: "Clientes"
+    group_item_label: "Unicos"
     label: "Clientes Unicos"
-    description: "Clientes Unicos - Total Parque Productos Principales."
+    description: "Clientes unicos total parque productos principales."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "MOVIL, FIJA"
     ]
@@ -3380,71 +3372,17 @@ view: fth_parque {
   measure: count_clientes_alto_valor{
     type: count_distinct
     sql: ${persona_documento_numero} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Clientes Alto Valor"
+    group_label: "Clientes"
+    group_item_label: "Alto Valor"
     label: "Clientes Alto Valor"
-    description: "Clientes Alto Valor donde Segemento 1 es Abono Solo Movil , Convergente Siebel /Convergente Open/Convergente Siebel Open, con productos ppales activos."
+    description: "Clientes alto valor donde Segemento 1 es abono solo movil , convergente siebel / convergente open / convergente siebel open, con productos principales activos."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "MOVIL, FIJA"
       , cliente_segmento1_nombre: "ABONOS SOLO MOVIL, CONVERGENTE OPEN, CONVERGENTE SIEBEL, CONVERGENTE SIEBEL OPEN"
       , cliente_segmento2_nombre: "1"
     ]
-  }
-
-  ##### AUXILIAR O REUBICAR ####
-  dimension_group: antiguedad_cuenta {
-    type: duration
-    intervals: [day]
-    sql_start: ${cuenta_fecha_creacion_src_date} ;;
-    sql_end: ${fecha_entidad} ;;
-    view_label: "Parque"
-    group_label: "Antiguedad Cuenta"
-    label: "Antiguedad Cuenta"
-  }
-  ##### AUXILIAR O REUBICAR ####
-
-  measure: total_antiguedad_cuenta {
-    type: sum
-    sql: ${days_antiguedad_cuenta} ;;
-    view_label: "Parque"
-    group_label: "Total"
-    group_item_label: "Antiguedad Cuenta"
-    label: "Antiguedad Cuenta"
-    description: "Antiguedad de la cuenta."
-    filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
-      , producto_adquirido_marca_principal: "Yes"
-    ]
-  }
-
-  measure: count_parque_terminales{
-    type: count_distinct
-    sql: ${producto_adquirido_srcid} ;;
-    view_label: "Parque"
-    group_label: "Cantidad"
-    group_item_label: "Parque Terminales"
-    label: "Parque Terminales"
-    description: "Dispositivos Moviles Activos."
-    filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
-      , producto_adquirido_marca_principal: "Yes"
-      , producto_adquirido_familia_producto: "MOVIL"
-      , p_producto_tipo_nombre: "DISPOSITIVO"
-      , producto_sub_tipo_nombre: "-ACCESORIOS MULTIMEDIA"
-    ]
-  }
-
-
-## PHOEN-3257 END
-
-  measure: count_parque {
-    type: count
-    group_label: "Cantidad"
-    group_item_label: "Cantidad"
-    label: "Cantidad"
   }
 }
 
