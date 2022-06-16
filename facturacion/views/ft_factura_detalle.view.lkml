@@ -205,7 +205,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.DESCRIPTION ;;
     view_label: "Comprobante"
-    label: "Terminal Nombre"
+    label: "Terminal Nombre (2)"
     description: "Nombre de la terminal vendida"
   }
 
@@ -303,7 +303,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.NOMBRE_TERMINAL ;;
     view_label: "Comprobante"
-    label: "Terminal Nombre"
+    label: "Terminal Nombre (1)"
     description: "Nombre de la terminal vendida"
   }
 

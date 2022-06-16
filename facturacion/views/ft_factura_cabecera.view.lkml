@@ -460,12 +460,6 @@ view: ft_factura_cabecera {
     sql: ${TABLE}.ORIGINAL_AMT ;;
   }
 
-  dimension: cust_subsegment2 {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.CUST_SUBSEGMENT2 ;;
-  }
-
 ##############
 ## Measures ##
 ##############
