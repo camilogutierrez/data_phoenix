@@ -249,7 +249,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.INVOICE_LETTER ;;
     view_label: "Comprobante"
-    label: "Comprobante Letra"
+    label: "Letra"
   }
 
   dimension: invoice_no {
@@ -271,7 +271,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.INVOICE_STATUS ;;
     view_label: "Comprobante"
-    label: "Comprobante Estado"
+    label: "Estado"
     description: "Open= con saldo / Close = pago / Rejected = anulada / P"
   }
 
@@ -279,7 +279,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LEGAL_NO ;;
     view_label: "Comprobante"
-    label: "Comprobante legal Nro"
+    label: "Legal Nro"
 
   }
 
@@ -287,7 +287,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Comprobante Legal Asociado"
+    label: "Legal Asociado"
     description: "Comprobante legal asociado a la factura"
   }
 
@@ -295,7 +295,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LINEA ;;
     view_label: "Comprobante"
-    label: "Linea"
+    label: "Linea (1)"
     description: "Viene de: AR_INVOICE_DETAIL EXT_PROPERTY ( 'LINE1')"
   }
 
@@ -394,7 +394,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.PRI_IDENTITY ;;
     view_label: "Comprobante"
-    label: "Linea"
+    label: "Linea (2)"
   }
 
   dimension: region_code {
@@ -422,7 +422,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
     view_label: "Comprobante"
-    label: "Comprobante Tipo"
+    label: "Tipo"
     description: "Indica el tipo de comprobante de la operacion es: BLL, CNT, DNT, SLI"
   }
 
@@ -430,7 +430,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Comprobante Asociado Tipo Descripcion"
+    label: "Asociado Tipo Descripcion"
     description: "Indica la descripcion del tipo de comprobante asociado de la operacion. Bill run (BLL), Credit Notes (CNT), Debit Notes (DNT), Sales Invoice  (SLI)"
   }
 
@@ -466,7 +466,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.SUB_IDENTITY ;;
     view_label: "Comprobante"
-    label: "Linea"
+    label: "Linea (3)"
   }
 
   dimension: desc_segmento_doc_grupo {
@@ -513,7 +513,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.INVOICE_ID ;;
     value_format_name: id
     view_label: "Comprobante"
-    label: "Comprobante ID"
+    label: "ID"
     description: "Identificador de la operacion, numero interno de HW"
   }
 
