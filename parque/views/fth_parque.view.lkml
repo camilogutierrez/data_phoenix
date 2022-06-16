@@ -3160,7 +3160,7 @@ view: fth_parque {
     type: string
     sql: ${TABLE}.Cliente.CuentaTipoSRCId ;;
   }
-##### feature/PHOEN-3288 #############
+
   dimension: m_producto_adquirido_precio {
     hidden: yes
     type: number
@@ -3178,36 +3178,6 @@ view: fth_parque {
     type: number
     sql: ${TABLE}.Metricas.CargoRecurrenteSinImpuesto  ;;
   }
-
-  measure: total_m_producto_adquirido_precio {
-    type: sum
-    sql: ${m_producto_adquirido_precio} ;;
-    value_format_name: decimal_2
-    group_label: "Total"
-    group_item_label: "Producto Adquirido Precio"
-    label: "Producto Adquirido Precio"
-  }
-
-  measure: total_m_precio_recurrente_sin_impuesto {
-    type: sum
-    sql: ${m_precio_recurrente_sin_impuesto} ;;
-    value_format_name: decimal_2
-    group_label: "Total"
-    group_item_label: "Precio Recurrente Sin Impuesto"
-    label: "Precio Recurrente Sin Impuesto"
-  }
-
-  measure: total_m_cargo_recurrente_sin_impuesto {
-    type: sum
-    sql: ${m_cargo_recurrente_sin_impuesto} ;;
-    value_format_name: decimal_2
-    group_label: "Total"
-    group_item_label: "Cargo Recurrente Sin Impuesto"
-    label: "Cargo Recurrente Sin Impuesto"
-  }
-
-##### feature/PHOEN-3288 #############
-
 
 ## Measures
 
@@ -3431,6 +3401,27 @@ view: fth_parque {
       , cliente_segmento1_nombre: "ABONOS SOLO MOVIL, CONVERGENTE OPEN, CONVERGENTE SIEBEL, CONVERGENTE SIEBEL OPEN"
       , cliente_segmento2_nombre: "1"
     ]
+  }
+
+  measure: total_m_producto_adquirido_precio {
+    type: sum
+    sql: ${m_producto_adquirido_precio} ;;
+    value_format_name: decimal_2
+    label: "Producto Adquirido Precio"
+  }
+
+  measure: total_m_precio_recurrente_sin_impuesto {
+    type: sum
+    sql: ${m_precio_recurrente_sin_impuesto} ;;
+    value_format_name: decimal_2
+    label: "Precio Recurrente Sin Impuesto"
+  }
+
+  measure: total_m_cargo_recurrente_sin_impuesto {
+    type: sum
+    sql: ${m_cargo_recurrente_sin_impuesto} ;;
+    value_format_name: decimal_2
+    label: "Cargo Recurrente Sin Impuesto"
   }
 
 }

@@ -3067,7 +3067,7 @@ view: fth_caso_comentarios {
     type: string
     sql: ${TABLE}.CasoComentarioSRCId ;;
     value_format_name: id
-    label: "Comentatio Id"
+    label: "Comentario Id"
   }
 
     ## Fechas
