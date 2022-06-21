@@ -1,0 +1,8 @@
+include: 
+  - project: 'telecom-argentina/DEVOPS/cicd/templates'
+    ref: master
+    file:
+      - 'Workflows/looker-Pipelines.yml'
+      - 'GCP/Looker/spectacles-template.yml'
+      - 'GCP/Looker/looker-template.yml'
+
