@@ -32,7 +32,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.INVOICE_DATE ;;
     view_label: "Comprobante"
     group_label: "Fecha Emision"
-    label: "Emision"
+    label: "Comprobante Emision"
 
   }
 
@@ -52,7 +52,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.DUE_DATE ;;
     view_label: "Comprobante"
     group_label: "Fecha Vencimiento"
-    label: "Vencimiento"
+    label: "Comprobante Vencimiento"
   }
 
   ## Strings
@@ -61,7 +61,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
     view_label: "Cliente"
-    label: "Cuenta"
+    label: "Cuenta Cliente"
     description: "Responsable de pago / Cuenta Code"
   }
 
@@ -191,14 +191,14 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.CUST_TYPE ;;
     view_label: "Cliente"
-    label: "Tipo"
+    label: "Cliente Tipo"
   }
 
   dimension: cust_type_des {
     type: string
     sql: ${TABLE}.CUST_TYPE_DES ;;
     view_label: "Cliente"
-    label: "Tipo Descripcion"
+    label: "Cliente Tipo Descripcion"
   }
 
   dimension: description {
@@ -249,7 +249,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.INVOICE_LETTER ;;
     view_label: "Comprobante"
-    label: "Letra"
+    label: "Comprobante Letra"
   }
 
   dimension: invoice_no {
@@ -271,7 +271,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.INVOICE_STATUS ;;
     view_label: "Comprobante"
-    label: "Estado"
+    label: "Comprobante Estado"
     description: "Open= con saldo / Close = pago / Rejected = anulada / P"
   }
 
@@ -279,7 +279,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LEGAL_NO ;;
     view_label: "Comprobante"
-    label: "Legal Nro"
+    label: "Comprobante Legal Nro"
 
   }
 
@@ -287,7 +287,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Legal Asociado"
+    label: "Comprobante Legal Asociado"
     description: "Comprobante legal asociado a la factura"
   }
 
@@ -422,7 +422,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
     view_label: "Comprobante"
-    label: "Tipo"
+    label: "Comprobante Tipo"
     description: "Indica el tipo de comprobante de la operacion es: BLL, CNT, DNT, SLI"
   }
 
@@ -430,7 +430,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Asociado Tipo Descripcion"
+    label: "Comprobante Asociado Tipo Descripcion"
     description: "Indica la descripcion del tipo de comprobante asociado de la operacion. Bill run (BLL), Credit Notes (CNT), Debit Notes (DNT), Sales Invoice  (SLI)"
   }
 
@@ -438,7 +438,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE_DES ;;
     view_label: "Comprobante"
-    label: "Tipo Descripcion"
+    label: "Comprobante Tipo Descripcion"
     description: "Indica la descripcion del tipo de comprobante asociado de la operación. Bill run (BLL), Credit Notes (CNT), Debit Notes (DNT), Sales Invoice  (SLI)"
   }
 
@@ -513,7 +513,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.INVOICE_ID ;;
     value_format_name: id
     view_label: "Comprobante"
-    label: "ID"
+    label: "Comprobante ID"
     description: "Identificador de la operacion, numero interno de HW"
   }
 
@@ -522,7 +522,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.CUST_ID ;;
     value_format_name: id
     view_label: "Cliente"
-    label: "ID"
+    label: "Cliente ID"
     description: "ID de cliente HW"
   }
 
@@ -540,7 +540,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.ACCT_ID ;;
     value_format_name: id
     view_label: "Cliente"
-    label: "Cuenta ID"
+    label: "Cuenta Cliente ID"
     description: "ID cuenta de cliente"
   }
 

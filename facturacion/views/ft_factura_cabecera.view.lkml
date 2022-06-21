@@ -243,7 +243,7 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.INVOICE_STATUS ;;
     view_label: "Comprobante"
-    label: "Estado"
+    label: "Comprobante Estado"
     description: "Open= con saldo | Close= pago | Rejected= anulada | P= Pending (debito automatico)"
   }
 
@@ -251,14 +251,14 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.LEGAL_NO ;;
     view_label: "Comprobante"
-    label: "Legal Numero"
+    label: "Comprobante Legal Numero"
   }
 
   dimension: legal_no_asoc_ncnd {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Legal Asociado Numero"
+    label: "Comprobante Legal Asociado Numero"
     description: "Numero de comprobante legal asociado a la factura (LEGAL_NO)"
   }
 
@@ -324,7 +324,7 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
     view_label: "Comprobante"
-    label: "Tipo"
+    label: "Comprobante Tipo"
     description: "Indica el tipo de comprobante de la operacion (BLL, CNT, DNT, SLI)"
   }
 
@@ -332,7 +332,7 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.TRANS_TYPE_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Asociado Tipo Descripcion"
+    label: "Comprobante Asociado Tipo Descripcion"
     description: "Indica la descripcion del tipo de comprobante asociado en la operacion BLL = Bill run, CNT = Credit Notes, DNT = Debit Notes, SLI = Sales Invoice"
   }
 
@@ -340,7 +340,7 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.TRANS_TYPE_DES ;;
     view_label: "Comprobante"
-    label: "Tipo Descripcion "
+    label: "Comprobante Tipo Descripcion "
     description: "Indica la descripcion del tipo de comprobante de la operacion BLL = Bill run, CNT = Credit Notes, DNT = Debit Notes, SLI = Sales Invoice"
   }
 
@@ -349,7 +349,7 @@ view: ft_factura_cabecera {
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    value_format: "0"
+    value_format_name: id
     view_label: "Cliente"
     label: "Cliente ID"
   }
@@ -367,7 +367,7 @@ view: ft_factura_cabecera {
     sql: ${TABLE}.INVOICE_ID ;;
     value_format_name: id
     view_label: "Comprobante"
-    label: "ID"
+    label: "Comprobante ID"
     description: "Identificador de la operacion, numero interno de HW"
   }
 
@@ -376,7 +376,7 @@ view: ft_factura_cabecera {
     sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
     value_format_name: id
     view_label: "Comprobante"
-    label: "Asociado ID"
+    label: "Comprobante Asociado ID"
     description: "Identificador de la operacion del comprobante asociado (INVOICE_ID)"
   }
 
