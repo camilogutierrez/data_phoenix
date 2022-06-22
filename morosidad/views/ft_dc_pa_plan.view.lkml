@@ -241,5 +241,12 @@ view: ft_dc_pa_plan {
 
   ## Measures
 
+  measure: count_object_id {
+    type: count_distinct
+    sql: ${TABLE}.OBJECT_ID ;;
+    group_label: "Cantidad"
+    label: "Object ID"
+  }
+
 
 }

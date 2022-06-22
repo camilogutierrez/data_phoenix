@@ -98,4 +98,10 @@ view: ft_degradacion_suscripcion {
 
     ## Measures
 
+  measure: count_object_id {
+    type: count_distinct
+    sql: ${TABLE}.OBJECT_ID ;;
+    group_label: "Cantidad"
+    label: "Object ID"
+  }
 }

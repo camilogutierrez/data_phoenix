@@ -297,4 +297,11 @@ view: ft_morosidad_resumen {
     label: "Saldo Vencido"
   }
 
+  measure: count_object_id {
+    type: count_distinct
+    sql: ${TABLE}.OBJECT_ID ;;
+    group_label: "Cantidad"
+    label: "Object ID"
+  }
+
 }

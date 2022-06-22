@@ -148,4 +148,12 @@ view: ft_cargos_rehabilitacion {
     sql: ${TABLE}.CHARGE_AMT ;;
     label: "Cargo Total"
   }
+
+ measure: count_object_id {
+  type: count_distinct
+  sql: ${TABLE}.OBJECT_ID ;;
+  group_label: "Cantidad"
+  label: "Object ID"
+}
+
 }
