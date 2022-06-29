@@ -409,4 +409,10 @@ view: ft_acciones_mora {
     label: "Object ID"
   }
 
+  measure: count {
+    type: count
+    group_label: "Cantidad"
+    label: "Count"
+  }
+
 }

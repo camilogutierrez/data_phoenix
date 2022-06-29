@@ -149,11 +149,10 @@ view: ft_cargos_rehabilitacion {
     label: "Cargo Total"
   }
 
- measure: count_object_id {
-  type: count_distinct
-  sql: ${TABLE}.OBJECT_ID ;;
-  group_label: "Cantidad"
-  label: "Object ID"
-}
+  measure: count {
+    type: count
+    group_label: "Cantidad"
+    label: "Count"
+  }
 
 }

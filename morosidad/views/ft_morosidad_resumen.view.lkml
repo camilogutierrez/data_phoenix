@@ -304,4 +304,10 @@ view: ft_morosidad_resumen {
     label: "Object ID"
   }
 
+  measure: count {
+    type: count
+    group_label: "Cantidad"
+    label: "Count"
+  }
+
 }

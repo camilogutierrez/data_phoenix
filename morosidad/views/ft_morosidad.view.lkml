@@ -345,10 +345,9 @@ view: ft_morosidad {
     label: "Monto Cancelado"
   }
 
-  measure: count_object_id {
-    type: count_distinct
-    sql: ${TABLE}.object_id ;;
+  measure: count {
+    type: count
     group_label: "Cantidad"
-    label: "Object Id"
+    label: "Count"
   }
 }

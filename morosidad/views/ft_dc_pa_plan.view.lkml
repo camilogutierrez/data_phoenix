@@ -248,5 +248,11 @@ view: ft_dc_pa_plan {
     label: "Object ID"
   }
 
+  measure: count {
+    type: count
+    group_label: "Cantidad"
+    label: "Count"
+  }
+
 
 }
