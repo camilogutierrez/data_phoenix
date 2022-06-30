@@ -3403,19 +3403,8 @@ view: fth_parque {
     ]
   }
 
-  ######### feature/PHOEN-3383 ##################
-  measure: count_cuenta_marca_debito {
-    type: count_distinct
-    sql: ${cuenta_marca_debito} ;;
-    label: "Cantidad Debito Automatico"
-    description: "Es marca debito = Si"
-    filters: [cuenta_marca_debito: "Yes"]
-  }
-
   measure: count_suspension_administrativa {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Adminstrativa"
     label: "Suspension Adminstrativa"
@@ -3429,9 +3418,7 @@ view: fth_parque {
   }
 
   measure: count_suspension_por_degradacion {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Degradacion"
     label: "Suspension por Degradacion"
@@ -3445,15 +3432,13 @@ view: fth_parque {
   }
 
   measure: count_suspension_por_leasing {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Leasing"
     label: "Suspension por Leasing"
     description: "Dispositivos suspendidos por Leasing (compro equipo en DPF y se supende por mora)."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_leasing_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
@@ -3461,15 +3446,13 @@ view: fth_parque {
   }
 
   measure: count_otras_suspensiones{
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Otras"
     label: "Otras Suspensiones"
     description: "Otros motivos de suspension"
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_otros_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
@@ -3477,15 +3460,13 @@ view: fth_parque {
   }
 
   measure: count_suspension_por_mora_parcial {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Mora Parcial"
     label: "Suspension por Mora Parcial"
     description: "Suspensión por cliente en morosidad parcial."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_parcial_mora_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
@@ -3493,15 +3474,13 @@ view: fth_parque {
   }
 
   measure: count_suspension_por_mora_total {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Mora Total"
     label: "Suspension por Mora Total"
     description: "Suspensión por cliente en morosidad total."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_total_mora_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
@@ -3509,15 +3488,13 @@ view: fth_parque {
   }
 
   measure: count_suspension_voluntaria {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Voluntaria"
     label: "Suspension Voluntaria"
     description: "Lineas suspendidas por pedido del cliente, por un tiempo ejemplo Mudanza, PC Rota."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_voluntaria_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
@@ -3525,15 +3502,13 @@ view: fth_parque {
   }
 
   measure: count_suspension_por_siniestro {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
-    view_label: "Parque"
+    type: count
     group_label: "Suspensiones"
     group_item_label: "Siniestro"
     label: "Suspension por Siniestro"
     description: "Lineas Suspendidas por Siniestro de la terminal."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_siniestro_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
@@ -3541,22 +3516,19 @@ view: fth_parque {
   }
 
   measure: count_suspension_por_portout {
-    type: count_distinct
-    sql: ${TABLE}.ProductoAdquiridoPK ;;
+    type: count
     view_label: "Parque"
     group_label: "Suspensiones"
     group_item_label: "Portout"
     label: "Suspension por Portout"
     description: "Lineas suspensdidads por  acción de  baja por portabilidad (portOut)."
     filters: [
-      producto_adquirido_marca_parque_activo: "Yes"
+        producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , fecha_suspension_port_out_src_date: "NOT NULL"
       , cantidad_suspensiones_activas: "NOT NULL"
     ]
   }
-
-  ######### feature/PHOEN-3383 ##################
 
   measure: total_m_producto_adquirido_precio {
     type: sum
