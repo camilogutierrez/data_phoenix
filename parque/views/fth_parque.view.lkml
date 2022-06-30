@@ -3517,7 +3517,6 @@ view: fth_parque {
 
   measure: count_suspension_por_portout {
     type: count
-    view_label: "Parque"
     group_label: "Suspensiones"
     group_item_label: "Portout"
     label: "Suspension por Portout"
