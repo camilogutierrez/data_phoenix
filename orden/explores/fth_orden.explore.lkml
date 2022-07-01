@@ -8,6 +8,8 @@ explore: fth_orden {
   label: "Orden"
   group_label: "Orden"
 
+  fields: [ALL_FIELDS*, -fth_orden.orden_item_sub_motivo_baja_nombre]
+
   always_filter: {
     filters: [fth_orden.fecha_entidad: "today"]
   }

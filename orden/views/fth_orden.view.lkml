@@ -2880,7 +2880,7 @@ view: fth_orden {
     ]
   }
 
-  measure: count_baja_voluntaria_efectiva {
+  measure: count_baja_voluntaria_efectiva_movil {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
@@ -2892,7 +2892,8 @@ view: fth_orden {
         orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "DESCONECTAR"
       , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_item_sub_motivo_baja_nombre: "PEDIDO DE BAJA"
+      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
 
@@ -2907,8 +2908,9 @@ view: fth_orden {
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "DESCONECTAR"
-      , orden_tipo_sub_gestion_nombre: "DESCONEXION"
-      , orden_item_sub_motivo_baja_nombre: "POR TIEMPO"
+      , orden_tipo_gestion_nombre: "DESCONEXION"
+      , orden_tipo_sub_gestion_nombre: "POR TIEMPO"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
 
