@@ -3,6 +3,7 @@ include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
 include: "/orden/views/dm_orden_precio_promocion.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
+include: "/orden/views/lk_cierres_orden.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
@@ -38,6 +39,13 @@ explore: fth_orden {
   }
 
   ## For Filter Suggestions
+
+  join: lk_cierres_orden {
+    view_label: "Cierres"
+    relationship: many_to_one
+    sql_on: ${fth_orden.fecha_entidad} = ${lk_cierres_orden.fecha_entidad} ;;
+    type: inner
+  }
 
   join: lk_orden_item_estado_provisionamiento {
     relationship: many_to_one

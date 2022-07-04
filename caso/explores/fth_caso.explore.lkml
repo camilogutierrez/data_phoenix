@@ -2,6 +2,7 @@ include: "/caso/views/fth_caso.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
 include: "/caso/others/caso_datagroups.lkml"
+include: "/caso/views/lk_cierres_caso.view.lkml"
 
 explore: fth_caso {
   label: "Caso"
@@ -35,9 +36,17 @@ explore: fth_caso {
 
   ## For Filter Suggestions
 
+  join: lk_cierres_caso {
+    view_label: "Cierres"
+    relationship: many_to_one
+    sql_on: ${fth_caso.fecha_entidad} = ${lk_cierres_caso.fecha_entidad} ;;
+    type: inner
+  }
+
   join: lk_caso_estado {
     sql_on: ${fth_caso.caso_estado_sk} = ${lk_caso_estado.caso_estado_sk};;
     relationship: many_to_one
+    type: inner
   }
 
   join: lk_caso_horas_negocio {

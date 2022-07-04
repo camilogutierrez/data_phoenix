@@ -1,5 +1,6 @@
 include: "/parque/views/fth_parque.view.lkml"
 include: "/aleph/views/*.view.lkml"
+include: "/parque/views/lk_cierres_parque.view.lkml"
 include: "/parque/others/parque_datagroups.lkml"
 
 explore: fth_parque {
@@ -19,6 +20,13 @@ explore: fth_parque {
   }
 
   ## For Filter Suggestions
+
+  join: lk_cierres_parque {
+    view_label: "Cierres"
+    relationship: many_to_one
+    sql_on: ${fth_parque.fecha_entidad} = ${lk_cierres_parque.fecha_entidad} ;;
+    type: inner
+  }
 
   join: lk_cliente_segmento1 {
     relationship: many_to_one
