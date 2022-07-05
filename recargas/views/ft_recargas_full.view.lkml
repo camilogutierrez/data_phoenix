@@ -1,6 +1,6 @@
-view: ft_recargas {
+view: ft_recargas_full {
   label: "Recargas"
-  sql_table_name: @{gcp_ambiente}.FT_Recargas` ;;
+  sql_table_name: @{gcp_ambiente}.FT_Recargas_Full` ;;
   suggestions: no
 
 ## Dimensions
@@ -446,12 +446,6 @@ view: ft_recargas {
 
   ## Hidden
 
-  dimension: m_recarga_cantidad {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Metricas.RecargaCantidad ;;
-  }
-
   dimension: m_recarga_loan_amount {
     hidden: yes
     type: number
@@ -478,13 +472,6 @@ view: ft_recargas {
 
 ## Measures
 
-  measure: total_recarga_cantidad {
-    type: sum
-    sql: ${m_recarga_cantidad} ;;
-    value_format_name: decimal_0
-    label: "Recarga Cantidad"
-  }
-
   measure: total_recarga_loan_amount {
     type: sum
     sql: ${m_recarga_loan_amount} ;;
@@ -501,6 +488,6 @@ view: ft_recargas {
 
   measure: count {
     type: count
-    label: "Recargas"
+    label: "Recargas Count"
   }
 }
