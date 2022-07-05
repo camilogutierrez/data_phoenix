@@ -1,8 +1,21 @@
 view: fth_recargas {
-  sql_table_name: `teco-prod-edw-5e1b.ue4_prod_edw_pub_gcp.FTH_Recargas`
-    ;;
+  label: "Recargas"
+  sql_table_name: @{gcp_ambiente}.FTH_Recargas` ;;
 
-  dimension_group: _auditoria___fecha_creacion {
+## Dimensions
+
+  ## Primary Key
+
+  dimension: pk {
+    hidden: yes
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.RecargaRECHARGE_LOG_ID ;;
+  }
+
+  ## Dates
+
+  dimension_group: pa_fecha_activacion_plan_src {
     type: time
     timeframes: [
       raw,
@@ -10,139 +23,18 @@ view: fth_recargas {
       date,
       week,
       month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}._auditoria._fechaCreacion ;;
-  }
-
-  dimension_group: _auditoria___fecha_ultima_actualizacion {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}._auditoria._fechaUltimaActualizacion ;;
-  }
-
-  dimension: _auditoria___sesion_id {
-    type: string
-    sql: ${TABLE}._auditoria._sesionId ;;
-    group_label: "Auditoria"
-    group_item_label: "Sesion ID"
-  }
-
-  dimension: _auditoria___usuario_creacion {
-    type: string
-    sql: ${TABLE}._auditoria._usuarioCreacion ;;
-    group_label: "Auditoria"
-    group_item_label: "Usuario Creacion"
-  }
-
-  dimension: _auditoria___usuario_ultima_actualizacion {
-    type: string
-    sql: ${TABLE}._auditoria._usuarioUltimaActualizacion ;;
-    group_label: "Auditoria"
-    group_item_label: "Usuario Ultima Actualizacion"
-  }
-
-  dimension: geografia__rango_numeracion_departamento_nombre {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Departamento Nombre"
-  }
-
-  dimension: geografia__rango_numeracion_departamento_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Departamento Srcid"
-  }
-
-  dimension: geografia__rango_numeracion_localidad_nombre {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Localidad Nombre"
-  }
-
-  dimension: geografia__rango_numeracion_localidad_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Localidad Srcid"
-  }
-
-  dimension: geografia__rango_numeracion_prefijo_interurbano {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Prefijo Interurbano"
-  }
-
-  dimension: geografia__rango_numeracion_prefijos {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Prefijos"
-  }
-
-  dimension: geografia__rango_numeracion_provincia_nombre {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Nombre"
-  }
-
-  dimension: geografia__rango_numeracion_provincia_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Srcid"
-  }
-
-  dimension: metricas__recarga_cantidad {
-    type: number
-    sql: ${TABLE}.Metricas.RecargaCantidad ;;
-    group_label: "Metricas"
-    group_item_label: "Recarga Cantidad"
-  }
-
-  dimension: metricas__recarga_loan_amount {
-    type: number
-    sql: ${TABLE}.Metricas.RecargaLOAN_AMOUNT ;;
-    group_label: "Metricas"
-    group_item_label: "Recarga Loan Amount"
-  }
-
-  dimension: metricas__recarga_recharge_amt {
-    type: number
-    sql: ${TABLE}.Metricas.RecargaRECHARGE_AMT ;;
-    group_label: "Metricas"
-    group_item_label: "Recarga Recharge Amt"
-  }
-
-  dimension_group: producto_adquirido__fecha_activacion_plan_src {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.ProductoAdquirido.FechaActivacionPlanSRC ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Activacion Plan"
+    label: "Activacion Plan"
   }
 
-  dimension_group: producto_adquirido__fecha_desconexion_plan_src {
+  dimension_group: pa_fecha_desconexion_plan_src {
     type: time
     timeframes: [
       raw,
@@ -150,49 +42,36 @@ view: fth_recargas {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.ProductoAdquirido.FechaDesconexionPlanSRC ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Desconexion Plan"
+    label: "Desconexion Plan"
   }
 
-  dimension: producto_adquirido__producto_adquirido_estado_nombre {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Estado Nombre"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_estado_sk {
-    type: number
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSK ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Estado Sk"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_estado_srcid {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Estado Srcid"
-  }
-
-  dimension_group: producto_adquirido__producto_adquirido_fecha_compra_src {
+  dimension_group: pa_producto_adquirido_fecha_compra_src {
     type: time
     timeframes: [
       raw,
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaCompraSRC ;;
+    datatype: date
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Compra"
+    label: "Compra"
   }
 
-  dimension_group: producto_adquirido__producto_adquirido_fecha_creacion_src {
+  dimension_group: pa_producto_adquirido_fecha_creacion_src {
     type: time
     timeframes: [
       raw,
@@ -200,102 +79,15 @@ view: fth_recargas {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFechaCreacionSRC ;;
-  }
-
-  dimension: producto_adquirido__producto_adquirido_motivo_alta {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMotivoAlta ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Motivo Alta"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_motivo_baja {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMotivoBaja ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Motivo Baja"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_nombre {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNombre ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Nombre"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_referente_srcid {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoReferenteSRCId ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Referente Srcid"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_srcid {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Srcid"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_sub_motivo_alta {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubMotivoAlta ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Sub Motivo Alta"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_sub_motivo_baja {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubMotivoBaja ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Sub Motivo Baja"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_tipo {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoTipo ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Tipo"
-  }
-
-  dimension: recarga_access_method {
-    type: number
-    sql: ${TABLE}.RecargaACCESS_METHOD ;;
-  }
-
-  dimension: recarga_access_methodnombre {
-    type: string
-    sql: ${TABLE}.RecargaACCESS_METHODNombre ;;
-  }
-
-  dimension: recarga_acct_id {
-    type: number
-    sql: ${TABLE}.RecargaACCT_ID ;;
-  }
-
-  dimension: recarga_anio_mes {
-    type: string
-    sql: ${TABLE}.RecargaAnioMes ;;
-  }
-
-  dimension: recarga_brandid {
-    type: number
-    value_format_name: id
-    sql: ${TABLE}.RecargaBRANDID ;;
-  }
-
-  dimension: recarga_channel_id {
-    type: string
-    sql: ${TABLE}.RecargaCHANNEL_ID ;;
-  }
-
-  dimension: recarga_channel_idnombre {
-    type: string
-    sql: ${TABLE}.RecargaCHANNEL_IDNombre ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Creacion"
+    label: "Creacion"
   }
 
   dimension_group: recarga_entry {
@@ -306,25 +98,14 @@ view: fth_recargas {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.RecargaENTRY_DATE ;;
-  }
-
-  dimension: recarga_ext_trans_id {
-    type: string
-    sql: ${TABLE}.RecargaEXT_TRANS_ID ;;
-  }
-
-  dimension: recarga_ext_trans_type {
-    type: string
-    sql: ${TABLE}.RecargaEXT_TRANS_TYPE ;;
-  }
-
-  dimension: recarga_ext_trans_typenombre {
-    type: string
-    sql: ${TABLE}.RecargaEXT_TRANS_TYPENombre ;;
+    datatype: timestamp
+    group_label: "Entry Date"
+    label: "Entry"
   }
 
   dimension_group: recarga_fecha {
@@ -334,92 +115,383 @@ view: fth_recargas {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
     sql: ${TABLE}.RecargaFecha ;;
+    datatype: date
+    group_label: "Recarga Fecha"
+    label: "Recarga"
   }
 
-  dimension: recarga_mainofferingid {
-    type: number
-    value_format_name: id
-    sql: ${TABLE}.RecargaMAINOFFERINGID ;;
+  ## Strings
+
+  dimension: rango_numeracion_departamento_nombre {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
+    group_label: "Rango Numeracion"
+    label: "Departamento Nombre"
+  }
+
+  dimension: rango_numeracion_departamento_srcid {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+    group_label: "Rango Numeracion"
+    label: "Departamento Srcid"
+  }
+
+  dimension: rango_numeracion_localidad_nombre {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
+    group_label: "Rango Numeracion"
+    label: "Localidad Nombre"
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
+    group_label: "Rango Numeracion"
+    label: "Localidad SrcId"
+  }
+
+  dimension: rango_numeracion_provincia_nombre {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
+    group_label: "Rango Numeracion"
+    label: "Provincia Nombre"
+  }
+
+  dimension: rango_numeracion_provincia_srcid {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+    group_label: "Rango Numeracion"
+    label: "Provincia Srcid"
+  }
+
+  dimension: producto_adquirido_estado_nombre {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre ;;
+    suggest_dimension: lk_producto_adquirido_estado.producto_adquirido_estado_nombre
+    view_label: "Producto Adquirido"
+    label: "Estado Nombre"
+  }
+
+  dimension: producto_adquirido_motivo_alta {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMotivoAlta ;;
+    view_label: "Producto Adquirido"
+    label: "Motivo Alta"
+  }
+
+  dimension: producto_adquirido_motivo_baja {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMotivoBaja ;;
+    view_label: "Producto Adquirido"
+    label: "Motivo Baja"
+  }
+
+  dimension: producto_adquirido_nombre {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNombre ;;
+    view_label: "Producto Adquirido"
+    label: "Nombre"
+  }
+
+  dimension: producto_adquirido_referente_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoReferenteSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "Referente SrcId"
+  }
+
+  dimension: producto_adquirido_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
+    view_label: "Producto Adquirido"
+    label: "SrcId"
+  }
+
+  dimension: producto_adquirido_sub_motivo_alta {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubMotivoAlta ;;
+    view_label: "Producto Adquirido"
+    label: "Sub Motivo Alta"
+  }
+
+  dimension: producto_adquirido_sub_motivo_baja {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubMotivoBaja ;;
+    view_label: "Producto Adquirido"
+    label: "Sub Motivo Baja"
+  }
+
+  dimension: producto_adquirido_tipo {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoTipo ;;
+    view_label: "Producto Adquirido"
+    label: "Tipo"
+  }
+
+  dimension: recarga_access_methodnombre {
+    type: string
+    sql: ${TABLE}.RecargaACCESS_METHODNombre ;;
+    view_label: "Recargas"
+    label: "Access Method Nombre"
+  }
+
+  dimension: recarga_anio_mes {
+    type: string
+    sql: ${TABLE}.RecargaAnioMes ;;
+    view_label: "Recargas"
+    label: "Año Mes"
+  }
+
+  dimension: recarga_channel_id {
+    type: string
+    sql: ${TABLE}.RecargaCHANNEL_ID ;;
+    view_label: "Recargas"
+    label: "Channel ID"
+  }
+
+  dimension: recarga_channel_idnombre {
+    type: string
+    sql: ${TABLE}.RecargaCHANNEL_IDNombre ;;
+    view_label: "Recargas"
+    label: "Channel ID Nombre"
+  }
+
+  dimension: recarga_ext_trans_id {
+    type: string
+    sql: ${TABLE}.RecargaEXT_TRANS_ID ;;
+    view_label: "Recargas"
+    label: "Ext Trans ID"
+  }
+
+  dimension: recarga_ext_trans_type {
+    type: string
+    sql: ${TABLE}.RecargaEXT_TRANS_TYPE ;;
+    view_label: "Recargas"
+    label: "Ext Trans Type"
+  }
+
+  dimension: recarga_ext_trans_typenombre {
+    type: string
+    sql: ${TABLE}.RecargaEXT_TRANS_TYPENombre ;;
+    view_label: "Recargas"
+    label: "Ext Trans Type Nombre"
   }
 
   dimension: recarga_mainofferingnombre {
     type: string
     sql: ${TABLE}.RecargaMAINOFFERINGNombre ;;
+    view_label: "Recargas"
+    label: "Main Offering Nombre"
   }
 
   dimension: recarga_numero_linea {
     type: string
     sql: ${TABLE}.RecargaNUMERO_LINEA ;;
-  }
-
-  dimension: recarga_oper_id {
-    type: number
-    sql: ${TABLE}.RecargaOPER_ID ;;
+    view_label: "Recargas"
+    label: "Numero de Linea"
   }
 
   dimension: recarga_payment_type {
     type: string
     sql: ${TABLE}.RecargaPAYMENT_TYPE ;;
+    view_label: "Recargas"
+    label: "Payment Type"
   }
 
   dimension: recarga_payment_typenombre {
     type: string
     sql: ${TABLE}.RecargaPAYMENT_TYPENombre ;;
+    view_label: "Recargas"
+    label: "Payment Type Nombre"
   }
 
   dimension: recarga_paytype {
     type: string
     sql: ${TABLE}.RecargaPAYTYPE ;;
+    view_label: "Recargas"
+    label: "Pay Type"
   }
 
   dimension: recarga_paytypenombre {
     type: string
     sql: ${TABLE}.RecargaPAYTYPENombre ;;
-  }
-
-  dimension: recarga_recharge_log_id {
-    type: number
-    sql: ${TABLE}.RecargaRECHARGE_LOG_ID ;;
-  }
-
-  dimension: recarga_recharge_trans_id {
-    type: number
-    sql: ${TABLE}.RecargaRECHARGE_TRANS_ID ;;
+    view_label: "Recargas"
+    label: "Pay Type Nombre"
   }
 
   dimension: recarga_recharge_type {
     type: string
     sql: ${TABLE}.RecargaRECHARGE_TYPE ;;
+    view_label: "Recargas"
+    label: "Recharge Type"
   }
 
   dimension: recarga_recharge_typenombre {
     type: string
     sql: ${TABLE}.RecargaRECHARGE_TYPENombre ;;
+    view_label: "Recargas"
+    label: "Recharge Type Nombre"
   }
 
   dimension: recarga_status {
     type: string
     sql: ${TABLE}.RecargaSTATUS ;;
+    view_label: "Recargas"
+    label: "Status"
   }
 
   dimension: recarga_statusnombre {
     type: string
     sql: ${TABLE}.RecargaSTATUSNombre ;;
+    view_label: "Recargas"
+    label: "Status Nombre"
+  }
+
+  ## Numbers
+
+  dimension: rango_numeracion_prefijo_interurbano {
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
+    group_label: "Rango Numeracion"
+    label: "Prefijo Interurbano"
+  }
+
+  dimension: geografia__rango_numeracion_prefijos {
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
+    group_label: "Rango Numeracion"
+    label: "Prefijos"
+  }
+
+  dimension: recarga_access_method {
+    type: number
+    sql: ${TABLE}.RecargaACCESS_METHOD ;;
+    view_label: "Recargas"
+    label: "Access Method"
+  }
+
+  dimension: recarga_acct_id {
+    type: number
+    sql: ${TABLE}.RecargaACCT_ID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Acct ID"
+  }
+
+  dimension: recarga_brandid {
+    type: number
+    sql: ${TABLE}.RecargaBRANDID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Brand ID"
+  }
+
+  dimension: recarga_mainofferingid {
+    type: number
+    sql: ${TABLE}.RecargaMAINOFFERINGID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Main Offering ID"
+  }
+
+  dimension: recarga_oper_id {
+    type: number
+    sql: ${TABLE}.RecargaOPER_ID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Oper ID"
+  }
+
+  dimension: recarga_recharge_log_id {
+    type: number
+    sql: ${TABLE}.RecargaRECHARGE_LOG_ID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Recharge Log ID"
+  }
+
+  dimension: recarga_recharge_trans_id {
+    type: number
+    sql: ${TABLE}.RecargaRECHARGE_TRANS_ID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Recharge Trans ID"
   }
 
   dimension: recarga_sub_id {
     type: number
     sql: ${TABLE}.RecargaSUB_ID ;;
+    value_format_name: id
+    view_label: "Recargas"
+    label: "Sub ID"
+  }
+
+  ## Hidden
+
+  dimension: m_recarga_cantidad {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.RecargaCantidad ;;
+  }
+
+  dimension: m_recarga_loan_amount {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.RecargaLOAN_AMOUNT ;;
+  }
+
+  dimension: m_recarga_recharge_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.RecargaRECHARGE_AMT ;;
+  }
+
+  dimension: producto_adquirido_estado_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId ;;
+  }
+
+  dimension: producto_adquirido_estado_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSK ;;
+  }
+
+## Measures
+  measure: total_recarga_cantidad {
+    type: sum
+    sql: ${m_recarga_cantidad} ;;
+    value_format_name: decimal_0
+    group_label: "Total"
+    label: "Recarga Cantidad"
+  }
+
+  measure: total_recarga_loan_amount {
+    type: sum
+    sql: ${m_recarga_loan_amount} ;;
+    value_format_name: decimal_2
+    group_label: "Total"
+    label: "Loan Amount"
+  }
+
+  measure: total_recarga_recharge_amt {
+    type: sum
+    sql: ${m_recarga_recharge_amt} ;;
+    value_format_name: decimal_2
+    group_label: "Total"
+    label: "Recharge Amt"
   }
 
   measure: count {
     type: count
     drill_fields: []
+    group_label: "Cantidad"
+    label: "Count"
   }
 }
