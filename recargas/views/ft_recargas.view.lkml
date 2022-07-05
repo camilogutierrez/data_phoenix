@@ -1,6 +1,6 @@
-view: fth_recargas {
+view: ft_recargas {
   label: "Recargas"
-  sql_table_name: @{gcp_ambiente}.FTH_Recargas` ;;
+  sql_table_name: @{gcp_ambiente}.FT_Recargas` ;;
   suggestions: no
 
 ## Dimensions

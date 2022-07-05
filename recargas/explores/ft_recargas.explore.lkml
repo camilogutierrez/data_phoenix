@@ -1,7 +1,7 @@
-include: "/recargas/views/fth_recargas.view.lkml"
+include: "/recargas/views/ft_recargas.view.lkml"
 include: "/aleph/views/*.view.lkml"
 
-explore: fth_recargas {
+explore: ft_recargas {
   label: "Recargas"
 
   join: lk_producto_adquirido_estado {
