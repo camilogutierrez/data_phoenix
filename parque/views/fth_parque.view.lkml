@@ -1,5 +1,5 @@
 view: fth_parque {
-  label: "Parque"
+  label: "Parque Productos"
   sql_table_name: @{gcp_ambiente}.FTH_Parque` ;;
   suggestions: no
 

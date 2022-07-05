@@ -4,7 +4,7 @@ include: "/parque/views/lk_cierres_parque.view.lkml"
 include: "/parque/others/parque_datagroups.lkml"
 
 explore: fth_parque {
-  label: "Parque"
+  label: "Productos"
   group_label: "Parque"
 
   always_filter: {
