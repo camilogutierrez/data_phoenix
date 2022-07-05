@@ -231,4 +231,17 @@ explore: fth_parque {
     sql_on: ${fth_parque.punto_venta_tipo_contacto_sk} = ${lk_punto_venta_tipo_contacto.punto_venta_tipo_contacto_sk} ;;
     type: inner
   }
+
+  join: lk_suspensiones_tipo_estado {
+    relationship: many_to_one
+    sql_on: ${fth_parque.motivo_suspension1_sk} = ${lk_suspensiones_tipo_estado.suspensiones_tipo_estado_sk} ;;
+    type: inner
+  }
+
+  join: lk_suspensiones_tipo_estado_ult {
+    from: lk_suspensiones_tipo_estado
+    relationship: many_to_one
+    sql_on: ${fth_parque.motivo_suspension_ult_sk} = ${lk_suspensiones_tipo_estado.suspensiones_tipo_estado_sk} ;;
+    type: inner
+  }
 }

@@ -2287,16 +2287,18 @@ view: fth_parque {
 
   dimension: motivo_suspension1 {
     type: string
-    sql: ${TABLE}.Suspensiones.MotivoSuspension1 ;;
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1Nombre ;;
+    suggest_dimension: lk_suspensiones_tipo_estado.suspensiones_tipo_estado_nombre
     view_label: "Suspensiones"
-    label: "Motivo Suspension 1"
+    label: "Primer Motivo Suspension"
   }
 
   dimension: motivo_suspension_ultima {
     type: string
-    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltima ;;
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltimaNombre ;;
+    suggest_dimension: lk_suspensiones_tipo_estado_ult.suspensiones_tipo_estado_nombre
     view_label: "Suspensiones"
-    label: "Motivo Suspension Ultima"
+    label: "Ultimo Motivo Suspension"
   }
 
   dimension: suspensiones_producto_adquirido_srcid {
@@ -3264,6 +3266,30 @@ view: fth_parque {
     hidden: yes
     type: number
     sql: ${TABLE}.Cliente.CuentaTIpoSK ;;
+  }
+
+  dimension: motivo_suspension1_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1SRCId ;;
+  }
+
+  dimension: motivo_suspension1_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1SK ;;
+  }
+
+  dimension: motivo_suspension_ult_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltimaSRCId ;;
+  }
+
+  dimension: motivo_suspension_ult_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltimaSK ;;
   }
 
   dimension: cuenta_tipo_srcid {
