@@ -1,20 +1,18 @@
 view: ft_suspension_mora {
+  label: "Suspension Mora"
   sql_table_name: @{gcp_ambiente}.FT_SuspensionMora` ;;
   suggestions: no
-  label: "Suspension Mora"
+
+## Dimensions
 
   ## Primary Key
+
   dimension: suspensionpk {
     primary_key: yes
     hidden: yes
     type: string
     sql: ${TABLE}.SUSPENSIONPK ;;
   }
-
-  ########################
-  ##  Suspension Mora   ##
-  ########################
-
 
   ## Dates
 
@@ -23,17 +21,15 @@ view: ft_suspension_mora {
     timeframes: [
       raw,
       date,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
-      ]
-    datatype: date
+    ]
     sql: ${TABLE}.FECHA_SALDO ;;
+    datatype: date
+    convert_tz: no
     group_label: "Fecha Saldo"
     label: "Saldo"
   }
@@ -44,18 +40,15 @@ view: ft_suspension_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-    group_label: "Rehabilitacion Actual Fecha"
+    datatype: timestamp
+    group_label: "Fecha Rehabilitacion Actual"
     label: "Rehabilitacion Actual"
   }
 
@@ -65,22 +58,56 @@ view: ft_suspension_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Gestion Mora"
     label: "Gestion Mora"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string

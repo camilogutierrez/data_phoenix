@@ -1,7 +1,7 @@
 view: ft_factura_detalle {
+  label: "Factura Detalle"
   sql_table_name: @{gcp_ambiente}.FT_FacturaDetalle` ;;
   suggestions: no
-  label: "Factura Detalle"
 
 ## Dimensions
 
@@ -33,7 +33,6 @@ view: ft_factura_detalle {
     view_label: "Comprobante"
     group_label: "Fecha Emision"
     label: "Comprobante Emision"
-
   }
 
   dimension_group: due_date {
@@ -55,7 +54,44 @@ view: ft_factura_detalle {
     label: "Comprobante Vencimiento"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string

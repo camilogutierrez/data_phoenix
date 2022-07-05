@@ -1,10 +1,11 @@
 view: ft_acciones_mora {
-  sql_table_name: @{gcp_ambiente}.FT_AccionesMora` ;;
   label: "Acciones Mora"
+  sql_table_name: @{gcp_ambiente}.FT_AccionesMora` ;;
+  suggestions: no
 
-  ## Dimensions
+## Dimensions
 
-    ## Primary Key
+  ## Primary Key
 
   dimension: pk {
     hidden: yes
@@ -13,7 +14,7 @@ view: ft_acciones_mora {
     sql: ${TABLE}.ACCIONESPK;;
   }
 
-    ## Dates
+  ## Dates
 
   dimension_group: close_collect {
     type: time
@@ -21,17 +22,14 @@ view: ft_acciones_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CLOSE_COLLECT_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Fin Gestion Mora"
     label: "Fin Gestion Mora"
   }
@@ -41,17 +39,15 @@ view: ft_acciones_mora {
     timeframes: [
       raw,
       date,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
-    datatype: date
     sql: ${TABLE}.FECHA_SALDO ;;
+    datatype: date
+    convert_tz: no
     group_label: "Fecha Saldo"
     label: "Saldo"
   }
@@ -62,18 +58,15 @@ view: ft_acciones_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
-    group_label: "Proxima Accion Fecha"
+    datatype: timestamp
+    group_label: "Fecha Proxima Accion"
     label: "Proxima Accion"
   }
 
@@ -83,18 +76,15 @@ view: ft_acciones_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    group_label: "Mora Fecha Inicio Gestion"
+    datatype: timestamp
+    group_label: "Fecha Mora Inicio Gestion"
     label: "Mora Inicio Gestion"
   }
 
@@ -104,18 +94,15 @@ view: ft_acciones_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
-    group_label: "Hito Ultimo Fecha"
+    datatype: timestamp
+    group_label: "Fecha Hito Ultimo"
     label: "Hito Ultimo"
   }
 
@@ -125,22 +112,56 @@ view: ft_acciones_mora {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-    group_label: "Rehabilitacion Fecha"
+    datatype: timestamp
+    group_label: "Fecha Rehabilitacion"
     label: "Rehabilitacion"
   }
 
-    ## Strings
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
+  ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string
@@ -304,7 +325,7 @@ view: ft_acciones_mora {
     group_item_label: "Mora Hito Descripcion"
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: acct_id {
     type: number
@@ -378,33 +399,32 @@ view: ft_acciones_mora {
     sql: ${TABLE}.SALDO_X_VENCER ;;
   }
 
-
-  ## Measures
+## Measures
 
   measure: total_os_amount {
     type: sum
-    sql: ${TABLE}.OS_AMOUNT ;;
+    sql: ${os_amount} ;;
     group_label: "Total"
     label: "Saldo Vencido Hito"
   }
 
   measure: total_saldo_vencido {
     type: sum
-    sql: ${TABLE}.SALDO_VENCIDO ;;
+    sql: ${saldo_vencido} ;;
     group_label: "Total"
     label: "Saldo Vencido"
   }
 
   measure: total_saldo_x_vencer {
     type: sum
-    sql: ${TABLE}.SALDO_X_VENCER ;;
+    sql: ${saldo_x_vencer} ;;
     group_label: "Total"
     label: "Saldo por Vencer"
   }
 
   measure: count_object_id {
     type: count_distinct
-    sql: ${TABLE}.OBJECT_ID ;;
+    sql: ${object_id} ;;
     group_label: "Count"
     label: "Object ID"
   }
@@ -412,7 +432,6 @@ view: ft_acciones_mora {
   measure: count {
     type: count
     group_label: "Cantidad"
-    label: "Count"
+    label: "Cantidad"
   }
-
 }

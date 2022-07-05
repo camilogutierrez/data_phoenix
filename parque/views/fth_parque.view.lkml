@@ -1,7 +1,7 @@
 view: fth_parque {
+  label: "Parque"
   sql_table_name: @{gcp_ambiente}.FTH_Parque` ;;
   suggestions: no
-  label: "Parque"
 
 ## Dimensions
 
@@ -23,6 +23,22 @@ view: fth_parque {
 
   ## Dates
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   dimension: fecha_entidad {
     type: date
     sql: ${TABLE}.FechaEntidad ;;
@@ -38,10 +54,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.FechaActivacionPlanSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion Plan"
     label: "Activacion Plan"
@@ -55,10 +73,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.FechaDesconexionPlanSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Desconexion Plan"
     label: "Desconexion Plan"
@@ -72,10 +92,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionHistoricaSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion Historica"
     label: "Activacion Historica"
@@ -89,10 +111,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion"
     label: "Activacion"
@@ -106,10 +130,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionCalculada ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion Calculada"
     label: "Activacion Calculada"
@@ -123,10 +149,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaBajaSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Baja"
     label: "Baja"
@@ -139,6 +167,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -157,10 +186,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Creacion"
     label: "Creacion"
@@ -173,6 +204,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -190,6 +222,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -207,6 +240,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -225,10 +259,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaModificacionSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Modificacion"
     label: "Modificacion"
@@ -241,11 +277,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.CuentaFecUltimaSuspensionVoluntariaSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Cliente"
     group_label: "Fecha Ultima Suspension Voluntaria"
     label: "Ult. Susp. Voluntaria"
@@ -259,10 +297,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionHWSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Creacion Cuenta HW"
     label: "Creacion Cuenta HW"
@@ -276,10 +316,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Creacion Cuenta"
     label: "Creacion Cuenta"
@@ -293,10 +335,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaModificacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Modificacion Cuenta"
     label: "Modificacion Cuenta"
@@ -310,10 +354,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Creacion Persona"
     label: "Creacion Persona"
@@ -326,10 +372,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaNacimiento ;;
+    datatype: date
+    convert_tz: no
     view_label: "Cliente"
     group_label: "Fecha Nacimiento Persona"
     label: "Persona Nacimiento"
@@ -343,10 +392,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaModificacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Modificacion Persona"
     label: "Persona Modificacion"
@@ -360,10 +411,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Orden Alta"
     group_label: "Fecha Activacion"
     label: "Activacion"
@@ -376,11 +429,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaEntregaSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Alta"
     group_label: "Fecha Entrega"
     label: "Entrega"
@@ -393,11 +448,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaFinSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Alta"
     group_label: "Fecha Fin"
     label: "Fin"
@@ -410,11 +467,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaInicioSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Alta"
     group_label: "Fecha Inicio"
     label: "Inicio"
@@ -428,10 +487,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaModSRC ;;
+    datatype: timestamp
     view_label: "Orden Alta"
     group_label: "Fecha Modificacion"
     label: "Modificacion"
@@ -445,10 +506,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Orden Baja"
     group_label: "Fecha Activacion"
     label: "Activacion"
@@ -461,11 +524,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaFinSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Baja"
     group_label: "Fecha Fin"
     label: "Fin"
@@ -479,6 +544,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -497,10 +563,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspension1SRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Primera Suspension"
     label: "Primera Suspension"
@@ -514,10 +582,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionAdministrativaSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Administrativa"
     label: "Suspension Administrativa"
@@ -531,10 +601,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionDegradacionSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Degradacion"
     label: "Suspension Degradacion"
@@ -548,10 +620,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionLeasingSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Leasing"
     label: "Suspension Leasing"
@@ -565,10 +639,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionOtrosSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Otros"
     label: "Suspension Otros"
@@ -582,10 +658,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionParcialMoraSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Parcial Mora"
     label: "Suspension Parcial Mora"
@@ -599,10 +677,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionPortOutSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension PortOut"
     label: "Suspension PortOut"
@@ -616,10 +696,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionReversionPortINSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Reversion PortIn"
     label: "Suspension PortIn"
@@ -633,10 +715,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionSiniestroSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Siniestro"
     label: "Suspension Siniestro"
@@ -650,10 +734,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionTotalMoraSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Total Mora"
     label: "Suspension Total Mora"
@@ -667,10 +753,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionUltimaSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Ultima"
     label: "Suspension Ultima"
@@ -684,16 +772,39 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionVoluntariaSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Voluntaria"
     label: "Suspension Voluntaria"
   }
 
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._auditoria._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._auditoria._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: producto_adquirido_gama_equipo {
     type: string
@@ -1760,7 +1871,7 @@ view: fth_parque {
     sql: ${TABLE}.Producto.ProductoSubTipoNombre ;;
     suggest_dimension: lk_producto_sub_tipo.producto_sub_tipo_nombre
     view_label: "Producto"
-    group_item_label: "Subtipo Nombre"
+    label: "Subtipo Nombre"
   }
 
   dimension: p_producto_tipo_nombre {
@@ -1768,35 +1879,35 @@ view: fth_parque {
     sql: ${TABLE}.Producto.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo.producto_tipo_nombre
     view_label: "Producto"
-    group_item_label: "Tipo Nombre"
+    label: "Tipo Nombre"
   }
 
   dimension: p_producto_familia_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoFamiliaSRCId ;;
     view_label: "Producto"
-    group_item_label: "Familia SRCId"
+    label: "Familia SRCId"
   }
 
   dimension: p_producto_sub_tipo_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoSubTipoSRCId ;;
     view_label: "Producto"
-    group_item_label: "Producto Sub Tipo SRCId"
+    label: "Producto Sub Tipo SRCId"
   }
 
   dimension: p_producto_tipo_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoSRCId ;;
     view_label: "Producto"
-    group_item_label: "Producto Tipo SRCId"
+    label: "Producto Tipo SRCId"
   }
 
   dimension: p_producto_mercado_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoMercadoSRCId ;;
     view_label: "Producto"
-    group_item_label: "Producto Mercado SRCId"
+    label: "Producto Mercado SRCId"
   }
 
   dimension: producto_accesorio_srcid {

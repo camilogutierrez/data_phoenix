@@ -1,7 +1,9 @@
 view: ft_plan_financiacion {
+  label: "Plan Financiacion"
   sql_table_name: @{gcp_ambiente}.FT_PlanFinanciacion`;;
   suggestions: no
-  label: "Plan Financiación"
+
+## Dimensions
 
   ## Primary Key
 
@@ -11,10 +13,6 @@ view: ft_plan_financiacion {
     type:  string
     sql:${TABLE}.PLANFINANCIACIONPK;;
   }
-
-  ##########################
-  ##  Plan Financiación   ##
-  ##########################
 
   ## Dates
 
@@ -26,11 +24,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.AR_PAYMENT_DATE ;;
-    label: "AR Payment"
+    datatype: timestamp
+    group_label: "Fecha Pago"
+    label: "Pago"
   }
 
   dimension_group: billed {
@@ -41,10 +42,13 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.BILLED_DATE ;;
+    datatype: timestamp
+    group_label: "Fecha Billed"
     label: "Billed"
   }
 
@@ -56,10 +60,13 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.CREATE_DATE ;;
+    datatype: timestamp
+    group_label: "Fecha Creacion"
     label: "Create"
   }
 
@@ -71,11 +78,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.EXP_DATE ;;
-    label: "EXP"
+    datatype: timestamp
+    group_label: "Fecha Expiracion"
+    label: "Expiracion"
   }
 
   dimension_group: due_date {
@@ -86,11 +96,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.DUE_DATE ;;
-    label: "Due"
+    datatype: timestamp
+    group_label: "Fecha Vencimiento"
+    label: "Vencimiento"
   }
 
   dimension_group: inst_create {
@@ -101,11 +114,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.INST_CREATE_DATE ;;
-    label: "INST Create"
+    datatype: timestamp
+    group_label: "Fecha Creacion Inst"
+    label: "Creacion Inst"
   }
 
   dimension_group: inst_exp {
@@ -116,11 +132,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.INST_EXP_DATE ;;
-    label: "INST EXP"
+    datatype: timestamp
+    group_label: "Fecha Expiracion Inst"
+    label: "Expiracion Inst"
   }
 
   dimension_group: modify {
@@ -131,11 +150,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.MODIFY_TIME ;;
-    label: "Modify"
+    datatype: timestamp
+    group_label: "Fecha Modificacion"
+    label: "Modificacion"
   }
 
   dimension_group: payment_date {
@@ -146,11 +168,14 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.PAYMENT_DATE ;;
-    label: "Payment"
+    datatype: timestamp
+    group_label: "Fecha Pago"
+    label: "Pago"
   }
 
   dimension_group: repay_due {
@@ -161,14 +186,54 @@ view: ft_plan_financiacion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.REPAY_DUE_DATE ;;
+    datatype: timestamp
+    group_label: "Fecha Repago"
     label: "Repay Due"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string
@@ -242,7 +307,6 @@ view: ft_plan_financiacion {
     label: "VTA Invoice Number"
   }
 
-
   ## Numbers
 
   dimension: acct_id {
@@ -299,8 +363,7 @@ view: ft_plan_financiacion {
     label: "Total Cycle"
   }
 
-
-  ## Hidden ##
+  ## Hidden
 
   dimension: amount {
     hidden: yes
@@ -356,9 +419,7 @@ view: ft_plan_financiacion {
     sql: ${TABLE}.VTA_TAX_AMT ;;
   }
 
-  ##############
-  ## Measures ##
-  ##############
+## Measures
 
   measure: total_amount {
     type: sum

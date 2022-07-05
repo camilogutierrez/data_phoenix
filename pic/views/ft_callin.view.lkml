@@ -1,7 +1,7 @@
 view: ft_callin {
+  label: "Call In"
   sql_table_name: @{gcp_ambiente}.FT_CALLIN`;;
   suggestions: no
-  label: "Call In"
 
 ## Dimensions
 
