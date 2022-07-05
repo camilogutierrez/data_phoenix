@@ -1,6 +1,7 @@
 view: fth_recargas {
   label: "Recargas"
   sql_table_name: @{gcp_ambiente}.FTH_Recargas` ;;
+  suggestions: no
 
 ## Dimensions
 
@@ -104,7 +105,7 @@ view: fth_recargas {
     ]
     sql: ${TABLE}.RecargaENTRY_DATE ;;
     datatype: timestamp
-    group_label: "Entry Date"
+    group_label: "Fecha Entry"
     label: "Entry"
   }
 
@@ -121,11 +122,48 @@ view: fth_recargas {
     ]
     sql: ${TABLE}.RecargaFecha ;;
     datatype: date
-    group_label: "Recarga Fecha"
+    group_label: "Fecha Recarga"
     label: "Recarga"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    sql: ${TABLE}._auditoria._fechaCreacion ;;
+    datatype: datetime
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    sql: ${TABLE}._auditoria_fechaUltimaActualizacion ;;
+    datatype: datetime
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._auditoria_sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion ID"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._auditoria_usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._auditoria_usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: rango_numeracion_departamento_nombre {
     type: string
@@ -138,7 +176,7 @@ view: fth_recargas {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
     group_label: "Rango Numeracion"
-    label: "Departamento Srcid"
+    label: "Departamento ID"
   }
 
   dimension: rango_numeracion_localidad_nombre {
@@ -152,7 +190,7 @@ view: fth_recargas {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
     group_label: "Rango Numeracion"
-    label: "Localidad SrcId"
+    label: "Localidad ID"
   }
 
   dimension: rango_numeracion_provincia_nombre {
@@ -166,7 +204,7 @@ view: fth_recargas {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
     group_label: "Rango Numeracion"
-    label: "Provincia Srcid"
+    label: "Provincia ID"
   }
 
   dimension: producto_adquirido_estado_nombre {
@@ -202,28 +240,28 @@ view: fth_recargas {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoReferenteSRCId ;;
     view_label: "Producto Adquirido"
-    label: "Referente SrcId"
+    label: "Referente ID"
   }
 
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
     view_label: "Producto Adquirido"
-    label: "SrcId"
+    label: "ID"
   }
 
   dimension: producto_adquirido_sub_motivo_alta {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubMotivoAlta ;;
     view_label: "Producto Adquirido"
-    label: "Sub Motivo Alta"
+    label: "Submotivo Alta"
   }
 
   dimension: producto_adquirido_sub_motivo_baja {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubMotivoBaja ;;
     view_label: "Producto Adquirido"
-    label: "Sub Motivo Baja"
+    label: "Submotivo Baja"
   }
 
   dimension: producto_adquirido_tipo {
@@ -236,119 +274,102 @@ view: fth_recargas {
   dimension: recarga_access_methodnombre {
     type: string
     sql: ${TABLE}.RecargaACCESS_METHODNombre ;;
-    view_label: "Recargas"
     label: "Access Method Nombre"
   }
 
   dimension: recarga_anio_mes {
     type: string
     sql: ${TABLE}.RecargaAnioMes ;;
-    view_label: "Recargas"
     label: "Año Mes"
   }
 
   dimension: recarga_channel_id {
     type: string
     sql: ${TABLE}.RecargaCHANNEL_ID ;;
-    view_label: "Recargas"
     label: "Channel ID"
   }
 
   dimension: recarga_channel_idnombre {
     type: string
     sql: ${TABLE}.RecargaCHANNEL_IDNombre ;;
-    view_label: "Recargas"
-    label: "Channel ID Nombre"
+    label: "Channel Nombre"
   }
 
   dimension: recarga_ext_trans_id {
     type: string
     sql: ${TABLE}.RecargaEXT_TRANS_ID ;;
-    view_label: "Recargas"
     label: "Ext Trans ID"
   }
 
   dimension: recarga_ext_trans_type {
     type: string
     sql: ${TABLE}.RecargaEXT_TRANS_TYPE ;;
-    view_label: "Recargas"
     label: "Ext Trans Type"
   }
 
   dimension: recarga_ext_trans_typenombre {
     type: string
     sql: ${TABLE}.RecargaEXT_TRANS_TYPENombre ;;
-    view_label: "Recargas"
     label: "Ext Trans Type Nombre"
   }
 
   dimension: recarga_mainofferingnombre {
     type: string
     sql: ${TABLE}.RecargaMAINOFFERINGNombre ;;
-    view_label: "Recargas"
     label: "Main Offering Nombre"
   }
 
   dimension: recarga_numero_linea {
     type: string
     sql: ${TABLE}.RecargaNUMERO_LINEA ;;
-    view_label: "Recargas"
-    label: "Numero de Linea"
+    label: "Numero Linea"
   }
 
   dimension: recarga_payment_type {
     type: string
     sql: ${TABLE}.RecargaPAYMENT_TYPE ;;
-    view_label: "Recargas"
     label: "Payment Type"
   }
 
   dimension: recarga_payment_typenombre {
     type: string
     sql: ${TABLE}.RecargaPAYMENT_TYPENombre ;;
-    view_label: "Recargas"
     label: "Payment Type Nombre"
   }
 
   dimension: recarga_paytype {
     type: string
     sql: ${TABLE}.RecargaPAYTYPE ;;
-    view_label: "Recargas"
     label: "Pay Type"
   }
 
   dimension: recarga_paytypenombre {
     type: string
     sql: ${TABLE}.RecargaPAYTYPENombre ;;
-    view_label: "Recargas"
     label: "Pay Type Nombre"
   }
 
   dimension: recarga_recharge_type {
     type: string
     sql: ${TABLE}.RecargaRECHARGE_TYPE ;;
-    view_label: "Recargas"
     label: "Recharge Type"
   }
 
   dimension: recarga_recharge_typenombre {
     type: string
     sql: ${TABLE}.RecargaRECHARGE_TYPENombre ;;
-    view_label: "Recargas"
     label: "Recharge Type Nombre"
   }
 
   dimension: recarga_status {
     type: string
     sql: ${TABLE}.RecargaSTATUS ;;
-    view_label: "Recargas"
     label: "Status"
   }
 
   dimension: recarga_statusnombre {
     type: string
     sql: ${TABLE}.RecargaSTATUSNombre ;;
-    view_label: "Recargas"
     label: "Status Nombre"
   }
 
@@ -371,7 +392,6 @@ view: fth_recargas {
   dimension: recarga_access_method {
     type: number
     sql: ${TABLE}.RecargaACCESS_METHOD ;;
-    view_label: "Recargas"
     label: "Access Method"
   }
 
@@ -379,7 +399,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaACCT_ID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Acct ID"
   }
 
@@ -387,7 +406,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaBRANDID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Brand ID"
   }
 
@@ -395,7 +413,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaMAINOFFERINGID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Main Offering ID"
   }
 
@@ -403,7 +420,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaOPER_ID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Oper ID"
   }
 
@@ -411,7 +427,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaRECHARGE_LOG_ID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Recharge Log ID"
   }
 
@@ -419,7 +434,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaRECHARGE_TRANS_ID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Recharge Trans ID"
   }
 
@@ -427,7 +441,6 @@ view: fth_recargas {
     type: number
     sql: ${TABLE}.RecargaSUB_ID ;;
     value_format_name: id
-    view_label: "Recargas"
     label: "Sub ID"
   }
 
@@ -464,11 +477,11 @@ view: fth_recargas {
   }
 
 ## Measures
+
   measure: total_recarga_cantidad {
     type: sum
     sql: ${m_recarga_cantidad} ;;
     value_format_name: decimal_0
-    group_label: "Total"
     label: "Recarga Cantidad"
   }
 
@@ -476,22 +489,18 @@ view: fth_recargas {
     type: sum
     sql: ${m_recarga_loan_amount} ;;
     value_format_name: decimal_2
-    group_label: "Total"
-    label: "Loan Amount"
+    label: "Monto Loan"
   }
 
   measure: total_recarga_recharge_amt {
     type: sum
     sql: ${m_recarga_recharge_amt} ;;
     value_format_name: decimal_2
-    group_label: "Total"
-    label: "Recharge Amt"
+    label: "Monto Recargas"
   }
 
   measure: count {
     type: count
-    drill_fields: []
-    group_label: "Cantidad"
-    label: "Count"
+    label: "Recargas"
   }
 }
