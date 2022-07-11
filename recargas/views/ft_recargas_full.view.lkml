@@ -207,6 +207,22 @@ view: ft_recargas_full {
     label: "Provincia ID"
   }
 
+  dimension: rango_numeracion_prefijo_interurbano {
+    type: string
+    sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano AS STRING) ;;
+    suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
+    view_label: "Geografia"
+    label: "Prefijo Interurbano"
+  }
+
+  dimension: rango_numeracion_prefijos {
+    type: string
+    sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijos AS STRING) ;;
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
+    view_label: "Geografia"
+    label: "Prefijos"
+  }
+
   dimension: producto_adquirido_estado_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre ;;
@@ -456,17 +472,6 @@ view: ft_recargas_full {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSK ;;
   }
 
-  dimension: rango_numeracion_prefijo_interurbano {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-  }
-
-  dimension: geografia__rango_numeracion_prefijos {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
-  }
 
 ## Measures
 

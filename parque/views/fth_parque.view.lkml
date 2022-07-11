@@ -1446,6 +1446,22 @@ view: fth_parque {
     label: "Rango Numeracion Provincia SRCId"
   }
 
+  dimension: rango_numeracion_prefijo_interurbano {
+    type: string
+    sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano AS STRING) ;;
+    suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
+    view_label: "Geografia"
+    label: "Prefijo Interurbano"
+  }
+
+  dimension: rango_numeracion_prefijos {
+    type: string
+    sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijos AS STRING) ;;
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
+    view_label: "Geografia"
+    label: "Prefijos"
+  }
+
   dimension: oferta_hwsrcid {
     type: string
     sql: ${TABLE}.OfertaHWSRCId ;;
@@ -3300,18 +3316,6 @@ view: fth_parque {
     hidden: yes
     type: number
     sql: ${TABLE}.Metricas.CargoRecurrenteSinImpuesto  ;;
-  }
-
-  dimension: rango_numeracion_prefijos {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
-  }
-
-  dimension: rango_numeracion_prefijo_interurbano {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
   }
 
 

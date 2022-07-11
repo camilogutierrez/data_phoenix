@@ -14,7 +14,7 @@ explore: ft_recargas_full {
 
   join: lk_rango_numeracion_prefijos {
     relationship: many_to_one
-    sql_on: ${ft_recargas_full.geografia__rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
+    sql_on: ${ft_recargas_full.rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
     type: inner
   }
 
