@@ -1431,13 +1431,6 @@ view: fth_parque {
     label: "Rango Numeracion Localidad SRCId"
   }
 
-  dimension: rango_numeracion_pi_pu {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionPiPu ;;
-    view_label: "Geografia"
-    group_item_label: "Rango Numeracion Pi Pu"
-  }
-
   dimension: rango_numeracion_provincia_nombre {
     map_layer_name: arg_provinces
     type: string
@@ -2397,13 +2390,6 @@ view: fth_parque {
     label: "Geo Corp Codigo Postal Facturacion"
   }
 
-  dimension: rango_numeracion_prefijo_interurbano {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Prefijo Interurbano"
-  }
-
   dimension: rango_numeracion_prefijo_urbano {
     type: number
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoUrbano ;;
@@ -2462,16 +2448,16 @@ view: fth_parque {
 
   dimension: recarga_recharge_log_id_pri_rec {
     type: number
-    value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Pri_Rec ;;
+    value_format_name: id
     view_label: "Recarga"
     label: "Log Id Primera Recarga"
   }
 
   dimension: recarga_recharge_log_id_ult_rec {
     type: number
-    value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Ult_Rec ;;
+    value_format_name: id
     view_label: "Recarga"
     label: "Log Id Ultima Recarga"
   }
@@ -3315,6 +3301,19 @@ view: fth_parque {
     type: number
     sql: ${TABLE}.Metricas.CargoRecurrenteSinImpuesto  ;;
   }
+
+  dimension: rango_numeracion_prefijos {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
+  }
+
+  dimension: rango_numeracion_prefijo_interurbano {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
+  }
+
 
 ## Measures
 

@@ -168,42 +168,42 @@ view: ft_recargas_full {
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
-    group_label: "Rango Numeracion"
+    view_label: "Geografia"
     label: "Departamento Nombre"
   }
 
   dimension: rango_numeracion_departamento_srcid {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    group_label: "Rango Numeracion"
+    view_label: "Geografia"
     label: "Departamento ID"
   }
 
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
-    group_label: "Rango Numeracion"
+    view_label: "Geografia"
     label: "Localidad Nombre"
   }
 
   dimension: rango_numeracion_localidad_srcid {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    group_label: "Rango Numeracion"
+    view_label: "Geografia"
     label: "Localidad ID"
   }
 
   dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
-    group_label: "Rango Numeracion"
+    view_label: "Geografia"
     label: "Provincia Nombre"
   }
 
   dimension: rango_numeracion_provincia_srcid {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
-    group_label: "Rango Numeracion"
+    view_label: "Geografia"
     label: "Provincia ID"
   }
 
@@ -375,20 +375,6 @@ view: ft_recargas_full {
 
   ## Numbers
 
-  dimension: rango_numeracion_prefijo_interurbano {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-    group_label: "Rango Numeracion"
-    label: "Prefijo Interurbano"
-  }
-
-  dimension: geografia__rango_numeracion_prefijos {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
-    group_label: "Rango Numeracion"
-    label: "Prefijos"
-  }
-
   dimension: recarga_access_method {
     type: number
     sql: ${TABLE}.RecargaACCESS_METHOD ;;
@@ -468,6 +454,18 @@ view: ft_recargas_full {
     hidden: yes
     type: number
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSK ;;
+  }
+
+  dimension: rango_numeracion_prefijo_interurbano {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
+  }
+
+  dimension: geografia__rango_numeracion_prefijos {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
   }
 
 ## Measures

@@ -2,6 +2,9 @@ include: "/parque/views/fth_parque.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/parque/views/lk_cierres_parque.view.lkml"
 include: "/parque/others/parque_datagroups.lkml"
+include: "/global/views/lk_rango_numeracion_prefijos.view.lkml"
+include: "/global/views/lk_rango_numeracion_prefijo_interurbano.view.lkml"
+
 
 explore: fth_parque {
   label: "Productos"
@@ -242,6 +245,18 @@ explore: fth_parque {
     from: lk_suspensiones_tipo_estado
     relationship: many_to_one
     sql_on: ${fth_parque.motivo_suspension_ult_sk} = ${lk_suspensiones_tipo_estado.suspensiones_tipo_estado_sk} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_prefijos {
+    relationship: many_to_one
+    sql_on: ${fth_parque.rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_prefijo_interurbano {
+    relationship: many_to_one
+    sql_on: ${fth_parque.rango_numeracion_prefijo_interurbano} = ${lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano} ;;
     type: inner
   }
 }
