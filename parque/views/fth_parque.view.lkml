@@ -1431,13 +1431,6 @@ view: fth_parque {
     label: "Rango Numeracion Localidad SRCId"
   }
 
-  dimension: rango_numeracion_pi_pu {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionPiPu ;;
-    view_label: "Geografia"
-    group_item_label: "Rango Numeracion Pi Pu"
-  }
-
   dimension: rango_numeracion_provincia_nombre {
     map_layer_name: arg_provinces
     type: string
