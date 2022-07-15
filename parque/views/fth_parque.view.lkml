@@ -998,6 +998,7 @@ view: fth_parque {
           WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("factura Online -Email","Factura Online_email","Factura Online_ Email","Factura Online - Email","Electronic Statements Online","Factura online- Email","FACTURA ONLINE - MAIL","eMail","Factura online- Emai") THEN "Factura Online - Email"
           WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("SMS Factura Online","Factura Online - SMS","Factura Online_SMS","Factura online- SMS") THEN "Factura Online - SMS"
           WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("Papel Factura Fï¿½ca","Paper Billing","Factura Fisica - Papel","Factura Fï¿½ca - Papel","Factura Física","Papel Factura Física","Factura Física - Papel") THEN "Factura Física - Papel"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IS NULL THEN "(no informado)"
           ELSE ${TABLE}.Cliente.CuentaMetodoEntrega
           END ;;
     view_label: "Cliente"
