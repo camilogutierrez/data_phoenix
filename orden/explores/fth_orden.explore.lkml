@@ -4,6 +4,7 @@ include: "/orden/others/orden_datagroups.lkml"
 include: "/orden/views/dm_orden_precio_promocion.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
 include: "/orden/views/lk_cierres_orden.view.lkml"
+include: "/global/views/lk_rango_numeracion_*.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
@@ -296,4 +297,11 @@ explore: fth_orden {
     sql_on: ${dm_orden_precio_promocion.orden_precio_estado_sk} = ${lk_orden_precio_estado.orden_precio_estado_sk} ;;
     type: inner
   }
+
+  join: lk_rango_numeracion_prefijo_interurbano {
+    relationship: many_to_one
+    sql_on: ${fth_orden.rango_numeracion_prefijo_interurbano} = ${lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano} ;;
+    type: inner
+  }
+
 }
