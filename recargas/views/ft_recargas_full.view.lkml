@@ -91,7 +91,7 @@ view: ft_recargas_full {
     label: "Creacion"
   }
 
-  dimension_group: recarga_entry {
+  dimension_group: recarga_entry_src {
     type: time
     timeframes: [
       raw,
@@ -103,7 +103,7 @@ view: ft_recargas_full {
       quarter,
       year
     ]
-    sql: ${TABLE}.RecargaENTRY_DATE ;;
+    sql: ${TABLE}.RecargaENTRY_DATESRC ;;
     datatype: timestamp
     group_label: "Fecha Entry"
     label: "Entry"
