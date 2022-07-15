@@ -2,8 +2,7 @@ include: "/parque/views/fth_parque.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/parque/views/lk_cierres_parque.view.lkml"
 include: "/parque/others/parque_datagroups.lkml"
-include: "/global/views/lk_rango_numeracion_prefijos.view.lkml"
-include: "/global/views/lk_rango_numeracion_prefijo_interurbano.view.lkml"
+include: "/global/views/lk_rango_numeracion_*.view.lkml"
 
 
 explore: fth_parque {
@@ -245,6 +244,24 @@ explore: fth_parque {
     from: lk_suspensiones_tipo_estado
     relationship: many_to_one
     sql_on: ${fth_parque.motivo_suspension_ult_sk} = ${lk_suspensiones_tipo_estado.suspensiones_tipo_estado_sk} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_provincia {
+    relationship: many_to_one
+    sql_on: ${fth_parque.rango_numeracion_provincia_srcid} = ${lk_rango_numeracion_provincia.rango_numeracion_provincia_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_departamento {
+    relationship: many_to_one
+    sql_on: ${fth_parque.rango_numeracion_departamento_srcid} = ${lk_rango_numeracion_departamento.rango_numeracion_departamento_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_localidad {
+    relationship: many_to_one
+    sql_on: ${fth_parque.rango_numeracion_localidad_srcid} = ${lk_rango_numeracion_localidad.rango_numeracion_localidad_srcid} ;;
     type: inner
   }
 

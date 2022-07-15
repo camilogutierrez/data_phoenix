@@ -1412,44 +1412,26 @@ view: fth_parque {
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
+    suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
     view_label: "Geografia"
-    label: "Rango Numeracion Departamento Nombre"
-  }
-
-  dimension: rango_numeracion_departamento_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Departamento SRCId"
+    label: "Rango Numeracion Departamento"
   }
 
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
+    suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
     view_label: "Geografia"
-    label: "Rango Numeracion Localidad Nombre"
-  }
-
-  dimension: rango_numeracion_localidad_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Localidad SRCId"
+    label: "Rango Numeracion Localidad"
   }
 
   dimension: rango_numeracion_provincia_nombre {
     map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
+    suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Nombre"
-  }
-
-  dimension: rango_numeracion_provincia_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Provincia SRCId"
+    group_item_label: "Rango Numeracion Provincia"
   }
 
   dimension: rango_numeracion_prefijo_interurbano {
@@ -1457,7 +1439,7 @@ view: fth_parque {
     sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano AS STRING) ;;
     suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Geografia"
-    label: "Prefijo Interurbano"
+    label: "Rango Numeracion Prefijo Interurbano"
   }
 
   dimension: rango_numeracion_prefijos {
@@ -1465,7 +1447,7 @@ view: fth_parque {
     sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijos AS STRING) ;;
     suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
     view_label: "Geografia"
-    label: "Prefijos"
+    label: "Rango Numeracion Prefijos"
   }
 
   dimension: oferta_hwsrcid {
@@ -3322,6 +3304,24 @@ view: fth_parque {
     hidden: yes
     type: number
     sql: ${TABLE}.Metricas.CargoRecurrenteSinImpuesto  ;;
+  }
+
+  dimension: rango_numeracion_provincia_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+  }
+
+  dimension: rango_numeracion_departamento_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
   }
 
 
