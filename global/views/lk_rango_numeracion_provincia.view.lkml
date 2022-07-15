@@ -2,13 +2,13 @@ view: lk_rango_numeracion_provincia {
   sql_table_name: @{gcp_ambiente}.LK_RangoNumeracionProvincia` ;;
   fields_hidden_by_default: yes
 
-  dimension: rango_numeracion_provincia_sk {
-    primary_key: yes
-    type: string
-    sql: ${TABLE}.RangoNumeracionProvinciaSK ;;
-  }
 
+
+## Dimension
+
+  ## String
   dimension: rango_numeracion_provincia_srcid {
+    primary_key: yes
     type: string
     sql: ${TABLE}.RangoNumeracionProvinciaSRCId ;;
   }
