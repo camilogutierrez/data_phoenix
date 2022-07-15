@@ -993,7 +993,13 @@ view: fth_parque {
 
   dimension: cuenta_metodo_entrega {
     type: string
-    sql: ${TABLE}.Cliente.CuentaMetodoEntrega ;;
+    sql: CASE
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("Factura Física - Braille","Braille Factura Online") THEN "Factura Física - Braille"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("factura Online -Email","Factura Online_email","Factura Online_ Email","Factura Online - Email","Electronic Statements Online","Factura online- Email","FACTURA ONLINE - MAIL","eMail","Factura online- Emai") THEN "Factura Online - Email"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("SMS Factura Online","Factura Online - SMS","Factura Online_SMS","Factura online- SMS") THEN "Factura Online - SMS"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("Papel Factura Fï¿½ca","Paper Billing","Factura Fisica - Papel","Factura Fï¿½ca - Papel","Factura Física","Papel Factura Física","Factura Física - Papel") THEN "Factura Física - Papel"
+          ELSE ${TABLE}.Cliente.CuentaMetodoEntrega
+          END ;;
     view_label: "Cliente"
     label: "Cuenta Metodo Entrega"
   }
