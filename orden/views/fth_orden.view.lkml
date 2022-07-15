@@ -2000,16 +2000,16 @@ view: fth_orden {
     label: "Rango Numeracion Provincia"
   }
 
-    ## Numbers
-
   dimension: rango_numeracion_prefijo_interurbano {
     type: string
-    sql: CAST (${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoInterurbano) AS STRING ;;
+    sql: CAST (${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoInterurbano AS STRING) ;;
     suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Producto Adquirido"
     group_item_label: "Rango Numeracion Prefijo Interurbano"
     label: "Rango Numeracion Prefijo Interurbano"
   }
+
+    ## Numbers
 
   dimension: rango_numeracion_prefijo_urbano {
     type: number
