@@ -1431,7 +1431,7 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
     suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia"
+    label: "Rango Numeracion Provincia"
   }
 
   dimension: rango_numeracion_prefijo_interurbano {
