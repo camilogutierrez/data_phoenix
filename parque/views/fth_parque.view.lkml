@@ -1408,7 +1408,7 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
     suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
     view_label: "Geografia"
-    label: "Rango Numeracion Departamento Nombre"
+    label: "Departamento"
   }
 
   dimension: rango_numeracion_localidad_nombre {
@@ -1416,7 +1416,7 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
     suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
     view_label: "Geografia"
-    label: "Rango Numeracion Localidad Nombre"
+    label: "Localidad"
   }
 
   dimension: rango_numeracion_provincia_nombre {
@@ -1425,7 +1425,7 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
     suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Nombre"
+    group_item_label: "Provincia"
   }
 
   dimension: rango_numeracion_prefijo_interurbano {

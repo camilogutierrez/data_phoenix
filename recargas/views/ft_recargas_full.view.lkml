@@ -168,43 +168,25 @@ view: ft_recargas_full {
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
+    suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
     view_label: "Geografia"
-    label: "Departamento Nombre"
-  }
-
-  dimension: rango_numeracion_departamento_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    view_label: "Geografia"
-    label: "Departamento ID"
+    label: "Departamento"
   }
 
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
+    suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
     view_label: "Geografia"
-    label: "Localidad Nombre"
-  }
-
-  dimension: rango_numeracion_localidad_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    view_label: "Geografia"
-    label: "Localidad ID"
+    label: "Localidad"
   }
 
   dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
+    suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
-    label: "Provincia Nombre"
-  }
-
-  dimension: rango_numeracion_provincia_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
-    view_label: "Geografia"
-    label: "Provincia ID"
+    label: "Provincia"
   }
 
   dimension: rango_numeracion_prefijo_interurbano {
@@ -470,6 +452,24 @@ view: ft_recargas_full {
     hidden: yes
     type: number
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSK ;;
+  }
+
+  dimension: rango_numeracion_departamento_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+  }
+
+  dimension: rango_numeracion_provincia_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
   }
 
 
