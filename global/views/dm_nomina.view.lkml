@@ -85,6 +85,7 @@ view: dm_nomina {
   dimension: nomina_lider_supervisor_aux_assurance {
     type: string
     sql: ${TABLE}.Nomina_Lider_Supervisor_Aux_Assurance ;;
+    label: "Nomina Lider"
   }
 
   dimension: nomina_motivo_de_baja {
@@ -110,11 +111,13 @@ view: dm_nomina {
   dimension: nomina_nombre_g1 {
     type: string
     sql: ${TABLE}.Nomina_Nombre_G1 ;;
+    label: "Nomina Nombre Gerente 1"
   }
 
   dimension: nomina_nombre_g2 {
     type: string
     sql: ${TABLE}.Nomina_Nombre_G2 ;;
+    label: "Nomina Nombre Gerente 2"
   }
 
   dimension: nomina_nombre_gerencia_1 {
