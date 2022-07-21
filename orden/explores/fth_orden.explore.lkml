@@ -36,7 +36,7 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.nomina_usr_creacion_fk} = ${dm_nomina.pk} ;;
     type: left_outer
-    sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
+    #sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
   }
 
   ## For Filter Suggestions
