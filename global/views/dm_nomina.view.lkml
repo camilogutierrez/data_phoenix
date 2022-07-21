@@ -40,12 +40,14 @@ view: dm_nomina {
     type: time
     timeframes: [
       date,
-      month
+      month,
+      month_name
     ]
     datatype: date
     sql: ${TABLE}.Nomina_PeriodoProceso ;;
     group_label: "Fecha Periodo Proceso"
     label: "Periodo Proceso"
+    description: "Toma la fecha de ultima actualización del registro durante el mes en curso. Cuando cierra el mes deja por defecto el primer día del mes de cierre"
   }
 
   ## Strings
