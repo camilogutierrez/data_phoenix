@@ -19,6 +19,7 @@ view: fth_parque_recargador {
   dimension: fecha_entidad {
     type: date
     sql: ${TABLE}.FechaEntidad ;;
+    datatype: date
     label: "Fecha Entidad"
   }
 
@@ -248,13 +249,15 @@ view: fth_parque_recargador {
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
+    suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
     view_label: "Geografia"
     label: "Rango Numeracion Departamento"
   }
 
-  dimension: geografia__rango_numeracion_localidad_nombre {
+  dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
+    suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
     view_label: "Geografia"
     label: "Rango Numeracion Localidad"
   }
@@ -262,6 +265,7 @@ view: fth_parque_recargador {
   dimension: rango_numeracion_prefijo_interurbano {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
+    suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Geografia"
     label: "Rango Numeracion Prefijo Interurbano"
   }
@@ -269,6 +273,7 @@ view: fth_parque_recargador {
   dimension: rango_numeracion_prefijos {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
     view_label: "Geografia"
     label: "Rango Numeracion Prefijos"
   }
@@ -276,6 +281,7 @@ view: fth_parque_recargador {
   dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
+    suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
     label: "Rango Numeracion Provincia"
   }
@@ -292,20 +298,6 @@ view: fth_parque_recargador {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre_Cierre ;;
     view_label: "Producto Adquirido"
     label: "Estado Nombre Cierre"
-  }
-
-  dimension: producto_adquirido_estado_srcid {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId ;;
-    view_label: "Producto Adquirido"
-    label: "Estado SRCId"
-  }
-
-  dimension: producto_adquirido_estado_srcid_cierre {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId_Cierre ;;
-    view_label: "Producto Adquirido"
-    label: "Estado SRCId Cierre"
   }
 
   dimension: producto_adquirido_motivo_alta {
@@ -610,19 +602,19 @@ view: fth_parque_recargador {
 
   ## Hidden
 
-  dimension: geografia__rango_numeracion_departamento_srcid {
+  dimension: rango_numeracion_departamento_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
   }
 
-  dimension: geografia__rango_numeracion_localidad_srcid {
+  dimension: rango_numeracion_localidad_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
   }
 
-  dimension: geografia__rango_numeracion_provincia_srcid {
+  dimension: rango_numeracion_provincia_srcid {
     hidden: yes
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
@@ -650,6 +642,16 @@ view: fth_parque_recargador {
     hidden: yes
     type: number
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSK_Cierre ;;
+  }
+
+  dimension: producto_adquirido_estado_srcid {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId ;;
+  }
+
+  dimension: producto_adquirido_estado_srcid_cierre {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId_Cierre ;;
   }
 
 
