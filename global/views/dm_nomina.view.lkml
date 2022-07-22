@@ -62,6 +62,11 @@ view: dm_nomina {
     sql: ${TABLE}.Nomina_Detalle_de_Funcion ;;
   }
 
+  dimension: nomina_edificio_laboral {
+    type: string
+    sql: ${TABLE}.Nomina_Edificio_Laboral ;;
+  }
+
   dimension: nomina_equipo_especifico {
     type: string
     sql: ${TABLE}.Nomina_Equipo_Especifico ;;
