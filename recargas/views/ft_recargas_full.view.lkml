@@ -191,7 +191,7 @@ view: ft_recargas_full {
 
   dimension: rango_numeracion_prefijo_interurbano {
     type: string
-    sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano AS STRING) ;;
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
     suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Geografia"
     label: "Rango Numeracion Prefijo Interurbano"
@@ -199,7 +199,7 @@ view: ft_recargas_full {
 
   dimension: rango_numeracion_prefijos {
     type: string
-    sql: CAST(${TABLE}.Geografia.RangoNumeracionPrefijos AS STRING) ;;
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
     suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
     view_label: "Geografia"
     label: "Rango Numeracion Prefijos"

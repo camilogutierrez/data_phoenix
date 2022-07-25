@@ -304,4 +304,11 @@ explore: fth_orden {
     type: inner
   }
 
+  join: lk_rango_numeracion_prefijos {
+    relationship: many_to_one
+    sql_on: ${fth_orden.rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
+    type: inner
+  }
+
+
 }

@@ -9,6 +9,6 @@ view: lk_rango_numeracion_prefijos {
   dimension: rango_numeracion_prefijos {
     primary_key: yes
     type: string
-    sql: CAST (${TABLE}.RangoNumeracionPrefijos AS STRING) ;;
+    sql: ${TABLE}.RangoNumeracionPrefijos ;;
   }
 }

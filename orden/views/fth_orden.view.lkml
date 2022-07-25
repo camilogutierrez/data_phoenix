@@ -2002,11 +2002,20 @@ view: fth_orden {
 
   dimension: rango_numeracion_prefijo_interurbano {
     type: string
-    sql: CAST (${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoInterurbano AS STRING) ;;
+    sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoInterurbano ;;
     suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Producto Adquirido"
     group_item_label: "Rango Numeracion Prefijo Interurbano"
     label: "Rango Numeracion Prefijo Interurbano"
+  }
+
+  dimension: rango_numeracion_prefijos {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijos ;;
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
+    view_label: "Producto Adquirido"
+    group_item_label: "Rango Numeracion Prefijos"
+    label: "Rango Numeracion Prefijos"
   }
 
     ## Numbers

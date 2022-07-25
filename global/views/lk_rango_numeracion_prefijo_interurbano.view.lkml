@@ -9,6 +9,6 @@ view: lk_rango_numeracion_prefijo_interurbano {
   dimension: rango_numeracion_prefijo_interurbano {
     primary_key: yes
     type: string
-    sql: CAST (${TABLE}.RangoNumeracionPrefijoInterurbano AS STRING) ;;
+    sql: ${TABLE}.RangoNumeracionPrefijoInterurbano ;;
   }
 }
