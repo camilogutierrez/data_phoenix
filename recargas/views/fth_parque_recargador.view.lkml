@@ -224,6 +224,7 @@ view: fth_parque_recargador {
     ]
     sql: ${TABLE}.RecargaENTRY_DATESRC ;;
     datatype: timestamp
+    view_label: "Recarga"
     group_label: "Recarga Fecha Entry"
     label: "Recarga Entry"
   }
