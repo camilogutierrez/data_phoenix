@@ -65,6 +65,8 @@ view: dm_nomina {
   dimension: nomina_edificio_laboral {
     type: string
     sql: ${TABLE}.Nomina_Edificio_Laboral ;;
+    label: "Nomina Subsitio"
+    description: "Tambien Nomina Edificio Laboral"
   }
 
   dimension: nomina_equipo_especifico {
