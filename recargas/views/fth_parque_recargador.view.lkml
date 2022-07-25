@@ -645,11 +645,13 @@ view: fth_parque_recargador {
   }
 
   dimension: producto_adquirido_estado_srcid {
+    hidden: yes
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId ;;
   }
 
   dimension: producto_adquirido_estado_srcid_cierre {
+    hidden: yes
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId_Cierre ;;
   }
