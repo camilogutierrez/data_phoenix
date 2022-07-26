@@ -1,7 +1,7 @@
 view: fth_parque {
+  label: "Parque Productos"
   sql_table_name: @{gcp_ambiente}.FTH_Parque` ;;
   suggestions: no
-  label: "Parque"
 
 ## Dimensions
 
@@ -23,6 +23,22 @@ view: fth_parque {
 
   ## Dates
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   dimension: fecha_entidad {
     type: date
     sql: ${TABLE}.FechaEntidad ;;
@@ -38,10 +54,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.FechaActivacionPlanSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion Plan"
     label: "Activacion Plan"
@@ -55,10 +73,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.FechaDesconexionPlanSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Desconexion Plan"
     label: "Desconexion Plan"
@@ -72,10 +92,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionHistoricaSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion Historica"
     label: "Activacion Historica"
@@ -89,10 +111,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion"
     label: "Activacion"
@@ -106,10 +130,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaActivacionCalculada ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Activacion Calculada"
     label: "Activacion Calculada"
@@ -123,10 +149,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaBajaSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Baja"
     label: "Baja"
@@ -139,6 +167,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -157,10 +186,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Creacion"
     label: "Creacion"
@@ -173,6 +204,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -190,6 +222,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -207,6 +240,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -225,10 +259,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Fechas.ProductoAdquiridoFechaModificacionSRC ;;
+    datatype: timestamp
     view_label: "Producto Adquirido"
     group_label: "Fecha Modificacion"
     label: "Modificacion"
@@ -241,11 +277,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.CuentaFecUltimaSuspensionVoluntariaSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Cliente"
     group_label: "Fecha Ultima Suspension Voluntaria"
     label: "Ult. Susp. Voluntaria"
@@ -259,10 +297,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionHWSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Creacion Cuenta HW"
     label: "Creacion Cuenta HW"
@@ -276,10 +316,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Creacion Cuenta"
     label: "Creacion Cuenta"
@@ -293,10 +335,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.Fechas.CuentaFechaModificacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Modificacion Cuenta"
     label: "Modificacion Cuenta"
@@ -310,10 +354,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Creacion Persona"
     label: "Creacion Persona"
@@ -326,10 +372,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaNacimiento ;;
+    datatype: date
+    convert_tz: no
     view_label: "Cliente"
     group_label: "Fecha Nacimiento Persona"
     label: "Persona Nacimiento"
@@ -343,10 +392,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Cliente.PersonaFechaModificacionSRC ;;
+    datatype: timestamp
     view_label: "Cliente"
     group_label: "Fecha Modificacion Persona"
     label: "Persona Modificacion"
@@ -360,10 +411,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Orden Alta"
     group_label: "Fecha Activacion"
     label: "Activacion"
@@ -376,11 +429,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaEntregaSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Alta"
     group_label: "Fecha Entrega"
     label: "Entrega"
@@ -393,11 +448,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaFinSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Alta"
     group_label: "Fecha Fin"
     label: "Fin"
@@ -410,11 +467,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaInicioSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Alta"
     group_label: "Fecha Inicio"
     label: "Inicio"
@@ -428,10 +487,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenAlta.OrdenFechaModSRC ;;
+    datatype: timestamp
     view_label: "Orden Alta"
     group_label: "Fecha Modificacion"
     label: "Modificacion"
@@ -445,10 +506,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Orden Baja"
     group_label: "Fecha Activacion"
     label: "Activacion"
@@ -461,11 +524,13 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.OrdenBaja.OrdenFechaFinSRC ;;
     datatype: date
+    convert_tz: no
     view_label: "Orden Baja"
     group_label: "Fecha Fin"
     label: "Fin"
@@ -479,6 +544,7 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -497,10 +563,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspension1SRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Primera Suspension"
     label: "Primera Suspension"
@@ -514,10 +582,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionAdministrativaSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Administrativa"
     label: "Suspension Administrativa"
@@ -531,10 +601,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionDegradacionSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Degradacion"
     label: "Suspension Degradacion"
@@ -548,10 +620,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionLeasingSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Leasing"
     label: "Suspension Leasing"
@@ -565,10 +639,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionOtrosSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Otros"
     label: "Suspension Otros"
@@ -582,10 +658,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionParcialMoraSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Parcial Mora"
     label: "Suspension Parcial Mora"
@@ -599,10 +677,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionPortOutSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension PortOut"
     label: "Suspension PortOut"
@@ -616,10 +696,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionReversionPortINSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Reversion PortIn"
     label: "Suspension PortIn"
@@ -633,10 +715,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionSiniestroSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Siniestro"
     label: "Suspension Siniestro"
@@ -650,10 +734,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionTotalMoraSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Total Mora"
     label: "Suspension Total Mora"
@@ -667,10 +753,12 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionUltimaSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Ultima"
     label: "Suspension Ultima"
@@ -684,16 +772,39 @@ view: fth_parque {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.Suspensiones.FechaSuspensionVoluntariaSRC ;;
+    datatype: timestamp
     view_label: "Suspensiones"
     group_label: "Fecha Suspension Voluntaria"
     label: "Suspension Voluntaria"
   }
 
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._auditoria._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._auditoria._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: producto_adquirido_gama_equipo {
     type: string
@@ -882,7 +993,14 @@ view: fth_parque {
 
   dimension: cuenta_metodo_entrega {
     type: string
-    sql: ${TABLE}.Cliente.CuentaMetodoEntrega ;;
+    sql: CASE
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("Factura Física - Braille","Braille Factura Online") THEN "Factura Física - Braille"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("factura Online -Email","Factura Online_email","Factura Online_ Email","Factura Online - Email","Electronic Statements Online","Factura online- Email","FACTURA ONLINE - MAIL","eMail","Factura online- Emai") THEN "Factura Online - Email"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("SMS Factura Online","Factura Online - SMS","Factura Online_SMS","Factura online- SMS") THEN "Factura Online - SMS"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IN ("Papel Factura Fï¿½ca","Paper Billing","Factura Fisica - Papel","Factura Fï¿½ca - Papel","Factura Física","Papel Factura Física","Factura Física - Papel") THEN "Factura Física - Papel"
+          WHEN ${TABLE}.Cliente.CuentaMetodoEntrega IS NULL THEN "(no informado)"
+          ELSE ${TABLE}.Cliente.CuentaMetodoEntrega
+          END ;;
     view_label: "Cliente"
     label: "Cuenta Metodo Entrega"
   }
@@ -1295,51 +1413,42 @@ view: fth_parque {
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
+    suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
     view_label: "Geografia"
-    label: "Rango Numeracion Departamento Nombre"
-  }
-
-  dimension: rango_numeracion_departamento_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Departamento SRCId"
+    label: "Rango Numeracion Departamento"
   }
 
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
+    suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
     view_label: "Geografia"
-    label: "Rango Numeracion Localidad Nombre"
-  }
-
-  dimension: rango_numeracion_localidad_srcid {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Localidad SRCId"
-  }
-
-  dimension: rango_numeracion_pi_pu {
-    type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionPiPu ;;
-    view_label: "Geografia"
-    group_item_label: "Rango Numeracion Pi Pu"
+    label: "Rango Numeracion Localidad"
   }
 
   dimension: rango_numeracion_provincia_nombre {
     map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
+    suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Nombre"
+    label: "Rango Numeracion Provincia"
   }
 
-  dimension: rango_numeracion_provincia_srcid {
+  dimension: rango_numeracion_prefijo_interurbano {
     type: string
-    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
+    suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Geografia"
-    label: "Rango Numeracion Provincia SRCId"
+    label: "Rango Numeracion Prefijo Interurbano"
+  }
+
+  dimension: rango_numeracion_prefijos {
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
+    view_label: "Geografia"
+    label: "Rango Numeracion Prefijos"
   }
 
   dimension: oferta_hwsrcid {
@@ -1760,7 +1869,7 @@ view: fth_parque {
     sql: ${TABLE}.Producto.ProductoSubTipoNombre ;;
     suggest_dimension: lk_producto_sub_tipo.producto_sub_tipo_nombre
     view_label: "Producto"
-    group_item_label: "Subtipo Nombre"
+    label: "Subtipo Nombre"
   }
 
   dimension: p_producto_tipo_nombre {
@@ -1768,35 +1877,35 @@ view: fth_parque {
     sql: ${TABLE}.Producto.ProductoTipoNombre ;;
     suggest_dimension: lk_producto_tipo.producto_tipo_nombre
     view_label: "Producto"
-    group_item_label: "Tipo Nombre"
+    label: "Tipo Nombre"
   }
 
   dimension: p_producto_familia_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoFamiliaSRCId ;;
     view_label: "Producto"
-    group_item_label: "Familia SRCId"
+    label: "Familia SRCId"
   }
 
   dimension: p_producto_sub_tipo_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoSubTipoSRCId ;;
     view_label: "Producto"
-    group_item_label: "Producto Sub Tipo SRCId"
+    label: "Producto Sub Tipo SRCId"
   }
 
   dimension: p_producto_tipo_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoSRCId ;;
     view_label: "Producto"
-    group_item_label: "Producto Tipo SRCId"
+    label: "Producto Tipo SRCId"
   }
 
   dimension: p_producto_mercado_srcid {
     type: string
     sql: ${TABLE}.Producto.ProductoMercadoSRCId ;;
     view_label: "Producto"
-    group_item_label: "Producto Mercado SRCId"
+    label: "Producto Mercado SRCId"
   }
 
   dimension: producto_accesorio_srcid {
@@ -2176,16 +2285,18 @@ view: fth_parque {
 
   dimension: motivo_suspension1 {
     type: string
-    sql: ${TABLE}.Suspensiones.MotivoSuspension1 ;;
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1Nombre ;;
+    suggest_dimension: lk_suspensiones_tipo_estado.suspensiones_tipo_estado_nombre
     view_label: "Suspensiones"
-    label: "Motivo Suspension 1"
+    label: "Primer Motivo Suspension"
   }
 
   dimension: motivo_suspension_ultima {
     type: string
-    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltima ;;
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltimaNombre ;;
+    suggest_dimension: lk_suspensiones_tipo_estado_ult.suspensiones_tipo_estado_nombre
     view_label: "Suspensiones"
-    label: "Motivo Suspension Ultima"
+    label: "Ultimo Motivo Suspension"
   }
 
   dimension: suspensiones_producto_adquirido_srcid {
@@ -2284,13 +2395,6 @@ view: fth_parque {
     label: "Geo Corp Codigo Postal Facturacion"
   }
 
-  dimension: rango_numeracion_prefijo_interurbano {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Prefijo Interurbano"
-  }
-
   dimension: rango_numeracion_prefijo_urbano {
     type: number
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoUrbano ;;
@@ -2349,16 +2453,16 @@ view: fth_parque {
 
   dimension: recarga_recharge_log_id_pri_rec {
     type: number
-    value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Pri_Rec ;;
+    value_format_name: id
     view_label: "Recarga"
     label: "Log Id Primera Recarga"
   }
 
   dimension: recarga_recharge_log_id_ult_rec {
     type: number
-    value_format_name: id
     sql: ${TABLE}.Recarga.RecargaRECHARGE_LOG_ID_Ult_Rec ;;
+    value_format_name: id
     view_label: "Recarga"
     label: "Log Id Ultima Recarga"
   }
@@ -3155,6 +3259,30 @@ view: fth_parque {
     sql: ${TABLE}.Cliente.CuentaTIpoSK ;;
   }
 
+  dimension: motivo_suspension1_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1SRCId ;;
+  }
+
+  dimension: motivo_suspension1_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Suspensiones.MotivoSuspension1SK ;;
+  }
+
+  dimension: motivo_suspension_ult_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltimaSRCId ;;
+  }
+
+  dimension: motivo_suspension_ult_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Suspensiones.MotivoSuspensionUltimaSK ;;
+  }
+
   dimension: cuenta_tipo_srcid {
     hidden: yes
     type: string
@@ -3178,6 +3306,25 @@ view: fth_parque {
     type: number
     sql: ${TABLE}.Metricas.CargoRecurrenteSinImpuesto  ;;
   }
+
+  dimension: rango_numeracion_provincia_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+  }
+
+  dimension: rango_numeracion_departamento_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
+  }
+
 
 ## Measures
 
@@ -3400,6 +3547,132 @@ view: fth_parque {
       , producto_adquirido_familia_producto: "MOVIL, FIJA"
       , cliente_segmento1_nombre: "ABONOS SOLO MOVIL, CONVERGENTE OPEN, CONVERGENTE SIEBEL, CONVERGENTE SIEBEL OPEN"
       , cliente_segmento2_nombre: "1"
+    ]
+  }
+
+  measure: count_suspension_administrativa {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Adminstrativa"
+    label: "Suspension Adminstrativa"
+    description: "Lineas Suspendidas por fraude."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_administrativa_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_por_degradacion {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Degradacion"
+    label: "Suspension por Degradacion"
+    description: "Lineas suspendidas por degradacion / servicio reducido."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_degradacion_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_por_leasing {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Leasing"
+    label: "Suspension por Leasing"
+    description: "Dispositivos suspendidos por Leasing (compro equipo en DPF y se supende por mora)."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_leasing_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_otras_suspensiones{
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Otras"
+    label: "Otras Suspensiones"
+    description: "Otros motivos de suspension"
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_otros_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_por_mora_parcial {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Mora Parcial"
+    label: "Suspension por Mora Parcial"
+    description: "Suspensión por cliente en morosidad parcial."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_parcial_mora_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_por_mora_total {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Mora Total"
+    label: "Suspension por Mora Total"
+    description: "Suspensión por cliente en morosidad total."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_total_mora_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_voluntaria {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Voluntaria"
+    label: "Suspension Voluntaria"
+    description: "Lineas suspendidas por pedido del cliente, por un tiempo ejemplo Mudanza, PC Rota."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_voluntaria_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_por_siniestro {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Siniestro"
+    label: "Suspension por Siniestro"
+    description: "Lineas Suspendidas por Siniestro de la terminal."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_siniestro_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
+    ]
+  }
+
+  measure: count_suspension_por_portout {
+    type: count
+    group_label: "Suspensiones"
+    group_item_label: "Portout"
+    label: "Suspension por Portout"
+    description: "Lineas suspensdidads por  acción de  baja por portabilidad (portOut)."
+    filters: [
+        producto_adquirido_marca_parque_activo: "Yes"
+      , producto_adquirido_marca_principal: "Yes"
+      , fecha_suspension_port_out_src_date: "NOT NULL"
+      , cantidad_suspensiones_activas: "NOT NULL"
     ]
   }
 

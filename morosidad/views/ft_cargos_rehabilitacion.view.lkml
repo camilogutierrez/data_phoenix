@@ -1,20 +1,18 @@
 view: ft_cargos_rehabilitacion {
+  label: "Cargos Rehabilitacion"
   sql_table_name: @{gcp_ambiente}.FT_CargosRehabilitacion`;;
   suggestions: no
-  label: "Cargos Rehabilitacion"
+
+## Dimensions
 
   ## Primary Key
+
   dimension: pk {
     hidden: yes
     primary_key: yes
     type: string
     sql: ${TABLE}.CARGOSPK;;
   }
-
-  ##############################
-  ##  Cargos Rehabilitacion   ##
-  ##############################
-
 
   ## Dates
 
@@ -24,19 +22,16 @@ view: ft_cargos_rehabilitacion {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.INVOICE_DATE ;;
-    group_label: "Comprobante Fecha Emision"
-    label: "Comprobante Emision"
+    datatype: timestamp
+    group_label: "Fecha Emision Comprobante"
+    label: "Emision Comprobante"
   }
 
   dimension_group: resume {
@@ -45,22 +40,56 @@ view: ft_cargos_rehabilitacion {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_DATE ;;
-    group_label: "Rehabilitación Fecha"
+    datatype: timestamp
+    group_label: "Fecha Rehabilitacion"
     label: "Rehabilitacion"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string
@@ -131,7 +160,7 @@ view: ft_cargos_rehabilitacion {
     label: "Orden de Trabajo ID"
   }
 
-  ## Hidden ##
+  ## Hidden
 
   dimension: charge_amt {
     hidden: yes
@@ -139,21 +168,16 @@ view: ft_cargos_rehabilitacion {
     sql: ${TABLE}.CHARGE_AMT ;;
   }
 
-  ##############
-  ## Measures ##
-  ##############
+## Measures
 
   measure: total_charge_amt {
     type: sum
-    sql: ${TABLE}.CHARGE_AMT ;;
+    sql: ${charge_amt};;
     label: "Cargo Total"
   }
 
- measure: count_object_id {
-  type: count_distinct
-  sql: ${TABLE}.OBJECT_ID ;;
-  group_label: "Cantidad"
-  label: "Object ID"
-}
-
+  measure: count {
+    type: count
+    label: "Cantidad"
+  }
 }

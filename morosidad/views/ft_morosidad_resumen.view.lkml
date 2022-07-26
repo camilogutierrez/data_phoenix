@@ -1,7 +1,9 @@
 view: ft_morosidad_resumen {
+  label: "Morosidad Resumen"
   sql_table_name: @{gcp_ambiente}.FT_MorosidadResumen` ;;
   suggestions: no
-  label: "Morosidad Resumen"
+
+## Dimensions
 
   ## Primary Key
 
@@ -11,11 +13,6 @@ view: ft_morosidad_resumen {
     type: string
     sql: ${TABLE}.MORORESUMENPK ;;
   }
-
-  #########################
-  ##  Morosidad Resumen  ##
-  #########################
-
 
   ## Dates
 
@@ -27,10 +24,13 @@ view: ft_morosidad_resumen {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.fecha_pago_mas_reciente ;;
+    datatype: timestamp
+    group_label: "Fecha Ultimo Pago"
     label: "Pago Mas Reciente"
   }
 
@@ -41,12 +41,14 @@ view: ft_morosidad_resumen {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     datatype: date
     convert_tz: no
     sql: ${TABLE}.FECHA_SALDO ;;
+    group_label: "Fecha Saldo"
     label: "Saldo"
   }
 
@@ -58,11 +60,14 @@ view: ft_morosidad_resumen {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.MIN_VENC_FAC ;;
-    label: "Min Vencimiento Factura"
+    datatype: timestamp
+    group_label: "Fecha Mora"
+    label: "Mora"
   }
 
   dimension_group: start_collect {
@@ -73,14 +78,39 @@ view: ft_morosidad_resumen {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    label: "Start Collect"
+    datatype: timestamp
+    group_label: "Fecha Gestion Mora"
+    label: "Gestion Mora"
+  }
+
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
   }
 
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string
@@ -147,7 +177,6 @@ view: ft_morosidad_resumen {
     sql: ${TABLE}.ULT_BILL_CYCLE_TYPE ;;
     label: "ULT Bill Cycle Type"
   }
-
 
   ## Numbers
 
@@ -255,7 +284,7 @@ view: ft_morosidad_resumen {
     label: "Servicios Suspendidos Cuenta"
   }
 
-  ## Hidden ##
+  ## Hidden
 
   dimension: importe_pago_mas_reciente {
     hidden: yes
@@ -275,9 +304,7 @@ view: ft_morosidad_resumen {
     sql: ${TABLE}.SALDO_VENCIDO ;;
   }
 
-  ##############
-  ## Measures ##
-  ##############
+## Measures
 
   measure: total_importe_pago_mas_reciente {
     type: sum
@@ -304,4 +331,8 @@ view: ft_morosidad_resumen {
     label: "Object ID"
   }
 
+  measure: count {
+    type: count
+    label: "Cantidad"
+  }
 }

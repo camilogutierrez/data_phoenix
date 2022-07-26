@@ -1,7 +1,9 @@
 view: ft_suscripcion_alta_baja {
+  label: "Suscripcion Alta Baja"
   sql_table_name: @{gcp_ambiente}.FT_SuscripcionAltaBaja` ;;
   suggestions: no
-  label: "Suscripcion Alta Baja"
+
+## Dimensions
 
   ## Primary Key
 
@@ -50,7 +52,44 @@ view: ft_suscripcion_alta_baja {
     group_label: "Fecha Expiracion"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: act_acct_code {
     type: string

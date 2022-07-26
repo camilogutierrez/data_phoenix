@@ -1,7 +1,9 @@
 view: ft_factura_cabecera {
+  label: "Factura Cabecera"
   sql_table_name: @{gcp_ambiente}.FT_FacturaCabecera` ;;
   suggestions: no
-  label: "Factura Cabecera"
+
+## Dimensions
 
   ## Primary Key
 
@@ -12,7 +14,7 @@ view: ft_factura_cabecera {
     sql: ${invoice_id} ;;
   }
 
-  ## Fechas
+  ## Dates
 
   dimension_group: creation {
     type: time
@@ -52,7 +54,44 @@ view: ft_factura_cabecera {
     label: "Vencimiento"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string
