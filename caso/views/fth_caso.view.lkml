@@ -1,13 +1,11 @@
 view: fth_caso {
+  label: "Caso"
   sql_table_name: @{gcp_ambiente}.FTH_Caso` ;;
   suggestions: no
-  label: "Caso"
 
-##########
-## Caso ##
-##########
+## Dimensions
 
-    ## Primary Key
+  ## Primary Key
 
   dimension: pk {
     hidden: yes
@@ -16,7 +14,7 @@ view: fth_caso {
     sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${caso_srcid});;
   }
 
-    ## Nested Fields
+  ## Nested Fields
 
   dimension: caso_hito {
     hidden: yes
@@ -28,7 +26,7 @@ view: fth_caso {
     sql: ${TABLE}.CasoComentarios.Comentarios ;;
   }
 
-    ## Dates
+  ## Dates
 
   dimension: fecha_entidad {
     type: date
@@ -320,6 +318,22 @@ view: fth_caso {
     label: "Fecha Mod"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
     ## Flags
 
   dimension: caso_comprobantes_adjuntos {
@@ -545,6 +559,27 @@ view: fth_caso {
   }
 
     ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._auditoria._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._auditoria._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._auditoria._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: caso_srcid {
     type: string
@@ -3067,7 +3102,7 @@ view: fth_caso_comentarios {
     type: string
     sql: ${TABLE}.CasoComentarioSRCId ;;
     value_format_name: id
-    label: "Comentatio Id"
+    label: "Comentario Id"
   }
 
     ## Fechas

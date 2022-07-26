@@ -1,9 +1,12 @@
 view: ft_caja {
+  label: "Caja"
   sql_table_name: @{gcp_ambiente}.FT_Caja`;;
   suggestions: no
-  label: "Caja"
+
+## Dimensions
 
   ## Primary Key
+
   dimension: pk {
     primary_key: yes
     hidden: yes
@@ -11,10 +14,6 @@ view: ft_caja {
     sql:${TABLE}.CAJAPK;;
     label: "PK"
   }
-
-  #############
-  ##  Caja   ##
-  #############
 
   ## Dates
 
@@ -24,17 +23,14 @@ view: ft_caja {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CR_CLOSE_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Cierre"
     label: "Cierre"
   }
@@ -45,17 +41,14 @@ view: ft_caja {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CR_OPEN_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Apertura"
     label: "Apertura"
   }
@@ -66,22 +59,56 @@ view: ft_caja {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.TRX_TRANS_DATE ;;
-    group_label: "Fecha Transacción"
-    label: "Transacción"
+    datatype: timestamp
+    group_label: "Fecha Transaccion"
+    label: "Transaccion"
+  }
+
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
   }
 
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: canal2_point_sale_des {
     type: string
@@ -224,7 +251,6 @@ view: ft_caja {
     label: "Provincia"
   }
 
-
   ## Numbers
 
   dimension: batch_no {
@@ -336,9 +362,7 @@ view: ft_caja {
     label: "Medio de Pago ID"
   }
 
-##############
-## Measures ##
-##############
+## Measures
 
   measure: count_cash_reg_detail_id {
     type: count_distinct

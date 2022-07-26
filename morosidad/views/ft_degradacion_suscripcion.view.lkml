@@ -1,10 +1,11 @@
 view: ft_degradacion_suscripcion {
-  sql_table_name: @{gcp_ambiente}.FT_DegradacionSuscripcion` ;;
   label: "Degradacion Suscripcion"
+  sql_table_name: @{gcp_ambiente}.FT_DegradacionSuscripcion` ;;
+  suggestions: no
 
-  ## Dimensions
+## Dimensions
 
-    ## Primary Key
+  ## Primary Key
 
   dimension: pk {
     hidden: yes
@@ -13,25 +14,23 @@ view: ft_degradacion_suscripcion {
     sql: ${TABLE}.DEGRADACIONPK;;
   }
 
-    ## Dates
+  ## Dates
 
   dimension_group: fin_degra {
     type: time
     timeframes: [
       raw,
       date,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.FIN_DEGRA ;;
     datatype: date
-    group_label: "Degradacion Fecha Fin"
+    convert_tz: no
+    group_label: "Fecha Degradacion Fin"
     label: "Degradacion Fin"
   }
 
@@ -40,22 +39,49 @@ view: ft_degradacion_suscripcion {
     timeframes: [
       raw,
       date,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.INICIO_DEGRA ;;
     datatype: date
-    group_label: "Degradacion Fecha Inicio"
+    convert_tz: no
+    group_label: "Fecha Degradacion Inicio"
     label: "Degradacion Inicio"
   }
 
-    ## Strings
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: degra_status {
     type: string
@@ -63,7 +89,7 @@ view: ft_degradacion_suscripcion {
     label: "Degradacion Estado"
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: act_acct_id {
     type: number
@@ -96,6 +122,10 @@ view: ft_degradacion_suscripcion {
     label: "ULT Account ID"
   }
 
-    ## Measures
+## Measures
 
+  measure: count {
+    type: count
+    label: "Cantidad"
+  }
 }

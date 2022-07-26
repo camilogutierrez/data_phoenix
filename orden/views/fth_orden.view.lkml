@@ -1,13 +1,15 @@
 view: fth_orden {
+  label: "Orden Item"
   sql_table_name: @{gcp_ambiente}.FTH_Orden` ;;
   suggestions: no
-  label: "Orden Item"
+
+## Dimensions
 
   ################
   ## Orden Item ##
   ################
 
-    ## Primary Key
+  ## Primary Key
 
   dimension: pk {
     hidden: yes
@@ -16,68 +18,73 @@ view: fth_orden {
     sql: ${TABLE}.OrdenItemPK ;;
   }
 
-    ## Nested Fields
+  ## Nested Fields
 
   dimension: medio_pago {
     hidden: yes
     sql: ${TABLE}.MedioPago ;;
   }
 
-    ## Dates
+  ## Dates
 
   dimension: fecha_entidad {
     type: date
     sql: ${TABLE}.FechaEntidad ;;
     datatype: date
-
     label: "Fecha Cierre"
     description: "Se utiliza para consultar el estado de los datos al cierre de un dia determinado donde cada dia contiene la totalidad de los registros historicos almacenados hasta esa fecha."
   }
 
   dimension_group: orden_item_fecha_creacion_src {
     type: time
-    datatype: timestamp
     sql: ${TABLE}.Fechas.OrdenItemFechaCreacionSRC ;;
     timeframes: [
       raw,
       time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
-    label: "Fecha Creación"
+    datatype: timestamp
+    group_label: "Fecha Creacion"
+    label: "Creacion"
   }
 
   dimension_group: orden_item_fecha_modificacion_src {
     type: time
-    datatype: timestamp
     sql: ${TABLE}.Fechas.OrdenItemFechaModificacionSRC ;;
     timeframes: [
       raw,
       time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
-    label: "Fecha Modificación"
+    datatype: timestamp
+    group_label: "Fecha Modificacion"
+    label: "Modificacion"
+  }
+
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: timestamp
+    sql: ${TABLE}._auditoria._fechaUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
   }
 
   ## Flags
@@ -106,7 +113,28 @@ view: fth_orden {
     label: "Es Cambio Dispositivo"
   }
 
-    ## Strings
+  ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._auditoria._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._auditoria._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._auditoria._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: orden_item_estado_provisionamiento_nombre {
     type: string
@@ -218,7 +246,7 @@ view: fth_orden {
     label: "Ya Suspendido"
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: origen_srcid {
     type: number
@@ -812,168 +840,130 @@ view: fth_orden {
 
   dimension_group: orden_ejecucion_cambio_ciclo_fecha_src {
     type: time
-    datatype: date
     sql: ${TABLE}.Orden.Fechas.OrdenEjecucionCambioCicloFechaSRC ;;
     timeframes: [
       raw,
-      time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    datatype: date
     view_label: "Orden"
-    label: "Fecha Ejecucion Cambio Ciclo"
+    group_label: "Fecha Ejecucion Cambio Ciclo"
+    label: "Ejecucion Cambio Ciclo"
   }
 
   dimension_group: orden_fecha_activacion_src {
     type: time
-    datatype: timestamp
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacionSRC ;;
     timeframes: [
       raw,
       time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacionSRC ;;
+    datatype: timestamp
     view_label: "Orden"
     label: "Fecha Activacion"
   }
 
   dimension_group: orden_fecha_creacion_src {
     type: time
-    datatype: timestamp
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaCreacionSRC ;;
     timeframes: [
       raw,
       time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaCreacionSRC ;;
+    datatype: timestamp
     view_label: "Orden"
-    label: "Fecha Creación"
+    group_label: "Fecha Creacion"
+    label: "Creacion"
   }
 
   dimension_group: orden_fecha_entrega_src {
-    type: time #ver
-    datatype: date
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaEntregaSRC ;;
+    type: time
     timeframes: [
       raw,
-      time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaEntregaSRC ;;
+    datatype: date
     view_label: "Orden"
-    label: "Fecha Entrega"
+    group_label: "Fecha Entrega"
+    label: "Entrega"
   }
 
   dimension_group: orden_fecha_fin_src {
     type: time
-    datatype: date
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaFinSRC ;;
     timeframes: [
       raw,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaFinSRC ;;
+    datatype: date
     view_label: "Orden"
-    label: "Fecha Fin"
+    group_label: "Fecha Fin"
+    label: "Fin"
   }
 
   dimension_group: orden_fecha_inicio_src {
     type: time
-    datatype: date
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaInicioSRC ;;
     timeframes: [
       raw,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaInicioSRC ;;
+    datatype: date
     view_label: "Orden"
-    label: "Fecha Inicio"
+    group_label: "Fecha Inicio"
+    label: "Inicio"
   }
 
   dimension_group: orden_fecha_mod_src {
     type: time
-    datatype: timestamp
-    sql: ${TABLE}.Orden.Fechas.OrdenFechaModSRC ;;
     timeframes: [
       raw,
       time,
       date,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year,
       week,
-      week_of_year,
       month,
       month_name,
       quarter,
-      quarter_of_year,
       year
     ]
+    sql: ${TABLE}.Orden.Fechas.OrdenFechaModSRC ;;
+    datatype: timestamp
     view_label: "Orden"
-    label: "Fecha Modificación"
+    group_label: "Fecha Modificacion"
+    label: "Modificacion"
   }
 
     ## Flags
@@ -2010,15 +2000,25 @@ view: fth_orden {
     label: "Rango Numeracion Provincia"
   }
 
-    ## Numbers
-
   dimension: rango_numeracion_prefijo_interurbano {
-    type: number
+    type: string
     sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoInterurbano ;;
+    suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Producto Adquirido"
     group_item_label: "Rango Numeracion Prefijo Interurbano"
     label: "Rango Numeracion Prefijo Interurbano"
   }
+
+  dimension: rango_numeracion_prefijos {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijos ;;
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
+    view_label: "Producto Adquirido"
+    group_item_label: "Rango Numeracion Prefijos"
+    label: "Rango Numeracion Prefijos"
+  }
+
+    ## Numbers
 
   dimension: rango_numeracion_prefijo_urbano {
     type: number
@@ -2880,7 +2880,7 @@ view: fth_orden {
     ]
   }
 
-  measure: count_baja_voluntaria_efectiva {
+  measure: count_baja_voluntaria_efectiva_movil {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
@@ -2892,7 +2892,8 @@ view: fth_orden {
         orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "DESCONECTAR"
       , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_item_sub_motivo_baja_nombre: "PEDIDO DE BAJA"
+      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
 
@@ -2907,8 +2908,9 @@ view: fth_orden {
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "DESCONECTAR"
-      , orden_tipo_sub_gestion_nombre: "DESCONEXION"
-      , orden_item_sub_motivo_baja_nombre: "POR TIEMPO"
+      , orden_tipo_gestion_nombre: "DESCONEXION"
+      , orden_tipo_sub_gestion_nombre: "POR TIEMPO"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
 

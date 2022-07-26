@@ -3,10 +3,14 @@ include: "/aleph/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
 include: "/orden/views/dm_orden_precio_promocion.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
+include: "/orden/views/lk_cierres_orden.view.lkml"
+include: "/global/views/lk_rango_numeracion_*.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
   group_label: "Orden"
+
+  fields: [ALL_FIELDS*, -fth_orden.orden_item_sub_motivo_baja_nombre]
 
   always_filter: {
     filters: [fth_orden.fecha_entidad: "today"]
@@ -32,10 +36,17 @@ explore: fth_orden {
     relationship: many_to_one
     sql_on: ${fth_orden.nomina_usr_creacion_fk} = ${dm_nomina.pk} ;;
     type: left_outer
-    sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
+    #sql_where: ${dm_nomina.nomina_usuario_teco} != '' ;;
   }
 
   ## For Filter Suggestions
+
+  join: lk_cierres_orden {
+    view_label: "Cierres"
+    relationship: many_to_one
+    sql_on: ${fth_orden.fecha_entidad} = ${lk_cierres_orden.fecha_entidad} ;;
+    type: inner
+  }
 
   join: lk_orden_item_estado_provisionamiento {
     relationship: many_to_one
@@ -286,4 +297,18 @@ explore: fth_orden {
     sql_on: ${dm_orden_precio_promocion.orden_precio_estado_sk} = ${lk_orden_precio_estado.orden_precio_estado_sk} ;;
     type: inner
   }
+
+  join: lk_rango_numeracion_prefijo_interurbano {
+    relationship: many_to_one
+    sql_on: ${fth_orden.rango_numeracion_prefijo_interurbano} = ${lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_prefijos {
+    relationship: many_to_one
+    sql_on: ${fth_orden.rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
+    type: inner
+  }
+
+
 }
