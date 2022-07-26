@@ -1,7 +1,7 @@
 view: ft_pagos {
+  label: "Pagos"
   sql_table_name: @{gcp_ambiente}.FT_Pagos`;;
   suggestions: no
-  label: "Pagos"
 
 ## Dimensions
 
@@ -18,42 +18,35 @@ view: ft_pagos {
 
   dimension_group: payment_date {
     type: time
-    sql: ${TABLE}.PAYMENT_DATE ;;
-    timeframes:[
+    timeframes: [
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
+    sql: ${TABLE}.PAYMENT_DATE ;;
     group_label: "Fecha Pago"
     label: "Pago"
   }
 
   dimension_group: check_date {
     type: time
-    timeframes:[
+    timeframes: [
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.CHECK_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Cheque"
     label: "Cheque"
     description: "Fecha del cheque bancario, que se ingresa en la GUI o se transfiere a traves de una interfaz."
@@ -65,17 +58,14 @@ view: ft_pagos {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.ENTRY_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Creacion"
     label: "Creacion"
   }
@@ -86,17 +76,14 @@ view: ft_pagos {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.FECHA_CONTABLE ;;
+    datatype: timestamp
     group_label: "Fecha Contable"
     label: "Contable"
   }
@@ -107,17 +94,14 @@ view: ft_pagos {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.LAST_UPDATE_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Ultima Actualizacion"
     label: "Ultima Actualizacion"
   }
@@ -128,17 +112,14 @@ view: ft_pagos {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.REVERSAL_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Reverso"
     label: "Reversion"
   }
@@ -149,22 +130,56 @@ view: ft_pagos {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RECON_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Recon"
     label: "Recon"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    sql: ${TABLE}._fechaCreacion ;;
+    datatype: datetime
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
+
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
+    datatype: datetime
+    view_label: "Auditoria"
+    label: "Fecha Actualizacion"
+  }
+
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_creacion {
+    type: string
+    sql: ${TABLE}._usuarioCreacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Creacion"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: is_invoice_payment {
     type: string

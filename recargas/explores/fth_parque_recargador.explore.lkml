@@ -1,0 +1,51 @@
+include: "/recargas/views/fth_parque_recargador.view.lkml"
+include: "/recargas/views/lk_cierres_parque_recargador.view.lkml"
+include: "/aleph/views/*.view.lkml"
+include: "/global/views/lk_rango_numeracion_*.view.lkml"
+
+
+explore: fth_parque_recargador {
+  label: "Parque Recargador"
+
+  always_filter: {
+    filters: [fth_parque_recargador.fecha_entidad: "today"]
+  }
+
+  join: lk_cierres_parque_recargador {
+    view_label: "Cierres"
+    relationship: many_to_one
+    sql_on: ${fth_parque_recargador.fecha_entidad} = ${lk_cierres_parque_recargador.fecha_entidad} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_prefijos {
+    relationship: many_to_one
+    sql_on: ${fth_parque_recargador.rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_prefijo_interurbano {
+    relationship: many_to_one
+    sql_on: ${fth_parque_recargador.rango_numeracion_prefijo_interurbano} = ${lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_departamento {
+    relationship: many_to_one
+    sql_on: ${rango_numeracion_departamento_srcid} = ${lk_rango_numeracion_departamento.rango_numeracion_departamento_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_provincia {
+    relationship: many_to_one
+    sql_on: ${rango_numeracion_provincia_srcid} = ${lk_rango_numeracion_provincia.rango_numeracion_provincia_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_localidad {
+    relationship: many_to_one
+    sql_on: ${rango_numeracion_localidad_srcid} = ${lk_rango_numeracion_localidad.rango_numeracion_localidad_srcid} ;;
+    type: inner
+  }
+
+}

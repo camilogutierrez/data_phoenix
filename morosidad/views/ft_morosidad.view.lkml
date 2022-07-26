@@ -1,20 +1,18 @@
 view: ft_morosidad {
+  label: "Morosidad"
   sql_table_name: @{gcp_ambiente}.FT_Morosidad` ;;
   suggestions: no
-  label: "Morosidad"
+
+## Dimensions
 
  ## Primary Key
+
   dimension: pk {
     primary_key: yes
     hidden: yes
     type: string
     sql: ${TABLE}.MOROSIDADPK ;;
   }
-
-  ##################
-  ##  Morosidad   ##
-  ##################
-
 
   ## Dates
 
@@ -24,19 +22,16 @@ view: ft_morosidad {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.DUE_DATE ;;
-    group_label: "Fecha Vto Guia"
-    label: "Vto Guia"
+    datatype: timestamp
+    group_label: "Fecha Vencimiento Guia"
+    label: "Vencimiento Guia"
   }
 
   dimension_group: prox_accion {
@@ -45,18 +40,15 @@ view: ft_morosidad {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
-    group_label: "Proxima Accion Fecha"
+    datatype: timestamp
+    group_label: "Fecha Proxima Accion"
     label: "Proxima Accion"
   }
 
@@ -66,18 +58,15 @@ view: ft_morosidad {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-    group_label: "Rehabilitacion Actual Fecha"
+    datatype: timestamp
+    group_label: "Fecha Rehabilitacion Actual"
     label: "Rehabilitacion Actual"
   }
 
@@ -87,23 +76,41 @@ view: ft_morosidad {
       raw,
       time,
       date,
-      time_of_day,
-      day_of_month,
-      day_of_week,
       week,
       month,
       month_name,
-      month_num,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
+    datatype: timestamp
     group_label: "Fecha Gestion Mora"
     label: "Gestion Mora"
   }
 
+  dimension: _fecha_creacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaCreacion ;;
+    view_label: "Auditoria"
+    label: "Fecha Creacion"
+  }
 
   ## Strings
+
+  dimension: _sesion_id {
+    type: string
+    sql: ${TABLE}._sesionId ;;
+    view_label: "Auditoria"
+    label: "Sesion Id"
+  }
+
+  dimension: _usuario_ultima_actualizacion {
+    type: string
+    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    view_label: "Auditoria"
+    label: "Usuario Modificacion"
+  }
 
   dimension: acct_code {
     type: string
@@ -174,7 +181,6 @@ view: ft_morosidad {
     label: "Version Linea"
   }
 
-
   ## Numbers
 
   dimension: object_id {
@@ -234,8 +240,7 @@ view: ft_morosidad {
     label: "Hito Ultimo ID"
   }
 
-
-  ## Hidden ##
+  ## Hidden
 
   dimension: adv_apply_amount {
     hidden: yes
@@ -285,9 +290,7 @@ view: ft_morosidad {
     sql: ${TABLE}.WRITEOFF_AMOUNT ;;
   }
 
-##############
-## Measures ##
-##############
+## Measures
 
   measure: total_adv_apply_amount {
     type: sum
@@ -345,10 +348,8 @@ view: ft_morosidad {
     label: "Monto Cancelado"
   }
 
-  measure: count_object_id {
-    type: count_distinct
-    sql: ${TABLE}.object_id ;;
-    group_label: "Cantidad"
-    label: "Object Id"
+  measure: count {
+    type: count
+    label: "Cantidad"
   }
 }
