@@ -309,6 +309,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS ;;
     group_label: "Migracion"
     group_item_label: "Status"
+    label: "Migracion Status"
   }
 
   dimension: mgr_status_des {
@@ -316,6 +317,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS_DES ;;
     group_label: "Migracion"
     group_item_label: "Status Descripcion"
+    label: "Migracion Status Descripcion"
   }
 
   dimension: mgr_status_reason {
@@ -323,6 +325,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS_REASON ;;
     group_label: "Migracion"
     group_item_label: "Status Razon"
+    label: "Migracion Status Razon"
   }
 
   dimension: mgr_status_reason_des {
@@ -330,6 +333,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS_REASON_DES ;;
     group_label: "Migracion"
     group_item_label: "Status Razon Descripcion"
+    label: "Migracion Status Razon Descripcion"
   }
 
   dimension: nombre_cliente {
