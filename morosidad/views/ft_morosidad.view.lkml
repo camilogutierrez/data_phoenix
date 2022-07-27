@@ -9,9 +9,9 @@ view: ft_morosidad {
 
   dimension: object_id {
     primary_key: yes
-    hidden: yes
     type: number
     sql: ${TABLE}.OBJECT_ID ;;
+    label: "Object ID"
   }
 
  ## Dates
