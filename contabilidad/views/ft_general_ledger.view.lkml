@@ -29,8 +29,8 @@ view: ft_general_ledger {
       year
     ]
     sql: ${TABLE}.CR_ACCOUNTING_DATE ;;
-    group_label: "Fecha Contabilidad"
-    label: "Contabilidad"
+    group_label: "Cuenta Debe Fecha"
+    label: "Cuenta Debe"
   }
 
   dimension_group: invoice {
@@ -46,8 +46,8 @@ view: ft_general_ledger {
       year
     ]
     sql: ${TABLE}.INVOICE_DATE ;;
-    group_label: "Fecha Factura"
-    label: "Factura"
+    group_label: "Comprobante Fecha Emision"
+    label: "Comprobante Emision"
   }
 
   dimension: _fecha_creacion {
@@ -92,6 +92,7 @@ view: ft_general_ledger {
   dimension: banco_interd {
     type: string
     sql: ${TABLE}.BANCO_INTERD ;;
+    label: "Entidad Interdeposito"
   }
 
   dimension: bank_agent {
@@ -102,56 +103,67 @@ view: ft_general_ledger {
   dimension: channel_id {
     type: string
     sql: ${TABLE}.CHANNEL_ID ;;
+    label: "Canal Cobranza ID"
   }
 
   dimension: charge_code_id {
     type: string
     sql: ${TABLE}.CHARGE_CODE_ID ;;
+    label: "Cargos ID"
   }
 
   dimension: charge_code_type_id {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE_ID ;;
+    label: "Cargos Tipo ID"
   }
 
   dimension: cr_gl_acct_code {
     type: string
     sql: ${TABLE}.CR_GL_ACCT_CODE ;;
+    label: "Cuenta Debe Codigo"
   }
 
   dimension: cr_gl_acct_name {
     type: string
     sql: ${TABLE}.CR_GL_ACCT_NAME ;;
+    label: "Cuenta Debe"
   }
 
   dimension: cr_gl_amt {
     type: number
     sql: ${TABLE}.CR_GL_AMT ;;
+    label: "Cuenta Debe Importe"
   }
 
   dimension: cr_jnl_rule_name {
     type: string
     sql: ${TABLE}.CR_JNL_RULE_NAME ;;
+    label: "CR Accounting Rule"
   }
 
   dimension: dr_gl_acct_code {
     type: string
     sql: ${TABLE}.DR_GL_ACCT_CODE ;;
+    label: "Cuenta Haber Codigo"
   }
 
   dimension: dr_gl_acct_name {
     type: string
     sql: ${TABLE}.DR_GL_ACCT_NAME ;;
+    label: "Cuenta Haber"
   }
 
   dimension: dr_jnl_rule_name {
     type: string
     sql: ${TABLE}.DR_JNL_RULE_NAME ;;
+    label: "DR Accounting Rule"
   }
 
   dimension: invoice_trans_type {
     type: string
     sql: ${TABLE}.INVOICE_TRANS_TYPE ;;
+    label: "Comprobante Tipo"
   }
 
   dimension: jnl_status {
@@ -167,6 +179,7 @@ view: ft_general_ledger {
   dimension: payment_method_id {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_ID ;;
+    label: "Medio Pago ID"
   }
 
   dimension: prov_cert {
@@ -187,6 +200,7 @@ view: ft_general_ledger {
   dimension: trans_id {
     type: string
     sql: ${TABLE}.TRANS_ID ;;
+    label: "Transaccion ID"
   }
 
   ## Numbers
@@ -195,12 +209,14 @@ view: ft_general_ledger {
     type: number
     sql: ${TABLE}.CR_JNL_RULE_ID ;;
     value_format_name: id
+    label: "CR Accounting Rule ID"
   }
 
   dimension: currency_id {
     type: number
     sql: ${TABLE}.CURRENCY_ID ;;
     value_format_name: id
+    label: "Moneda ID"
   }
 
   dimension: jnl_accept_serial {
@@ -213,11 +229,13 @@ view: ft_general_ledger {
     type: number
     sql: ${TABLE}.OrigenSRCId ;;
     value_format_name: id
+    label: "HW Codigo Sistema Fuente"
   }
 
   dimension: dr_gl_amt {
     type: number
     sql: ${TABLE}.DR_GL_AMT ;;
+    label: "Cuenta Haber Importe"
   }
 
 ## Measures
@@ -225,5 +243,14 @@ view: ft_general_ledger {
   measure: total_dr_gl_amt {
     type: sum
     sql: ${dr_gl_amt} ;;
+    label: "Total Cuenta Haber"
   }
+
+  measure: total_cr_gl_amt {
+    type: sum
+    sql: ${cr_gl_amt} ;;
+    label: "Total Cuenta Debe"
+  }
+
+
 }
