@@ -2018,15 +2018,8 @@ view: fth_orden {
     label: "Rango Numeracion Prefijos"
   }
 
-    ## Numbers
+  ## Numbers
 
-  dimension: rango_numeracion_prefijo_urbano {
-    type: number
-    sql: ${TABLE}.ProductoAdquirido.RangoNumeracionPrefijoUrbano ;;
-    view_label: "Producto Adquirido"
-    group_item_label: "Rango Numeracion Prefijo Urbano"
-    label: "Rango Numeracion Prefijo Urbano"
-  }
 
   ## Hidden
 
