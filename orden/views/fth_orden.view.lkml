@@ -3463,6 +3463,47 @@ view: fth_orden {
     ]
   }
 
+  measure: count_retenido_oferta_cambio_plan {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "Retenido Oferta Cambio Plan"
+    label: "Retenido Oferta Cambio Plan"
+    description: "Retenidos con oferta o cambios de plan"
+    filters: [
+        caso_tipo_nombre: "CAMBIO DE PLAN, VENTA"
+      , caso_sub_tipo_nombre: "RETENCION, FIDELIZACION"
+      , orden_tipo_gestion_nombre: "VENTA, CAMBIO DE PLAN"
+      , orden_tipo_sub_gestion_nombre: "RETENCION, FIDELIZACION"
+      , orden_canal_origen_nombre: "-OPERATORIA MASIVA"
+      , orden_item_accion_nombre: "-DESCONECTAR"
+      , orden_estado_nombre: "ACTIVADA"
+      , producto_tipo_nombre: "PLAN HIBRIDO, PLAN POSPAGO"
+      , opa_producto_tipo_nombre: "-PLAN PREPAGO"
+    ]
+  }
+
+  measure: count_no_retenido_cambio_mercado {
+    type: count_distinct
+    sql: ${orden_srcid};;
+    view_label: "Orden"
+    group_label: "Cantidad"
+    group_item_label: "No Retenido Cambio Mercado"
+    label: "No Retenido Cambio Mercado"
+    description: "No retenido pase a prepago."
+    filters: [
+        caso_tipo_nombre: "CAMBIO DE PLAN"
+      , caso_sub_tipo_nombre: "RETENCION"
+      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
+      , orden_tipo_sub_gestion_nombre: "RETENCION"
+      , orden_estado_nombre: "ACTIVADA"
+      , producto_tipo_nombre: "PLAN PREPAGO"
+      , opa_producto_tipo_nombre: "PLAN HIBRIDO, PLAN POSPAGO"
+      , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
+    ]
+  }
+
   ## Orden Plan Anterior
 
   measure: total_opa_orden_item_cargo_recurrente {

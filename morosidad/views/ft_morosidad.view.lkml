@@ -3,20 +3,54 @@ view: ft_morosidad {
   sql_table_name: @{gcp_ambiente}.FT_Morosidad` ;;
   suggestions: no
 
-## Dimensions
+  ## Dimensions
 
  ## Primary Key
 
-  dimension: pk {
+  dimension: object_id {
     primary_key: yes
     hidden: yes
-    type: string
-    sql: ${TABLE}.MOROSIDADPK ;;
+    type: number
+    sql: ${TABLE}.OBJECT_ID ;;
   }
 
-  ## Dates
+ ## Dates
 
-  dimension_group: due {
+  dimension_group: create {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.CREATE_DATE ;;
+    group_label: "Fecha Creacion"
+    label: "Creacion"
+  }
+
+  dimension_group: fec_co_vie {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.FEC_CO_VIE ;;
+    group_label: "Fecha CO VIE"
+    label: "CO VIE"
+  }
+
+  dimension_group: fec_proce {
     type: time
     timeframes: [
       raw,
@@ -24,30 +58,61 @@ view: ft_morosidad {
       date,
       week,
       month,
-      month_name,
       quarter,
       year
     ]
-    sql: ${TABLE}.DUE_DATE ;;
-    datatype: timestamp
+    sql: ${TABLE}.FEC_PROCE ;;
+    group_label: "Fecha Proce."
+    label: "Proce."
+  }
+
+  dimension_group: fecha_proceso {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.FECHA_PROCESO ;;
+    group_label: "Fecha Proceso"
+    label: "Proceso"
+  }
+
+  dimension_group: fecha_vto_guia {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.FECHA_VTO_GUIA ;;
     group_label: "Fecha Vencimiento Guia"
     label: "Vencimiento Guia"
   }
 
-  dimension_group: prox_accion {
+  dimension_group: prox_accion_fecha {
     type: time
     timeframes: [
       raw,
-      time,
       date,
       week,
       month,
-      month_name,
       quarter,
       year
     ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
-    datatype: timestamp
     group_label: "Fecha Proxima Accion"
     label: "Proxima Accion"
   }
@@ -60,12 +125,10 @@ view: ft_morosidad {
       date,
       week,
       month,
-      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
-    datatype: timestamp
     group_label: "Fecha Rehabilitacion Actual"
     label: "Rehabilitacion Actual"
   }
@@ -78,81 +141,149 @@ view: ft_morosidad {
       date,
       week,
       month,
-      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    datatype: timestamp
     group_label: "Fecha Gestion Mora"
     label: "Gestion Mora"
   }
 
-  dimension: _fecha_creacion {
-    type: date_time
-    datatype: datetime
-    sql: ${TABLE}._fechaCreacion ;;
-    view_label: "Auditoria"
-    label: "Fecha Creacion"
+  dimension_group: ult_accion_fecha_exe {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
+    group_label: "Fecha Ultima Accion"
+    label: "Ultima Accion"
   }
 
   ## Strings
 
-  dimension: _sesion_id {
+  dimension: accion_ejecutada {
     type: string
-    sql: ${TABLE}._sesionId ;;
-    view_label: "Auditoria"
-    label: "Sesion Id"
+    sql: ${TABLE}.ACCION_EJECUTADA ;;
+    group_item_label: "Accion Ejecutada"
   }
 
-  dimension: _usuario_ultima_actualizacion {
+  dimension: apellido_cliente {
     type: string
-    sql: ${TABLE}._usuarioUltimaActualizacion ;;
-    view_label: "Auditoria"
-    label: "Usuario Modificacion"
-  }
-
-  dimension: acct_code {
-    type: string
-    sql: ${TABLE}.ACCT_CODE ;;
+    sql: ${TABLE}.APELLIDO_CLIENTE ;;
     group_label: "Cliente"
-    label: "Cuenta Codigo"
+    group_item_label: "Apellido"
+  }
+
+  dimension: ciclo {
+    type: string
+    sql: ${TABLE}.CICLO ;;
+    label: "Ciclo Facturacion"
+  }
+
+  dimension: cuenta_code {
+    type: string
+    sql: ${TABLE}.CUENTA_CODE ;;
+    group_label: "Cliente"
+    group_item_label: "Cuenta Codigo"
     description: "Responsable de pago / Cuenta Code"
   }
 
-  dimension: bill_cycle_id {
+  dimension: cuenta_nplay {
     type: string
-    sql: ${TABLE}.BILL_CYCLE_ID ;;
-    label: "Ciclo Facturacion ID"
-    description: "Contiene el ciclo de facturación en formato fecha completo YYYYMMDD"
+    sql: ${TABLE}.CUENTA_NPLAY ;;
+    label: "Cuenta NPLAY"
   }
 
-  dimension: cust_code {
+  dimension: cuenta_producto {
     type: string
-    sql: ${TABLE}.CUST_CODE ;;
-    group_label: "Cliente"
-    label: "Codigo"
+    sql: ${TABLE}.CUENTA_PRODUCTO ;;
+    label: "Cuenta Producto"
   }
 
-  dimension: document_number {
+  dimension: cuenta_segmentacion {
     type: string
-    sql: ${TABLE}.DOCUMENT_NUMBER ;;
-    group_label: "Cliente"
-    label: "Documento Numero"
+    sql: ${TABLE}.CUENTA_SEGMENTACION ;;
+    label: "Cuenta Segmentacion"
   }
 
-  dimension: document_type {
+  dimension: cust_segment {
     type: string
-    sql: ${TABLE}.DOCUMENT_TYPE ;;
+    sql: ${TABLE}.CUST_SEGMENT ;;
     group_label: "Cliente"
-    label: "Documento Tipo"
+    group_item_label: "Segmento"
   }
 
-  dimension: first_name {
+  dimension: cust_subsegment1 {
     type: string
-    sql: ${TABLE}.FIRST_NAME ;;
+    sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
     group_label: "Cliente"
-    label: "Nombre"
+    group_item_label: "Sub Segmento"
+  }
+
+  dimension: customer_code {
+    type: string
+    sql: ${TABLE}.CUSTOMER_CODE ;;
+    group_label: "Cliente"
+    group_item_label: "Codigo"
+  }
+
+  dimension: dni_cuit {
+    type: string
+    sql: ${TABLE}.DNI_CUIT ;;
+    group_label: "DNI"
+    group_item_label: "CUIT"
+
+  }
+
+  dimension: dni_nplay {
+    type: string
+    sql: ${TABLE}.DNI_NPLAY ;;
+    group_label: "DNI"
+    group_item_label: "NPLAY"
+  }
+
+  dimension: dni_producto {
+    type: string
+    sql: ${TABLE}.DNI_PRODUCTO ;;
+    group_label: "DNI"
+    group_item_label: "Producto"
+  }
+
+  dimension: dni_segmentacion {
+    type: string
+    sql: ${TABLE}.DNI_SEGMENTACION ;;
+    group_label: "DNI"
+    group_item_label: "Segmentacion"
+  }
+
+  dimension: dunning_flag {
+    type: string
+    sql: ${TABLE}.DUNNING_FLAG ;;
+    label: "Dunning"
+  }
+
+  dimension: dunning_flag_des {
+    type: string
+    sql: ${TABLE}.DUNNING_FLAG_DES ;;
+    label: "Dunning Descripcion"
+  }
+
+  dimension: exec_status {
+    type: string
+    sql: ${TABLE}.EXEC_STATUS ;;
+    label: "Status Ejecucion"
+  }
+
+  dimension: exec_status_des {
+    type: string
+    sql: ${TABLE}.EXEC_STATUS_DES ;;
+    label: "Status Ejecucion Descripcion"
   }
 
   dimension: group_code {
@@ -161,76 +292,200 @@ view: ft_morosidad {
     label: "Collection Group"
   }
 
-  dimension: last_name {
+  dimension: group_version {
     type: string
-    sql: ${TABLE}.LAST_NAME ;;
+    sql: ${TABLE}.GROUP_VERSION ;;
+    label: "Version Group"
+  }
+
+  dimension: linea_mora {
+    type: string
+    sql: ${TABLE}.LINEA_MORA ;;
+    label: "Linea Mora"
+  }
+
+  dimension: mgr_status {
+    type: string
+    sql: ${TABLE}.MGR_STATUS ;;
+    group_label: "Migracion"
+    group_item_label: "Status"
+    label: "Migracion Status"
+  }
+
+  dimension: mgr_status_des {
+    type: string
+    sql: ${TABLE}.MGR_STATUS_DES ;;
+    group_label: "Migracion"
+    group_item_label: "Status Descripcion"
+    label: "Migracion Status Descripcion"
+  }
+
+  dimension: mgr_status_reason {
+    type: string
+    sql: ${TABLE}.MGR_STATUS_REASON ;;
+    group_label: "Migracion"
+    group_item_label: "Status Razon"
+    label: "Migracion Status Razon"
+  }
+
+  dimension: mgr_status_reason_des {
+    type: string
+    sql: ${TABLE}.MGR_STATUS_REASON_DES ;;
+    group_label: "Migracion"
+    group_item_label: "Status Razon Descripcion"
+    label: "Migracion Status Razon Descripcion"
+  }
+
+  dimension: nombre_cliente {
+    type: string
+    sql: ${TABLE}.NOMBRE_CLIENTE ;;
     group_label: "Cliente"
-    label: "Apellido"
+    group_item_label: "Nombre"
+  }
+
+  dimension: particion {
+    type: string
+    sql: ${TABLE}.PARTICION ;;
+    label: "Particion"
   }
 
   dimension: razonsocial {
     type: string
     sql: ${TABLE}.RAZONSOCIAL ;;
     group_label: "Cliente"
-    label: "Razon Social"
+    group_item_label: "Razon Social"
   }
 
-  dimension: version_no {
+  dimension: tipo_doc {
     type: string
-    sql: ${TABLE}.VERSION_NO ;;
-    label: "Version Linea"
+    sql: ${TABLE}.TIPO_DOC ;;
+    group_label: "Cliente"
+    group_item_label: "Documento Tipo"
   }
+
+  dimension: tipo_mora_hito {
+    type: string
+    sql: ${TABLE}.TIPO_MORA_HITO ;;
+    label: "Tipo Mora Hito"
+  }
+
+  dimension: ult_accion_code_exe {
+    type: string
+    sql: ${TABLE}.ULT_ACCION_CODE_EXE ;;
+    label: "Hito Ultimo Codigo"
+  }
+
 
   ## Numbers
-
-  dimension: object_id {
-    type: number
-    sql: ${TABLE}.OBJECT_ID ;;
-    label: "Object ID"
-  }
 
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
     group_label: "Cliente"
-    label: "Cuenta ID"
+    group_item_label: "Cuenta ID"
   }
 
-  dimension: action_id {
+  dimension: cant_lin_nopre {
     type: number
-    sql: ${TABLE}.ACTION_ID ;;
-    label: "Accion ID"
+    sql: ${TABLE}.CANT_LIN_NOPRE ;;
+    label: "Cantidad Lin NoPre"
   }
 
-  dimension: collect_debt_id {
+  dimension: cuenta_q_fija_bundle {
     type: number
-    sql: ${TABLE}.COLLECT_DEBT_ID ;;
-    label: "Collect Debt ID"
+    sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
+    group_label: "Cuenta Q Fija"
+    group_item_label: "Bundle"
+  }
+
+  dimension: cuenta_q_fija_internet {
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
+    group_label: "Cuenta Q Fija"
+    group_item_label: "Internet"
+  }
+
+  dimension: cuenta_q_fija_toip {
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
+    group_label: "Cuenta Q Fija"
+    group_item_label: "TOIP"
+  }
+
+  dimension: cuenta_q_fija_tv {
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
+    group_label: "Cuenta Q Fija"
+    group_item_label: "TV"
+  }
+
+  dimension: cuenta_q_movil_abono {
+    type: number
+    sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
+    group_label: "Cuenta Q Movil"
+    group_item_label: "Abono"
+  }
+
+  dimension: cuenta_q_movil_pre {
+    type: number
+    sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
+    group_label: "Cuenta Q Movil"
+    group_item_label: "Pre"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
     group_label: "Cliente"
-    label: "Cliente ID"
+    group_item_label: "Cliente ID"
   }
 
-  dimension: group_id {
+  dimension: dias_proximo_hito {
     type: number
-    sql: ${TABLE}.GROUP_ID ;;
-    label: "Collection Group ID"
+    sql: ${TABLE}.DIAS_PROXIMO_HITO ;;
+    label: "Dias Proximo Hito"
   }
 
-  dimension: payment_plan_id {
+  dimension: dni_q_fija_bundle {
     type: number
-    sql: ${TABLE}.PAYMENT_PLAN_ID ;;
-    label: "Payment Plan ID"
+    sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
+    group_label: "DNI Q Fija"
+    group_item_label: "Bundle"
   }
 
-  dimension: sub_id {
+  dimension: dni_q_fija_internet {
     type: number
-    sql: ${TABLE}.SUB_ID ;;
-    label: "Suscripcion Numero"
+    sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
+    group_label: "DNI Q Fija"
+    group_item_label: "Internet"
+  }
+
+  dimension: dni_q_fija_toip {
+    type: number
+    sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
+    group_label: "DNI Q Fija"
+    group_item_label: "TOIP"
+  }
+
+  dimension: dni_q_fija_tv {
+    type: number
+    sql: ${TABLE}.DNI_Q_FIJA_TV ;;
+    group_label: "DNI Q Fija"
+    group_item_label: "TV"
+  }
+
+  dimension: dni_q_movil_abono {
+    type: number
+    sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
+    group_label: "DNI Q Movil"
+    group_item_label: "Abono"
+  }
+
+  dimension: dni_q_movil_pre {
+    type: number
+    sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
+    group_label: "DNI Q Movil"
+    group_item_label: "Pre"
   }
 
   dimension: ult_accion_id_exe {
@@ -241,30 +496,6 @@ view: ft_morosidad {
   }
 
   ## Hidden
-
-  dimension: adv_apply_amount {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.ADV_APPLY_AMOUNT ;;
-  }
-
-  dimension: dispute_amount {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.DISPUTE_AMOUNT ;;
-  }
-
-  dimension: invoice_amount {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.INVOICE_AMOUNT ;;
-  }
-
-  dimension: late_payment_fee {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.LATE_PAYMENT_FEE ;;
-  }
 
   dimension: open_amount {
     hidden: yes
@@ -278,78 +509,59 @@ view: ft_morosidad {
     sql: ${TABLE}.OS_AMOUNT ;;
   }
 
-  dimension: pending_amount {
+  dimension: saldo {
     hidden: yes
     type: number
-    sql: ${TABLE}.PENDING_AMOUNT ;;
+    sql: ${TABLE}.SALDO ;;
   }
 
-  dimension: writeoff_amount {
+  dimension: saldo_a_vencer {
     hidden: yes
     type: number
-    sql: ${TABLE}.WRITEOFF_AMOUNT ;;
+    sql: ${TABLE}.SALDO_A_VENCER ;;
   }
 
-## Measures
-
-  measure: total_adv_apply_amount {
-    type: sum
-    sql: ${TABLE}.ADV_APPLY_AMOUNT ;;
-    group_label: "Total"
-    label: "Monto Factura Aplicado"
+  dimension: saldo_vencido {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.SALDO_VENCIDO ;;
   }
 
-  measure: total_dispute_amount {
-    type: sum
-    sql: ${TABLE}.DISPUTE_AMOUNT ;;
-    group_label: "Total"
-    label: "Moonto Reclamado"
-  }
 
-  measure: total_invoice_amount {
-    type: sum
-    sql: ${TABLE}.INVOICE_AMOUNT ;;
-    group_label: "Total"
-    label: "Monto del Comprobante"
-  }
+  ## Measures
 
-  measure: total_late_payment_fee {
-    type: sum
-    sql: ${TABLE}.LATE_PAYMENT_FEE ;;
-    group_label: "Total"
-    label: "Monto Interes por Mora"
+  measure: count {
+    type: count
+    label: "Cantidad"
   }
 
   measure: total_open_amount {
     type: sum
     sql: ${TABLE}.OPEN_AMOUNT ;;
-    group_label: "Total"
-    label: "Saldo Vencido"
+    label: "Open Amount"
   }
 
   measure: total_os_amount {
     type: sum
     sql: ${TABLE}.OS_AMOUNT ;;
-    group_label: "Total"
-    label: "Saldo Vencido Hito"
+    label: "OS Amount"
   }
 
-  measure: total_pending_amount {
+  measure: total_saldo {
     type: sum
-    sql: ${TABLE}.PENDING_AMOUNT ;;
-    group_label: "Total"
-    label: "Pending Amount"
+    sql: ${TABLE}.SALDO ;;
+    label: "Saldo"
   }
 
-  measure: total_writeoff_amount {
+  measure: total_saldo_a_vencer {
     type: sum
-    sql: ${TABLE}.WRITEOFF_AMOUNT ;;
-    group_label: "Total"
-    label: "Monto Cancelado"
+    sql: ${TABLE}.SALDO_A_VENCER ;;
+    label: "Saldo a Vencer"
   }
 
-  measure: count {
-    type: count
-    label: "Cantidad"
+  measure: total_saldo_vencido {
+    type: sum
+    sql: ${TABLE}.SALDO_VENCIDO ;;
+    label: "Saldo Vencido"
   }
 }
