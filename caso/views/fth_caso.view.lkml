@@ -2961,6 +2961,37 @@ view: fth_caso {
     filters: [es_fidelizacion: "Yes"]
   }
 
+  measure: count_retenido_asesoramiento {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "Retenido Asesoramiento"
+    description: "Clientes retenidos sin oferta."
+    filters: [
+        caso_estado_nombre: "RETENIDA, INFORMADA"
+      , caso_tipo_nombre: "PEDIDO DE BAJA"
+      , caso_resultado_retencion_nombre: "ASESORAMIENTO, OFERTAS"
+      , caso_tipo_asset: "PLAN HIBRIDO, PLAN POSPAGO"
+      , orden_estado_nombre: "NULL"
+      , orden_tipo_sub_gestion_nombre: "NULL"
+      , orden_tipo_gestion_nombre: "NULL"
+      , caso_origen: "-OPERATORIA MASIVA"
+    ]
+  }
+
+  measure: count_retenido_desconexiones {
+    type: count_distinct
+    sql: ${caso_srcid} ;;
+    label: "No Retenido Desconexiones"
+    description: "No retenido bajas efectivas."
+    filters: [
+        caso_tipo_nombre: "PEDIDO DE BAJA"
+      , caso_resultado_retencion_nombre: "-NO APLICA"
+      , caso_tipo_asset: "PLAN HIBRIDO, PLAN POSPAGO"
+      , orden_estado_nombre: "-CANCELADA, -CANCELADA PROCESO MASIVO"
+      , orden_tipo_sub_gestion_nombre: "-FRAUDE, -POR TIEMPO, -MOROSIDAD"
+      , caso_origen: "-OPERATORIA MASIVA"
+    ]
+  }
 
 
 }
