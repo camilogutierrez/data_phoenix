@@ -91,6 +91,25 @@ view: ft_recargas_full {
     label: "Creacion"
   }
 
+  dimension_group: producto_adquirido_fecha_activacion_plan_src_actual {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ProductoAdquirido.FechaActivacionPlanSRC_Actual ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Activacion Plan Actual"
+    label: "Activacion Plan Actual"
+  }
+
   dimension_group: recarga_entry_src {
     type: time
     timeframes: [
@@ -267,6 +286,20 @@ view: ft_recargas_full {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoTipo ;;
     view_label: "Producto Adquirido"
     label: "Tipo"
+  }
+
+  dimension: producto_adquirido_tipo_actual {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoTipo_Actual ;;
+    view_label: "Producto Adquirido"
+    label: "Tipo Actual"
+  }
+
+  dimension: producto_adquirido_srcid_actual {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId_Actual ;;
+    view_label: "Producto Adquirido"
+    label: "SRCId Actual"
   }
 
   dimension: recarga_access_methodnombre {
