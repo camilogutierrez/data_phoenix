@@ -262,11 +262,6 @@ view: fth_parque_promociones {
     sql: ${TABLE}.CuentaTipoSRCId ;;
   }
 
-  dimension: grupo_trabajo_srcid {
-    type: string
-    sql: ${TABLE}.GrupoTrabajoSRCId ;;
-  }
-
   dimension: orden_canal_origen_nombre {
     type: string
     sql: ${TABLE}.OrdenCanalOrigenNombre ;;
@@ -291,11 +286,6 @@ view: fth_parque_promociones {
   dimension: orden_precio_elemento_codigo {
     type: string
     sql: ${TABLE}.OrdenPrecioElementoCodigo ;;
-  }
-
-  dimension: orden_precio_elemento_scrid {
-    type: string
-    sql: ${TABLE}.OrdenPrecioElementoSCRId ;;
   }
 
   dimension: orden_precio_elemento_srcid {
@@ -553,11 +543,6 @@ view: fth_parque_promociones {
   dimension: punto_venta_canal_nombre {
     type: string
     sql: ${TABLE}.PuntoVentaCanalNombre ;;
-  }
-
-  dimension: punto_venta_srcid {
-    type: string
-    sql: ${TABLE}.PuntoVentaSRCId ;;
   }
 
   dimension: punto_venta_tipo_atencion {
