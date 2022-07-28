@@ -60,14 +60,6 @@ view: ft_cargos_rehabilitacion {
     label: "Fecha Creacion"
   }
 
-  dimension: _fecha_ultima_actualizacion {
-    type: date_time
-    datatype: datetime
-    sql: ${TABLE}._fechaUltimaActualizacion ;;
-    view_label: "Auditoria"
-    label: "Fecha Actualizacion"
-  }
-
   ## Strings
 
   dimension: _sesion_id {
