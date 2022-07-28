@@ -130,12 +130,6 @@ view: ft_general_ledger {
     label: "Cuenta Debe"
   }
 
-  dimension: cr_gl_amt {
-    type: number
-    sql: ${TABLE}.CR_GL_AMT ;;
-    label: "Cuenta Debe Importe"
-  }
-
   dimension: cr_jnl_rule_name {
     type: string
     sql: ${TABLE}.CR_JNL_RULE_NAME ;;
@@ -232,25 +226,28 @@ view: ft_general_ledger {
     label: "HW Codigo Sistema Fuente"
   }
 
-  dimension: dr_gl_amt {
+  dimension: cr_gl_amt_cal {
     type: number
-    sql: ${TABLE}.DR_GL_AMT ;;
-    label: "Cuenta Haber Importe"
+    sql: ${TABLE}.CR_GL_AMT_CAL ;;
+    label: "Importe Cuenta Debe"
   }
 
+  dimension: dr_gl_amt_cal {
+    type: number
+    sql: ${TABLE}.DR_GL_AMT_CAL ;;
+    label: "Importe Cuenta Haber"
+  }
 ## Measures
 
-  measure: total_dr_gl_amt {
+  measure: total_cr_gl_amt_cal {
     type: sum
-    sql: ${dr_gl_amt} ;;
-    label: "Total Cuenta Haber"
-  }
-
-  measure: total_cr_gl_amt {
-    type: sum
-    sql: ${cr_gl_amt} ;;
+    sql: ${cr_gl_amt_cal} ;;
     label: "Total Cuenta Debe"
   }
 
-
+  measure: total_dr_gl_amt_cal {
+    type: sum
+    sql: ${dr_gl_amt_cal} ;;
+    label: "Total Cuenta Haber"
+  }
 }
