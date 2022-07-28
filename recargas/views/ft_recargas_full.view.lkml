@@ -299,7 +299,7 @@ view: ft_recargas_full {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId_Actual ;;
     view_label: "Producto Adquirido"
-    label: "SRCId Actual"
+    label: "Actual ID"
   }
 
   dimension: recarga_access_methodnombre {
