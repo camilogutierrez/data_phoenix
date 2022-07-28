@@ -46,7 +46,7 @@ view: lk_cierres {
 
   dimension: fecha_ultima_actualizacion {
     type: date
-    sql: ${TABLE}._fechaUltimaModificacion ;;
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
     datatype: datetime
     convert_tz: no
     label: "Fecha Ultima Actualizacion"

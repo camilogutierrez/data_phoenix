@@ -148,15 +148,15 @@ view: ft_recargas_full {
   dimension: _fecha_creacion {
     type: date_time
     sql: ${TABLE}._auditoria._fechaCreacion ;;
-    datatype: datetime
+    datatype: timestamp
     view_label: "Auditoria"
     label: "Fecha Creacion"
   }
 
   dimension: _fecha_ultima_actualizacion {
     type: date_time
-    sql: ${TABLE}._auditoria_fechaUltimaActualizacion ;;
-    datatype: datetime
+    sql: ${TABLE}._auditoria._fechaUltimaActualizacion ;;
+    datatype: timestamp
     view_label: "Auditoria"
     label: "Fecha Actualizacion"
   }
