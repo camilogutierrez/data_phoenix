@@ -30,7 +30,7 @@ view: ft_conta_detalle {
     ]
     sql: ${TABLE}.CR_ACCOUNTING_DATE ;;
     datatype: timestamp
-    group_label: "Cuenta Debe Fecha"
+    group_label: "Fecha Cuenta Debe"
     label: "Cuenta Debe"
   }
 
