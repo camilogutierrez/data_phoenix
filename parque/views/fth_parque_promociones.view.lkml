@@ -188,209 +188,290 @@ view: fth_parque_promociones {
   dimension: act_bill_cycle_type {
     type: string
     sql: ${TABLE}.ACT_BILL_CYCLE_TYPE ;;
+    label: "Act Bill Cycle Type"
   }
 
   dimension: bill_cycle_id {
     type: string
     sql: ${TABLE}.BILL_CYCLE_ID ;;
+    label: "Bill Cycle ID"
   }
 
   dimension: caso_srcid {
     type: string
     sql: ${TABLE}.CasoSRCId ;;
+    label: "Caso ID"
   }
 
   dimension: caso_sub_tipo_nombre {
     type: string
     sql: ${TABLE}.CasoSubTipoNombre ;;
     suggest_dimension: lk_caso_sub_tipo.caso_sub_tipo_nombre
+    label: "Caso Sub Tipo"
   }
 
   dimension: caso_tipo_nombre {
     type: string
     sql: ${TABLE}.CasoTipoNombre ;;
     suggest_dimension: lk_caso_tipo.caso_tipo_nombre
+    label: "Caso Tipo"
   }
 
   dimension: cliente_codigo_integracion {
     type: string
     sql: ${TABLE}.ClienteCodigoIntegracion ;;
+    group_label: "Cliente"
+    label: "Codigo Integracion"
   }
 
   dimension: cliente_persona_contacto_srcid {
     type: string
     sql: ${TABLE}.ClientePersonaContactoSRCId ;;
+    group_label: "Cliente"
+    label: "Persona Contacto ID"
   }
 
   dimension: cliente_razon_social {
     type: string
     sql: ${TABLE}.ClienteRazonSocial ;;
+    group_label: "Cliente"
+    label: "Razon Social"
   }
 
   dimension: cliente_segmento1_nombre {
     type: string
     sql: ${TABLE}.ClienteSegmento1Nombre ;;
+    group_label: "Cliente"
+    label: "Segmento Nombre"
   }
 
   dimension: cliente_segmento2_nombre {
     type: string
     sql: ${TABLE}.ClienteSegmento2Nombre ;;
+    group_label: "Cliente"
+    label: "Segmento 2 Nombre"
   }
 
   dimension: cliente_srcid {
     type: string
     sql: ${TABLE}.ClienteSRCId ;;
+    group_label: "Cliente"
+    label: "ID"
   }
 
   dimension: cuenta_facturacion_srcid {
     type: string
     sql: ${TABLE}.CuentaFacturacionSRCId ;;
+    group_label: "Cuenta"
+    label: "Facturacion ID"
   }
 
   dimension: cuenta_propiedad_srcid {
     type: string
     sql: ${TABLE}.CuentaPropiedadSRCId ;;
+    group_label: "Cuenta"
+    label: "Propiedad ID"
+
   }
 
   dimension: cuenta_srcid {
     type: string
     sql: ${TABLE}.CuentaSRCId ;;
+    group_label: "Cuenta"
+    label: "ID"
   }
 
   dimension: cuenta_tipo_srcid {
     type: string
     sql: ${TABLE}.CuentaTipoSRCId ;;
+    group_label: "Cuenta"
+    label: "Tipo ID"
   }
 
   dimension: orden_canal_origen_nombre {
     type: string
     sql: ${TABLE}.OrdenCanalOrigenNombre ;;
     suggest_dimension: lk_orden_canal_origen.orden_canal_origen_nombre
+    group_label: "Orden"
+    label: "Canal Origen Nombre"
   }
 
   dimension: orden_item_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenItemAccionNombre ;;
+    group_label: "Orden"
+    label: "Item Accion Nombre"
   }
 
   dimension: orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenItemSRCId ;;
+    group_label: "Orden"
+    label: "Item ID"
   }
 
   dimension: orden_precio_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenPrecioAccionNombre ;;
+    group_label: "Orden"
+    label: "Precio Accion Nombre"
   }
 
   dimension: orden_precio_elemento_codigo {
     type: string
     sql: ${TABLE}.OrdenPrecioElementoCodigo ;;
+    group_label: "Orden"
+    label: "Precio Elemento Codigo"
   }
 
   dimension: orden_precio_elemento_srcid {
     type: string
     sql: ${TABLE}.OrdenPrecioElementoSRCId ;;
+    group_label: "Orden"
+    label: "Precio Accion Elemento ID"
+  }
+
+  dimension: OrdenProductoAdquiridoReferenteSRCId {
+    type: string
+    sql: ${TABLE}.OrdenProductoAdquiridoReferenteSRCId ;;
+    group_label: "Orden"
+    label: "Producto Adquirido Referente ID"
   }
 
   dimension: orden_srcid {
     type: string
     sql: ${TABLE}.OrdenSRCId ;;
+    group_label: "Orden"
+    label: "ID"
   }
 
   dimension: orden_tipo_cambio_plan_nombre {
     type: string
     sql: ${TABLE}.OrdenTipoCambioPlanNombre ;;
     suggest_dimension: lk_orden_tipo_cambio_plan.orden_tipo_cambio_plan_nombre
+    group_label: "Orden"
+    label: "Tipo Cambio Plan Nombre"
   }
 
   dimension: orden_tipo_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenTipoGestionNombre ;;
     suggest_dimension: lk_orden_tipo_gestion.orden_tipo_gestion_nombre
+    group_label: "Orden"
+    label: "Tipo Gestion Nombre"
   }
 
   dimension: orden_tipo_sub_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenTipoSubGestionNombre ;;
     suggest_dimension: lk_orden_tipo_sub_gestion.orden_tipo_sub_gestion_nombre
+    group_label: "Orden"
+    label: "Tipo Sub Gestion Nombre"
   }
 
   dimension: orden_usuario_alias {
     type: string
     sql: ${TABLE}.OrdenUsuarioAlias ;;
+    group_label: "Orden"
+    label: "Usuario Alias"
   }
 
   dimension: orden_usuario_creacion_srcid {
     type: string
     sql: ${TABLE}.OrdenUsuarioCreacionSRCId ;;
+    group_label: "Orden"
+    label: "Usuario Creacion ID"
   }
 
   dimension: orden_usuario_punto_venta_canal3 {
     type: string
     sql: ${TABLE}.OrdenUsuarioPuntoVentaCanal3 ;;
+    group_label: "Orden"
+    label: "Usuario Punto Venta Canal 3"
   }
 
   dimension: orden_usuario_punto_venta_descripcion {
     type: string
     sql: ${TABLE}.OrdenUsuarioPuntoVentaDescripcion ;;
+    group_label: "Orden"
+    label: "Usuario Punto Venta Descripcion"
   }
 
   dimension: orden_usuario_srcid {
     type: string
     sql: ${TABLE}.OrdenUsuarioSRCId ;;
+    group_label: "Orden"
+    label: "Usuario ID"
   }
 
   dimension: pago_ajuste_precio_estado_cancelacion {
     type: string
     sql: ${TABLE}.PagoAjustePrecioEstadoCancelacion ;;
+    group_label: "Pago Ajuste Precio"
+    label: "Estado Cancelacion"
   }
 
   dimension: pago_ajuste_precio_motivo_cancelacion {
     type: string
     sql: ${TABLE}.PagoAjustePrecioMotivoCancelacion ;;
+    group_label: "Pago Ajuste Precio"
+    label: "Motivo Cancelacion"
   }
 
   dimension: pago_ajuste_precio_numero_referencia {
     type: string
     sql: ${TABLE}.PagoAjustePrecioNumeroReferencia ;;
+    group_label: "Pago Ajuste Precio"
+    label: "Numero Referencia"
   }
 
   dimension: pago_ajuste_precio_origen_nombre {
     type: string
     sql: ${TABLE}.PagoAjustePrecioOrigenNombre ;;
     suggest_dimension: lk_pago_ajuste_precio_origen.pago_ajuste_precio_origen_nombre
+    group_label: "Pago Ajuste Precio"
+    label: "Origen Nombre"
   }
 
   dimension: pago_ajuste_precio_srcid {
     type: string
     sql: ${TABLE}.PagoAjustePrecioSRCId ;;
+    group_label: "Pago Ajuste Precio"
+    label: "ID"
   }
 
   dimension: persona_documento_numero {
     type: string
     sql: ${TABLE}.PersonaDocumentoNumero ;;
+    group_label: "Persona"
+    label: "Documento Numero"
   }
 
   dimension: persona_srcid {
     type: string
     sql: ${TABLE}.PersonaSRCId ;;
+    group_label: "Persona"
+    label: "ID"
   }
 
   dimension: persona_tipo_documento_nombre {
     type: string
     sql: ${TABLE}.PersonaTipoDocumentoNombre ;;
     suggest_dimension: lk_persona_tipo_documento.persona_tipo_documento_nombre
+    group_label: "Persona"
+    label: "Tipo Documento Nombre"
   }
 
   dimension: plan_tiempo_srcid {
     type: string
     sql: ${TABLE}.PlanTiempoSRCId ;;
+    label: "Plan Tiempo ID"
   }
 
   dimension: precio_elemento_variable_srcid {
     type: string
     sql: ${TABLE}.PrecioElementoVariableSRCId ;;
+    label: "Precio Elemento Variable ID"
   }
 
   dimension: pri_bill_cycle_type {
@@ -398,54 +479,66 @@ view: fth_parque_promociones {
     sql: ${TABLE}.PRI_BILL_CYCLE_TYPE ;;
   }
 
-  dimension: producto_adquirido_codigo_sk {
-    type: string
-    sql: ${TABLE}.ProductoAdquiridoCodigoSK ;;
-  }
-
   dimension: producto_adquirido_codigo_suscripcion {
     type: string
     sql: ${TABLE}.ProductoAdquiridoCodigoSuscripcion ;;
+    group_label: "Producto Adquirido"
+    label: "Codigo Suscripcion"
   }
 
   dimension: producto_adquirido_estado_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquiridoEstadoNombre ;;
+    group_label: "Producto Adquirido"
+    label: "Estado Nombre"
   }
 
   dimension: producto_adquirido_nombre {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNombre ;;
+    group_label: "Producto Adquirido"
+    label: "Nombre"
   }
 
   dimension: producto_adquirido_numero_linea {
     type: string
     sql: ${TABLE}.ProductoAdquiridoNumeroLinea ;;
+    group_label: "Producto Adquirido"
+    label: "Numero Linea"
   }
 
   dimension: producto_adquirido_recurso_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoRecursoSRCId ;;
+    group_label: "Producto Adquirido"
+    label: "Recurso ID"
   }
 
   dimension: producto_adquirido_referente_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoReferenteSRCId ;;
+    group_label: "Producto Adquirido"
+    label: "Referente ID"
   }
 
   dimension: producto_adquirido_srcid {
     type: string
     sql: ${TABLE}.ProductoAdquiridoSRCId ;;
+    group_label: "Producto Adquirido"
+    label: "ID"
   }
 
   dimension: producto_adquirido_tipo {
     type: string
     sql: ${TABLE}.ProductoAdquiridoTipo ;;
+    group_label: "Producto Adquirido"
+    label: "Tipo"
   }
 
   dimension: producto_precio_lista_srcid {
     type: string
     sql: ${TABLE}.ProductoPrecioListaSRCId ;;
+    label: "Producto Precio Lista ID"
   }
 
   dimension: promocion_anio_bonificacion {
@@ -479,6 +572,7 @@ view: fth_parque_promociones {
   dimension: promocion_aplicada_srcid {
     type: string
     sql: ${TABLE}.PromocionAplicadaSRCId ;;
+    label: "Promocion Aplicada ID"
   }
 
   dimension: promocion_escalones_duracion_tramo {
@@ -533,31 +627,42 @@ view: fth_parque_promociones {
   dimension: promocion_nombre {
     type: string
     sql: ${TABLE}.PromocionNombre ;;
+    label: "Promocion Nombre"
   }
 
   dimension: promocion_srcid {
     type: string
     sql: ${TABLE}.PromocionSRCId ;;
+    label: "Promocion ID"
   }
 
   dimension: punto_venta_canal_nombre {
     type: string
     sql: ${TABLE}.PuntoVentaCanalNombre ;;
+    group_label: "Punto Venta"
+    label: "Canal Nombre"
   }
 
   dimension: punto_venta_tipo_atencion {
     type: string
     sql: ${TABLE}.PuntoVentaTipoAtencion ;;
+    group_label: "Punto Venta"
+    label: "Tipo Atencion"
   }
 
   dimension: punto_venta_tipo_canal_nombre {
     type: string
     sql: ${TABLE}.PuntoVentaTipoCanalNombre ;;
+    group_label: "Punto Venta"
+    label: "Tipo Canal Nombre"
+
   }
 
   dimension: punto_venta_tipo_contacto_nombre {
     type: string
     sql: ${TABLE}.PuntoVentaTipoContactoNombre ;;
+    group_label: "Punto Venta"
+    label: "Tipo Contacto Nombre"
   }
 
   dimension: ult_bill_cycle_type {
@@ -568,26 +673,36 @@ view: fth_parque_promociones {
   dimension: usuario_alta_nickname {
     type: string
     sql: ${TABLE}.UsuarioAltaNickname ;;
+    group_label: "Usuario"
+    label: "Alta Nick Name"
   }
 
   dimension: usuario_alta_srcid {
     type: string
     sql: ${TABLE}.UsuarioAltaSRCId ;;
+    group_label: "Usuario"
+    label: "Alta ID"
   }
 
   dimension: usuario_mod_nickname {
     type: string
     sql: ${TABLE}.UsuarioModNickname ;;
+    group_label: "Usuario"
+    label: "Mod Nick Name"
   }
 
   dimension: usuario_srcid {
     type: string
     sql: ${TABLE}.UsuarioSRCId ;;
+    group_label: "Usuario"
+    label: "ID"
   }
 
   dimension: usuario_ultima_modificacion_srcid {
     type: string
     sql: ${TABLE}.UsuarioUltimaModificacionSRCId ;;
+    group_label: "Usuario"
+    label: "Ultima Modificacion ID"
   }
 
   ## Numbers
@@ -630,11 +745,13 @@ view: fth_parque_promociones {
   dimension: descuento {
     type: number
     sql: ${TABLE}.DESCUENTO ;;
+    value_format_name: decimal_2
   }
 
   dimension: impuesto {
     type: number
     sql: ${TABLE}.IMPUESTO ;;
+    value_format_name: decimal_2
   }
 
   dimension: invoice_id {
@@ -646,16 +763,19 @@ view: fth_parque_promociones {
   dimension: monto_abono {
     type: number
     sql: ${TABLE}.MONTO_ABONO ;;
+    value_format_name: decimal_2
   }
 
   dimension: monto_acceso {
     type: number
     sql: ${TABLE}.MONTO_ACCESO ;;
+    value_format_name: decimal_2
   }
 
   dimension: total {
     type: number
     sql: ${TABLE}.TOTAL ;;
+    value_format_name: decimal_2
   }
 
   dimension: sub_id {
@@ -688,21 +808,31 @@ view: fth_parque_promociones {
   dimension: cuenta_hwacct_id {
     type: number
     sql: ${TABLE}.CuentaHWAcct_Id ;;
+    value_format_name: id
+    group_label: "Cuenta"
+    label: "HW Acct ID"
   }
 
   dimension: cuenta_hwcust_id {
     type: number
     sql: ${TABLE}.CuentaHWCUST_ID ;;
+    value_format_name: id
+    group_label: "Cuenta"
+    label: "HW Cust ID"
   }
 
   dimension: pago_ajuste_precio_monto_ajuste {
     type: number
     sql: ${TABLE}.PagoAjustePrecioMontoAjuste ;;
+    group_label: "Pago Ajuste Precio"
+    label: "Monto Ajuste"
   }
 
   dimension: pago_ajuste_precio_secuencia {
     type: number
     sql: ${TABLE}.PagoAjustePrecioSecuencia ;;
+    group_label: "Pago Ajuste Precio"
+    label: "Secuencia"
   }
 
   ## Hidden
