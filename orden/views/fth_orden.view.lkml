@@ -546,7 +546,7 @@ view: fth_orden {
     sql: ${TABLE}.Caso.CasoSubMotivoBajaNombre ;;
     suggest_dimension: lk_caso_sub_motivo_baja.caso_sub_motivo_baja_nombre
     view_label: "Caso"
-    label: "Sub Motivo Baja"
+    label: "SubMotivo Baja"
   }
 
 
