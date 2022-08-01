@@ -331,6 +331,13 @@ view: fth_parque_promociones {
     label: "Precio Accion Elemento ID"
   }
 
+  dimension: orden_punto_venta_srcid {
+    type: string
+    sql: ${TABLE}.OrdenPuntoVentaSRCId ;;
+    group_label: "Orden"
+    label: "Punto Venta ID"
+  }
+
   dimension: OrdenProductoAdquiridoReferenteSRCId {
     type: string
     sql: ${TABLE}.OrdenProductoAdquiridoReferenteSRCId ;;
@@ -628,6 +635,12 @@ view: fth_parque_promociones {
     type: string
     sql: ${TABLE}.PromocionNombre ;;
     label: "Promocion Nombre"
+  }
+
+  dimension: promocion_codigo {
+    type: string
+    sql: ${TABLE}.PromocionCodigo ;;
+    label: "Promocion Codigo"
   }
 
   dimension: promocion_srcid {

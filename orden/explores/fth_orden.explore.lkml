@@ -310,5 +310,17 @@ explore: fth_orden {
     type: inner
   }
 
+  join: lk_caso_sub_motivo_baja {
+    sql_on: ${fth_orden.caso_sub_motivo_baja_sk} = ${lk_caso_sub_motivo_baja.caso_sub_motivo_baja_sk};;
+    relationship: many_to_one
+    type: inner
+  }
+
+  join: lk_caso_motivo_baja {
+    sql_on: ${fth_orden.caso_motivo_baja_sk} = ${lk_caso_motivo_baja.caso_motivo_baja_sk} ;;
+    relationship: many_to_one
+    type: inner
+  }
+
 
 }

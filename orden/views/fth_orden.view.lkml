@@ -533,6 +533,23 @@ view: fth_orden {
     label: "Tema"
   }
 
+  dimension: caso_motivo_baja_nombre {
+    type: string
+    sql: ${TABLE}.Caso.CasoMotivoBajaNombre ;;
+    suggest_dimension: lk_caso_motivo_baja.caso_motivo_baja_nombre
+    view_label: "Caso"
+    label: "Motivo Baja"
+  }
+
+  dimension: caso_sub_motivo_baja_nombre {
+    type: string
+    sql: ${TABLE}.Caso.CasoSubMotivoBajaNombre ;;
+    suggest_dimension: lk_caso_sub_motivo_baja.caso_sub_motivo_baja_nombre
+    view_label: "Caso"
+    label: "SubMotivo Baja"
+  }
+
+
     ## Hidden
 
   dimension: caso_tipo_sk {
@@ -569,6 +586,30 @@ view: fth_orden {
     hidden: yes
     type: string
     sql: ${TABLE}.Caso.CasoEstadoSRCId ;;
+  }
+
+  dimension: caso_sub_motivo_baja_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Caso.CasoSubMotivoBajaSK ;;
+  }
+
+  dimension: caso_sub_motivo_baja_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Caso.CasoSubMotivoBajaSRCId ;;
+  }
+
+  dimension: caso_motivo_baja_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Caso.CasoMotivoBajaSK ;;
+  }
+
+  dimension: caso_motivo_baja_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Caso.CasoMotivoBajaSRCId ;;
   }
 
   #############
