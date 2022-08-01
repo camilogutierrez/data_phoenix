@@ -3397,7 +3397,7 @@ view: fth_parque {
     description: "Producto prepago Flow Flex"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
-      , producto_adquirido_marca_principal: "Yes"
+      , producto_adquirido_marca_principal: "No"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TV"
       , producto_adquirido_nombre: "Flow Flex"
@@ -3500,7 +3500,7 @@ view: fth_parque {
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
-      , producto_adquirido_familia_producto: "FIJA"
+      , producto_adquirido_familia_producto: "MOVIL"
       , p_producto_tipo_nombre: "POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
