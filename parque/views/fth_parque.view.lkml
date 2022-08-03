@@ -3501,7 +3501,7 @@ view: fth_parque {
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "MOVIL"
-      , p_producto_tipo_nombre: "POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+      , p_producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
 
