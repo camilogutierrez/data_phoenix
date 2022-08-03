@@ -1709,6 +1709,70 @@ view: fth_caso {
     sql: ${caso_tipo_nombre} = "FIDELIZACION" OR (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
   }
 
+  dimension: es_retencion_asesoramiento_tmp {
+    hidden: yes
+    type: yesno
+    sql: (
+      ${caso_resultado_retencion_nombre} = "ASESORAMIENTO"
+        AND ${caso_estado_nombre} = "RETENIDA")
+      OR (${caso_resultado_retencion_nombre} = "OFERTAS"
+        AND ${caso_estado_nombre} = "INFORMADA")  ;;
+  }
+
+
+  dimension: es_no_retenido_desconexiones_tmp {
+    hidden: yes
+    type: yesno
+    sql: (
+        ${caso_resultado_retencion_nombre} = "(no informado)"
+        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
+        AND ${orden_tipo_sub_gestion_nombre} = ""
+        AND ${orden_estado_nombre} = "")
+    OR(
+        ${caso_resultado_retencion_nombre} = "(no informado)"
+        AND ${caso_estado_nombre} = "RESUELTA EXITOSA"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "ASESORAMIENTO"
+        AND ${caso_estado_nombre} = "RESUELTA EXITOSA"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "YES"
+        AND ${caso_estado_nombre} = "ANULADA"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "YES"
+        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "YES"
+        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
+        AND ${orden_tipo_sub_gestion_nombre} = ""
+        AND ${orden_estado_nombre} = "")
+    OR(
+        ${caso_resultado_retencion_nombre} = "YES"
+        AND ${caso_estado_nombre} = "REALIZADA EXITOSA"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "YES"
+        AND ${caso_estado_nombre} = "RESUELTA EXITOSA"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "OFERTAS"
+        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
+        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
+        AND ${orden_estado_nombre} = "ACTIVADA")
+    OR(
+        ${caso_resultado_retencion_nombre} = "OFERTAS"
+        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION") ;;
+  }
+
 #########################
 ## Acuerdo de Servicio ##
 #########################
@@ -2965,7 +3029,7 @@ view: fth_caso {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "Retenido Asesoramiento"
-    description: "Clientes retenidos sin oferta."
+    description: "Retenidos con asesoramiento."
     filters: [
         caso_estado_nombre: "RETENIDA, INFORMADA"
       , caso_tipo_nombre: "PEDIDO DE BAJA"
@@ -2975,10 +3039,11 @@ view: fth_caso {
       , orden_tipo_sub_gestion_nombre: "NULL"
       , orden_tipo_gestion_nombre: "NULL"
       , caso_origen: "-OPERATORIA MASIVA"
+      , es_retencion_asesoramiento_tmp: "Yes"
     ]
   }
 
-  measure: count_retenido_desconexiones {
+  measure: count_no_retenido_desconexiones {
     type: count_distinct
     sql: ${caso_srcid} ;;
     label: "No Retenido Desconexiones"
@@ -2990,6 +3055,7 @@ view: fth_caso {
       , orden_estado_nombre: "-CANCELADA, -CANCELADA PROCESO MASIVO"
       , orden_tipo_sub_gestion_nombre: "-FRAUDE, -POR TIEMPO, -MOROSIDAD"
       , caso_origen: "-OPERATORIA MASIVA"
+      , es_no_retenido_desconexiones_tmp: "Yes"
     ]
   }
 
