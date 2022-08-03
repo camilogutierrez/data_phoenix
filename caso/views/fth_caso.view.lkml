@@ -1695,20 +1695,6 @@ view: fth_caso {
 
     ## Auxiliares
 
-  dimension: es_demanda_retencion_tmp {
-    hidden: yes
-    type: yesno
-    sql: (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} IN("PEDIDO DE BAJA", "FIDELIZACION"))
-          OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "VENTA" AND ${caso_sub_tipo_nombre} = "FIDELIZACION")
-          OR (${caso_estado_nombre} NOT IN("NUEVA", "CANCELADA", "NO SE PUDO REALIZAR") AND ${caso_tipo_nombre} = "CAMBIO DE PLAN" AND ${caso_sub_tipo_nombre} = "FIDELIZACION") ;;
-  }
-
-  dimension: es_fidelizacion_tmp  {
-    hidden: yes
-    type: yesno
-    sql: ${caso_tipo_nombre} = "FIDELIZACION" OR (${caso_tipo_nombre} = "PEDIDO DE BAJA" AND ${caso_estado_nombre} = "INFORMADA") ;;
-  }
-
   dimension: es_retencion_asesoramiento_tmp {
     hidden: yes
     type: yesno
