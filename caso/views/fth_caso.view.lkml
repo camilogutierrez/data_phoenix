@@ -7,11 +7,11 @@ view: fth_caso {
 
   ## Primary Key
 
-  dimension: pk {
+  dimension: caso_pk {
     hidden: yes
     primary_key: yes
     type: string
-    sql: CONCAT(CAST(${fecha_entidad} AS STRING FORMAT 'YYYYMMDD'),'-',${caso_srcid});;
+    sql: ${TABLE}.CasoPK ;;
   }
 
   ## Nested Fields
@@ -334,7 +334,7 @@ view: fth_caso {
     label: "Fecha Actualizacion"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: caso_comprobantes_adjuntos {
     type: yesno
@@ -558,7 +558,7 @@ view: fth_caso {
     label: "Es Fidelizacion"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: _sesion_id {
     type: string
@@ -1541,7 +1541,7 @@ view: fth_caso {
     view_label: "Otros"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: caso_estado_sk {
     hidden: yes
@@ -1693,7 +1693,7 @@ view: fth_caso {
     sql: ${TABLE}.CasoNominaPeriodoCreacionUsuarioFK ;;
   }
 
-    ## Auxiliares
+  ## Auxiliares
 
   dimension: es_retencion_asesoramiento_tmp {
     hidden: yes
@@ -1763,7 +1763,7 @@ view: fth_caso {
 ## Acuerdo de Servicio ##
 #########################
 
-    ## Dates
+  ## Dates
 
   dimension_group: acuerdo_servicio_fecha_creacion_src {
     type: time
@@ -1855,7 +1855,7 @@ view: fth_caso {
     label: "Ultima Modificacion"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: acuerdo_servicio_marca_incidente {
     type: yesno
@@ -1864,7 +1864,7 @@ view: fth_caso {
     label: "Es Incidente"
   }
 
-    ## Srings
+  ## Srings
 
   dimension: acuerdo_servicio_estado_acuerdo {
     type: string
@@ -1923,6 +1923,7 @@ view: fth_caso {
   }
 
   ## Hidden
+
   dimension: acuerdo_servicio_cant_casos {
     hidden: yes
     type: number
@@ -1947,43 +1948,11 @@ view: fth_caso {
     sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosSiniestro ;;
   }
 
-
-  ## Measures
-
-  measure: total_acuerdo_servicio_cant_casos {
-    type: sum
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioCantCasos ;;
-    view_label: "Acuerdo Servicio"
-    label: "Cantidad Casos"
-  }
-
-  measure: total_acuerdo_servicio_total_usos_destruccion {
-    type: sum
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosDestruccion ;;
-    view_label: "Acuerdo Servicio"
-    label: "Cantidad Usos Destruccion"
-  }
-
-  measure: total_acuerdo_servicio_total_usos_servicio_tecnico {
-    type: sum
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosServicioTecnico ;;
-    view_label: "Acuerdo Servicio"
-    label: "Cantidad Usos Servicio Tecnico"
-  }
-
-  measure: total_acuerdo_servicio_total_usos_siniestro {
-    type: sum
-    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosSiniestro ;;
-    view_label: "Acuerdo Servicio"
-    label: "Cantidad Usos Siniestro"
-  }
-
-
 #############
 ## Cliente ##
 #############
 
-    ## Srings
+  ## Srings
 
   dimension: cliente_segmento1_nombre {
     type: string
@@ -2058,7 +2027,7 @@ view: fth_caso {
     label: "Cliente Documento Tipo"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: cliente_segmento1_sk {
     hidden: yes
@@ -2100,7 +2069,7 @@ view: fth_caso {
 ## Orden ##
 ###########
 
-    ## Dates
+  ## Dates
 
   dimension: orden_fecha_activacion_src {
     type: date_time
@@ -2118,7 +2087,7 @@ view: fth_caso {
     label: "Orden Fecha Creacion"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: orden_estado_provisionamiento_nombre {
     type: string
@@ -2221,7 +2190,7 @@ view: fth_caso {
     label: "Orden Id"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: orden_estado_provisionamiento_sk {
     hidden: yes
@@ -2342,7 +2311,6 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Orden.OrdenTipoCambioPlanSRCId ;;
   }
-
 
 ##############
 ## Producto ##
@@ -2484,7 +2452,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoFamiliaSRCId ;;
     view_label: "Producto"
-    label: "Familia Id"
+    label: "Familia ID"
   }
 
   dimension: producto_familia_nombre {
@@ -2498,7 +2466,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoEstadoSRCId ;;
     view_label: "Producto"
-    label: "Estado Id"
+    label: "Estado ID"
   }
 
   dimension: producto_estado_nombre {
@@ -2512,7 +2480,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoSRCId ;;
     view_label: "Producto"
-    label: "Tipo Id"
+    label: "Tipo ID"
   }
 
   dimension: producto_tipo_nombre {
@@ -2526,7 +2494,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoSubTipoSRCId ;;
     view_label: "Producto"
-    label: "Subtipo Id"
+    label: "Subtipo ID"
   }
 
   dimension: producto_subtipo_nombre {
@@ -2540,7 +2508,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoMercadoSRCId ;;
     view_label: "Producto"
-    label: "Mercado Id"
+    label: "Mercado ID"
   }
 
   dimension: producto_mercado_nombre {
@@ -2589,7 +2557,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoSistemaOrigenINTId ;;
     view_label: "Producto"
-    label: "Sistema Origen Id"
+    label: "Sistema Origen ID"
   }
 
   dimension: producto_sistema_origen_descripcion {
@@ -2617,7 +2585,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoSRCId ;;
     view_label: "Producto"
-    label: "Id"
+    label: "ID"
   }
 
   dimension: producto_tipo_objeto_descripcion {
@@ -2631,7 +2599,7 @@ view: fth_caso {
     type: string
     sql: ${TABLE}.Producto.ProductoSegmentoSRCId ;;
     view_label: "Producto"
-    label: "Segmento Id"
+    label: "Segmento ID"
   }
 
   ## Hidden
@@ -2677,7 +2645,7 @@ view: fth_caso {
 ## Producto Adquirido ##
 ########################
 
-    ## Dates
+  ## Dates
 
   dimension: producto_adquirido_fecha_activacion_src {
     type: date_time
@@ -2704,7 +2672,7 @@ view: fth_caso {
     label: "Producto Adquirido Fecha Compra"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: producto_adquirido_estado_provisionamiento_nombre {
     type: string
@@ -2751,7 +2719,7 @@ view: fth_caso {
     label: "Producto Adquirido"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: producto_adquirido_estado_provisionamiento_sk {
     hidden: yes
@@ -2793,7 +2761,7 @@ view: fth_caso {
 ## Usuario ##
 #############
 
-    ## Strings
+  ## Strings
 
   dimension: usuario_empresa_modificacion {
     type: string
@@ -2880,90 +2848,108 @@ view: fth_caso {
     label: "Usuario Empresa Alta"
   }
 
-##############
-## Measures ##
-##############
+## Measures
 
   measure: count_caso {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Casos"
   }
 
+  measure: total_acuerdo_servicio_cant_casos {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioCantCasos ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Casos"
+  }
+
+  measure: total_acuerdo_servicio_total_usos_destruccion {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosDestruccion ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Usos Destruccion"
+  }
+
+  measure: total_acuerdo_servicio_total_usos_servicio_tecnico {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosServicioTecnico ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Usos Servicio Tecnico"
+  }
+
+  measure: total_acuerdo_servicio_total_usos_siniestro {
+    type: sum
+    sql: ${TABLE}.AcuerdoServicio.AcuerdoServicioTotalUsosSiniestro ;;
+    view_label: "Acuerdo Servicio"
+    label: "Cantidad Usos Siniestro"
+  }
+
   measure: count_acuerdo_pago {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Acuerdo Pago"
     description: "Acuerdo de compromiso de pago."
     filters: [
-        caso_tipo_nombre: "ACUERDO DE PAGO"
+      caso_tipo_nombre: "ACUERDO DE PAGO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
       , caso_sub_tipo_nombre: "-CANCELACION"
     ]
   }
 
   measure: count_acuerdo_pago_cancelado {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Acuerdo Pago Cancelado"
     description: "Acuerdo de compromiso de pago cancelado"
     filters: [
-        caso_tipo_nombre: "ACUERDO DE PAGO"
+      caso_tipo_nombre: "ACUERDO DE PAGO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
       , caso_sub_tipo_nombre: "CANCELACION"
     ]
   }
 
   measure: count_asistencia_delivery {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Asistencia Delivery"
     description: "Pedido de asistencia delivery."
     filters: [
-        caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
+      caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
       , caso_estado_nombre: "RESUELTA EXITOSA"
       , caso_sub_tipo_nombre: "VENTA PORTIN, VENTA, CAMBIO DE TARJETA SIM"
     ]
   }
 
   measure: count_asistencia_delivery_anulado {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Asistencia Delivery Anulado"
     description: "Pedido de asistencia delivery anulado."
     filters: [
-        caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
+      caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
       , caso_estado_nombre: "RESUELTA EXITOSA"
       , caso_sub_tipo_nombre: "ANULACION"
     ]
   }
 
   measure: count_asistencia_tecnica {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Asistencia Tecnica"
     description: "Pedido de asistencia tecnica con visita de tecnico."
     filters: [
-        caso_tipo_nombre: "ASISTENCIA TECNICA"
+      caso_tipo_nombre: "ASISTENCIA TECNICA"
       , caso_estado_nombre: "RESUELTA EXITOSA"
     ]
   }
 
   measure: count_alta_debito_autom{
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Alta DA"
     description: "Casos de adhesion al debito automatico."
     filters: [
-        caso_tipo_nombre: "DEBITO AUTOMATICO"
+      caso_tipo_nombre: "DEBITO AUTOMATICO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
       , caso_sub_tipo_nombre: "ADHESION"
     ]
   }
 
   measure: count_baja_debito_autom{
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Baja DA"
     description: "Casos de baja al debito automatico."
     filters: [
@@ -2974,50 +2960,45 @@ view: fth_caso {
   }
 
   measure: count_clientes_no_fidelizados{
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "No Fidelizados"
     description: "Clientes no fidelizados."
     filters: [
-        caso_tipo_nombre: "FIDELIZACION"
+      caso_tipo_nombre: "FIDELIZACION"
       , caso_estado_nombre: "ANULADA"
     ]
   }
 
   measure: count_bajas_postdateadas {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Bajas Posdateadas"
     description: "Cantidad de bajas pendientes de ejecucion ."
     filters: [
-        caso_tipo_nombre: "PEDIDO DE BAJA"
+      caso_tipo_nombre: "PEDIDO DE BAJA"
       , caso_estado_nombre: "EN ESPERA DE EJECUCION "
     ]
   }
 
   measure: count_demanda_retencion {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Demanda Retencion"
     description: "Corresponde al ingreso de pedido de retencion / fidelizacion."
     filters: [es_demanda_retencion: "Yes"]
   }
 
   measure: count_fidelizacion {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Fidelizacion"
     description: "Clientes retenidos sin oferta."
     filters: [es_fidelizacion: "Yes"]
   }
 
   measure: count_retenido_asesoramiento {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "Retenido Asesoramiento"
     description: "Retenidos con asesoramiento."
     filters: [
-        caso_estado_nombre: "RETENIDA, INFORMADA"
+      caso_estado_nombre: "RETENIDA, INFORMADA"
       , caso_tipo_nombre: "PEDIDO DE BAJA"
       , caso_resultado_retencion_nombre: "ASESORAMIENTO, OFERTAS"
       , caso_tipo_asset: "PLAN HIBRIDO, PLAN POSPAGO"
@@ -3030,12 +3011,11 @@ view: fth_caso {
   }
 
   measure: count_no_retenido_desconexiones {
-    type: count_distinct
-    sql: ${caso_srcid} ;;
+    type: count
     label: "No Retenido Desconexiones"
     description: "No retenido bajas efectivas."
     filters: [
-        caso_tipo_nombre: "PEDIDO DE BAJA"
+      caso_tipo_nombre: "PEDIDO DE BAJA"
       , caso_resultado_retencion_nombre: "-NO APLICA"
       , caso_tipo_asset: "PLAN HIBRIDO, PLAN POSPAGO"
       , orden_estado_nombre: "-CANCELADA, -CANCELADA PROCESO MASIVO"
@@ -3044,8 +3024,6 @@ view: fth_caso {
       , es_no_retenido_desconexiones_tmp: "Yes"
     ]
   }
-
-
 }
 
 #################################
@@ -3058,7 +3036,7 @@ view: fth_caso {
 
 view: fth_caso_caso_hito {
 
-    ## Primary Key
+  ## Primary Key
 
   dimension: caso_hito_srcid {
     primary_key: yes
@@ -3066,10 +3044,10 @@ view: fth_caso_caso_hito {
     sql: ${TABLE}.CasoHitoSRCId ;;
     value_format_name: id
     view_label: "Otros"
-    label: "Caso Hito Id"
+    label: "Caso Hito ID"
   }
 
-    ## Dates
+  ## Dates
 
   dimension: caso_hito_fecha_creacion_src {
     type: date_time
@@ -3103,7 +3081,7 @@ view: fth_caso_caso_hito {
     label: "Caso Hito Fecha Objetivo"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: caso_hito_tiempo_excedido_minutos {
     type: string
@@ -3119,7 +3097,7 @@ view: fth_caso_caso_hito {
     label: "Caso Hito Tiempo Restante Minutos"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: caso_hito_marca_completado {
     type: yesno
@@ -3127,7 +3105,7 @@ view: fth_caso_caso_hito {
     label: "Es Hito Completado "
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: origen_srcid {
     type: number
@@ -3178,17 +3156,17 @@ view: fth_caso_caso_hito {
 
 view: fth_caso_comentarios {
 
-    ## Primary Key
+  ## Primary Key
 
   dimension: caso_comentario_srcid {
     primary_key: yes
     type: string
     sql: ${TABLE}.CasoComentarioSRCId ;;
     value_format_name: id
-    label: "Comentario Id"
+    label: "Comentario ID"
   }
 
-    ## Fechas
+  ## Dates
 
   dimension: caso_comentario_fecha_creacion_src {
     type: date_time
@@ -3197,7 +3175,7 @@ view: fth_caso_comentarios {
     label: "Fecha Creacion"
   }
 
-    ## String
+  ## Strings
 
   dimension: caso_comentario_cuerpo {
     type: string
