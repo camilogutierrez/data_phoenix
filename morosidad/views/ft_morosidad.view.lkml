@@ -11,7 +11,7 @@ view: ft_morosidad {
     primary_key: yes
     type: number
     sql: ${TABLE}.OBJECT_ID ;;
-    label: "Object ID"
+    label: "OBJECT ID"
   }
 
  ## Dates
@@ -30,7 +30,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.CREATE_DATE ;;
     group_label: "Fecha Creacion"
-    label: "Creacion"
+    label: "Gestion Mora Fecha"
   }
 
   dimension_group: fec_co_vie {
@@ -47,7 +47,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.FEC_CO_VIE ;;
     group_label: "Fecha CO VIE"
-    label: "CO VIE"
+    label: "FECOVIE"
   }
 
   dimension_group: fec_proce {
@@ -63,7 +63,7 @@ view: ft_morosidad {
     ]
     sql: ${TABLE}.FEC_PROCE ;;
     group_label: "Fecha Proce."
-    label: "Proce."
+    label: "Proceso Fecha RUS"
   }
 
   dimension_group: fecha_proceso {
@@ -79,7 +79,7 @@ view: ft_morosidad {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FECHA_PROCESO ;;
-    group_label: "Fecha Proceso"
+    group_label: "Proceso Fecha"
     label: "Proceso"
   }
 
@@ -97,7 +97,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.FECHA_VTO_GUIA ;;
     group_label: "Fecha Vencimiento Guia"
-    label: "Vencimiento Guia"
+    label: "Vencimiento Guia Fecha"
   }
 
   dimension_group: prox_accion_fecha {
@@ -114,7 +114,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
     group_label: "Fecha Proxima Accion"
-    label: "Proxima Accion"
+    label: "Proxima Accion Fecha"
   }
 
   dimension_group: resume_actual {
@@ -130,7 +130,7 @@ view: ft_morosidad {
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
     group_label: "Fecha Rehabilitacion Actual"
-    label: "Rehabilitacion Actual"
+    label: "Rehabilitacion Fecha"
   }
 
   dimension_group: start_collect {
@@ -146,7 +146,7 @@ view: ft_morosidad {
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
     group_label: "Fecha Gestion Mora"
-    label: "Gestion Mora"
+    label: "Proceso Fecha Inicio"
   }
 
   dimension_group: ult_accion_fecha_exe {
@@ -162,7 +162,7 @@ view: ft_morosidad {
     ]
     sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
     group_label: "Fecha Ultima Accion"
-    label: "Ultima Accion"
+    label: "Mora Hito Fecha Inicio"
   }
 
   ## Strings
@@ -170,7 +170,7 @@ view: ft_morosidad {
   dimension: accion_ejecutada {
     type: string
     sql: ${TABLE}.ACCION_EJECUTADA ;;
-    group_item_label: "Accion Ejecutada"
+    group_item_label: "Accion ejecutada Si/No"
   }
 
   dimension: apellido_cliente {
@@ -223,21 +223,21 @@ view: ft_morosidad {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
     group_label: "Cliente"
-    group_item_label: "Sub Segmento"
+    group_item_label: "Subsegmento"
   }
 
   dimension: customer_code {
     type: string
     sql: ${TABLE}.CUSTOMER_CODE ;;
     group_label: "Cliente"
-    group_item_label: "Codigo"
+    group_item_label: "Cliente Codigo"
   }
 
   dimension: dni_cuit {
     type: string
     sql: ${TABLE}.DNI_CUIT ;;
     group_label: "DNI"
-    group_item_label: "CUIT"
+    group_item_label: "Documento Numero"
 
   }
 
@@ -265,37 +265,37 @@ view: ft_morosidad {
   dimension: dunning_flag {
     type: string
     sql: ${TABLE}.DUNNING_FLAG ;;
-    label: "Dunning"
+    label: "Dunning Flag"
   }
 
   dimension: dunning_flag_des {
     type: string
     sql: ${TABLE}.DUNNING_FLAG_DES ;;
-    label: "Dunning Descripcion"
+    label: "Dunning Flag Descripcion"
   }
 
   dimension: exec_status {
     type: string
     sql: ${TABLE}.EXEC_STATUS ;;
-    label: "Status Ejecucion"
+    label: "Mora Estado Gestion ID"
   }
 
   dimension: exec_status_des {
     type: string
     sql: ${TABLE}.EXEC_STATUS_DES ;;
-    label: "Status Ejecucion Descripcion"
+    label: "Mora Estado Gestion"
   }
 
   dimension: group_code {
     type: string
     sql: ${TABLE}.GROUP_CODE ;;
-    label: "Collection Group"
+    label: "Colleccion Grupo"
   }
 
   dimension: group_version {
     type: string
     sql: ${TABLE}.GROUP_VERSION ;;
-    label: "Version Group"
+    label: "Linea Version"
   }
 
   dimension: linea_mora {
@@ -309,7 +309,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS ;;
     group_label: "Migracion"
     group_item_label: "Status"
-    label: "Migracion Status"
+    label: "Estado Gestion ID"
   }
 
   dimension: mgr_status_des {
@@ -317,7 +317,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS_DES ;;
     group_label: "Migracion"
     group_item_label: "Status Descripcion"
-    label: "Migracion Status Descripcion"
+    label: "Estado Gestion"
   }
 
   dimension: mgr_status_reason {
@@ -325,7 +325,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS_REASON ;;
     group_label: "Migracion"
     group_item_label: "Status Razon"
-    label: "Migracion Status Razon"
+    label: "Motivo Estado Gestion ID"
   }
 
   dimension: mgr_status_reason_des {
@@ -333,7 +333,7 @@ view: ft_morosidad {
     sql: ${TABLE}.MGR_STATUS_REASON_DES ;;
     group_label: "Migracion"
     group_item_label: "Status Razon Descripcion"
-    label: "Migracion Status Razon Descripcion"
+    label: "Motivo Estado Gestion"
   }
 
   dimension: nombre_cliente {
@@ -341,12 +341,6 @@ view: ft_morosidad {
     sql: ${TABLE}.NOMBRE_CLIENTE ;;
     group_label: "Cliente"
     group_item_label: "Nombre"
-  }
-
-  dimension: particion {
-    type: string
-    sql: ${TABLE}.PARTICION ;;
-    label: "Particion"
   }
 
   dimension: razonsocial {
@@ -372,7 +366,7 @@ view: ft_morosidad {
   dimension: ult_accion_code_exe {
     type: string
     sql: ${TABLE}.ULT_ACCION_CODE_EXE ;;
-    label: "Hito Ultimo Codigo"
+    label: "Mora Hito"
   }
 
 
@@ -385,11 +379,11 @@ view: ft_morosidad {
     group_item_label: "Cuenta ID"
   }
 
-  dimension: cant_lin_nopre {
-    type: number
-    sql: ${TABLE}.CANT_LIN_NOPRE ;;
-    label: "Cantidad Lin NoPre"
-  }
+  # dimension: cant_lin_nopre {
+  #  type: number
+  #  sql: ${TABLE}.CANT_LIN_NOPRE ;;
+  #  label: "CANT Lineas NoPrepagas"
+  # }
 
   dimension: cuenta_q_fija_bundle {
     type: number
@@ -443,7 +437,7 @@ view: ft_morosidad {
   dimension: dias_proximo_hito {
     type: number
     sql: ${TABLE}.DIAS_PROXIMO_HITO ;;
-    label: "Dias Proximo Hito"
+    label: "CANT Dias Proximo Hito"
   }
 
   dimension: dni_q_fija_bundle {
@@ -492,10 +486,17 @@ view: ft_morosidad {
     type: number
     value_format_name: id
     sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
-    label: "Hito Ultimo ID"
+    label: "Mora Hito ID"
   }
 
   ## Hidden
+
+  dimension: particion {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.PARTICION ;;
+    label: "Particion"
+  }
 
   dimension: open_amount {
     hidden: yes
@@ -538,13 +539,13 @@ view: ft_morosidad {
   measure: total_open_amount {
     type: sum
     sql: ${TABLE}.OPEN_AMOUNT ;;
-    label: "Open Amount"
+    label: "RUS Saldo RUS"
   }
 
   measure: total_os_amount {
     type: sum
     sql: ${TABLE}.OS_AMOUNT ;;
-    label: "OS Amount"
+    label: "Saldo Vencido"
   }
 
   measure: total_saldo {
@@ -556,12 +557,19 @@ view: ft_morosidad {
   measure: total_saldo_a_vencer {
     type: sum
     sql: ${TABLE}.SALDO_A_VENCER ;;
-    label: "Saldo a Vencer"
+    label: "Saldo a Vencer RUS"
   }
 
   measure: total_saldo_vencido {
     type: sum
     sql: ${TABLE}.SALDO_VENCIDO ;;
-    label: "Saldo Vencido"
+    label: "Saldo Vencido RUS"
   }
+
+  measure: cant_lin_nopre {
+    type: sum
+    sql: ${TABLE}.CANT_LIN_NOPRE ;;
+    label: "CANT Lineas NoPrepagas"
+  }
+
 }
