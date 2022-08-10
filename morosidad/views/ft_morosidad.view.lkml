@@ -3,7 +3,7 @@ view: ft_morosidad {
   sql_table_name: @{gcp_ambiente}.FT_Morosidad` ;;
   suggestions: no
 
- ## Dimensions
+## Dimensions
 
  ## Primary Key
 
@@ -11,9 +11,8 @@ view: ft_morosidad {
     primary_key: yes
     type: number
     sql: ${TABLE}.OBJECT_ID ;;
-    label: "OBJECT ID"
+    label: "Object ID"
   }
-
 
  ## Dates
 
@@ -24,6 +23,7 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -31,7 +31,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.CREATE_DATE ;;
     group_label: "Fecha Gestion Mora"
-    label: "Gestion Mora Fecha"
+    label: "Gestion Mora"
   }
 
   dimension_group: fec_co_vie {
@@ -41,14 +41,15 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FEC_CO_VIE ;;
-    group_label: "Fecha COVIE RUS"
-    label: "FECOVIE RUS"
+    group_label: "Fecha Vencimiento Comprobante"
+    label: "Vencimiento Comprobante"
     description: "Fecha de vencimiento del comprobante mas antiguo impago"
   }
 
@@ -60,12 +61,13 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.FEC_PROCE ;;
-    group_label: "Fecha Proce. RUS"
-    label: "Proceso Fecha RUS"
+    group_label: "Fecha Proceso RUS"
+    label: "Proceso RUS"
   }
 
   dimension_group: fecha_proceso {
@@ -75,6 +77,7 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -82,7 +85,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.FECHA_PROCESO ;;
     group_label: "Fecha Proceso"
-    label: "Proceso Fecha"
+    label: "Proceso"
   }
 
   dimension_group: fecha_vto_guia {
@@ -92,14 +95,16 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FECHA_VTO_GUIA ;;
-    group_label: "Fecha Vencimiento Guia RUS"
-    label: "Vencimiento Guia Fecha RUS"
+    view_label: "RUS"
+    group_label: "Fecha Vencimiento Guia"
+    label: "Vencimiento Guia"
   }
 
   dimension_group: prox_accion_fecha {
@@ -109,6 +114,7 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -116,7 +122,7 @@ view: ft_morosidad {
     datatype: date
     sql: ${TABLE}.PROX_ACCION_FECHA ;;
     group_label: "Fecha Proxima Accion"
-    label: "Proxima Accion Fecha"
+    label: "Proxima Accion"
   }
 
   dimension_group: resume_actual_date {
@@ -127,12 +133,13 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.RESUME_ACTUAL_DATE ;;
     group_label: "Fecha Rehabilitacion Actual"
-    label: "Rehabilitacion Fecha"
+    label: "Rehabilitacion Actual"
   }
 
   dimension_group: start_collect {
@@ -143,12 +150,13 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
     group_label: "Fecha Inicio Proceso"
-    label: "Proceso Fecha Inicio"
+    label: "Inicio Proceso"
     description: "Fecha de comienzo del proceso de Collectión (due date + 1)"
   }
 
@@ -160,14 +168,14 @@ view: ft_morosidad {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
     sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
-    group_label: "Fecha Mora Hito"
-    label: "Mora Hito Fecha Inicio"
+    group_label: "Fecha Inicio Mora Hito"
+    label: "Inicio Mora Hito"
   }
-
 
   ## Strings
 
@@ -180,86 +188,97 @@ view: ft_morosidad {
   dimension: apellido_cliente {
     type: string
     sql: ${TABLE}.APELLIDO_CLIENTE ;;
-    group_label: "Cliente"
-    group_item_label: "Apellido"
+    view_label: "Cliente"
+    label: "Apellido"
   }
 
   dimension: ciclo {
     type: string
     sql: ${TABLE}.CICLO ;;
-    group_label: "RUS"
-    group_item_label: "Ciclo Facturacion"
+    view_label: "RUS"
+    label: "Ciclo Facturacion"
   }
 
   dimension: cuenta_segmentacion {
     type: string
     sql: ${TABLE}.CUENTA_SEGMENTACION ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_SEGMENTACION"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Segementacion"
+    label: "Cuenta Segmentacion"
   }
 
   dimension: cuenta_nplay {
     type: string
     sql: ${TABLE}.CUENTA_NPLAY ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_NPLAY"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "NPLAY"
+    label: "Cuenta NPLAY"
   }
 
   dimension: cuenta_producto {
     type: string
     sql: ${TABLE}.CUENTA_PRODUCTO ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_PRODUCTO"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Producto"
+    label: "Cuenta Producto"
   }
 
   dimension: cust_segment {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
-    group_label: "Cliente"
-    group_item_label: "Segmento"
+    view_label: "Cliente"
+    label: "Segmento"
   }
 
   dimension: cust_subsegment1 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
-    group_label: "Cliente"
-    group_item_label: "Subsegmento"
+    view_label: "Cliente"
+    label: "Subsegmento"
   }
 
   dimension: customer_code {
     type: string
     sql: ${TABLE}.CUSTOMER_CODE ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Codigo"
+    view_label: "Cliente"
+    label: "Codigo"
   }
 
   dimension: dni_cuit {
     type: string
     sql: ${TABLE}.DNI_CUIT ;;
-    group_label: "Cliente"
-    group_item_label: "Documento Numero"
-
+    view_label: "Cliente"
+    label: "Documento"
   }
 
   dimension: dni_nplay {
     type: string
     sql: ${TABLE}.DNI_NPLAY ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_NPLAY"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "NPLAY"
+    label: "DNI NPLAY"
   }
 
   dimension: dni_producto {
     type: string
     sql: ${TABLE}.DNI_PRODUCTO ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_PRODUCTO"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Producto"
+    label: "DNI Producto"
   }
 
   dimension: dni_segmentacion {
     type: string
     sql: ${TABLE}.DNI_SEGMENTACION ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_SEGMENTACION"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Segmentacion"
+    label: "DNI Segmentacion"
   }
 
   dimension: dunning_flag {
@@ -307,54 +326,46 @@ view: ft_morosidad {
   dimension: mgr_status {
     type: string
     sql: ${TABLE}.MGR_STATUS ;;
-    group_label: "Migracion"
-    group_item_label: "Status"
     label: "Estado Gestion ID"
   }
 
   dimension: mgr_status_des {
     type: string
     sql: ${TABLE}.MGR_STATUS_DES ;;
-    group_label: "Migracion"
-    group_item_label: "Status Descripcion"
     label: "Estado Gestion"
   }
 
   dimension: mgr_status_reason {
     type: string
     sql: ${TABLE}.MGR_STATUS_REASON ;;
-    group_label: "Migracion"
-    group_item_label: "Status Razon"
     label: "Motivo Estado Gestion ID"
   }
 
   dimension: mgr_status_reason_des {
     type: string
     sql: ${TABLE}.MGR_STATUS_REASON_DES ;;
-    group_label: "Migracion"
-    group_item_label: "Status Razon Descripcion"
     label: "Motivo Estado Gestion"
   }
 
   dimension: nombre_cliente {
     type: string
     sql: ${TABLE}.NOMBRE_CLIENTE ;;
-    group_label: "Cliente"
-    group_item_label: "Nombre"
+    view_label: "Cliente"
+    label: "Nombre"
   }
 
   dimension: razonsocial {
     type: string
     sql: ${TABLE}.RAZONSOCIAL ;;
-    group_label: "Cliente"
-    group_item_label: "Razon Social"
+    view_label: "Cliente"
+    label: "Razon Social"
   }
 
   dimension: tipo_doc {
     type: string
     sql: ${TABLE}.TIPO_DOC ;;
-    group_label: "Cliente"
-    group_item_label: "Documento Tipo"
+    view_label: "Cliente"
+    label: "Tipo Documento"
   }
 
   dimension: tipo_mora_hito {
@@ -376,27 +387,20 @@ view: ft_morosidad {
     group_item_label: "Cuenta Codigo"
   }
 
-
   ## Numbers
 
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta ID"
+    view_label: "Cliente"
+    label: "Cuenta ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente ID"
-  }
-
-  dimension: dias_proximo_hito {
-    type: number
-    sql: ${TABLE}.DIAS_PROXIMO_HITO ;;
-    label: "CANT Dias Proximo Hito"
+    view_label: "Cliente"
+    label: "ID"
   }
 
   dimension: ult_accion_id_exe {
@@ -408,19 +412,16 @@ view: ft_morosidad {
 
   dimension: cant_dias_mora {
     type: number
-    value_format_name: id
-    sql: date_diff(${TABLE}.FECHA_PROCESO, ${TABLE}.FEC_CO_VIE, DAY) ;;
-    label: "CANT Dias Mora"
+    sql: date_diff(${fecha_proceso_date}, ${fec_co_vie_date}, DAY) ;;
+    label: "Dias Mora"
   }
-
 
   ## Hidden
 
-  dimension: particion {
+  dimension: dias_proximo_hito {
     hidden: yes
-    type: string
-    sql: ${TABLE}.PARTICION ;;
-    label: "Particion"
+    type: number
+    sql: ${TABLE}.DIAS_PROXIMO_HITO ;;
   }
 
   dimension: open_amount {
@@ -457,113 +458,97 @@ view: ft_morosidad {
     hidden: yes
     type: number
     sql: ${TABLE}.CANT_LIN_NOPRE ;;
-    label: "CANT Lineas NoPrepagas"
-    description: "El cálculo se realiza en RUS01"
   }
 
   dimension: cuenta_q_movil_pre {
     hidden: yes
     type: number
     sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
-    label: "CUENTA_Q_MOVIL_PRE"
   }
 
   dimension: cuenta_q_movil_abono {
     hidden: yes
     type: number
     sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
-    label: "CUENTA_Q_MOVIL_ABONO"
   }
 
   dimension: cuenta_q_fija_tv {
     hidden: yes
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
-    label: "CUENTA_Q_FIJA_TV"
   }
 
   dimension: cuenta_q_fija_internet {
     hidden: yes
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
-    label: "CUENTA_Q_FIJA_INTERNET"
   }
 
   dimension: cuenta_q_fija_toip {
     hidden: yes
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
-    label: "CUENTA_Q_FIJA_TOIP"
   }
 
   dimension: cuenta_q_fija_bundle {
     hidden: yes
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
-    label: "CUENTA_Q_FIJA_BUNDLE"
   }
 
   dimension: dni_q_movil_pre {
     hidden: yes
     type: number
     sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
-    label: "DNI_Q_MOVIL_PRE"
   }
 
   dimension: dni_q_movil_abono {
     hidden: yes
     type: number
     sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
-    label: "DNI_Q_MOVIL_ABONO"
   }
 
   dimension: dni_q_fija_tv {
     hidden: yes
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_TV ;;
-    label: "DNI_Q_FIJA_TV"
   }
 
   dimension: dni_q_fija_internet {
     hidden: yes
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
-    label: "DNI_Q_FIJA_INTERNET"
   }
 
   dimension: dni_q_fija_toip {
     hidden: yes
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
-    label: "DNI_Q_FIJA_TOIP"
   }
 
   dimension: dni_q_fija_bundle {
     hidden: yes
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
-    label: "DNI_Q_FIJA_BUNDLE"
   }
 
   dimension: cant_comprob {
     hidden: yes
     type: number
     sql: ${TABLE}.CANT_COMPROB ;;
-    label: "Cantidad de Comprobantes"
   }
 
-
-  ## Measures
+## Measures
 
   measure: count {
     type: count
-    label: "CANT Registros"
+    label: "Registros"
   }
 
   measure: total_open_amount {
     type: sum
     sql: ${open_amount} ;;
-    label: "Saldo RUS"
+    label: "Saldo"
   }
 
   measure: total_os_amount {
@@ -575,123 +560,158 @@ view: ft_morosidad {
   measure: total_saldo {
     type: sum
     sql: ${saldo} ;;
+    view_label: "RUS"
     label: "Saldo"
   }
 
   measure: total_saldo_a_vencer {
     type: sum
     sql: ${saldo_a_vencer} ;;
-    label: "Saldo a Vencer RUS"
+    view_label: "RUS"
+    label: "Saldo a Vencer"
   }
 
   measure: total_saldo_vencido {
     type: sum
     sql: ${saldo_vencido} ;;
-    label: "Saldo Vencido RUS"
+    view_label: "RUS"
+    label: "Saldo Vencido"
   }
 
   measure: total_cant_lin_nopre {
     type: sum
     sql: ${cant_lin_nopre} ;;
-    label: "CANT Lineas NoPrepagas"
+    view_label: "RUS"
+    label: "Lineas No Prepagas"
   }
 
   measure: total_cuenta_code {
     type: count_distinct
     sql: ${cuenta_code} ;;
-    label: "CANT Cuenta Codigo"
+    group_label: "Cantidad"
+    label: "Cuenta Codigo"
     description: "Responsable de pago / Cuenta Code"
   }
 
   measure: total_cuenta_q_movil_pre {
     type: sum
     sql: ${cuenta_q_movil_pre} ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_Q_MOVIL_PRE"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Movil Prepago"
+    label: "Cuenta Movil Prepago"
   }
 
   measure: total_cuenta_q_movil_abono {
     type: sum
     sql: ${cuenta_q_movil_abono} ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_Q_MOVIL_ABONO"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Movil Abono"
+    label: "Cuenta Movil Abono"
   }
 
   measure: total_cuenta_q_fija_tv {
     type: sum
     sql: ${cuenta_q_fija_tv} ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_Q_FIJA_TV"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Fija TV"
+    label: "Cuenta Fija TV"
   }
 
   measure: total_cuenta_q_fija_internet {
     type: sum
     sql: ${cuenta_q_fija_internet} ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_Q_FIJA_INTERNET"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Fija Internet"
+    label: "Cuenta Fija Internet"
   }
 
   measure: total_cuenta_q_fija_toip {
     type: sum
     sql: ${cuenta_q_fija_toip} ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_Q_FIJA_TOIP"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Fija TOIP"
+    label: "Cuenta Fija TOIP "
   }
 
   measure: total_cuenta_q_fija_bundle {
     type: sum
     sql: ${cuenta_q_fija_bundle} ;;
-    group_label: "NPLAY"
-    group_item_label: "CUENTA_Q_FIJA_BUNDLE"
+    view_label: "NPLAY"
+    group_label: "Cuenta"
+    group_item_label: "Fija Bundle"
+    label: "Cuenta Fija Bundle"
   }
 
   measure: total_dni_q_movil_pre {
     type: sum
     sql: ${dni_q_movil_pre} ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_Q_MOVIL_PRE"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Movil Prepago"
+    label: "DNI Movil Prepago"
   }
 
   measure: total_dni_q_movil_abono {
     type: sum
     sql: ${dni_q_movil_abono} ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_Q_MOVIL_ABONO"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Movil Abono"
+    label: "DNI Movil Abono"
   }
 
   measure: total_dni_q_fija_tv {
     type: sum
     sql: ${dni_q_fija_tv} ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_Q_FIJA_TV"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Fija TV"
+    label: "DNI Fija TV"
   }
 
   measure: total_dni_q_fija_internet {
     type: sum
     sql: ${dni_q_fija_internet} ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_Q_FIJA_INTERNET"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Fija Internet"
+    label: "DNI Fija Internet"
   }
 
   measure: total_dni_q_fija_toip {
     type: sum
     sql: ${dni_q_fija_toip} ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_Q_FIJA_TOIP"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Fija TOIP"
+    label: "DNI Fija TOIP"
   }
 
   measure: total_dni_q_fija_bundle {
     type: sum
     sql: ${dni_q_fija_bundle} ;;
-    group_label: "NPLAY"
-    group_item_label: "DNI_Q_FIJA_BUNDLE"
+    view_label: "NPLAY"
+    group_label: "DNI"
+    group_item_label: "Fija Bundle"
+    label: "DNI Fija Bundle"
   }
 
   measure: total_cant_comprob {
     type: sum
     sql: ${cant_comprob} ;;
-    label: "CANT Comprobantes Vencidos"
+    label: "Comprobantes Vencidos"
     description: "El cálculo se realiza en RUS01"
+  }
+
+  measure: total_dias_proximo_hito {
+    type: sum
+    sql: ${dias_proximo_hito} ;;
+    label: "Total Dias Proximo Hito"
   }
 
 }
