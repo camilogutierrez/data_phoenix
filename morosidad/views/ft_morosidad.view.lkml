@@ -3,7 +3,7 @@ view: ft_morosidad {
   sql_table_name: @{gcp_ambiente}.FT_Morosidad` ;;
   suggestions: no
 
-  ## Dimensions
+ ## Dimensions
 
  ## Primary Key
 
@@ -13,6 +13,7 @@ view: ft_morosidad {
     sql: ${TABLE}.OBJECT_ID ;;
     label: "OBJECT ID"
   }
+
 
  ## Dates
 
@@ -165,6 +166,7 @@ view: ft_morosidad {
     label: "Mora Hito Fecha Inicio"
   }
 
+
   ## Strings
 
   dimension: accion_ejecutada {
@@ -186,30 +188,25 @@ view: ft_morosidad {
     label: "Ciclo Facturacion"
   }
 
-  dimension: cuenta_code {
+  dimension: cuenta_segmentacion {
     type: string
-    sql: ${TABLE}.CUENTA_CODE ;;
-    group_label: "Cliente"
-    group_item_label: "CANT Cuenta Codigo"
-    description: "Responsable de pago / Cuenta Code"
+    sql: ${TABLE}.CUENTA_SEGMENTACION ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_SEGMENTACION"
   }
 
   dimension: cuenta_nplay {
     type: string
     sql: ${TABLE}.CUENTA_NPLAY ;;
-    label: "CUENTA_NPLAY"
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_NPLAY"
   }
 
   dimension: cuenta_producto {
     type: string
     sql: ${TABLE}.CUENTA_PRODUCTO ;;
-    label: "CUENTA_PRODUCTO"
-  }
-
-  dimension: cuenta_segmentacion {
-    type: string
-    sql: ${TABLE}.CUENTA_SEGMENTACION ;;
-    label: "CUENTA_SEGMENTACION"
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_PRODUCTO"
   }
 
   dimension: cust_segment {
@@ -244,21 +241,21 @@ view: ft_morosidad {
   dimension: dni_nplay {
     type: string
     sql: ${TABLE}.DNI_NPLAY ;;
-    group_label: "DNI"
+    group_label: "NPLAY"
     group_item_label: "DNI_NPLAY"
   }
 
   dimension: dni_producto {
     type: string
     sql: ${TABLE}.DNI_PRODUCTO ;;
-    group_label: "DNI"
+    group_label: "NPLAY"
     group_item_label: "DNI_PRODUCTO"
   }
 
   dimension: dni_segmentacion {
     type: string
     sql: ${TABLE}.DNI_SEGMENTACION ;;
-    group_label: "DNI"
+    group_label: "NPLAY"
     group_item_label: "DNI_SEGMENTACION"
   }
 
@@ -379,48 +376,6 @@ view: ft_morosidad {
     group_item_label: "Cuenta ID"
   }
 
-  dimension: cuenta_q_fija_bundle {
-    type: number
-    sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
-    group_label: "Cuenta Q Fija"
-    group_item_label: "CUENTA_Q_FIJA_BUNDLE"
-  }
-
-  dimension: cuenta_q_fija_internet {
-    type: number
-    sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
-    group_label: "Cuenta Q Fija"
-    group_item_label: "CUENTA_Q_FIJA_INTERNET"
-  }
-
-  dimension: cuenta_q_fija_toip {
-    type: number
-    sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
-    group_label: "Cuenta Q Fija"
-    group_item_label: "CUENTA_Q_FIJA_TOIP"
-  }
-
-  dimension: cuenta_q_fija_tv {
-    type: number
-    sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
-    group_label: "Cuenta Q Fija"
-    group_item_label: "CUENTA_Q_FIJA_TV"
-  }
-
-  dimension: cuenta_q_movil_abono {
-    type: number
-    sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
-    group_label: "Cuenta Q Movil"
-    group_item_label: "CUENTA_Q_MOVIL_ABONO"
-  }
-
-  dimension: cuenta_q_movil_pre {
-    type: number
-    sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
-    group_label: "Cuenta Q Movil"
-    group_item_label: "CUENTA_Q_MOVIL_PRE"
-  }
-
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
@@ -434,54 +389,13 @@ view: ft_morosidad {
     label: "CANT Dias Proximo Hito"
   }
 
-  dimension: dni_q_fija_bundle {
-    type: number
-    sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
-    group_label: "DNI Q Fija"
-    group_item_label: "DNI_Q_FIJA_BUNDLE"
-  }
-
-  dimension: dni_q_fija_internet {
-    type: number
-    sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
-    group_label: "DNI Q Fija"
-    group_item_label: "DNI_Q_FIJA_INTERNET"
-  }
-
-  dimension: dni_q_fija_toip {
-    type: number
-    sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
-    group_label: "DNI Q Fija"
-    group_item_label: "DNI_Q_FIJA_TOIP"
-  }
-
-  dimension: dni_q_fija_tv {
-    type: number
-    sql: ${TABLE}.DNI_Q_FIJA_TV ;;
-    group_label: "DNI Q Fija"
-    group_item_label: "DNI_Q_FIJA_TV"
-  }
-
-  dimension: dni_q_movil_abono {
-    type: number
-    sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
-    group_label: "DNI Q Movil"
-    group_item_label: "DNI_Q_MOVIL_ABONO"
-  }
-
-  dimension: dni_q_movil_pre {
-    type: number
-    sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
-    group_label: "DNI Q Movil"
-    group_item_label: "DNI_Q_MOVIL_PRE"
-  }
-
   dimension: ult_accion_id_exe {
     type: number
     value_format_name: id
     sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
     label: "Mora Hito ID"
   }
+
 
   ## Hidden
 
@@ -529,6 +443,98 @@ view: ft_morosidad {
     label: "CANT Lineas NoPrepagas"
   }
 
+  dimension: cuenta_code {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.CUENTA_CODE ;;
+    label: "CANT Cuenta Codigo"
+    description: "Responsable de pago / Cuenta Code"
+  }
+
+  dimension: cuenta_q_movil_pre {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
+    label: "CUENTA_Q_MOVIL_PRE"
+  }
+
+  dimension: cuenta_q_movil_abono {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
+    label: "CUENTA_Q_MOVIL_ABONO"
+  }
+
+  dimension: cuenta_q_fija_tv {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
+    label: "CUENTA_Q_FIJA_TV"
+  }
+
+  dimension: cuenta_q_fija_internet {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
+    label: "CUENTA_Q_FIJA_INTERNET"
+  }
+
+  dimension: cuenta_q_fija_toip {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
+    label: "CUENTA_Q_FIJA_TOIP"
+  }
+
+  dimension: cuenta_q_fija_bundle {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
+    label: "CUENTA_Q_FIJA_BUNDLE"
+  }
+
+  dimension: dni_q_movil_pre {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
+    label: "DNI_Q_MOVIL_PRE"
+  }
+
+  dimension: dni_q_movil_abono {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
+    label: "DNI_Q_MOVIL_ABONO"
+  }
+
+  dimension: dni_q_fija_tv {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DNI_Q_FIJA_TV ;;
+    label: "DNI_Q_FIJA_TV"
+  }
+
+  dimension: dni_q_fija_internet {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
+    label: "DNI_Q_FIJA_INTERNET"
+  }
+
+  dimension: dni_q_fija_toip {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
+    label: "DNI_Q_FIJA_TOIP"
+  }
+
+  dimension: dni_q_fija_bundle {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
+    label: "DNI_Q_FIJA_BUNDLE"
+  }
+
 
   ## Measures
 
@@ -574,9 +580,100 @@ view: ft_morosidad {
   }
 
   measure: total_object_id {
-    type: sum
+    type: count_distinct
     sql: ${TABLE}.OBJECT_ID ;;
     label: "CANT Registros"
+  }
+
+  measure: total_cuenta_code {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_CODE ;;
+    label: "CANT Cuenta Codigo"
+    description: "Responsable de pago / Cuenta Code"
+  }
+
+  measure: total_cuenta_q_movil_pre {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_Q_MOVIL_PRE"
+  }
+
+  measure: total_cuenta_q_movil_abono {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_Q_MOVIL_ABONO"
+  }
+
+  measure: total_cuenta_q_fija_tv {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_Q_FIJA_TV"
+  }
+
+  measure: total_cuenta_q_fija_internet {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_Q_FIJA_INTERNET"
+  }
+
+  measure: total_cuenta_q_fija_toip {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_Q_FIJA_TOIP"
+  }
+
+  measure: total_cuenta_q_fija_bundle {
+    type: count_distinct
+    sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
+    group_label: "NPLAY"
+    group_item_label: "CUENTA_Q_FIJA_BUNDLE"
+  }
+
+  measure: total_dni_q_movil_pre {
+    type: count_distinct
+    sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
+    group_label: "NPLAY"
+    group_item_label: "DNI_Q_MOVIL_PRE"
+  }
+
+  measure: total_dni_q_movil_abono {
+    type: count_distinct
+    sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
+    group_label: "NPLAY"
+    group_item_label: "DNI_Q_MOVIL_ABONO"
+  }
+
+  measure: total_dni_q_fija_tv {
+    type: count_distinct
+    sql: ${TABLE}.DNI_Q_FIJA_TV ;;
+    group_label: "NPLAY"
+    group_item_label: "DNI_Q_FIJA_TV"
+  }
+
+  measure: total_dni_q_fija_internet {
+    type: count_distinct
+    sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
+    group_label: "NPLAY"
+    group_item_label: "DNI_Q_FIJA_INTERNET"
+  }
+
+  measure: total_dni_q_fija_toip {
+    type: count_distinct
+    sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
+    group_label: "NPLAY"
+    group_item_label: "DNI_Q_FIJA_TOIP"
+  }
+
+  measure: total_dni_q_fija_bundle {
+    type: count_distinct
+    sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
+    group_label: "NPLAY"
+    group_item_label: "DNI_Q_FIJA_BUNDLE"
   }
 
 }
