@@ -562,134 +562,134 @@ view: ft_morosidad {
 
   measure: total_open_amount {
     type: sum
-    sql: ${TABLE}.OPEN_AMOUNT ;;
+    sql: ${open_amount} ;;
     label: "Saldo RUS"
   }
 
   measure: total_os_amount {
     type: sum
-    sql: ${TABLE}.OS_AMOUNT ;;
+    sql: ${os_amount} ;;
     label: "Saldo Vencido"
   }
 
   measure: total_saldo {
     type: sum
-    sql: ${TABLE}.SALDO ;;
+    sql: ${saldo} ;;
     label: "Saldo"
   }
 
   measure: total_saldo_a_vencer {
     type: sum
-    sql: ${TABLE}.SALDO_A_VENCER ;;
+    sql: ${saldo_a_vencer} ;;
     label: "Saldo a Vencer RUS"
   }
 
   measure: total_saldo_vencido {
     type: sum
-    sql: ${TABLE}.SALDO_VENCIDO ;;
+    sql: ${saldo_vencido} ;;
     label: "Saldo Vencido RUS"
   }
 
   measure: total_cant_lin_nopre {
     type: sum
-    sql: ${TABLE}.CANT_LIN_NOPRE ;;
+    sql: ${cant_lin_nopre} ;;
     label: "CANT Lineas NoPrepagas"
   }
 
   measure: total_cuenta_code {
     type: count_distinct
-    sql: ${TABLE}.CUENTA_CODE ;;
+    sql: ${cuenta_code} ;;
     label: "CANT Cuenta Codigo"
     description: "Responsable de pago / Cuenta Code"
   }
 
   measure: total_cuenta_q_movil_pre {
     type: sum
-    sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
+    sql: ${cuenta_q_movil_pre} ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_MOVIL_PRE"
   }
 
   measure: total_cuenta_q_movil_abono {
     type: sum
-    sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
+    sql: ${cuenta_q_movil_abono} ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_MOVIL_ABONO"
   }
 
   measure: total_cuenta_q_fija_tv {
     type: sum
-    sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
+    sql: ${cuenta_q_fija_tv} ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_TV"
   }
 
   measure: total_cuenta_q_fija_internet {
     type: sum
-    sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
+    sql: ${cuenta_q_fija_internet} ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_INTERNET"
   }
 
   measure: total_cuenta_q_fija_toip {
     type: sum
-    sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
+    sql: ${cuenta_q_fija_toip} ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_TOIP"
   }
 
   measure: total_cuenta_q_fija_bundle {
     type: sum
-    sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
+    sql: ${cuenta_q_fija_bundle} ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_BUNDLE"
   }
 
   measure: total_dni_q_movil_pre {
     type: sum
-    sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
+    sql: ${dni_q_movil_pre} ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_MOVIL_PRE"
   }
 
   measure: total_dni_q_movil_abono {
     type: sum
-    sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
+    sql: ${dni_q_movil_abono} ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_MOVIL_ABONO"
   }
 
   measure: total_dni_q_fija_tv {
     type: sum
-    sql: ${TABLE}.DNI_Q_FIJA_TV ;;
+    sql: ${dni_q_fija_tv} ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_TV"
   }
 
   measure: total_dni_q_fija_internet {
     type: sum
-    sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
+    sql: ${dni_q_fija_internet} ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_INTERNET"
   }
 
   measure: total_dni_q_fija_toip {
     type: sum
-    sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
+    sql: ${dni_q_fija_toip} ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_TOIP"
   }
 
   measure: total_dni_q_fija_bundle {
     type: sum
-    sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
+    sql: ${dni_q_fija_bundle} ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_BUNDLE"
   }
 
   measure: total_cant_comprob {
     type: sum
-    sql: ${TABLE}.CANT_COMPROB ;;
+    sql: ${cant_comprob} ;;
     label: "CANT Comprobantes Vencidos"
     description: "El cálculo se realiza en RUS01"
   }
