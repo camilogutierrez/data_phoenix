@@ -30,7 +30,7 @@ view: ft_morosidad {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.CREATE_DATE ;;
-    group_label: "Fecha Creacion"
+    group_label: "Fecha Gestion Mora"
     label: "Gestion Mora Fecha"
   }
 
@@ -47,8 +47,10 @@ view: ft_morosidad {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FEC_CO_VIE ;;
-    group_label: "Fecha CO VIE"
-    label: "FECOVIE"
+    #group_label: "Fecha COVIE"
+    group_label: "RUS"
+    group_item_label: "FECOVIE"
+    description: "Fecha de vencimiento del comprobante mas antiguo impago"
   }
 
   dimension_group: fec_proce {
@@ -80,8 +82,8 @@ view: ft_morosidad {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FECHA_PROCESO ;;
-    group_label: "Proceso Fecha"
-    label: "Proceso"
+    group_label: "Fecha Proceso"
+    label: "Proceso Fecha"
   }
 
   dimension_group: fecha_vto_guia {
@@ -118,7 +120,7 @@ view: ft_morosidad {
     label: "Proxima Accion Fecha"
   }
 
-  dimension_group: resume_actual {
+  dimension_group: resume_actual_date {
     type: time
     timeframes: [
       raw,
@@ -146,8 +148,9 @@ view: ft_morosidad {
       year
     ]
     sql: ${TABLE}.START_COLLECT_DATE ;;
-    group_label: "Fecha Gestion Mora"
+    group_label: "Fecha Inicio Proceso"
     label: "Proceso Fecha Inicio"
+    description: "Fecha de comienzo del proceso de Collectión (due date + 1)"
   }
 
   dimension_group: ult_accion_fecha_exe {
@@ -162,7 +165,7 @@ view: ft_morosidad {
       year
     ]
     sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
-    group_label: "Fecha Ultima Accion"
+    group_label: "Fecha Mora Hito"
     label: "Mora Hito Fecha Inicio"
   }
 
@@ -172,7 +175,7 @@ view: ft_morosidad {
   dimension: accion_ejecutada {
     type: string
     sql: ${TABLE}.ACCION_EJECUTADA ;;
-    group_item_label: "Accion ejecutada Si/No"
+    label: "Accion ejecutada Si/No"
   }
 
   dimension: apellido_cliente {
@@ -185,7 +188,8 @@ view: ft_morosidad {
   dimension: ciclo {
     type: string
     sql: ${TABLE}.CICLO ;;
-    label: "Ciclo Facturacion"
+    group_label: "RUS"
+    group_item_label: "Ciclo Facturacion"
   }
 
   dimension: cuenta_segmentacion {
@@ -233,7 +237,7 @@ view: ft_morosidad {
   dimension: dni_cuit {
     type: string
     sql: ${TABLE}.DNI_CUIT ;;
-    group_label: "DNI"
+    group_label: "Cliente"
     group_item_label: "Documento Numero"
 
   }
@@ -396,6 +400,13 @@ view: ft_morosidad {
     label: "Mora Hito ID"
   }
 
+  dimension: cuenta_code {
+    type: string
+    sql: ${TABLE}.CUENTA_CODE ;;
+    group_label: "Cliente"
+    group_item_label: "Cuenta Codigo"
+  }
+
 
   ## Hidden
 
@@ -441,14 +452,7 @@ view: ft_morosidad {
     type: number
     sql: ${TABLE}.CANT_LIN_NOPRE ;;
     label: "CANT Lineas NoPrepagas"
-  }
-
-  dimension: cuenta_code {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.CUENTA_CODE ;;
-    label: "CANT Cuenta Codigo"
-    description: "Responsable de pago / Cuenta Code"
+    description: "El cálculo se realiza en RUS01"
   }
 
   dimension: cuenta_q_movil_pre {
@@ -540,7 +544,7 @@ view: ft_morosidad {
 
   measure: count {
     type: count
-    label: "Cantidad"
+    label: "CANT Registros"
   }
 
   measure: total_open_amount {
@@ -579,12 +583,6 @@ view: ft_morosidad {
     label: "CANT Lineas NoPrepagas"
   }
 
-  measure: total_object_id {
-    type: count_distinct
-    sql: ${TABLE}.OBJECT_ID ;;
-    label: "CANT Registros"
-  }
-
   measure: total_cuenta_code {
     type: count_distinct
     sql: ${TABLE}.CUENTA_CODE ;;
@@ -593,84 +591,84 @@ view: ft_morosidad {
   }
 
   measure: total_cuenta_q_movil_pre {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_MOVIL_PRE"
   }
 
   measure: total_cuenta_q_movil_abono {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_MOVIL_ABONO"
   }
 
   measure: total_cuenta_q_fija_tv {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_TV"
   }
 
   measure: total_cuenta_q_fija_internet {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_INTERNET"
   }
 
   measure: total_cuenta_q_fija_toip {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_TOIP"
   }
 
   measure: total_cuenta_q_fija_bundle {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
     group_label: "NPLAY"
     group_item_label: "CUENTA_Q_FIJA_BUNDLE"
   }
 
   measure: total_dni_q_movil_pre {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_MOVIL_PRE"
   }
 
   measure: total_dni_q_movil_abono {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_MOVIL_ABONO"
   }
 
   measure: total_dni_q_fija_tv {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.DNI_Q_FIJA_TV ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_TV"
   }
 
   measure: total_dni_q_fija_internet {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_INTERNET"
   }
 
   measure: total_dni_q_fija_toip {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_TOIP"
   }
 
   measure: total_dni_q_fija_bundle {
-    type: count_distinct
+    type: sum
     sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_BUNDLE"
