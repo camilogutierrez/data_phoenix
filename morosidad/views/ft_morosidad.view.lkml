@@ -190,26 +190,26 @@ view: ft_morosidad {
     type: string
     sql: ${TABLE}.CUENTA_CODE ;;
     group_label: "Cliente"
-    group_item_label: "Cuenta Codigo"
+    group_item_label: "CANT Cuenta Codigo"
     description: "Responsable de pago / Cuenta Code"
   }
 
   dimension: cuenta_nplay {
     type: string
     sql: ${TABLE}.CUENTA_NPLAY ;;
-    label: "Cuenta NPLAY"
+    label: "CUENTA_NPLAY"
   }
 
   dimension: cuenta_producto {
     type: string
     sql: ${TABLE}.CUENTA_PRODUCTO ;;
-    label: "Cuenta Producto"
+    label: "CUENTA_PRODUCTO"
   }
 
   dimension: cuenta_segmentacion {
     type: string
     sql: ${TABLE}.CUENTA_SEGMENTACION ;;
-    label: "Cuenta Segmentacion"
+    label: "CUENTA_SEGMENTACION"
   }
 
   dimension: cust_segment {
@@ -245,21 +245,21 @@ view: ft_morosidad {
     type: string
     sql: ${TABLE}.DNI_NPLAY ;;
     group_label: "DNI"
-    group_item_label: "NPLAY"
+    group_item_label: "DNI_NPLAY"
   }
 
   dimension: dni_producto {
     type: string
     sql: ${TABLE}.DNI_PRODUCTO ;;
     group_label: "DNI"
-    group_item_label: "Producto"
+    group_item_label: "DNI_PRODUCTO"
   }
 
   dimension: dni_segmentacion {
     type: string
     sql: ${TABLE}.DNI_SEGMENTACION ;;
     group_label: "DNI"
-    group_item_label: "Segmentacion"
+    group_item_label: "DNI_SEGMENTACION"
   }
 
   dimension: dunning_flag {
@@ -379,52 +379,46 @@ view: ft_morosidad {
     group_item_label: "Cuenta ID"
   }
 
-  # dimension: cant_lin_nopre {
-  #  type: number
-  #  sql: ${TABLE}.CANT_LIN_NOPRE ;;
-  #  label: "CANT Lineas NoPrepagas"
-  # }
-
   dimension: cuenta_q_fija_bundle {
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_BUNDLE ;;
     group_label: "Cuenta Q Fija"
-    group_item_label: "Bundle"
+    group_item_label: "CUENTA_Q_FIJA_BUNDLE"
   }
 
   dimension: cuenta_q_fija_internet {
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_INTERNET ;;
     group_label: "Cuenta Q Fija"
-    group_item_label: "Internet"
+    group_item_label: "CUENTA_Q_FIJA_INTERNET"
   }
 
   dimension: cuenta_q_fija_toip {
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_TOIP ;;
     group_label: "Cuenta Q Fija"
-    group_item_label: "TOIP"
+    group_item_label: "CUENTA_Q_FIJA_TOIP"
   }
 
   dimension: cuenta_q_fija_tv {
     type: number
     sql: ${TABLE}.CUENTA_Q_FIJA_TV ;;
     group_label: "Cuenta Q Fija"
-    group_item_label: "TV"
+    group_item_label: "CUENTA_Q_FIJA_TV"
   }
 
   dimension: cuenta_q_movil_abono {
     type: number
     sql: ${TABLE}.CUENTA_Q_MOVIL_ABONO ;;
     group_label: "Cuenta Q Movil"
-    group_item_label: "Abono"
+    group_item_label: "CUENTA_Q_MOVIL_ABONO"
   }
 
   dimension: cuenta_q_movil_pre {
     type: number
     sql: ${TABLE}.CUENTA_Q_MOVIL_PRE ;;
     group_label: "Cuenta Q Movil"
-    group_item_label: "Pre"
+    group_item_label: "CUENTA_Q_MOVIL_PRE"
   }
 
   dimension: cust_id {
@@ -444,42 +438,42 @@ view: ft_morosidad {
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
     group_label: "DNI Q Fija"
-    group_item_label: "Bundle"
+    group_item_label: "DNI_Q_FIJA_BUNDLE"
   }
 
   dimension: dni_q_fija_internet {
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_INTERNET ;;
     group_label: "DNI Q Fija"
-    group_item_label: "Internet"
+    group_item_label: "DNI_Q_FIJA_INTERNET"
   }
 
   dimension: dni_q_fija_toip {
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_TOIP ;;
     group_label: "DNI Q Fija"
-    group_item_label: "TOIP"
+    group_item_label: "DNI_Q_FIJA_TOIP"
   }
 
   dimension: dni_q_fija_tv {
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_TV ;;
     group_label: "DNI Q Fija"
-    group_item_label: "TV"
+    group_item_label: "DNI_Q_FIJA_TV"
   }
 
   dimension: dni_q_movil_abono {
     type: number
     sql: ${TABLE}.DNI_Q_MOVIL_ABONO ;;
     group_label: "DNI Q Movil"
-    group_item_label: "Abono"
+    group_item_label: "DNI_Q_MOVIL_ABONO"
   }
 
   dimension: dni_q_movil_pre {
     type: number
     sql: ${TABLE}.DNI_Q_MOVIL_PRE ;;
     group_label: "DNI Q Movil"
-    group_item_label: "Pre"
+    group_item_label: "DNI_Q_MOVIL_PRE"
   }
 
   dimension: ult_accion_id_exe {
@@ -528,6 +522,13 @@ view: ft_morosidad {
     sql: ${TABLE}.SALDO_VENCIDO ;;
   }
 
+  dimension: cant_lin_nopre {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CANT_LIN_NOPRE ;;
+    label: "CANT Lineas NoPrepagas"
+  }
+
 
   ## Measures
 
@@ -539,7 +540,7 @@ view: ft_morosidad {
   measure: total_open_amount {
     type: sum
     sql: ${TABLE}.OPEN_AMOUNT ;;
-    label: "RUS Saldo RUS"
+    label: "Saldo RUS"
   }
 
   measure: total_os_amount {
@@ -566,10 +567,16 @@ view: ft_morosidad {
     label: "Saldo Vencido RUS"
   }
 
-  measure: cant_lin_nopre {
+  measure: total_cant_lin_nopre {
     type: sum
     sql: ${TABLE}.CANT_LIN_NOPRE ;;
     label: "CANT Lineas NoPrepagas"
+  }
+
+  measure: total_object_id {
+    type: sum
+    sql: ${TABLE}.OBJECT_ID ;;
+    label: "CANT Registros"
   }
 
 }
