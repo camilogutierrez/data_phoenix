@@ -47,9 +47,8 @@ view: ft_morosidad {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FEC_CO_VIE ;;
-    #group_label: "Fecha COVIE"
-    group_label: "RUS"
-    label: "FECOVIE"
+    group_label: "Fecha COVIE RUS"
+    label: "FECOVIE RUS"
     description: "Fecha de vencimiento del comprobante mas antiguo impago"
   }
 
@@ -65,7 +64,7 @@ view: ft_morosidad {
       year
     ]
     sql: ${TABLE}.FEC_PROCE ;;
-    group_label: "Fecha Proce."
+    group_label: "Fecha Proce. RUS"
     label: "Proceso Fecha RUS"
   }
 
@@ -99,8 +98,8 @@ view: ft_morosidad {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.FECHA_VTO_GUIA ;;
-    group_label: "Fecha Vencimiento Guia"
-    label: "Vencimiento Guia Fecha"
+    group_label: "Fecha Vencimiento Guia RUS"
+    label: "Vencimiento Guia Fecha RUS"
   }
 
   dimension_group: prox_accion_fecha {
@@ -370,6 +369,13 @@ view: ft_morosidad {
     label: "Mora Hito"
   }
 
+  dimension: cuenta_code {
+    type: string
+    sql: ${TABLE}.CUENTA_CODE ;;
+    group_label: "Cliente"
+    group_item_label: "Cuenta Codigo"
+  }
+
 
   ## Numbers
 
@@ -400,11 +406,11 @@ view: ft_morosidad {
     label: "Mora Hito ID"
   }
 
-  dimension: cuenta_code {
-    type: string
-    sql: ${TABLE}.CUENTA_CODE ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Codigo"
+  dimension: cant_dias_mora {
+    type: number
+    value_format_name: id
+    sql: date_diff(${TABLE}.FECHA_PROCESO, ${TABLE}.FEC_CO_VIE, DAY) ;;
+    label: "CANT Dias Mora"
   }
 
 
@@ -537,6 +543,13 @@ view: ft_morosidad {
     type: number
     sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
     label: "DNI_Q_FIJA_BUNDLE"
+  }
+
+  dimension: cant_comprob {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.CANT_COMPROB ;;
+    label: "Cantidad de Comprobantes"
   }
 
 
@@ -672,6 +685,13 @@ view: ft_morosidad {
     sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
     group_label: "NPLAY"
     group_item_label: "DNI_Q_FIJA_BUNDLE"
+  }
+
+  measure: total_cant_comprob {
+    type: sum
+    sql: ${TABLE}.CANT_COMPROB ;;
+    label: "CANT Comprobantes Vencidos"
+    description: "El cálculo se realiza en RUS01"
   }
 
 }
