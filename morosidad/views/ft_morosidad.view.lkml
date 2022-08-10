@@ -49,7 +49,7 @@ view: ft_morosidad {
     sql: ${TABLE}.FEC_CO_VIE ;;
     #group_label: "Fecha COVIE"
     group_label: "RUS"
-    group_item_label: "FECOVIE"
+    label: "FECOVIE"
     description: "Fecha de vencimiento del comprobante mas antiguo impago"
   }
 
