@@ -76,13 +76,6 @@ view: ft_cargos_rehabilitacion {
     label: "Usuario Creacion"
   }
 
-  dimension: _usuario_ultima_actualizacion {
-    type: string
-    sql: ${TABLE}._usuarioUltimaActualizacion ;;
-    view_label: "Auditoria"
-    label: "Usuario Modificacion"
-  }
-
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;

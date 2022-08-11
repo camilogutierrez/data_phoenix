@@ -163,13 +163,6 @@ view: ft_recargas_full {
 
   ## Strings
 
-  dimension: _sesion_id {
-    type: string
-    sql: ${TABLE}._auditoria_sesionId ;;
-    view_label: "Auditoria"
-    label: "Sesion ID"
-  }
-
   dimension: _usuario_creacion {
     type: string
     sql: ${TABLE}._auditoria_usuarioCreacion ;;
