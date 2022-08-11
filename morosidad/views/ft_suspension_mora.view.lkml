@@ -244,44 +244,41 @@ view: ft_suspension_mora {
     sql: ${TABLE}.SALDO_X_VENCER ;;
   }
 
-
-  ##############
-  ## Measures ##
-  ##############
+## Measures
 
   measure: total_os_amount {
     type: sum
-    sql: ${TABLE}.OS_AMOUNT ;;
+    sql: ${os_amount} ;;
     group_label: "Total"
     label: "Saldo Hito Vencido"
   }
 
   measure: total_saldo_total {
     type: sum
-    sql: ${TABLE}.SALDO_TOTAL ;;
+    sql: ${saldo_total} ;;
     group_label: "Total"
     label: "Saldo Total"
   }
 
   measure: total_saldo_vencido {
     type: sum
-    sql: ${TABLE}.SALDO_VENCIDO ;;
+    sql: ${saldo_vencido} ;;
     group_label: "Total"
     label: "Saldo Vencido"
   }
 
   measure: total_saldo_x_vencer {
     type: sum
-    sql: ${TABLE}.SALDO_X_VENCER ;;
+    sql: ${saldo_x_vencer} ;;
     group_label: "Total"
     label: "Saldo por Vencer"
   }
 
   measure: count_object_id {
     type: count_distinct
-    sql: ${TABLE}.OBJECT_ID ;;
+    sql: ${object_id} ;;
     group_label: "Cantidad"
-    label: "Object ID"
+    label: "Cantidad Object ID"
   }
 
   measure: count {
@@ -289,5 +286,4 @@ view: ft_suspension_mora {
     group_label: "Cantidad"
     label: "Count"
   }
-
 }

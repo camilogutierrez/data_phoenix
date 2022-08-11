@@ -120,12 +120,6 @@ explore: fth_orden {
     type: inner
   }
 
-  join: lk_cliente_tipo {
-    relationship: many_to_one
-    sql_on: ${fth_orden.cliente_tipo_sk} = ${lk_cliente_tipo.cliente_tipo_sk} ;;
-    type: inner
-  }
-
   join: lk_orden_tipo_gestion {
     relationship: many_to_one
     sql_on: ${fth_orden.orden_tipo_gestion_sk} = ${lk_orden_tipo_gestion.orden_tipo_gestion_sk} ;;

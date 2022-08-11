@@ -42,12 +42,6 @@ explore: fth_parque {
     type: inner
   }
 
-  join: lk_cliente_tipo {
-    relationship: many_to_one
-    sql_on: ${fth_parque.cliente_tipo_sk} = ${lk_cliente_tipo.cliente_tipo_sk} ;;
-    type: inner
-  }
-
   join: lk_cuenta_estado {
     relationship: many_to_one
     sql_on: ${fth_parque.cuenta_estado_sk} = ${lk_cuenta_estado.cuenta_estado_sk} ;;
