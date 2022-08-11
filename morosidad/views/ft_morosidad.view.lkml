@@ -204,7 +204,7 @@ view: ft_morosidad {
     sql: ${TABLE}.CUENTA_SEGMENTACION ;;
     view_label: "NPLAY"
     group_label: "Cuenta"
-    group_item_label: "Segementacion"
+    group_item_label: "Segmentacion"
     label: "Cuenta Segmentacion"
   }
 
@@ -583,6 +583,7 @@ view: ft_morosidad {
     type: sum
     sql: ${cant_lin_nopre} ;;
     view_label: "RUS"
+    group_label: "Cantidad"
     label: "Lineas No Prepagas"
   }
 
