@@ -383,8 +383,8 @@ view: ft_morosidad {
   dimension: cuenta_code {
     type: string
     sql: ${TABLE}.CUENTA_CODE ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Codigo"
+    view_label: "Cliente"
+    label: "Cuenta Codigo"
   }
 
   ## Numbers
@@ -542,6 +542,7 @@ view: ft_morosidad {
 
   measure: count {
     type: count
+    group_label: "Cantidad"
     label: "Registros"
   }
 
@@ -704,6 +705,8 @@ view: ft_morosidad {
   measure: total_cant_comprob {
     type: sum
     sql: ${cant_comprob} ;;
+    view_label: "RUS"
+    group_label: "Cantidad"
     label: "Comprobantes Vencidos"
     description: "El cálculo se realiza en RUS01"
   }
@@ -711,7 +714,8 @@ view: ft_morosidad {
   measure: total_dias_proximo_hito {
     type: sum
     sql: ${dias_proximo_hito} ;;
-    label: "Total Dias Proximo Hito"
+    group_label: "Cantidad"
+    label: "Dias Proximo Hito"
   }
 
 }

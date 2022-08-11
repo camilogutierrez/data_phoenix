@@ -686,7 +686,6 @@ view: fth_orden {
   dimension: cliente_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteTipoNombre ;;
-    suggest_dimension: lk_cliente_tipo.cliente_tipo_nombre
     view_label: "Cliente"
     label: "Tipo"
   }
