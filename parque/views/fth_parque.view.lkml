@@ -801,7 +801,7 @@ view: fth_parque {
 
   dimension: _usuario_ultima_actualizacion {
     type: string
-    sql: ${TABLE}._usuarioUltimaActualizacion ;;
+    sql: ${TABLE}._auditoria._usuarioUltimaActualizacion ;;
     view_label: "Auditoria"
     label: "Usuario Modificacion"
   }
