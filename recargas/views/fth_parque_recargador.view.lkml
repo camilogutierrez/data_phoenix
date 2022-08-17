@@ -245,6 +245,15 @@ view: fth_parque_recargador {
     label: "Fecha Actualizacion"
   }
 
+  ## Flags
+
+  dimension: recarga_marca_fan {
+    type: yesno
+    sql: ${TABLE}.RecargaMarcaFAN ;;
+    view_label: "Recarga"
+    label: "Es Marca FAN"
+  }
+
   ## Strings
 
   dimension: rango_numeracion_departamento_nombre {
@@ -418,7 +427,6 @@ view: fth_parque_recargador {
     sql: ${TABLE}.RecargaACCESS_METHODNombre ;;
     view_label: "Recarga"
     label: "Access Method Nombre"
-
   }
 
   dimension: recarga_anio_mes {
@@ -456,7 +464,6 @@ view: fth_parque_recargador {
     sql: ${TABLE}.RecargaEXT_TRANS_TYPE ;;
     view_label: "Recarga"
     label: "Ext Trans Type"
-
   }
 
   dimension: recarga_ext_trans_typenombre {
@@ -537,6 +544,7 @@ view: fth_parque_recargador {
   }
 
   ## Numbers
+
   dimension: recarga_access_method {
     type: number
     sql: ${TABLE}.RecargaACCESS_METHOD ;;
@@ -656,8 +664,6 @@ view: fth_parque_recargador {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoSRCId_Cierre ;;
   }
-
-
 
 ## Measures
 
