@@ -783,6 +783,63 @@ view: fth_parque {
     label: "Suspension Voluntaria"
   }
 
+  dimension_group: producto_adquirido_fecha_alta_src_prepago_movil_calc {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.ProductoAdquiridoFechaAltaSRCPrepagoMovilCalc ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Alta Prepago Movil"
+    label: "Alta Prepago Movil"
+  }
+
+  dimension_group: producto_adquirido_fecha_alta_src_abono_movil_calc {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.ProductoAdquiridoFechaAltaSRCAbonoMovilCalc ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Alta Abono Movil"
+    label: "Alta Abono Movil"
+  }
+
+  dimension_group: producto_adquirido_fecha_alta_src_plan_movil_calc {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Fechas.ProductoAdquiridoFechaAltaSRCPlanMovilCalc ;;
+    datatype: timestamp
+    view_label: "Producto Adquirido"
+    group_label: "Fecha Alta Plan Movil"
+    label: "Alta Plan Movil"
+  }
+
   ## Strings
 
   dimension: _sesion_id {
