@@ -411,6 +411,13 @@ view: fth_parque_promociones {
     label: "Usuario ID"
   }
 
+  dimension: orden_numero {
+    type: string
+    sql: ${TABLE}.OrdenNumero ;;
+    group_label: "Orden"
+    label: "Numero"
+  }
+
   dimension: pago_ajuste_precio_estado_cancelacion {
     type: string
     sql: ${TABLE}.PagoAjustePrecioEstadoCancelacion ;;
@@ -540,6 +547,13 @@ view: fth_parque_promociones {
     sql: ${TABLE}.ProductoAdquiridoTipo ;;
     group_label: "Producto Adquirido"
     label: "Tipo"
+  }
+
+  dimension: producto_adquirido_producto_codigo {
+    type: string
+    sql: ${TABLE}.ProductoAdquiridoProductoCodigo ;;
+    group_label: "Producto Adquirido"
+    label: "Producto Codigo"
   }
 
   dimension: producto_precio_lista_srcid {
