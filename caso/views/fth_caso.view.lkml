@@ -2999,13 +2999,6 @@ view: fth_caso {
     label: "Motivo no Desistible"
   }
 
-  dimension: delegacion_enacom {
-    type: string
-    sql: ${TABLE}.Delegacion_ENACOM ;;
-    view_label: "Autoridades Publicas"
-    label: "Delegacion ENACOM"
-  }
-
   dimension: motivo_de_respuesta {
     type: string
     sql: ${TABLE}.Motivo_de_respuesta ;;
