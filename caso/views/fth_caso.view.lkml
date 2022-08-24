@@ -2908,13 +2908,6 @@ view: fth_caso {
     label: "Reclamo Sub Motivo"
   }
 
-  dimension: dato_de_contacto {
-    type: string
-    sql: ${TABLE}.Dato_de_contacto ;;
-    view_label: "Autoridades Publicas"
-    label: "Dato de Contacto"
-  }
-
   dimension: lineas_afectadas {
     type: string
     sql: ${TABLE}.LineasAfectadas ;;
