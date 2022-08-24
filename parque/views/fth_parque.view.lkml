@@ -2451,13 +2451,6 @@ view: fth_parque {
     label: "Geo Corp Codigo Postal Facturacion"
   }
 
-  dimension: rango_numeracion_prefijo_urbano {
-    type: number
-    sql: ${TABLE}.Geografia.RangoNumeracionPrefijoUrbano ;;
-    view_label: "Geografia"
-    label: "Rango Numeracion Prefijo Urbano"
-  }
-
   dimension: oa_orden_item_precio_calculado_recurrente {
     type: number
     sql: ${TABLE}.OrdenAlta.OrdenItemPrecioCalculadoRecurrente ;;
