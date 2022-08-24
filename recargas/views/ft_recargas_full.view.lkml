@@ -165,7 +165,7 @@ view: ft_recargas_full {
 
   dimension: _usuario_ultima_actualizacion {
     type: string
-    sql: ${TABLE}._auditoria_usuarioUltimaActualizacion ;;
+    sql: ${TABLE}._auditoria._usuarioUltimaActualizacion ;;
     view_label: "Auditoria"
     label: "Usuario Modificacion"
   }

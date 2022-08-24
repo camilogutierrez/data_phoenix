@@ -2852,7 +2852,8 @@ view: fth_caso {
   # Autoridades Publicas #
   ########################
 
-  # Dates
+  ## Dates
+
   dimension_group: fecha_de_recepcion {
     type: time
     timeframes: [
@@ -2891,7 +2892,8 @@ view: fth_caso {
     label: "Vencimiento"
   }
 
-  # Strings
+  ## Strings
+
   dimension: claim_motivo {
     type: string
     sql: ${TABLE}.ClaimMotivo ;;
@@ -3032,21 +3034,13 @@ view: fth_caso {
     label: "Verificador"
   }
 
-  ## Yesno
-  dimension: caso_desistible {
-    type: yesno
-    sql: ${TABLE}.Caso_Desistible ;;
-    view_label: "Autoridades Publicas"
-    label: "Caso Desistible"
-  }
+  ## Hidden
 
-## hidden
   dimension: importe_aplicado {
     hidden: yes
     type: number
     sql: ${TABLE}.Importe_Aplicado ;;
   }
-
 
 ## Measures
 
@@ -3095,7 +3089,7 @@ view: fth_caso {
     label: "Acuerdo Pago"
     description: "Acuerdo de compromiso de pago."
     filters: [
-      caso_tipo_nombre: "ACUERDO DE PAGO"
+        caso_tipo_nombre: "ACUERDO DE PAGO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
       , caso_sub_tipo_nombre: "-CANCELACION"
     ]
