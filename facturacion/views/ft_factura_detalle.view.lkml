@@ -72,12 +72,12 @@ view: ft_factura_detalle {
 
   ## Strings
 
-  dimension: _sesion_id {
-    type: string
-    sql: ${TABLE}._sesionId ;;
-    view_label: "Auditoria"
-    label: "Sesion Id"
-  }
+  # dimension: _sesion_id {
+  #   type: string
+  #   sql: ${TABLE}._sesionId ;;
+  #   view_label: "Auditoria"
+  #   label: "Sesion Id"
+  # }
 
   dimension: _usuario_creacion {
     type: string

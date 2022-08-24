@@ -16,24 +16,6 @@ view: ft_suspension_mora {
 
   ## Dates
 
-  dimension_group: fecha_saldo {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.FECHA_SALDO ;;
-    datatype: date
-    convert_tz: no
-    group_label: "Fecha Saldo"
-    label: "Saldo"
-  }
-
   dimension_group: resume_actual {
     type: time
     timeframes: [
