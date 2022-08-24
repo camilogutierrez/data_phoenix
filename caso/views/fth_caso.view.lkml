@@ -2915,13 +2915,6 @@ view: fth_caso {
     label: "Lineas Afectadas"
   }
 
-  dimension: instancia {
-    type: string
-    sql: ${TABLE}.Instancia ;;
-    view_label: "Autoridades Publicas"
-    label: "Instancia"
-  }
-
   dimension: motivo_de_derivacion {
     type: string
     sql: ${TABLE}.Motivo_de_derivacion ;;
