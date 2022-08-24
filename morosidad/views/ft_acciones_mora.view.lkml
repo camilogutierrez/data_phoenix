@@ -7,11 +7,11 @@ view: ft_acciones_mora {
 
   ## Primary Key
 
-  dimension: pk {
-    hidden: yes
+  dimension: object_id {
     primary_key: yes
-    type: string
-    sql: ${TABLE}.ACCIONESPK;;
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OBJECT_ID ;;
   }
 
   ## Dates
@@ -34,24 +34,6 @@ view: ft_acciones_mora {
     label: "Fin Gestion Mora"
   }
 
-  dimension_group: fecha_saldo {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.FECHA_SALDO ;;
-    datatype: date
-    convert_tz: no
-    group_label: "Fecha Saldo"
-    label: "Saldo"
-  }
-
   dimension_group: prox_accion_fecha {
     type: time
     timeframes: [
@@ -68,42 +50,6 @@ view: ft_acciones_mora {
     datatype: timestamp
     group_label: "Fecha Proxima Accion"
     label: "Proxima Accion"
-  }
-
-  dimension_group: start_collect {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.START_COLLECT_DATE ;;
-    datatype: timestamp
-    group_label: "Fecha Mora Inicio Gestion"
-    label: "Mora Inicio Gestion"
-  }
-
-  dimension_group: ult_accion_fecha_exe {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
-    datatype: timestamp
-    group_label: "Fecha Hito Ultimo"
-    label: "Hito Ultimo"
   }
 
   dimension_group: resume_actual {
@@ -124,16 +70,52 @@ view: ft_acciones_mora {
     label: "Rehabilitacion"
   }
 
-  dimension: _fecha_creacion {
-    type: date_time
+  dimension_group: start_collect {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.START_COLLECT_DATE ;;
+    datatype: timestamp
+    group_label: "Fecha Inicio Gestion Mora"
+    label: "Inicio Gestion Mora"
+  }
+
+  dimension_group: ult_accion_fecha_exe {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ULT_ACCION_FECHA_EXE ;;
+    datatype: timestamp
+    group_label: "Fecha Hito Ultimo"
+    label: "Hito Ultimo"
+  }
+
+  dimension_group: _fecha_creacion {
+    type: time
     datatype: datetime
     sql: ${TABLE}._fechaCreacion ;;
     view_label: "Auditoria"
     label: "Fecha Creacion"
   }
 
-  dimension: _fecha_ultima_actualizacion {
-    type: date_time
+  dimension_group: _fecha_ultima_actualizacion {
+    type: time
     datatype: datetime
     sql: ${TABLE}._fechaUltimaActualizacion ;;
     view_label: "Auditoria"
@@ -166,7 +148,7 @@ view: ft_acciones_mora {
   dimension: acct_code {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
-    group_label: "Cliente"
+    view_label: "Cliente"
     label: "Cuenta Codigo"
     description: "Responsable de pago / Cuenta Code"
   }
@@ -174,22 +156,22 @@ view: ft_acciones_mora {
   dimension: cust_code {
     type: string
     sql: ${TABLE}.CUST_CODE ;;
-    group_label: "Cliente"
+    view_label: "Cliente"
     label: "Codigo"
   }
 
   dimension: document_number {
     type: string
     sql: ${TABLE}.DOCUMENT_NUMBER ;;
-    group_label: "Cliente"
-    label: "Documento Numero"
+    view_label: "Cliente"
+    label: "Documento"
   }
 
   dimension: document_type {
     type: string
     sql: ${TABLE}.DOCUMENT_TYPE ;;
-    group_label: "Cliente"
-    label: "Documento Tipo"
+    view_label: "Cliente"
+    label: "Tipo Documento"
   }
 
   dimension: exec_status {
@@ -202,7 +184,7 @@ view: ft_acciones_mora {
   dimension: first_name {
     type: string
     sql: ${TABLE}.FIRST_NAME ;;
-    group_label: "Cliente"
+    view_label: "Cliente"
     label: "Nombre"
   }
 
@@ -218,18 +200,10 @@ view: ft_acciones_mora {
     label: "Group Version"
   }
 
-  dimension: ult_accion_hold_status {
-    type: string
-    sql: ${TABLE}.ULT_ACCION_HOLD_STATUS ;;
-    group_label: "Ultima Accion"
-    group_item_label: "Hito Estado Espera"
-    description: "0: No se retiene la orden de trabajo 1: Se está reteniendo la orden de trabajo 2: La retención de la orden de trabajo se invierte"
-  }
-
   dimension: last_name {
     type: string
     sql: ${TABLE}.LAST_NAME ;;
-    group_label: "Cliente"
+    view_label: "Cliente"
     label: "Apellido"
   }
 
@@ -243,7 +217,7 @@ view: ft_acciones_mora {
   dimension: mgr_status_reason {
     type: string
     sql: ${TABLE}.MGR_STATUS_REASON ;;
-    label: "Cobro Motivo Gestion"
+    label: "Cobro Gestion Motivo"
   }
 
   dimension: msisdn {
@@ -255,46 +229,57 @@ view: ft_acciones_mora {
   dimension: pa_status {
     type: string
     sql: ${TABLE}.PA_STATUS ;;
+    group_label: "Plan Financiacion"
+    group_item_label: "Estado"
     label: "Plan Financiacion Estado"
   }
 
   dimension: plan_code {
     type: string
     sql: ${TABLE}.PLAN_CODE ;;
+    group_label: "Plan Financiacion"
+    group_item_label: "Codigo"
     label: "Plan Financiacion Codigo"
   }
 
   dimension: plan_version {
     type: string
     sql: ${TABLE}.PLAN_VERSION ;;
+    group_label: "Plan Financiacion"
+    group_item_label: "Version"
     label: "Plan Financiacion Version"
   }
 
   dimension: razonsocial {
     type: string
     sql: ${TABLE}.RAZONSOCIAL ;;
-    group_label: "Cliente"
+    view_label: "Cliente"
     label: "Razon Social"
   }
 
   dimension: resume_accion_cancel_status {
     type: string
     sql: ${TABLE}.RESUME_ACCION_CANCEL_STATUS ;;
-    group_item_label: "Rehabilitacion Estado Cancelacion"
+    group_label: "Rehabilitacion"
+    group_item_label: "Estado Cancelacion"
+    label: "Rehabilitacion Estado Cancelacion"
     description: "1: Initialized 2: Successfully cancelled 3: Cancellation failed 4: No need to cancel"
   }
 
   dimension: resume_accion_status {
     type: string
     sql: ${TABLE}.RESUME_ACCION_STATUS ;;
-    group_item_label: "Rehabilitacion Estado"
+    group_label: "Rehabilitacion"
+    group_item_label: "Estado"
+    label: "Rehabilitacion Estado"
   }
 
   dimension: resume_action_code {
     type: string
     sql: ${TABLE}.RESUME_ACTION_CODE ;;
-    group_item_label: "Rehabilitacion Codigo"
-
+    group_label: "Rehabilitacion"
+    group_item_label: "Codigo"
+    label: "Rehabilitacion Codigo"
   }
 
   dimension: ult_accion_cancel_status {
@@ -302,6 +287,7 @@ view: ft_acciones_mora {
     sql: ${TABLE}.ULT_ACCION_CANCEL_STATUS ;;
     group_label: "Ultima Accion"
     group_item_label: "Rehabilitacion Ultimo Estado Cancelacion"
+    label: "Ultima Accion Rehabilitacion Ultimo Estado Cancelacion"
   }
 
   dimension: ult_accion_code_exe {
@@ -309,13 +295,16 @@ view: ft_acciones_mora {
     sql: ${TABLE}.ULT_ACCION_CODE_EXE ;;
     group_label: "Ultima Accion"
     group_item_label: "Hito Ultimo Codigo"
+    label: "Ultima Accion Hito Ultimo Codigo"
   }
 
-  dimension: ult_accion_status {
+  dimension: ult_accion_hold_status {
     type: string
-    sql: ${TABLE}.ULT_ACCION_STATUS ;;
+    sql: ${TABLE}.ULT_ACCION_HOLD_STATUS ;;
     group_label: "Ultima Accion"
-    group_item_label: "Ejecutada"
+    group_item_label: "Hito Estado Espera"
+    label: "Ultima Accion Hito Estado Espera"
+    description: "0: No se retiene la orden de trabajo 1: Se está reteniendo la orden de trabajo 2: La retención de la orden de trabajo se invierte"
   }
 
   dimension: ult_accion_name {
@@ -323,6 +312,15 @@ view: ft_acciones_mora {
     sql: ${TABLE}.ULT_ACCION_NAME ;;
     group_label: "Ultima Accion"
     group_item_label: "Mora Hito Descripcion"
+    label: "Ultima Accion Mora Hito Descripcion"
+  }
+
+  dimension: ult_accion_status {
+    type: string
+    sql: ${TABLE}.ULT_ACCION_STATUS ;;
+    group_label: "Ultima Accion"
+    group_item_label: "Ejecutada"
+    label: "Ultima Accion Ejecutada"
   }
 
   ## Numbers
@@ -330,14 +328,13 @@ view: ft_acciones_mora {
   dimension: acct_id {
     type: number
     sql: ${TABLE}.ACCT_ID ;;
-    group_label: "Cliente"
     label: "Cuenta ID"
   }
 
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
-    group_label: "Cliente"
+    view_label: "Cliente"
     label: "ID"
   }
 
@@ -347,16 +344,12 @@ view: ft_acciones_mora {
     label: "Collection Group ID"
   }
 
-  dimension: object_id {
-    type: number
-    sql: ${TABLE}.OBJECT_ID ;;
-    label: "Object ID"
-  }
-
   dimension: resume_action_id {
     type: number
     sql: ${TABLE}.RESUME_ACTION_ID ;;
-    group_item_label: "Rehabilitacion ID"
+    group_label: "Rehabilitacion"
+    group_item_label: "ID"
+    label: "Rehabilitacion ID"
   }
 
   dimension: sub_id {
@@ -365,18 +358,21 @@ view: ft_acciones_mora {
     label: "Subscripcion Numero"
   }
 
+  dimension: ult_accion_id_exe {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
+    group_label: "Ultima Accion"
+    group_item_label: "Hito Ultimo ID"
+    label: "Ultima Accion Hito Ultimo ID"
+  }
+
   dimension: ult_accion_task_order_id {
     type: number
     sql: ${TABLE}.ULT_ACCION_TASK_ORDER_ID ;;
     group_label: "Ultima Accion"
     group_item_label: "Orden de Trabajo ID"
-  }
-
-  dimension: ult_accion_id_exe {
-    type: number
-    sql: ${TABLE}.ULT_ACCION_ID_EXE ;;
-    group_label: "Ultima Accion"
-    group_item_label: "Hito Ultimo ID"
+    label: "Ultima Accion Orden de Trabajo ID"
   }
 
   ## Hidden
@@ -387,16 +383,16 @@ view: ft_acciones_mora {
     sql: ${TABLE}.OS_AMOUNT ;;
   }
 
+  dimension: saldo_a_vencer {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.SALDO_A_VENCER ;;
+  }
+
   dimension: saldo_vencido {
     hidden: yes
     type: number
     sql: ${TABLE}.SALDO_VENCIDO ;;
-  }
-
-  dimension: saldo_x_vencer {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.SALDO_X_VENCER ;;
   }
 
 ## Measures
@@ -404,34 +400,23 @@ view: ft_acciones_mora {
   measure: total_os_amount {
     type: sum
     sql: ${os_amount} ;;
-    group_label: "Total"
     label: "Saldo Vencido Hito"
   }
 
   measure: total_saldo_vencido {
     type: sum
     sql: ${saldo_vencido} ;;
-    group_label: "Total"
     label: "Saldo Vencido"
   }
 
-  measure: total_saldo_x_vencer {
+  measure: total_saldo_a_vencer {
     type: sum
-    sql: ${saldo_x_vencer} ;;
-    group_label: "Total"
-    label: "Saldo por Vencer"
-  }
-
-  measure: count_object_id {
-    type: count_distinct
-    sql: ${object_id} ;;
-    group_label: "Count"
-    label: "Object ID"
+    sql: ${saldo_a_vencer} ;;
+    label: "Saldo A Vencer"
   }
 
   measure: count {
     type: count
-    group_label: "Cantidad"
-    label: "Cantidad"
+    label: "Acciones"
   }
 }
