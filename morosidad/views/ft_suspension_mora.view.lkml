@@ -16,24 +16,6 @@ view: ft_suspension_mora {
 
   ## Dates
 
-  dimension_group: fecha_saldo {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.FECHA_SALDO ;;
-    datatype: date
-    convert_tz: no
-    group_label: "Fecha Saldo"
-    label: "Saldo"
-  }
-
   dimension_group: resume_actual {
     type: time
     timeframes: [
@@ -238,12 +220,6 @@ view: ft_suspension_mora {
     sql: ${TABLE}.SALDO_VENCIDO ;;
   }
 
-  dimension: saldo_x_vencer {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.SALDO_X_VENCER ;;
-  }
-
 ## Measures
 
   measure: total_os_amount {
@@ -265,13 +241,6 @@ view: ft_suspension_mora {
     sql: ${saldo_vencido} ;;
     group_label: "Total"
     label: "Saldo Vencido"
-  }
-
-  measure: total_saldo_x_vencer {
-    type: sum
-    sql: ${saldo_x_vencer} ;;
-    group_label: "Total"
-    label: "Saldo por Vencer"
   }
 
   measure: count_object_id {
