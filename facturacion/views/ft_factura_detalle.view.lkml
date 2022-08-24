@@ -619,13 +619,6 @@ view: ft_factura_detalle {
     label: "Suscripcion Numero"
   }
 
-  dimension: total_cycle {
-    type: number
-    sql: ${TABLE}.TOTAL_CYCLE ;;
-    view_label: "Comprobante"
-    label: "Cuotas Cantidad"
-  }
-
   dimension: trans_id {
     type: number
     sql: ${TABLE}.TRANS_ID ;;
@@ -639,20 +632,6 @@ view: ft_factura_detalle {
     sql: ${TABLE}.TAX_AMT ;;
     view_label: "Comprobante"
     label: "Impuestos"
-  }
-
-  dimension: grupo_cuotas {
-    type: string
-    sql:
-      CASE
-        WHEN ${total_cycle} IS NULL THEN 'Sin Cuotas'
-        WHEN ${total_cycle} BETWEEN 1 AND 3 THEN 'A'
-        WHEN ${total_cycle} BETWEEN 4 AND 6 THEN 'B'
-        WHEN ${total_cycle} BETWEEN 7 AND 12 THEN 'C'
-        ELSE 'D' END ;;
-    view_label: "Comprobante"
-    label: "Grupo Cuotas"
-    description: "Rangos de cuotas: A= 1 a 3, B= 4 a 6, C= 7 a 12, D= Mas de 12"
   }
 
   ## Hidden
