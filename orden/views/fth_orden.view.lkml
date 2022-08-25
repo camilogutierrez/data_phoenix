@@ -3,6 +3,16 @@ view: fth_orden {
   sql_table_name: @{gcp_ambiente}.FTH_Orden` ;;
   suggestions: no
 
+## Filters
+
+  filter: ultimo_cierre {
+    view_label: "Cierres"
+    type: yesno
+    sql: ${fth_orden.fecha_entidad} = ${lk_ultimo_cierre_orden.ultimo_cierre}  ;;
+    label: "Ultimo Cierre"
+    description: "Filtra los datos a partir del ultimo cierre disponible"
+  }
+
 ## Dimensions
 
   ################
