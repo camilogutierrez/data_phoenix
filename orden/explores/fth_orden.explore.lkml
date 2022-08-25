@@ -1,10 +1,9 @@
-include: "/orden/views/fth_orden.view.lkml"
-include: "/aleph/views/*.view.lkml"
+include: "/orden/views/*.view.lkml"
 include: "/orden/others/orden_datagroups.lkml"
-include: "/orden/views/dm_orden_precio_promocion.view.lkml"
+include: "/aleph/views/*.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
-include: "/orden/views/lk_cierres_orden.view.lkml"
 include: "/global/views/lk_rango_numeracion_*.view.lkml"
+
 
 explore: fth_orden {
   label: "Orden"
@@ -17,6 +16,13 @@ explore: fth_orden {
   }
 
   persist_with: orden_default_dg
+
+  join: lk_ultimo_cierre_orden {
+    view_label: "Cierres"
+    relationship: many_to_one
+    sql_on: ${fth_orden.fecha_entidad} = ${lk_ultimo_cierre_orden.ultimo_cierre} ;;
+    type: inner
+  }
 
   join: fth_orden_medio_pago {
     view_label: "Medio de Pago"
