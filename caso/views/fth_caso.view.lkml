@@ -123,7 +123,8 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaCierreEstimadaSRC ;;
     datatype: timestamp
-    view_label: "Otros"
+    view_label: "Caso"
+    group_label: "Fecha Cierre Estimado"
     label: "Cierre Estimado"
   }
 
@@ -141,7 +142,8 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaCierreSRC ;;
     datatype: timestamp
-    view_label: "Otros"
+    view_label: "Caso"
+    group_label: "Fecha Cierre"
     label: "Cierre"
   }
 
@@ -159,7 +161,8 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaCreacionSRC ;;
     datatype: timestamp
-    view_label: "Otros"
+    view_label: "Caso"
+    group_label: "Fecha Creacion"
     label: "Creacion"
   }
 
@@ -214,7 +217,8 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaModificacionSRC ;;
     datatype: timestamp
-    view_label: "Otros"
+    view_label: "Caso"
+    group_label: "Fecha Modificacion"
     label: "Modificacion"
   }
 
@@ -286,7 +290,8 @@ view: fth_caso {
     ]
     sql: ${TABLE}.Fechas.CasoFechaVentanaPortacionSRC ;;
     datatype: timestamp
-    view_label: "Otros"
+    view_label: "Caso"
+    group_label: "Fecha Ventana Portacion"
     label: "Ventana Portacion"
   }
 
@@ -306,16 +311,6 @@ view: fth_caso {
     datatype: timestamp
     view_label: "Otros"
     label: "Creacion Comentario"
-  }
-
-  dimension: caso_fecha_mod_src {
-    type: date_time
-    sql: ${TABLE}.Fechas.CasoFechaModSRC ;;
-    datatype: timestamp
-    view_label: "Otros"
-    group_label: "Fechas"
-    group_item_label: "Mod"
-    label: "Fecha Mod"
   }
 
   dimension: _fecha_creacion {
@@ -2075,16 +2070,16 @@ view: fth_caso {
     type: date_time
     sql: ${TABLE}.Orden.OrdenFechaActivacionSRC ;;
     datatype: timestamp
-    view_label: "Otros"
-    label: "Orden Fecha Activacion"
+    view_label: "Orden"
+    label: "Fecha Activacion"
   }
 
   dimension: orden_fecha_creacion_src {
     type: date_time
     sql: ${TABLE}.Orden.OrdenFechaCreacionSRC ;;
     datatype: timestamp
-    view_label: "Otros"
-    label: "Orden Fecha Creacion"
+    view_label: "Orden"
+    label: "Fecha Creacion"
   }
 
   ## Strings
