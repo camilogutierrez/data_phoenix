@@ -431,7 +431,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TABULACION1SRCId ;;
     suggest_dimension: lk_tabulacion1.tabulacion1_srcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Tabulacion 1"
     label: "TAB 1"
   }
@@ -440,7 +440,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TABULACION2SRCId ;;
     suggest_dimension: lk_tabulacion2.tabulacion2_srcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Tabulacion 2"
     label: "TAB 2"
   }
@@ -449,7 +449,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TABULACION3SRCId ;;
     suggest_dimension: lk_tabulacion3.tabulacion3_srcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Tabulacion 3"
     label: "TAB 3"
   }
@@ -458,7 +458,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TABULACION4SRCId ;;
     suggest_dimension: lk_tabulacion4.tabulacion4_srcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Tabulacion 4"
     label: "TAB 4"
   }
@@ -467,7 +467,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_AGRUPADOR_REPORTINGSRCId ;;
     suggest_dimension: lk_tab_agrupador_reporting.tab_agrupador_reportingsrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Agrupador Reporting"
     label: "TAB Agrupador Reporting"
     description: "Es el agrupador 1 reporting"
@@ -477,7 +477,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_CONSULTA_PORSRCId ;;
     suggest_dimension: lk_tab_consulta_por.tab_consulta_porsrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Consulta Por"
     label: "TAB Consulta Por"
     description: "Agrupador consulta por."
@@ -487,7 +487,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_CONTACTOSRCId ;;
     suggest_dimension: lk_tab_contacto.tab_contactosrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Contactos"
     label: "TAB Contactos"
     description: "Agrupador contactos."
@@ -497,7 +497,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_MOTIVOSRCId ;;
     suggest_dimension: lk_tab_motivo.tab_motivosrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Motivos"
     label: "TAB Motivos"
     description: "Agrupador 3 - Motivos."
@@ -507,7 +507,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_MOVILSRCId ;;
     suggest_dimension: lk_tab_movil.tab_movilsrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Movil"
     label: "TAB Movil"
     description: "Agrupador movil."
@@ -517,7 +517,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_QUE_TIENESRCId ;;
     suggest_dimension: lk_tab_que_tiene.tab_que_tienesrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Que Tiene"
     label: "TAB Que tiene"
     description: "Agrupador que tiene (arbol ventas)."
@@ -527,7 +527,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_RESULTADOSRCId ;;
     suggest_dimension: lk_tab_resultado.tab_resultadosrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Resultados"
     label: "TAB Resultados"
     description: "Agrupador 4 - Resultado."
@@ -537,7 +537,7 @@ view: ft_callin {
     type: string
     sql: ${TABLE}.TAB_TIPO_DE_LLAMADOSRCId ;;
     suggest_dimension: lk_tab_tipo_de_llamado.tab_tipo_de_llamadosrcid
-    group_label: "Tabulación"
+    group_label: "Tabulacion"
     group_item_label: "Tipo de Llamados"
     label: "TAB Tipo de Llamados"
     description: "Agrupador 2 - Tipo de llamado."
@@ -856,17 +856,17 @@ view: ft_callin {
   dimension: agrupador1 {
     type: string
     sql: ${TABLE}.AGRUPADOR1 ;;
-    group_label: "Integración CRM"
+    group_label: "Integracion CRM"
     label: "CONNID"
-    description: "Es el campo de Interacción entre CRM/PIC"
+    description: "Es el campo de Interaccion entre CRM/PIC"
   }
 
   dimension: agrupador2 {
     type: string
     sql: ${TABLE}.AGRUPADOR2 ;;
-    group_label: "Integración CRM"
+    group_label: "Integracion CRM"
     label: "Place"
-    description: "Indentificador de Sitio de atención dentro de la integración"
+    description: "Indentificador de Sitio de atencion dentro de la integracion"
   }
 
   dimension: ani {
@@ -1153,6 +1153,11 @@ view: ft_callin {
     sql: ${TABLE}.RESULTREASON_AGSRCId ;;
   }
 
+  dimension: tabs_concatenadas {
+    type: string
+    sql: ${TABLE}.TABS_CONCATENADAS ;;
+  }
+
   ## Numbers
 
   dimension: res_ordinalsrcid {
@@ -1194,7 +1199,7 @@ view: ft_callin {
     type: number
     sql: ${TABLE}.PLACE_KEY ;;
     label: "Place Key"
-    description: "Código del sitio de logueo del representante"
+    description: "Codigo del sitio de logueo del representante"
   }
 
   dimension: interaction_resource_id {
@@ -1890,7 +1895,7 @@ view: ft_callin {
     sql_distinct_key: ${interaction_resource_id};;
     sql: ${t_duration_ag} ;;
     group_label: "Total"
-    group_item_label: "Duración AG"
+    group_item_label: "Duracion AG"
     label: "TOTAL_T_DURATION_AG"
   }
 
