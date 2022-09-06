@@ -329,6 +329,42 @@ view: fth_caso {
     label: "Fecha Actualizacion"
   }
 
+  dimension_group: caso_fecha_recepcion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CasoFechaRecepcionSRC ;;
+    datatype: timestamp
+    group_label: "Fecha Recepcion"
+    label: "Recepcion"
+  }
+
+  dimension_group: caso_fecha_unica_vencimiento_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CasoFechaUnicaVencimientoSRC ;;
+    datatype: timestamp
+    group_label: "Fecha Unico Vencimiento"
+    label: "Unico Vencimiento"
+  }
+
   ## Flags
 
   dimension: caso_comprobantes_adjuntos {
@@ -552,6 +588,15 @@ view: fth_caso {
     group_item_label: "Fidelizacion"
     label: "Es Fidelizacion"
   }
+
+  dimension: caso_desistible  {
+    type: yesno
+    sql: ${TABLE}.CasoDesistible ;;
+    group_label: "Marcas"
+    group_item_label: "Desistible"
+    label: "Es Desistible"
+  }
+
 
   ## Strings
 
@@ -1442,6 +1487,145 @@ view: fth_caso {
     label: "Acuerdo Servicio"
   }
 
+  dimension:  caso_reclamo_motivo {
+    type: string
+    sql: ${TABLE}.CasoReclamoMotivo ;;
+    label: "Motivo Reclamo "
+  }
+
+  dimension:  caso_reclamo_submotivo {
+    type: string
+    sql: ${TABLE}.CasoReclamoSubmotivo ;;
+    label: "Submotivo Reclamo"
+  }
+
+  dimension:  caso_dato_contacto {
+    type: string
+    sql: ${TABLE}.CasoDatoContacto ;;
+    label: "Dato Contacto"
+  }
+
+  dimension:  caso_lineas_afectadas {
+    type: string
+    sql: ${TABLE}.CasoLineasAfectadas ;;
+    label: "Lineas Afectadas"
+  }
+
+  dimension:  caso_instancia {
+    type: string
+    sql: ${TABLE}.CasoInstancia ;;
+    label: "Instancia"
+  }
+
+  dimension:  caso_motivo_derivacion {
+    type: string
+    sql: ${TABLE}.CasoMotivoDerivacion ;;
+    label: "Motivo Derivacion"
+  }
+
+  dimension:  caso_motivo_no_desistimiento {
+    type: string
+    sql: ${TABLE}.CasoMotivoNoDesistimiento ;;
+    label: "Motivo No Desistimiento"
+  }
+
+  dimension:  caso_numero_expediente {
+    type: string
+    sql: ${TABLE}.CasoNumeroExpediente ;;
+    label: "Numero Expediente"
+  }
+
+  dimension:  caso_respuesta {
+    type: string
+    sql: ${TABLE}.CasoRespuesta ;;
+    label: "Respuesta"
+  }
+
+  dimension:  caso_solucion {
+    type: string
+    sql: ${TABLE}.CasoSolucion ;;
+    label: "Solucion"
+  }
+
+  dimension:  caso_unidad_negocio {
+    type: string
+    sql: ${TABLE}.CasoUnidadNegocio ;;
+    label: "Unidad Negocio"
+  }
+
+  dimension:  caso_localidad_reclamo_defensa {
+    type: string
+    sql: ${TABLE}.CasoLocalidadReclamoDefensa ;;
+    label: "Localidad Reclamo Defensa"
+  }
+
+  dimension:  caso_localidad_reclamo_enacom {
+    type: string
+    sql: ${TABLE}.CasoLocalidadReclamoEnacom ;;
+    label: "Localidad Reclamo ENACOM"
+  }
+
+  dimension:  caso_organismo_defensa_consumidor {
+    type: string
+    sql: ${TABLE}.CasoOrganismoDefensaConsumidor ;;
+    label: "Organismo Defensa Consumidor"
+  }
+
+  dimension:  caso_provincia_reclamo_defensa {
+    type: string
+    sql: ${TABLE}.CasoProvinciaReclamoDefensa ;;
+    label: "Provincia Reclamo Defensa"
+  }
+
+  dimension:  caso_motivo_no_desistible {
+    type: string
+    sql: ${TABLE}.CasoMotivoNoDesistible ;;
+    label: "Motivo No Desistible"
+  }
+
+  dimension:  caso_delegacion_enacom {
+    type: string
+    sql: ${TABLE}.CasoDelegacionENACOM ;;
+    label: "Delegacion ENACOM"
+  }
+
+  dimension:  caso_motivo_respuesta {
+    type: string
+    sql: ${TABLE}.CasoMotivoRespuesta ;;
+    label: "Motivo Respuesta"
+  }
+
+  dimension:  caso_motivo_respuesta_enacom {
+    type: string
+    sql: ${TABLE}.CasoMotivoRespuestaENACOM ;;
+    label: "Motivo Respuesta ENACOM"
+  }
+
+  dimension:  caso_verificador {
+    type: string
+    sql: ${TABLE}.CasoVerificador ;;
+    label: "Verificador"
+  }
+
+  dimension:  caso_respuesta_tad {
+    type: string
+    sql: ${TABLE}.CasoRespuestaTAD ;;
+    label: "Respuesta TAD"
+  }
+
+  dimension:  caso_numero_comprobante_tad {
+    type: string
+    sql: ${TABLE}.CasoNumeroComprobanteTAD ;;
+    label: "Numero Comprobante TAD"
+  }
+
+  dimension:  caso_motivo_denuncia_cierre {
+    type: string
+    sql: ${TABLE}.CasoMotivoDenunciaCierre ;;
+    label: "Motivo Cierre Denuncia"
+  }
+
+
   ## Numbers
 
   dimension: caso_cantidad_cuotas {
@@ -1534,6 +1718,11 @@ view: fth_caso {
     type: number
     sql: ${TABLE}.Numericos.CasoSaldoVencido ;;
     view_label: "Otros"
+  }
+
+  dimension: caso_importe_aplicado {
+    type: number
+    sql: ${TABLE}.CasoImporteAplicado ;;
   }
 
   ## Hidden
