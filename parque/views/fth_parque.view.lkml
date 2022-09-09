@@ -498,6 +498,25 @@ view: fth_parque {
     label: "Modificacion"
   }
 
+  dimension_group: oa_orden_fecha_nominacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.OrdenAlta.OrdenFechaNominacionSRC ;;
+    datatype: timestamp
+    view_label: "Orden Alta"
+    group_label: "Fecha Nominacion"
+    label: "Nominacion"
+  }
+
   dimension_group: ob_orden_fecha_activacion_src {
     type: time
     timeframes: [
@@ -838,6 +857,44 @@ view: fth_parque {
     view_label: "Producto Adquirido"
     group_label: "Fecha Alta Plan Movil"
     label: "Alta Plan Movil"
+  }
+
+  dimension_group: recarga_entry_date_pri_rec_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Recarga.RecargaENTRY_DATESRC_Pri_Rec ;;
+    datatype: timestamp
+    view_label: "Recarga"
+    group_label: "Fecha Primera Recarga"
+    label: "Primera Recarga"
+  }
+
+  dimension_group: recarga_entry_date_ult_rec_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Recarga.RecargaENTRY_DATESRC_Ult_Rec ;;
+    datatype: timestamp
+    view_label: "Recarga"
+    group_label: "Fecha Ultima Recarga"
+    label: "Ultima Recarga"
   }
 
   ## Strings
