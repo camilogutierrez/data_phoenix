@@ -78,14 +78,15 @@ view: ft_degradacion_suscripcion {
     label: "Fecha Creacion"
   }
 
-  ## Strings
-
-  dimension: _sesion_id {
-    type: string
-    sql: ${TABLE}._sesionId ;;
+  dimension: _fecha_ultima_actualizacion {
+    type: date_time
+    datatype: datetime
+    sql: ${TABLE}._fechaUltimaActualizacion ;;
     view_label: "Auditoria"
-    label: "Sesion ID"
+    label: "Fecha Ultima Actualizacion"
   }
+
+  ## Strings
 
   dimension: _usuario_creacion {
     type: string
