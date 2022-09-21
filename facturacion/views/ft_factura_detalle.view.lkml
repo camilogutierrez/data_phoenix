@@ -109,6 +109,13 @@ view: ft_factura_detalle {
     description: "Mercado de la cuenta en el momento de la facturacion. 0:Prepago | 1:Pospago | 2:Hibrido"
   }
 
+  dimension: acct_payment_mode_desc {
+    type: string
+    sql: ${TABLE}.ACCT_PAYMENT_MODE_DESC ;;
+    view_label: "Comprobante"
+    label: "Cuenta Mercado Factura"
+  }
+
   dimension: act_dst_status {
     type: string
     sql: ${TABLE}.ACT_DST_STATUS ;;
@@ -386,6 +393,20 @@ view: ft_factura_detalle {
     label: "Oferta Nombre Corto"
   }
 
+  dimension: payment_method_id {
+    type: string
+    sql: ${TABLE}.PAYMENT_METHOD_ID ;;
+    view_label: "Pagos"
+    label: "Medio de Cobro ID"
+  }
+
+  dimension: payment_method_desc {
+    type: string
+    sql: ${TABLE}.PAYMENT_METHOD_DESC ;;
+    view_label: "Pagos"
+    label: "Medio de Cobro"
+  }
+
   dimension: payment_object_type {
     type: string
     sql: ${TABLE}.PAYMENT_OBJECT_TYPE ;;
@@ -454,6 +475,12 @@ view: ft_factura_detalle {
     label: "Venta Provincia"
   }
 
+  dimension: total_installment {
+    type: string
+    sql: ${TABLE}.TOTAL_INSTALLMENT ;;
+    view_label: "Pagos"
+    label: "Cuotas Total"
+  }
   dimension: trans_type {
     type: string
     sql: ${TABLE}.TRANS_TYPE ;;
@@ -678,6 +705,12 @@ view: ft_factura_detalle {
     sql: ${TABLE}.ORIGINAL_AMT ;;
   }
 
+  dimension: total_cycle {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.TOTAL_CYCLE ;;
+  }
+
 ## Measures
 
   measure: count_items {
@@ -694,6 +727,14 @@ view: ft_factura_detalle {
     view_label: "Comprobante"
     group_label: "Total"
     label: "Cargos Monto"
+  }
+
+  measure: t_total_cycle {
+    type: sum
+    sql: ${total_cycle} ;;
+    view_label: "Pagos"
+    group_label: "Total"
+    label: "Cuotas DPF"
   }
 
   measure: total_discount_amt {
