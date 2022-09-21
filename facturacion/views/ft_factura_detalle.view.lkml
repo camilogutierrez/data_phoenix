@@ -646,6 +646,13 @@ view: ft_factura_detalle {
     label: "Suscripcion Numero"
   }
 
+  dimension: total_cycle {
+    type: number
+    sql: ${TABLE}.TOTAL_CYCLE ;;
+    view_label: "Pagos"
+    label: "Cuotas DPF"
+  }
+
   dimension: trans_id {
     type: number
     sql: ${TABLE}.TRANS_ID ;;
@@ -705,12 +712,6 @@ view: ft_factura_detalle {
     sql: ${TABLE}.ORIGINAL_AMT ;;
   }
 
-  dimension: total_cycle {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.TOTAL_CYCLE ;;
-  }
-
 ## Measures
 
   measure: count_items {
@@ -727,14 +728,6 @@ view: ft_factura_detalle {
     view_label: "Comprobante"
     group_label: "Total"
     label: "Cargos Monto"
-  }
-
-  measure: t_total_cycle {
-    type: sum
-    sql: ${total_cycle} ;;
-    view_label: "Pagos"
-    group_label: "Total"
-    label: "Cuotas DPF"
   }
 
   measure: total_discount_amt {
