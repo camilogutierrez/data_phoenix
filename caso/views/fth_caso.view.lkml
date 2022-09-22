@@ -1625,6 +1625,28 @@ view: fth_caso {
     label: "Motivo Cierre Denuncia"
   }
 
+  dimension:  caso_subestado_nombre {
+    type: string
+    sql: ${TABLE}.CasoSubestadoNombre ;;
+    label: "Subestado"
+    description: "Detalla los motivos del estado de portabilidad"
+  }
+
+  dimension:  caso_operador_rechazo_portacion_nombre {
+    type: string
+    sql: ${TABLE}.CasoOperadorRechazoPortacionNombre ;;
+    label: "Speech"
+    description: "Indica el operador que rechazó la portación"
+  }
+
+  dimension:  caso_motivo_ajuste {
+    type: string
+    sql: ${TABLE}.CasoMotivoAjuste ;;
+    label: "Motivo Adicional"
+    description: "Indica el motivo complementario en algunas funcionalidades"
+  }
+
+
 
   ## Numbers
 
