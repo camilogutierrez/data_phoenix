@@ -2637,36 +2637,12 @@ view: fth_parque {
     label: "Es Cliente Activo"
   }
 
-  dimension: cliente_marca_fraude {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.ClienteMarcaFraude ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Cliente Fraude"
-  }
-
   dimension: cliente_marca_jubilado {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaJubilado ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es Jubilado"
-  }
-
-  dimension: cliente_marca_partner {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPartner ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Partner"
-  }
-
-  dimension: cliente_marca_prensa {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPrensa ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Prensa"
   }
 
   dimension: cliente_marca_vip {
@@ -2677,36 +2653,12 @@ view: fth_parque {
     label: "Es Vip"
   }
 
-  dimension: cuenta_marca_compra_financiada {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaCompraFinanciada ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Compra Financiada"
-  }
-
   dimension: cuenta_marca_debito {
     type: yesno
     sql: ${cuenta_medio_pago_srcid} != "-1" ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es Debito"
-  }
-
-  dimension: cuenta_marca_deuda_financiada {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDeudaFinanciada ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Deuda Financiada"
-  }
-
-  dimension: cuenta_marca_morosidad {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaMorosidad ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Morosidad"
   }
 
   dimension: cuenta_marca_no_nominado {
@@ -2717,43 +2669,12 @@ view: fth_parque {
     label: "Es No Nominado"
   }
 
-  dimension: cuenta_marca_socio {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaSocio ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Socio"
-  }
-  dimension: persona_marca_enviar_mail {
-    type: yesno
-    sql: ${TABLE}.Cliente.PersonaMarcaEnviarMail ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Enviar Mail"
-  }
-
-  dimension: persona_marca_fraude {
-    type: yesno
-    sql: ${TABLE}.Cliente.PersonaMarcaFraude ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Persona Fraude"
-  }
-
   dimension: persona_marca_no_llamar {
     type: yesno
     sql: ${TABLE}.Cliente.PersonaMarcaNoLlamar ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es No Llamar"
-  }
-
-  dimension: marca_cuenta_servicio_actualizada {
-    type: yesno
-    sql: ${TABLE}.Marcas.MarcaCuentaServicioActualizada ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Cuenta Servicio Actualizada"
   }
 
   dimension: producto_adquirido_marca_destruccion_total {
@@ -2788,14 +2709,6 @@ view: fth_parque {
     label: "Es Pertenece Bundle"
   }
 
-  dimension: producto_adquirido_marca_port_out {
-    type: yesno
-    sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPortOut ;;
-    view_label: "Producto Adquirido"
-    group_label: "Marcas"
-    label: "Es Port Out"
-  }
-
   dimension: producto_adquirido_marca_principal {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPrincipal ;;
@@ -2825,38 +2738,6 @@ view: fth_parque {
     view_label: "Orden Alta"
     group_label: "Marcas"
     label: "Es Cambio Producto"
-  }
-
-  dimension: producto_marca_activo {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaActivo ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es Producto Activo"
-  }
-
-  dimension: producto_marca_no_assetizable {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaNoAssetizable ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es No Assetizable"
-  }
-
-  dimension: producto_marca_orderable {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaOrderable ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es Orderable"
-  }
-
-  dimension: producto_marca_principal {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaPrincipal ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es Principal"
   }
 
   dimension: producto_marca_tangible {
@@ -3551,20 +3432,6 @@ view: fth_parque {
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "INTERNET"
-    ]
-  }
-
-  measure: count_productos_telefonia {
-    type: count
-    group_label: "Productos"
-    group_item_label: "Telefonia"
-    label: "Productos Telefonia"
-    description: "Negocio fija telefonia"
-    filters: [
-        producto_adquirido_marca_parque_activo: "Yes"
-      , producto_adquirido_marca_principal: "Yes"
-      , producto_adquirido_familia_producto: "FIJA"
-      , p_producto_tipo_nombre: "TELEFONIA"
     ]
   }
 
