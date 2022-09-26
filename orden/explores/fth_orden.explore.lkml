@@ -322,5 +322,9 @@ explore: fth_orden {
     type: inner
   }
 
-
+  join: lk_orden_estadoa_om {
+    sql_on: ${lk_orden_estadoa_om.orden_estadoa_omsk} = ${lk_orden_estadoa_om.orden_estadoa_omsk} ;;
+    relationship: many_to_one
+    type: inner
+  }
 }
