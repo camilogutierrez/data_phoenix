@@ -150,6 +150,13 @@ view: ft_degradacion_suscripcion {
     label: "Status Desc"
   }
 
+  dimension: payment_mode_des {
+    type: string
+    sql: ${TABLE}.PAYMENT_MODE_DES ;;
+    label: "Mercado Descripcion"
+  }
+
+
   ## Numbers
 
   dimension: acct_id {
