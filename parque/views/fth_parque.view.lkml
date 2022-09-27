@@ -2637,36 +2637,12 @@ view: fth_parque {
     label: "Es Cliente Activo"
   }
 
-  dimension: cliente_marca_fraude {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.ClienteMarcaFraude ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Cliente Fraude"
-  }
-
   dimension: cliente_marca_jubilado {
     type: yesno
     sql: ${TABLE}.Cliente.Marcas.ClienteMarcaJubilado ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es Jubilado"
-  }
-
-  dimension: cliente_marca_partner {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPartner ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Partner"
-  }
-
-  dimension: cliente_marca_prensa {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.ClienteMarcaPrensa ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Prensa"
   }
 
   dimension: cliente_marca_vip {
@@ -2677,36 +2653,12 @@ view: fth_parque {
     label: "Es Vip"
   }
 
-  dimension: cuenta_marca_compra_financiada {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaCompraFinanciada ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Compra Financiada"
-  }
-
   dimension: cuenta_marca_debito {
     type: yesno
     sql: ${cuenta_medio_pago_srcid} != "-1" ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es Debito"
-  }
-
-  dimension: cuenta_marca_deuda_financiada {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaDeudaFinanciada ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Deuda Financiada"
-  }
-
-  dimension: cuenta_marca_morosidad {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaMorosidad ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Morosidad"
   }
 
   dimension: cuenta_marca_no_nominado {
@@ -2717,43 +2669,12 @@ view: fth_parque {
     label: "Es No Nominado"
   }
 
-  dimension: cuenta_marca_socio {
-    type: yesno
-    sql: ${TABLE}.Cliente.Marcas.CuentaMarcaSocio ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Socio"
-  }
-  dimension: persona_marca_enviar_mail {
-    type: yesno
-    sql: ${TABLE}.Cliente.PersonaMarcaEnviarMail ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Enviar Mail"
-  }
-
-  dimension: persona_marca_fraude {
-    type: yesno
-    sql: ${TABLE}.Cliente.PersonaMarcaFraude ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Persona Fraude"
-  }
-
   dimension: persona_marca_no_llamar {
     type: yesno
     sql: ${TABLE}.Cliente.PersonaMarcaNoLlamar ;;
     view_label: "Cliente"
     group_label: "Marcas"
     label: "Es No Llamar"
-  }
-
-  dimension: marca_cuenta_servicio_actualizada {
-    type: yesno
-    sql: ${TABLE}.Marcas.MarcaCuentaServicioActualizada ;;
-    view_label: "Cliente"
-    group_label: "Marcas"
-    label: "Es Cuenta Servicio Actualizada"
   }
 
   dimension: producto_adquirido_marca_destruccion_total {
@@ -2788,14 +2709,6 @@ view: fth_parque {
     label: "Es Pertenece Bundle"
   }
 
-  dimension: producto_adquirido_marca_port_out {
-    type: yesno
-    sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPortOut ;;
-    view_label: "Producto Adquirido"
-    group_label: "Marcas"
-    label: "Es Port Out"
-  }
-
   dimension: producto_adquirido_marca_principal {
     type: yesno
     sql: ${TABLE}.Marcas.ProductoAdquiridoMarcaPrincipal ;;
@@ -2825,38 +2738,6 @@ view: fth_parque {
     view_label: "Orden Alta"
     group_label: "Marcas"
     label: "Es Cambio Producto"
-  }
-
-  dimension: producto_marca_activo {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaActivo ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es Producto Activo"
-  }
-
-  dimension: producto_marca_no_assetizable {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaNoAssetizable ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es No Assetizable"
-  }
-
-  dimension: producto_marca_orderable {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaOrderable ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es Orderable"
-  }
-
-  dimension: producto_marca_principal {
-    type: yesno
-    sql: ${TABLE}.Producto.Marcas.ProductoMarcaPrincipal ;;
-    view_label: "Producto"
-    group_label: "Marcas"
-    label: "Es Principal"
   }
 
   dimension: producto_marca_tangible {
@@ -3442,9 +3323,9 @@ view: fth_parque {
   measure: count_productos_activos_hibridos {
     type: count
     group_label: "Productos"
-    group_item_label: "Activos Hibridos"
-    label: "Productos Activos Hibridos"
-    description: "Negocio movil producto hibrido"
+    group_item_label: "Hibridos"
+    label: "Productos Hibridos"
+    description: "Negocio movil / Cuenta productos plan hibrido"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3456,9 +3337,9 @@ view: fth_parque {
   measure: count_productos_activos_pospagos {
     type: count
     group_label: "Productos"
-    group_item_label: "Activos Pospagos"
-    label: "Productos Activos Pospagos"
-    description: "Negocio movil productos pospagos"
+    group_item_label: "Pospagos"
+    label: "Productos Pospagos"
+    description: "Negocio movil / Cuenta productos plan pospago"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3470,9 +3351,9 @@ view: fth_parque {
   measure: count_productos_activos_prepagos {
     type: count
     group_label: "Productos"
-    group_item_label: "Activos Prepagos"
-    label: "Productos Activos Prepagos"
-    description: "Negocio movil productos prepagos"
+    group_item_label: "Prepagos"
+    label: "Productos Prepagos"
+    description: "Negocio movil / Cuenta productos plan prepago"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3486,7 +3367,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Bundle"
     label: "Productos Bundle"
-    description: "Negocio fija detalle de clientes combo"
+    description: "Negocio fija / Cuenta productos bundle principal"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3500,7 +3381,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Flow Flex"
     label: "Productos Flow Flex"
-    description: "Producto prepago Flow Flex"
+    description: "Negocio fija / Cuenta productos prepagos Flow Flex"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "No"
@@ -3513,23 +3394,24 @@ view: fth_parque {
   measure: count_productos_tv_flow_box {
     type: count
     group_label: "Productos"
-    group_item_label: "TV Flow Box"
-    label: "Productos TV FLow Box"
-    description: "Negocio fijo producto Flow Box"
+    group_item_label: "Solo TV Flow Box"
+    label: "Productos Solo TV FLow Box"
+    description: "Negocio fija / Cuenta Productos de TV Flow Box que no pertenzcan a un bundle"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TV"
       , producto_sub_tipo_nombre: "FLOW BOX"
+      , producto_adquirido_marca_pertenece_bundle: "No"
     ]
   }
 
   measure: count_productos_tv {
     type: count
     group_label: "Productos"
-    group_item_label: "TV"
-    label: "Productos TV"
+    group_item_label: "Solo TV Clasica"
+    label: "Productos Solo TV Clasica"
     description: "Negocio fijo producto TV clasico"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
@@ -3537,34 +3419,22 @@ view: fth_parque {
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "TV"
       , producto_sub_tipo_nombre: "TV CLASICA"
+      , producto_adquirido_marca_pertenece_bundle: "No"
     ]
   }
 
   measure: count_productos_internet {
     type: count
     group_label: "Productos"
-    group_item_label: "Internet"
-    label: "Productos Internet"
-    description: "Clientes producto internet fija"
+    group_item_label: "Solo Internet"
+    label: "Productos Solo Internet"
+    description: "Negocio fija / Cuenta Productos de TV Clasica que no pertenzcan a un bundle"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "INTERNET"
-    ]
-  }
-
-  measure: count_productos_telefonia {
-    type: count
-    group_label: "Productos"
-    group_item_label: "Telefonia"
-    label: "Productos Telefonia"
-    description: "Negocio fija telefonia"
-    filters: [
-        producto_adquirido_marca_parque_activo: "Yes"
-      , producto_adquirido_marca_principal: "Yes"
-      , producto_adquirido_familia_producto: "FIJA"
-      , p_producto_tipo_nombre: "TELEFONIA"
+      , producto_adquirido_bundle_nombre: "-FLOW BOX, -TV"
     ]
   }
 
@@ -3573,7 +3443,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Telefonia TOIP"
     label: "Productos Telefonia TOIP"
-    description: "Clientes Telefonia TOIP"
+    description: "Negocio fija /Cuenta Productos de Telefonia (TOIP)"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3586,9 +3456,9 @@ view: fth_parque {
   measure: count_productos_total_fija {
     type: count
     group_label: "Productos"
-    group_item_label: "Productos Total Fija"
+    group_item_label: "Total Fija"
     label: "Productos Total Fija"
-    description: "Clientes fija"
+    description: "Negocio fija /Cuenta Productos Principales familia fija (excluye Bundle)"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3602,7 +3472,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Total Movil"
     label: "Productos Total Movil"
-    description: "Productos negocio movil pospagos, hibridos y prepagos."
+    description: "Negocio movil / Cuenta productos principales planes"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3616,7 +3486,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Terminales"
     label: "Terminales"
-    description: "Dispositivos moviles activos."
+    description: "Negocio movil / Cuenta dispositivos"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
