@@ -1170,6 +1170,23 @@ view: fth_orden {
     label: "Estado Validado Cliente"
   }
 
+  dimension: orden_estadoa_om_nombre {
+    type: string
+    sql: ${TABLE}.Orden.OrdenEstadoaOMNombre ;;
+    suggest_dimension: lk_orden_estadoa_om.orden_estadoa_omnombre
+    view_label: "Orden"
+    label: "Estado a OM"
+    description: "Estado real de la orden a Order Manager"
+  }
+
+  dimension: orden_operador_logistico {
+    type: string
+    sql: ${TABLE}.Orden.OrdenOperadorLogistico  ;;
+    view_label: "Orden"
+    label: "Operador Logistico"
+    description: "Operador logistico de procesos de delivery"
+  }
+
   dimension: orden_grupo_trabajo_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenGrupoTrabajoNombre ;;
