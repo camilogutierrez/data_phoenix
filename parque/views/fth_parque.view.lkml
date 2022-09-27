@@ -3428,13 +3428,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Solo Internet"
     label: "Productos Solo Internet"
-    description: "Negocio fija / Cuenta Productos de TV Clasica que no pertenzcan a un bundle"
+    description: "Negocio fija / Cuenta productos de internet que no pertenzcan a un bundle, Incluye TOIP."
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
       , producto_adquirido_familia_producto: "FIJA"
       , p_producto_tipo_nombre: "INTERNET"
-      , producto_adquirido_bundle_nombre: "-FLOW BOX, -TV"
+      , producto_adquirido_bundle_nombre: "-FLOW BOX, -TV, -NULL"
     ]
   }
 
@@ -3443,7 +3443,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Telefonia TOIP"
     label: "Productos Telefonia TOIP"
-    description: "Negocio fija /Cuenta Productos de Telefonia (TOIP)"
+    description: "Negocio fija / Cuenta Productos de Telefonia (TOIP)"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
