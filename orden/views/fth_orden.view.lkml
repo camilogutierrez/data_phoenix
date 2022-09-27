@@ -2114,12 +2114,6 @@ view: fth_orden {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubEstadoSRCId ;;
   }
 
-  dimension: es_numero_linea {
-    hidden: yes
-    type: yesno
-    sql: LENGTH(TRIM(${producto_adquirido_numero_linea})) = 10 ;;
-  }
-
   ###############
   ## Domicilio ##
   ###############
@@ -2929,47 +2923,14 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Cambios de Plan Efectiva"
-    label: "Cantidad Cambios de Plan Efectiva"
-    description: "Ordenes de Cambios de Plan Activadas POSPAGO, HIBRIDO, PREPAGO"
+    group_item_label: "Cambio de Plan (CAPLAN)"
+    label: "Cantidad Cambio de Plan (CAPLAN)"
+    description: "Negocio Movil - Cuenta todos los cambios de plan"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_item_accion_nombre: "AGREGAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-    ]
-  }
-
-  measure: count_baja_voluntaria_efectiva_movil {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Voluntaria Efectiva Movil"
-    label: "Baja Voluntaria Efectiva Movil"
-    description: "Ordenes de Bajas Voluntarias Cumplidas"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-    ]
-  }
-
-  measure: count_baja_tiempo_efectiva {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Bajas Masiva"
-    label: "Cantidad Bajas Masiva"
-    description: "Ordenes de Bajas por Tiempo Cumplidas"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "POR TIEMPO"
+      , orden_marca_cambio_producto: "No"
       , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
     ]
   }
@@ -2979,13 +2940,13 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Cambio SIM Efectiva"
-    label: "Cantidad Cambio SIM Efectiva"
-    description: "Ordenes de Cambio de SIM Activadas"
+    group_item_label: "Cambio de SIM"
+    label: "Cantidad Cambio de SIM"
+    description: "Negocio movil- Ordenes activadas de cambio de SIM"
     filters: [
         orden_estado_nombre: "ACTIVADA"
-      , orden_item_accion_nombre: "EXISTENTE"
-      , es_numero_linea: "Yes"
+      , orden_item_accion_nombre: "CAMBIAR"
+      , producto_tipo_nombre: "TARJETA SIM"
       , orden_tipo_gestion_nombre: "CAMBIO DE TARJETA SIM, CAMBIO DE TARJETA SIM POR SINIESTRO"
     ]
   }
@@ -3010,15 +2971,16 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Plan Upselling"
-    label: "Cantidad Plan Upselling"
-    description: "Ordenes de Cambio de plan cuyo precio con promocion es mayor al Asset que se desconecta"
+    group_item_label: "Cambio Plan Upselling"
+    label: "Cantidad Cambio Plan Upselling"
+    description: "Negocio Movil - Cuenta los cambios de plan  a plan Mayor"
     filters: [
         orden_estado_nombre: "ACTIVADA"
+      , orden_marca_cambio_producto: "No"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_tipo_cambio_plan_nombre: "UPGRADE"
       , orden_item_accion_nombre: "AGREGAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO"
     ]
   }
 
@@ -3027,15 +2989,16 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Plan Downselling"
-    label: "Cantidad Plan Downselling"
-    description: "Ordenes de Cambio de plan cuyo precio con promocion es menor al Asset que se desconecta"
+    group_item_label: "Cambio Plan Downselling"
+    label: "Cantidad Cambio Plan Downselling"
+    description: "Negocio Movil - Cuenta los cambios de plan a plan Menor"
     filters: [
         orden_estado_nombre: "ACTIVADA"
+      , orden_marca_cambio_producto: "No"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
       , orden_item_accion_nombre: "AGREGAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO"
     ]
   }
 
@@ -3044,9 +3007,9 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Plan Cross Sell"
-    label: "Cantidad Plan Cross Sell"
-    description: "Ordenes Cambio de plan cuyo precio con promocion es igual al Asset que se desconecta"
+    group_item_label: "Cambio Plan Cross"
+    label: "Cantidad Cambio Plan Cross"
+    description: "Negocio Movil - Cuenta los cambios de plan, a planes de igual precio"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
@@ -3062,12 +3025,14 @@ view: fth_orden {
     view_label: "Orden"
     group_label: "Cantidad"
     group_item_label: "Venta Terminal Neta"
-    label: "Venta Terminal Efectiva"
+    label: "Venta Terminal Neta"
+    description: "Negocio Movil/ cuenta ordenes de venta de terminales Activadas (Venta Neta)"
     filters: [
-        orden_item_accion_nombre: "AGREGAR"
+        orden_estado_nombre: "ACTIVADA"
+      , orden_item_accion_nombre: "AGREGAR"
       , producto_tipo_nombre: "DISPOSITIVO"
-      , orden_estado_trackeo_nombre: "ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA"
-      , orden_reemplazada_srcid: "-1"
+      , orden_estado_trackeo_nombre: "ENTREGADA"
+      , orden_reemplazada_srcid: "'-1'"
       , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
       , orden_tipo_sub_gestion_nombre: "(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL"
     ]
@@ -3080,9 +3045,12 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Venta Terminal Bruta"
     label: "Venta Terminal Bruta"
+    description: "Negocio Movil / Cuenta Solicitudes de venta de Terminales (Venta Bruta)"
     filters: [
         producto_tipo_nombre: "DISPOSITIVO"
-      , orden_reemplazada_srcid: "-1"
+      , orden_item_accion_nombre: "AGREGAR"
+      , orden_estado_nombre: "-CANCELADA PROCESO MASIVO"
+      , orden_reemplazada_srcid: "'-1'"
       , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
       , orden_tipo_sub_gestion_nombre: "(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL"
     ]
@@ -3135,7 +3103,7 @@ view: fth_orden {
       , producto_tipo_nombre: "PROTECCION"
       , producto_familia_nombre: "MOVIL"
       , orden_estado_trackeo_nombre: "ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA, ENVIO A OM"
-      , orden_reemplazada_srcid: "-1"
+      , orden_reemplazada_srcid: "'-1'"
     ]
   }
 
@@ -3178,8 +3146,9 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Baja Suspension Portout Efectiva"
-    label: "Baja Suspension Portout Efectiva"
+    group_item_label: "Baja por suspension Portout"
+    label: "Cantidad Baja por suspension Portout"
+    description: "Negocio movil- Ordenes de suspension por Portout"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
@@ -3190,107 +3159,20 @@ view: fth_orden {
     ]
   }
 
-  measure: count_baja_fraude_efectiva {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Fraude Efectiva"
-    label: "Baja Fraude Efectiva"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "FRAUDE"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_baja_mora_efectiva_movil {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Mora Efectiva Movil"
-    label: "Baja Mora Efectiva Movil"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "MOROSIDAD"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
   measure: count_baja_masiva {
     type: count_distinct
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Baja Masiva"
-    label: "Baja Masiva"
+    group_item_label: "Baja Masiva Por Tiempo"
+    label: "Cantidad Baja Masiva Por Tiempo"
+    description: "Gestion de Desconexion por operatoria masiva por tiempo Plan Prepago"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
       , orden_tipo_sub_gestion_nombre: "POR TIEMPO"
       , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_voluntaria_movil {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Voluntaria Movil"
-    label: "Suspension Voluntaria Movil"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "VOLUNTARIA"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - VOLUNTARIO"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_degradacion {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Degradacion"
-    label: "Suspension Degradacion"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "DEGRADACION"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - DEGRADACION"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_mora_parcial {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Mora Parcial"
-    label: "Suspension Mora Parcial"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "DEUDA PARCIAL"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - MORA 1"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+      , producto_tipo_nombre: "PLAN PREPAGO"
       , producto_familia_nombre: "MOVIL"
     ]
   }
@@ -3300,106 +3182,16 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Suspension Mora Total Fija"
-    label: "Suspension Mora Total"
+    group_item_label: "Suspensiones por Mora"
+    label: "Cantidad de Suspensiones por Mora"
+    description: "Suspensiones totales por mora Fija y Movil, incluye Degradacion, Mora 1 y Mora 2"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "DEUDA TOTAL"
       , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - MORA 2"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_mora_total_fija {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Mora Total Fija"
-    label: "Suspension Mora Total Fija"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "DEUDA TOTAL"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - MORA 2"
-      , producto_tipo_nombre: "TV"
-      , producto_familia_nombre: "FIJA"
-    ]
-  }
-
-  measure: count_suspension_siniestro_abono {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Siniestro Abono"
-    label: "Suspension Siniestro Abono"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "SINIESTRO"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - SINIESTRO"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_siniestro_dispositivo {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Siniestro Dispositivo"
-    label: "Suspension Siniestro Dispositivo"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "SINIESTRO"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - SINIESTRO"
-      , producto_tipo_nombre: "DISPOSITIVO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_fraude_abono {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Fraude Abono"
-    label: "Suspension Fraude Abono"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "ADMINISTRATIVA"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - FRAUDE"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_fraude_dispositivo {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspension Fraude Dispositivo"
-    label: "Suspension Fraude Dispositivo"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "ADMINISTRATIVA"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - FRAUDE"
-      , producto_tipo_nombre: "ACCESORIO, DISPOSITIVO, TARJETA SIM"
-      , producto_familia_nombre: "MOVIL"
+      , orden_item_sub_accion_nombre: "SUSPENDER - DEGRADACION, SUSPENDER - MORA 1, SUSPENDER - MORA 2"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, TV, INTERNET"
+      , producto_familia_nombre: "MOVIL, FIJA"
     ]
   }
 
@@ -3410,64 +3202,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Suspension Restriccion Comercial"
     label: "Suspension Restriccion Comercial"
+    description: "Restriccion de uso de proteccion personal, ante suspension por mora para dispositivos."
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "RESTRICCION COMERCIAL"
       , orden_item_accion_nombre: "SUSPENDER"
       , orden_item_sub_accion_nombre: "SUSPENDER - RESTRICCION COMERCIAL"
       , producto_tipo_nombre: "DISPOSITIVO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_baja_mora_efectiva_fija {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Mora Efectiva Fija"
-    label: "Baja Mora Efectiva Fija"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "MOROSIDAD"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "TV"
-      , producto_familia_nombre: "FIJA"
-    ]
-  }
-
-  measure: count_baja_siniestro_correo {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Siniestro Correo"
-    label: "Baja Siniestro Correo"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "SINIESTRO CORREO"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "ACCESORIO, DISPOSITIVO, TARJETA SIM"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_baja_anulacion_venta_dispositivo {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Anulacion Venta Dispositivo"
-    label: "Baja Anulacion Venta Dispositivo"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "ANULACION DE VENTA"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "ACCESORIO, DISPOSITIVO, TARJETA SIM"
       , producto_familia_nombre: "MOVIL"
     ]
   }
@@ -3477,31 +3218,15 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Baja Anulacion Venta Abono"
-    label: "Baja Anulacion Venta Abono"
+    group_item_label: "Anulaciones de Venta Movil"
+    label: "Cantidad Anulaciones de Venta Movil"
+    description: "Gestiones de desconexion por anulacion de venta Movil, planes y dispositivos"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
       , orden_tipo_sub_gestion_nombre: "ANULACION DE VENTA"
       , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_baja_no_entrega {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja No Entrega"
-    label: "Baja No Entrega"
-    filters: [
-        orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "NO ENTREGADO"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "ACCESORIO, DISPOSITIVO, TARJETA SIM"
+      , producto_tipo_nombre: "DISPOSITIVO, PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
       , producto_familia_nombre: "MOVIL"
     ]
   }
@@ -3511,15 +3236,15 @@ view: fth_orden {
     sql: ${orden_srcid};;
     view_label: "Orden"
     group_label: "Cantidad"
-    group_item_label: "Baja Voluntaria Efectiva Fija"
-    label: "Baja Voluntaria Efectiva Fija"
+    group_item_label: "Baja Voluntaria"
+    label: "Cantidad Baja Voluntaria"
+    description: "Negocio Fija /Movil - Ordenes de desconexion por pedido de baja de cliente (baja voluntaria)"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
       , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
       , orden_item_accion_nombre: "DESCONECTAR"
       , producto_tipo_nombre: "TV"
-      , producto_familia_nombre: "FIJA"
     ]
   }
 
