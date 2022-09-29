@@ -862,6 +862,28 @@ view: fth_parque_promociones {
     label: "Secuencia"
   }
 
+  dimension: orden_item_total_recurrente {
+    type: number
+    sql: ${TABLE}.OrdenItemTotalRecurrente ;;
+    group_label: "Orden"
+    label: "Total Recurrente"
+  }
+
+  dimension: orden_item_total_recurrente_sin_impuesto {
+    type: number
+    sql: ${TABLE}.OrdenItemTotalRecurrenteSinImpuesto ;;
+    group_label: "Orden"
+    label: "Total Recurrente Sin Impuesto"
+  }
+
+  dimension: orden_precio_valor_ajuste {
+    type: number
+    sql: ${TABLE}.OrdenPrecioValorAjuste ;;
+    group_label: "Orden"
+    label: "Precio Valor Ajuste"
+  }
+
+
   ## Hidden
 
   dimension: caso_sub_tipo_sk {
