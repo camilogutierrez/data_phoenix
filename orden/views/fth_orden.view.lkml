@@ -2931,7 +2931,7 @@ view: fth_orden {
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_item_accion_nombre: "AGREGAR"
       , orden_marca_cambio_producto: "No"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
+      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO"
     ]
   }
 
