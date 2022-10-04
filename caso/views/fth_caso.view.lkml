@@ -1943,72 +1943,6 @@ view: fth_caso {
     sql: ${TABLE}.CasoNominaPeriodoCreacionUsuarioFK ;;
   }
 
-  ## Auxiliares
-
-  dimension: es_retencion_asesoramiento_tmp {
-    hidden: yes
-    type: yesno
-    sql: (
-      ${caso_resultado_retencion_nombre} = "ASESORAMIENTO"
-        AND ${caso_estado_nombre} = "RETENIDA")
-      OR (${caso_resultado_retencion_nombre} = "OFERTAS"
-        AND ${caso_estado_nombre} = "INFORMADA")  ;;
-  }
-
-
-  dimension: es_no_retenido_desconexiones_tmp {
-    hidden: yes
-    type: yesno
-    sql: (
-        ${caso_resultado_retencion_nombre} = "(no informado)"
-        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
-        AND ${orden_tipo_sub_gestion_nombre} = ""
-        AND ${orden_estado_nombre} = "")
-    OR(
-        ${caso_resultado_retencion_nombre} = "(no informado)"
-        AND ${caso_estado_nombre} = "RESUELTA EXITOSA"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "ASESORAMIENTO"
-        AND ${caso_estado_nombre} = "RESUELTA EXITOSA"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "YES"
-        AND ${caso_estado_nombre} = "ANULADA"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "YES"
-        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "YES"
-        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
-        AND ${orden_tipo_sub_gestion_nombre} = ""
-        AND ${orden_estado_nombre} = "")
-    OR(
-        ${caso_resultado_retencion_nombre} = "YES"
-        AND ${caso_estado_nombre} = "REALIZADA EXITOSA"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "YES"
-        AND ${caso_estado_nombre} = "RESUELTA EXITOSA"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "OFERTAS"
-        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION"
-        AND ${orden_tipo_sub_gestion_nombre} = "PEDIDO DE BAJA"
-        AND ${orden_estado_nombre} = "ACTIVADA")
-    OR(
-        ${caso_resultado_retencion_nombre} = "OFERTAS"
-        AND ${caso_estado_nombre} = "EN ESPERA DE EJECUCION") ;;
-  }
-
 #########################
 ## Acuerdo de Servicio ##
 #########################
@@ -2839,13 +2773,6 @@ view: fth_caso {
     label: "Tipo Especificacion"
   }
 
-  dimension: p_producto_srcid {
-    type: string
-    sql: ${TABLE}.Producto.ProductoSRCId ;;
-    view_label: "Producto"
-    label: "Producto ID"
-  }
-
   dimension: producto_tipo_objeto_descripcion {
     type: string
     sql: ${TABLE}.Producto.ProductoTipoObjetoDescripcion ;;
@@ -3140,60 +3067,6 @@ view: fth_caso {
     label: "Cantidad Usos Siniestro"
   }
 
-  measure: count_acuerdo_pago {
-    type: count
-    label: "Acuerdo Pago"
-    description: "Acuerdo de compromiso de pago."
-    filters: [
-        caso_tipo_nombre: "ACUERDO DE PAGO"
-      , caso_estado_nombre: "RESUELTA EXITOSA"
-      , caso_sub_tipo_nombre: "-CANCELACION"
-    ]
-  }
-
-  measure: count_acuerdo_pago_cancelado {
-    type: count
-    label: "Acuerdo Pago Cancelado"
-    description: "Acuerdo de compromiso de pago cancelado"
-    filters: [
-      caso_tipo_nombre: "ACUERDO DE PAGO"
-      , caso_estado_nombre: "RESUELTA EXITOSA"
-      , caso_sub_tipo_nombre: "CANCELACION"
-    ]
-  }
-
-  measure: count_asistencia_delivery {
-    type: count
-    label: "Asistencia Delivery"
-    description: "Pedido de asistencia delivery."
-    filters: [
-      caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
-      , caso_estado_nombre: "RESUELTA EXITOSA"
-      , caso_sub_tipo_nombre: "VENTA PORTIN, VENTA, CAMBIO DE TARJETA SIM"
-    ]
-  }
-
-  measure: count_asistencia_delivery_anulado {
-    type: count
-    label: "Asistencia Delivery Anulado"
-    description: "Pedido de asistencia delivery anulado."
-    filters: [
-      caso_tipo_nombre: "ASISTENCIA DE DELIVERY"
-      , caso_estado_nombre: "RESUELTA EXITOSA"
-      , caso_sub_tipo_nombre: "ANULACION"
-    ]
-  }
-
-  measure: count_asistencia_tecnica {
-    type: count
-    label: "Asistencia Tecnica"
-    description: "Pedido de asistencia tecnica con visita de tecnico."
-    filters: [
-      caso_tipo_nombre: "ASISTENCIA TECNICA"
-      , caso_estado_nombre: "RESUELTA EXITOSA"
-    ]
-  }
-
   measure: count_alta_debito_autom{
     type: count
     label: "Alta DA"
@@ -3216,16 +3089,6 @@ view: fth_caso {
     ]
   }
 
-  measure: count_clientes_no_fidelizados{
-    type: count
-    label: "No Fidelizados"
-    description: "Clientes no fidelizados."
-    filters: [
-      caso_tipo_nombre: "FIDELIZACION"
-      , caso_estado_nombre: "ANULADA"
-    ]
-  }
-
   measure: count_bajas_postdateadas {
     type: count
     label: "Bajas Posdateadas"
@@ -3233,52 +3096,6 @@ view: fth_caso {
     filters: [
       caso_tipo_nombre: "PEDIDO DE BAJA"
       , caso_estado_nombre: "EN ESPERA DE EJECUCION "
-    ]
-  }
-
-  measure: count_demanda_retencion {
-    type: count
-    label: "Demanda Retencion"
-    description: "Corresponde al ingreso de pedido de retencion / fidelizacion."
-    filters: [es_demanda_retencion: "Yes"]
-  }
-
-  measure: count_fidelizacion {
-    type: count
-    label: "Fidelizacion"
-    description: "Clientes retenidos sin oferta."
-    filters: [es_fidelizacion: "Yes"]
-  }
-
-  measure: count_retenido_asesoramiento {
-    type: count
-    label: "Retenido Asesoramiento"
-    description: "Retenidos con asesoramiento."
-    filters: [
-      caso_estado_nombre: "RETENIDA, INFORMADA"
-      , caso_tipo_nombre: "PEDIDO DE BAJA"
-      , caso_resultado_retencion_nombre: "ASESORAMIENTO, OFERTAS"
-      , caso_tipo_asset: "PLAN HIBRIDO, PLAN POSPAGO"
-      , orden_estado_nombre: "NULL"
-      , orden_tipo_sub_gestion_nombre: "NULL"
-      , orden_tipo_gestion_nombre: "NULL"
-      , caso_origen: "-OPERATORIA MASIVA"
-      , es_retencion_asesoramiento_tmp: "Yes"
-    ]
-  }
-
-  measure: count_no_retenido_desconexiones {
-    type: count
-    label: "No Retenido Desconexiones"
-    description: "No retenido bajas efectivas."
-    filters: [
-      caso_tipo_nombre: "PEDIDO DE BAJA"
-      , caso_resultado_retencion_nombre: "-NO APLICA"
-      , caso_tipo_asset: "PLAN HIBRIDO, PLAN POSPAGO"
-      , orden_estado_nombre: "-CANCELADA, -CANCELADA PROCESO MASIVO"
-      , orden_tipo_sub_gestion_nombre: "-FRAUDE, -POR TIEMPO, -MOROSIDAD"
-      , caso_origen: "-OPERATORIA MASIVA"
-      , es_no_retenido_desconexiones_tmp: "Yes"
     ]
   }
 }
