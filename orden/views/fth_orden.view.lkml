@@ -1105,6 +1105,7 @@ view: fth_orden {
     suggest_dimension: lk_orden_tipo_cambio_plan.orden_tipo_cambio_plan_nombre
     view_label: "Orden"
     label: "Tipo Cambio Plan"
+    description: "Es el tipo de cambio de plan Upgrade/Downgrade/Cross"
   }
 
   dimension: orden_servicio_entrega_nombre {
@@ -1121,6 +1122,7 @@ view: fth_orden {
     suggest_dimension: lk_orden_metodo_entrega.orden_metodo_entrega_nombre
     view_label: "Orden"
     label: "Metodo Entrega"
+    description: "Metodo de envio (Delivery/Presencial)"
   }
 
   dimension: orden_canal_origen_nombre {
@@ -1129,6 +1131,7 @@ view: fth_orden {
     suggest_dimension: lk_orden_canal_origen.orden_canal_origen_nombre
     view_label: "Orden"
     label: "Canal Origen"
+    description: "Canal de origen de la gestion (Telefonico/Fisico/digital/etc)"
   }
 
   dimension: orden_estado_aprobacion_nombre {
@@ -1192,6 +1195,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenGrupoTrabajoNombre ;;
     view_label: "Orden"
     label: "Grupo Trabajo"
+    description: "Equipo de trabajo"
   }
 
   dimension: orden_lista_productos_cuenta {
@@ -1206,6 +1210,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenLlamadaPadreSRCId ;;
     view_label: "Orden"
     label: "Llamada Padre Id"
+    description: "Integracion con PIC - Call Parent Id"
   }
 
   dimension: orden_llamada_srcid {
@@ -1213,6 +1218,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenLlamadaSRCId ;;
     view_label: "Orden"
     label: "Llamada Id"
+    description: "Integracion con PIC - Call Id"
   }
 
   dimension: orden_estado_consentimiento_cliente {
@@ -1234,6 +1240,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.DomicilioDireccionEntregaSRCId ;;
     view_label: "Orden"
     label: "Domicilio Direccion Entrega"
+    description: "Id correspondiente al Address2 direccion de entrega"
   }
 
   dimension: metodo_pago_srcid {
@@ -1248,6 +1255,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenCicloFacturacion ;;
     view_label: "Orden"
     label: "Ciclo Facturacion"
+    description: "Ciclo de Facturacion del Producto"
   }
 
   dimension: orden_codigo_banco {
@@ -1283,6 +1291,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenContactoNombre ;;
     view_label: "Orden"
     label: "Contacto"
+    description: "Nombre del Contacto (Cliente)"
   }
 
   dimension: orden_cuenta_facturacion_predeterminada_srcid {
@@ -1297,6 +1306,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenCuentaFacturacionSRCId ;;
     view_label: "Orden"
     label: "Cuenta Facturacion"
+    description: "Id de cuenta Facturacion"
   }
 
   dimension: orden_cuenta_servicio_predeterminada_srcid {
@@ -1318,6 +1328,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenDireccionInstalacionSRCId ;;
     view_label: "Orden"
     label: "Direccion Instalacion"
+    description: "Id correspondiente al Address2 direccion instalacion"
   }
 
   dimension: orden_ejecucion_cambio_ciclo_descripcion {
@@ -1332,6 +1343,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenMetodoConsentimiento ;;
     view_label: "Orden"
     label: "Metodo Consentimiento"
+    description: "Metodo de Validacion de la Gestion"
   }
 
   dimension: orden_motivo_anulacion_nombre {
@@ -1339,6 +1351,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenMotivoAnulacionNombre ;;
     view_label: "Orden"
     label: "Motivo Anulacion"
+    description: "Corresponde al campo AnnulmentReason y se completa el motivo de cancelacion de la gestion"
   }
 
   dimension: orden_nombre_apellido_autorizado {
@@ -1360,6 +1373,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenNumeroComprobante ;;
     view_label: "Orden"
     label: "Numero Comprobante"
+    description: "Corresponde al campo Legal Invoice Number"
   }
 
   dimension: orden_numero_pre_factura {
@@ -1367,6 +1381,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenNumeroPreFactura ;;
     view_label: "Orden"
     label: "Numero Prefactura"
+    description: "Corresponde al tracking number de Salesforce"
   }
 
   dimension: orden_numero_seguimiento {
@@ -1374,13 +1389,15 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenNumeroSeguimiento ;;
     view_label: "Orden"
     label: "Numero Seguimiento"
+    description: "Corresponde al tracking number de Salesforce"
   }
 
   dimension: orden_original_srcid {
     type: string
     sql: ${TABLE}.Orden.OrdenOriginalSRCId ;;
     view_label: "Orden"
-    label: "Original"
+    label: "Original Id"
+    description: "Id de orden original reemplazada"
   }
 
   dimension: orden_prefactibilidad_codigo_area {
@@ -1444,6 +1461,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenReemplazadaSRCId ;;
     view_label: "Orden"
     label: "Reemplazada"
+    description: "Orden Reemplazada (Superseded Orden)"
   }
 
   dimension: orden_seguimiento_entrega_srcid {
@@ -1451,6 +1469,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenSeguimientoEntregaSRCId ;;
     view_label: "Orden"
     label: "Seguimiento Entrega"
+    description: "Es el Delivery Tracking ID"
   }
 
   dimension: orden_simulacion_factura {
@@ -1465,6 +1484,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenSRCId ;;
     view_label: "Orden"
     label: "Id"
+    description: "Id de la Orden"
   }
 
   dimension: orden_suspension_preexistente {
@@ -1479,6 +1499,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenTransaccionEntregaSRCId ;;
     view_label: "Orden"
     label: "Transaccion Entrega"
+    description: "Corresponde al Delivery Transaction ID"
   }
 
   dimension: orden_usuario_activacion_srcid {
@@ -3326,6 +3347,7 @@ view: fth_orden_medio_pago {
     type: string
     sql: MedioPagoEntidadFinancieraNombre ;;
     label: "Entidad Financiera"
+    description: "Es el nombre de la entidad de pago"
   }
 
   dimension: medio_pago_cuenta_bancaria_tipo_nombre {
@@ -3338,12 +3360,14 @@ view: fth_orden_medio_pago {
     type: string
     sql: MedioPagoTipoNombre ;;
     label: "Tipo"
+    description: "Es el Metodo usado de pago (Efectivo/Tarjeta/etc)"
   }
 
   dimension: medio_pago_nombre {
     type: string
     sql: MedioPagoNombre ;;
     label: "Nombre"
+    description: "Es el numero de Payment Method (donde se guardan los datos de la transaccion)"
   }
 
   dimension: medio_pago_tarjeta_tipo_nombre {
