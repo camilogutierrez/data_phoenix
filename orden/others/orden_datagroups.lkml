@@ -7,5 +7,5 @@ datagroup: orden_default_dg {
                 WHERE FechaEntidad = (SELECT MAX(FechaEntidad) AS MaxFechaEntidad FROM @{gcp_ambiente}.FTH_Orden`) ;;
   max_cache_age: "12 hours"
   label: "Orden Default"
-  description: "Monitorea la actualizacion del campo _fechaUltimaActualizacion sobre la ultima particion existente"
+  description: "Monitorea la actualizacion del campo _fechaUltimaActualizacion sobre la ultima particion existente."
 }
