@@ -35,6 +35,7 @@ view: fth_portabilidad {
 
   dimension: fecha_entidad {
     type: date
+    datatype: date
     sql: ${TABLE}.FechaEntidad ;;
     label: "Fecha Entidad"
     description: "Indica la Fecha de Foto seleccionada"
@@ -57,7 +58,7 @@ view: fth_portabilidad {
     view_label: "Orden"
     group_label: "Fecha Activacion"
     label: "Orden Activacion"
-    description: "Fecha de activación de la Orden de CRM asociada al Movimiento de Portabilidad"
+    description: "Fecha de activacion de la Orden de CRM asociada al Movimiento de Portabilidad"
   }
 
   dimension_group: orden_fecha_creacion_src {
@@ -179,537 +180,528 @@ view: fth_portabilidad {
 
   ## Strings
 
-  dimension: caso__caso_estado_nombre {
+  dimension: caso_estado_nombre {
     type: string
     sql: ${TABLE}.Caso.CasoEstadoNombre ;;
-    group_label: "Caso"
-    group_item_label: "Caso Estado Nombre"
+    view_label: "Caso"
+    label: "Estado"
+    description: "Estado del Caso asociado a la Orden vinculada al movimiento de Portabilidad."
   }
 
-  dimension: caso__caso_grupo_trabajo_nombre {
+  dimension: caso_grupo_trabajo_nombre {
     type: string
     sql: ${TABLE}.Caso.CasoGrupoTrabajoNombre ;;
-    group_label: "Caso"
-    group_item_label: "Caso Grupo Trabajo Nombre"
+    view_label: "Caso"
+    label: "Grupo Trabajo Nombre"
+    description: "Punto de Venta asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__caso_llamada_padre_srcid {
+  dimension: caso_llamada_padre_srcid {
     type: string
     sql: ${TABLE}.Caso.CasoLlamadaPadreSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Caso Llamada Padre Srcid"
+    view_label: "Caso"
+    label: "Llamada Padre"
+    description: "Valor alfanumerico que permite trazar la integracion del CRM con el la llamadas registrada en PIC (plataforma de Conctacto)"
   }
 
-  dimension: caso__caso_llamada_srcid {
+  dimension: caso_llamada_srcid {
     type: string
     sql: ${TABLE}.Caso.CasoLlamadaSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Caso Llamada Srcid"
+    view_label: "Caso"
+    label: "Llamada Padre ID"
+    description: "Valor numerico que permite identificar juto con el la llamada id el place / sitio del agente qu registro el caso en el CRM."
   }
 
-  dimension: caso__caso_mercado_donante_portacion_srcid {
-    type: string
-    sql: ${TABLE}.Caso.CasoMercadoDonantePortacionSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Caso Mercado Donante Portacion Srcid"
-  }
-
-  dimension: caso__caso_numero {
+  dimension: caso_numero {
     type: string
     sql: ${TABLE}.Caso.CasoNumero ;;
-    group_label: "Caso"
-    group_item_label: "Caso Numero"
+    view_label: "Caso"
+    label: "Numero"
+    description: "Numero de Caso que genera la accion de portabilidad "
   }
 
-  dimension: caso__caso_operadora_receptora_srcid {
-    type: string
-    sql: ${TABLE}.Caso.CasoOperadoraReceptoraSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Caso Operadora Receptora Srcid"
-  }
-
-  dimension: caso__caso_srcid {
-    type: string
-    sql: ${TABLE}.Caso.CasoSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Caso Srcid"
-  }
-
-  dimension: caso__caso_tipo_nombre {
+  dimension: caso_tipo_nombre {
     type: string
     sql: ${TABLE}.Caso.CasoTipoNombre ;;
-    group_label: "Caso"
-    group_item_label: "Caso Tipo Nombre"
+    view_label: "Caso"
+    label: "Tipo"
+    description: "Tipo del Caso asociado a la Orden vinculada al movimiento de Portabilidad."
   }
 
-  dimension: caso__caso_usuario_creacion_srcid {
-    type: string
-    sql: ${TABLE}.Caso.CasoUsuarioCreacionSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Caso Usuario Creacion Srcid"
-  }
-
-  dimension: caso__caso_usuario_legajo {
+  dimension: caso_usuario_legajo {
     type: string
     sql: ${TABLE}.Caso.CasoUsuarioLegajo ;;
-    group_label: "Caso"
-    group_item_label: "Caso Usuario Legajo"
+    view_label: "Caso"
+    label: "Usuario Legajo"
+    description: "Usuario Creador del Caso de portacion en el CRM"
   }
 
-  dimension: caso__caso_usuario_nombre_completo {
+  dimension: caso_usuario_nombre_completo {
     type: string
     sql: ${TABLE}.Caso.CasoUsuarioNombreCompleto ;;
-    group_label: "Caso"
-    group_item_label: "Caso Usuario Nombre Completo"
+    view_label: "Caso"
+    label: "Usuario Nombre"
+    description: "Nombre del Usuario Creador del Caso de portacion en el CRM"
   }
 
-  dimension: caso__punto_venta_canal3 {
+  dimension: punto_venta_canal3 {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaCanal3 ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Canal3"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Canal3"
+    description: "Tercer nivel de Canalidad asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__punto_venta_canalidad2_nombre {
+  dimension: punto_venta_canalidad2_nombre {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaCanalidad2Nombre ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Canalidad2 Nombre"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Canalidad2"
+    description: "Segundo nivel de Canalidad asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__punto_venta_nombre {
+  dimension: punto_venta_nombre {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaNombre ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Nombre"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Nombre"
+    description: "Punto de Venta asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__punto_venta_srcid {
-    type: string
-    sql: ${TABLE}.Caso.PuntoVentaSRCId ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Srcid"
-  }
-
-  dimension: caso__punto_venta_tipo_atencion {
+  dimension: punto_venta_tipo_atencion {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaTipoAtencion ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Tipo Atencion"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Tipo Atencion"
+    description: "Tipo de Atencion del Punto de Venta asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__punto_venta_tipo_canal_nombre {
+  dimension: punto_venta_tipo_canal_nombre {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaTipoCanalNombre ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Tipo Canal Nombre"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Canal Nombre"
+    description: "Canal del Punto de Venta asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__punto_venta_tipo_contacto_nombre {
+  dimension: punto_venta_tipo_contacto_nombre {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaTipoContactoNombre ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Tipo Contacto Nombre"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Contacto Nombre"
+    description: "Indica el tipo de Contacto IN, OUT, o IN-OUT asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: caso__punto_venta_tipo_nombre {
+  dimension: punto_venta_tipo_nombre {
     type: string
     sql: ${TABLE}.Caso.PuntoVentaTipoNombre ;;
-    group_label: "Caso"
-    group_item_label: "Punto Venta Tipo Nombre"
+    view_label: "Caso"
+    group_label: "Punto Venta"
+    label: "Tipo Nombre"
+    description: "Tipo de Punto de Venta asociado al Caso de CRM relacionado al Movimiento de Portacion."
   }
 
-  dimension: cliente__cliente_razon_social {
+  dimension: cliente_razon_social {
     type: string
     sql: ${TABLE}.Cliente.ClienteRazonSocial ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Razon Social"
+    view_label: "Cliente"
+    label: "Razon Social"
+    description: "Razon social del Cliente asociado a la Orden de Portabilidad del CRM."
   }
 
-  dimension: cliente__cliente_segmento1_nombre {
+  dimension: cliente_segmento1_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento1Nombre ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Segmento1 Nombre"
+    view_label: "Cliente"
+    label: "Segmento1"
+    description: "Segmento Nivel 1 del Cliente asociado a la Orden de Portabilidad del CRM."
   }
 
-  dimension: cliente__cliente_segmento2_nombre {
+  dimension: cliente_segmento2_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteSegmento2Nombre ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Segmento2 Nombre"
+    view_label: "Cliente"
+    label: "Segmento2"
+    description: "Segmento Nivel 2 del Cliente asociado a la Orden de Portabilidad del CRM."
   }
 
   dimension: cliente__cliente_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.ClienteTipoNombre ;;
-    group_label: "Cliente"
-    group_item_label: "Cliente Tipo Nombre"
+    view_label: "Cliente"
+    label: "Tipo Nombre"
+    description: "Tipo de Cliente asociado a la Orden de Portabilidad del CRM."
   }
 
-  dimension: cliente__cuenta_ciclo_facturacion {
+  dimension: cuenta_ciclo_facturacion {
     type: string
     sql: ${TABLE}.Cliente.CuentaCicloFacturacion ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Ciclo Facturacion"
+    view_label: "Cliente"
+    label: "Ciclo Facturacion"
+    description: "Ciclo de la Cuenta asociado al Cliente de la Orden de Portabilidad del CRM."
   }
 
-  dimension: cliente__cuenta_cliente_srcid {
-    type: string
-    sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Cliente Srcid"
-  }
-
-  dimension: cliente__cuenta_codigo {
+  dimension: cuenta_codigo {
     type: string
     sql: ${TABLE}.Cliente.CuentaCodigo ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Codigo"
+    view_label: "Cliente"
+    label: "Cuenta Codigo"
+    description: "Codigo de Integracion con HW de la Cuenta asociada a la Orden de Portabilidad del CRM."
   }
 
-  dimension: cliente__cuenta_srcid {
-    type: string
-    sql: ${TABLE}.Cliente.CuentaSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Srcid"
-  }
-
-  dimension: cliente__cuenta_tipo_nombre {
+  dimension: cuenta_tipo_nombre {
     type: string
     sql: ${TABLE}.Cliente.CuentaTipoNombre ;;
-    group_label: "Cliente"
-    group_item_label: "Cuenta Tipo Nombre"
+    view_label: "Cliente"
+    label: "Cuenta Tipo Nombre"
+    description: "Tipo de Cuenta asociado a la Orden de Portabilidad del CRM."
   }
 
-  dimension: cliente__persona_documento_numero {
+  dimension: persona_documento_numero {
     type: string
     sql: ${TABLE}.Cliente.PersonaDocumentoNumero ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Documento Numero"
+    view_label: "Cliente"
+    label: "Documento Numero"
+    description: "N° de Documento del Cliente de la Orden asociado al movimiento de Portabilidad."
   }
 
-  dimension: cliente__persona_srcid {
-    type: string
-    sql: ${TABLE}.Cliente.PersonaSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Srcid"
-  }
-
-  dimension: cliente__persona_tipo_documento_srcid {
+  dimension: persona_tipo_documento_srcid {
     type: string
     sql: ${TABLE}.Cliente.PersonaTipoDocumentoSRCId ;;
-    group_label: "Cliente"
-    group_item_label: "Persona Tipo Documento Srcid"
+    view_label: "Cliente"
+    label: "Documento Tipo"
+    description: "Tipo de Documento del Cliente de la Orden asociado al movimiento de Portabilidad."
   }
 
-  dimension: domicilio__domicilio_calle_fact {
+  dimension: domicilio_calle_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCalleFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Calle Fact"
+    view_label: "Domicilio"
+    label: "Calle"
+    description: "Calle de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-  dimension: domicilio__domicilio_codigo_postal {
+  dimension: domicilio_codigo_postal {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioCodigoPostal ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Codigo Postal"
+    view_label: "Domicilio"
+    label: "Codigo Postal"
+    description: "CP del Domicilio de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-  dimension: domicilio__domicilio_depto_fact {
+  dimension: domicilio_depto_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioDeptoFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Depto Fact"
+    view_label: "Domicilio"
+    label: "Unidad Habitacional"
+    description: "Depto del Domicilio de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-  dimension: domicilio__domicilio_numero_fact {
-    type: number
-    sql: ${TABLE}.Domicilio.DomicilioNumeroFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Numero Fact"
-  }
-
-  dimension: domicilio__domicilio_piso_fact {
+  dimension: domicilio_piso_fact {
     type: string
     sql: ${TABLE}.Domicilio.DomicilioPisoFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Domicilio Piso Fact"
+    view_label: "Domicilio"
+    label: "Piso"
+    description: "Piso del Domicilio de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-  dimension: domicilio__localidad_nombre_fact {
+  dimension: localidad_nombre_fact {
     type: string
     sql: ${TABLE}.Domicilio.LocalidadNombreFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Localidad Nombre Fact"
+    view_label: "Domicilio"
+    label: "Localidad"
+    description: "Localidad del Domicilio de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-  dimension: domicilio__localidad_provincia_nombre_fact {
+  dimension: localidad_provincia_nombre_fact {
+    map_layer_name: arg_provinces
     type: string
     sql: ${TABLE}.Domicilio.LocalidadProvinciaNombreFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Localidad Provincia Nombre Fact"
+    view_label: "Domicilio"
+    label: "Provincia"
+    description: "Provincia del Domicilio de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-  dimension: domicilio__localidad_region_nombre_fact {
+  dimension: localidad_region_nombre_fact {
     type: string
     sql: ${TABLE}.Domicilio.LocalidadRegionNombreFact ;;
-    group_label: "Domicilio"
-    group_item_label: "Localidad Region Nombre Fact"
+    view_label: "Domicilio"
+    label: "Region"
+    description: "Region del Domicilio de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
-
-
-  dimension: geografia__rango_numeracion_departamento_nombre {
+  dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Departamento Nombre"
+    view_label: "Geografia"
+    label: "Rango Numeracion Departamento"
+    description: "Grupo de Localidad del Prefijo de la Linea"
   }
 
-  dimension: geografia__rango_numeracion_localidad_nombre {
+  dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Localidad Nombre"
+    view_label: "Geografia"
+    label: "Rango Numeracion Localidad"
+    description: "Localidad del Prefijo de la Linea"
   }
 
-  dimension: geografia__rango_numeracion_prefijo_interurbano {
+  dimension: rango_numeracion_prefijo_interurbano {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Prefijo Interurbano"
+    suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
+    view_label: "Geografia"
+    label: "Rango Numeracion Prefijo"
+    description: "Prefijo Interurbano de la Linea"
   }
 
-  dimension: geografia__rango_numeracion_prefijos {
+  dimension: rango_numeracion_prefijos {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijos ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Prefijos"
+    suggest_dimension: lk_rango_numeracion_prefijos.rango_numeracion_prefijos
+    view_label: "Geografia"
+    label: "Rango Numeracion Prefijos"
+    description: "Prefijo Urbano+Interurbano de la Linea."
   }
 
-  dimension: geografia__rango_numeracion_provincia_nombre {
+  dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
-    group_label: "Geografia"
-    group_item_label: "Rango Numeracion Provincia Nombre"
+    view_label: "Geografia"
+    label: "Rango Numeracion Provincia"
+    description: "Provincia del Prefijo de la Linea"
   }
 
-  dimension: orden_portabilidad__orden_cuenta_facturacion_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPortabilidad.OrdenCuentaFacturacionSRCId ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Cuenta Facturacion Srcid"
-  }
-
-  dimension: orden_portabilidad__orden_estado_nombre {
+  dimension: orden_estado_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenEstadoNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Estado Nombre"
+    view_label: "Orden"
+    label: "Estado"
   }
 
-
-
-  dimension: orden_portabilidad__orden_item_accion_nombre {
+  dimension: orden_item_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenItemAccionNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Item Accion Nombre"
+    view_label: "Orden"
+    label: "Accion"
+    description: "Accion de Provision de la Orden de CRM asociada al Movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__orden_item_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPortabilidad.OrdenItemSRCId ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Item Srcid"
-  }
-
-  dimension: orden_portabilidad__orden_item_sub_accion_nombre {
+  dimension: orden_item_sub_accion_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenItemSubAccionNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Item Sub Accion Nombre"
+    view_label: "Orden"
+    label: "Sub Accion"
+    description: "SubAccion de Provision de la Orden de CRM asociada al Movimiento de Portabilidad."
   }
 
-  dimension: orden_portabilidad__orden_numero {
+  dimension: orden_numero {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenNumero ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Numero"
+    view_label: "Orden"
+    label: "Orden Numero"
+    description: "Numero de Orden de CRM asociado al Movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__orden_precio_total {
-    type: number
-    sql: ${TABLE}.OrdenPortabilidad.OrdenPrecioTotal ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Precio Total"
-  }
-
-  dimension: orden_portabilidad__orden_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPortabilidad.OrdenSRCId ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Srcid"
-  }
-
-  dimension: orden_portabilidad__orden_tipo_gestion_nombre {
+  dimension: orden_tipo_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenTipoGestionNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Tipo Gestion Nombre"
+    view_label: "Orden"
+    label: "Tipo Gestion"
+    description: "Tipo de Gestion de la Orden de CRM asociada al Movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__orden_tipo_sub_gestion_nombre {
+  dimension: orden_tipo_sub_gestion_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenTipoSubGestionNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Orden Tipo Sub Gestion Nombre"
+    view_label: "Orden"
+    label: "Tipo Sub Gestion"
+    description: "Tipo de SubGestion de la Orden de CRM asociada al Movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__producto_codigo {
+  dimension: producto_codigo {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.ProductoCodigo ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Producto Codigo"
+    view_label: "Orden"
+    label: "Codigo"
+    description: "Codigo del Producto informado en la Orden de CRM asociada al movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__producto_nombre {
+  dimension: producto_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.ProductoNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Producto Nombre"
+    view_label: "Orden"
+    label: "Producto Nombre"
+    description: "Nombre de Producto informado en la Orden de CRM asociada al movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__producto_srcid {
-    type: string
-    sql: ${TABLE}.OrdenPortabilidad.ProductoSRCId ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Producto Srcid"
-  }
-
-  dimension: orden_portabilidad__producto_tipo_nombre {
+  dimension: producto_tipo_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.ProductoTipoNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Producto Tipo Nombre"
+    view_label: "Orden"
+    label: "Producto Tipo Nombre"
+    description: "Tipo de Producto informado en la Orden de CRM asociada al movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__promocion_codigo {
+  dimension: promocion_codigo {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.PromocionCodigo ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Promocion Codigo"
+    view_label: "Orden"
+    label: "Promocion Codigo"
+    description: "Codigo de la Promo informado en la Orden de CRM asociada al movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__promocion_descripcion {
+  dimension: promocion_descripcion {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.PromocionDescripcion ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Promocion Descripcion"
+    view_label: "Orden"
+    label: "Promocion Descripcion"
+    description: "Descripcion detallada de la Promo informado en la Orden de CRM asociada al movimiento de Portabilidad"
   }
 
-  dimension: orden_portabilidad__promocion_nombre {
+  dimension: promocion_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.PromocionNombre ;;
-    group_label: "Orden Portabilidad"
-    group_item_label: "Promocion Nombre"
+    view_label: "Orden"
+    label: "Promocion Nombre"
+    description: "Nombre de la Promo informado en la Orden de CRM asociada al movimiento de Portabilidad"
   }
 
   dimension: porta_mov_estado_actual_nombre {
     type: string
     sql: ${TABLE}.PortaMovEstadoActualNombre ;;
+    label: "Estado Actual"
+    description: "Estado Actual informado por el ABD"
   }
 
   dimension: porta_mov_modalidad_srcid {
     type: string
     sql: ${TABLE}.PortaMovModalidadSRCId ;;
+    label: "Mercado Donante"
+    description: "Tipo de Producto origen de la portacion (Pos/Pre) informado por el ABD"
   }
 
   dimension: porta_mov_numero_linea {
     type: string
     sql: ${TABLE}.PortaMovNumeroLinea ;;
+    label: "Numero Linea"
+    description: "Corresponde al Numero de Linea del movimiento de portacion, informado por el Ente regulador."
   }
 
   dimension: porta_mov_operadora_donante_nombre {
     type: string
     sql: ${TABLE}.PortaMovOperadoraDonanteNombre ;;
+    label: "Operadora Donante"
+    description: "Empresa Donante -> Claro, Movistar, Imowi. Etc"
   }
 
   dimension: porta_mov_operadora_donante_srcid {
     type: string
     sql: ${TABLE}.PortaMovOperadoraDonanteSRCId ;;
+    label: "Operadora Donante ID"
+    description: "Numero asociado la la empresa Donante Ejemplo: 555-> Claro"
   }
 
   dimension: porta_mov_operadora_propietaria_nombre {
     type: string
     sql: ${TABLE}.PortaMovOperadoraPropietariaNombre ;;
+    label: "Operadora Propietaria"
+    description: "Empresa origen de la linea"
   }
 
   dimension: porta_mov_operadora_propietaria_srcid {
     type: string
     sql: ${TABLE}.PortaMovOperadoraPropietariaSRCId ;;
+    label: "Operadora Propietaria ID"
+    description: "Numero asociado a la empresa origen de de linea"
   }
 
   dimension: porta_mov_operadora_receptora_nombre {
     type: string
     sql: ${TABLE}.PortaMovOperadoraReceptoraNombre ;;
+    label: "Operadora Receptora"
+    description: "Empresa que recibe el cliente. -> Personal, Claro, Movistar, Nextel, etc."
   }
 
   dimension: porta_mov_operadora_receptora_srcid {
     type: string
     sql: ${TABLE}.PortaMovOperadoraReceptoraSRCId ;;
+    label: "Operadora Receptora ID"
+    description: "Numero asociado a la empresa que recibe el cliente. Ejemplo: 777 -> Personal"
   }
 
   dimension: porta_mov_tipo_portacion_nombre {
     type: string
     sql: ${TABLE}.PortaMovTipoPortacionNombre ;;
+    suggest_dimension: lk_porta_mov_tipo_portacion.porta_mov_tipo_portacion_nombre
+    label: "Tipo Movimiento"
+    description: "Campo calculado que indica el tipo de Movimiento de Portacion que corresponde de acuerdo al informado por el ABD:
+                  Port-Over (Portacion de numeros entre dos operadoras que no son TP)
+                  TIPO_MOVIMIENTO_PORTABILIDAD: ALAJ COD_ESTADO_ACTUAL: ALAJ COD_SUBESTADO_ACTUAL: NULL o vacio
+                  Port-In (Portacion de Numeros a TP)
+                  TIPO_MOVIMIENTO_PORTABILIDAD: ALIM COD_ESTADO_ACTUAL: APOR COD_SUBESTADO_ACTUAL: NULL  o vacio
+                  Port-Out (Portacion de Numeros desde TP)
+                  TIPO_MOVIMIENTO_PORTABILIDAD: ALEX COD_ESTADO_ACTUAL: APOR COD_SUBESTADO_ACTUAL: NULL  o vacio"
+
+  }
+
+  dimension: producto_adquirido_estado_nombre {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre ;;
+    label: "Producto Adquirido Estado"
+    description: "Estado en Parque del Producto Adquirido asociado a la Orden vinculada al Movimiento de Portabilidad."
+  }
+
+  ## Numbers
+  dimension: domicilio_numero_fact {
+    type: number
+    sql: ${TABLE}.Domicilio.DomicilioNumeroFact ;;
+    view_label: "Domicilio"
+    label: "Numero"
+    description: "Altura de Calle de Facturacion correspondiente a la Cuenta del Cliente relacionado al Movimiento de Portacion."
   }
 
 
   ## Hidden
+
   dimension: porta_mov_tipo_portacion_sk {
     hidden: yes
     type: number
     sql: ${TABLE}.PortaMovTipoPortacionSK ;;
   }
 
+  dimension: orden_precio_total {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OrdenPortabilidad.OrdenPrecioTotal ;;
+  }
+
   dimension: porta_mov_tipo_srcid {
+    hidden: yes
     type: string
     sql: ${TABLE}.PortaMovTipoSRCId ;;
   }
 
-  dimension: producto_adquirido__producto_adquirido_codigo_suscripcion {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoCodigoSuscripcion ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Codigo Suscripcion"
-  }
+## Measures
 
-  dimension: producto_adquirido__producto_adquirido_estado_nombre {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoEstadoNombre ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Estado Nombre"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_referente_srcid {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoReferenteSRCId ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Referente Srcid"
-  }
-
-  dimension: producto_adquirido__producto_adquirido_srcid {
-    type: string
-    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
-    group_label: "Producto Adquirido"
-    group_item_label: "Producto Adquirido Srcid"
-  }
-
-  measure: count {
+  ## Count
+  measure: count_portabilidad {
     type: count
-    drill_fields: []
+    label: "Cantidad Portabilidad"
+  }
+
+  ## Total
+  measure: total_orden_precio_total {
+    type: sum
+    sql: ${orden_precio_total} ;;
+    view_label: "Orden"
+    label: "Precio Total"
+    description: "Precio Total informado en la Orden de PortIn"
   }
 }
