@@ -205,3 +205,33 @@ explore: fth_caso {
     type: inner
   }
 }
+
+## Quick Starts
+
+explore: +fth_caso {
+  query: ev_anual_casos_creados_tipo {
+    dimensions: [caso_fecha_creacion_src_month, caso_tipo_nombre]
+    measures: [count_caso]
+    pivots: [caso_tipo_nombre]
+    filters: [
+      fth_caso.caso_fecha_creacion_src_month: "12 months",
+      fth_caso.caso_tipo_nombre: "-(no informado)",
+      fth_caso.fecha_entidad: "yesterday"
+    ]
+    label: "Evolutivo Anual Casos Creados x Tipo."
+  }
+}
+
+explore: +fth_caso {
+  query: ev_anual_casos_cerrados_tipo {
+    dimensions: [caso_fecha_cierre_src_month, caso_tipo_nombre]
+    measures: [count_caso]
+    pivots: [caso_tipo_nombre]
+    filters: [
+      fth_caso.caso_fecha_cierre_src_month: "12 months",
+      fth_caso.caso_tipo_nombre: "-(no informado)",
+      fth_caso.fecha_entidad: "yesterday"
+    ]
+    label: "Evolutivo Anual Casos Cerrados x Tipo."
+  }
+}
