@@ -29,5 +29,3 @@ project_name: "Data_Phoenix_Reporting"
     {{this_gcp_ambiente_alp}}"
     export: none
   }
-
-  new_lookml_runtime: no
