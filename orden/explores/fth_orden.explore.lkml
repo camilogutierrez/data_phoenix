@@ -30,13 +30,6 @@ explore: fth_orden {
     relationship: one_to_many
   }
 
-  # join: dm_orden_precio_promocion {
-  #   view_label: "Precio Promocion"
-  #   relationship: one_to_many
-  #   sql_on: ${dm_orden_precio_promocion.orden_item_fk} = ${fth_orden.pk}  ;;
-  #   type: left_outer
-  # }
-
   join: dm_nomina {
     view_label: "Nomina"
     relationship: many_to_one
@@ -326,5 +319,35 @@ explore: fth_orden {
     sql_on: ${lk_orden_estadoa_om.orden_estadoa_omsk} = ${lk_orden_estadoa_om.orden_estadoa_omsk} ;;
     relationship: many_to_one
     type: inner
+  }
+}
+
+## Quick Starts
+
+explore: +fth_orden {
+  query: ev_anual_ordenes_brutas_tipo {
+    dimensions: [orden_fecha_creacion_src_month, orden_tipo_gestion_nombre]
+    measures: [orden_count]
+    pivots: [orden_tipo_gestion_nombre]
+    filters: [
+      fth_orden.fecha_entidad: "yesterday",
+      fth_orden.orden_fecha_creacion_src_month: "12 months",
+      fth_orden.orden_tipo_gestion_nombre: "-(no informado)"
+    ]
+    label: "Evolutivo Anual Ordenes Brutas x Tipo."
+  }
+}
+
+explore: +fth_orden {
+  query: ev_anual_ordenes_netas_tipo {
+    dimensions: [orden_fecha_activacion_src_month, orden_tipo_gestion_nombre]
+    measures: [orden_count]
+    pivots: [orden_tipo_gestion_nombre]
+    filters: [
+      fth_orden.fecha_entidad: "yesterday",
+      fth_orden.orden_fecha_activacion_src_date: "12 months",
+      fth_orden.orden_tipo_gestion_nombre: "-(no informado)"
+    ]
+    label: "Evolutivo Anual Ordenes Netas x Tipo."
   }
 }
