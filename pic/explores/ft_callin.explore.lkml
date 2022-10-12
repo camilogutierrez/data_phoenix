@@ -314,3 +314,20 @@ explore: ft_callin {
     relationship: many_to_one
   }
 }
+
+## Quick Starts
+
+explore: +ft_callin {
+  query: ev_mensual_llamadas {
+    dimensions: [fecha_ini_llamadasrcid_date]
+    measures: [count_estado_fin_atendidasrcid]
+    filters: [
+      ft_callin.dim_vag_tipo: "SEGMENTO_SITIO",
+      ft_callin.fecha_ini_llamada_argsrcid: "this year",
+      ft_callin.fecha_ini_llamadasrcid_date: "30 days",
+      ft_callin.gvqsrcid: "%_QC1",
+      ft_callin.vagsrcid: "%_QC1S1"
+    ]
+    label: "Evolutivo Mensual Llamadas."
+  }
+}
