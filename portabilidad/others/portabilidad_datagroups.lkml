@@ -1,7 +1,7 @@
 ## Portabilidad DataGroups
 
 datagroup: portabilidad_default_dg {
-  sql_trigger:  SELECT
+  sql_trigger:   SELECT
                   MAX(_fechaUltimaActualizacion) AS Max_fechaUltimaActualizacion
                 FROM @{gcp_ambiente}.FTH_Portabilidad`
                 WHERE FechaEntidad = (SELECT MAX(FechaEntidad) AS MaxFechaEntidad FROM @{gcp_ambiente}.FTH_Portabilidad`) ;;
