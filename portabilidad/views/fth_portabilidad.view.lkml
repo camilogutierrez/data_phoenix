@@ -457,7 +457,7 @@ view: fth_portabilidad {
     sql: ${TABLE}.Geografia.RangoNumeracionPrefijoInterurbano ;;
     suggest_dimension: lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano
     view_label: "Geografia"
-    label: "Rango Numeracion Prefijo"
+    label: "Rango Numeracion Prefijo Interurbano"
     description: "Prefijo Interurbano de la Linea"
   }
 
