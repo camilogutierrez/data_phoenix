@@ -271,3 +271,17 @@ explore: fth_parque {
     type: inner
   }
 }
+
+## Quick Starts
+
+explore: +fth_parque {
+  query: cant_productos_principales_tipo {
+    dimensions: [p_producto_tipo_srcid]
+    measures: [count_parque]
+    filters: [
+      fth_parque.fecha_entidad: "yesterday",
+      fth_parque.producto_adquirido_marca_parque_activo: "Yes"
+    ]
+    label: "Cantidad de Productos Principales x Tipo."
+  }
+}
