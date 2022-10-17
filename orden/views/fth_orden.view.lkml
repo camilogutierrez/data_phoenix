@@ -3070,7 +3070,7 @@ view: fth_orden {
     filters: [
         producto_tipo_nombre: "DISPOSITIVO"
       , orden_item_accion_nombre: "AGREGAR"
-      , orden_estado_nombre: "-CANCELADA PROCESO MASIVO"
+      , orden_estado_trackeo_nombre: "-CANCELADA PROCESO MASIVO"
       , orden_reemplazada_srcid: "'-1'"
       , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
       , orden_tipo_sub_gestion_nombre: "(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL"
