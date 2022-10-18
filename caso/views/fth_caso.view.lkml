@@ -3088,16 +3088,6 @@ view: fth_caso {
       , caso_sub_tipo_nombre: "BAJA"
     ]
   }
-
-  measure: count_bajas_postdateadas {
-    type: count
-    label: "Bajas Posdateadas"
-    description: "Cantidad de bajas pendientes de ejecucion ."
-    filters: [
-      caso_tipo_nombre: "PEDIDO DE BAJA"
-      , caso_estado_nombre: "EN ESPERA DE EJECUCION "
-    ]
-  }
 }
 
 #################################
