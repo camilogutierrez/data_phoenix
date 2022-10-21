@@ -1210,6 +1210,13 @@ view: fth_caso {
     description: "Canal de origen del caso"
   }
 
+  dimension: caso_padre_numero {
+    type: string
+    sql: ${TABLE}.CasoPadreNumero ;;
+    label: "Numero Caso Padre"
+    description: "Numero del Caso Padre"
+  }
+
   dimension: caso_padre_srcid {
     type: string
     sql: ${TABLE}.CasoPadreSRCId ;;
@@ -2186,6 +2193,22 @@ view: fth_caso {
     sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
     view_label: "Cliente"
     label: "Cuenta ID"
+  }
+
+  dimension: cuenta_codigo {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaCodigo ;;
+    view_label: "Cliente"
+    label: "Cuenta Codigo"
+    description: "Numero de cuenta del cliente"
+  }
+
+  dimension: cuenta_codigo_integracion {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaCodigo ;;
+    view_label: "Cliente"
+    label: "Codigo Integracion"
+    description: "Numero de cuenta padre"
   }
 
   dimension: persona_apellido {
