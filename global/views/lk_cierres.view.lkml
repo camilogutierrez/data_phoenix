@@ -36,17 +36,37 @@ view: lk_cierres {
     label: "Fecha Cierre"
   }
 
-  dimension: fecha_creacion {
-    type: date
+  dimension_group: fecha_creacion {
+    type: time
     sql: ${TABLE}._fechaCreacion ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     datatype: datetime
     convert_tz: no
     label: "Fecha Creacion"
   }
 
-  dimension: fecha_ultima_actualizacion {
-    type: date
+  dimension_group: fecha_ultima_actualizacion {
+    type: time
     sql: ${TABLE}._fechaUltimaActualizacion ;;
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
     datatype: datetime
     convert_tz: no
     label: "Fecha Ultima Actualizacion"
@@ -88,6 +108,6 @@ view: lk_cierres {
 
   measure: count_cierres {
     type: count
-    label: "Cierres"
+    label: "Cantidad Cierres"
   }
 }
