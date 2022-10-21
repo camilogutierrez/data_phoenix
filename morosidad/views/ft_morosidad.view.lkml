@@ -160,6 +160,24 @@ view: ft_morosidad {
     description: "Fecha de comienzo del proceso de Collectión (due date + 1)"
   }
 
+  dimension_group: transit_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.TRANSIT_DATE ;;
+    datatype: timestamp
+    group_label: "Fecha Transicion"
+    label: "Transicion"
+  }
+
   dimension_group: ult_accion_fecha_exe {
     type: time
     timeframes: [
