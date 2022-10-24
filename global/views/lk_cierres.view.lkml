@@ -42,6 +42,10 @@ view: lk_cierres {
     timeframes: [
       raw,
       time,
+<<<<<<< HEAD
+=======
+      time_of_day,
+>>>>>>> develop
       date,
       week,
       month,
@@ -51,7 +55,8 @@ view: lk_cierres {
     ]
     datatype: datetime
     convert_tz: no
-    label: "Fecha Creacion"
+    group_label: "Fecha Creacion"
+    label: "Creacion"
   }
 
   dimension_group: fecha_ultima_actualizacion {
@@ -60,6 +65,10 @@ view: lk_cierres {
     timeframes: [
       raw,
       time,
+<<<<<<< HEAD
+=======
+      time_of_day,
+>>>>>>> develop
       date,
       week,
       month,
@@ -69,7 +78,8 @@ view: lk_cierres {
     ]
     datatype: datetime
     convert_tz: no
-    label: "Fecha Ultima Actualizacion"
+    group_label: "Fecha Actualizacion"
+    label: "Actualizacion"
   }
 
   ## Strings
@@ -93,7 +103,7 @@ view: lk_cierres {
     type: number
     sql: ${TABLE}.MesId ;;
     value_format_name: id
-    label: "Mes Id"
+    label: "Mes ID"
   }
 
   ## Flags
