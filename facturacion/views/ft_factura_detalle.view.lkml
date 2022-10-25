@@ -746,6 +746,15 @@ view: ft_factura_detalle {
     label: "Monto Facturado sin Impuestos"
   }
 
+  measure: total_gross_amt_format {
+    type: sum
+    sql: ${gross_amt} ;;
+    value_format: "[>=1000000] $###,###,, \"M\"; [>=10000] $###,##0, \"K\" ; [>=1000] $###,##0"
+    view_label: "Comprobante"
+    group_label: "Total con Formato"
+    label: "Monto Facturado sin Impuestos"
+  }
+
   measure: total_invoice_amt {
     type: sum
     sql: ${invoice_amt} ;;
