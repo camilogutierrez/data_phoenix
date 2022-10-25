@@ -62,13 +62,7 @@ view: lk_cierres {
     timeframes: [
       raw,
       time,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
       time_of_day,
->>>>>>> develop
->>>>>>> testing
       date,
       week,
       month,
