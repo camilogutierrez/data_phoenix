@@ -544,6 +544,50 @@ view: ft_factura_detalle {
     label: "Tipo Venta"
   }
 
+  dimension: addr_altura_piso_depto {
+    type: string
+    sql: ${TABLE}.ADDR_ALTURA_PISO_DEPTO ;;
+    view_label: "Cliente"
+    group_label: "Domicilio"
+    label: "Altura - Piso - Depto"
+    description: "Domicilio de facturacion del cliente"
+  }
+
+  dimension: addr_calle {
+    type: string
+    sql: ${TABLE}.ADDR_CALLE ;;
+    view_label: "Cliente"
+    group_label: "Domicilio"
+    label: "Calle"
+    description: "Calle de facturacion del cliente"
+  }
+
+  dimension: addr_localidad {
+    type: string
+    sql: ${TABLE}.ADDR_LOCALIDAD ;;
+    view_label: "Cliente"
+    group_label: "Domicilio"
+    label: "Localidad"
+  }
+
+  dimension: addr_postal_code {
+    type: string
+    sql: ${TABLE}.ADDR_POSTAL_CODE ;;
+    view_label: "Cliente"
+    group_label: "Domicilio"
+    label: "Codigo Postal"
+    description: "Codigo Postal de facturacion de cliente"
+  }
+
+  dimension: addr_provincia {
+    type: string
+    sql: ${TABLE}.ADDR_PROVINCIA ;;
+    view_label: "Cliente"
+    group_label: "Domicilio"
+    label: "Provincia"
+    description: "Provincia del Cliente"
+  }
+
   ## Flags
 
   dimension: flag_legal_no {
@@ -620,7 +664,8 @@ view: ft_factura_detalle {
     sql: ${TABLE}.ADDR_ID ;;
     value_format_name: id
     view_label: "Cliente"
-    label: "Domicilio Id"
+    group_label: "Domicilio"
+    label: "Domicilio ID"
   }
 
   dimension: apply_trans_id {
