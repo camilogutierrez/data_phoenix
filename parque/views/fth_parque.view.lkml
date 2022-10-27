@@ -346,6 +346,26 @@ view: fth_parque {
     label: "Modificacion Cuenta"
   }
 
+  dimension_group: medio_pago_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.Cliente.MedioPagoFechaCreacionSRC ;;
+    datatype: timestamp
+    view_label: "Cliente"
+    group_label: "Fecha Creacion Medio Pago"
+    label: "Creacion Medio Pago"
+    description: "Fecha de creacion del medio de pago"
+  }
+
   dimension_group: persona_fecha_creacion_src {
     type: time
     timeframes: [
@@ -3312,9 +3332,39 @@ view: fth_parque {
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
   }
 
+  dimension: producto_adquirido_total_tv {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoTotalTV ;;
+  }
+
+  dimension: producto_adquirido_total_internet {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoTotalInternet ;;
+  }
+
+  dimension: producto_adquirido_combo_internet_tv {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoComboInternetTV ;;
+  }
+
+  dimension: producto_adquirido_combo_internet_flow_flex {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoComboInternetFlowFlex ;;
+  }
+
+  dimension: producto_adquirido_smart_tv {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoSmartTV ;;
+  }
+
+
 
 ## Measures
-
   measure: count_parque {
     type: count
     label: "Cantidad Productos"
@@ -3673,6 +3723,50 @@ view: fth_parque {
     label: "Cargo Recurrente Sin Impuesto"
   }
 
+  measure: total_producto_adquirido_total_tv {
+    type: sum
+    sql: ${producto_adquirido_total_tv} ;;
+    group_label: "Productos"
+    group_item_label: "Total TV"
+    label: "Producto Total TV"
+    description: "Negocio Fija Cuenta Productos de TV, incluye bundle"
+  }
+
+  measure: total_producto_adquirido_total_internet {
+    type: sum
+    sql: ${producto_adquirido_total_internet} ;;
+    group_label: "Productos"
+    group_item_label: "Total Internet"
+    label: "Producto Total Internet"
+    description: "Negocio Fija Cuenta Productos de Internet, incluye bundle"
+  }
+
+  measure: total_producto_adquirido_combo_internet_tv {
+    type: sum
+    sql: ${producto_adquirido_combo_internet_tv} ;;
+    group_label: "Productos"
+    group_item_label: "Combo Internet + TV"
+    label: "Producto Combo Internet + TV"
+    description: "Negocio Fija Cuenta Combo de Internet + TV Flow Box"
+  }
+
+  measure: total_producto_adquirido_combo_internet_flow_flex {
+    type: sum
+    sql: ${producto_adquirido_combo_internet_flow_flex} ;;
+    group_label: "Productos"
+    group_item_label: "Combo Internet + Flow Flex"
+    label: "Producto Combo Internet + Flow Flex"
+    description: "Negocio Fija Cuenta Combo de Internet + TV Flow Flex"
+  }
+
+  measure: total_producto_adquirido_smart_tv {
+    type: sum
+    sql: ${producto_adquirido_smart_tv} ;;
+    group_label: "Productos"
+    group_item_label: "Smart TV"
+    label: "Producto Smart TV"
+    description: "Negocio Movil Cuenta Productos de Television"
+  }
 }
 
 ### Nested Attributes - Views ###
@@ -3683,6 +3777,25 @@ view: parque_promocion {
 
   # Dates
 
+  dimension_group: promocion_fecha_creacion {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaCreacionSRC ;;
+    view_label: "Promocion Actual"
+    group_label: "Fecha Creacion Promo"
+    label: "Promo Creacion"
+    description: "Fecha de creacion de la promocion"
+  }
+
   dimension_group: promocion_fecha_fin {
     type: time
     timeframes: [
@@ -3691,6 +3804,7 @@ view: parque_promocion {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -3704,7 +3818,7 @@ view: parque_promocion {
   dimension: pago_ajuste_precio_srcid {
     type: string
     sql: PagoAjustePrecioSRCId ;;
-    label: "Pago Ajuste Precio Id"
+    label: "Pago Ajuste Precio ID"
   }
 
   dimension: promocion_nombre {
