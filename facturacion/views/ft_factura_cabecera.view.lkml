@@ -105,7 +105,8 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.ADDR_ALTURA_PISO_DEPTO ;;
     view_label: "Cliente"
-    label: "Altura / Piso / Depto"
+    group_label: "Domicilio"
+    label: "Altura - Piso - Depto"
     description: "Domicilio de facturacion del cliente"
   }
 
@@ -113,14 +114,16 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.ADDR_CALLE ;;
     view_label: "Cliente"
+    group_label: "Domicilio"
     label: "Calle"
-    description: "Domicilio de facturacion del cliente"
+    description: "Calle de facturacion del cliente"
   }
 
   dimension: addr_localidad {
     type: string
     sql: ${TABLE}.ADDR_LOCALIDAD ;;
     view_label: "Cliente"
+    group_label: "Domicilio"
     label: "Localidad"
   }
 
@@ -128,14 +131,16 @@ view: ft_factura_cabecera {
     type: string
     sql: ${TABLE}.ADDR_POSTAL_CODE ;;
     view_label: "Cliente"
+    group_label: "Domicilio"
     label: "Codigo Postal"
-    description: "Domicilio de facturacion de cliente"
+    description: "Codigo Postal de facturacion de cliente"
   }
 
   dimension: addr_provincia {
     type: string
     sql: ${TABLE}.ADDR_PROVINCIA ;;
     view_label: "Cliente"
+    group_label: "Domicilio"
     label: "Provincia"
     description: "Provincia del Cliente"
   }
@@ -431,6 +436,7 @@ view: ft_factura_cabecera {
     sql: ${TABLE}.ADDR_ID ;;
     value_format_name: id
     view_label: "Cliente"
+    group_label: "Domicilio"
     label: "Domicilio ID"
   }
 
