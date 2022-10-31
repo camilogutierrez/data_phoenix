@@ -2906,6 +2906,62 @@ view: fth_caso {
     label: "Estado"
   }
 
+  dimension: producto_adquirido_familia_producto {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoFamiliaProducto ;;
+    view_label: "Producto Adquirido"
+    label: "Familia Producto"
+    description: "Negocio al que pertenece el producto (FIJA o MOVIL)."
+  }
+
+  dimension: producto_adquirido_marca_migrado {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoMarcaMigrado ;;
+    view_label: "Producto Adquirido"
+    label: "Marca Migrado"
+    description: "Marca que indica si es un producto Nativo FAN o si es Migrado de legados."
+  }
+
+  dimension: producto_adquirido_nombre {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNombre ;;
+    view_label: "Producto Adquirido"
+    label: "Nombre"
+    description: "Nombre del producto que se adquirio."
+  }
+
+  dimension: producto_adquirido_imei {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoIMEI ;;
+    view_label: "Producto Adquirido"
+    label: "IMEI"
+    description: "Numero univoco que identifica los dispositivos."
+  }
+
+  dimension: producto_adquirido_numero_serie{
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoNumeroSerie ;;
+    view_label: "Producto Adquirido"
+    label: "Numero Serie"
+    description: "Numero univoco que identifica los dispositivos."
+  }
+
+  dimension: producto_adquirido_tipo{
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoTipo ;;
+    view_label: "Producto Adquirido"
+    label: "Tipo"
+    description: "Indica si es un Plan, Dispositivo, TV, Internet, Telefonia."
+  }
+
+  dimension: producto_adquirido_sub_tipo{
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSubTipo ;;
+    view_label: "Producto Adquirido"
+    label: "Subtipo"
+    description: "Apertura para algunos tipos de producto."
+  }
+
   dimension: producto_adquirido_codigo_suscripcion {
     type: string
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoCodigoSuscripcion ;;
