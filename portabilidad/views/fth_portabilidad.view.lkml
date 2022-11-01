@@ -119,26 +119,6 @@ view: fth_portabilidad {
     description: "Fecha de inicio de la Orden de CRM asociada al Movimiento de Portabilidad"
   }
 
-  dimension_group: porta_mov_fecha_hora_estado_solic_abdsrc {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PortaMovFechaHoraEstadoSolicABDSRC ;;
-    datatype: timestamp
-    group_label: "Fecha Estado Solicitud ABD"
-    label: "Estado Solicitud ABD"
-    description: "Fecha Estado de Solicitud informada por el ABD"
-
-  }
-
   dimension_group: porta_mov_fecha_hora_estado_src {
     type: time
     timeframes: [
@@ -153,30 +133,10 @@ view: fth_portabilidad {
     ]
     sql: ${TABLE}.PortaMovFechaHoraEstadoSRC ;;
     datatype: timestamp
-    group_label: "Fecha Estado"
-    label: "Estado"
+    group_label: "Fecha Movimiento"
+    label: "Movimiento"
     description: "Fecha de Estado del Movimiento"
   }
-
-  dimension_group: porta_mov_fecha_hora_ventana_cambio_src {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.PortaMovFechaHoraVentanaCambioSRC ;;
-    datatype: timestamp
-    group_label: "Fecha Ventana Cambio"
-    label: "Ventana Cambio"
-    description: "Fecha considerada como la de Portacion Efectiva"
-  }
-
 
   ## Strings
 
