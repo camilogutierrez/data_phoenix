@@ -3373,9 +3373,14 @@ view: fth_parque {
   measure: count_productos_activos_hibridos {
     type: count
     group_label: "Productos"
-    group_item_label: "Hibridos"
-    label: "Productos Hibridos"
-    description: "Negocio movil / Cuenta productos plan hibrido"
+    group_item_label: "Mixto"
+    label: "Productos Mixtos"
+    description: "Negocio movil / Cuenta productos plan Mixto (hibrido)
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL'
+      , p_producto_tipo_nombre: 'PLAN HIBRIDO'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3389,7 +3394,12 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Pospagos"
     label: "Productos Pospagos"
-    description: "Negocio movil / Cuenta productos plan pospago"
+    description: "Negocio movil / Cuenta productos plan pospago
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL'
+      , p_producto_tipo_nombre: 'PLAN POSPAGO'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3403,7 +3413,12 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Prepagos"
     label: "Productos Prepagos"
-    description: "Negocio movil / Cuenta productos plan prepago"
+    description: "Negocio movil / Cuenta productos plan prepago
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL'
+      , p_producto_tipo_nombre: 'PLAN PREPAGO'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3417,7 +3432,12 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Bundle"
     label: "Productos Bundle"
-    description: "Negocio fija / Cuenta productos bundle principal"
+    description: "Negocio fija / Cuenta productos bundle principal
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'BUNDLE'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3431,7 +3451,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Flow Flex"
     label: "Productos Flow Flex"
-    description: "Negocio fija / Cuenta productos prepagos Flow Flex"
+    description: "Negocio fija / Cuenta productos prepagos Flow Flex
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'No'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'TV'
+      , producto_adquirido_nombre: 'Flow Flex'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "No"
@@ -3446,7 +3472,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Solo TV Flow Box"
     label: "Productos Solo TV FLow Box"
-    description: "Negocio fija / Cuenta Productos de TV Flow Box que no pertenzcan a un bundle"
+    description: "Negocio fija / Cuenta Productos de TV Flow Box
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'TV'
+      , producto_sub_tipo_nombre: 'FLOW BOX'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3462,7 +3494,14 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Solo TV Clasica"
     label: "Productos Solo TV Clasica"
-    description: "Negocio fijo producto TV clasico"
+    description: "Negocio fijo / Cuenta producto TV clasico
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'TV'
+      , producto_sub_tipo_nombre: 'TV CLASICA'
+      , producto_adquirido_marca_pertenece_bundle: 'No'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3493,7 +3532,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Telefonia TOIP"
     label: "Productos Telefonia TOIP"
-    description: "Negocio fija / Cuenta Productos de Telefonia (TOIP)"
+    description: "Negocio fija / Cuenta Productos de Telefonia (TOIP)
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'TELEFONIA'
+      , producto_sub_tipo_nombre: 'TOIP'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3508,7 +3553,12 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Total Fija"
     label: "Productos Total Fija"
-    description: "Negocio fija /Cuenta Productos Principales familia fija (excluye Bundle)"
+    description: "Negocio fija /Cuenta Productos Principales familia fija (excluye Bundle)
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: '-BUNDLE'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3522,7 +3572,12 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Total Movil"
     label: "Productos Total Movil"
-    description: "Negocio movil / Cuenta productos principales planes"
+    description: "Negocio movil / Cuenta productos principales planes
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL'
+      , p_producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3536,7 +3591,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Terminales"
     label: "Terminales"
-    description: "Negocio movil / Cuenta dispositivos"
+    description: " Negocio movil / Cuenta dispositivos Movil
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL'
+      , p_producto_tipo_nombre: 'DISPOSITIVO'
+      , producto_sub_tipo_nombre: '-ACCESORIOS MULTIMEDIA'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3552,7 +3613,11 @@ view: fth_parque {
     group_label: "Clientes"
     group_item_label: "Unicos"
     label: "Clientes Unicos"
-    description: "Clientes unicos total parque productos principales."
+    description: "Negocio Fija/Movil - Cuenta Total Clientes unicos.
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL, FIJA'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3566,7 +3631,13 @@ view: fth_parque {
     group_label: "Clientes"
     group_item_label: "Alto Valor"
     label: "Clientes Alto Valor"
-    description: "Clientes alto valor donde Segemento 1 es abono solo movil , convergente siebel / convergente open / convergente siebel open, con productos principales activos."
+    description: "Clientes alto valor donde Segmento 1 es abono solo movil , convergente siebel / convergente open / convergente siebel open, con productos principales activos
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'MOVIL, FIJA'
+      , cliente_segmento1_nombre: 'ABONOS SOLO MOVIL, CONVERGENTE OPEN, CONVERGENTE SIEBEL, CONVERGENTE SIEBEL OPEN'
+      , cliente_segmento2_nombre: '1'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3581,7 +3652,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Adminstrativa"
     label: "Suspension Adminstrativa"
-    description: "Lineas Suspendidas por fraude."
+    description: "Negocio Movil - Lineas Suspendidas por fraude.
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_administrativa_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3595,7 +3671,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Degradacion"
     label: "Suspension por Degradacion"
-    description: "Lineas suspendidas por degradacion / servicio reducido."
+    description: "Negocio Movil/Fija - productos suspendidos por degradacion / servicio reducido.
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_degradacion_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3609,7 +3690,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Leasing"
     label: "Suspension por Leasing"
-    description: "Dispositivos suspendidos por Leasing (compro equipo en DPF y se supende por mora)."
+    description: "Dispositivos suspendidos por Leasing (compro equipo en DPF y se supende por mora).
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_leasing_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3623,7 +3709,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Otras"
     label: "Otras Suspensiones"
-    description: "Otros motivos de suspension"
+    description: "Negocio Movil/Fija- Productos suspendidos por Otros motivos de suspension
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_otros_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3637,7 +3728,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Mora Parcial"
     label: "Suspension por Mora Parcial"
-    description: "Suspensión por cliente en morosidad parcial."
+    description: "Negocio Movil/Fija - Productos Suspendidos por morosidad parcial.
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_parcial_mora_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3651,7 +3747,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Mora Total"
     label: "Suspension por Mora Total"
-    description: "Suspensión por cliente en morosidad total."
+    description: " Negocio Movil/Fija- Productos suspendidos por Mora Total
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_total_mora_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3665,7 +3766,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Voluntaria"
     label: "Suspension Voluntaria"
-    description: "Lineas suspendidas por pedido del cliente, por un tiempo ejemplo Mudanza, PC Rota."
+    description: "Negocio Movil/Fija - Productos suspendidos por pedido del cliente, por un tiempo ejemplo Mudanza, PC Rota.
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_voluntaria_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3679,7 +3785,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Siniestro"
     label: "Suspension por Siniestro"
-    description: "Lineas Suspendidas por Siniestro de la terminal."
+    description: "Negocio Movil - Lineas Suspendidas por Siniestro de la terminal.
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_siniestro_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3693,7 +3804,12 @@ view: fth_parque {
     group_label: "Suspensiones"
     group_item_label: "Portout"
     label: "Suspension por Portout"
-    description: "Lineas suspensdidads por  acción de  baja por portabilidad (portOut)."
+    description: "Negocio Movil - Lineas suspendidas por  acción de  baja por portabilidad (portOut).
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , fecha_suspension_port_out_src_date: 'NOT NULL'
+      , cantidad_suspensiones_activas: 'NOT NULL'"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
@@ -3729,7 +3845,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Total TV"
     label: "Producto Total TV"
-    description: "Negocio Fija Cuenta Productos de TV, incluye bundle"
+    description: "Negocio Fija/Cuenta Productos de TV, incluye los que pertenecen a un bundle
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'TV'
+      , producto_sub_tipo_nombre: 'TV CLASICA','FLOW BOX'"
   }
 
   measure: total_producto_adquirido_total_internet {
@@ -3738,7 +3860,12 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Total Internet"
     label: "Producto Total Internet"
-    description: "Negocio Fija Cuenta Productos de Internet, incluye bundle"
+    description: "Negocio Fija Cuenta Productos de Internet, incluye bundle
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , p_producto_tipo_nombre: 'INTERNET'"
   }
 
   measure: total_producto_adquirido_combo_internet_tv {
@@ -3747,7 +3874,14 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Combo Internet + TV"
     label: "Producto Combo Internet + TV"
-    description: "Negocio Fija Cuenta Combo de Internet + TV Flow Box"
+    description: "Negocio Fija/Cuenta Combo de Internet + TV Flow Box
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , producto_producto_Tipo_nombre: 'BUNDLE'
+      , producto_producto_nombre: LIKE ('%Flow Box%') OR
+      , producto_producto_nombre:LIKE ('%TV%')"
   }
 
   measure: total_producto_adquirido_combo_internet_flow_flex {
@@ -3756,7 +3890,13 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Combo Internet + Flow Flex"
     label: "Producto Combo Internet + Flow Flex"
-    description: "Negocio Fija Cuenta Combo de Internet + TV Flow Flex"
+    description: "Negocio Fija /Cuenta Combo de Internet + TV Flow Flex
+      (type: count) FILTROS:
+        producto_adquirido_marca_parque_activo: 'Yes'
+      , producto_adquirido_marca_principal: 'Yes'
+      , producto_adquirido_familia_producto: 'FIJA'
+      , producto_producto_Tipo_nombre: 'BUNDLE'
+      , producto_producto_nombre: LIKE ('%Flow Flex%')"
   }
 
   measure: total_producto_adquirido_smart_tv {
@@ -3765,7 +3905,10 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Smart TV"
     label: "Producto Smart TV"
-    description: "Negocio Movil Cuenta Productos de Television"
+    description: " Cuenta Productos de Television (Accesorio)
+      (type: count) FILTROS:
+       Producto.ProductoTipoNombre = 'ACCESORIO'
+      ,Producto.ProductoSubTipoNombre = 'TV'"
   }
 }
 
