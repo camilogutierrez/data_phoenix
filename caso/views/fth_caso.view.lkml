@@ -3149,7 +3149,11 @@ view: fth_caso {
   measure: count_alta_debito_autom{
     type: count
     label: "Alta DA"
-    description: "Casos de adhesion al debito automatico."
+    description: "Negocio Movil/Fija cuenta gestiones de adhesion al debito automatico
+      (type: count_distinct  sql: ${orden_srcid}
+      FILTROS: caso_tipo_nombre: 'DEBITO AUTOMATICO'
+      , caso_estado_nombre: 'RESUELTA EXITOSA'
+      , caso_sub_tipo_nombre: 'ADHESION'"
     filters: [
       caso_tipo_nombre: "DEBITO AUTOMATICO"
       , caso_estado_nombre: "RESUELTA EXITOSA"
@@ -3160,7 +3164,9 @@ view: fth_caso {
   measure: count_baja_debito_autom{
     type: count
     label: "Baja DA"
-    description: "Casos de baja al debito automatico."
+    description: "Negocio Movil/Fija cuenta gestiones de Baja al debito automatico (type: count_distinct
+      sql: ${orden_srcid} FILTROS:  caso_tipo_nombre: 'DEBITO AUTOMATICO', caso_estado_nombre: 'RESUELTA EXITOSA'
+      , caso_sub_tipo_nombre: 'BAJA'"
     filters: [
       caso_tipo_nombre: "DEBITO AUTOMATICO"
       , caso_estado_nombre: "RESUELTA EXITOSA"

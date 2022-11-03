@@ -2937,6 +2937,7 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Ordenes"
     label: "Cantidad de Ordenes"
+    description: "Cuenta Cantidad de ordenes distintas type: count_distinct sql: ${orden_srcid}"
   }
 
   measure: count_cambio_plan_efectiva {
@@ -2946,7 +2947,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio de Plan (CAPLAN)"
     label: "Cantidad Cambio de Plan (CAPLAN)"
-    description: "Negocio Movil - Cuenta todos los cambios de plan"
+    description: "Negocio Movil - Cuenta todos los cambios de plan
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , orden_marca_cambio_producto: 'No'
+    , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
@@ -2963,7 +2970,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio de SIM"
     label: "Cantidad Cambio de SIM"
-    description: "Negocio movil- Ordenes activadas de cambio de SIM"
+    description: "Negocio Movil - Cuenta Gestiones activadas de cambio de SIM
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_item_accion_nombre: 'CAMBIAR'
+    , producto_tipo_nombre: 'TARJETA SIM'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE TARJETA SIM, CAMBIO DE TARJETA SIM POR SINIESTRO'"
+
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "CAMBIAR"
@@ -2994,7 +3007,14 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio Plan Upselling"
     label: "Cantidad Cambio Plan Upselling"
-    description: "Negocio Movil - Cuenta los cambios de plan  a plan Mayor"
+    description: "Negocio Movil - Cuenta los cambios de plan  a plan Mayor
+      type: count_distinct    sql: ${orden_srcid};FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_marca_cambio_producto: 'No'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
+    , orden_tipo_cambio_plan_nombre: 'UPGRADE'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_marca_cambio_producto: "No"
@@ -3012,7 +3032,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio Plan Downselling"
     label: "Cantidad Cambio Plan Downselling"
-    description: "Negocio Movil - Cuenta los cambios de plan a plan Menor"
+    description: "Negocio Movil - Cuenta los cambios de plan a plan Menor
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_marca_cambio_producto: 'No'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
+    , orden_tipo_cambio_plan_nombre: 'DOWNGRADE'
+    , orden_item_accion_nombre: 'AGREGAR'      , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_marca_cambio_producto: "No"
@@ -3030,7 +3056,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio Plan Cross"
     label: "Cantidad Cambio Plan Cross"
-    description: "Negocio Movil - Cuenta los cambios de plan, a planes de igual precio"
+    description: "Negocio Movil - Cuenta los cambios de plan, a planes de igual precio
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
+    , orden_tipo_cambio_plan_nombre: 'CROSS SELL'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
@@ -3047,7 +3079,15 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Venta Terminal Neta"
     label: "Venta Terminal Neta"
-    description: "Negocio Movil/ cuenta ordenes de venta de terminales Activadas (Venta Neta)"
+    description: "Negocio Movil/ cuenta ordenes de venta de terminales Activadas (Venta Neta)
+      (type: count) FILTROS:
+        orden_estado_nombre: 'ACTIVADA'
+      , orden_item_accion_nombre: 'AGREGAR'
+      , producto_tipo_nombre: 'DISPOSITIVO'
+      , orden_estado_trackeo_nombre: 'ENTREGADA'
+      , orden_reemplazada_srcid: ''-1''
+      , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
+      , orden_tipo_sub_gestion_nombre: '(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "AGREGAR"
@@ -3066,11 +3106,18 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Venta Terminal Bruta"
     label: "Venta Terminal Bruta"
-    description: "Negocio Movil / Cuenta Solicitudes de venta de Terminales (Venta Bruta)"
+    description: "Negocio Movil / Cuenta Solicitudes de venta de Terminales (Venta Bruta)
+      (type: count) FILTROS:
+        producto_tipo_nombre: 'DISPOSITIVO'
+      , orden_item_accion_nombre: 'AGREGAR'
+      , orden_estado_trackeo_nombre: '-CANCELADA - PROCESO MASIVO'
+      , orden_reemplazada_srcid: ''-1''
+      , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
+      , orden_tipo_sub_gestion_nombre: '(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL'"
     filters: [
         producto_tipo_nombre: "DISPOSITIVO"
       , orden_item_accion_nombre: "AGREGAR"
-      , orden_estado_trackeo_nombre: "-CANCELADA PROCESO MASIVO"
+      , orden_estado_trackeo_nombre: "-CANCELADA - PROCESO MASIVO"
       , orden_reemplazada_srcid: "'-1'"
       , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
       , orden_tipo_sub_gestion_nombre: "(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL"
@@ -3084,6 +3131,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Portin Neto"
     label: "Portin Neto"
+    description: "Negocio Movil - Cuenta las Solicitudes de Portabilidad Efectivas (Portin Neta)
+      type: count_distinct    sql: ${orden_srcid};FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'PORTIN ACTIVAR'
+    , orden_item_accion_nombre: 'EXISTENTE'
+    , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'
+    , producto_familia_nombre: 'MOVIL'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "PORTIN ACTIVAR"
@@ -3100,6 +3154,13 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Portin Bruto"
     label: "Portin Bruto"
+    description: "Negocio Movil - Cuenta las Solicitudes de Portabilidad (Portin Bruta)
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA, CANCELADA'
+    , orden_tipo_gestion_nombre: 'VENTA PORTIN'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'
+    , producto_familia_nombre: 'MOVIL"
     filters: [
         orden_estado_nombre: "ACTIVADA, CANCELADA"
       , orden_tipo_gestion_nombre: "VENTA PORTIN"
@@ -3115,7 +3176,15 @@ view: fth_orden {
     view_label: "Orden"
     group_label: "Cantidad"
     group_item_label: "Alta Proteccion Personal"
-    label: "Alta Proteccion Personal"
+    label: "Negocio Movil/Cuenta Gestiones de Alta Proteccion Personal
+      type: count_distinct    sql: ${orden_srcid};FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
+    , orden_tipo_sub_gestion_nombre: 'ALTA PROTECCION PERSONAL'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'PROTECCION'      , producto_familia_nombre: 'MOVIL'
+          , orden_estado_trackeo_nombre: 'ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA, ENVIO A OM'
+          , orden_reemplazada_srcid: ''-1''"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
@@ -3135,6 +3204,14 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio Producto Downselling"
     label: "Cambio Producto Downselling"
+    description: "Negocio Movil - Cuenta los Cambio Producto Downselling ( De plan con abono a Tarjeta)
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'PLAN PREPAGO'
+    , opa_producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'
+    , producto_familia_nombre: 'MOVIL'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
@@ -3152,6 +3229,14 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Cambio Producto (CAPRO)"
     label: "Cambio Producto (CAPRO)"
+    description: "Negocio Movil - Cuenta los Cambio Producto (CAPRO)
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'
+    , opa_producto_tipo_nombre: 'PLAN PREPAGO'
+    , producto_familia_nombre: 'MOVIL'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
@@ -3223,7 +3308,14 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Suspension Restriccion Comercial"
     label: "Suspension Restriccion Comercial"
-    description: "Restriccion de uso de proteccion personal, ante suspension por mora para dispositivos."
+    description: "Negocio Movil/ cuenta gestiones de Restriccion de uso de proteccion personal, ante suspension por mora para dispositivos
+      (  type: count_distinct    sql: ${orden_srcid};) FILTROS:
+        orden_estado_nombre: 'ACTIVADA'
+      , orden_tipo_gestion_nombre: 'SUSPENSION'
+      , orden_item_accion_nombre: 'SUSPENDER'
+      , orden_item_sub_accion_nombre: 'SUSPENDER - RESTRICCION COMERCIAL'
+      , producto_tipo_nombre: 'DISPOSITIVO'
+      , producto_familia_nombre: 'MOVIL'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
@@ -3241,7 +3333,14 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Anulaciones de Venta Movil"
     label: "Cantidad Anulaciones de Venta Movil"
-    description: "Gestiones de desconexion por anulacion de venta Movil, planes y dispositivos"
+    description: "Negocio Movil/Gestiones de desconexion por anulacion de venta, planes y dispositivos
+      type: count_distinct    sql: ${orden_srcid}; FILTROS:
+      orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'DESCONEXION'
+    , orden_tipo_sub_gestion_nombre: 'ANULACION DE VENTA'
+    , orden_item_accion_nombre: 'DESCONECTAR'
+    , producto_tipo_nombre: 'DISPOSITIVO, PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'
+    , producto_familia_nombre: 'MOVIL'      , producto_familia_nombre: 'MOVIL'"
     filters: [
         orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
