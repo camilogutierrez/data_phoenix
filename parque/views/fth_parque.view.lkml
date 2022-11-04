@@ -3437,7 +3437,8 @@ view: fth_parque {
         producto_adquirido_marca_parque_activo: 'Yes'
       , producto_adquirido_marca_principal: 'Yes'
       , producto_adquirido_familia_producto: 'FIJA'
-      , p_producto_tipo_nombre: 'BUNDLE'"
+      , p_producto_tipo_nombre: 'BUNDLE'
+      -- Prueba commits"
     filters: [
         producto_adquirido_marca_parque_activo: "Yes"
       , producto_adquirido_marca_principal: "Yes"
