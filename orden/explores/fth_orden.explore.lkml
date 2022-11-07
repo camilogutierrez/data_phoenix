@@ -316,10 +316,23 @@ explore: fth_orden {
   }
 
   join: lk_orden_estadoa_om {
-    sql_on: ${lk_orden_estadoa_om.orden_estadoa_omsk} = ${lk_orden_estadoa_om.orden_estadoa_omsk} ;;
+    sql_on: ${fth_orden.orden_estadoa_om_sk} = ${lk_orden_estadoa_om.orden_estadoa_om_sk} ;;
     relationship: many_to_one
     type: inner
   }
+
+  join: lk_orden_tipo_baja {
+    sql_on: {fth_orden.orden_tipo_baja_sk} = ${lk_orden_tipo_baja.orden_tipo_baja_sk} ;;
+    relationship: many_to_one
+    type: inner
+  }
+
+  join: lk_orden_tipo_suspension {
+    sql_on: ${fth_orden.orden_tipo_suspension_sk} = ${lk_orden_tipo_suspension.orden_tipo_suspension_sk} ;;
+    relationship: many_to_one
+    type: inner
+  }
+
 }
 
 ## Quick Starts
