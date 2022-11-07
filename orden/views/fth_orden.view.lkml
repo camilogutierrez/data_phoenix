@@ -129,7 +129,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}._auditoria._sesionId ;;
     view_label: "Auditoria"
-    label: "Sesion Id"
+    label: "Sesion ID"
   }
 
   dimension: _usuario_creacion {
@@ -247,7 +247,7 @@ view: fth_orden {
   dimension: orden_item_srcid {
     type: string
     sql: ${TABLE}.OrdenItemSRCId ;;
-    label: "Id"
+    label: "ID"
   }
 
   dimension: orden_item_ya_suspendido {
@@ -440,11 +440,48 @@ view: fth_orden {
     sql: ${TABLE}.Numericos.OrdenItemTotalRecurrenteSinImpuesto ;;
   }
 
+  dimension: orden_estadoa_om_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Orden.OrdenEstadoaOMSK ;;
+  }
+
+  dimension: orden_bajas_totales {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenBajasTotales ;;
+  }
+
+  dimension: orden_tipo_baja_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OrdenTipoBajaSK ;;
+  }
+
+  dimension: orden_suspensiones_totales {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenSuspensionesTotales ;;
+  }
+
+  dimension: orden_tipo_suspension_sk {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.OrdenTipoSuspensionSK ;;
+  }
+
+  dimension: orden_volte {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Numericos.OrdenVolte ;;
+  }
+
+
   ##########
   ## Caso ##
   ##########
 
-    ## Dates
+  ## Dates
 
   dimension: caso_fecha_creacion_src {
     type: date_time
@@ -454,7 +491,7 @@ view: fth_orden {
     label: "Fecha Creacion"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: caso_tipo_nombre {
     type: string
@@ -491,7 +528,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoMercadoDonantePortacionSRCId ;;
     view_label: "Caso"
-    label: "Mercado Donante Id"
+    label: "Mercado Donante ID"
   }
 
   dimension: caso_numero {
@@ -533,7 +570,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Caso.CasoSRCId ;;
     view_label: "Caso"
-    label: "Id"
+    label: "ID"
   }
 
   dimension: caso_tema_nombre {
@@ -560,7 +597,7 @@ view: fth_orden {
   }
 
 
-    ## Hidden
+  ## Hidden
 
   dimension: caso_tipo_sk {
     hidden: yes
@@ -626,7 +663,7 @@ view: fth_orden {
   ## Cliente ##
   #############
 
-    ## Dates
+  ## Dates
 
   dimension: cuenta_fecha_creacion_hwsrc {
     type: date_time
@@ -659,7 +696,7 @@ view: fth_orden {
     label: "Fecha Nacimiento"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: cliente_segmento1_nombre {
     type: string
@@ -732,7 +769,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Cliente.ClienteSRCId ;;
     view_label: "Cliente"
-    label: "Id"
+    label: "ID"
   }
 
   dimension: cuenta_ciclo_facturacion {
@@ -747,6 +784,14 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.CuentaClienteSRCId ;;
     view_label: "Cliente"
     label: "Cuenta Cliente"
+  }
+
+  dimension: cuenta_codigo {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaCodigo ;;
+    view_label: "Cliente"
+    label: "Cuenta Codigo"
+    description: "Numero de cuenta del cliente"
   }
 
   dimension: cuenta_domicilio_envio_srcid {
@@ -805,7 +850,7 @@ view: fth_orden {
     label: "Persona"
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: persona_edad {
     type: number
@@ -814,7 +859,7 @@ view: fth_orden {
     label: "Edad"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: cliente_segmento1_sk {
     hidden: yes
@@ -886,7 +931,7 @@ view: fth_orden {
   ## Orden ##
   ###########
 
-    ## Dates
+  ## Dates
 
   dimension_group: orden_ejecucion_cambio_ciclo_fecha_src {
     type: time
@@ -1016,7 +1061,7 @@ view: fth_orden {
     label: "Modificacion"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: orden_marca_batch {
     type: yesno
@@ -1081,7 +1126,7 @@ view: fth_orden {
     label: "Es Prefactibilidad TOIP"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: orden_tipo_gestion_nombre {
     type: string
@@ -1097,6 +1142,26 @@ view: fth_orden {
     suggest_dimension: lk_orden_tipo_sub_gestion.orden_tipo_sub_gestion_nombre
     view_label: "Orden"
     label: "Tipo Subgestion"
+  }
+
+  dimension: orden_tipo_baja_nombre {
+    type: string
+    sql: ${TABLE}.Orden.OrdenTipoBajaNombre ;;
+    suggest_dimension: lk_orden_tipo_baja.orden_tipo_baja_nombre
+    view_label: "Orden"
+    label: "Tipo Baja"
+  }
+
+  dimension: orden_tipo_suspension_nombre {
+    type: string
+    sql: ${TABLE}.Orden.OrdenTipoSuspensionNombre ;;
+    suggest_dimension: lk_orden_tipo_suspension.orden_tipo_suspension_nombre
+    view_label: "Orden"
+    label: "Tipo Suspension"
+    description: "Campo calculado que indica el tipo de suspension que corresponde de acuerdo:
+    SUSPENSION POR MORA = OrdenItemSubAccionNombre es 'SUSPENDER - DEGRADACION', 'SUSPENDER - MORA 1', 'SUSPENDER - MORA 2'
+    SUSPENSION NO VOLUNTARIA = OrdenItemSubAccionNombre es 'SUSPENDER - SINIESTRO', 'SUSPENDER - FRAUDE'
+    SUSPENSION VOLUNTARIA = OrdenItemSubAccionNombre es 'SUSPENDER - VOLUNTARIO'"
   }
 
   dimension: orden_tipo_cambio_plan_nombre {
@@ -1176,7 +1241,7 @@ view: fth_orden {
   dimension: orden_estadoa_om_nombre {
     type: string
     sql: ${TABLE}.Orden.OrdenEstadoaOMNombre ;;
-    suggest_dimension: lk_orden_estadoa_om.orden_estadoa_omnombre
+    suggest_dimension: lk_orden_estadoa_om.orden_estadoa_om_nombre
     view_label: "Orden"
     label: "Estado a OM"
     description: "Estado real de la orden a Order Manager"
@@ -1209,8 +1274,8 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenLlamadaPadreSRCId ;;
     view_label: "Orden"
-    label: "Llamada Padre Id"
-    description: "Integracion con PIC - Call Parent Id"
+    label: "Llamada Padre ID"
+    description: "Integracion con PIC - Call Parent ID"
   }
 
   dimension: orden_llamada_srcid {
@@ -1218,7 +1283,7 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenLlamadaSRCId ;;
     view_label: "Orden"
     label: "Llamada Id"
-    description: "Integracion con PIC - Call Id"
+    description: "Integracion con PIC - Call ID"
   }
 
   dimension: orden_estado_consentimiento_cliente {
@@ -1376,6 +1441,22 @@ view: fth_orden {
     description: "Corresponde al campo Legal Invoice Number"
   }
 
+  dimension: orden_numero_original {
+    type: string
+    sql: ${TABLE}.Orden.OrdenNumeroOriginal ;;
+    view_label: "Orden"
+    label: "Original Numero"
+    description: "Numero de orden original reemplazada"
+  }
+
+  dimension: orden_numero_reemplazada {
+    type: string
+    sql: ${TABLE}.Orden.OrdenNumeroReemplazada ;;
+    view_label: "Orden"
+    label: "Reemplazada Numero"
+    description: "Numero de orden reemplazada (Superseded Orden)"
+  }
+
   dimension: orden_numero_pre_factura {
     type: string
     sql: ${TABLE}.Orden.OrdenNumeroPreFactura ;;
@@ -1396,7 +1477,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenOriginalSRCId ;;
     view_label: "Orden"
-    label: "Original Id"
+    label: "Original ID"
     description: "Id de orden original reemplazada"
   }
 
@@ -1483,7 +1564,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Orden.OrdenSRCId ;;
     view_label: "Orden"
-    label: "Id"
+    label: "ID"
     description: "Id de la Orden"
   }
 
@@ -1523,7 +1604,7 @@ view: fth_orden {
     label: "Usuario Modificacion"
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: orden_prefactibilidad_down_stream {
     type: number
@@ -1532,7 +1613,7 @@ view: fth_orden {
     label: "Prefactibilidad Downstream"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: orden_tipo_gestion_sk {
     hidden: yes
@@ -1676,7 +1757,7 @@ view: fth_orden {
   ## Producto ##
   ##############
 
-    ## Dates
+  ## Dates
 
   dimension: producto_fecha_creacion_src {
     type: date_time
@@ -1720,7 +1801,7 @@ view: fth_orden {
     label: "Fecha Vigencia Hasta"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: producto_marca_activo {
     type: yesno
@@ -1785,7 +1866,7 @@ view: fth_orden {
     label: "Es Tangible"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: producto_mercado_nombre {
     type: string
@@ -1866,7 +1947,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Producto.ProductoSRCId ;;
     view_label: "Producto"
-    label: "Id"
+    label: "ID"
   }
 
   dimension: producto_tipo_objeto_descripcion {
@@ -1890,7 +1971,7 @@ view: fth_orden {
     label: "Descripcion"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: producto_mercado_sk {
     hidden: yes
@@ -1956,7 +2037,7 @@ view: fth_orden {
   ## Producto Adquirido ##
   ########################
 
-    ## Dates
+  ## Dates
 
   dimension: producto_adquirido_fecha_baja_src {
     type: date_time
@@ -1979,7 +2060,7 @@ view: fth_orden {
     label: "Fecha Compra"
   }
 
-    ## Strings
+  ## Strings
 
   dimension: producto_adquirido_estado_nombre {
     type: string
@@ -2139,7 +2220,7 @@ view: fth_orden {
   ## Domicilio ##
   ###############
 
-    ## Strings
+  ## Strings
 
   dimension: domicilio_codigo_postal_env {
     type: string
@@ -2200,8 +2281,8 @@ view: fth_orden {
     sql: ${TABLE}.Domicilio.DomicilioSRCIdEnv ;;
     view_label: "Domicilio"
     group_label: "Envio"
-    group_item_label: "Id"
-    label: "Envio Id"
+    group_item_label: "ID"
+    label: "Envio ID"
   }
 
   dimension: domicilio_srcid_fact {
@@ -2209,8 +2290,8 @@ view: fth_orden {
     sql: ${TABLE}.Domicilio.DomicilioSRCIdFact ;;
     view_label: "Domicilio"
     group_label: "Facturacion"
-    group_item_label: "Id"
-    label: "Facturacion Id"
+    group_item_label: "ID"
+    label: "Facturacion ID"
   }
 
   dimension: localidad_srcid_env {
@@ -2218,8 +2299,8 @@ view: fth_orden {
     sql: ${TABLE}.Domicilio.LocalidadSRCIdEnv ;;
     view_label: "Domicilio"
     group_label: "Envio"
-    group_item_label: "Localidad Id"
-    label: "Envio Localidad Id"
+    group_item_label: "Localidad ID"
+    label: "Envio Localidad ID"
   }
 
   dimension: localidad_srcid_fact {
@@ -2227,8 +2308,8 @@ view: fth_orden {
     sql: ${TABLE}.Domicilio.LocalidadSRCIdFact ;;
     view_label: "Domicilio"
     group_label: "Facturacion"
-    group_item_label: "Localidad Id"
-    label: "Facturacion Localidad Id"
+    group_item_label: "Localidad ID"
+    label: "Facturacion Localidad ID"
   }
 
   dimension: nombre_calle_env {
@@ -2292,8 +2373,8 @@ view: fth_orden {
     sql: ${TABLE}.Domicilio.ProvinciaSRCIdEnv ;;
     view_label: "Domicilio"
     group_label: "Envio"
-    group_item_label: "Provincia Id"
-    label: "Envio Provincia Id"
+    group_item_label: "Provincia ID"
+    label: "Envio Provincia ID"
   }
 
   dimension: provincia_srcid_fact {
@@ -2301,11 +2382,31 @@ view: fth_orden {
     sql: ${TABLE}.Domicilio.ProvinciaSRCIdFact ;;
     view_label: "Domicilio"
     group_label: "Facturacion"
-    group_item_label: "Provincia Id"
-    label: "Facturacion Provincia Id"
+    group_item_label: "Provincia ID"
+    label: "Facturacion Provincia ID"
   }
 
-    ## Numbers
+  dimension: municipio_nombre_fact {
+    type: string
+    sql: ${TABLE}.Domicilio.MunicipioNombreFact ;;
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Municipio"
+    label: "Facturacion Municipio"
+    description: "Municipio del Domicilio de Facturación correspondiente a la Cuenta del Cliente"
+  }
+
+  dimension: departamento_mu_codigo_fact {
+    type: string
+    sql: ${TABLE}.Domicilio.DepartamentoMUCodigoFact ;;
+    view_label: "Domicilio"
+    group_label: "Facturacion"
+    group_item_label: "Departamento"
+    label: "Facturacion Departamento"
+    description: "Departamento/Partido del Domicilio de Facturación correspondiente a la Cuenta del Cliente"
+  }
+
+  ## Numbers
 
   dimension: domicilio_numero_env {
     type: number
@@ -2325,7 +2426,7 @@ view: fth_orden {
     label: "Facturacion Numero"
   }
 
-    ## Location
+  ## Location
 
   dimension: domicilio_env_location {
     type: location
@@ -2347,7 +2448,7 @@ view: fth_orden {
     label: "Facturacion Ubicacion"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: domicilio_latitud_env {
     hidden: yes
@@ -2377,7 +2478,7 @@ view: fth_orden {
   ## Orden Plan Anterior ##
   #########################
 
-    ## Strings
+  ## Strings
 
   dimension: opa_producto_sub_tipo_nombre {
     type: string
@@ -2421,7 +2522,7 @@ view: fth_orden {
     view_label: "Orden Plan Anterior"
     group_label: "Producto"
     group_item_label: "Padre"
-    label: "Producto Padre Id"
+    label: "Producto Padre ID"
   }
 
   dimension: opa_orden_item_producto_raiz_srcid {
@@ -2474,10 +2575,10 @@ view: fth_orden {
     sql: ${TABLE}.Orden.OrdenPlanAnterior.ProductoSRCId ;;
     view_label: "Orden Plan Anterior"
     group_label: "Producto"
-    label: "Producto Id"
+    label: "Producto ID"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: opa_producto_sub_tipo_sk {
     hidden: yes
@@ -2543,7 +2644,7 @@ view: fth_orden {
   ## Punto de Venta ##
   ####################
 
-    ## Strings
+  ## Strings
 
   dimension: punto_venta_tipo_canal_nombre {
     type: string
@@ -2623,7 +2724,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.PuntoVenta.PuntoVentaSRCId ;;
     view_label: "Punto Venta"
-    label: "Id"
+    label: "ID"
   }
 
   dimension: punto_venta_subregion {
@@ -2640,7 +2741,7 @@ view: fth_orden {
     label: "Tipo Atencion"
   }
 
-    ## Numbers
+  ## Numbers
 
   dimension: punto_venta_cod_punto_de_venta {
     type: number
@@ -2649,7 +2750,7 @@ view: fth_orden {
     label: "Codigo"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: punto_venta_tipo_canal_sk {
     hidden: yes
@@ -2703,7 +2804,7 @@ view: fth_orden {
   ## Usuario ##
   #############
 
-    ## Strings
+  ## Strings
 
   dimension: usuario_apellido {
     type: string
@@ -2737,7 +2838,7 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.Usuario.UsuarioSRCId ;;
     view_label: "Usuario"
-    label: "Id"
+    label: "ID"
   }
 
 ##############
@@ -2948,14 +3049,14 @@ view: fth_orden {
     group_item_label: "Cambio de Plan (CAPLAN)"
     label: "Cantidad Cambio de Plan (CAPLAN)"
     description: "Negocio Movil - Cuenta todos los cambios de plan
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
     , orden_item_accion_nombre: 'AGREGAR'
     , orden_marca_cambio_producto: 'No'
     , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_item_accion_nombre: "AGREGAR"
       , orden_marca_cambio_producto: "No"
@@ -2971,14 +3072,14 @@ view: fth_orden {
     group_item_label: "Cambio de SIM"
     label: "Cantidad Cambio de SIM"
     description: "Negocio Movil - Cuenta Gestiones activadas de cambio de SIM
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_item_accion_nombre: 'CAMBIAR'
     , producto_tipo_nombre: 'TARJETA SIM'
     , orden_tipo_gestion_nombre: 'CAMBIO DE TARJETA SIM, CAMBIO DE TARJETA SIM POR SINIESTRO'"
 
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "CAMBIAR"
       , producto_tipo_nombre: "TARJETA SIM"
       , orden_tipo_gestion_nombre: "CAMBIO DE TARJETA SIM, CAMBIO DE TARJETA SIM POR SINIESTRO"
@@ -2994,7 +3095,7 @@ view: fth_orden {
     label: "Cantidad Demanda Retencion"
     description: "Intenciones de bajas,vistas desde las ordenes registradas"
     filters: [
-        orden_estado_nombre:"ACTIVADA, INICIADA"
+      orden_estado_nombre:"ACTIVADA, INICIADA"
       , orden_tipo_gestion_nombre: "DESCONEXION, CAMBIO DE PLAN, BAJA / RETENCION, FIDELIZACION, VENTA"
       , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA, RETENCION, CAMBIO DE PLAN, FIDELIZACION"
     ]
@@ -3008,15 +3109,15 @@ view: fth_orden {
     group_item_label: "Cambio Plan Upselling"
     label: "Cantidad Cambio Plan Upselling"
     description: "Negocio Movil - Cuenta los cambios de plan  a plan Mayor
-      type: count_distinct    sql: ${orden_srcid};FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid};FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_marca_cambio_producto: 'No'
     , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
     , orden_tipo_cambio_plan_nombre: 'UPGRADE'
     , orden_item_accion_nombre: 'AGREGAR'
     , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_marca_cambio_producto: "No"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_tipo_cambio_plan_nombre: "UPGRADE"
@@ -3033,14 +3134,14 @@ view: fth_orden {
     group_item_label: "Cambio Plan Downselling"
     label: "Cantidad Cambio Plan Downselling"
     description: "Negocio Movil - Cuenta los cambios de plan a plan Menor
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_marca_cambio_producto: 'No'
     , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
     , orden_tipo_cambio_plan_nombre: 'DOWNGRADE'
     , orden_item_accion_nombre: 'AGREGAR'      , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_marca_cambio_producto: "No"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
@@ -3057,14 +3158,14 @@ view: fth_orden {
     group_item_label: "Cambio Plan Cross"
     label: "Cantidad Cambio Plan Cross"
     description: "Negocio Movil - Cuenta los cambios de plan, a planes de igual precio
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
     , orden_tipo_cambio_plan_nombre: 'CROSS SELL'
     , orden_item_accion_nombre: 'AGREGAR'
     , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_tipo_cambio_plan_nombre: "CROSS SELL"
       , orden_item_accion_nombre: "AGREGAR"
@@ -3080,16 +3181,16 @@ view: fth_orden {
     group_item_label: "Venta Terminal Neta"
     label: "Venta Terminal Neta"
     description: "Negocio Movil/ cuenta ordenes de venta de terminales Activadas (Venta Neta)
-      (type: count) FILTROS:
-        orden_estado_nombre: 'ACTIVADA'
-      , orden_item_accion_nombre: 'AGREGAR'
-      , producto_tipo_nombre: 'DISPOSITIVO'
-      , orden_estado_trackeo_nombre: 'ENTREGADA'
-      , orden_reemplazada_srcid: ''-1''
-      , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
-      , orden_tipo_sub_gestion_nombre: '(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL'"
+    (type: count) FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , producto_tipo_nombre: 'DISPOSITIVO'
+    , orden_estado_trackeo_nombre: 'ENTREGADA'
+    , orden_reemplazada_srcid: ''-1''
+    , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
+    , orden_tipo_sub_gestion_nombre: '(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_item_accion_nombre: "AGREGAR"
       , producto_tipo_nombre: "DISPOSITIVO"
       , orden_estado_trackeo_nombre: "ENTREGADA"
@@ -3107,15 +3208,15 @@ view: fth_orden {
     group_item_label: "Venta Terminal Bruta"
     label: "Venta Terminal Bruta"
     description: "Negocio Movil / Cuenta Solicitudes de venta de Terminales (Venta Bruta)
-      (type: count) FILTROS:
-        producto_tipo_nombre: 'DISPOSITIVO'
-      , orden_item_accion_nombre: 'AGREGAR'
-      , orden_estado_trackeo_nombre: '-CANCELADA - PROCESO MASIVO'
-      , orden_reemplazada_srcid: ''-1''
-      , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
-      , orden_tipo_sub_gestion_nombre: '(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL'"
+    (type: count) FILTROS:
+    producto_tipo_nombre: 'DISPOSITIVO'
+    , orden_item_accion_nombre: 'AGREGAR'
+    , orden_estado_trackeo_nombre: '-CANCELADA - PROCESO MASIVO'
+    , orden_reemplazada_srcid: ''-1''
+    , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
+    , orden_tipo_sub_gestion_nombre: '(no informado), ALTA PROTECCION PERSONAL, VENTA, USO PROTECCION PERSONAL'"
     filters: [
-        producto_tipo_nombre: "DISPOSITIVO"
+      producto_tipo_nombre: "DISPOSITIVO"
       , orden_item_accion_nombre: "AGREGAR"
       , orden_estado_trackeo_nombre: "-CANCELADA - PROCESO MASIVO"
       , orden_reemplazada_srcid: "'-1'"
@@ -3132,14 +3233,14 @@ view: fth_orden {
     group_item_label: "Portin Neto"
     label: "Portin Neto"
     description: "Negocio Movil - Cuenta las Solicitudes de Portabilidad Efectivas (Portin Neta)
-      type: count_distinct    sql: ${orden_srcid};FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid};FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'PORTIN ACTIVAR'
     , orden_item_accion_nombre: 'EXISTENTE'
     , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'
     , producto_familia_nombre: 'MOVIL'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "PORTIN ACTIVAR"
       , orden_item_accion_nombre: "EXISTENTE"
       , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
@@ -3155,14 +3256,14 @@ view: fth_orden {
     group_item_label: "Portin Bruto"
     label: "Portin Bruto"
     description: "Negocio Movil - Cuenta las Solicitudes de Portabilidad (Portin Bruta)
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA, CANCELADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA, CANCELADA'
     , orden_tipo_gestion_nombre: 'VENTA PORTIN'
     , orden_item_accion_nombre: 'AGREGAR'
     , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'
     , producto_familia_nombre: 'MOVIL"
     filters: [
-        orden_estado_nombre: "ACTIVADA, CANCELADA"
+      orden_estado_nombre: "ACTIVADA, CANCELADA"
       , orden_tipo_gestion_nombre: "VENTA PORTIN"
       , orden_item_accion_nombre: "AGREGAR"
       , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
@@ -3177,16 +3278,16 @@ view: fth_orden {
     group_label: "Cantidad"
     group_item_label: "Alta Proteccion Personal"
     label: "Negocio Movil/Cuenta Gestiones de Alta Proteccion Personal
-      type: count_distinct    sql: ${orden_srcid};FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid};FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
     , orden_tipo_sub_gestion_nombre: 'ALTA PROTECCION PERSONAL'
     , orden_item_accion_nombre: 'AGREGAR'
     , producto_tipo_nombre: 'PROTECCION'      , producto_familia_nombre: 'MOVIL'
-          , orden_estado_trackeo_nombre: 'ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA, ENVIO A OM'
-          , orden_reemplazada_srcid: ''-1''"
+    , orden_estado_trackeo_nombre: 'ENTREGADA, FACTURA EMITIDA, DESPACHADA, INICIADA, PENDIENTE DE ENTREGA, ENVIO A OM'
+    , orden_reemplazada_srcid: ''-1''"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "VENTA, SERVICIOS Y OFERTAS ADICIONALES"
       , orden_tipo_sub_gestion_nombre: "ALTA PROTECCION PERSONAL"
       , orden_item_accion_nombre: "AGREGAR"
@@ -3205,15 +3306,15 @@ view: fth_orden {
     group_item_label: "Cambio Producto Downselling"
     label: "Cambio Producto Downselling"
     description: "Negocio Movil - Cuenta los Cambio Producto Downselling ( De plan con abono a Tarjeta)
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
     , orden_item_accion_nombre: 'AGREGAR'
     , producto_tipo_nombre: 'PLAN PREPAGO'
     , opa_producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'
     , producto_familia_nombre: 'MOVIL'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_item_accion_nombre: "AGREGAR"
       , producto_tipo_nombre: "PLAN PREPAGO"
@@ -3230,15 +3331,15 @@ view: fth_orden {
     group_item_label: "Cambio Producto (CAPRO)"
     label: "Cambio Producto (CAPRO)"
     description: "Negocio Movil - Cuenta los Cambio Producto (CAPRO)
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'CAMBIO DE PLAN'
     , orden_item_accion_nombre: 'AGREGAR'
     , producto_tipo_nombre: 'PLAN POSPAGO, PLAN HIBRIDO'
     , opa_producto_tipo_nombre: 'PLAN PREPAGO'
     , producto_familia_nombre: 'MOVIL'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_item_accion_nombre: "AGREGAR"
       , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO"
@@ -3256,7 +3357,7 @@ view: fth_orden {
     label: "Cantidad Baja por suspension Portout"
     description: "Negocio movil- Ordenes de suspension por Portout"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
       , orden_tipo_sub_gestion_nombre: "PORTOUT"
       , orden_item_sub_accion_nombre: "SUSPENDER - PORTABILIDAD"
@@ -3274,7 +3375,7 @@ view: fth_orden {
     label: "Cantidad Baja Masiva Por Tiempo"
     description: "Gestion de Desconexion por operatoria masiva por tiempo Plan Prepago"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
       , orden_tipo_sub_gestion_nombre: "POR TIEMPO"
       , orden_item_accion_nombre: "DESCONECTAR"
@@ -3292,7 +3393,7 @@ view: fth_orden {
     label: "Cantidad de Suspensiones por Mora"
     description: "Suspensiones totales por mora Fija y Movil, incluye Degradacion, Mora 1 y Mora 2"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
       , orden_item_accion_nombre: "SUSPENDER"
       , orden_item_sub_accion_nombre: "SUSPENDER - DEGRADACION, SUSPENDER - MORA 1, SUSPENDER - MORA 2"
@@ -3309,15 +3410,15 @@ view: fth_orden {
     group_item_label: "Suspension Restriccion Comercial"
     label: "Suspension Restriccion Comercial"
     description: "Negocio Movil/ cuenta gestiones de Restriccion de uso de proteccion personal, ante suspension por mora para dispositivos
-      (  type: count_distinct    sql: ${orden_srcid};) FILTROS:
-        orden_estado_nombre: 'ACTIVADA'
-      , orden_tipo_gestion_nombre: 'SUSPENSION'
-      , orden_item_accion_nombre: 'SUSPENDER'
-      , orden_item_sub_accion_nombre: 'SUSPENDER - RESTRICCION COMERCIAL'
-      , producto_tipo_nombre: 'DISPOSITIVO'
-      , producto_familia_nombre: 'MOVIL'"
+    (  type: count_distinct    sql: ${orden_srcid};) FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'SUSPENSION'
+    , orden_item_accion_nombre: 'SUSPENDER'
+    , orden_item_sub_accion_nombre: 'SUSPENDER - RESTRICCION COMERCIAL'
+    , producto_tipo_nombre: 'DISPOSITIVO'
+    , producto_familia_nombre: 'MOVIL'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "SUSPENSION"
       , orden_item_accion_nombre: "SUSPENDER"
       , orden_item_sub_accion_nombre: "SUSPENDER - RESTRICCION COMERCIAL"
@@ -3334,15 +3435,15 @@ view: fth_orden {
     group_item_label: "Anulaciones de Venta Movil"
     label: "Cantidad Anulaciones de Venta Movil"
     description: "Negocio Movil/Gestiones de desconexion por anulacion de venta, planes y dispositivos
-      type: count_distinct    sql: ${orden_srcid}; FILTROS:
-      orden_estado_nombre: 'ACTIVADA'
+    type: count_distinct    sql: ${orden_srcid}; FILTROS:
+    orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'DESCONEXION'
     , orden_tipo_sub_gestion_nombre: 'ANULACION DE VENTA'
     , orden_item_accion_nombre: 'DESCONECTAR'
     , producto_tipo_nombre: 'DISPOSITIVO, PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO'
     , producto_familia_nombre: 'MOVIL'      , producto_familia_nombre: 'MOVIL'"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
       , orden_tipo_sub_gestion_nombre: "ANULACION DE VENTA"
       , orden_item_accion_nombre: "DESCONECTAR"
@@ -3360,7 +3461,7 @@ view: fth_orden {
     label: "Cantidad Baja Voluntaria"
     description: "Negocio Fija /Movil - Ordenes de desconexion por pedido de baja de cliente (baja voluntaria)"
     filters: [
-        orden_estado_nombre: "ACTIVADA"
+      orden_estado_nombre: "ACTIVADA"
       , orden_tipo_gestion_nombre: "DESCONEXION"
       , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
       , orden_item_accion_nombre: "DESCONECTAR"
@@ -3377,7 +3478,7 @@ view: fth_orden {
     label: "Retenido Oferta Cambio Plan"
     description: "Retenidos con oferta o cambios de plan"
     filters: [
-        caso_tipo_nombre: "CAMBIO DE PLAN, VENTA"
+      caso_tipo_nombre: "CAMBIO DE PLAN, VENTA"
       , caso_sub_tipo_nombre: "RETENCION, FIDELIZACION"
       , orden_tipo_gestion_nombre: "VENTA, CAMBIO DE PLAN"
       , orden_tipo_sub_gestion_nombre: "RETENCION, FIDELIZACION"
@@ -3398,7 +3499,7 @@ view: fth_orden {
     label: "No Retenido Cambio Mercado"
     description: "No retenido pase a prepago."
     filters: [
-        caso_tipo_nombre: "CAMBIO DE PLAN"
+      caso_tipo_nombre: "CAMBIO DE PLAN"
       , caso_sub_tipo_nombre: "RETENCION"
       , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
       , orden_tipo_sub_gestion_nombre: "RETENCION"
@@ -3407,6 +3508,40 @@ view: fth_orden {
       , opa_producto_tipo_nombre: "PLAN HIBRIDO, PLAN POSPAGO"
       , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
     ]
+  }
+
+  measure: total_orden_bajas_totales {
+    type: sum
+    sql: ${orden_bajas_totales} ;;
+    view_label: "Orden"
+    group_label: "Cantidad"
+    label: "Bajas Totales"
+    description: "Incluye todos los motivos de baja de abonos + suspensiones Portout Fija y Movil"
+  }
+
+  measure: total_orden_suspensiones_totales {
+    type: sum
+    sql: ${orden_suspensiones_totales} ;;
+    view_label: "Orden"
+    group_label: "Cantidad"
+    label: "Suspensiones Totales"
+    description: "Incluye todos los motivos de suspension menos por Portout Fija y Movil"
+  }
+
+  measure: total_orden_volte {
+    type: sum
+    sql: ${orden_volte} ;;
+    view_label: "Orden"
+    group_label: "Cantidad"
+    label: "Volte"
+    description: "Negocio Fija / Cuenta ordenes de migracion/Alta de linea fija inalambrica
+    COUNT(DISTINCT fth_orden.Orden.OrdenNumeroComprobante ) Filtros:
+    orden_estado_nombre: 'ACTIVADA'
+    , orden_tipo_gestion_nombre: 'VENTA'
+    , orden_tipo_sub_gestion_nombre: 'CAMBIO DE TECNOLOGIA'
+    , producto_tipo_nombre: 'TELEFONIA'
+    , producto_subtipo_nombre: 'VOLTE'
+    , producto_familia_nombre: 'FIJA'"
   }
 
   ## Orden Plan Anterior
@@ -3440,7 +3575,7 @@ view: fth_orden {
 
 view: fth_orden_medio_pago {
 
-    ## Strings
+  ## Strings
 
   dimension: medio_pago_entidad_financiera_nombre {
     type: string
@@ -3475,7 +3610,7 @@ view: fth_orden_medio_pago {
     label: "Tipo Tarjeta"
   }
 
-    ## Flags
+  ## Flags
 
   dimension: medio_pago_marca_principal {
     type: yesno
@@ -3483,7 +3618,7 @@ view: fth_orden_medio_pago {
     label: "Es Principal"
   }
 
-    ## Hidden
+  ## Hidden
 
   dimension: medio_pago_entidad_financiera_srcid {
     hidden: yes
