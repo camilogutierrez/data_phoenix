@@ -35,6 +35,11 @@ view: fth_orden {
     sql: ${TABLE}.MedioPago ;;
   }
 
+  dimension: promocion {
+    hidden: yes
+    sql: ${TABLE}.promocion ;;
+  }
+
   ## Dates
 
   dimension: fecha_entidad {
@@ -3648,5 +3653,246 @@ view: fth_orden_medio_pago {
     hidden: yes
     type: string
     sql: MedioPagoTarjetaTipoSRCId ;;
+  }
+}
+
+###############
+## Promocion ##
+###############
+
+view: fth_orden_promocion {
+
+## Dimensions
+
+  ## Dates
+  dimension_group: orden_precio_fecha_desde_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: OrdenPrecioFechaDesdeSRC ;;
+    group_label: "Fecha Inicio Ajuste"
+    label: "Inicio Ajuste"
+    description: "Fecha estimada de inicio de este precio, cargo o ajuste."
+  }
+
+  dimension_group: orden_precio_fecha_estimada_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: OrdenPrecioFechaEstimadaSRC ;;
+    group_label: "Fecha Fin Ajuste"
+    label: "Fin Ajuste"
+    description: "Fecha estimada de fin de este precio, cargo o ajuste."
+  }
+
+  dimension_group: orden_precio_fecha_modificacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: OrdenPrecioFechaModificacionSRC ;;
+    group_label: "Fecha Modificacion Ajuste"
+    label: "Modificacion Ajuste"
+    description: "Fecha de modificacion de este precio, cargo o ajuste."
+  }
+
+  dimension_group: orden_precio_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: OrdenPrecioFechaCreacionSRC ;;
+    group_label: "Fecha Creacion Ajuste"
+    label: "Creacion Ajuste"
+    description: "Fecha de creacion de este precio, cargo o ajuste."
+  }
+
+  dimension_group: promocion_fecha_creacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaCreacionSRC ;;
+    group_label: "Fecha Creacion Promo"
+    label: "Creacion Promo"
+    description: "Fecha de creacion de la promocion."
+  }
+
+  dimension_group: promocion_fecha_modificacion_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaModificacionSRC ;;
+    group_label: "Fecha Modificacion Promo"
+    label: "Modificacion Promo"
+    description: "Fecha de modificacion de la promocion."
+  }
+
+  dimension_group: promocion_fecha_efectiva_inicio_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaEfectivaInicioSRC ;;
+    group_label: "Fecha Inicio Promo"
+    label: "Inicio Promo"
+    description: "Fecha de inicio de la promocion."
+  }
+
+  dimension_group: promocion_fecha_efectiva_fin_src {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaEfectivaFinSRC ;;
+    group_label: "Fecha Fin Promo"
+    label: "Fin Promo"
+    description: "Fecha de fin de la promocion."
+  }
+
+  ## Strings
+  dimension: orden_precio_accion_nombre {
+    type: string
+    sql: OrdenPrecioAccionNombre ;;
+    suggest_dimension: lk_orden_precio_accion.orden_precio_accion_nombre
+    label: "Accion"
+    description: "La acción solicitada en esta orden para este precio, cargo o ajuste con valores como Agregar, Cambiar, Desconectar, Existente."
+  }
+
+  dimension: orden_precio_fuente_nombre {
+    type: string
+    sql: OrdenPrecioFuenteNombre ;;
+    suggest_dimension: lk_orden_precio_fuente.orden_precio_fuente_nombre
+    label: "Fuente"
+    description: "La fuente de este precio, cargo o ajuste, como 'Agente' para ajustes por escrito, 'Promoción' para precios promocionales u 'Oferta' para precios específicos de la oferta."
+  }
+
+  dimension: promocion_id {
+    type: string
+    sql: PromocionSRCId ;;
+    label: "ID"
+    description: "Id de la promo o ajuste."
+  }
+
+  dimension: promocion_nombre {
+    type: string
+    sql: PromocionNombre ;;
+    label: "Nombre"
+    description: "Nombre de la promo o ajuste."
+  }
+
+  dimension: promocion_codigo {
+    type: string
+    sql: PromocionCodigo ;;
+    label: "Codigo"
+    description: "Código de la Promo o ajuste con lo que se la configura."
+  }
+
+  dimension: promocion_descripcion {
+    type: string
+    sql: PromocionDescripcion ;;
+    label: "Descripcion"
+    description: "Detalle del contenido de la promo o ajuste."
+  }
+
+  dimension: lista_precio_srcid {
+    type: string
+    sql: ListaPrecioSRCId ;;
+    label: "Precio de Lista"
+    description: "Precio de Lista."
+  }
+
+  ## Flags
+  dimension: promocion_marca_activa {
+    type: yesno
+    sql: PromocionMarcaActiva ;;
+    label: "Promocion Activa"
+    description: "Marca que muestra si la promo esta activa o no."
+  }
+
+  ## Hidden
+  dimension: orden_precio_valor_ajuste {
+    hidden: yes
+    type: number
+    sql: OrdenPrecioValorAjuste ;;
+  }
+
+  dimension: orden_precio_accion_sk {
+    hidden: yes
+    type: number
+    sql: OrdenPrecioAccionSK ;;
+  }
+
+  dimension: orden_precio_fuente_sk {
+    hidden: yes
+    type: number
+    sql: OrdenPrecioFuenteSK ;;
+  }
+
+## Measures
+  measure: total_orden_precio_valor_ajuste {
+    type: sum
+    sql: ${orden_precio_valor_ajuste} ;;
+    label: "Valor Ajuste"
+    description: "Muestra el valor por escrito, porcentual o nominal del ajuste."
   }
 }

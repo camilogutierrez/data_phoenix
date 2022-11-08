@@ -30,6 +30,12 @@ explore: fth_orden {
     relationship: one_to_many
   }
 
+  join: fth_orden_promocion {
+    view_label: "Promocion"
+    sql: LEFT JOIN UNNEST(${fth_orden.promocion}) as fth_orden_promocion ;;
+    relationship: one_to_many
+  }
+
   join: dm_nomina {
     view_label: "Nomina"
     relationship: many_to_one
@@ -273,23 +279,17 @@ explore: fth_orden {
     type: inner
   }
 
-  # join: lk_orden_precio_accion {
-  #   relationship: many_to_one
-  #   sql_on: ${dm_orden_precio_promocion.orden_precio_accion_sk} = ${lk_orden_precio_accion.orden_precio_accion_sk} ;;
-  #   type: inner
-  # }
+  join: lk_orden_precio_accion {
+    relationship: many_to_one
+    sql_on: ${fth_orden_promocion.orden_precio_accion_sk} = ${lk_orden_precio_accion.orden_precio_accion_sk} ;;
+    type: inner
+  }
 
-  # join: lk_orden_precio_fuente {
-  #   relationship: many_to_one
-  #   sql_on: ${dm_orden_precio_promocion.orden_precio_fuente_sk} = ${lk_orden_precio_fuente.orden_precio_fuente_sk} ;;
-  #   type: inner
-  # }
-
-  # join: lk_orden_precio_estado {
-  #   relationship: many_to_one
-  #   sql_on: ${dm_orden_precio_promocion.orden_precio_estado_sk} = ${lk_orden_precio_estado.orden_precio_estado_sk} ;;
-  #   type: inner
-  # }
+  join: lk_orden_precio_fuente {
+    relationship: many_to_one
+    sql_on: ${fth_orden_promocion.orden_precio_fuente_sk} = ${lk_orden_precio_fuente.orden_precio_fuente_sk} ;;
+    type: inner
+  }
 
   join: lk_rango_numeracion_prefijo_interurbano {
     relationship: many_to_one
