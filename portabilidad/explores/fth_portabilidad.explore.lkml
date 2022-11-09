@@ -42,4 +42,22 @@ explore: fth_portabilidad {
     type: inner
   }
 
+  join: lk_rango_numeracion_provincia {
+    relationship: many_to_one
+    sql_on: ${fth_portabilidad.rango_numeracion_provincia_srcid} = ${lk_rango_numeracion_provincia.rango_numeracion_provincia_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_departamento {
+    relationship: many_to_one
+    sql_on: ${fth_portabilidad.rango_numeracion_departamento_srcid} = ${lk_rango_numeracion_departamento.rango_numeracion_departamento_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_localidad {
+    relationship: many_to_one
+    sql_on: ${fth_portabilidad.rango_numeracion_localidad_srcid} = ${lk_rango_numeracion_localidad.rango_numeracion_localidad_srcid} ;;
+    type: inner
+  }
+
 }

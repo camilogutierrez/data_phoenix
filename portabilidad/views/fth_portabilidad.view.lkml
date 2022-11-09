@@ -399,6 +399,7 @@ view: fth_portabilidad {
   dimension: rango_numeracion_departamento_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
+    suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
     view_label: "Geografia"
     label: "Rango Numeracion Departamento"
     description: "Grupo de Localidad del Prefijo de la Linea"
@@ -407,6 +408,7 @@ view: fth_portabilidad {
   dimension: rango_numeracion_localidad_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
+    suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
     view_label: "Geografia"
     label: "Rango Numeracion Localidad"
     description: "Localidad del Prefijo de la Linea"
@@ -433,6 +435,7 @@ view: fth_portabilidad {
   dimension: rango_numeracion_provincia_nombre {
     type: string
     sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
+    suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
     view_label: "Geografia"
     label: "Rango Numeracion Provincia"
     description: "Provincia del Prefijo de la Linea"
@@ -646,6 +649,24 @@ view: fth_portabilidad {
     hidden: yes
     type: string
     sql: ${TABLE}.PortaMovTipoSRCId ;;
+  }
+
+  dimension: rango_numeracion_provincia_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionProvinciaSRCId ;;
+  }
+
+  dimension: rango_numeracion_departamento_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoSRCId ;;
+  }
+
+  dimension: rango_numeracion_localidad_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.Geografia.RangoNumeracionLocalidadSRCId ;;
   }
 
 ## Measures
