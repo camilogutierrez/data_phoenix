@@ -441,31 +441,6 @@ view: fth_portabilidad {
     description: "Provincia del Prefijo de la Linea"
   }
 
-  # dimension: rango_numeracion_departamento_nombre {
-  #   type: string
-  #   sql: ${TABLE}.Geografia.RangoNumeracionDepartamentoNombre ;;
-  #   suggest_dimension: lk_rango_numeracion_departamento.rango_numeracion_departamento_nombre
-  #   view_label: "Geografia"
-  #   label: "Rango Numeracion Departamento"
-  # }
-
-  # dimension: rango_numeracion_localidad_nombre {
-  #   type: string
-  #   sql: ${TABLE}.Geografia.RangoNumeracionLocalidadNombre ;;
-  #   suggest_dimension: lk_rango_numeracion_localidad.rango_numeracion_localidad_nombre
-  #   view_label: "Geografia"
-  #   label: "Rango Numeracion Localidad"
-  # }
-
-  # dimension: rango_numeracion_provincia_nombre {
-  #   map_layer_name: arg_provinces
-  #   type: string
-  #   sql: ${TABLE}.Geografia.RangoNumeracionProvinciaNombre ;;
-  #   suggest_dimension: lk_rango_numeracion_provincia.rango_numeracion_provincia_nombre
-  #   view_label: "Geografia"
-  #   label: "Rango Numeracion Provincia"
-  # }
-
   dimension: orden_estado_nombre {
     type: string
     sql: ${TABLE}.OrdenPortabilidad.OrdenEstadoNombre ;;
