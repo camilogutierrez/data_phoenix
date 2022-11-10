@@ -40,7 +40,7 @@ view: fth_retencion_fidelizacion {
     description: "Indica la Fecha de Foto seleccionada"
   }
 
-  dimension_group: o_fecha_activacion {
+  dimension_group: orden_fecha_activacion {
     type: time
     timeframes: [
       raw,
@@ -60,7 +60,7 @@ view: fth_retencion_fidelizacion {
     description: "Fecha de activación de la orden."
   }
 
-  dimension_group: o_fecha_creacion {
+  dimension_group: orden_fecha_creacion {
     type: time
     timeframes: [
       raw,
@@ -80,7 +80,7 @@ view: fth_retencion_fidelizacion {
     description: "Fecha de Creacion de la orden."
   }
 
-  dimension_group: o_fecha_ultima_mod {
+  dimension_group: orden_fecha_ultima_mod {
     type: time
     timeframes: [
       raw,
@@ -100,7 +100,7 @@ view: fth_retencion_fidelizacion {
     description: "Fecha de ultima modificaicion de la orden."
   }
 
-  dimension_group: o_plan_nuevo_fecha_fin {
+  dimension_group: orden_plan_nuevo_fecha_fin {
     type: time
     timeframes: [
       raw,
@@ -119,7 +119,7 @@ view: fth_retencion_fidelizacion {
     label: "Fin Plan Nuevo"
   }
 
-  dimension_group: o_plan_nuevo_fechainicio {
+  dimension_group: orden_plan_nuevo_fechainicio {
     type: time
     timeframes: [
       raw,
@@ -138,7 +138,7 @@ view: fth_retencion_fidelizacion {
     label: "Inicio Plan Nuevo"
   }
 
-  dimension_group: o_plan_original_fecha_fin {
+  dimension_group: orden_plan_original_fecha_fin {
     type: time
     timeframes: [
       raw,
@@ -157,7 +157,7 @@ view: fth_retencion_fidelizacion {
     label: "Fin Plan Original"
   }
 
-  dimension_group: o_plan_original_fechainicio {
+  dimension_group: orden_plan_original_fechainicio {
     type: time
     timeframes: [
       raw,
@@ -176,7 +176,7 @@ view: fth_retencion_fidelizacion {
     label: "Inicio Plan Original"
   }
 
-  dimension_group: pa_fecha_baja {
+  dimension_group: producto_adquirido_fecha_baja {
     type: time
     timeframes: [
       raw,
@@ -270,7 +270,7 @@ view: fth_retencion_fidelizacion {
     description: "Estado del Caso de Pedido de Baja/Fidelización"
   }
 
-  dimension: ch_comentario_resolucion_hijo {
+  dimension: caso_hijo_comentario_resolucion_hijo {
     type: string
     sql: ${TABLE}.CasoHijo.ComentarioResolucionHijo ;;
     view_label: "Caso Hijo"
@@ -278,7 +278,7 @@ view: fth_retencion_fidelizacion {
     description: "Comentario de resolución del caso hijo"
   }
 
-  dimension: ch_estado_gestion_hijo {
+  dimension: caso_hijo_estado_gestion_hijo {
     type: string
     sql: ${TABLE}.CasoHijo.EstadoGestionHijo ;;
     view_label: "Caso Hijo"
@@ -286,7 +286,7 @@ view: fth_retencion_fidelizacion {
     description: "Estado del caso hijo"
   }
 
-  dimension: ch_numero_caso_hijo {
+  dimension: caso_hijo_numero_caso_hijo {
     type: string
     sql: ${TABLE}.CasoHijo.NumeroCasoHijo ;;
     view_label: "Caso Hijo"
@@ -294,7 +294,7 @@ view: fth_retencion_fidelizacion {
     description: "Numero del caso hijo"
   }
 
-  dimension: ch_numerocaso_padre {
+  dimension: caso_hijo_numerocaso_padre {
     type: string
     sql: ${TABLE}.CasoHijo.NumerocasoPadre ;;
     view_label: "Caso Hijo"
@@ -302,7 +302,7 @@ view: fth_retencion_fidelizacion {
     description: "Número del caso padre intermedio"
   }
 
-  dimension: ch_tipo_caso_hijo {
+  dimension: caso_hijo_tipo_caso_hijo {
     type: string
     sql: ${TABLE}.CasoHijo.TipoCasoHijo ;;
     view_label: "Caso Hijo"
@@ -324,14 +324,14 @@ view: fth_retencion_fidelizacion {
     description: "Tipo de Caso asociado a la Orden Retencion/Fidelización."
   }
 
-  dimension: cc_ciclo_facturacion {
+  dimension: cuenta_cliente_ciclo_facturacion {
     type: string
     sql: ${TABLE}.CuentaCliente.CicloFacturacion ;;
     view_label: "Cuenta Cliente"
     label: "Ciclo Facturacion"
   }
 
-  dimension: cc_razon_social {
+  dimension: cuenta_cliente_razon_social {
     type: string
     sql: ${TABLE}.CuentaCliente.RazonSocial ;;
     view_label: "Cuenta Cliente"
@@ -339,7 +339,7 @@ view: fth_retencion_fidelizacion {
     description: "Razón social del cliente"
   }
 
-  dimension: cc_seg_nivel1 {
+  dimension: cuenta_cliente_seg_nivel1 {
     type: string
     sql: ${TABLE}.CuentaCliente.SegNivel1 ;;
     view_label: "Cuenta Cliente"
@@ -347,7 +347,7 @@ view: fth_retencion_fidelizacion {
     description: "Score del cliente"
   }
 
-  dimension: cc_seg_nivel2 {
+  dimension: cuenta_cliente_seg_nivel2 {
     type: string
     sql: ${TABLE}.CuentaCliente.SegNivel2 ;;
     view_label: "Cuenta Cliente"
@@ -355,7 +355,7 @@ view: fth_retencion_fidelizacion {
     description: "Segmento del producto"
   }
 
-  dimension: cc_tipo_cuenta {
+  dimension: cuenta_cliente_tipo_cuenta {
     type: string
     sql: ${TABLE}.CuentaCliente.TipoCuenta ;;
     view_label: "Cuenta Cliente"
@@ -369,7 +369,7 @@ view: fth_retencion_fidelizacion {
     label: "Usuario Asignado"
   }
 
-  dimension: i_dninumero {
+  dimension: individuo_dninumero {
     type: string
     sql: ${TABLE}.Individuo.DNINumero ;;
     group_label: "Individuo"
@@ -377,7 +377,7 @@ view: fth_retencion_fidelizacion {
     description: "Número de Documento Nacional de Identidad"
   }
 
-  dimension: i_dnitipo {
+  dimension: individuo_dnitipo {
     type: string
     sql: ${TABLE}.Individuo.DNITipo ;;
     group_label: "Individuo"
@@ -391,7 +391,7 @@ view: fth_retencion_fidelizacion {
     description: "Motivo de Baja"
   }
 
-  dimension: o_alias_usuario_mod {
+  dimension: orden_alias_usuario_mod {
     type: string
     sql: ${TABLE}.Orden.AliasUsuarioMod ;;
     view_label: "Orden"
@@ -399,7 +399,7 @@ view: fth_retencion_fidelizacion {
     description: "Usuario que modificó la orden"
   }
 
-  dimension: o_canal {
+  dimension: orden_canal {
     type: string
     sql: ${TABLE}.Orden.Canal ;;
     view_label: "Orden"
@@ -407,7 +407,7 @@ view: fth_retencion_fidelizacion {
     description: "Canal de origen de la orden"
   }
 
-  dimension: o_estado {
+  dimension: orden_estado {
     type: string
     sql: ${TABLE}.Orden.Estado ;;
     view_label: "Orden"
@@ -415,7 +415,7 @@ view: fth_retencion_fidelizacion {
     description: "Estado de la Orden/Pedido"
   }
 
-  dimension: o_gestion {
+  dimension: orden_gestion {
     type: string
     sql: ${TABLE}.Orden.Gestion ;;
     view_label: "Orden"
@@ -423,7 +423,7 @@ view: fth_retencion_fidelizacion {
     description: "Tipo de Orden/Pedido"
   }
 
-  dimension: o_internet_plan_original_producto_tipo {
+  dimension: orden_internet_plan_original_producto_tipo {
     type: string
     sql: ${TABLE}.Orden.InternetPlanOriginalProductoTipo ;;
     view_label: "Orden"
@@ -432,7 +432,7 @@ view: fth_retencion_fidelizacion {
     description: "Familia del producto original"
   }
 
-  dimension: o_internet_plan_original_producto_nombre {
+  dimension: orden_internet_plan_original_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.InternetPlanOriginalProductoNombre ;;
     view_label: "Orden"
@@ -441,7 +441,7 @@ view: fth_retencion_fidelizacion {
     description: "Nombre del producto original"
   }
 
-  dimension: o_internet_plan_original_producto_codigo {
+  dimension: orden_internet_plan_original_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.InternetPlanOriginalProductoCodigo ;;
     view_label: "Orden"
@@ -450,7 +450,7 @@ view: fth_retencion_fidelizacion {
     description: "Codigo del producto original"
   }
 
-  dimension: o_internet_plan_nuevo_producto_tipo {
+  dimension: orden_internet_plan_nuevo_producto_tipo {
     type: string
     sql: ${TABLE}.Orden.InternetPlanNuevoProductoTipo ;;
     view_label: "Orden"
@@ -459,7 +459,7 @@ view: fth_retencion_fidelizacion {
     description: "Familia del producto nuevo"
   }
 
-  dimension: o_internet_plan_nuevo_producto_nombre {
+  dimension: orden_internet_plan_nuevo_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.InternetPlanNuevoProductoNombre ;;
     view_label: "Orden"
@@ -468,7 +468,7 @@ view: fth_retencion_fidelizacion {
     description: "Nombre del producto nuevo"
   }
 
-  dimension: o_internet_plan_nuevo_producto_codigo {
+  dimension: orden_internet_plan_nuevo_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.InternetPlanNuevoProductoCodigo ;;
     view_label: "Orden"
@@ -477,7 +477,7 @@ view: fth_retencion_fidelizacion {
     description: "Codigo del producto nuevo"
   }
 
-  dimension: o_numero {
+  dimension: orden_numero {
     type: string
     sql: ${TABLE}.Orden.OrdenNumero ;;
     view_label: "Orden"
@@ -485,7 +485,7 @@ view: fth_retencion_fidelizacion {
     description: "Número de Orden/Pedido"
   }
 
-  dimension: o_plan_nuevo_producto_codigo {
+  dimension: orden_plan_nuevo_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.PlanNuevoProductoCodigo ;;
     view_label: "Orden"
@@ -494,7 +494,7 @@ view: fth_retencion_fidelizacion {
     description: "Código del producto nuevo"
   }
 
-  dimension: o_plan_nuevo_producto_nombre {
+  dimension: orden_plan_nuevo_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.PlanNuevoProductoNombre ;;
     view_label: "Orden"
@@ -503,7 +503,7 @@ view: fth_retencion_fidelizacion {
     description: "Nombre del producto nuevo"
   }
 
-  dimension: o_plan_nuevo_producto_tipo {
+  dimension: orden_plan_nuevo_producto_tipo {
     type: string
     sql: ${TABLE}.Orden.PlanNuevoProductoTipo ;;
     view_label: "Orden"
@@ -511,7 +511,7 @@ view: fth_retencion_fidelizacion {
     label: "Producto Tipo"
   }
 
-  dimension: o_plan_nuevo_promocion_nombre {
+  dimension: orden_plan_nuevo_promocion_nombre {
     type: string
     sql: ${TABLE}.Orden.PlanNuevoPromocionNombre ;;
     view_label: "Orden"
@@ -520,7 +520,7 @@ view: fth_retencion_fidelizacion {
     description: "Promoción del producto nuevo"
   }
 
-  dimension: o_plan_original_producto_codigo {
+  dimension: orden_plan_original_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.PlanOriginalProductoCodigo ;;
     view_label: "Orden"
@@ -529,7 +529,7 @@ view: fth_retencion_fidelizacion {
     description: "Código del producto original"
   }
 
-  dimension: o_plan_original_producto_nombre {
+  dimension: orden_plan_original_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.PlanOriginalProductoNombre ;;
     view_label: "Orden"
@@ -538,7 +538,7 @@ view: fth_retencion_fidelizacion {
     description: "Nombre del producto original"
   }
 
-  dimension: o_plan_original_producto_tipo {
+  dimension: orden_plan_original_producto_tipo {
     type: string
     sql: ${TABLE}.Orden.PlanOriginalProductoTipo ;;
     view_label: "Orden"
@@ -547,7 +547,7 @@ view: fth_retencion_fidelizacion {
     description: "Familia de producto original"
   }
 
-  dimension: o_plan_original_promocion_nombre {
+  dimension: orden_plan_original_promocion_nombre {
     type: string
     sql: ${TABLE}.Orden.PlanOriginalPromocionNombre ;;
     view_label: "Orden"
@@ -555,7 +555,7 @@ view: fth_retencion_fidelizacion {
     label: "Promocion Nombre"
   }
 
-  dimension: o_subgestion {
+  dimension: orden_subgestion {
     type: string
     sql: ${TABLE}.Orden.Subgestion ;;
     view_label: "Orden"
@@ -563,7 +563,7 @@ view: fth_retencion_fidelizacion {
     description: "Subtipo de baja del caso hijo"
   }
 
-  dimension: o_subtipo {
+  dimension: orden_subtipo {
     type: string
     sql: ${TABLE}.Orden.Subtipo ;;
     view_label: "Orden"
@@ -571,7 +571,7 @@ view: fth_retencion_fidelizacion {
     description: "Submotivo de baja"
   }
 
-  dimension: o_tv_plan_original_producto_tipo {
+  dimension: orden_tv_plan_original_producto_tipo {
     type: string
     sql: ${TABLE}.Orden.TVPlanOriginalProductoTipo ;;
     view_label: "Orden"
@@ -580,7 +580,7 @@ view: fth_retencion_fidelizacion {
     description: "Familia de producto original"
   }
 
-  dimension: o_tv_plan_original_producto_nombre {
+  dimension: orden_tv_plan_original_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.TVPlanOriginalProductoNombre ;;
     view_label: "Orden"
@@ -589,7 +589,7 @@ view: fth_retencion_fidelizacion {
     description: "Nombre del producto original"
   }
 
-  dimension: o_tv_plan_original_producto_codigo {
+  dimension: orden_tv_plan_original_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.TVPlanOriginalProductoCodigo ;;
     view_label: "Orden"
@@ -598,7 +598,7 @@ view: fth_retencion_fidelizacion {
     description: "Codigo del producto original"
   }
 
-  dimension: o_tv_plan_nuevo_producto_tipo {
+  dimension: orden_tv_plan_nuevo_producto_tipo {
     type: string
     sql: ${TABLE}.Orden.TVPlanNuevoProductoTipo ;;
     view_label: "Orden"
@@ -607,7 +607,7 @@ view: fth_retencion_fidelizacion {
     description: "Familia de producto nuevo"
   }
 
-  dimension: o_tv_plan_nuevo_producto_nombre {
+  dimension: orden_tv_plan_nuevo_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.TVPlanNuevoProductoNombre ;;
     view_label: "Orden"
@@ -616,7 +616,7 @@ view: fth_retencion_fidelizacion {
     description: "Nombre del producto nuevo"
   }
 
-  dimension: o_tv_plan_nuevo_producto_codigo {
+  dimension: orden_tv_plan_nuevo_producto_codigo {
     type: string
     sql: ${TABLE}.Orden.TVPlanNuevoProductoCodigo ;;
     view_label: "Orden"
@@ -625,7 +625,7 @@ view: fth_retencion_fidelizacion {
     description: "Codigo del producto nuevo"
   }
 
-  dimension: o_usuario_orden_alta_alias {
+  dimension: orden_usuario_orden_alta_alias {
     type: string
     sql: ${TABLE}.Orden.UsuarioOrdenAltaAlias ;;
     view_label: "Orden"
@@ -633,7 +633,7 @@ view: fth_retencion_fidelizacion {
     description: "Usuario que generó la orden"
   }
 
-  dimension: o_usuario_orden_alta_grupo_trabajo_nombre {
+  dimension: orden_usuario_orden_alta_grupo_trabajo_nombre {
     type: string
     sql: ${TABLE}.Orden.UsuarioOrdenAltaGrupoTrabajoNombre ;;
     view_label: "Orden"
@@ -641,7 +641,7 @@ view: fth_retencion_fidelizacion {
     description: "Grupo de trabajo del usuario que genero la orden"
   }
 
-  dimension: o_usuario_orden_alta_punto_venta_canal {
+  dimension: orden_usuario_orden_alta_punto_venta_canal {
     type: string
     sql: ${TABLE}.Orden.UsuarioOrdenAltaPuntoVentaCanal ;;
     view_label: "Orden"
@@ -649,7 +649,7 @@ view: fth_retencion_fidelizacion {
     label: "Canal Usuario Alta"
   }
 
-  dimension: o_usuario_orden_alta_punto_venta_canal3 {
+  dimension: orden_usuario_orden_alta_punto_venta_canal3 {
     type: string
     sql: ${TABLE}.Orden.UsuarioOrdenAltaPuntoVentaCanal3 ;;
     view_label: "Orden"
@@ -657,7 +657,7 @@ view: fth_retencion_fidelizacion {
     label: "Canal 3 Usuario Alta"
   }
 
-  dimension: o_usuario_orden_alta_punto_venta_descripcion {
+  dimension: orden_usuario_orden_alta_punto_venta_descripcion {
     type: string
     sql: ${TABLE}.Orden.UsuarioOrdenAltaPuntoVentaDescripcion ;;
     view_label: "Orden"
@@ -666,7 +666,7 @@ view: fth_retencion_fidelizacion {
     description: "Punto de Venta del usuario que genero la orden"
   }
 
-  dimension: pa_estado_producto {
+  dimension: producto_adquirido_estado_producto {
     type: string
     sql: ${TABLE}.ProductoAdquirido.EstadoProducto ;;
     view_label: "Producto Adquirido"
@@ -674,7 +674,7 @@ view: fth_retencion_fidelizacion {
     description: "Estado del Producto"
   }
 
-  dimension: pa_numero_linea {
+  dimension: producto_adquirido_numero_linea {
     type: string
     sql: ${TABLE}.ProductoAdquirido.NumeroLinea ;;
     view_label: "Producto Adquirido"
@@ -682,7 +682,7 @@ view: fth_retencion_fidelizacion {
     description: "Numero de Linea"
   }
 
-  dimension: pa_subscripcion_id {
+  dimension: producto_adquirido_subscripcion_id {
     type: string
     sql: ${TABLE}.ProductoAdquirido.SubscripcionId ;;
     view_label: "Producto Adquirido"
@@ -779,7 +779,7 @@ view: fth_retencion_fidelizacion {
     label: "Canal 3 Usuario Asignado"
   }
 
-  dimension: o_cambio {
+  dimension: orden_cambio {
     type: yesno
     sql: ${TABLE}.Orden.Cambio ;;
     view_label: "Orden"
@@ -789,7 +789,7 @@ view: fth_retencion_fidelizacion {
 
   ## Number
 
-  dimension: cc_codigo_cuenta {
+  dimension: cuenta_cliente_codigo_cuenta {
     type: number
     sql: ${TABLE}.CuentaCliente.CodigoCuenta ;;
     view_label: "Cuenta Cliente"
@@ -798,25 +798,25 @@ view: fth_retencion_fidelizacion {
   }
 
   ## Hidden
-  dimension: o_plan_nuevo_valor_ajuste {
+  dimension: orden_plan_nuevo_valor_ajuste {
     hidden: yes
     type: number
     sql: ${TABLE}.Orden.PlanNuevoValorAjuste ;;
   }
 
-  dimension: o_plan_nuevo_cargo_recurrente {
+  dimension: orden_plan_nuevo_cargo_recurrente {
     hidden: yes
     type: number
     sql: ${TABLE}.Orden.PlanNuevoCargoRecurrente ;;
   }
 
-  dimension: o_plan_original_cargo_recurrente {
+  dimension: orden_plan_original_cargo_recurrente {
     hidden: yes
     type: number
     sql: ${TABLE}.Orden.PlanOriginalCargoRecurrente ;;
   }
 
-  dimension: o_plan_original_valor_ajuste {
+  dimension: orden_plan_original_valor_ajuste {
     hidden: yes
     type: number
     sql: ${TABLE}.Orden.PlanOriginalValorAjuste ;;
@@ -829,9 +829,9 @@ view: fth_retencion_fidelizacion {
     label: "Cantidad "
   }
 
-  measure: total_o_plan_nuevo_valor_ajuste {
+  measure: total_orden_plan_nuevo_valor_ajuste {
     type: sum
-    sql: ${o_plan_nuevo_valor_ajuste}  ;;
+    sql: ${orden_plan_nuevo_valor_ajuste}  ;;
     value_format_name: decimal_2
     view_label: "Orden"
     group_label: "Total"
@@ -839,9 +839,9 @@ view: fth_retencion_fidelizacion {
     description: "Valor ajuste (descuento) del producto nuevo"
   }
 
-  measure: total_o_plan_nuevo_cargo_recurrente {
+  measure: total_orden_plan_nuevo_cargo_recurrente {
     type: sum
-    sql: ${o_plan_nuevo_cargo_recurrente} ;;
+    sql: ${orden_plan_nuevo_cargo_recurrente} ;;
     value_format_name: decimal_2
     view_label: "Orden"
     group_label: "Total"
@@ -849,9 +849,9 @@ view: fth_retencion_fidelizacion {
     description: "Cargo recurrente del producto nuevo"
   }
 
-  measure: total_o_plan_original_cargo_recurrente {
+  measure: total_orden_plan_original_cargo_recurrente {
     type: sum
-    sql: ${o_plan_original_cargo_recurrente} ;;
+    sql: ${orden_plan_original_cargo_recurrente} ;;
     value_format_name: decimal_2
     view_label: "Orden"
     group_label: "Total"
@@ -860,9 +860,9 @@ view: fth_retencion_fidelizacion {
 
   }
 
-  measure: total_o_plan_original_valor_ajuste {
+  measure: total_orden_plan_original_valor_ajuste {
     type: sum
-    sql: ${o_plan_original_valor_ajuste} ;;
+    sql: ${orden_plan_original_valor_ajuste} ;;
     value_format_name: decimal_2
     view_label: "Orden"
     group_label: "Total"
