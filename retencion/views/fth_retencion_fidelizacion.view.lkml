@@ -423,6 +423,60 @@ view: fth_retencion_fidelizacion {
     description: "Tipo de Orden/Pedido"
   }
 
+  dimension: o_internet_plan_original_producto_tipo {
+    type: string
+    sql: ${TABLE}.Orden.InternetPlanOriginalProductoTipo ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "Internet Producto Tipo"
+    description: "Familia del producto original"
+  }
+
+  dimension: o_internet_plan_original_producto_nombre {
+    type: string
+    sql: ${TABLE}.Orden.InternetPlanOriginalProductoNombre ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "Internet Producto Nombre"
+    description: "Nombre del producto original"
+  }
+
+  dimension: o_internet_plan_original_producto_codigo {
+    type: string
+    sql: ${TABLE}.Orden.InternetPlanOriginalProductoCodigo ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "Internet Producto Codigo"
+    description: "Codigo del producto original"
+  }
+
+  dimension: o_internet_plan_nuevo_producto_tipo {
+    type: string
+    sql: ${TABLE}.Orden.InternetPlanNuevoProductoTipo ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "Internet Producto Tipo"
+    description: "Familia del producto nuevo"
+  }
+
+  dimension: o_internet_plan_nuevo_producto_nombre {
+    type: string
+    sql: ${TABLE}.Orden.InternetPlanNuevoProductoNombre ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "Internet Producto Nombre"
+    description: "Nombre del producto nuevo"
+  }
+
+  dimension: o_internet_plan_nuevo_producto_codigo {
+    type: string
+    sql: ${TABLE}.Orden.InternetPlanNuevoProductoCodigo ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "Internet Producto Codigo"
+    description: "Codigo del producto nuevo"
+  }
+
   dimension: o_numero {
     type: string
     sql: ${TABLE}.Orden.OrdenNumero ;;
@@ -515,6 +569,60 @@ view: fth_retencion_fidelizacion {
     view_label: "Orden"
     label: "Subtipo"
     description: "Submotivo de baja"
+  }
+
+  dimension: o_tv_plan_original_producto_tipo {
+    type: string
+    sql: ${TABLE}.Orden.TVPlanOriginalProductoTipo ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "TV Producto Tipo"
+    description: "Familia de producto original"
+  }
+
+  dimension: o_tv_plan_original_producto_nombre {
+    type: string
+    sql: ${TABLE}.Orden.TVPlanOriginalProductoNombre ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "TV Producto Nombre"
+    description: "Nombre del producto original"
+  }
+
+  dimension: o_tv_plan_original_producto_codigo {
+    type: string
+    sql: ${TABLE}.Orden.TVPlanOriginalProductoCodigo ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "TV Producto Codigo"
+    description: "Codigo del producto original"
+  }
+
+  dimension: o_tv_plan_nuevo_producto_tipo {
+    type: string
+    sql: ${TABLE}.Orden.TVPlanNuevoProductoTipo ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "TV Producto Tipo"
+    description: "Familia de producto nuevo"
+  }
+
+  dimension: o_tv_plan_nuevo_producto_nombre {
+    type: string
+    sql: ${TABLE}.Orden.TVPlanNuevoProductoNombre ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "TV Producto Nombre"
+    description: "Nombre del producto nuevo"
+  }
+
+  dimension: o_tv_plan_nuevo_producto_codigo {
+    type: string
+    sql: ${TABLE}.Orden.TVPlanNuevoProductoCodigo ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "TV Producto Codigo"
+    description: "Codigo del producto nuevo"
   }
 
   dimension: o_usuario_orden_alta_alias {
