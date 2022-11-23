@@ -3836,6 +3836,7 @@ view: fth_orden_promocion {
   dimension: promocion_nombre {
     type: string
     sql: PromocionNombre ;;
+    suggest_dimension: lk_promocion.promocion_nombre
     label: "Nombre"
     description: "Nombre de la promo o ajuste."
   }
@@ -3843,6 +3844,7 @@ view: fth_orden_promocion {
   dimension: promocion_codigo {
     type: string
     sql: PromocionCodigo ;;
+    suggest_dimension: lk_promocion.promocion_codigo
     label: "Codigo"
     description: "Código de la Promo o ajuste con lo que se la configura."
   }

@@ -3,7 +3,7 @@ include: "/orden/others/orden_datagroups.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
 include: "/global/views/lk_rango_numeracion_*.view.lkml"
-
+include: "/global/views/lk_promocion.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
@@ -304,32 +304,38 @@ explore: fth_orden {
   }
 
   join: lk_caso_sub_motivo_baja {
-    sql_on: ${fth_orden.caso_sub_motivo_baja_sk} = ${lk_caso_sub_motivo_baja.caso_sub_motivo_baja_sk};;
     relationship: many_to_one
+    sql_on: ${fth_orden.caso_sub_motivo_baja_sk} = ${lk_caso_sub_motivo_baja.caso_sub_motivo_baja_sk};;
     type: inner
   }
 
   join: lk_caso_motivo_baja {
-    sql_on: ${fth_orden.caso_motivo_baja_sk} = ${lk_caso_motivo_baja.caso_motivo_baja_sk} ;;
     relationship: many_to_one
+    sql_on: ${fth_orden.caso_motivo_baja_sk} = ${lk_caso_motivo_baja.caso_motivo_baja_sk} ;;
     type: inner
   }
 
   join: lk_orden_estadoa_om {
-    sql_on: ${fth_orden.orden_estadoa_om_sk} = ${lk_orden_estadoa_om.orden_estadoa_om_sk} ;;
     relationship: many_to_one
+    sql_on: ${fth_orden.orden_estadoa_om_sk} = ${lk_orden_estadoa_om.orden_estadoa_om_sk} ;;
     type: inner
   }
 
   join: lk_orden_tipo_baja {
-    sql_on: {fth_orden.orden_tipo_baja_sk} = ${lk_orden_tipo_baja.orden_tipo_baja_sk} ;;
     relationship: many_to_one
+    sql_on: {fth_orden.orden_tipo_baja_sk} = ${lk_orden_tipo_baja.orden_tipo_baja_sk} ;;
     type: inner
   }
 
   join: lk_orden_tipo_suspension {
-    sql_on: ${fth_orden.orden_tipo_suspension_sk} = ${lk_orden_tipo_suspension.orden_tipo_suspension_sk} ;;
     relationship: many_to_one
+    sql_on: ${fth_orden.orden_tipo_suspension_sk} = ${lk_orden_tipo_suspension.orden_tipo_suspension_sk} ;;
+    type: inner
+  }
+
+  join: lk_promocion {
+    relationship: many_to_one
+    sql_on: ${fth_orden_promocion.promocion_id} = ${lk_promocion.promocion_srcid} ;;
     type: inner
   }
 
