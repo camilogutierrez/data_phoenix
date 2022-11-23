@@ -66,4 +66,10 @@ explore: fth_parque_promociones {
     sql_on: ${fth_parque_promociones.pago_ajuste_precio_origen_sk} = ${lk_pago_ajuste_precio_origen.pago_ajuste_precio_origen_sk} ;;
     type: inner
   }
+
+  join: lk_promocion {
+    relationship: many_to_one
+    sql_on: ${fth_parque_promociones.promocion_srcid} = ${lk_promocion.promocion_srcid} ;;
+    type: inner
+  }
 }

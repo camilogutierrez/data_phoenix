@@ -648,12 +648,14 @@ view: fth_parque_promociones {
   dimension: promocion_nombre {
     type: string
     sql: ${TABLE}.PromocionNombre ;;
+    suggest_dimension: lk_promocion.promocion_nombre
     label: "Promocion Nombre"
   }
 
   dimension: promocion_codigo {
     type: string
     sql: ${TABLE}.PromocionCodigo ;;
+    suggest_dimension: lk_promocion.promocion_codigo
     label: "Promocion Codigo"
   }
 
