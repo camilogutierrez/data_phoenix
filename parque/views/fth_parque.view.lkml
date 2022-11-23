@@ -988,6 +988,38 @@ view: fth_parque {
     group_item_label: "Tipo Dispositivo"
   }
 
+  dimension: producto_adquirido_tecnologia {
+    type: string
+    sql: ${TABLE}.Caracteristicas.ProductoAdquiridoTecnologia ;;
+    view_label: "Producto Adquirido"
+    group_label: "Caracteristicas"
+    group_item_label: "Tecnologia"
+  }
+
+  dimension: producto_adquirido_velocidad_descarga_comercial {
+    type: string
+    sql: ${TABLE}.Caracteristicas.ProductoAdquiridoVelocidadDescargaComercial ;;
+    view_label: "Producto Adquirido"
+    group_label: "Caracteristicas"
+    group_item_label: "Velocidad de Descarga Comercial"
+  }
+
+  dimension: producto_adquirido_velocidad_descarga_tecnica {
+    type: string
+    sql: ${TABLE}.Caracteristicas.ProductoAdquiridoVelocidadDescargaTecnica ;;
+    view_label: "Producto Adquirido"
+    group_label: "Caracteristicas"
+    group_item_label: "Velocidad de Descarga Tecnica"
+  }
+
+  dimension: producto_adquirido_velocidad_subida {
+    type: string
+    sql: ${TABLE}.Caracteristicas.ProductoAdquiridoVelocidadSubida ;;
+    view_label: "Producto Adquirido"
+    group_label: "Caracteristicas"
+    group_item_label: "Velocidad de Subida"
+  }
+
   dimension: cliente_ciclo_facturacion {
     type: string
     sql: ${TABLE}.Cliente.ClienteCicloFacturacion ;;
@@ -1085,7 +1117,8 @@ view: fth_parque {
     type: string
     sql: ${TABLE}.Cliente.CuentaCodPromocionDC ;;
     view_label: "Cliente"
-    label: "Cuenta Cod Promocion Dc"
+    label: "Cod Promocion Desc Convergente"
+    description: "Descripcion del descuento convergente"
   }
 
   dimension: cuenta_codigo {
@@ -2593,13 +2626,6 @@ view: fth_parque {
     label: "Log Id Ultima Recarga"
   }
 
-  dimension: cuenta_monto_desc_convergente {
-    type: number
-    sql: ${TABLE}.Cliente.CuentaMontoDescConvergente ;;
-    view_label: "Cliente"
-    label: "Cuenta Monto Desc Convergente"
-  }
-
   dimension: domicilio_numero_env {
     type: number
     sql: ${TABLE}.Domicilio.DomicilioNumeroEnv ;;
@@ -2673,6 +2699,15 @@ view: fth_parque {
     label: "Es Vip"
   }
 
+  dimension: cliente_restriccion_comercial {
+    type: yesno
+    sql: ${TABLE}.Cliente.Marcas.ClienteRestriccionComercial ;;
+    view_label: "Cliente"
+    group_label: "Marcas"
+    label: "Es Restriccion Comercial"
+    description: "Marca cliente con proteccion personal activa y deuda"
+  }
+
   dimension: cuenta_marca_debito {
     type: yesno
     sql: ${cuenta_medio_pago_srcid} != "-1" ;;
@@ -2719,6 +2754,15 @@ view: fth_parque {
     view_label: "Producto Adquirido"
     group_label: "Marcas"
     label: "Es Parque Activo"
+  }
+
+  dimension: producto_adquirido_marca_restriccion_comercial {
+    type: yesno
+    sql: ${TABLE}.Marcas.ProductoAdquiridoRestriccionComercial ;;
+    view_label: "Producto Adquirido"
+    group_label: "Marcas"
+    label: "Es Restriccion Comercial"
+    description: "Marca producto con proteccion personal activa y deuda"
   }
 
   dimension: producto_adquirido_marca_pertenece_bundle {
@@ -3362,6 +3406,30 @@ view: fth_parque {
     sql: ${TABLE}.Metricas.ProductoAdquiridoSmartTV ;;
   }
 
+  dimension: cuenta_monto_desc_convergente {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.CuentaMontoDescConvergente ;;
+  }
+
+  dimension: producto_adquirido_solo_internet {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoSoloInternet ;;
+  }
+
+  dimension: producto_adquirido_volte {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoVolte ;;
+  }
+
+  dimension: producto_adquirido_boca_adicional_tv {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Metricas.ProductoAdquiridoBocaAdicionalTV ;;
+  }
+
 
 
 ## Measures
@@ -3909,6 +3977,35 @@ view: fth_parque {
       (type: count) FILTROS:
        Producto.ProductoTipoNombre = 'ACCESORIO'
       ,Producto.ProductoSubTipoNombre = 'TV'"
+  }
+
+  measure: total_cuenta_monto_desc_convergente {
+    type: sum
+    sql: ${cuenta_monto_desc_convergente} ;;
+    view_label: "Cliente"
+    label: "Monto Desc Convergente"
+    description: "Monto del descuento convergente"
+  }
+
+  measure: total_producto_adquirido_solo_internet {
+    type: sum
+    sql: ${producto_adquirido_solo_internet} ;;
+    label: "Solo Internet"
+    description: "Negocio Fija. Cuenta Productos de Internet que no pertenezcan a un bundle, incluye Toip y Flow Flex"
+  }
+
+  measure: total_producto_adquirido_volte {
+    type: sum
+    sql: ${producto_adquirido_volte} ;;
+    label: "Volte"
+    description: "Negocio Fija. Cuenta Productos de Telefonia Volte."
+  }
+
+  measure: total_producto_adquirido_boca_adicional_tv {
+    type: sum
+    sql: ${producto_adquirido_boca_adicional_tv} ;;
+    label: "Boca Adicional TV"
+    description: "Negocio Fija. Cuenta Bocas adicionales de TV Clasica y Flow."
   }
 }
 
