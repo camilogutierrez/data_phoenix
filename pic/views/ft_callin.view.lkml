@@ -853,22 +853,6 @@ view: ft_callin {
     label: "Media Name"
   }
 
-  dimension: agrupador1 {
-    type: string
-    sql: ${TABLE}.AGRUPADOR1 ;;
-    group_label: "Integracion CRM"
-    label: "CONNID"
-    description: "Es el campo de Interaccion entre CRM/PIC"
-  }
-
-  dimension: agrupador2 {
-    type: string
-    sql: ${TABLE}.AGRUPADOR2 ;;
-    group_label: "Integracion CRM"
-    label: "Place"
-    description: "Indentificador de Sitio de atencion dentro de la integracion"
-  }
-
   dimension: ani {
     type: string
     sql: ${TABLE}.ANI ;;
@@ -947,14 +931,6 @@ view: ft_callin {
     sql: ${TABLE}.ID_NICE ;;
     label: "Nice Id"
     description: "Identificador de la grabacion de la llamada para acciones de calidad."
-  }
-
-  dimension: email_cliente {
-    type: string
-    sql: ${TABLE}.EMAIL_CLIENTE ;;
-    group_label: "Cliente"
-    group_item_label: "Email"
-    label: "Cliente Email"
   }
 
   dimension: customer_id {
@@ -1040,13 +1016,6 @@ view: ft_callin {
     group_label: "Preguntas"
     label: "Pregunta 5"
     description: "Pregunta Encuesta 5"
-  }
-
-  dimension: region_localidad {
-    type: string
-    sql: ${TABLE}.REGION_LOCALIDAD ;;
-    label: "ID_WATSON"
-    description: "Indentificador de Cognitivo."
   }
 
   dimension: respuesta_1 {
