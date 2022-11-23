@@ -1,6 +1,7 @@
 include: "/parque/views/fth_parque_promociones.view.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/parque/views/lk_cierres_parque_promociones.view.lkml"
+include: "/global/views/lk_promocion.view.lkml"
 
 explore: fth_parque_promociones {
   label: "Promociones"

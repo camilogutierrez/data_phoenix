@@ -3,7 +3,7 @@ include: "/orden/others/orden_datagroups.lkml"
 include: "/aleph/views/*.view.lkml"
 include: "/global/views/dm_nomina.view.lkml"
 include: "/global/views/lk_rango_numeracion_*.view.lkml"
-
+include: "/global/views/lk_promocion.view.lkml"
 
 explore: fth_orden {
   label: "Orden"
