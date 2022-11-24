@@ -3580,21 +3580,6 @@ view: fth_parque {
     ]
   }
 
-  measure: count_productos_internet {
-    type: count
-    group_label: "Productos"
-    group_item_label: "Solo Internet"
-    label: "Productos Solo Internet"
-    description: "Negocio fija / Cuenta productos de internet que no pertenzcan a un bundle, Incluye TOIP."
-    filters: [
-        producto_adquirido_marca_parque_activo: "Yes"
-      , producto_adquirido_marca_principal: "Yes"
-      , producto_adquirido_familia_producto: "FIJA"
-      , p_producto_tipo_nombre: "INTERNET"
-      , producto_adquirido_bundle_nombre: "-FLOW BOX, -TV, -NULL"
-    ]
-  }
-
   measure: count_productos_telefonia_toip {
     type: count
     group_label: "Productos"
@@ -3990,6 +3975,7 @@ view: fth_parque {
   measure: total_producto_adquirido_solo_internet {
     type: sum
     sql: ${producto_adquirido_solo_internet} ;;
+    group_label: "Productos"
     label: "Solo Internet"
     description: "Negocio Fija. Cuenta Productos de Internet que no pertenezcan a un bundle, incluye Toip y Flow Flex"
   }
@@ -3997,6 +3983,7 @@ view: fth_parque {
   measure: total_producto_adquirido_volte {
     type: sum
     sql: ${producto_adquirido_volte} ;;
+    group_label: "Productos"
     label: "Volte"
     description: "Negocio Fija. Cuenta Productos de Telefonia Volte."
   }
@@ -4004,6 +3991,7 @@ view: fth_parque {
   measure: total_producto_adquirido_boca_adicional_tv {
     type: sum
     sql: ${producto_adquirido_boca_adicional_tv} ;;
+    group_label: "Productos"
     label: "Boca Adicional TV"
     description: "Negocio Fija. Cuenta Bocas adicionales de TV Clasica y Flow."
   }
