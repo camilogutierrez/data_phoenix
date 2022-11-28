@@ -1,6 +1,6 @@
 include:
   - project: 'telecom-argentina/DEVOPS/cicd/templates'
-    ref: master
+    ref: feature/TEDOP-310
     file:
       - 'Workflows/looker-Pipelines.yml'
       - 'GCP/Looker/spectacles-template.yml'
