@@ -204,13 +204,6 @@ view: fth_orden {
     label: "Estado Stock"
   }
 
-  dimension: orden_item_instancia_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.OrdenItemInstanciaSRCId ;;
-    label: "Instancia"
-  }
-
   dimension: orden_item_nmu {
     type: string
     sql: ${TABLE}.OrdenItemNMU ;;
@@ -233,20 +226,6 @@ view: fth_orden {
     type: string
     sql: ${TABLE}.OrdenItemNumeroSerie ;;
     label: "Numero Serie"
-  }
-
-  dimension: orden_item_producto_padre_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.OrdenItemProductoPadreSRCId ;;
-    label: "Producto Padre"
-  }
-
-  dimension: orden_item_producto_raiz_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.OrdenItemProductoRaizSRCId ;;
-    label: "Producto Raiz"
   }
 
   dimension: orden_item_srcid {
@@ -479,6 +458,30 @@ view: fth_orden {
     hidden: yes
     type: number
     sql: ${TABLE}.Numericos.OrdenVolte ;;
+  }
+
+  dimension: orden_item_producto_padre_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenItemProductoPadreSRCId ;;
+  }
+
+  dimension: orden_item_producto_raiz_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenItemProductoRaizSRCId ;;
+  }
+
+  dimension: orden_item_instancia_srcid {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.OrdenItemInstanciaSRCId ;;
+  }
+
+  dimension: cuenta_monto_desc_convergente {
+    hidden: yes
+    type: number
+    sql: Numericos.CuentaMontoDescConvergente ;;
   }
 
 
@@ -818,6 +821,14 @@ view: fth_orden {
     sql: ${TABLE}.Cliente.CuentaSRCId ;;
     view_label: "Cliente"
     label: "Cuenta"
+  }
+
+  dimension: cuenta_cod_promocion_dc {
+    type: string
+    sql: ${TABLE}.Cliente.CuentaCodPromocionDC ;;
+    view_label: "Cliente"
+    label: "Cod Promocion Desc Convergente"
+    description: "Descripcion del descuento convergente"
   }
 
   dimension: persona_apellido {
@@ -2151,6 +2162,13 @@ view: fth_orden {
     sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoSRCId ;;
     view_label: "Producto Adquirido"
     label: "Nombre"
+  }
+
+  dimension: producto_adquirido_tecnologia {
+    type: string
+    sql: ${TABLE}.ProductoAdquirido.ProductoAdquiridoTecnologia ;;
+    view_label: "Producto Adquirido"
+    label: "Tecnologia"
   }
 
   dimension: rango_numeracion_departamento_nombre {
@@ -3547,6 +3565,14 @@ view: fth_orden {
     , producto_tipo_nombre: 'TELEFONIA'
     , producto_subtipo_nombre: 'VOLTE'
     , producto_familia_nombre: 'FIJA'"
+  }
+
+  measure: total_cuenta_monto_desc_convergente {
+    type: sum
+    sql: ${cuenta_monto_desc_convergente} ;;
+    view_label: "Cliente"
+    label: "Monto Desc Convergente"
+    description: "Monto del descuento convergente"
   }
 
   ## Orden Plan Anterior
