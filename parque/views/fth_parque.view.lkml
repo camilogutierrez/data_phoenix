@@ -4018,10 +4018,27 @@ view: parque_promocion {
       year
     ]
     sql: PromocionFechaCreacionSRC ;;
-    view_label: "Promocion Actual"
-    group_label: "Fecha Creacion Promo"
-    label: "Promo Creacion"
-    description: "Fecha de creacion de la promocion"
+    group_label: "Fecha Creacion Promocion"
+    label: "Creacion Promocion"
+    description: "Fecha de creacion de la promocion correspondiente a la última Promo asociada al Producto Adquirido."
+  }
+
+  dimension_group: promocion_fecha_inicio {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql: PromocionFechaInicioSRC ;;
+    group_label: "Fecha Inicio Promocion"
+    label: "Inicio Promocion"
+    description: "Indica la fecha desde correspondiente a la última Promo asociada al Producto Adquirido."
   }
 
   dimension_group: promocion_fecha_fin {
@@ -4036,9 +4053,10 @@ view: parque_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaFin ;;
-    group_label: "Fecha Promocion Fin"
-    label: "Promocion Fin"
+    sql: PromocionFechaFinSRC ;;
+    group_label: "Fecha Fin Promocion"
+    label: "Fin Promocion"
+    description: "Indica la 'fecha hasta' correspondiente a la última Promo asociada al Producto Adquirido."
   }
 
   # Strings
@@ -4047,6 +4065,13 @@ view: parque_promocion {
     type: string
     sql: PagoAjustePrecioSRCId ;;
     label: "Pago Ajuste Precio ID"
+  }
+
+  dimension: promocion_codigo {
+    type: string
+    sql: PromocionCodigo ;;
+    label: "Promocion Codigo"
+    description: "Indica el Código correspondiente a la última Promo asociada al Producto Adquirido."
   }
 
   dimension: promocion_nombre {
