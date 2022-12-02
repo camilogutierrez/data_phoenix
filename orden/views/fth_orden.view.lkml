@@ -460,24 +460,6 @@ view: fth_orden {
     sql: ${TABLE}.Numericos.OrdenVolte ;;
   }
 
-  dimension: orden_item_producto_padre_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.OrdenItemProductoPadreSRCId ;;
-  }
-
-  dimension: orden_item_producto_raiz_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.OrdenItemProductoRaizSRCId ;;
-  }
-
-  dimension: orden_item_instancia_srcid {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.OrdenItemInstanciaSRCId ;;
-  }
-
   dimension: cuenta_monto_desc_convergente {
     hidden: yes
     type: number
