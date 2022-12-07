@@ -4080,6 +4080,36 @@ view: parque_promocion {
     label: "Promocion Nombre"
   }
 
+  dimension: promocion_vigente {
+    type: string
+    sql: PromocionVigente ;;
+    label: "Promocion Vigente"
+    description: "Indica si la Promo se encuentra aún vigente, o si ya se encuentra finalizada (independientemente del Estado de ProductoAdquirido)"
+  }
+
+  # Numbers
+
+  dimension: promocion_meses_bonificados {
+    type: number
+    sql: PromocionMesesBonificados ;;
+    label: "Meses Bonificados Promocion"
+    description: "Indica la cantidad de meses bonificados que posee la última Promo asociada al Producto. Por ejemplo: 12 meses."
+  }
+
+  dimension: promocion_mes_en_curso {
+    type: number
+    sql: PromocionMesEnCurso ;;
+    label: "Mes En Curso Promocion"
+    description: "Indica N° de mes en el que se encuentra ubicada la Promo al momento de consulta. Por ejemplo, si ya transcurrieron 7 de los 12 meses asignados, en esta campo se indicará 7."
+  }
+
+  dimension: promocion_meses_restantes {
+    type: number
+    sql: PromocionMesesRestantes ;;
+    label: "Meses Restantes Promocion"
+    description: "Indica la cantidad de meses que restan para finalizar la promo. Por ejemplo si ya transcurrieron 7 meses, y la promo es de 12 meses, en este campo indicará 5."
+  }
+
   # Flags
 
   dimension: marca_promocion {
