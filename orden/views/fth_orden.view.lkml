@@ -3592,34 +3592,34 @@ view: fth_orden_medio_pago {
 
   dimension: medio_pago_entidad_financiera_nombre {
     type: string
-    sql: MedioPagoEntidadFinancieraNombre ;;
+    sql: ${TABLE}.MedioPagoEntidadFinancieraNombre ;;
     label: "Entidad Financiera"
     description: "Es el nombre de la entidad de pago"
   }
 
   dimension: medio_pago_cuenta_bancaria_tipo_nombre {
     type: string
-    sql: MedioPagoCuentaBancariaTipoNombre ;;
+    sql: ${TABLE}.MedioPagoCuentaBancariaTipoNombre ;;
     label: "Tipo Cuenta Bancaria"
   }
 
   dimension: medio_pago_tipo_nombre {
     type: string
-    sql: MedioPagoTipoNombre ;;
+    sql: ${TABLE}.MedioPagoTipoNombre ;;
     label: "Tipo"
     description: "Es el Metodo usado de pago (Efectivo/Tarjeta/etc)"
   }
 
   dimension: medio_pago_nombre {
     type: string
-    sql: MedioPagoNombre ;;
+    sql: ${TABLE}.MedioPagoNombre ;;
     label: "Nombre"
     description: "Es el numero de Payment Method (donde se guardan los datos de la transaccion)"
   }
 
   dimension: medio_pago_tarjeta_tipo_nombre {
     type: string
-    sql: MedioPagoTarjetaTipoNombre ;;
+    sql: ${TABLE}.MedioPagoTarjetaTipoNombre ;;
     label: "Tipo Tarjeta"
   }
 
@@ -3627,7 +3627,7 @@ view: fth_orden_medio_pago {
 
   dimension: medio_pago_marca_principal {
     type: yesno
-    sql: MedioPagoMarcaPrincipal ;;
+    sql: ${TABLE}.MedioPagoMarcaPrincipal ;;
     label: "Es Principal"
   }
 
@@ -3636,31 +3636,31 @@ view: fth_orden_medio_pago {
   dimension: medio_pago_entidad_financiera_srcid {
     hidden: yes
     type: string
-    sql: MedioPagoEntidadFinancieraSRCId ;;
+    sql: ${TABLE}.MedioPagoEntidadFinancieraSRCId ;;
   }
 
   dimension: medio_pago_cuenta_bancaria_tipo_srcid {
     hidden: yes
     type: string
-    sql: MedioPagoCuentaBancariaTipoSRCId ;;
+    sql: ${TABLE}.MedioPagoCuentaBancariaTipoSRCId ;;
   }
 
   dimension: medio_pago_tipo_srcid {
     hidden: yes
     type: string
-    sql: MedioPagoTipoSRCId ;;
+    sql: ${TABLE}.MedioPagoTipoSRCId ;;
   }
 
   dimension: medio_pago_srcid {
     hidden: yes
     type: string
-    sql: MedioPagoSRCId ;;
+    sql: ${TABLE}.MedioPagoSRCId ;;
   }
 
   dimension: medio_pago_tarjeta_tipo_srcid {
     hidden: yes
     type: string
-    sql: MedioPagoTarjetaTipoSRCId ;;
+    sql: ${TABLE}.MedioPagoTarjetaTipoSRCId ;;
   }
 }
 
@@ -3685,7 +3685,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: OrdenPrecioFechaDesdeSRC ;;
+    sql: ${TABLE}.OrdenPrecioFechaDesdeSRC ;;
     group_label: "Fecha Inicio Ajuste"
     label: "Inicio Ajuste"
     description: "Fecha estimada de inicio de este precio, cargo o ajuste."
@@ -3703,7 +3703,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: OrdenPrecioFechaEstimadaSRC ;;
+    sql: ${TABLE}.OrdenPrecioFechaEstimadaSRC ;;
     group_label: "Fecha Fin Ajuste"
     label: "Fin Ajuste"
     description: "Fecha estimada de fin de este precio, cargo o ajuste."
@@ -3721,7 +3721,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: OrdenPrecioFechaModificacionSRC ;;
+    sql: ${TABLE}.OrdenPrecioFechaModificacionSRC ;;
     group_label: "Fecha Modificacion Ajuste"
     label: "Modificacion Ajuste"
     description: "Fecha de modificacion de este precio, cargo o ajuste."
@@ -3739,7 +3739,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: OrdenPrecioFechaCreacionSRC ;;
+    sql: ${TABLE}.OrdenPrecioFechaCreacionSRC ;;
     group_label: "Fecha Creacion Ajuste"
     label: "Creacion Ajuste"
     description: "Fecha de creacion de este precio, cargo o ajuste."
@@ -3757,7 +3757,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaCreacionSRC ;;
+    sql: ${TABLE}.PromocionFechaCreacionSRC ;;
     group_label: "Fecha Creacion Promo"
     label: "Creacion Promo"
     description: "Fecha de creacion de la promocion."
@@ -3775,7 +3775,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaModificacionSRC ;;
+    sql: ${TABLE}.PromocionFechaModificacionSRC ;;
     group_label: "Fecha Modificacion Promo"
     label: "Modificacion Promo"
     description: "Fecha de modificacion de la promocion."
@@ -3793,7 +3793,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaEfectivaInicioSRC ;;
+    sql: ${TABLE}.PromocionFechaEfectivaInicioSRC ;;
     group_label: "Fecha Inicio Promo"
     label: "Inicio Promo"
     description: "Fecha de inicio de la promocion."
@@ -3811,7 +3811,7 @@ view: fth_orden_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaEfectivaFinSRC ;;
+    sql: ${TABLE}.PromocionFechaEfectivaFinSRC ;;
     group_label: "Fecha Fin Promo"
     label: "Fin Promo"
     description: "Fecha de fin de la promocion."
@@ -3820,7 +3820,7 @@ view: fth_orden_promocion {
   ## Strings
   dimension: orden_precio_accion_nombre {
     type: string
-    sql: OrdenPrecioAccionNombre ;;
+    sql: ${TABLE}.OrdenPrecioAccionNombre ;;
     suggest_dimension: lk_orden_precio_accion.orden_precio_accion_nombre
     label: "Accion"
     description: "La acción solicitada en esta orden para este precio, cargo o ajuste con valores como Agregar, Cambiar, Desconectar, Existente."
@@ -3828,7 +3828,7 @@ view: fth_orden_promocion {
 
   dimension: orden_precio_fuente_nombre {
     type: string
-    sql: OrdenPrecioFuenteNombre ;;
+    sql: ${TABLE}.OrdenPrecioFuenteNombre ;;
     suggest_dimension: lk_orden_precio_fuente.orden_precio_fuente_nombre
     label: "Fuente"
     description: "La fuente de este precio, cargo o ajuste, como 'Agente' para ajustes por escrito, 'Promoción' para precios promocionales u 'Oferta' para precios específicos de la oferta."
@@ -3836,14 +3836,14 @@ view: fth_orden_promocion {
 
   dimension: promocion_id {
     type: string
-    sql: PromocionSRCId ;;
+    sql: ${TABLE}.PromocionSRCId ;;
     label: "ID"
     description: "Id de la promo o ajuste."
   }
 
   dimension: promocion_nombre {
     type: string
-    sql: PromocionNombre ;;
+    sql: ${TABLE}.PromocionNombre ;;
     suggest_dimension: lk_promocion.promocion_nombre
     label: "Nombre"
     description: "Nombre de la promo o ajuste."
@@ -3851,7 +3851,7 @@ view: fth_orden_promocion {
 
   dimension: promocion_codigo {
     type: string
-    sql: PromocionCodigo ;;
+    sql: ${TABLE}.PromocionCodigo ;;
     suggest_dimension: lk_promocion.promocion_codigo
     label: "Codigo"
     description: "Código de la Promo o ajuste con lo que se la configura."
@@ -3859,14 +3859,14 @@ view: fth_orden_promocion {
 
   dimension: promocion_descripcion {
     type: string
-    sql: PromocionDescripcion ;;
+    sql: ${TABLE}.PromocionDescripcion ;;
     label: "Descripcion"
     description: "Detalle del contenido de la promo o ajuste."
   }
 
   dimension: lista_precio_srcid {
     type: string
-    sql: ListaPrecioSRCId ;;
+    sql: ${TABLE}.ListaPrecioSRCId ;;
     label: "Precio de Lista"
     description: "Precio de Lista."
   }
@@ -3874,7 +3874,7 @@ view: fth_orden_promocion {
   ## Flags
   dimension: promocion_marca_activa {
     type: yesno
-    sql: PromocionMarcaActiva ;;
+    sql: ${TABLE}.PromocionMarcaActiva ;;
     label: "Promocion Activa"
     description: "Marca que muestra si la promo esta activa o no."
   }
@@ -3883,19 +3883,19 @@ view: fth_orden_promocion {
   dimension: orden_precio_valor_ajuste {
     hidden: yes
     type: number
-    sql: OrdenPrecioValorAjuste ;;
+    sql: ${TABLE}.OrdenPrecioValorAjuste ;;
   }
 
   dimension: orden_precio_accion_sk {
     hidden: yes
     type: number
-    sql: OrdenPrecioAccionSK ;;
+    sql: ${TABLE}.OrdenPrecioAccionSK ;;
   }
 
   dimension: orden_precio_fuente_sk {
     hidden: yes
     type: number
-    sql: OrdenPrecioFuenteSK ;;
+    sql: ${TABLE}.OrdenPrecioFuenteSK ;;
   }
 
 ## Measures
