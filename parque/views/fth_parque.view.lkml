@@ -4017,7 +4017,7 @@ view: parque_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaCreacionSRC ;;
+    sql: ${TABLE}.PromocionFechaCreacionSRC ;;
     group_label: "Fecha Creacion Promocion"
     label: "Creacion Promocion"
     description: "Fecha de creacion de la promocion correspondiente a la última Promo asociada al Producto Adquirido."
@@ -4035,7 +4035,7 @@ view: parque_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaInicioSRC ;;
+    sql: ${TABLE}.PromocionFechaInicioSRC ;;
     group_label: "Fecha Inicio Promocion"
     label: "Inicio Promocion"
     description: "Indica la fecha desde correspondiente a la última Promo asociada al Producto Adquirido."
@@ -4053,7 +4053,7 @@ view: parque_promocion {
       quarter,
       year
     ]
-    sql: PromocionFechaFinSRC ;;
+    sql: ${TABLE}.PromocionFechaFinSRC ;;
     group_label: "Fecha Fin Promocion"
     label: "Fin Promocion"
     description: "Indica la 'fecha hasta' correspondiente a la última Promo asociada al Producto Adquirido."
@@ -4063,26 +4063,26 @@ view: parque_promocion {
 
   dimension: pago_ajuste_precio_srcid {
     type: string
-    sql: PagoAjustePrecioSRCId ;;
+    sql: ${TABLE}.PagoAjustePrecioSRCId ;;
     label: "Pago Ajuste Precio ID"
   }
 
   dimension: promocion_codigo {
     type: string
-    sql: PromocionCodigo ;;
+    sql: ${TABLE}.PromocionCodigo ;;
     label: "Promocion Codigo"
     description: "Indica el Código correspondiente a la última Promo asociada al Producto Adquirido."
   }
 
   dimension: promocion_nombre {
     type: string
-    sql: PromocionNombre ;;
+    sql: ${TABLE}.PromocionNombre ;;
     label: "Promocion Nombre"
   }
 
   dimension: promocion_vigente {
     type: string
-    sql: PromocionVigente ;;
+    sql: ${TABLE}.PromocionVigente ;;
     label: "Promocion Vigente"
     description: "Indica si la Promo se encuentra aún vigente, o si ya se encuentra finalizada (independientemente del Estado de ProductoAdquirido)"
   }
@@ -4091,21 +4091,21 @@ view: parque_promocion {
 
   dimension: promocion_meses_bonificados {
     type: number
-    sql: PromocionMesesBonificados ;;
+    sql: ${TABLE}.PromocionMesesBonificados ;;
     label: "Meses Bonificados Promocion"
     description: "Indica la cantidad de meses bonificados que posee la última Promo asociada al Producto. Por ejemplo: 12 meses."
   }
 
   dimension: promocion_mes_en_curso {
     type: number
-    sql: PromocionMesEnCurso ;;
+    sql: ${TABLE}.PromocionMesEnCurso ;;
     label: "Mes En Curso Promocion"
     description: "Indica N° de mes en el que se encuentra ubicada la Promo al momento de consulta. Por ejemplo, si ya transcurrieron 7 de los 12 meses asignados, en esta campo se indicará 7."
   }
 
   dimension: promocion_meses_restantes {
     type: number
-    sql: PromocionMesesRestantes ;;
+    sql: ${TABLE}.PromocionMesesRestantes ;;
     label: "Meses Restantes Promocion"
     description: "Indica la cantidad de meses que restan para finalizar la promo. Por ejemplo si ya transcurrieron 7 meses, y la promo es de 12 meses, en este campo indicará 5."
   }
@@ -4114,7 +4114,7 @@ view: parque_promocion {
 
   dimension: marca_promocion {
     type: yesno
-    sql: MarcaPromocion ;;
+    sql: ${TABLE}.MarcaPromocion ;;
     label: "Es Promocion"
   }
 }
