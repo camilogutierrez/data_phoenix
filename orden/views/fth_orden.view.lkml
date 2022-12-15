@@ -3282,7 +3282,8 @@ view: fth_orden {
     view_label: "Orden"
     group_label: "Cantidad"
     group_item_label: "Alta Proteccion Personal"
-    label: "Negocio Movil/Cuenta Gestiones de Alta Proteccion Personal
+    label: "Alta Proteccion Personal"
+    description: "Negocio Movil/Cuenta Gestiones de Alta Proteccion Personal
     type: count_distinct    sql: ${orden_srcid};FILTROS:
     orden_estado_nombre: 'ACTIVADA'
     , orden_tipo_gestion_nombre: 'VENTA, SERVICIOS Y OFERTAS ADICIONALES'
