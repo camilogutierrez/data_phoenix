@@ -235,13 +235,6 @@ view: fth_retencion_fidelizacion {
 
   ## Strings
 
-  dimension: alias_usuario_asignado {
-    type: string
-    sql: ${TABLE}.AliasUsuarioAsignado ;;
-    group_label: "Usuario"
-    label: "Alias Usuario Asignado"
-  }
-
   dimension: asesoria_retencion {
     type: string
     sql: ${TABLE}.AsesoriaRetencion ;;
@@ -254,13 +247,6 @@ view: fth_retencion_fidelizacion {
     sql: ${TABLE}.Canal ;;
     label: "Canal"
     description: "Canal de Atencion del caso"
-  }
-
-  dimension: canal_usuario_asignado {
-    type: string
-    sql: ${TABLE}.CanalUsuarioAsignado ;;
-    group_label: "Punto de Venta"
-    label: "Canal Usuario Asignado"
   }
 
   dimension: caso_estado_nombre {
@@ -360,13 +346,6 @@ view: fth_retencion_fidelizacion {
     sql: ${TABLE}.CuentaCliente.TipoCuenta ;;
     view_label: "Cuenta Cliente"
     label: "Tipo Cuenta"
-  }
-
-  dimension: grupo_trabajo_usuario_asignado {
-    type: string
-    sql: ${TABLE}.GrupoTrabajoUsuarioAsignado ;;
-    group_label: "Grupo Trabajo"
-    label: "Usuario Asignado"
   }
 
   dimension: individuo_dninumero {
@@ -690,13 +669,6 @@ view: fth_retencion_fidelizacion {
     description: "ID Subscripcion"
   }
 
-  dimension: punto_venta_usuario_asignado {
-    type: string
-    sql: ${TABLE}.PuntoVentaUsuarioAsignado ;;
-    group_label: "Punto de Venta"
-    label: "Usuario Asignado"
-  }
-
   dimension: resolucion_incidente {
     type: string
     sql: ${TABLE}.ResolucionIncidente ;;
@@ -772,12 +744,6 @@ view: fth_retencion_fidelizacion {
   }
 
   ## Flags
-
-  dimension: canal3_usuario_asignado {
-    type: yesno
-    sql: ${TABLE}.Canal3UsuarioAsignado ;;
-    label: "Canal 3 Usuario Asignado"
-  }
 
   dimension: orden_cambio {
     type: yesno
