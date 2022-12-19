@@ -216,6 +216,34 @@ view: ft_factura_detalle {
     label: "Codigo"
   }
 
+  dimension: cust_document_number {
+    type: string
+    sql: ${TABLE}.CUST_DOCUMENT_NUMBER ;;
+    view_label: "Cliente"
+    label: "Documento Numero"
+  }
+
+  dimension: cust_document_type {
+    type: string
+    sql: ${TABLE}.CUST_DOCUMENT_TYPE ;;
+    view_label: "Cliente"
+    label: "Documento Tipo"
+  }
+
+  dimension: cust_first_name {
+    type: string
+    sql: ${TABLE}.CUST_FIRST_NAME ;;
+    view_label: "Cliente"
+    label: "Nombre"
+  }
+
+  dimension: cust_last_name {
+    type: string
+    sql: ${TABLE}.CUST_LAST_NAME ;;
+    view_label: "Cliente"
+    label: "Apellido"
+  }
+
   dimension: cust_segment {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
