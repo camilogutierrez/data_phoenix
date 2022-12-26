@@ -473,6 +473,14 @@ view: fth_retencion_fidelizacion {
     description: "Código del producto nuevo"
   }
 
+  dimension: orden_plan_nuevo_producto_familia_nombre {
+    type: string
+    sql: ${TABLE}.Orden.PlanNuevoProductoFamiliaNombre ;;
+    view_label: "Orden"
+    group_label: "Plan Nuevo"
+    label: "Familia"
+  }
+
   dimension: orden_plan_nuevo_producto_nombre {
     type: string
     sql: ${TABLE}.Orden.PlanNuevoProductoNombre ;;
@@ -506,6 +514,14 @@ view: fth_retencion_fidelizacion {
     group_label: "Plan Original"
     label: "Producto Codigo"
     description: "Código del producto original"
+  }
+
+  dimension: orden_plan_original_producto_familia_nombre {
+    type: string
+    sql: ${TABLE}.Orden.PlanOriginalProductoFamiliaNombre ;;
+    view_label: "Orden"
+    group_label: "Plan Original"
+    label: "Familia"
   }
 
   dimension: orden_plan_original_producto_nombre {
