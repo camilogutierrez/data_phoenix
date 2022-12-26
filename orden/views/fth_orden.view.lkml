@@ -3091,21 +3091,6 @@ view: fth_orden {
     ]
   }
 
-  measure: count_demanda_retencion {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Demanda Retencion"
-    label: "Cantidad Demanda Retencion"
-    description: "Intenciones de bajas,vistas desde las ordenes registradas"
-    filters: [
-      orden_estado_nombre:"ACTIVADA, INICIADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION, CAMBIO DE PLAN, BAJA / RETENCION, FIDELIZACION, VENTA"
-      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA, RETENCION, CAMBIO DE PLAN, FIDELIZACION"
-    ]
-  }
-
   measure: count_upselling_plan {
     type: count_distinct
     sql: ${orden_srcid};;
@@ -3354,60 +3339,6 @@ view: fth_orden {
     ]
   }
 
-  measure: count_baja_suspension_portout_efectiva {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja por suspension Portout"
-    label: "Cantidad Baja por suspension Portout"
-    description: "Negocio movil- Ordenes de suspension por Portout"
-    filters: [
-      orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_tipo_sub_gestion_nombre: "PORTOUT"
-      , orden_item_sub_accion_nombre: "SUSPENDER - PORTABILIDAD"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_baja_masiva {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Masiva Por Tiempo"
-    label: "Cantidad Baja Masiva Por Tiempo"
-    description: "Gestion de Desconexion por operatoria masiva por tiempo Plan Prepago"
-    filters: [
-      orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "POR TIEMPO"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "PLAN PREPAGO"
-      , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_suspension_mora_total {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Suspensiones por Mora"
-    label: "Cantidad de Suspensiones por Mora"
-    description: "Suspensiones totales por mora Fija y Movil, incluye Degradacion, Mora 1 y Mora 2"
-    filters: [
-      orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "SUSPENSION"
-      , orden_item_accion_nombre: "SUSPENDER"
-      , orden_item_sub_accion_nombre: "SUSPENDER - DEGRADACION, SUSPENDER - MORA 1, SUSPENDER - MORA 2"
-      , producto_tipo_nombre: "PLAN POSPAGO, PLAN HIBRIDO, TV, INTERNET"
-      , producto_familia_nombre: "MOVIL, FIJA"
-    ]
-  }
-
   measure: count_suspension_restriccion_comercial {
     type: count_distinct
     sql: ${orden_srcid};;
@@ -3455,64 +3386,6 @@ view: fth_orden {
       , orden_item_accion_nombre: "DESCONECTAR"
       , producto_tipo_nombre: "DISPOSITIVO, PLAN POSPAGO, PLAN HIBRIDO, PLAN PREPAGO"
       , producto_familia_nombre: "MOVIL"
-    ]
-  }
-
-  measure: count_baja_voluntaria_efectiva_fija {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Baja Voluntaria"
-    label: "Cantidad Baja Voluntaria"
-    description: "Negocio Fija /Movil - Ordenes de desconexion por pedido de baja de cliente (baja voluntaria)"
-    filters: [
-      orden_estado_nombre: "ACTIVADA"
-      , orden_tipo_gestion_nombre: "DESCONEXION"
-      , orden_tipo_sub_gestion_nombre: "PEDIDO DE BAJA"
-      , orden_item_accion_nombre: "DESCONECTAR"
-      , producto_tipo_nombre: "TV"
-    ]
-  }
-
-  measure: count_retenido_oferta_cambio_plan {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "Retenido Oferta Cambio Plan"
-    label: "Retenido Oferta Cambio Plan"
-    description: "Retenidos con oferta o cambios de plan"
-    filters: [
-      caso_tipo_nombre: "CAMBIO DE PLAN, VENTA"
-      , caso_sub_tipo_nombre: "RETENCION, FIDELIZACION"
-      , orden_tipo_gestion_nombre: "VENTA, CAMBIO DE PLAN"
-      , orden_tipo_sub_gestion_nombre: "RETENCION, FIDELIZACION"
-      , orden_canal_origen_nombre: "-OPERATORIA MASIVA"
-      , orden_item_accion_nombre: "-DESCONECTAR"
-      , orden_estado_nombre: "ACTIVADA"
-      , producto_tipo_nombre: "PLAN HIBRIDO, PLAN POSPAGO"
-      , opa_producto_tipo_nombre: "-PLAN PREPAGO"
-    ]
-  }
-
-  measure: count_no_retenido_cambio_mercado {
-    type: count_distinct
-    sql: ${orden_srcid};;
-    view_label: "Orden"
-    group_label: "Cantidad"
-    group_item_label: "No Retenido Cambio Mercado"
-    label: "No Retenido Cambio Mercado"
-    description: "No retenido pase a prepago."
-    filters: [
-      caso_tipo_nombre: "CAMBIO DE PLAN"
-      , caso_sub_tipo_nombre: "RETENCION"
-      , orden_tipo_gestion_nombre: "CAMBIO DE PLAN"
-      , orden_tipo_sub_gestion_nombre: "RETENCION"
-      , orden_estado_nombre: "ACTIVADA"
-      , producto_tipo_nombre: "PLAN PREPAGO"
-      , opa_producto_tipo_nombre: "PLAN HIBRIDO, PLAN POSPAGO"
-      , orden_tipo_cambio_plan_nombre: "DOWNGRADE"
     ]
   }
 
