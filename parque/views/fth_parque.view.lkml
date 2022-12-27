@@ -3898,13 +3898,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Total TV"
     label: "Producto Total TV"
-    description: "Negocio Fija/Cuenta Productos de TV, incluye los que pertenecen a un bundle
-      (type: count) FILTROS:
-        producto_adquirido_marca_parque_activo: 'Yes'
-      , producto_adquirido_marca_principal: 'Yes'
-      , producto_adquirido_familia_producto: 'FIJA'
-      , p_producto_tipo_nombre: 'TV'
-      , producto_sub_tipo_nombre: 'TV CLASICA','FLOW BOX'"
+    description: "Negocio Fija. Cuenta Productos de TV Clasica / Flow Box / Flow Flex Abono incluye bundle, filters: producto_adquirido_marca_parque_activo: 'Yes' , producto_adquirido_marca_principal: 'Yes' , producto_adquirido_familia_producto: 'FIJA' , p_producto_tipo_nombre: 'TV','PACK TV'."
   }
 
   measure: total_producto_adquirido_total_internet {
@@ -3927,14 +3921,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Combo Internet + TV"
     label: "Producto Combo Internet + TV"
-    description: "Negocio Fija/Cuenta Combo de Internet + TV Flow Box
-      (type: count) FILTROS:
-        producto_adquirido_marca_parque_activo: 'Yes'
-      , producto_adquirido_marca_principal: 'Yes'
-      , producto_adquirido_familia_producto: 'FIJA'
-      , producto_producto_Tipo_nombre: 'BUNDLE'
-      , producto_producto_nombre: LIKE ('%Flow Box%') OR
-      , producto_producto_nombre:LIKE ('%TV%')"
+    description: "Negocio Fija. Cuenta Combo de Internet + TV / Flow Box / Flow Flex Abono, filters:producto_adquirido_marca_parque_activo: 'Yes' , producto_adquirido_marca_principal: 'Yes' , producto_adquirido_marca_pertenece_bundle: 'Ýes', producto_adquirido_familia_producto: 'FIJA' , p_producto_tipo_nombre: 'TV','PACK TV'."
   }
 
   measure: total_producto_adquirido_combo_internet_flow_flex {
@@ -3977,7 +3964,7 @@ view: fth_parque {
     sql: ${producto_adquirido_solo_internet} ;;
     group_label: "Productos"
     label: "Solo Internet"
-    description: "Negocio Fija. Cuenta Productos de Internet que no pertenezcan a un bundle, incluye Toip y Flow Flex"
+    description: "Negocio Fija. Cuenta Productos de Internet, incluye bundle, filters: producto_adquirido_marca_parque_activo: 'Yes', producto_adquirido_marca_principal: 'Yes', producto_adquirido_familia_producto: 'FIJA', p_producto_tipo_nombre: 'INTERNET', producto_adquirido_bundle_nombre: No contiene 'Flow Box' y 'TV'."
   }
 
   measure: total_producto_adquirido_volte {
@@ -3985,7 +3972,7 @@ view: fth_parque {
     sql: ${producto_adquirido_volte} ;;
     group_label: "Productos"
     label: "Volte"
-    description: "Negocio Fija. Cuenta Productos de Telefonia Volte."
+    description: "Negocio Fija. Cuenta Productos de Telefonia Volte, filters:producto_adquirido_marca_parque_activo: 'Yes', p_producto_tipo_nombre: 'TELEFONIA', p_producto_subtipo_nombre: 'VOLTE'."
   }
 
   measure: total_producto_adquirido_boca_adicional_tv {
@@ -3993,7 +3980,7 @@ view: fth_parque {
     sql: ${producto_adquirido_boca_adicional_tv} ;;
     group_label: "Productos"
     label: "Boca Adicional TV"
-    description: "Negocio Fija. Cuenta Bocas adicionales de TV Clasica y Flow."
+    description: "Negocio Fija. Cuenta Bocas Adicionales de TV, filters:producto_adquirido_marca_parque_activo: 'Yes', producto_adquirido_familia_producto: 'FIJA', producto_sub_tipo_nombre: 'BOCA ADICIONAL CLASICA, BOCA ADICIONAL FLOW'."
   }
 }
 
