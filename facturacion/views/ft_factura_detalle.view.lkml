@@ -954,4 +954,106 @@ view: ft_factura_detalle {
     group_label: "Cantidad"
     label: "Q Ventas"
   }
+
+  measure: count_accesorios {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Accesorios"
+    filters: [
+        charge_code: "C^_OT^_MB^_EQUIPMENT^_ACCESORIOS"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_delivery {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Delivery"
+    filters: [
+        charge_code: "C^_OT^_MB^_DELIVERY"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_dispositivos_hogar {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Dispositivos Hogar"
+    filters: [
+        charge_code: "C^_OT^_TV^_EQUIPMENT^_DISPHOGAR"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_equipos {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Equipos"
+    filters: [
+        charge_code: "C^_OT^_MB^_EQUIPMENT^_PHONES"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_equipos_ceg {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Equipos CEG"
+    filters: [
+        charge_code: "C^_OT^_MB^_EQUIPMENT^_PHONES^_CEG"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_items_venta {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Q Items"
+    filters: [
+        legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_sim {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "SIM"
+    filters: [
+      charge_code: "C^_OT^_MB^_EQUIPMENT^_SIM"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+  measure: count_tv {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "TV"
+    filters: [
+      charge_code: "C^_OT^_TV^_EQUIPMENT^_ELECTRODOM"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
 }
