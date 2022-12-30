@@ -3921,7 +3921,7 @@ view: fth_parque {
     group_label: "Productos"
     group_item_label: "Combo Internet + TV"
     label: "Producto Combo Internet + TV"
-    description: "Negocio Fija. Cuenta Combo de Internet + TV / Flow Box / Flow Flex Abono, filters:producto_adquirido_marca_parque_activo: 'Yes' , producto_adquirido_marca_principal: 'Yes' , producto_adquirido_marca_pertenece_bundle: 'Ýes', producto_adquirido_familia_producto: 'FIJA' , p_producto_tipo_nombre: 'TV','PACK TV'."
+    description: "Negocio Fija. Cuenta Combo de Internet + TV + Flow Flex Abono, filters:producto_adquirido_marca_parque_activo: 'Yes' , producto_adquirido_marca_principal: 'Yes' , producto_adquirido_marca_pertenece_bundle: 'Ýes', producto_adquirido_familia_producto: 'FIJA' , p_producto_tipo_nombre: 'TV','PACK TV'."
   }
 
   measure: total_producto_adquirido_combo_internet_flow_flex {
