@@ -30,9 +30,9 @@ view: ft_factura_detalle {
       year
     ]
     sql: ${TABLE}.INVOICE_DATE ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
     group_label: "Fecha Emision"
-    label: "Comprobante Emision"
+    label: "Emision"
   }
 
   dimension_group: due_date {
@@ -49,9 +49,9 @@ view: ft_factura_detalle {
       year
     ]
     sql: ${TABLE}.DUE_DATE ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
     group_label: "Fecha Vencimiento"
-    label: "Comprobante Vencimiento"
+    label: "Vencimiento"
   }
 
   dimension: _fecha_creacion {
@@ -97,7 +97,8 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.ACCT_CODE ;;
     view_label: "Cliente"
-    label: "Cuenta Cliente"
+    group_label: "Cuenta"
+    label: "Codigo"
     description: "Responsable de pago / Cuenta Code"
   }
 
@@ -105,50 +106,55 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.ACCT_PAYMENT_MODE ;;
     view_label: "Cliente"
-    label: "Cuenta Mercado"
+    group_label: "Cuenta"
+    label: "ID Mercado"
     description: "Mercado de la cuenta en el momento de la facturacion. 0:Prepago | 1:Pospago | 2:Hibrido"
   }
 
   dimension: acct_payment_mode_desc {
     type: string
     sql: ${TABLE}.ACCT_PAYMENT_MODE_DESC ;;
-    view_label: "Comprobante"
-    label: "Cuenta Mercado Factura"
+    view_label: "Cliente"
+    label: "Mercado"
   }
 
   dimension: act_dst_status {
     type: string
     sql: ${TABLE}.ACT_DST_STATUS ;;
+    view_label: "Suscripcion"
   }
 
   dimension: act_dst_status_des {
     type: string
     sql: ${TABLE}.ACT_DST_STATUS_DES ;;
+    view_label: "Suscripcion"
   }
 
   dimension: act_dst_status_detail {
     type: string
     sql: ${TABLE}.ACT_DST_STATUS_DETAIL ;;
+    view_label: "Suscripcion"
   }
 
   dimension: act_dst_status_detail_des {
     type: string
     sql: ${TABLE}.ACT_DST_STATUS_DETAIL_DES ;;
+    view_label: "Suscripcion"
   }
 
   dimension: bill_cycle_id {
     type: string
     sql: ${TABLE}.BILL_CYCLE_ID ;;
     view_label: "Comprobante"
-    label: "Ciclo facturacion ID"
-    description: "Contiene el ciclo de facturacion en formato fecha completo YYYYMMDD"
+    label: "Ciclo de Consumo"
+    description: "Contiene el ciclo de consumo facturado (YYYYMMDD)."
   }
 
   dimension: bill_cycle_type {
     type: string
     sql: ${TABLE}.BILL_CYCLE_TYPE ;;
     view_label: "Comprobante"
-    label: "Ciclo Facturacion"
+    label: "Ciclo"
     description: "Contiene el ciclo de facturacion (DD)"
   }
 
@@ -163,50 +169,59 @@ view: ft_factura_detalle {
   dimension: charge_code {
     type: string
     sql: ${TABLE}.CHARGE_CODE ;;
-    view_label: "Comprobante"
-    label: "Cargos"
-    description: "Cargos de las terminales de venta, e intereses y otros conceptos."
+    view_label: "Comprobante Detalle"
+    label: "Codigo"
+    description: "Codigo del concepto del ítem facturado."
   }
 
   dimension: charge_code_name {
     type: string
     sql: ${TABLE}.CHARGE_CODE_NAME ;;
-    view_label: "Comprobante"
-    label: "Cargos Descripcion"
+    view_label: "Comprobante Detalle"
+    group_label: "Cargo"
+    label: "Nombre"
+    description: "Nombre del concepto del ítem facturado."
   }
 
   dimension: charge_code_type {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE ;;
-    view_label: "Comprobante"
-    label: "Cargos Tipo"
+    view_label: "Comprobante Detalle"
+    group_label: "Cargo"
+    label: "Tipo"
     description: "U = USAGE FEE | O = ONE-OFF FEE | R = RECURRING FEE | D = DISCOUNT | T = TAX | E = EXEMPTED TAX | Y = DEPOSIT | V = ADVANCED AMOUNT | S = SALES"
   }
 
   dimension: charge_code_type_des {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE_DES ;;
-    view_label: "Comprobante"
-    label: "Cargos Codigo Descripcion"
+    view_label: "Comprobante Detalle"
+    group_label: "Cargo"
+    label: "Descripcion Tipo"
     description: "U = USAGE FEE | O = ONE-OFF FEE | R = RECURRING FEE | D = DISCOUNT | T = TAX | E = EXEMPTED TAX | Y = DEPOSIT | V = ADVANCED AMOUNT | S = SALES"
   }
 
   dimension: charge_code_type_des_fact {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE_DES_FACT ;;
-    label: "Cargos Codigo Descripcion Comprobante"
+    view_label: "Comprobante Detalle"
+    group_label: "Cargo"
+    label: "Descripcion Tipo Comprobante"
   }
 
   dimension: charge_code_type_fact {
     type: string
     sql: ${TABLE}.CHARGE_CODE_TYPE_FACT ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Cargo"
+    label: "Codigo Tipo Comprobante"
   }
 
   dimension: crm_product_id {
     type: string
     sql: ${TABLE}.CRM_PRODUCT_ID ;;
-    view_label: "Comprobante"
-    label: "Producto Salesforce Id"
+    view_label: "Parque"
+    label: "ID Producto"
   }
 
   dimension: cust_code {
@@ -248,71 +263,84 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.CUST_SEGMENT ;;
     view_label: "Cliente"
-    label: "Subsegmento 1"
+    label: "Segmento de Cliente"
   }
 
   dimension: cust_subsegment1 {
     type: string
     sql: ${TABLE}.CUST_SUBSEGMENT1 ;;
     view_label: "Cliente"
-    label: "Subsegmento 2"
+    label: "Subsegmento 1 de Cliente"
+  }
+
+  dimension: cust_subsegment2 {
+    type: string
+    sql: ${TABLE}.CUST_SUBSEGMENT2 ;;
+    view_label: "Cliente"
+    label: "Subsegmento 2 de Cliente"
   }
 
   dimension: cust_type {
     type: string
     sql: ${TABLE}.CUST_TYPE ;;
     view_label: "Cliente"
-    label: "Cliente Tipo"
+    label: "Tipo"
   }
 
   dimension: cust_type_des {
     type: string
     sql: ${TABLE}.CUST_TYPE_DES ;;
     view_label: "Cliente"
-    label: "Cliente Tipo Descripcion"
+    label: "Tipo Descripcion"
   }
 
   dimension: description {
     type: string
     sql: ${TABLE}.DESCRIPTION ;;
-    view_label: "Comprobante"
-    label: "Terminal Nombre (2)"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Nombre"
     description: "Nombre de la terminal vendida"
   }
 
   dimension: equip_imei {
     type: string
     sql: ${TABLE}.EQUIP_IMEI ;;
-    view_label: "Comprobante"
-    label: "Terminal IMEI"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "IMEI"
     description: "Viene de: AR_INVOICE_DETAIL.EXT_PROPERTY (‘IMEI')"
   }
 
   dimension: equip_nmu {
     type: string
     sql: ${TABLE}.EQUIP_NMU ;;
-    view_label: "Comprobante"
-    label: "Terminal NMU"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "NMU"
   }
 
   dimension: imei {
     type: string
     sql: ${TABLE}.IMEI ;;
-    view_label: "Comprobante"
-    label: "IMEI"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "IMEI (2)"
   }
 
   dimension: ind_fact_migradas {
     type: string
     sql: ${TABLE}.IND_FACT_MIGRADAS ;;
-    view_label: "Comprobante"
-    label: "Facturas Migradas"
+    view_label: "Comprobante Cabecera"
+    group_label: "Marcas"
+    label: "Flag Facturas Migradas"
   }
 
   dimension: ind_legal_no {
     type: string
     sql: ${TABLE}.IND_LEGAL_NO ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
+    group_label: "Marcas"
     label: "Flag Numero Legal"
   }
 
@@ -320,7 +348,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.INVOICE_LETTER ;;
     view_label: "Comprobante"
-    label: "Comprobante Letra"
+    label: "Letra"
   }
 
   dimension: invoice_no {
@@ -334,7 +362,8 @@ view: ft_factura_detalle {
   dimension: invoice_no_asoc_ncnd {
     type: string
     sql: ${TABLE}.INVOICE_NO_ASOC_NCND ;;
-    label: "Comprobante Asociado Tipo Descripcion"
+    view_label: "Comprobante"
+    label: "Prefactura Asociada"
     description: "Indica la descripción del tipo de comprobante asociado de la operación | Bill run (BLL) | Credit Notes (CNT) | Debit Notes (DNT) | Sales Invoice  (SLI)"
   }
 
@@ -342,7 +371,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.INVOICE_STATUS ;;
     view_label: "Comprobante"
-    label: "Comprobante Estado"
+    label: "Estado"
     description: "Open= con saldo / Close = pago / Rejected = anulada / P"
   }
 
@@ -350,7 +379,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LEGAL_NO ;;
     view_label: "Comprobante"
-    label: "Comprobante Legal Nro"
+    label: "Numero Legal"
 
   }
 
@@ -358,80 +387,86 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.LEGAL_NO_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Comprobante Legal Asociado"
+    label: "Numero Legal Asociado"
     description: "Comprobante legal asociado a la factura"
   }
 
   dimension: linea {
     type: string
     sql: ${TABLE}.LINEA ;;
-    view_label: "Comprobante"
-    label: "Linea (1)"
-    description: "Viene de: AR_INVOICE_DETAIL EXT_PROPERTY ( 'LINE1')"
+    view_label: "Suscripcion"
+    label: "Linea (2)"
   }
 
   dimension: nombre_terminal {
     type: string
     sql: ${TABLE}.NOMBRE_TERMINAL ;;
-    view_label: "Comprobante"
-    label: "Terminal Nombre (1)"
-    description: "Nombre de la terminal vendida"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Nombre (2)"
+    description: "Nombre de la terminal vendida Viene de: AR_INVOICE_DETAIL.EXT_PROPERTY (DESCRIPTION)"
   }
 
   dimension: offering_code {
     type: string
     sql: ${TABLE}.OFFERING_CODE ;;
-    view_label: "Comprobante"
-    label: "Oferta Codigo"
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
+    label: "Codigo"
   }
 
   dimension: offering_id {
     type: string
     sql: ${TABLE}.OFFERING_ID ;;
-    view_label: "Comprobante"
-    label: "Oferta ID"
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
+    label: "ID"
   }
 
   dimension: offering_name {
     type: string
     sql: ${TABLE}.OFFERING_NAME ;;
-    view_label: "Comprobante"
-    label: "Oferta Nombre"
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
+    label: "Nombre"
   }
 
   dimension: offering_payment_mode {
     type: string
     sql: ${TABLE}.OFFERING_PAYMENT_MODE ;;
-    view_label: "Comprobante"
-    label: "Plan Mercado"
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
+    label: "Mercado"
     description: "0:Prepago | 1:Pospago | 2:Hibrido"
   }
 
   dimension: offering_primary_flag {
     type: string
     sql: ${TABLE}.OFFERING_PRIMARY_FLAG ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
     label: "Oferta Flag Primaria"
   }
 
   dimension: offering_short_name {
     type: string
     sql: ${TABLE}.OFFERING_SHORT_NAME ;;
-    view_label: "Comprobante"
-    label: "Oferta Nombre Corto"
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
+    label: "Nombre Corto"
   }
 
   dimension: payment_method_id {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_ID ;;
-    view_label: "Pagos"
-    label: "Medio de Cobro ID"
+    view_label: "Cobranza"
+    label: "ID Medio de Cobro"
   }
 
   dimension: payment_method_desc {
     type: string
     sql: ${TABLE}.PAYMENT_METHOD_DESC ;;
-    view_label: "Pagos"
+    view_label: "Cobranza"
     label: "Medio de Cobro"
   }
 
@@ -447,39 +482,46 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.PLAN_ID ;;
     view_label: "Comprobante"
-    label: "Plan Facturado ID"
+    label: "ID Plan"
   }
 
   dimension: plan_payment_mode {
     type: string
     sql: ${TABLE}.PLAN_PAYMENT_MODE ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Oferta"
+    label: "Plan Mercado"
   }
 
   dimension: pri_dst_status {
     type: string
     sql: ${TABLE}.PRI_DST_STATUS ;;
+    view_label: "Suscripcion"
   }
 
   dimension: pri_dst_status_des {
     type: string
     sql: ${TABLE}.PRI_DST_STATUS_DES ;;
+    view_label: "Suscripcion"
   }
 
   dimension: pri_dst_status_detail {
     type: string
     sql: ${TABLE}.PRI_DST_STATUS_DETAIL ;;
+    view_label: "Suscripcion"
   }
 
   dimension: pri_dst_status_detail_des {
     type: string
     sql: ${TABLE}.PRI_DST_STATUS_DETAIL_DES ;;
+    view_label: "Suscripcion"
   }
 
   dimension: pri_identity {
     type: string
     sql: ${TABLE}.PRI_IDENTITY ;;
-    view_label: "Comprobante"
-    label: "Linea (2)"
+    view_label: "Suscripcion"
+    label: "Linea"
   }
 
   dimension: region_code {
@@ -492,21 +534,23 @@ view: ft_factura_detalle {
   dimension: sales_municipality {
     type: string
     sql: ${TABLE}.SALES_MUNICIPALITY ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
     label: "Venta Municipalidad"
   }
 
   dimension: sales_province {
     type: string
     sql: ${TABLE}.SALES_PROVINCE ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
     label: "Venta Provincia"
   }
 
   dimension: total_installment {
     type: string
     sql: ${TABLE}.TOTAL_INSTALLMENT ;;
-    view_label: "Pagos"
+    view_label: "Cobranza"
     label: "Cuotas Total"
   }
   dimension: trans_type {
@@ -521,7 +565,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE_ASOC_NCND ;;
     view_label: "Comprobante"
-    label: "Comprobante Asociado Tipo Descripcion"
+    label: "Descripcion Tipo Asociado"
     description: "Indica la descripcion del tipo de comprobante asociado de la operacion. Bill run (BLL), Credit Notes (CNT), Debit Notes (DNT), Sales Invoice  (SLI)"
   }
 
@@ -529,46 +573,52 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.TRANS_TYPE_DES ;;
     view_label: "Comprobante"
-    label: "Comprobante Tipo Descripcion"
+    label: "Descripcion Tipo"
     description: "Indica la descripcion del tipo de comprobante asociado de la operación. Bill run (BLL), Credit Notes (CNT), Debit Notes (DNT), Sales Invoice  (SLI)"
   }
 
   dimension: ult_dst_status {
     type: string
     sql: ${TABLE}.ULT_DST_STATUS ;;
+    view_label: "Suscripcion"
   }
 
   dimension: ult_dst_status_des {
     type: string
     sql: ${TABLE}.ULT_DST_STATUS_DES ;;
+    view_label: "Suscripcion"
   }
 
   dimension: ult_dst_status_detail {
     type: string
     sql: ${TABLE}.ULT_DST_STATUS_DETAIL ;;
+    view_label: "Suscripcion"
   }
 
   dimension: ult_dst_status_detail_des {
     type: string
     sql: ${TABLE}.ULT_DST_STATUS_DETAIL_DES ;;
+    view_label: "Suscripcion"
   }
 
   dimension: sub_identity {
     type: string
     sql: ${TABLE}.SUB_IDENTITY ;;
-    view_label: "Comprobante"
+    view_label: "Suscripcion"
     label: "Linea (3)"
   }
 
   dimension: desc_segmento_doc_grupo {
     type: string
     sql: "01_Individuos" ;;
+    view_label: "Comprobante Detalle"
     label: "Segmento Grupo"
   }
 
   dimension: desc_tipo_venta {
     type: string
     sql: CASE WHEN ${charge_code} = 'C_OT_MB_EQUIPMENT_PHONES' THEN '01_Ventas' ELSE '(no informado)' END ;;
+    view_label: "Comprobante Detalle"
     label: "Tipo Venta"
   }
 
@@ -630,17 +680,18 @@ view: ft_factura_detalle {
     type: number
     sql: ${TABLE}.CHARGE_CODE_ID ;;
     value_format_name: id
-    view_label: "Comprobante"
-    label: "Cargos ID"
-    description: "Id de Cargos de las terminales de venta, e intereses y otros conceptos."
+    view_label: "Comprobante Detalle"
+    group_label: "Cargo"
+    label: "ID"
+    description: "ID del concepto del ítem facturado."
   }
 
   dimension: invoice_detail_id {
     type: number
     sql: ${TABLE}.INVOICE_DETAIL_ID ;;
     value_format_name: id
-    view_label: "Comprobante"
-    label: "Item Facturado Id"
+    view_label: "Comprobante Detalle"
+    label: "ID Item"
   }
 
   dimension: invoice_id {
@@ -648,7 +699,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.INVOICE_ID ;;
     value_format_name: id
     view_label: "Comprobante"
-    label: "Comprobante ID"
+    label: "ID"
     description: "Identificador de la operacion, numero interno de HW"
   }
 
@@ -657,7 +708,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.CUST_ID ;;
     value_format_name: id
     view_label: "Cliente"
-    label: "Cliente ID"
+    label: "ID"
     description: "ID de cliente HW"
   }
 
@@ -666,7 +717,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.INVOICE_ID_ASOC_NCND ;;
     value_format_name: id
     view_label: "Comprobante"
-    label: "Prefactura Asociada"
+    label: "ID Asociado"
     description: "Numero de comprobante asociado a la factura."
   }
 
@@ -675,14 +726,16 @@ view: ft_factura_detalle {
     sql: ${TABLE}.ACCT_ID ;;
     value_format_name: id
     view_label: "Cliente"
-    label: "Cuenta Cliente ID"
+    group_label: "Cuenta"
+    label: "ID"
     description: "ID cuenta de cliente"
   }
 
   dimension: ind_vta_equipos {
     type: number
     sql: ${TABLE}.IND_VTA_EQUIPOS ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
+    group_label: "Marcas"
     label: "Flag Venta Equipos"
     description: "Si TRANS_TYPE= 'SLI' informa 1 | Si TRANS_TYPE Es 'CNT' o 'DNT' informa 2 | Resto = 0"
   }
@@ -693,13 +746,14 @@ view: ft_factura_detalle {
     value_format_name: id
     view_label: "Cliente"
     group_label: "Domicilio"
-    label: "Domicilio ID"
+    label: "ID"
   }
 
   dimension: apply_trans_id {
     type: number
     sql: ${TABLE}.APPLY_TRANS_ID ;;
-    label: "Pago Aplicado Transaccion ID"
+    view_label: "Cobranza"
+    label: "ID Transaccion Pago Aplicado"
   }
 
   dimension: be_id {
@@ -715,29 +769,30 @@ view: ft_factura_detalle {
     type: number
     sql: ${TABLE}.SUB_ID ;;
     value_format_name: id
-    view_label: "Comprobante"
-    label: "Suscripcion Numero"
+    view_label: "Suscripcion"
+    label: "Numero"
   }
 
   dimension: total_cycle {
     type: number
     sql: ${TABLE}.TOTAL_CYCLE ;;
-    view_label: "Pagos"
+    view_label: "Cobranza"
     label: "Cuotas DPF"
+    description: "Total de cuotas financiadas por Débito en próxima factura."
   }
 
   dimension: trans_id {
     type: number
     sql: ${TABLE}.TRANS_ID ;;
     view_label: "Comprobante"
-    label: "Transaccion ID"
+    label: "ID Transaccion"
     description: "Identificador de la operacion, numero interno de HW"
   }
 
   dimension: tax_amt {
     type: number
     sql: ${TABLE}.TAX_AMT ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
     label: "Impuestos"
   }
 
@@ -790,6 +845,7 @@ view: ft_factura_detalle {
   measure: count_items {
     type: count_distinct
     sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
     group_label: "Cantidad"
     group_item_label: "Items"
     label: "Cantidad Items"
@@ -798,32 +854,32 @@ view: ft_factura_detalle {
   measure: total_charge_amt {
     type: sum
     sql: ${charge_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
     group_label: "Total"
-    label: "Cargos Monto"
+    label: "Monto Cargo"
   }
 
   measure: total_discount_amt {
     type: sum
     sql: ${discount_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
     group_label: "Total"
-    label: "Bonificaciones sin impuestos"
+    label: "Monto Bonificaciones"
   }
 
   measure: total_gross_amt {
     type: sum
     sql: ${gross_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
     group_label: "Total"
-    label: "Monto Facturado sin Impuestos"
+    label: "Monto Total sin Impuestos"
   }
 
   measure: total_gross_amt_format {
     type: sum
     sql: ${gross_amt} ;;
     value_format: "[>=1000000] $###,###,, \"M\"; [>=10000] $###,##0, \"K\" ; [>=1000] $###,##0"
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
     group_label: "Total con Formato"
     label: "Monto Facturado sin Impuestos"
   }
@@ -831,7 +887,7 @@ view: ft_factura_detalle {
   measure: total_invoice_amt {
     type: sum
     sql: ${invoice_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
     group_label: "Total"
     label: "Monto Facturado"
     description: "La suma de los cargos, mas los impuestos, menos las bonificaciones."
@@ -840,33 +896,34 @@ view: ft_factura_detalle {
   measure: total_invoice_discount_amt {
     type: sum
     sql: ${invoice_discount_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
     group_label: "Total"
-    label: "Bonificaciones con impuestos"
+    label: "Monto Bonificado"
   }
 
   measure: total_invoice_tax_amt {
     type: sum
     sql: ${invoice_tax_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Cabecera"
     group_label: "Total"
-    label: "Monto Facturado Impuestos"
+    label: "Monto Impuestos"
   }
 
   measure: total_original_amt {
     type: sum
     sql: ${original_amt} ;;
-    view_label: "Comprobante"
+    view_label: "Comprobante Detalle"
     group_label: "Total"
-    label: "Monto Original Facturado"
+    label: "Monto Original"
     description: "Monto original del comprobante antes de la conversion, para cuando la moneda no es pesos argentinos."
   }
 
   measure: total_tax_amt {
     type: sum
     sql: ${tax_amt} ;;
+    view_label: "Comprobante Detalle"
     group_label: "Total"
-    group_item_label: "Monto Facturado Impuestos"
+    group_item_label: "Monto Impuestos"
     label: "Total Monto Impuestos Comprobante"
   }
 
@@ -893,7 +950,110 @@ view: ft_factura_detalle {
   measure: count_legal_no_venta_neta {
     type: number
     sql: ${count_legal_no_venta_bruta} - ${count_legal_no_venta_nc} ;;
+    view_label: "Comprobante Detalle"
     group_label: "Cantidad"
     label: "Q Ventas"
+  }
+
+  measure: count_accesorios {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Accesorios"
+    filters: [
+        charge_code: "C^_OT^_MB^_EQUIPMENT^_ACCESORIOS"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_delivery {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Delivery"
+    filters: [
+        charge_code: "C^_OT^_MB^_DELIVERY"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_dispositivos_hogar {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Dispositivos Hogar"
+    filters: [
+        charge_code: "C^_OT^_TV^_EQUIPMENT^_DISPHOGAR"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_equipos {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Equipos"
+    filters: [
+        charge_code: "C^_OT^_MB^_EQUIPMENT^_PHONES"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_equipos_ceg {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Equipos CEG"
+    filters: [
+        charge_code: "C^_OT^_MB^_EQUIPMENT^_PHONES^_CEG"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_items_venta {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "Q Items"
+    filters: [
+        legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+
+  measure: count_sim {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "SIM"
+    filters: [
+      charge_code: "C^_OT^_MB^_EQUIPMENT^_SIM"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
+  }
+  measure: count_tv {
+    type: count_distinct
+    sql: ${invoice_detail_id} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Venta"
+    label: "TV"
+    filters: [
+      charge_code: "C^_OT^_TV^_EQUIPMENT^_ELECTRODOM"
+      , legal_no: "-NULL"
+      , trans_type: "-BLL"
+    ]
   }
 }
