@@ -3395,7 +3395,7 @@ view: fth_orden {
     view_label: "Orden"
     group_label: "Cantidad"
     label: "Bajas Totales"
-    description: "Incluye todos los motivos de baja de abonos + suspensiones Portout Fija y Movil"
+    description: "Incluye todos los motivos de baja Fija y Movil + suspensiones Portout  filtros: orden_estado_nombre: 'ACTIVADA',  orden_producto_marca_principal: 'YES' ; ${fth_orden.orden_tipo_gestion_nombre} ='SUSPENSION' AND ${fth_orden.orden_item_sub_accion_nombre} ='SUSPENDER - PORTABILIDAD' OR ${fth_orden.orden_tipo_gestion_nombre} ='DESCONEXION' AND ${fth_orden.orden_tipo_sub_gestion_nombre} != 'PORTOUT' AND ${fth_orden.orden_tipo_sub_gestion_nombre} !='SINIESTRO CORREO' AND ${fth_orden.orden_tipo_sub_gestion_nombre} !='NO ENTREGADO' AND ${fth_orden.orden_tipo_sub_gestion_nombre} !='ANULACION DE VENTA' AND ${fth_orden.orden_tipo_sub_gestion_nombre} != 'DESCONOCIMIENTO DE PORTIN'"
   }
 
   measure: total_orden_suspensiones_totales {
