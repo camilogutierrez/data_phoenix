@@ -170,6 +170,7 @@ view: ft_factura_detalle {
     type: string
     sql: ${TABLE}.CHARGE_CODE ;;
     view_label: "Comprobante Detalle"
+    group_label: "Cargo"
     label: "Codigo"
     description: "Codigo del concepto del ítem facturado."
   }
