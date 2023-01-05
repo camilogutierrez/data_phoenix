@@ -15,9 +15,6 @@ explore: fth_portin {
 
   persist_with: portabilidad_default_dg
 
-
-
-
   join: lk_cierres_portin {
     view_label: "Cierres"
     relationship: many_to_one
@@ -33,4 +30,34 @@ explore: fth_portin {
   }
 
   ## For Filter Suggestions
+
+  join: lk_rango_numeracion_prefijos {
+    relationship: many_to_one
+    sql_on: ${fth_portin.geografia_rango_numeracion_prefijos} = ${lk_rango_numeracion_prefijos.rango_numeracion_prefijos} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_prefijo_interurbano {
+    relationship: many_to_one
+    sql_on: ${fth_portin.geografia_rango_numeracion_prefijo_interurbano} = ${lk_rango_numeracion_prefijo_interurbano.rango_numeracion_prefijo_interurbano} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_provincia {
+    relationship: many_to_one
+    sql_on: ${fth_portin.geografia_rango_numeracion_provincia_srcid} = ${lk_rango_numeracion_provincia.rango_numeracion_provincia_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_departamento {
+    relationship: many_to_one
+    sql_on: ${fth_portin.geografia_rango_numeracion_departamento_srcid} = ${lk_rango_numeracion_departamento.rango_numeracion_departamento_srcid} ;;
+    type: inner
+  }
+
+  join: lk_rango_numeracion_localidad {
+    relationship: many_to_one
+    sql_on: ${fth_portin.geografia_rango_numeracion_localidad_srcid} = ${lk_rango_numeracion_localidad.rango_numeracion_localidad_srcid} ;;
+    type: inner
+  }
 }
