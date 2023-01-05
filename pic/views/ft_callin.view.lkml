@@ -1127,6 +1127,30 @@ view: ft_callin {
     sql: ${TABLE}.TABS_CONCATENADAS ;;
   }
 
+  dimension: id_gia {
+    type: string
+    sql: ${TABLE}.ID_GIA ;;
+    group_label: "Cognitivo"
+    label: "ID Gia"
+    description: "ID de sesión en GIA."
+  }
+
+  dimension: id_watson {
+    type: string
+    sql: ${TABLE}.ID_WATSON ;;
+    group_label: "Cognitivo"
+    label: "ID Watson"
+    description: "ID de sesión en Watson."
+  }
+
+  dimension: skil_alias_watson {
+    type: string
+    sql: ${TABLE}.SKIL_ALIAS_WATSON ;;
+    group_label: "Cognitivo"
+    label: "Skil Alias Watson"
+    description: "Alias del Skill en Watson"
+  }
+
   ## Numbers
 
   dimension: res_ordinalsrcid {
@@ -1179,6 +1203,14 @@ view: ft_callin {
   dimension: routing_point_duration {
     type: number
     sql: ${TABLE}.ROUTING_POINT_DURATION ;;
+  }
+
+  dimension: conector_idinteraccion  {
+    type: number
+    sql: ${TABLE}.CONECTOR_IDINTERACCION ;;
+    group_label: "Cognitivo"
+    label: "Conector ID Interaccion"
+    description: "Connection ID de la interacción"
   }
 
   ## Hidden
