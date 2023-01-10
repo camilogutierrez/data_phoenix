@@ -840,7 +840,7 @@ view: ft_factura_detalle {
     sql: ${TABLE}.TAX_AMT ;;
   }
 
-  dimension: aux_monto_bruto_sin_impuestos_abono_movil {
+  dimension: aux_monto_bruto_sin_impuestos {
     hidden: yes
     type: number
     sql: ${gross_amt} - ${tax_amt}  ;;
@@ -1070,7 +1070,7 @@ view: ft_factura_detalle {
     view_label: "Comprobante Detalle"
     group_label: "Total"
     label: "Monto Bruto con Impuestos Abono Móvil (Voz+GPRS)"
-    description: "Es la suma del monto bruto con impuestos de todos los conceptos facturados en abonos para todos los negocios ($Cargo + $Impuestos - $Bonificaciones)"
+    description: "Suma de los montos brutos de los cargos facturados - ($Cargo + $Impuestos - $Bonificaciones)."
     filters: [
         ind_fact_migradas: "No"
       , trans_type: "-SLI"
@@ -1082,16 +1082,46 @@ view: ft_factura_detalle {
 
   measure: total_monto_bruto_sin_impuestos_abono_movil {
     type: sum
-    sql: ${aux_monto_bruto_sin_impuestos_abono_movil} ;;
+    sql: ${aux_monto_bruto_sin_impuestos} ;;
     view_label: "Comprobante Detalle"
     group_label: "Total"
     label: "Monto Bruto sin Impuestos Abono Móvil (Voz+GPRS)"
-    description: "Es la suma del monto bruto sin impuestos de todos los conceptos facturados en abonos para todos los negocios ($Cargo - $Impuestos - $Bonificaciones)"
+    description: "Suma de los montos brutos de los cargos facturados - ($Cargo - $Impuestos - $Bonificaciones)."
     filters: [
-      ind_fact_migradas: "No"
+        ind_fact_migradas: "No"
       , trans_type: "-SLI"
       , trans_type_asoc_ncnd: "-SLI"
       , charge_code: "C^_RR^_MB^_INTERNET^_ABONO^_GPRS,C^_RR^_MB^_ABONO^_VOZ"
+      , legal_no: "-NULL"
+    ]
+  }
+
+  measure: total_monto_bruto_con_impuestos_abonos {
+    type: sum
+    sql: ${gross_amt} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Total"
+    label: "Monto Bruto con Impuestos Abonos"
+    description: "Es la suma del monto bruto con impuestos de todos los conceptos facturados en abonos para todos los negocios ($Cargo + $Impuestos - $Bonificaciones)."
+    filters: [
+        ind_fact_migradas: "No"
+      , trans_type: "-SLI"
+      , trans_type_asoc_ncnd: "-SLI"
+      , legal_no: "-NULL"
+    ]
+  }
+
+  measure: total_monto_bruto_sin_impuestos_abonos {
+    type: sum
+    sql: ${aux_monto_bruto_sin_impuestos} ;;
+    view_label: "Comprobante Detalle"
+    group_label: "Total"
+    label: "Monto Bruto sin Impuestos Abonos"
+    description: "Es la suma del monto bruto sin impuestos de todos los conceptos facturados en abonos para todos los negocios ($Cargo - $Impuestos - $Bonificaciones)."
+    filters: [
+        ind_fact_migradas: "No"
+      , trans_type: "-SLI"
+      , trans_type_asoc_ncnd: "-SLI"
       , legal_no: "-NULL"
     ]
   }
