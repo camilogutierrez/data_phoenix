@@ -790,13 +790,6 @@ view: ft_factura_detalle {
     description: "Identificador de la operacion, numero interno de HW"
   }
 
-  dimension: tax_amt {
-    type: number
-    sql: ${TABLE}.TAX_AMT ;;
-    view_label: "Comprobante Detalle"
-    label: "Impuestos"
-  }
-
   ## Hidden
 
   dimension: charge_amt {
@@ -839,6 +832,12 @@ view: ft_factura_detalle {
     hidden: yes
     type: number
     sql: ${TABLE}.ORIGINAL_AMT ;;
+  }
+
+  dimension: tax_amt {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.TAX_AMT ;;
   }
 
   dimension: aux_monto_bruto_sin_impuestos_abono_movil {
@@ -1071,12 +1070,13 @@ view: ft_factura_detalle {
     view_label: "Comprobante Detalle"
     group_label: "Total"
     label: "Monto Bruto con Impuestos Abono Móvil (Voz+GPRS)"
-    description: "Suma de los montos brutos de los cargos facturados - ($Cargo + $Impuestos - $Bonificaciones)"
+    description: "Es la suma del monto bruto con impuestos de todos los conceptos facturados en abonos para todos los negocios ($Cargo + $Impuestos - $Bonificaciones)"
     filters: [
         ind_fact_migradas: "No"
       , trans_type: "-SLI"
       , trans_type_asoc_ncnd: "-SLI"
-      , charge_code: "C_RR_MB_INTERNET_ABONO_GPRS,C_RR_MB_ABONO_VOZ"
+      , charge_code: "C^_RR^_MB^_INTERNET^_ABONO^_GPRS,C^_RR^_MB^_ABONO^_VOZ"
+      , legal_no: "-NULL"
     ]
   }
 
@@ -1086,12 +1086,13 @@ view: ft_factura_detalle {
     view_label: "Comprobante Detalle"
     group_label: "Total"
     label: "Monto Bruto sin Impuestos Abono Móvil (Voz+GPRS)"
-    description: "suma de los montos brutos de los cargos facturados - ($Cargo - $Impuestos - $Bonificaciones)"
+    description: "Es la suma del monto bruto sin impuestos de todos los conceptos facturados en abonos para todos los negocios ($Cargo - $Impuestos - $Bonificaciones)"
     filters: [
       ind_fact_migradas: "No"
       , trans_type: "-SLI"
       , trans_type_asoc_ncnd: "-SLI"
-      , charge_code: "C_RR_MB_INTERNET_ABONO_GPRS,C_RR_MB_ABONO_VOZ"
+      , charge_code: "C^_RR^_MB^_INTERNET^_ABONO^_GPRS,C^_RR^_MB^_ABONO^_VOZ"
+      , legal_no: "-NULL"
     ]
   }
 }
