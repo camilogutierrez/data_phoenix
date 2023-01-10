@@ -955,6 +955,9 @@ view: fth_orden {
       raw,
       time,
       date,
+      day_of_month,
+      day_of_week,
+      day_of_week_index,
       week,
       month,
       month_name,
@@ -964,7 +967,8 @@ view: fth_orden {
     sql: ${TABLE}.Orden.Fechas.OrdenFechaActivacionSRC ;;
     datatype: timestamp
     view_label: "Orden"
-    label: "Fecha Activacion"
+    group_label: "Fecha Activacion"
+    label: "Activacion"
   }
 
   dimension_group: orden_fecha_creacion_src {
@@ -973,6 +977,9 @@ view: fth_orden {
       raw,
       time,
       date,
+      day_of_month,
+      day_of_week,
+      day_of_week_index,
       week,
       month,
       month_name,
