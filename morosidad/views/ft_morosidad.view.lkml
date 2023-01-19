@@ -414,6 +414,22 @@ view: ft_morosidad {
     label: "Cuenta ID"
   }
 
+  dimension: cant_comprob {
+    type: number
+    sql: ${TABLE}.CANT_COMPROB ;;
+    view_label: "RUS"
+    label: "Comprobantes Vencidos"
+    description: "Indica la cantidad de comprobantes vencidos de la cuenta  a la última la ejecución de RUS01."
+  }
+
+  dimension: cant_lin_nopre {
+    type: number
+    sql: ${TABLE}.CANT_LIN_NOPRE ;;
+    view_label: "RUS"
+    label: "Suscripciones Activas"
+    description: "Indica la cantidad de lineas no prepagas activas de la cuenta a la última la ejecución de RUS01"
+  }
+
   dimension: cust_id {
     type: number
     sql: ${TABLE}.CUST_ID ;;
@@ -448,12 +464,6 @@ view: ft_morosidad {
     sql: ${TABLE}.OPEN_AMOUNT ;;
   }
 
-  dimension: os_amount {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.OS_AMOUNT ;;
-  }
-
   dimension: saldo {
     hidden: yes
     type: number
@@ -470,12 +480,6 @@ view: ft_morosidad {
     hidden: yes
     type: number
     sql: ${TABLE}.SALDO_VENCIDO ;;
-  }
-
-  dimension: cant_lin_nopre {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.CANT_LIN_NOPRE ;;
   }
 
   dimension: cuenta_q_movil_pre {
@@ -550,12 +554,6 @@ view: ft_morosidad {
     sql: ${TABLE}.DNI_Q_FIJA_BUNDLE ;;
   }
 
-  dimension: cant_comprob {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.CANT_COMPROB ;;
-  }
-
 ## Measures
 
   measure: count {
@@ -567,12 +565,6 @@ view: ft_morosidad {
   measure: total_open_amount {
     type: sum
     sql: ${open_amount} ;;
-    label: "Saldo"
-  }
-
-  measure: total_os_amount {
-    type: sum
-    sql: ${os_amount} ;;
     label: "Saldo Vencido"
   }
 
@@ -602,7 +594,8 @@ view: ft_morosidad {
     sql: ${cant_lin_nopre} ;;
     view_label: "RUS"
     group_label: "Cantidad"
-    label: "Lineas No Prepagas"
+    label: "Suscripciones Activas"
+    description: "Indica la cantidad de lineas no prepagas activas de la cuenta a la última la ejecución de RUS01."
   }
 
   measure: total_cuenta_code {
@@ -727,7 +720,7 @@ view: ft_morosidad {
     view_label: "RUS"
     group_label: "Cantidad"
     label: "Comprobantes Vencidos"
-    description: "El cálculo se realiza en RUS01"
+    description: "Indica la cantidad de comprobantes vencidos de la cuenta  a la última la ejecución de RUS01."
   }
 
   measure: total_dias_proximo_hito {
